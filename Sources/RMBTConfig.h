@@ -17,7 +17,6 @@
 
 #pragma mark - Fixed test parameters
 
-#define RMBT_TEST_CIPHER                SSL_RSA_WITH_RC4_128_MD5
 #define RMBT_TEST_SOCKET_TIMEOUT_S      30.0
 
 #define RMBT_TEST_LOOPMODE_MIN_COUNT            1
@@ -85,10 +84,9 @@
 // Note: stats url can can be replaced with the /settings response from control server
 #define RMBT_STATS_URL       @"https://www.netztest.at/$lang/Statistik#noMMenu"
 
-#define RMBT_HELP_URL        @"https://www.rtr.at/$lang/tk/netztesthilfe"
-#define RMBT_HELP_RESULT_URL @"https://www.rtr.at/$lang/rtr/netztestfaq_testergebnis"
+#define RMBT_HELP_URL        @"https://www.netztest.at/redirect/$lang/help"
 
-#define RMBT_REPO_URL        @"https://github.com/appscape/open-rmbt-ios"
+#define RMBT_REPO_URL        @"https://github.com/rtr-nettest/open-rmbt-ios"
 #define RMBT_DEVELOPER_URL   @"http://appscape.at/"
 
 #pragma mark - Map options

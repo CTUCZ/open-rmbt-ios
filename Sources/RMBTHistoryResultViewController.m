@@ -98,10 +98,6 @@
     }];
 }
 
-- (void)trafficLightTapped:(NSNotification*)n {
-    [self presentModalBrowserWithURLString:RMBT_HELP_RESULT_URL];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
