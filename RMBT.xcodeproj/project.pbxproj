@@ -142,6 +142,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F9C078F216F751C00F1FC10 /* RMBT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RMBT.entitlements; sourceTree = "<group>"; };
 		74B5D1F96A5D607CBD1C4902 /* libPods-RMBT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RMBT.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C573F2A4175281D300C728FC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C573F2B0175294A500C728FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -726,6 +727,7 @@
 		C7DE146F173E8F610079477A = {
 			isa = PBXGroup;
 			children = (
+				1F9C078F216F751C00F1FC10 /* RMBT.entitlements */,
 				C7B47F87176CD47600B04ABF /* Configurations */,
 				C7E46730177CDDB600AAF7F0 /* Unit Tests */,
 				C7DE1481173E8F610079477A /* Sources */,
@@ -943,7 +945,7 @@
 			attributes = {
 				CLASSPREFIX = RMBT;
 				LastTestingUpgradeCheck = 0730;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "appscape gmbh";
 				TargetAttributes = {
 					C70828011CB6792F00F482EB = {
@@ -953,6 +955,11 @@
 					};
 					C7DE1477173E8F610079477A = {
 						DevelopmentTeam = T7Y947AEPK;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1381,6 +1388,7 @@
 			baseConfigurationReference = C7C0EFE3176CD18F003758AA /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RMBT.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
