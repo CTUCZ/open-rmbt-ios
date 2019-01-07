@@ -34,6 +34,7 @@
 //@property (nonatomic, readonly) NSString *cellularCodeGenerationString;
 @property (nonatomic, readonly) NSString *telephonyNetworkSimOperator;
 @property (nonatomic, readonly) NSString *telephonyNetworkSimCountry;
+@property (nonatomic, readonly) BOOL dualSim;
 @end
 
 @implementation RMBTConnectivity
@@ -72,21 +73,67 @@
     _bssid = nil;
     _cellularCode = nil;
     _cellularCodeDescription = nil;
+    _dualSim = NO;
     
     switch (_networkType) {
         case RMBTNetworkTypeCellular: {
             // Get carrier name
             CTTelephonyNetworkInfo *netinfo = [[CTTelephonyNetworkInfo alloc] init];
-            CTCarrier *carrier = [netinfo subscriberCellularProvider];
-            _networkName = carrier.carrierName;
-            _telephonyNetworkSimCountry = carrier.isoCountryCode;
-            _telephonyNetworkSimOperator = [NSString stringWithFormat:@"%@-%@", carrier.mobileCountryCode, carrier.mobileNetworkCode];
+            CTCarrier *carrier = nil;
+            _dualSim = NO;
             
-            if ([netinfo respondsToSelector:@selector(currentRadioAccessTechnology)]) {
-                // iOS7
-                _cellularCode = [self cellularCodeForCTValue:netinfo.currentRadioAccessTechnology];
-                _cellularCodeDescription = [self cellularCodeDescriptionForCTValue:netinfo.currentRadioAccessTechnology];
+            //use new methods on iOS12, as subscriberCellularProvider is deprecated
+            if (@available(iOS 12.1, *)) {
+                //iOS 12: This is now deprecated, as it could esims are not
+                //detected using this
+                NSDictionary *carrierDict = netinfo.serviceSubscriberCellularProviders;
+                if (carrierDict != nil) {
+                    NSArray *allCarriers = carrierDict.allValues;
+                    if (allCarriers.count == 1) {
+                        //one SIM card - default case for now, use this
+                        carrier = allCarriers[0];
+                    }
+                    else if (allCarriers.count > 1) {
+                        //dual SIM, we cannot handle this at the moment
+                        _dualSim = YES;
+                    }
+                    else {
+                        //no SIM inserted
+                    }
+                }
+            }
+            else {
+                carrier = [netinfo subscriberCellularProvider];
+            }
+            
+            if (!_dualSim) {
+                _networkName = carrier.carrierName;
+                _telephonyNetworkSimCountry = carrier.isoCountryCode;
+                _telephonyNetworkSimOperator = [NSString stringWithFormat:@"%@-%@", carrier.mobileCountryCode, carrier.mobileNetworkCode];
+            }
+            
+            if ([netinfo respondsToSelector:@selector(serviceCurrentRadioAccessTechnology)] ||
+                [netinfo respondsToSelector:@selector(currentRadioAccessTechnology)]) {
 //                _cellularCodeGenerationString = [self cellularCodeGenerationString:netinfo.currentRadioAccessTechnology];
+                
+                //iOS12
+                if (@available(iOS 12.1, *)) {
+                    if ([netinfo respondsToSelector:@selector(serviceCurrentRadioAccessTechnology)]) {
+                        NSDictionary *accessDict = netinfo.serviceCurrentRadioAccessTechnology;
+                       
+                        //set cellular type for phones with one SIM card
+                        if (accessDict != nil && accessDict.count == 1) {
+                            NSString* currentAccessTechnology = accessDict.allValues[0];
+                            _cellularCode = [self cellularCodeForCTValue:currentAccessTechnology];
+                            _cellularCodeDescription = [self cellularCodeDescriptionForCTValue:currentAccessTechnology];
+                        }
+                    }
+                }
+                else {
+                    // iOS7
+                    _cellularCode = [self cellularCodeForCTValue:netinfo.currentRadioAccessTechnology];
+                    _cellularCodeDescription = [self cellularCodeDescriptionForCTValue:netinfo.currentRadioAccessTechnology];
+                }
             }
 
             break;
@@ -188,12 +235,18 @@
         if (_networkName) result[@"wifi_ssid"] = _networkName;
         if (_bssid) result[@"wifi_bssid"] = _bssid;
     } else if (self.networkType == RMBTNetworkTypeCellular) {
-        if (_cellularCode) {
-            result[@"network_type"] = _cellularCode;
+        if (_dualSim) {
+            result[@"dual_sim"] = @YES;
         }
-        result[@"telephony_network_sim_operator_name"] = RMBTValueOrNull(self.networkName);
-        result[@"telephony_network_sim_country"] = RMBTValueOrNull(_telephonyNetworkSimCountry);
-        result[@"telephony_network_sim_operator"] = RMBTValueOrNull(_telephonyNetworkSimOperator);
+        else {
+            if (_cellularCode) {
+                result[@"network_type"] = _cellularCode;
+            }
+            result[@"telephony_network_sim_operator_name"] = RMBTValueOrNull(self.networkName);
+            result[@"telephony_network_sim_country"] = RMBTValueOrNull(_telephonyNetworkSimCountry);
+            result[@"telephony_network_sim_operator"] = RMBTValueOrNull(_telephonyNetworkSimOperator);
+        }
+        
     }
     return result;
 }
@@ -201,7 +254,9 @@
 - (BOOL)isEqualToConnectivity:(RMBTConnectivity*)other {
     if (other == self) return YES;
     if (!other) return NO;
-    return ([other.networkTypeDescription isEqualToString:self.networkTypeDescription] && [other.networkName isEqualToString:self.networkName]);
+    return (([other.networkTypeDescription isEqualToString:self.networkTypeDescription] &&
+             other.dualSim && self.dualSim) ||
+            ([other.networkTypeDescription isEqualToString:self.networkTypeDescription] && [other.networkName isEqualToString:self.networkName]));
 }
 
 #pragma mark - Interface values
