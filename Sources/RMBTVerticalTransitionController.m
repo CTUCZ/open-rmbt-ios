@@ -31,13 +31,16 @@
 
     CGRect endFrame = [transitionContext initialFrameForViewController:fromViewController];
 
-    [[transitionContext containerView] addSubview:toViewController.view];
+    if (self.reverse == NO) {
+        [[transitionContext containerView] addSubview:toViewController.view];
+    }
 
-    toViewController.view.frame = CGRectOffset(endFrame, 0, (_reverse ? 1 : -1) * toViewController.view.frame.size.height);
+    toViewController.view.frame = CGRectOffset(endFrame, 0, (self.reverse ? 1 : -1) * toViewController.view.frame.size.height);
 
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
         toViewController.view.frame = endFrame;
-        fromViewController.view.frame = CGRectOffset(fromViewController.view.frame, 0,(_reverse ? -1 : 1) * toViewController.view.frame.size.height);
+        fromViewController.view.frame = CGRectOffset(fromViewController.view.frame, 0,(weakSelf.reverse ? -1 : 1) * toViewController.view.frame.size.height);
     } completion:^(BOOL finished) {
          [transitionContext completeTransition:YES];
     }];
