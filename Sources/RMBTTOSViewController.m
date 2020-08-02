@@ -34,6 +34,10 @@
     titleLabel.adjustsFontSizeToFitWidth = YES;
     self.navigationItem.titleView = titleLabel;
 
+    self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+    [self.webView setNavigationDelegate:self];
+    [self.view addSubview: self.webView];
+    
     UIEdgeInsets i = self.webView.scrollView.scrollIndicatorInsets;
     i.bottom = 88.0; // 2x44px for toolbars
     self.webView.scrollView.scrollIndicatorInsets = i;
@@ -47,19 +51,16 @@
 }
 
 // Handle external links in a modal browser window
-- (BOOL)webView:(UIWebView *)webView
-shouldStartLoadWithRequest:(NSURLRequest *)request
- navigationType:(UIWebViewNavigationType)navigationType
-{
-    NSString *scheme = request.URL.scheme;
+-(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    NSString *scheme = navigationAction.request.URL.scheme;
     if ([scheme isEqualToString:@"file"]) {
-        return YES;
+        decisionHandler(WKNavigationActionPolicyAllow);
     } else if ([scheme isEqualToString:@"mailto"]) {
         // TODO: Open compose dialog
-        return NO;
+        decisionHandler(WKNavigationActionPolicyCancel);
     } else {
-        [self presentModalBrowserWithURLString:request.URL.absoluteString];
-        return NO;
+        [self presentModalBrowserWithURLString:navigationAction.request.URL.absoluteString];
+        decisionHandler(WKNavigationActionPolicyCancel);
     }
 }
 

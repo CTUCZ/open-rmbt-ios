@@ -6,11 +6,16 @@
 //
 //  https://github.com/samvermette/SVWebViewController
 
-#import "SVModalWebViewController.h"
+#import <WebKit/WebKit.h>
 
 @interface SVWebViewController : UIViewController
 
-- (id)initWithAddress:(NSString*)urlString;
-- (id)initWithURL:(NSURL*)URL;
+- (instancetype)initWithAddress:(NSString *)urlString;
+- (instancetype)initWithURL:(NSURL *)URL;
+- (instancetype)initWithURLRequest:(NSURLRequest *)request;
+
+@property (nonatomic, weak) id<WKNavigationDelegate> delegate;
+@property (nonatomic, readonly) WKWebView *webView;
+@property (nonatomic, strong) NSMutableArray<UIActivity *> *activities;
 
 @end

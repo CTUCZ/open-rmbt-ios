@@ -17,12 +17,13 @@
 
 #import <WebKit/WebKit.h>
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 #import "RMBTQoSWebTest.h"
 #import "RMBTQosWebTestURLProtocol.h"
 
-@interface RMBTQoSWebTest()<UIWebViewDelegate> {
+@interface RMBTQoSWebTest()<WKNavigationDelegate> {
     NSString *_url;
-    UIWebView *_webView;
+    WKWebView *_webView;
     NSUInteger _requestCount;
     dispatch_semaphore_t _sem;
     uint64_t _startedAt, _duration;
@@ -58,8 +59,8 @@
 
     dispatch_sync(dispatch_get_main_queue(), ^{
         //_webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 1900, 1200) configuration:[]
-        _webView = [[UIWebView alloc] init];
-        _webView.delegate = self;
+        _webView = [[WKWebView alloc] init];
+        _webView.navigationDelegate = self;
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]];
         [self tagRequest:request];
         [_webView loadRequest:request];
@@ -89,28 +90,28 @@
     [RMBTQosWebTestURLProtocol tagRequest:request withValue:self.uid];
 }
 
-#pragma mark - UIWebViewDelegate
+#pragma mark - WKNavigationDelegate
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     NSParameterAssert(self.status == RMBTQoSTestStatusUnknown);
-    if ([request isKindOfClass:[NSMutableURLRequest class]]) {
-        [self tagRequest:(NSMutableURLRequest*)request];
+    if ([navigationAction.request isKindOfClass:[NSMutableURLRequest class]]) {
+        [self tagRequest:(NSMutableURLRequest*)navigationAction.request];
     }
     if (_startedAt == 0) {
         _startedAt = RMBTCurrentNanos();
     }
-    return YES;
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
     _requestCount += 1;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     [self maybeDone];
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     self.status = RMBTQoSTestStatusError;
     [self maybeDone];
 }

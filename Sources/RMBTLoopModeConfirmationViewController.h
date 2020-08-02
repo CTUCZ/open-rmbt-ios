@@ -16,8 +16,10 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @interface RMBTLoopModeConfirmationViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) WKWebView *webView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 - (IBAction)accept:(id)sender;
 @end
