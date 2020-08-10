@@ -16,11 +16,12 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
-@interface RMBTTOSViewController : UIViewController <UIWebViewDelegate>
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@interface RMBTTOSViewController : UIViewController <WKNavigationDelegate>
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *acceptBarButtonItem;
 @property (nonatomic, strong) IBOutlet UILabel *acceptIntroLabel;
+@property (strong, nonatomic) WKWebView *webView;
 - (IBAction)agree:(id)sender;
 @end

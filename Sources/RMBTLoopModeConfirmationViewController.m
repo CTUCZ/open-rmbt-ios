@@ -26,7 +26,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self createWebView];
     [self show];
+}
+
+- (void)createWebView {
+    WKWebView *webView = [[WKWebView alloc] init];
+    webView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:webView];
+    self.webView = webView;
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [webView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor],
+        [webView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor],
+        [webView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+        [webView.bottomAnchor constraintEqualToAnchor:self.toolbar.topAnchor]
+    ]];
 }
 
 - (void)show {

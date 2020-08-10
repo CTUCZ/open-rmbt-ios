@@ -5,7 +5,8 @@ target 'RMBT' do
   pod 'GCNetworkReachability', '1.3.2'
   pod 'BlocksKit', podspec: './BlocksKit.podspec'
   pod 'libextobjc/EXTKeyPathCoding'
-  pod 'SVWebViewController', '1.0'
+#  pod 'SVWebViewController', '1.0'
+  pod 'SVWebViewController', :git => 'https://github.com/bazingatechnologies/SVWebViewController', :branch => 'master', :commit => 'e5e85d2df62c3baed76a2dec343cdb1c239aa719'
   pod 'TUSafariActivity'
 
   if File.exist?(File.expand_path('../Vendor/CocoaAsyncSocket', __FILE__))

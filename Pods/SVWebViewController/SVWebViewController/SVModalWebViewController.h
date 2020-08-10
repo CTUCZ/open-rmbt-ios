@@ -6,15 +6,33 @@
 //
 //  https://github.com/samvermette/SVWebViewController
 
-#import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @class SVWebViewController;
+@class SVModalWebViewController;
+
+typedef NS_ENUM(NSUInteger, SVWebViewControllerDismissButtonStyle) {
+    SVWebViewControllerDismissButtonStyleDone = 0,
+    SVWebViewControllerDismissButtonStyleCancel
+};
+
+@protocol SVModalWebViewControllerDelegate <WKNavigationDelegate>
+
+@optional
+- (void)controllerDidPressDoneButton:(SVModalWebViewController *)controller;
+
+@end
 
 @interface SVModalWebViewController : UINavigationController
 
-- (id)initWithAddress:(NSString*)urlString;
-- (id)initWithURL:(NSURL *)URL;
+- (instancetype)initWithAddress:(NSString*)urlString;
+- (instancetype)initWithURL:(NSURL *)URL;
+- (instancetype)initWithURLRequest:(NSURLRequest *)request;
+
+@property (nonatomic, readonly) SVWebViewController *webViewController;
 
 @property (nonatomic, strong) UIColor *barsTintColor;
+@property (nonatomic, weak) id<SVModalWebViewControllerDelegate> webViewDelegate;
+@property (nonatomic, assign) SVWebViewControllerDismissButtonStyle dismissButtonStyle;
 
 @end
