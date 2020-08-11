@@ -75,7 +75,9 @@
 
     _protocolResult = [RMBTQosWebTestURLProtocol queryResultWithTag:self.uid];
     
-    [_webView stopLoading];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [_webView stopLoading];
+    });
     _webView = nil;
 }
 
