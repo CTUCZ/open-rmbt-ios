@@ -3,7 +3,10 @@ platform :ios, '8.0'
 target 'RMBT' do
   pod 'AFNetworking', '~>1.3'
   pod 'GCNetworkReachability', '1.3.2'
-  pod 'BlocksKit', podspec: './BlocksKit.podspec'
+  
+  pod 'BlocksKit/UIKit', :git => 'https://github.com/sglushchenko/BlocksKit', :branch => 'without_UIWebView'
+  pod 'BlocksKit/MessageUI', :git => 'https://github.com/sglushchenko/BlocksKit', :branch => 'without_UIWebView'
+  
   pod 'libextobjc/EXTKeyPathCoding'
 #  pod 'SVWebViewController', '1.0'
   pod 'SVWebViewController', :git => 'https://github.com/bazingatechnologies/SVWebViewController', :branch => 'master', :commit => 'e5e85d2df62c3baed76a2dec343cdb1c239aa719'

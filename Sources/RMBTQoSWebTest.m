@@ -28,6 +28,8 @@
     dispatch_semaphore_t _sem;
     uint64_t _startedAt, _duration;
     NSDictionary *_protocolResult;
+    NSNumber *_rxBytesCount;
+    NSNumber *_statusCode;
 }
 @end
 
@@ -55,6 +57,8 @@
 
 - (void)main {
     _startedAt = 0;
+    _statusCode = @(-1);
+    _rxBytesCount = @(0);
     _sem = dispatch_semaphore_create(0);
 
     dispatch_sync(dispatch_get_main_queue(), ^{
@@ -62,7 +66,6 @@
         _webView = [[WKWebView alloc] init];
         _webView.navigationDelegate = self;
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]];
-        [self tagRequest:request];
         [_webView loadRequest:request];
     });
 
@@ -73,9 +76,15 @@
         _duration = RMBTCurrentNanos() - _startedAt;
     };
 
-    _protocolResult = [RMBTQosWebTestURLProtocol queryResultWithTag:self.uid];
+    _protocolResult = @{
+        RMBTQosWebTestURLProtocolResultStatusKey: _statusCode,
+        RMBTQosWebTestURLProtocolResultRxBytesKey: _rxBytesCount
+    };
     
-    [_webView stopLoading];
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [_webView stopLoading];
+    });
     _webView = nil;
 }
 
@@ -86,17 +95,10 @@
             _url];
 }
 
-- (void)tagRequest:(NSMutableURLRequest*)request {
-    [RMBTQosWebTestURLProtocol tagRequest:request withValue:self.uid];
-}
-
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     NSParameterAssert(self.status == RMBTQoSTestStatusUnknown);
-    if ([navigationAction.request isKindOfClass:[NSMutableURLRequest class]]) {
-        [self tagRequest:(NSMutableURLRequest*)navigationAction.request];
-    }
     if (_startedAt == 0) {
         _startedAt = RMBTCurrentNanos();
     }
@@ -114,6 +116,20 @@
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     self.status = RMBTQoSTestStatusError;
     [self maybeDone];
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
+
+    NSString *currentURLString = navigationResponse.response.URL.absoluteString;
+    if ([currentURLString isEqualToString:_url] &&
+        [navigationResponse.response isKindOfClass:[NSHTTPURLResponse class]]) {
+        _statusCode = @(((NSHTTPURLResponse *)navigationResponse.response).statusCode);
+    }
+    if ([navigationResponse.response isKindOfClass:[NSHTTPURLResponse class]] && navigationResponse.response.expectedContentLength != -1) {
+        _rxBytesCount = @(_rxBytesCount.longLongValue + navigationResponse.response.expectedContentLength);
+    }
+          
+    decisionHandler(WKNavigationResponsePolicyAllow);
 }
 
 - (void)maybeDone {

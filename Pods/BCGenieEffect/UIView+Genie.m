@@ -178,6 +178,9 @@ static const int BCTrapezoidWinding[4][4] = {
 
 
         NSLog(@"Genie Effect ERROR: The distance between %@ edge of animated view and %@ edge of %@ rect is incorrect. Animation will not be performed!", edgeDescription(edge), edgeDescription(edge), reverse ? @"star" : @"destination");
+        if(completion) {
+            completion();
+        }
         return;
     } else if (sign*(aPoints.a.v[axis] + sign*totalSize - bEndPoints.a.v[axis]) > 0.0f) {
         NSLog(@"Genie Effect Warning: The %@ edge of animated view overlaps %@ edge of %@ rect. Glitches may occur.",edgeDescription((edge + 2) % 4), edgeDescription(edge), reverse ? @"start" : @"destination");
@@ -192,6 +195,11 @@ static const int BCTrapezoidWinding[4][4] = {
     
     for (CALayer *layer in slices) {
         [containerView.layer addSublayer:layer];
+        
+        // With 'Renders with edge antialiasing' = YES in info.plist the slices are
+        // rendered with a border, this disables this making the UIView appear as supposed
+        [layer setEdgeAntialiasingMask:0];
+        
         [transforms addObject:[NSMutableArray array]];
     }
     
@@ -224,7 +232,7 @@ static const int BCTrapezoidWinding[4][4] = {
                                        finalRectDepth:endRectDepth];
         
         [trs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [transforms[idx] addObject:obj];
+            [(NSMutableArray *)transforms[idx] addObject:obj];
         }];
     }
     
