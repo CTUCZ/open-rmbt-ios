@@ -69,9 +69,9 @@
 #pragma mark - Default control server URLs
 
 #warning Please supply a valid URL for the control server. For setting up your own test server, see https://github.com/alladin-IT/open-rmbt
-#define RMBT_CONTROL_SERVER_URL         @"http://example.org:8080/RMBTControlServer"
-#define RMBT_CONTROL_SERVER_IPV4_URL    @"http://four.example.org:8080/RMBTControlServer"
-#define RMBT_CONTROL_SERVER_IPV6_URL    @"http://six.develop.netztest.at:8080/RMBTControlServer"
+#define RMBT_CONTROL_SERVER_URL         @"https://nettest.org/RMBTControlServer"
+#define RMBT_CONTROL_SERVER_IPV4_URL    @"https://c01ipv4.nettest.org/RMBTControlServer"
+#define RMBT_CONTROL_SERVER_IPV6_URL    @"https://c01ipv6.nettest.org/RMBTControlServer"
 
 #pragma mark - Other URLs used in the app
 
