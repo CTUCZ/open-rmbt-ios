@@ -8,6 +8,7 @@
 //
 
 #import <objc/runtime.h>
+#import <Foundation/Foundation.h>
 
 /**
  * A callback indicating that the given method failed to be added to the given
@@ -18,7 +19,7 @@ typedef void (*ext_failedMethodCallback)(Class, Method);
 /**
  * Used with #ext_injectMethods to determine injection behavior.
  */
-typedef enum {
+typedef NS_OPTIONS(NSUInteger, ext_methodInjectionBehavior) {
     /**
      * Indicates that any existing methods on the destination class should be
      * overwritten.
@@ -54,7 +55,7 @@ typedef enum {
      * injection.
      */
     ext_methodInjectionIgnoreInitialize = 1U << 3
-} ext_methodInjectionBehavior;
+};
 
 /**
  * A mask for the overwriting behavior flags of #ext_methodInjectionBehavior.
@@ -110,11 +111,15 @@ typedef struct {
      */
     BOOL dynamic;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpadded"
+    
     /**
      * The memory management policy for this property. This will always be
      * #ext_propertyMemoryManagementPolicyAssign if #readonly is \c YES.
      */
     ext_propertyMemoryManagementPolicy memoryManagementPolicy;
+
 
     /**
      * The selector for the getter of this property. This will reflect any
@@ -132,6 +137,8 @@ typedef struct {
      * \e would be, if the property were writable.
      */
     SEL setter;
+    
+#pragma clang diagnostic pop
 
     /**
      * The backing instance variable for this property, or \c NULL if \c
