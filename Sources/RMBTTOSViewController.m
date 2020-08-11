@@ -34,9 +34,13 @@
     titleLabel.adjustsFontSizeToFitWidth = YES;
     self.navigationItem.titleView = titleLabel;
 
-    self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+    WKWebViewConfiguration *config = [self configForWebView];
+    
+    self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
     [self.webView setNavigationDelegate:self];
     [self.view addSubview: self.webView];
+    
+    [self.view sendSubviewToBack:self.webView];
     
     UIEdgeInsets i = self.webView.scrollView.scrollIndicatorInsets;
     i.bottom = 88.0; // 2x44px for toolbars
@@ -48,6 +52,16 @@
 
     NSURL* url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"terms_conditions_long" ofType:@"html"]];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+}
+
+-(WKWebViewConfiguration *)configForWebView {
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+    NSString *jsString = @"var meta = document.createElement('meta'); meta.setAttribute('name','viewport'); meta.setAttribute ('content', 'width=device-width'); document.getElementsByTagName ('head')[0].appendChild(meta);";
+    WKUserScript *changeDefaultViewPort = [[WKUserScript alloc] initWithSource:jsString injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+    
+    [[config userContentController] addUserScript:changeDefaultViewPort];
+    
+    return config;
 }
 
 // Handle external links in a modal browser window
