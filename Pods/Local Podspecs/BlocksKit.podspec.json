@@ -1,6 +1,6 @@
 {
   "name": "BlocksKit",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "license": "MIT",
   "summary": "The Objective-C block utilities you always wish you had.",
   "homepage": "https://zwaldowski.github.io/BlocksKit",
@@ -10,12 +10,13 @@
   },
   "source": {
     "git": "https://github.com/zwaldowski/BlocksKit.git",
-    "tag": "v2.2.5"
+    "tag": "v2.2.6"
   },
   "requires_arc": true,
   "platforms": {
     "osx": "10.8",
-    "ios": "6.0"
+    "ios": "6.0",
+    "watchos": "2.0"
   },
   "default_subspecs": "All",
   "subspecs": [
@@ -34,6 +35,9 @@
           "BlocksKit/MessageUI": [
 
           ],
+          "BlocksKit/QuickLook": [
+
+          ],
           "BlocksKit/UIKit": [
 
           ]
@@ -44,6 +48,7 @@
       "name": "Core",
       "source_files": [
         "BlocksKit/BlocksKit.h",
+        "BlocksKit/BKDefines.h",
         "BlocksKit/Core/*.{h,m}"
       ]
     },
@@ -76,6 +81,27 @@
       }
     },
     {
+      "name": "QuickLook",
+      "dependencies": {
+        "BlocksKit/Core": [
+
+        ],
+        "BlocksKit/DynamicDelegate": [
+
+        ]
+      },
+      "platforms": {
+        "ios": "6.0"
+      },
+      "source_files": [
+        "BlocksKit/BlocksKit+QuickLook.h",
+        "BlocksKit/QuickLook/*.{h,m}"
+      ],
+      "ios": {
+        "frameworks": "QuickLook"
+      }
+    },
+    {
       "name": "UIKit",
       "dependencies": {
         "BlocksKit/Core": [
@@ -88,8 +114,10 @@
       "platforms": {
         "ios": "6.0"
       },
-      "source_files": "BlocksKit/UIKit/*.{h,m}",
-      "exclude_files": "BlocksKit/UIKit/UIImagePickerController*.{h,m}"
+      "source_files": [
+        "BlocksKit/BlocksKit+UIKit.h",
+        "BlocksKit/UIKit/*.{h,m}"
+      ]
     }
   ]
 }
