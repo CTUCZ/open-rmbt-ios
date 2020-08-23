@@ -69,9 +69,9 @@
 #pragma mark - Default control server URLs
 
 #warning Please supply a valid URL for the control server. For setting up your own test server, see https://github.com/alladin-IT/open-rmbt
-#define RMBT_CONTROL_SERVER_URL         @"https://nettest.org/RMBTControlServer"
-#define RMBT_CONTROL_SERVER_IPV4_URL    @"https://c01ipv4.nettest.org/RMBTControlServer"
-#define RMBT_CONTROL_SERVER_IPV6_URL    @"https://c01ipv6.nettest.org/RMBTControlServer"
+#define RMBT_CONTROL_SERVER_URL         @"https://sdev.netztest.at/RMBTControlServer"
+#define RMBT_CONTROL_SERVER_IPV4_URL    @"https://sdevv4.netztest.at/RMBTControlServer"
+#define RMBT_CONTROL_SERVER_IPV6_URL    @"https://sdevv6.netztest.at/RMBTControlServer"
 
 #pragma mark - Other URLs used in the app
 
@@ -105,7 +105,7 @@
 // Google Maps API Key
 
 #warning Please supply a valid Google Maps API Key. See https://developers.google.com/maps/documentation/ios/start#the_google_maps_api_key
-#define RMBT_GMAPS_API_KEY @"apikey"
+#define RMBT_GMAPS_API_KEY @"AIzaSyDCoFuxghaMIVOKEeGxeGInAiWo9A0iJL4"
 
 #pragma mark - Misc
 

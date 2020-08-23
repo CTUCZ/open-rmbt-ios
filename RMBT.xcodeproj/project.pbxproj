@@ -129,6 +129,8 @@
 		C7F3FB3C179CCCD600E336CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7F3FB3E179CCCD600E336CF /* Localizable.strings */; };
 		C7F599A71A2A81940020ADC4 /* RMBTHistoryIndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */; };
 		C7FDBF2D1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */; };
+		E80C2E1F7313B6BCFBC4A346 /* libPods-RMBT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B5D1F96A5D607CBD1C4902 /* libPods-RMBT.a */; };
+		E945361C24F2DA6300D12303 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E945361B24F2DA6300D12303 /* GoogleMaps.bundle */; };
 		E9789EEE24D74434007253EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9789EED24D74434007253EB /* WebKit.framework */; };
 		E99AC39E24E2DA6F00BBC177 /* RMBTQoSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D97F1DD8AEC000D1C824 /* RMBTQoSTest.m */; };
 		E99AC39F24E2DA6F00BBC177 /* UITableViewCell+RMBTHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = C7535B4718298F84003A8CC8 /* UITableViewCell+RMBTHeight.m */; };
@@ -235,7 +237,6 @@
 		E99AC40524E2DA6F00BBC177 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DE147B173E8F610079477A /* UIKit.framework */; };
 		E99AC40624E2DA6F00BBC177 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DE147D173E8F610079477A /* Foundation.framework */; };
 		E99AC40724E2DA6F00BBC177 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DE147F173E8F610079477A /* CoreGraphics.framework */; };
-		E99AC40824E2DA6F00BBC177 /* libPods-RMBT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B5D1F96A5D607CBD1C4902 /* libPods-RMBT.a */; };
 		E99AC40A24E2DA6F00BBC177 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C792B8751814AEC700D504DF /* MainStoryboard.storyboard */; };
 		E99AC40B24E2DA6F00BBC177 /* RMBTMapCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7228DEB17FC199F00FB984D /* RMBTMapCalloutView.xib */; };
 		E99AC40C24E2DA6F00BBC177 /* terms_conditions_long.html in Resources */ = {isa = PBXBuildFile; fileRef = C7F3FB35179CC86900E336CF /* terms_conditions_long.html */; };
@@ -493,6 +494,7 @@
 		C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTHistoryIndexCell.xib; sourceTree = "<group>"; };
 		C7FDBF2B1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTLoopMeasurementsViewController.h; sourceTree = "<group>"; };
 		C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTLoopMeasurementsViewController.m; sourceTree = "<group>"; };
+		E945361B24F2DA6300D12303 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		E9789EED24D74434007253EB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E99AC41A24E2DA6F00BBC177 /* RMBT_Specure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMBT_Specure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99AC41B24E2DA7000BBC177 /* RMBT copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RMBT copy-Info.plist"; path = "/Users/sglushchenko/Projects/open-rmbt-ios/RMBT copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -531,6 +533,7 @@
 				C7DE147E173E8F610079477A /* Foundation.framework in Frameworks */,
 				C7DE1480173E8F610079477A /* CoreGraphics.framework in Frameworks */,
 				7ABF93939D07A19DF172C790 /* libPods-RMBT.a in Frameworks */,
+				E80C2E1F7313B6BCFBC4A346 /* libPods-RMBT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,7 +561,6 @@
 				E99AC40524E2DA6F00BBC177 /* UIKit.framework in Frameworks */,
 				E99AC40624E2DA6F00BBC177 /* Foundation.framework in Frameworks */,
 				E99AC40724E2DA6F00BBC177 /* CoreGraphics.framework in Frameworks */,
-				E99AC40824E2DA6F00BBC177 /* libPods-RMBT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,6 +881,7 @@
 		C7DE146F173E8F610079477A = {
 			isa = PBXGroup;
 			children = (
+				E945361B24F2DA6300D12303 /* GoogleMaps.bundle */,
 				1F9C078F216F751C00F1FC10 /* RMBT.entitlements */,
 				C7B47F87176CD47600B04ABF /* Configurations */,
 				C7E46730177CDDB600AAF7F0 /* Unit Tests */,
@@ -1104,12 +1107,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E99AC41824E2DA6F00BBC177 /* Build configuration list for PBXNativeTarget "RMBT_Specure" */;
 			buildPhases = (
-				E99AC39C24E2DA6F00BBC177 /* [CP] Check Pods Manifest.lock */,
 				E99AC39D24E2DA6F00BBC177 /* Sources */,
 				E99AC3F324E2DA6F00BBC177 /* Frameworks */,
 				E99AC40924E2DA6F00BBC177 /* Resources */,
 				E99AC41624E2DA6F00BBC177 /* Run Script: Add Build Infos */,
-				E99AC41724E2DA6F00BBC177 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1219,6 +1220,7 @@
 				E99AC41324E2DA6F00BBC177 /* Images.xcassets in Resources */,
 				E99AC41424E2DA6F00BBC177 /* loop_mode_info2.html in Resources */,
 				E99AC41524E2DA6F00BBC177 /* TestStoryboard.storyboard in Resources */,
+				E945361C24F2DA6300D12303 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1319,24 +1321,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E99AC39C24E2DA6F00BBC177 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RMBT-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E99AC41624E2DA6F00BBC177 /* Run Script: Add Build Infos */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1350,106 +1334,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Scripts/add_build_infos.sh\"";
-		};
-		E99AC41724E2DA6F00BBC177 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RMBT/Pods-RMBT-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/SVWebViewController.bundle/SVWebViewControllerBack.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/SVWebViewController.bundle/SVWebViewControllerBack@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/SVWebViewController.bundle/SVWebViewControllerNext.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/SVWebViewController.bundle/SVWebViewControllerNext@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Chrome/SVWebViewControllerActivityChrome-iPad.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Chrome/SVWebViewControllerActivityChrome-iPad@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Chrome/SVWebViewControllerActivityChrome@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Safari/SVWebViewControllerActivitySafari-iPad.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Safari/SVWebViewControllerActivitySafari-iPad@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Safari/SVWebViewControllerActivitySafari@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/da.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/de.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/en.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/es-ES.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/es.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/fr.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/ja.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/pt.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/SVWebViewController.bundle",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/zh-Hans.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/zh-Hant.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/Safari.png",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/Safari@2x.png",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/Safari@2x~ipad.png",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/Safari~ipad.png",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/cs.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/de.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/en.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/es.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/eu.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/fi.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/fr.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/it.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/ja.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/ko.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/nl.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/no.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/pl.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/pt.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/ru.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/sk.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/sv.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/vi.lproj",
-				"${PODS_ROOT}/TUSafariActivity/TUSafariActivity/zh_CN.lproj",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerBack.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerBack@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerNext.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerNext@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivityChrome-iPad.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivityChrome-iPad@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivityChrome@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivitySafari-iPad.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivitySafari-iPad@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivitySafari@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/da.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/de.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/es-ES.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/es.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fr.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ja.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pt.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewController.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hant.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Safari.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Safari@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Safari@2x~ipad.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Safari~ipad.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/cs.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/eu.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fi.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/it.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ko.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/nl.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/no.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pl.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ru.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sk.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sv.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/vi.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh_CN.lproj",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RMBT/Pods-RMBT-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1883,6 +1767,7 @@
 				CODE_SIGN_ENTITLEMENTS = RMBT.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 2311;
 				DEVELOPMENT_TEAM = 4XZ94A6MUA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

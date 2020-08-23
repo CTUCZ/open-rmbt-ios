@@ -57,7 +57,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   BlocksKit:
-    :commit: 881a882e5c45583310d636e7b5c70d0741b131b1
+    :commit: a9d2b5b4727e262ebeb09a85a66769946f72b914
     :git: https://github.com/sglushchenko/BlocksKit
   CocoaAsyncSocket:
     :commit: 350ac5f09002ac92a333175cb87ab8b59ebd0571
@@ -79,4 +79,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0fb4c0795416d134aa5209ebb8db6e38f7852ad3
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0.beta.2
