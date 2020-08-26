@@ -121,7 +121,15 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
 
     NSString *currentURLString = navigationResponse.response.URL.absoluteString;
-    if ([currentURLString isEqualToString:_url] &&
+    
+    //Small hack to check is equal urls or not.
+    //Sometimes url can be with slash in the end and without slash and it's different url
+    //Example: http://google.com/ and http://google.com is not equal because different slash
+    //We remove all slashes from urls and http:google.com is equal http:google.com
+    
+    NSString *currentURLStringWithoutSlash = [currentURLString stringByReplacingOccurrencesOfString:@"/" withString:@""];
+    NSString *_URLStringWithoutSlash = [_url stringByReplacingOccurrencesOfString:@"/" withString:@""];
+    if ([currentURLStringWithoutSlash isEqualToString:_URLStringWithoutSlash] &&
         [navigationResponse.response isKindOfClass:[NSHTTPURLResponse class]]) {
         _statusCode = @(((NSHTTPURLResponse *)navigationResponse.response).statusCode);
     }
