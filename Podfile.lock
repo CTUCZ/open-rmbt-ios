@@ -57,7 +57,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   BlocksKit:
-    :commit: 881a882e5c45583310d636e7b5c70d0741b131b1
+    :commit: a9d2b5b4727e262ebeb09a85a66769946f72b914
     :git: https://github.com/sglushchenko/BlocksKit
   CocoaAsyncSocket:
     :commit: 350ac5f09002ac92a333175cb87ab8b59ebd0571
