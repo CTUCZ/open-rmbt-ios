@@ -25,6 +25,7 @@
 #import "RMBTSettings.h"
 #import "RMBTHistoryResultItemCell.h"
 #import "RMBTHistorySpeedGraphCell.h"
+#import "RMBTHistoryQOEResultItemCell.h"
 
 #import "UIViewController+ModalBrowser.h"
 #import <Blockskit/NSArray+BlocksKit.h>
@@ -33,13 +34,14 @@
 
 @interface RMBTHistoryResultViewController() {
     NSArray *_measurementItems;
+    NSArray *_qosItems;
 
     // These are added to the above _measurementItems array if we find measurement item with
     // title "Download" or "Upload" to mimic the physical layout of the table. The value they contain
     // is the index of the measurement item they show the graph for in the above array:
-    NSNumber  * _Nullable _downloadItemIndex, *_uploadItemIndex;
+    NSNumber  * _Nullable _downloadItemIndex, *_uploadItemIndex, *_qosItemIndex;
 }
-@property (nonatomic, assign) BOOL downloadSpeedGraphExpanded, uploadSpeedGraphExpanded;
+@property (nonatomic, assign) BOOL downloadSpeedGraphExpanded, uploadSpeedGraphExpanded, qosExpanded;
 @end
 
 @implementation RMBTHistoryResultViewController
@@ -71,7 +73,10 @@
         // Add a summary "Quality tests 100% (90/90)" row
         if (_historyResult.qosResults) {
             NSString *summary = [RMBTHistoryQoSGroupResult summarize:_historyResult.qosResults withPercentage:YES];
+            _qosItemIndex = @(items.count);
             [items addObject:[[RMBTHistoryResultItem alloc] initWithTitle:NSLocalizedString(@"Quality tests", @"Measurement item title") value:summary classification:-1 hasDetails:NO]];
+            [items addObject:_qosItemIndex];
+            _qosItems = _historyResult.qoeClassificationItems;
         }
 
         _measurementItems = items;
@@ -129,6 +134,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * const cellIdentifierResult = @"history_result_cell";
     static NSString * const cellIdentifierGraph = @"speed_graph_cell";
+    static NSString * const cellIdentifierQOEResult = @"qoe_result_cell";
 
     RMBTHistoryResultItem *item = [[self itemsForSection:indexPath.section] objectAtIndex:indexPath.row];
 
@@ -136,6 +142,10 @@
         RMBTHistorySpeedGraphCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierGraph forIndexPath:indexPath];
         RMBTHistorySpeedGraph *graph = (item == (RMBTHistoryResultItem *)_downloadItemIndex) ? _historyResult.downloadGraph : _historyResult.uploadGraph;
         [cell drawSpeedGraph:graph];
+        return cell;
+    } else if (item == (RMBTHistoryResultItem *)_qosItemIndex) { // note: this a pointer comparison
+        RMBTHistoryQOEResultItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierQOEResult forIndexPath:indexPath];
+        [cell setQOEResultItems:_qosItems];
         return cell;
     } else {
         RMBTHistoryResultItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierResult];
@@ -146,7 +156,8 @@
         [cell setTrafficLightInteractionEnabled:NO];
         if (indexPath.section == 0) {
             if ((_downloadItemIndex && indexPath.row == [_downloadItemIndex integerValue]) ||
-                (_uploadItemIndex && indexPath.row == [_uploadItemIndex integerValue])) {
+                (_uploadItemIndex && indexPath.row == [_uploadItemIndex integerValue]) ||
+                (_qosItemIndex && indexPath.row == [_qosItemIndex integerValue])) {
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else {
                 // For measurements that we don't have a graph for, just show an empty placeholder to keep alignment:
@@ -160,17 +171,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         BOOL toggled = NO;
+        NSInteger row = indexPath.row;
         if (_downloadItemIndex && indexPath.row == [_downloadItemIndex integerValue]) {
             self.downloadSpeedGraphExpanded = !self.downloadSpeedGraphExpanded;
             [(RMBTHistoryResultItemCell *)[tableView cellForRowAtIndexPath:indexPath] setAccessoryRotated:self.downloadSpeedGraphExpanded];
             toggled = YES;
+            row = indexPath.row+1;
         } else if (_uploadItemIndex && indexPath.row == [_uploadItemIndex integerValue]) {
             self.uploadSpeedGraphExpanded = !self.uploadSpeedGraphExpanded;
             [(RMBTHistoryResultItemCell *)[tableView cellForRowAtIndexPath:indexPath] setAccessoryRotated:self.uploadSpeedGraphExpanded];
             toggled = YES;
+            row = indexPath.row+1;
+        } else if (_qosItemIndex && indexPath.row == [_qosItemIndex integerValue]) {
+            self.qosExpanded = !self.qosExpanded;
+            [(RMBTHistoryResultItemCell *)[tableView cellForRowAtIndexPath:indexPath] setAccessoryRotated:self.qosExpanded];
+            toggled = YES;
+            row = indexPath.row+1;
         }
         if (toggled) {
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section]]
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:indexPath.section]]
                                   withRowAnimation:UITableViewRowAnimationAutomatic];
         }
     } else if (indexPath.section == 2) {
@@ -183,6 +202,8 @@
         return self.downloadSpeedGraphExpanded ? 120.0f : 0.0;
     } else if (indexPath.section == 0 && _uploadItemIndex && indexPath.row == [_uploadItemIndex integerValue]+1) {
         return self.uploadSpeedGraphExpanded ? 120.0f : 0.0;
+    } else if (indexPath.section == 0 && _qosItemIndex && indexPath.row == [_qosItemIndex integerValue]+1) {
+        return self.qosExpanded ? _historyResult.qoeClassificationItems.count * 44.0f : 0.0;
     } else {
         return UITableViewAutomaticDimension;
     }

@@ -496,6 +496,8 @@
 		C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTLoopMeasurementsViewController.m; sourceTree = "<group>"; };
 		E945361B24F2DA6300D12303 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		E9789EED24D74434007253EB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQOEResultItemCell.m; sourceTree = "<group>"; };
+		E999A69624FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQOEResultItemCell.h; sourceTree = "<group>"; };
 		E99AC41A24E2DA6F00BBC177 /* RMBT_Specure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMBT_Specure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99AC41B24E2DA7000BBC177 /* RMBT copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RMBT copy-Info.plist"; path = "/Users/sglushchenko/Projects/open-rmbt-ios/RMBT copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -693,6 +695,8 @@
 				C75A118D179B3DEC00E2444F /* RMBTHistoryResultViewController.m */,
 				C7228DED17FC1ADF00FB984D /* RMBTHistoryResultItemCell.h */,
 				C7228DEE17FC1ADF00FB984D /* RMBTHistoryResultItemCell.m */,
+				E999A69624FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.h */,
+				E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */,
 				C77071021E96812A00043884 /* RMBTHistorySpeedGraphCell.h */,
 				C77071031E96812A00043884 /* RMBTHistorySpeedGraphCell.m */,
 			);
@@ -1413,6 +1417,7 @@
 				C7770889179987B700BB478B /* RMBTInfoViewController.m in Sources */,
 				C77708941799CB3F00BB478B /* UIViewController+ModalBrowser.m in Sources */,
 				C75A1189179B12D800E2444F /* RMBTTOSViewController.m in Sources */,
+				E999A69724FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */,
 				C75A118E179B3DEC00E2444F /* RMBTHistoryResultViewController.m in Sources */,
 				C7CBC54218105C140041301D /* RMBTModalWebViewController.m in Sources */,
 				C75A1191179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.m in Sources */,
