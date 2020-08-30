@@ -130,6 +130,7 @@
 		C7F599A71A2A81940020ADC4 /* RMBTHistoryIndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */; };
 		C7FDBF2D1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */; };
 		E9789EEE24D74434007253EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9789EED24D74434007253EB /* WebKit.framework */; };
+		E999A69B24FC2AFF002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1208,7 +1209,7 @@
 				C7770889179987B700BB478B /* RMBTInfoViewController.m in Sources */,
 				C77708941799CB3F00BB478B /* UIViewController+ModalBrowser.m in Sources */,
 				C75A1189179B12D800E2444F /* RMBTTOSViewController.m in Sources */,
-				E999A69724FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */,
+				E999A69B24FC2AFF002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */,
 				C75A118E179B3DEC00E2444F /* RMBTHistoryResultViewController.m in Sources */,
 				C7CBC54218105C140041301D /* RMBTModalWebViewController.m in Sources */,
 				C75A1191179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.m in Sources */,
