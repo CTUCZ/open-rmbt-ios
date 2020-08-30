@@ -132,6 +132,8 @@
 		E80C2E1F7313B6BCFBC4A346 /* libPods-RMBT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B5D1F96A5D607CBD1C4902 /* libPods-RMBT.a */; };
 		E945361C24F2DA6300D12303 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E945361B24F2DA6300D12303 /* GoogleMaps.bundle */; };
 		E9789EEE24D74434007253EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9789EED24D74434007253EB /* WebKit.framework */; };
+		E999A69C24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
+		E999A69D24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
 		E99AC39E24E2DA6F00BBC177 /* RMBTQoSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D97F1DD8AEC000D1C824 /* RMBTQoSTest.m */; };
 		E99AC39F24E2DA6F00BBC177 /* UITableViewCell+RMBTHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = C7535B4718298F84003A8CC8 /* UITableViewCell+RMBTHeight.m */; };
 		E99AC3A024E2DA6F00BBC177 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DE1487173E8F610079477A /* main.m */; };
@@ -1417,7 +1419,7 @@
 				C7770889179987B700BB478B /* RMBTInfoViewController.m in Sources */,
 				C77708941799CB3F00BB478B /* UIViewController+ModalBrowser.m in Sources */,
 				C75A1189179B12D800E2444F /* RMBTTOSViewController.m in Sources */,
-				E999A69724FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */,
+				E999A69D24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */,
 				C75A118E179B3DEC00E2444F /* RMBTHistoryResultViewController.m in Sources */,
 				C7CBC54218105C140041301D /* RMBTModalWebViewController.m in Sources */,
 				C75A1191179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.m in Sources */,
@@ -1510,6 +1512,7 @@
 				E99AC3D624E2DA6F00BBC177 /* RMBTInfoViewController.m in Sources */,
 				E99AC3D724E2DA6F00BBC177 /* UIViewController+ModalBrowser.m in Sources */,
 				E99AC3D824E2DA6F00BBC177 /* RMBTTOSViewController.m in Sources */,
+				E999A69C24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */,
 				E99AC3D924E2DA6F00BBC177 /* RMBTHistoryResultViewController.m in Sources */,
 				E99AC3DA24E2DA6F00BBC177 /* RMBTModalWebViewController.m in Sources */,
 				E99AC3DB24E2DA6F00BBC177 /* RMBTHistoryResultDetailsViewController.m in Sources */,
