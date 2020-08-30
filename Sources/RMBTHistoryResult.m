@@ -43,8 +43,34 @@
 }
 @end
 
+@implementation RMBTHistoryQOEResultItem
+- (instancetype)initWithResponse:(NSDictionary*)response {
+    if (self = [super init]) {
+        _category = response[@"category"];
+        _quality = [response[@"quality"] description];
+        NSParameterAssert(_category);
+        NSParameterAssert(_quality);
+        _classification = -1;
+        if (response[@"classification"]) {
+            _classification = [response[@"classification"] unsignedIntegerValue];
+        }
+    }
+    return self;
+}
+
+- (instancetype)initWithCategory:(NSString*)category quality:(NSString*)quality classification:(NSUInteger)classification {
+    if (self = [super init]) {
+        _category = category;
+        _quality = quality;
+        _classification = classification;
+    }
+    return self;
+}
+@end
+
 @interface RMBTHistoryResult() {
     NSMutableArray *_netItems, *_measurementItems, *_fullDetailsItems;
+    NSMutableArray *_qoeClassificationItems;
 }
 @end
 
@@ -148,6 +174,11 @@
                 [_measurementItems addObject:[[RMBTHistoryResultItem alloc] initWithResponse:r]];
             }
 
+            _qoeClassificationItems = [NSMutableArray array];
+            for (NSDictionary *r in response[@"qoe_classification"]) {
+                [_qoeClassificationItems addObject:[[RMBTHistoryQOEResultItem alloc] initWithResponse:r]];
+            }
+            
             if (response[@"geo_lat"] && response[@"geo_long"]) {
                 _coordinate = CLLocationCoordinate2DMake([response[@"geo_lat"] doubleValue], [response[@"geo_long"] doubleValue]);
             }

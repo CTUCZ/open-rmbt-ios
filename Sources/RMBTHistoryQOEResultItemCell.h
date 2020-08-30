@@ -17,20 +17,11 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const RMBTTrafficLightTappedNotification;
+@class RMBTHistoryQOEResultItem, RMBTHistoryResultItem;
 
-@class RMBTHistoryResultItem, RMBTHistoryQOEResultItem;
+@interface RMBTHistoryQOEResultItemCell : UITableViewCell
 
-@interface RMBTHistoryResultItemCell : UITableViewCell
-
--(void)setItem:(RMBTHistoryResultItem*)item;
--(void)setQOEItem:(RMBTHistoryQOEResultItem*)item;
-
--(void)setEmbedded:(BOOL)embedded; // Set to YES when displayed in map annotation
-
-// Toggles rotation of the system UIButton behind accessoryType. Used to make expand/collapse effect on
-// disclosure indicator
-- (void)setAccessoryRotated:(BOOL)state;
+- (void)setQOEResultItems:(NSArray *)qoeItems;
 
 // Toggles whether tapping the traffic light emits RMBTTrafficLightTappedNotification
 - (void)setTrafficLightInteractionEnabled:(BOOL)state;

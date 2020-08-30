@@ -86,6 +86,34 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
     [self setNeedsLayout];
 }
 
+- (void)setQOEItem:(RMBTHistoryQOEResultItem *)item {
+    self.textLabel.text = [self categoryNameWithIdentifier:item.category];
+    self.detailTextLabel.text = nil;
+
+    self.accessoryType = UITableViewCellAccessoryNone;
+    [_trafficLightButton setImage:nil forState:UIControlStateNormal];
+
+    if (item.classification != -1) {
+        UIImage *image;
+        if (item.classification == 1) {
+            image = [UIImage imageNamed:@"traffic_lights_red"];
+        } else  if (item.classification == 2) {
+            image = [UIImage imageNamed:@"traffic_lights_yellow"];
+        } else if (item.classification == 3) {
+            image = [UIImage imageNamed:@"traffic_lights_green"];
+        } else if (item.classification == 4) {
+            image = [UIImage imageNamed:@"traffic_lights_darkgreen"];
+        } else {
+            image = [UIImage imageNamed:@"traffic_lights_none"];
+        }
+
+        [_trafficLightButton setImage:image forState:UIControlStateNormal];
+    }
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    [self setNeedsLayout];
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
 
@@ -146,6 +174,10 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
 
 - (void)setTrafficLightInteractionEnabled:(BOOL)state {
     _trafficLightButton.userInteractionEnabled = state;
+}
+
+- (NSString *)categoryNameWithIdentifier:(NSString *)identifier {
+    return NSLocalizedString(identifier, "");
 }
 
 @end
