@@ -1349,7 +1349,7 @@
                     <navigationItem key="navigationItem" id="Z4m-fH-uSz">
                         <barButtonItem key="rightBarButtonItem" id="BaH-mQ-bkv">
                             <view key="customView" contentMode="scaleToFill" id="NmQ-27-c5i">
-                                <rect key="frame" x="254" y="5.5" width="50" height="33"/>
+                                <rect key="frame" x="254" y="8.5" width="50" height="33"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EN5-gj-g7y">
@@ -1690,7 +1690,7 @@
                     <tabBarItem key="tabBarItem" title="Test" image="tab_test" id="UYh-Jo-SaU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Dh-v7-c2e" customClass="RMBTNavigationBar">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
