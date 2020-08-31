@@ -16,6 +16,7 @@
  */
 
 #import "RMBTLoopModeConfirmationViewController.h"
+#import "WKWebView+RMBTConfiguration.h"
 
 @interface RMBTLoopModeConfirmationViewController () {
     BOOL _step2;
@@ -31,7 +32,7 @@
 }
 
 - (void)createWebView {
-    WKWebView *webView = [[WKWebView alloc] init];
+    WKWebView *webView = [WKWebView wideWebViewWithFrame:self.view.bounds];
     webView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:webView];
     self.webView = webView;
