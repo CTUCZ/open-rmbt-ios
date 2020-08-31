@@ -465,7 +465,7 @@
                     <tabBarItem key="tabBarItem" title="Info" image="tab_info" id="Lj3-co-7HX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Ex-dG-4fs" customClass="RMBTNavigationBar">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -916,7 +916,7 @@
                         <outlet property="loopModeSwitch" destination="r1o-4C-mD4" id="O35-LI-W0Y"/>
                         <outlet property="loopModeWaitTextField" destination="tEY-9P-PAu" id="arY-Qn-BTF"/>
                         <outlet property="skipQoSSwitch" destination="sxX-hM-d7r" id="nxL-G9-1be"/>
-                        <segue destination="Ate-cD-gDi" kind="modal" identifier="show_loop_mode_confirmation" modalTransitionStyle="coverVertical" id="4du-Fo-Tld"/>
+                        <segue destination="Ate-cD-gDi" kind="modal" identifier="show_loop_mode_confirmation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="4du-Fo-Tld"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7PP-g7-h3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1690,7 +1690,7 @@
                     <tabBarItem key="tabBarItem" title="Test" image="tab_test" id="UYh-Jo-SaU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Dh-v7-c2e" customClass="RMBTNavigationBar">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1785,11 +1785,11 @@
                         <viewControllerLayoutGuide type="bottom" id="BEm-FO-Hro"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="n8N-iB-BuV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQf-kY-8aD">
-                                <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <items>
                                     <barButtonItem title="Decline" id="ICY-mM-5k0">
                                         <connections>
@@ -1829,7 +1829,7 @@
                 <navigationController id="Ate-cD-gDi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i2R-rR-T4M" customClass="RMBTNavigationBar">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
