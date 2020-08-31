@@ -35,7 +35,7 @@
     titleLabel.adjustsFontSizeToFitWidth = YES;
     self.navigationItem.titleView = titleLabel;
 
-    self.webView = WKWebView *webView = [WKWebView wideWebViewWithFrame:self.view.bounds];
+    self.webView = [WKWebView wideWebViewWithFrame:self.view.bounds];
     [self.webView setNavigationDelegate:self];
     [self.view addSubview: self.webView];
     
