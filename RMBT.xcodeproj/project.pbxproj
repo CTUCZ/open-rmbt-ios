@@ -133,6 +133,7 @@
 		E945361C24F2DA6300D12303 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E945361B24F2DA6300D12303 /* GoogleMaps.bundle */; };
 		E9789EEE24D74434007253EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9789EED24D74434007253EB /* WebKit.framework */; };
 		E9968A2624FD762A0042159C /* WKWebView+RMBTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */; };
+		E9968A2724FD77860042159C /* WKWebView+RMBTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */; };
 		E999A69C24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
 		E999A69D24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
 		E99AC39E24E2DA6F00BBC177 /* RMBTQoSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D97F1DD8AEC000D1C824 /* RMBTQoSTest.m */; };
@@ -1515,6 +1516,7 @@
 				E99AC3D324E2DA6F00BBC177 /* RMBTQoSDNSTest.m in Sources */,
 				E99AC3D424E2DA6F00BBC177 /* RMBTHistoryIndexCell.m in Sources */,
 				E99AC3D524E2DA6F00BBC177 /* RMBTQoSControlConnection.m in Sources */,
+				E9968A2724FD77860042159C /* WKWebView+RMBTConfiguration.m in Sources */,
 				E99AC3D624E2DA6F00BBC177 /* RMBTInfoViewController.m in Sources */,
 				E99AC3D724E2DA6F00BBC177 /* UIViewController+ModalBrowser.m in Sources */,
 				E99AC3D824E2DA6F00BBC177 /* RMBTTOSViewController.m in Sources */,
