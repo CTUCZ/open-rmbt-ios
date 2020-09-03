@@ -45,6 +45,7 @@
 }
 
 - (void)show {
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"Loop mode %@/2", @"Confirmation dialog subtitle"), _step2 ? @2 : @1];
     self.navigationItem.title = NSLocalizedString(@"Activation and privacy", @"Confirmation dialog title 1/2");
     NSString *html = @"loop_mode_info";
