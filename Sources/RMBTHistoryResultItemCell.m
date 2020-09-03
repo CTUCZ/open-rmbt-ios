@@ -61,19 +61,7 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
     [_trafficLightButton setImage:nil forState:UIControlStateNormal];
 
     if (item.classification != -1) {
-        UIImage *image;
-        if (item.classification == 1) {
-            image = [UIImage imageNamed:@"traffic_lights_red"];
-        } else  if (item.classification == 2) {
-            image = [UIImage imageNamed:@"traffic_lights_yellow"];
-        } else if (item.classification == 3) {
-            image = [UIImage imageNamed:@"traffic_lights_green"];
-        } else if (item.classification == 4) {
-            image = [UIImage imageNamed:@"traffic_lights_darkgreen"];
-        } else {
-            image = [UIImage imageNamed:@"traffic_lights_none"];
-        }
-
+        UIImage *image = [self classificationImage:item.classification];
         [_trafficLightButton setImage:image forState:UIControlStateNormal];
     }
 
@@ -89,26 +77,16 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
 - (void)setQOEItem:(RMBTHistoryQOEResultItem *)item {
     self.textLabel.text = [self categoryNameWithIdentifier:item.category];
     self.detailTextLabel.text = nil;
+    self.imageView.image = [self categoryImageWithIdentifier: item.category];
 
     self.accessoryType = UITableViewCellAccessoryNone;
     [_trafficLightButton setImage:nil forState:UIControlStateNormal];
 
     if (item.classification != -1) {
-        UIImage *image;
-        if (item.classification == 1) {
-            image = [UIImage imageNamed:@"traffic_lights_red"];
-        } else  if (item.classification == 2) {
-            image = [UIImage imageNamed:@"traffic_lights_yellow"];
-        } else if (item.classification == 3) {
-            image = [UIImage imageNamed:@"traffic_lights_green"];
-        } else if (item.classification == 4) {
-            image = [UIImage imageNamed:@"traffic_lights_darkgreen"];
-        } else {
-            image = [UIImage imageNamed:@"traffic_lights_none"];
-        }
-
+        UIImage *image = [self classificationImage:item.classification];
         [_trafficLightButton setImage:image forState:UIControlStateNormal];
     }
+    
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     [self setNeedsLayout];
@@ -178,6 +156,62 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
 
 - (NSString *)categoryNameWithIdentifier:(NSString *)identifier {
     return NSLocalizedString(identifier, "");
+}
+
+- (UIImage *)categoryImageWithIdentifier:(NSString *)identifier {
+    UIImage *image;
+    if ([identifier isEqualToString:@"streaming_audio_streaming"]) {
+        image = [UIImage imageNamed:@"ic_qoe_music"];
+    } else if ([identifier isEqualToString:@"video_sd"]) {
+        image = [UIImage imageNamed:@"ic_qoe_video"];
+    } else if ([identifier isEqualToString:@"video_hd"]) {
+        image = [UIImage imageNamed:@"ic_qoe_video"];
+    } else if ([identifier isEqualToString:@"video_uhd"]) {
+        image = [UIImage imageNamed:@"ic_qoe_video"];
+    } else if ([identifier isEqualToString:@"gaming"]) {
+        image = [UIImage imageNamed:@"ic_qoe_game"];
+    } else if ([identifier isEqualToString:@"gaming_download"]) {
+        image = [UIImage imageNamed:@"ic_qoe_game"];
+    } else if ([identifier isEqualToString:@"gaming_cloud"]) {
+        image = [UIImage imageNamed:@"ic_qoe_game"];
+    } else if ([identifier isEqualToString:@"gaming_streaming"]) {
+        image = [UIImage imageNamed:@"ic_qoe_game"];
+    } else if ([identifier isEqualToString:@"voip"]) {
+        image = [UIImage imageNamed:@"ic_qoe_voip"];
+    } else if ([identifier isEqualToString:@"voip"]) {
+        image = [UIImage imageNamed:@"ic_qoe_voip"];
+    } else if ([identifier isEqualToString:@"video_telephony"]) {
+        image = [UIImage imageNamed:@"ic_qoe_voip"];
+    } else if ([identifier isEqualToString:@"video_conferencing"]) {
+        image = [UIImage imageNamed:@"ic_qoe_voip"];
+    } else if ([identifier isEqualToString:@"messaging"]) {
+        image = [UIImage imageNamed:@"ic_qoe_image"];
+    } else if ([identifier isEqualToString:@"web"]) {
+        image = [UIImage imageNamed:@"ic_qoe_image"];
+    } else if ([identifier isEqualToString:@"cloud"]) {
+        image = [UIImage imageNamed:@"ic_qoe_image"];
+    } else if ([identifier isEqualToString:@"qos"]) {
+        image = [UIImage imageNamed:@"ic_qoe_qoe"];
+    }
+    
+    return image;
+}
+
+- (UIImage *)classificationImage: (NSInteger)classification {
+    UIImage *image;
+    if (classification == 1) {
+        image = [UIImage imageNamed:@"traffic_lights_red"];
+    } else if (classification == 2) {
+        image = [UIImage imageNamed:@"traffic_lights_yellow"];
+    } else if (classification == 3) {
+        image = [UIImage imageNamed:@"traffic_lights_green"];
+    } else if (classification == 4) {
+        image = [UIImage imageNamed:@"traffic_lights_darkgreen"];
+    } else {
+        image = [UIImage imageNamed:@"traffic_lights_none"];
+    }
+    
+    return image;
 }
 
 @end
