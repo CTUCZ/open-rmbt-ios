@@ -134,6 +134,8 @@
 		E9789EEE24D74434007253EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9789EED24D74434007253EB /* WebKit.framework */; };
 		E9968A2624FD762A0042159C /* WKWebView+RMBTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */; };
 		E9968A2724FD77860042159C /* WKWebView+RMBTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */; };
+		E9968A2F2500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */; };
+		E9968A302500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */; };
 		E999A69C24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
 		E999A69D24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
 		E99AC39E24E2DA6F00BBC177 /* RMBTQoSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D97F1DD8AEC000D1C824 /* RMBTQoSTest.m */; };
@@ -502,6 +504,9 @@
 		E9789EED24D74434007253EB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E9968A2424FD762A0042159C /* WKWebView+RMBTConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKWebView+RMBTConfiguration.h"; sourceTree = "<group>"; };
 		E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+RMBTConfiguration.m"; sourceTree = "<group>"; };
+		E9968A2C2500F5180042159C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9968A2D2500F8150042159C /* RMBTHistoryResultPercentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryResultPercentView.h; sourceTree = "<group>"; };
+		E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryResultPercentView.m; sourceTree = "<group>"; };
 		E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQOEResultItemCell.m; sourceTree = "<group>"; };
 		E999A69624FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQOEResultItemCell.h; sourceTree = "<group>"; };
 		E99AC41A24E2DA6F00BBC177 /* RMBT_Specure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMBT_Specure.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -705,6 +710,8 @@
 				E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */,
 				C77071021E96812A00043884 /* RMBTHistorySpeedGraphCell.h */,
 				C77071031E96812A00043884 /* RMBTHistorySpeedGraphCell.m */,
+				E9968A2D2500F8150042159C /* RMBTHistoryResultPercentView.h */,
+				E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */,
 			);
 			name = Result;
 			sourceTree = "<group>";
@@ -1385,6 +1392,7 @@
 				C7ECD920174EB8EB000DF966 /* RMBTGaugeView.m in Sources */,
 				C70AFDEE1F2E0DC50064D631 /* RMBTMapOptionsOverlaysViewController.m in Sources */,
 				C7EF30721DFEBBAA0002CCD0 /* RMBTHistoryQoSSingleResultCell.m in Sources */,
+				E9968A2F2500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */,
 				C7E5817518075B5400706848 /* RMBTIntroViewController.m in Sources */,
 				C73780971E09EBEA00CA0558 /* RMBTQoSHTTPTest.m in Sources */,
 				C7ECD97A174ED9AE000DF966 /* UIView+Position.m in Sources */,
@@ -1479,6 +1487,7 @@
 				E99AC3AE24E2DA6F00BBC177 /* RMBTGaugeView.m in Sources */,
 				E99AC3AF24E2DA6F00BBC177 /* RMBTMapOptionsOverlaysViewController.m in Sources */,
 				E99AC3B024E2DA6F00BBC177 /* RMBTHistoryQoSSingleResultCell.m in Sources */,
+				E9968A302500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */,
 				E99AC3B124E2DA6F00BBC177 /* RMBTIntroViewController.m in Sources */,
 				E99AC3B224E2DA6F00BBC177 /* RMBTQoSHTTPTest.m in Sources */,
 				E99AC3B324E2DA6F00BBC177 /* UIView+Position.m in Sources */,
@@ -1627,6 +1636,7 @@
 				C7E8916318317A13003AECA6 /* es */,
 				C7C82100184908B2009B757F /* fr */,
 				C782A6F71AA62C7800297AFB /* cs */,
+				E9968A2C2500F5180042159C /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
