@@ -101,7 +101,6 @@
 		C7BC5C731F747A9E00A91F0F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BC5C721F747A9E00A91F0F /* Launch Screen.storyboard */; };
 		C7C242EC1EE5A02500E3C6E2 /* RMBTLoopModeTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C242EB1EE5A02500E3C6E2 /* RMBTLoopModeTestViewController.m */; };
 		C7C242EF1EE5A20900E3C6E2 /* RMBTBaseTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C242EE1EE5A20900E3C6E2 /* RMBTBaseTestViewController.m */; };
-		C7C5424417A69E9C000180A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7C5424617A69E9C000180A1 /* InfoPlist.strings */; };
 		C7C5424D17A6DD3A000180A1 /* RMBTHistoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C5424C17A6DD3A000180A1 /* RMBTHistoryFilterViewController.m */; };
 		C7CBC54218105C140041301D /* RMBTModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CBC54118105C140041301D /* RMBTModalWebViewController.m */; };
 		C7DE147C173E8F610079477A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DE147B173E8F610079477A /* UIKit.framework */; };
@@ -129,134 +128,10 @@
 		C7F3FB3C179CCCD600E336CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7F3FB3E179CCCD600E336CF /* Localizable.strings */; };
 		C7F599A71A2A81940020ADC4 /* RMBTHistoryIndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */; };
 		C7FDBF2D1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */; };
-		E80C2E1F7313B6BCFBC4A346 /* libPods-RMBT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B5D1F96A5D607CBD1C4902 /* libPods-RMBT.a */; };
-		E945361C24F2DA6300D12303 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E945361B24F2DA6300D12303 /* GoogleMaps.bundle */; };
 		E9789EEE24D74434007253EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9789EED24D74434007253EB /* WebKit.framework */; };
-		E999A69B24FC2AFF002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
-		E9F45923250D302800E800B0 /* RMBTHistoryResultPercentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F45922250D302700E800B0 /* RMBTHistoryResultPercentView.m */; };
 		E9968A2624FD762A0042159C /* WKWebView+RMBTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */; };
-		E9968A2724FD77860042159C /* WKWebView+RMBTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */; };
 		E9968A2F2500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */; };
-		E9968A302500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */; };
-		E999A69C24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
 		E999A69D24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
-		E99AC39E24E2DA6F00BBC177 /* RMBTQoSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D97F1DD8AEC000D1C824 /* RMBTQoSTest.m */; };
-		E99AC39F24E2DA6F00BBC177 /* UITableViewCell+RMBTHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = C7535B4718298F84003A8CC8 /* UITableViewCell+RMBTHeight.m */; };
-		E99AC3A024E2DA6F00BBC177 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DE1487173E8F610079477A /* main.m */; };
-		E99AC3A124E2DA6F00BBC177 /* RMBTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DE148B173E8F610079477A /* RMBTAppDelegate.m */; };
-		E99AC3A224E2DA6F00BBC177 /* RMBTQoSIPTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C783F6881ED85312001CB2F9 /* RMBTQoSIPTest.m */; };
-		E99AC3A324E2DA6F00BBC177 /* RMBTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DE149A173E8F610079477A /* RMBTTestViewController.m */; };
-		E99AC3A424E2DA6F00BBC177 /* RMBTControlServer.m in Sources */ = {isa = PBXBuildFile; fileRef = C7916EB1173E9B6400B40152 /* RMBTControlServer.m */; };
-		E99AC3A524E2DA6F00BBC177 /* RMBTLoopDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72F49AB1F32341100CCA650 /* RMBTLoopDetailsCell.m */; };
-		E99AC3A624E2DA6F00BBC177 /* RMBTTestParams.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EBA1A4173FD3F40055F578 /* RMBTTestParams.m */; };
-		E99AC3A724E2DA6F00BBC177 /* RMBTTOS.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A25B3817D95DAB00B7A44B /* RMBTTOS.m */; };
-		E99AC3A824E2DA6F00BBC177 /* RMBTTestWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EBA1A7173FE4A40055F578 /* RMBTTestWorker.m */; };
-		E99AC3A924E2DA6F00BBC177 /* RMBTBaseTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C242EE1EE5A20900E3C6E2 /* RMBTBaseTestViewController.m */; };
-		E99AC3AA24E2DA6F00BBC177 /* RMBTTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ECD90E174DB042000DF966 /* RMBTTestRunner.m */; };
-		E99AC3AB24E2DA6F00BBC177 /* RMBTLoopMeasurementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */; };
-		E99AC3AC24E2DA6F00BBC177 /* RMBTQoSTCPTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C71DD2411ED0ACDF009B449E /* RMBTQoSTCPTest.m */; };
-		E99AC3AD24E2DA6F00BBC177 /* RMBTTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ECD918174E93E1000DF966 /* RMBTTestResult.m */; };
-		E99AC3AE24E2DA6F00BBC177 /* RMBTGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ECD91F174EB8EB000DF966 /* RMBTGaugeView.m */; };
-		E99AC3AF24E2DA6F00BBC177 /* RMBTMapOptionsOverlaysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70AFDED1F2E0DC50064D631 /* RMBTMapOptionsOverlaysViewController.m */; };
-		E99AC3B024E2DA6F00BBC177 /* RMBTHistoryQoSSingleResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EF30711DFEBBAA0002CCD0 /* RMBTHistoryQoSSingleResultCell.m */; };
-		E99AC3B124E2DA6F00BBC177 /* RMBTIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E5817418075B5400706848 /* RMBTIntroViewController.m */; };
-		E99AC3B224E2DA6F00BBC177 /* RMBTQoSHTTPTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C73780961E09EBEA00CA0558 /* RMBTQoSHTTPTest.m */; };
-		E99AC3B324E2DA6F00BBC177 /* UIView+Position.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ECD979174ED9AD000DF966 /* UIView+Position.m */; };
-		E99AC3B424E2DA6F00BBC177 /* RMBTPing.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B4A99E17E8D3E700223ABD /* RMBTPing.m */; };
-		E99AC3B524E2DA6F00BBC177 /* RMBTThroughput.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D26BE1764A65D008143DF /* RMBTThroughput.m */; };
-		E99AC3B624E2DA6F00BBC177 /* RMBTLoopInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C764BEEC1F0F65BF00F5CF80 /* RMBTLoopInfo.m */; };
-		E99AC3B724E2DA6F00BBC177 /* UIView+RMBTSubviews.m in Sources */ = {isa = PBXBuildFile; fileRef = C77071061E96BCC100043884 /* UIView+RMBTSubviews.m */; };
-		E99AC3B824E2DA6F00BBC177 /* RMBTHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C59D7B461764E6CF003E9702 /* RMBTHelpers.m */; };
-		E99AC3B924E2DA6F00BBC177 /* RMBTMapCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7228DF217FC1CC900FB984D /* RMBTMapCalloutView.m */; };
-		E99AC3BA24E2DA6F00BBC177 /* CLLocation+RMBTFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = C7228DE917FBAC0300FB984D /* CLLocation+RMBTFormat.m */; };
-		E99AC3BB24E2DA6F00BBC177 /* RMBTMapOptionsFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C71F38951F2CF60000D2F83A /* RMBTMapOptionsFilterViewController.m */; };
-		E99AC3BC24E2DA6F00BBC177 /* RMBTQoSProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EF307B1DFEEB140002CCD0 /* RMBTQoSProgressViewController.m */; };
-		E99AC3BD24E2DA6F00BBC177 /* RMBTHistoryResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7228DEE17FC1ADF00FB984D /* RMBTHistoryResultItemCell.m */; };
-		E99AC3BE24E2DA6F00BBC177 /* UIColor+RMBTHex.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B5C1C31A3B2B5F002BECF3 /* UIColor+RMBTHex.m */; };
-		E99AC3BF24E2DA6F00BBC177 /* RMBTSpeedGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = C703D3E11765CF5E00A38C34 /* RMBTSpeedGraphView.m */; };
-		E99AC3C024E2DA6F00BBC177 /* RMBTSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C73E792617673EBE0009855E /* RMBTSettings.m */; };
-		E99AC3C124E2DA6F00BBC177 /* RMBTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73E7929176761630009855E /* RMBTSettingsViewController.m */; };
-		E99AC3C224E2DA6F00BBC177 /* RMBTLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C79C94A517713106000CF5EE /* RMBTLogger.m */; };
-		E99AC3C324E2DA6F00BBC177 /* RMBTThroughputHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = C76B8C86177709C800925BE1 /* RMBTThroughputHistory.m */; };
-		E99AC3C424E2DA6F00BBC177 /* RMBTProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C71161641E3CFA4800D8CC0C /* RMBTProgress.m */; };
-		E99AC3C524E2DA6F00BBC177 /* RMBTSpeed.m in Sources */ = {isa = PBXBuildFile; fileRef = C7912CB5177D581F004AD2A4 /* RMBTSpeed.m */; };
-		E99AC3C624E2DA6F00BBC177 /* RMBTStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B15A33180AA6810097676F /* RMBTStatsViewController.m */; };
-		E99AC3C724E2DA6F00BBC177 /* RMBTConnectivity.m in Sources */ = {isa = PBXBuildFile; fileRef = C774EE7617920C9C00D623A3 /* RMBTConnectivity.m */; };
-		E99AC3C824E2DA6F00BBC177 /* RMBTMapOptionsTypesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70AFDEA1F2E06E40064D631 /* RMBTMapOptionsTypesViewController.m */; };
-		E99AC3C924E2DA6F00BBC177 /* RMBTNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E5816D180726E000706848 /* RMBTNavigationBar.m */; };
-		E99AC3CA24E2DA6F00BBC177 /* RMBTQoSControlConnectionParams.m in Sources */ = {isa = PBXBuildFile; fileRef = C737AEEF1E7D9F25007962EB /* RMBTQoSControlConnectionParams.m */; };
-		E99AC3CB24E2DA6F00BBC177 /* RMBTLocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = C774EE791792F73D00D623A3 /* RMBTLocationTracker.m */; };
-		E99AC3CC24E2DA6F00BBC177 /* RMBTNews.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DF2BB517D91AE400A0E76B /* RMBTNews.m */; };
-		E99AC3CD24E2DA6F00BBC177 /* RMBTSSLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C72A27A317E1ECD400EC98B3 /* RMBTSSLHelper.m */; };
-		E99AC3CE24E2DA6F00BBC177 /* RMBTVerticalTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E5817718078CDD00706848 /* RMBTVerticalTransitionController.m */; };
-		E99AC3CF24E2DA6F00BBC177 /* RMBTHistoryIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C774EE7E1793676700D623A3 /* RMBTHistoryIndexViewController.m */; };
-		E99AC3D024E2DA6F00BBC177 /* RMBTLoopModeTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C242EB1EE5A02500E3C6E2 /* RMBTLoopModeTestViewController.m */; };
-		E99AC3D124E2DA6F00BBC177 /* RMBTHistoryResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C774EE8217936AF700D623A3 /* RMBTHistoryResult.m */; };
-		E99AC3D224E2DA6F00BBC177 /* RMBTQoSCCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C737AEEB1E7D8F59007962EB /* RMBTQoSCCTest.m */; };
-		E99AC3D324E2DA6F00BBC177 /* RMBTQoSDNSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D9821DD8AED000D1C824 /* RMBTQoSDNSTest.m */; };
-		E99AC3D424E2DA6F00BBC177 /* RMBTHistoryIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C774EE851793742900D623A3 /* RMBTHistoryIndexCell.m */; };
-		E99AC3D524E2DA6F00BBC177 /* RMBTQoSControlConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C737AEE81E7D7C53007962EB /* RMBTQoSControlConnection.m */; };
-		E99AC3D624E2DA6F00BBC177 /* RMBTInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7770888179987B700BB478B /* RMBTInfoViewController.m */; };
-		E99AC3D724E2DA6F00BBC177 /* UIViewController+ModalBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C77708931799CB3F00BB478B /* UIViewController+ModalBrowser.m */; };
-		E99AC3D824E2DA6F00BBC177 /* RMBTTOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75A1188179B12D800E2444F /* RMBTTOSViewController.m */; };
-		E99AC3D924E2DA6F00BBC177 /* RMBTHistoryResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75A118D179B3DEC00E2444F /* RMBTHistoryResultViewController.m */; };
-		E99AC3DA24E2DA6F00BBC177 /* RMBTModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CBC54118105C140041301D /* RMBTModalWebViewController.m */; };
-		E99AC3DB24E2DA6F00BBC177 /* RMBTHistoryResultDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75A1190179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.m */; };
-		E99AC3DC24E2DA6F00BBC177 /* RMBTHistorySpeedGraphCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C77071031E96812A00043884 /* RMBTHistorySpeedGraphCell.m */; };
-		E99AC3DD24E2DA6F00BBC177 /* RMBTHistoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C5424C17A6DD3A000180A1 /* RMBTHistoryFilterViewController.m */; };
-		E99AC3DE24E2DA6F00BBC177 /* RMBTInfoTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5C717B15DA600A58056 /* RMBTInfoTextViewController.m */; };
-		E99AC3DF24E2DA6F00BBC177 /* RMBTMapServer.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5CA17B16ABE00A58056 /* RMBTMapServer.m */; };
-		E99AC3E024E2DA6F00BBC177 /* RMBTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5CD17B16C2700A58056 /* RMBTMapViewController.m */; };
-		E99AC3E124E2DA6F00BBC177 /* RMBTQoSTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D97C1DD8AA8700D1C824 /* RMBTQoSTestRunner.m */; };
-		E99AC3E224E2DA6F00BBC177 /* RMBTMapOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5D417B1970600A58056 /* RMBTMapOptions.m */; };
-		E99AC3E324E2DA6F00BBC177 /* RMBTHistoryQoSSingleResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A8CC061DFDAC7E00D9E979 /* RMBTHistoryQoSSingleResult.m */; };
-		E99AC3E424E2DA6F00BBC177 /* RMBTQoSTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D9851DD8BEF700D1C824 /* RMBTQoSTestGroup.m */; };
-		E99AC3E524E2DA6F00BBC177 /* RMBTMapOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5D717B2602E00A58056 /* RMBTMapOptionsViewController.m */; };
-		E99AC3E624E2DA6F00BBC177 /* RMBTQoSTracerouteTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C77952DB1E23DF5200B95FFF /* RMBTQoSTracerouteTest.m */; };
-		E99AC3E724E2DA6F00BBC177 /* RMBTQoSUDPTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C737AEE51E7D6947007962EB /* RMBTQoSUDPTest.m */; };
-		E99AC3E824E2DA6F00BBC177 /* RMBTConnectivityTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = C7978FD617F1D07100BF986C /* RMBTConnectivityTracker.m */; };
-		E99AC3E924E2DA6F00BBC177 /* RMBTQoSNonTransparentProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C7459B4C1EAC0B8A00042A42 /* RMBTQoSNonTransparentProxyTest.m */; };
-		E99AC3EA24E2DA6F00BBC177 /* RMBTQoSWebTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A19B221E919BDD0044B6C8 /* RMBTQoSWebTest.m */; };
-		E99AC3EB24E2DA6F00BBC177 /* RMBTHistoryQoSGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79E7B071DF5884700CFC95F /* RMBTHistoryQoSGroupViewController.m */; };
-		E99AC3EC24E2DA6F00BBC177 /* RMBTHistorySpeedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = C7704EA21E95531B00044AF6 /* RMBTHistorySpeedGraph.m */; };
-		E99AC3ED24E2DA6F00BBC177 /* RMBTQosWebTestURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C780CE4E1EA287C800332423 /* RMBTQosWebTestURLProtocol.m */; };
-		E99AC3EE24E2DA6F00BBC177 /* RMBTLoopModeConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C783F68B1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.m */; };
-		E99AC3EF24E2DA6F00BBC177 /* RMBTLoopDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B4E9ED1F0CE4E500FA34F8 /* RMBTLoopDetailsViewController.m */; };
-		E99AC3F024E2DA6F00BBC177 /* RMBTHistoryQoSSingleResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EF69711E096F7D002F429C /* RMBTHistoryQoSSingleResultViewController.m */; };
-		E99AC3F124E2DA6F00BBC177 /* RMBTHistoryQoSGroupResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C733B6D81DDE1EB2005B9105 /* RMBTHistoryQoSGroupResult.m */; };
-		E99AC3F224E2DA6F00BBC177 /* RMBTMapMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A4B75917B43C8400176B92 /* RMBTMapMeasurement.m */; };
-		E99AC3F424E2DA6F00BBC177 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C741B62B1DD99D7A0097D84D /* libresolv.tbd */; };
-		E99AC3F524E2DA6F00BBC177 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F08F691769F37600741844 /* CoreTelephony.framework */; };
-		E99AC3F624E2DA6F00BBC177 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB485176364E400187C94 /* OpenGLES.framework */; };
-		E99AC3F724E2DA6F00BBC177 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB483176364DF00187C94 /* libz.dylib */; };
-		E99AC3F824E2DA6F00BBC177 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB481176364D900187C94 /* libicucore.dylib */; };
-		E99AC3F924E2DA6F00BBC177 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB47F176364D500187C94 /* libc++.dylib */; };
-		E99AC3FA24E2DA6F00BBC177 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB47D176364CE00187C94 /* ImageIO.framework */; };
-		E99AC3FB24E2DA6F00BBC177 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB47B176364C900187C94 /* GLKit.framework */; };
-		E99AC3FC24E2DA6F00BBC177 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB479176364C300187C94 /* CoreText.framework */; };
-		E99AC3FD24E2DA6F00BBC177 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB477176364BC00187C94 /* CoreData.framework */; };
-		E99AC3FE24E2DA6F00BBC177 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB475176364B100187C94 /* AVFoundation.framework */; };
-		E99AC3FF24E2DA6F00BBC177 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C573F2B0175294A500C728FC /* CoreLocation.framework */; };
-		E99AC40024E2DA6F00BBC177 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C573F2A4175281D300C728FC /* MapKit.framework */; };
-		E99AC40124E2DA6F00BBC177 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C779E9E817403364003874AB /* QuartzCore.framework */; };
-		E99AC40224E2DA6F00BBC177 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9789EED24D74434007253EB /* WebKit.framework */; };
-		E99AC40324E2DA6F00BBC177 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7916EB8173EB68200B40152 /* MobileCoreServices.framework */; };
-		E99AC40424E2DA6F00BBC177 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7916EB6173EB65F00B40152 /* SystemConfiguration.framework */; };
-		E99AC40524E2DA6F00BBC177 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DE147B173E8F610079477A /* UIKit.framework */; };
-		E99AC40624E2DA6F00BBC177 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DE147D173E8F610079477A /* Foundation.framework */; };
-		E99AC40724E2DA6F00BBC177 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DE147F173E8F610079477A /* CoreGraphics.framework */; };
-		E99AC40A24E2DA6F00BBC177 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C792B8751814AEC700D504DF /* MainStoryboard.storyboard */; };
-		E99AC40B24E2DA6F00BBC177 /* RMBTMapCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7228DEB17FC199F00FB984D /* RMBTMapCalloutView.xib */; };
-		E99AC40C24E2DA6F00BBC177 /* terms_conditions_long.html in Resources */ = {isa = PBXBuildFile; fileRef = C7F3FB35179CC86900E336CF /* terms_conditions_long.html */; };
-		E99AC40D24E2DA6F00BBC177 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7F3FB3E179CCCD600E336CF /* Localizable.strings */; };
-		E99AC40E24E2DA6F00BBC177 /* RMBTHistoryIndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */; };
-		E99AC40F24E2DA6F00BBC177 /* loop_mode_info.html in Resources */ = {isa = PBXBuildFile; fileRef = C783F68D1EDC7EB4001CB2F9 /* loop_mode_info.html */; };
-		E99AC41024E2DA6F00BBC177 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BC5C721F747A9E00A91F0F /* Launch Screen.storyboard */; };
-		E99AC41124E2DA6F00BBC177 /* RMBTHistoryQoSSingleResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7EF30731DFEBBF80002CCD0 /* RMBTHistoryQoSSingleResultCell.xib */; };
-		E99AC41224E2DA6F00BBC177 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7C5424617A69E9C000180A1 /* InfoPlist.strings */; };
-		E99AC41324E2DA6F00BBC177 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70C178B17D7BFC400F55964 /* Images.xcassets */; };
-		E99AC41424E2DA6F00BBC177 /* loop_mode_info2.html in Resources */ = {isa = PBXBuildFile; fileRef = C783F68F1EDC7EB4001CB2F9 /* loop_mode_info2.html */; };
-		E99AC41524E2DA6F00BBC177 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C72F49A51F31CE3A00CCA650 /* TestStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -511,10 +386,6 @@
 		E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryResultPercentView.m; sourceTree = "<group>"; };
 		E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQOEResultItemCell.m; sourceTree = "<group>"; };
 		E999A69624FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQOEResultItemCell.h; sourceTree = "<group>"; };
-		E9F45921250D302700E800B0 /* RMBTHistoryResultPercentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryResultPercentView.h; sourceTree = "<group>"; };
-		E9F45922250D302700E800B0 /* RMBTHistoryResultPercentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryResultPercentView.m; sourceTree = "<group>"; };
-		E99AC41A24E2DA6F00BBC177 /* RMBT_Specure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMBT_Specure.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E99AC41B24E2DA7000BBC177 /* RMBT copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RMBT copy-Info.plist"; path = "/Users/sglushchenko/Projects/open-rmbt-ios/RMBT copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -550,34 +421,6 @@
 				C7DE147E173E8F610079477A /* Foundation.framework in Frameworks */,
 				C7DE1480173E8F610079477A /* CoreGraphics.framework in Frameworks */,
 				7ABF93939D07A19DF172C790 /* libPods-RMBT.a in Frameworks */,
-				E80C2E1F7313B6BCFBC4A346 /* libPods-RMBT.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E99AC3F324E2DA6F00BBC177 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E99AC3F424E2DA6F00BBC177 /* libresolv.tbd in Frameworks */,
-				E99AC3F524E2DA6F00BBC177 /* CoreTelephony.framework in Frameworks */,
-				E99AC3F624E2DA6F00BBC177 /* OpenGLES.framework in Frameworks */,
-				E99AC3F724E2DA6F00BBC177 /* libz.dylib in Frameworks */,
-				E99AC3F824E2DA6F00BBC177 /* libicucore.dylib in Frameworks */,
-				E99AC3F924E2DA6F00BBC177 /* libc++.dylib in Frameworks */,
-				E99AC3FA24E2DA6F00BBC177 /* ImageIO.framework in Frameworks */,
-				E99AC3FB24E2DA6F00BBC177 /* GLKit.framework in Frameworks */,
-				E99AC3FC24E2DA6F00BBC177 /* CoreText.framework in Frameworks */,
-				E99AC3FD24E2DA6F00BBC177 /* CoreData.framework in Frameworks */,
-				E99AC3FE24E2DA6F00BBC177 /* AVFoundation.framework in Frameworks */,
-				E99AC3FF24E2DA6F00BBC177 /* CoreLocation.framework in Frameworks */,
-				E99AC40024E2DA6F00BBC177 /* MapKit.framework in Frameworks */,
-				E99AC40124E2DA6F00BBC177 /* QuartzCore.framework in Frameworks */,
-				E99AC40224E2DA6F00BBC177 /* WebKit.framework in Frameworks */,
-				E99AC40324E2DA6F00BBC177 /* MobileCoreServices.framework in Frameworks */,
-				E99AC40424E2DA6F00BBC177 /* SystemConfiguration.framework in Frameworks */,
-				E99AC40524E2DA6F00BBC177 /* UIKit.framework in Frameworks */,
-				E99AC40624E2DA6F00BBC177 /* Foundation.framework in Frameworks */,
-				E99AC40724E2DA6F00BBC177 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -913,8 +756,6 @@
 				C7DE147A173E8F610079477A /* Frameworks */,
 				C7DE1479173E8F610079477A /* Products */,
 				B5AF762C1C3DE54BD04B4440 /* Pods */,
-				E9789EEC24D74080007253EB /* Recovered References */,
-				E99AC41B24E2DA7000BBC177 /* RMBT copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -923,7 +764,6 @@
 			children = (
 				C7DE1478173E8F610079477A /* RMBT.app */,
 				C70828021CB6792F00F482EB /* RMBTTest.xctest */,
-				E99AC41A24E2DA6F00BBC177 /* RMBT_Specure.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1077,14 +917,6 @@
 			name = Loop;
 			sourceTree = "<group>";
 		};
-		E9789EEC24D74080007253EB /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				C7C5424617A69E9C000180A1 /* InfoPlist.strings */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1126,24 +958,6 @@
 			productReference = C7DE1478173E8F610079477A /* RMBT.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E99AC39B24E2DA6F00BBC177 /* RMBT_Specure */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E99AC41824E2DA6F00BBC177 /* Build configuration list for PBXNativeTarget "RMBT_Specure" */;
-			buildPhases = (
-				E99AC39D24E2DA6F00BBC177 /* Sources */,
-				E99AC3F324E2DA6F00BBC177 /* Frameworks */,
-				E99AC40924E2DA6F00BBC177 /* Resources */,
-				E99AC41624E2DA6F00BBC177 /* Run Script: Add Build Infos */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = RMBT_Specure;
-			productName = RMBT;
-			productReference = E99AC41A24E2DA6F00BBC177 /* RMBT_Specure.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1152,7 +966,7 @@
 			attributes = {
 				CLASSPREFIX = RMBT;
 				LastTestingUpgradeCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = "appscape gmbh";
 				TargetAttributes = {
 					C70828011CB6792F00F482EB = {
@@ -1167,9 +981,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					E99AC39B24E2DA6F00BBC177 = {
-						DevelopmentTeam = 4XZ94A6MUA;
 					};
 				};
 			};
@@ -1195,7 +1006,6 @@
 			targets = (
 				C7DE1477173E8F610079477A /* RMBT */,
 				C70828011CB6792F00F482EB /* RMBTTest */,
-				E99AC39B24E2DA6F00BBC177 /* RMBT_Specure */,
 			);
 		};
 /* End PBXProject section */
@@ -1220,30 +1030,9 @@
 				C783F6911EDC7EB4001CB2F9 /* loop_mode_info.html in Resources */,
 				C7BC5C731F747A9E00A91F0F /* Launch Screen.storyboard in Resources */,
 				C7EF30741DFEBBF80002CCD0 /* RMBTHistoryQoSSingleResultCell.xib in Resources */,
-				C7C5424417A69E9C000180A1 /* InfoPlist.strings in Resources */,
 				C70C178C17D7BFC400F55964 /* Images.xcassets in Resources */,
 				C783F6921EDC7EB4001CB2F9 /* loop_mode_info2.html in Resources */,
 				C72F49A31F31CE3A00CCA650 /* TestStoryboard.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E99AC40924E2DA6F00BBC177 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E99AC40A24E2DA6F00BBC177 /* MainStoryboard.storyboard in Resources */,
-				E99AC40B24E2DA6F00BBC177 /* RMBTMapCalloutView.xib in Resources */,
-				E99AC40C24E2DA6F00BBC177 /* terms_conditions_long.html in Resources */,
-				E99AC40D24E2DA6F00BBC177 /* Localizable.strings in Resources */,
-				E99AC40E24E2DA6F00BBC177 /* RMBTHistoryIndexCell.xib in Resources */,
-				E99AC40F24E2DA6F00BBC177 /* loop_mode_info.html in Resources */,
-				E99AC41024E2DA6F00BBC177 /* Launch Screen.storyboard in Resources */,
-				E99AC41124E2DA6F00BBC177 /* RMBTHistoryQoSSingleResultCell.xib in Resources */,
-				E99AC41224E2DA6F00BBC177 /* InfoPlist.strings in Resources */,
-				E99AC41324E2DA6F00BBC177 /* Images.xcassets in Resources */,
-				E99AC41424E2DA6F00BBC177 /* loop_mode_info2.html in Resources */,
-				E99AC41524E2DA6F00BBC177 /* TestStoryboard.storyboard in Resources */,
-				E945361C24F2DA6300D12303 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1344,20 +1133,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E99AC41624E2DA6F00BBC177 /* Run Script: Add Build Infos */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script: Add Build Infos";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Scripts/add_build_infos.sh\"";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1412,7 +1187,6 @@
 				C7228DEF17FC1ADF00FB984D /* RMBTHistoryResultItemCell.m in Sources */,
 				C7B5C1C41A3B2B5F002BECF3 /* UIColor+RMBTHex.m in Sources */,
 				C703D3E21765CF5E00A38C34 /* RMBTSpeedGraphView.m in Sources */,
-				E9F45923250D302800E800B0 /* RMBTHistoryResultPercentView.m in Sources */,
 				C73E792717673EBE0009855E /* RMBTSettings.m in Sources */,
 				C73E792A176761630009855E /* RMBTSettingsViewController.m in Sources */,
 				C79C94A617713106000CF5EE /* RMBTLogger.m in Sources */,
@@ -1469,101 +1243,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E99AC39D24E2DA6F00BBC177 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E99AC39E24E2DA6F00BBC177 /* RMBTQoSTest.m in Sources */,
-				E99AC39F24E2DA6F00BBC177 /* UITableViewCell+RMBTHeight.m in Sources */,
-				E99AC3A024E2DA6F00BBC177 /* main.m in Sources */,
-				E99AC3A124E2DA6F00BBC177 /* RMBTAppDelegate.m in Sources */,
-				E99AC3A224E2DA6F00BBC177 /* RMBTQoSIPTest.m in Sources */,
-				E99AC3A324E2DA6F00BBC177 /* RMBTTestViewController.m in Sources */,
-				E99AC3A424E2DA6F00BBC177 /* RMBTControlServer.m in Sources */,
-				E99AC3A524E2DA6F00BBC177 /* RMBTLoopDetailsCell.m in Sources */,
-				E99AC3A624E2DA6F00BBC177 /* RMBTTestParams.m in Sources */,
-				E99AC3A724E2DA6F00BBC177 /* RMBTTOS.m in Sources */,
-				E99AC3A824E2DA6F00BBC177 /* RMBTTestWorker.m in Sources */,
-				E99AC3A924E2DA6F00BBC177 /* RMBTBaseTestViewController.m in Sources */,
-				E99AC3AA24E2DA6F00BBC177 /* RMBTTestRunner.m in Sources */,
-				E99AC3AB24E2DA6F00BBC177 /* RMBTLoopMeasurementsViewController.m in Sources */,
-				E99AC3AC24E2DA6F00BBC177 /* RMBTQoSTCPTest.m in Sources */,
-				E99AC3AD24E2DA6F00BBC177 /* RMBTTestResult.m in Sources */,
-				E99AC3AE24E2DA6F00BBC177 /* RMBTGaugeView.m in Sources */,
-				E99AC3AF24E2DA6F00BBC177 /* RMBTMapOptionsOverlaysViewController.m in Sources */,
-				E99AC3B024E2DA6F00BBC177 /* RMBTHistoryQoSSingleResultCell.m in Sources */,
-				E9968A302500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */,
-				E99AC3B124E2DA6F00BBC177 /* RMBTIntroViewController.m in Sources */,
-				E99AC3B224E2DA6F00BBC177 /* RMBTQoSHTTPTest.m in Sources */,
-				E99AC3B324E2DA6F00BBC177 /* UIView+Position.m in Sources */,
-				E99AC3B424E2DA6F00BBC177 /* RMBTPing.m in Sources */,
-				E99AC3B524E2DA6F00BBC177 /* RMBTThroughput.m in Sources */,
-				E99AC3B624E2DA6F00BBC177 /* RMBTLoopInfo.m in Sources */,
-				E99AC3B724E2DA6F00BBC177 /* UIView+RMBTSubviews.m in Sources */,
-				E99AC3B824E2DA6F00BBC177 /* RMBTHelpers.m in Sources */,
-				E99AC3B924E2DA6F00BBC177 /* RMBTMapCalloutView.m in Sources */,
-				E99AC3BA24E2DA6F00BBC177 /* CLLocation+RMBTFormat.m in Sources */,
-				E99AC3BB24E2DA6F00BBC177 /* RMBTMapOptionsFilterViewController.m in Sources */,
-				E99AC3BC24E2DA6F00BBC177 /* RMBTQoSProgressViewController.m in Sources */,
-				E99AC3BD24E2DA6F00BBC177 /* RMBTHistoryResultItemCell.m in Sources */,
-				E99AC3BE24E2DA6F00BBC177 /* UIColor+RMBTHex.m in Sources */,
-				E99AC3BF24E2DA6F00BBC177 /* RMBTSpeedGraphView.m in Sources */,
-				E99AC3C024E2DA6F00BBC177 /* RMBTSettings.m in Sources */,
-				E99AC3C124E2DA6F00BBC177 /* RMBTSettingsViewController.m in Sources */,
-				E99AC3C224E2DA6F00BBC177 /* RMBTLogger.m in Sources */,
-				E99AC3C324E2DA6F00BBC177 /* RMBTThroughputHistory.m in Sources */,
-				E99AC3C424E2DA6F00BBC177 /* RMBTProgress.m in Sources */,
-				E99AC3C524E2DA6F00BBC177 /* RMBTSpeed.m in Sources */,
-				E99AC3C624E2DA6F00BBC177 /* RMBTStatsViewController.m in Sources */,
-				E99AC3C724E2DA6F00BBC177 /* RMBTConnectivity.m in Sources */,
-				E99AC3C824E2DA6F00BBC177 /* RMBTMapOptionsTypesViewController.m in Sources */,
-				E99AC3C924E2DA6F00BBC177 /* RMBTNavigationBar.m in Sources */,
-				E99AC3CA24E2DA6F00BBC177 /* RMBTQoSControlConnectionParams.m in Sources */,
-				E99AC3CB24E2DA6F00BBC177 /* RMBTLocationTracker.m in Sources */,
-				E99AC3CC24E2DA6F00BBC177 /* RMBTNews.m in Sources */,
-				E99AC3CD24E2DA6F00BBC177 /* RMBTSSLHelper.m in Sources */,
-				E99AC3CE24E2DA6F00BBC177 /* RMBTVerticalTransitionController.m in Sources */,
-				E99AC3CF24E2DA6F00BBC177 /* RMBTHistoryIndexViewController.m in Sources */,
-				E99AC3D024E2DA6F00BBC177 /* RMBTLoopModeTestViewController.m in Sources */,
-				E99AC3D124E2DA6F00BBC177 /* RMBTHistoryResult.m in Sources */,
-				E99AC3D224E2DA6F00BBC177 /* RMBTQoSCCTest.m in Sources */,
-				E99AC3D324E2DA6F00BBC177 /* RMBTQoSDNSTest.m in Sources */,
-				E99AC3D424E2DA6F00BBC177 /* RMBTHistoryIndexCell.m in Sources */,
-				E99AC3D524E2DA6F00BBC177 /* RMBTQoSControlConnection.m in Sources */,
-				E9968A2724FD77860042159C /* WKWebView+RMBTConfiguration.m in Sources */,
-				E99AC3D624E2DA6F00BBC177 /* RMBTInfoViewController.m in Sources */,
-				E99AC3D724E2DA6F00BBC177 /* UIViewController+ModalBrowser.m in Sources */,
-				E99AC3D824E2DA6F00BBC177 /* RMBTTOSViewController.m in Sources */,
-				E999A69C24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */,
-				E99AC3D924E2DA6F00BBC177 /* RMBTHistoryResultViewController.m in Sources */,
-				E99AC3DA24E2DA6F00BBC177 /* RMBTModalWebViewController.m in Sources */,
-				E99AC3DB24E2DA6F00BBC177 /* RMBTHistoryResultDetailsViewController.m in Sources */,
-				E99AC3DC24E2DA6F00BBC177 /* RMBTHistorySpeedGraphCell.m in Sources */,
-				E99AC3DD24E2DA6F00BBC177 /* RMBTHistoryFilterViewController.m in Sources */,
-				E99AC3DE24E2DA6F00BBC177 /* RMBTInfoTextViewController.m in Sources */,
-				E99AC3DF24E2DA6F00BBC177 /* RMBTMapServer.m in Sources */,
-				E99AC3E024E2DA6F00BBC177 /* RMBTMapViewController.m in Sources */,
-				E99AC3E124E2DA6F00BBC177 /* RMBTQoSTestRunner.m in Sources */,
-				E99AC3E224E2DA6F00BBC177 /* RMBTMapOptions.m in Sources */,
-				E99AC3E324E2DA6F00BBC177 /* RMBTHistoryQoSSingleResult.m in Sources */,
-				E99AC3E424E2DA6F00BBC177 /* RMBTQoSTestGroup.m in Sources */,
-				E99AC3E524E2DA6F00BBC177 /* RMBTMapOptionsViewController.m in Sources */,
-				E99AC3E624E2DA6F00BBC177 /* RMBTQoSTracerouteTest.m in Sources */,
-				E99AC3E724E2DA6F00BBC177 /* RMBTQoSUDPTest.m in Sources */,
-				E99AC3E824E2DA6F00BBC177 /* RMBTConnectivityTracker.m in Sources */,
-				E99AC3E924E2DA6F00BBC177 /* RMBTQoSNonTransparentProxyTest.m in Sources */,
-				E99AC3EA24E2DA6F00BBC177 /* RMBTQoSWebTest.m in Sources */,
-				E99AC3EB24E2DA6F00BBC177 /* RMBTHistoryQoSGroupViewController.m in Sources */,
-				E99AC3EC24E2DA6F00BBC177 /* RMBTHistorySpeedGraph.m in Sources */,
-				E99AC3ED24E2DA6F00BBC177 /* RMBTQosWebTestURLProtocol.m in Sources */,
-				E99AC3EE24E2DA6F00BBC177 /* RMBTLoopModeConfirmationViewController.m in Sources */,
-				E99AC3EF24E2DA6F00BBC177 /* RMBTLoopDetailsViewController.m in Sources */,
-				E99AC3F024E2DA6F00BBC177 /* RMBTHistoryQoSSingleResultViewController.m in Sources */,
-				E99AC3F124E2DA6F00BBC177 /* RMBTHistoryQoSGroupResult.m in Sources */,
-				E99AC3F224E2DA6F00BBC177 /* RMBTMapMeasurement.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1615,13 +1294,6 @@
 			);
 			name = MainStoryboard.storyboard;
 			path = ../Resources;
-			sourceTree = "<group>";
-		};
-		C7C5424617A69E9C000180A1 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		C7F3FB35179CC86900E336CF /* terms_conditions_long.html */ = {
@@ -1727,11 +1399,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -1784,35 +1458,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/RMBT-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		E99AC41924E2DA6F00BBC177 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7C0EFE3176CD18F003758AA /* Debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RMBT.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2312;
-				DEVELOPMENT_TEAM = 4XZ94A6MUA;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Sources/RMBT-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"DEBUG=1",
-				);
-				INFOPLIST_FILE = "RMBT copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.specure.openrmbt;
+				PRODUCT_BUNDLE_IDENTIFIER = "${CONFIG_BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1843,14 +1489,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C7DE149F173E8F610079477A /* Debug */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		E99AC41824E2DA6F00BBC177 /* Build configuration list for PBXNativeTarget "RMBT_Specure" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E99AC41924E2DA6F00BBC177 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
