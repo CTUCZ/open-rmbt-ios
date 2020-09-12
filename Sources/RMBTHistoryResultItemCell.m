@@ -18,11 +18,13 @@
 #import "RMBTHistoryResultItemCell.h"
 #import "RMBTHistoryResult.h"
 #import "UIView+RMBTSubviews.h"
+#import "RMBTHistoryResultPercentView.h"
 
 NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNotification";
 
 @interface RMBTHistoryResultItemCell() {
     UIButton *_trafficLightButton;
+    RMBTHistoryResultPercentView *_percentView;
 
     UIButton *_accessoryButton;
     BOOL _accessoryButtonRotated;
@@ -39,6 +41,12 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
         [[NSNotificationCenter defaultCenter] postNotificationName:RMBTTrafficLightTappedNotification object:self userInfo:nil];
     } forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_trafficLightButton];
+    
+    _percentView = [[RMBTHistoryResultPercentView alloc] initWithFrame:CGRectZero];
+    [_percentView setHidden:YES];
+    [_percentView setUnfilledColor:[UIColor rmbt_colorWithRGBHex:0xf2f2f2]];
+    [self.contentView addSubview:_percentView];
+    
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -71,20 +79,26 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
     } else {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
+    [_percentView setHidden:YES];
     [self setNeedsLayout];
 }
 
 - (void)setQOEItem:(RMBTHistoryQOEResultItem *)item {
     self.textLabel.text = [self categoryNameWithIdentifier:item.category];
-    self.detailTextLabel.text = nil;
-    self.imageView.image = [self categoryImageWithIdentifier: item.category];
+    self.detailTextLabel.text = item.value;
+    self.imageView.image = [self categoryImageWithIdentifier:item.category];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 
     self.accessoryType = UITableViewCellAccessoryNone;
     [_trafficLightButton setImage:nil forState:UIControlStateNormal];
 
     if (item.classification != -1) {
-        UIImage *image = [self classificationImage:item.classification];
-        [_trafficLightButton setImage:image forState:UIControlStateNormal];
+        UIColor *color = [self classificationColor:item.classification];
+        [_percentView setHidden:NO];
+        [_percentView setPercents:item.quality.doubleValue];
+        [_percentView setFilledColor:color];
+        [_percentView setNeedsDisplay];
     }
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -103,6 +117,17 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
         self.detailTextLabel.frameRight -= (widthWithPadding - 10.0f);
     } else {
         _trafficLightButton.frame = CGRectZero;
+    }
+        
+    if (_percentView.isHidden == NO) {
+        CGFloat padding = 20.0f;
+        CGFloat width = 70.0f;
+        CGFloat height = 20.0f;
+        
+        _percentView.frame = CGRectMake(self.bounds.size.width - width - padding, (self.bounds.size.height - height) / 2, width, height);
+        
+        CGFloat widthWithPadding = _percentView.frameWidth + 20.0f;
+        self.detailTextLabel.frameRight -= (widthWithPadding - 10.0f);
     }
 }
 
@@ -191,7 +216,7 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
     } else if ([identifier isEqualToString:@"cloud"]) {
         image = [UIImage imageNamed:@"ic_qoe_image"];
     } else if ([identifier isEqualToString:@"qos"]) {
-        image = [UIImage imageNamed:@"ic_qoe_qoe"];
+        image = [UIImage imageNamed:@"ic_qoe"];
     }
     
     return image;
@@ -212,6 +237,23 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
     }
     
     return image;
+}
+
+- (UIColor *)classificationColor:(NSInteger)classification {
+    UIColor *color;
+    if (classification == 1) {
+        color = [UIColor rmbt_colorWithRGBHex:0xfc441e];
+    } else if (classification == 2) {
+        color = [UIColor rmbt_colorWithRGBHex:0xddde2f];
+    } else if (classification == 3) {
+        color = [UIColor rmbt_colorWithRGBHex:0x3cc828];
+    } else if (classification == 4) {
+        color = [UIColor rmbt_colorWithRGBHex:0x2c941c];
+    } else {
+        color = [UIColor clearColor];
+    }
+    
+    return color;
 }
 
 @end

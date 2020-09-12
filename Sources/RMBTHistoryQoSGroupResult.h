@@ -29,5 +29,6 @@
 - (RMBTHistoryResultItem*)toResultItem;
 
 + (NSString*)summarize:(NSArray<RMBTHistoryQoSGroupResult*> *)results withPercentage:(BOOL)percentage;
++ (NSString*)summarizePercents:(NSArray<RMBTHistoryQoSGroupResult*> *)results;
 
 @end
