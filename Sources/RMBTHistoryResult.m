@@ -58,9 +58,10 @@
     return self;
 }
 
-- (instancetype)initWithCategory:(NSString*)category quality:(NSString*)quality classification:(NSUInteger)classification {
+- (instancetype)initWithCategory:(NSString*)category quality:(NSString*)quality value:(NSString*)value classification:(NSInteger)classification {
     if (self = [super init]) {
         _category = category;
+        _value = value;
         _quality = quality;
         _classification = classification;
     }

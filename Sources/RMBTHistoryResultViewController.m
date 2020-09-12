@@ -72,10 +72,6 @@
 
         // Add a summary "Quality tests 100% (90/90)" row
         if (_historyResult.qosResults) {
-            NSString *summary = [RMBTHistoryQoSGroupResult summarize:_historyResult.qosResults withPercentage:YES];
-            _qosItemIndex = @(items.count);
-            [items addObject:[[RMBTHistoryResultItem alloc] initWithTitle:NSLocalizedString(@"Quality tests", @"Measurement item title") value:summary classification:-1 hasDetails:NO]];
-            [items addObject:_qosItemIndex];
             _qosItems = _historyResult.qoeClassificationItems;
         }
 
@@ -111,8 +107,6 @@
     if (selectedIndexPath) {
         [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
     }
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trafficLightTapped:) name:RMBTTrafficLightTappedNotification object:nil];
 }
 
 
@@ -125,16 +119,15 @@
     if (_historyResult.dataState == RMBTHistoryResultDataStateIndex) {
         return 0;
     } else if (_historyResult.qosResults) {
-        return 3;
+        return 4;
     } else {
-        return 2;
+        return 3;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * const cellIdentifierResult = @"history_result_cell";
     static NSString * const cellIdentifierGraph = @"speed_graph_cell";
-    static NSString * const cellIdentifierQOEResult = @"qoe_result_cell";
 
     RMBTHistoryResultItem *item = [[self itemsForSection:indexPath.section] objectAtIndex:indexPath.row];
 
@@ -143,9 +136,9 @@
         RMBTHistorySpeedGraph *graph = (item == (RMBTHistoryResultItem *)_downloadItemIndex) ? _historyResult.downloadGraph : _historyResult.uploadGraph;
         [cell drawSpeedGraph:graph];
         return cell;
-    } else if (item == (RMBTHistoryResultItem *)_qosItemIndex) { // note: this a pointer comparison
-        RMBTHistoryQOEResultItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierQOEResult forIndexPath:indexPath];
-        [cell setQOEResultItems:_qosItems];
+    } else if ([item isKindOfClass:[RMBTHistoryQOEResultItem class]]) {
+        RMBTHistoryResultItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierResult];
+        [cell setQOEItem:(RMBTHistoryQOEResultItem *)item];
         return cell;
     } else {
         RMBTHistoryResultItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierResult];
@@ -182,17 +175,12 @@
             [(RMBTHistoryResultItemCell *)[tableView cellForRowAtIndexPath:indexPath] setAccessoryRotated:self.uploadSpeedGraphExpanded];
             toggled = YES;
             row = indexPath.row+1;
-        } else if (_qosItemIndex && indexPath.row == [_qosItemIndex integerValue]) {
-            self.qosExpanded = !self.qosExpanded;
-            [(RMBTHistoryResultItemCell *)[tableView cellForRowAtIndexPath:indexPath] setAccessoryRotated:self.qosExpanded];
-            toggled = YES;
-            row = indexPath.row+1;
         }
         if (toggled) {
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:indexPath.section]]
                                   withRowAnimation:UITableViewRowAnimationAutomatic];
         }
-    } else if (indexPath.section == 2) {
+    } else if (indexPath.section == 3) {
         [self performSegueWithIdentifier:@"show_qos_group" sender:[_historyResult.qosResults objectAtIndex:indexPath.row]];
     }
 }
@@ -202,8 +190,6 @@
         return self.downloadSpeedGraphExpanded ? 120.0f : 0.0;
     } else if (indexPath.section == 0 && _uploadItemIndex && indexPath.row == [_uploadItemIndex integerValue]+1) {
         return self.uploadSpeedGraphExpanded ? 120.0f : 0.0;
-    } else if (indexPath.section == 0 && _qosItemIndex && indexPath.row == [_qosItemIndex integerValue]+1) {
-        return self.qosExpanded ? _historyResult.qoeClassificationItems.count * 44.0f : 0.0;
     } else {
         return UITableViewAutomaticDimension;
     }
@@ -217,7 +203,8 @@
     switch (section) {
         case 0: return NSLocalizedString(@"Measurement", @"History result section title");
         case 1: return NSLocalizedString(@"Network", @"History result section title");
-        case 2: return NSLocalizedString(@"QoS", @"History result section title");
+        case 2: return NSLocalizedString(@"Quality", @"History result section title");
+        case 3: return NSLocalizedString(@"QoS", @"History result section title");
         default:
             NSAssert(false, @"Invalid section");
             return @"";
@@ -230,7 +217,17 @@
             return _measurementItems;
         case 1:
             return _historyResult.netItems;
-        case 2:
+        case 2: {
+            NSString *summary = [RMBTHistoryQoSGroupResult summarize:_historyResult.qosResults withPercentage:YES];
+            NSString *percents = [RMBTHistoryQoSGroupResult summarizePercents:_historyResult.qosResults];
+            RMBTHistoryQOEResultItem * item = [[RMBTHistoryQOEResultItem alloc]
+             initWithCategory:@"qos"
+             quality:percents
+             value:summary
+             classification:NSIntegerMax];
+            return [_historyResult.qoeClassificationItems arrayByAddingObject:item];
+        }
+        case 3:
             return [_historyResult.qosResults bk_map:^id(RMBTHistoryQoSGroupResult* qr) {
                 return [qr toResultItem];
             }];

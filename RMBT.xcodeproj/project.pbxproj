@@ -132,6 +132,8 @@
 		E80C2E1F7313B6BCFBC4A346 /* libPods-RMBT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B5D1F96A5D607CBD1C4902 /* libPods-RMBT.a */; };
 		E945361C24F2DA6300D12303 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E945361B24F2DA6300D12303 /* GoogleMaps.bundle */; };
 		E9789EEE24D74434007253EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9789EED24D74434007253EB /* WebKit.framework */; };
+		E999A69B24FC2AFF002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
+		E9F45923250D302800E800B0 /* RMBTHistoryResultPercentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F45922250D302700E800B0 /* RMBTHistoryResultPercentView.m */; };
 		E9968A2624FD762A0042159C /* WKWebView+RMBTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */; };
 		E9968A2724FD77860042159C /* WKWebView+RMBTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */; };
 		E9968A2F2500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */; };
@@ -509,6 +511,8 @@
 		E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryResultPercentView.m; sourceTree = "<group>"; };
 		E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQOEResultItemCell.m; sourceTree = "<group>"; };
 		E999A69624FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQOEResultItemCell.h; sourceTree = "<group>"; };
+		E9F45921250D302700E800B0 /* RMBTHistoryResultPercentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryResultPercentView.h; sourceTree = "<group>"; };
+		E9F45922250D302700E800B0 /* RMBTHistoryResultPercentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryResultPercentView.m; sourceTree = "<group>"; };
 		E99AC41A24E2DA6F00BBC177 /* RMBT_Specure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMBT_Specure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99AC41B24E2DA7000BBC177 /* RMBT copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RMBT copy-Info.plist"; path = "/Users/sglushchenko/Projects/open-rmbt-ios/RMBT copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -1408,6 +1412,7 @@
 				C7228DEF17FC1ADF00FB984D /* RMBTHistoryResultItemCell.m in Sources */,
 				C7B5C1C41A3B2B5F002BECF3 /* UIColor+RMBTHex.m in Sources */,
 				C703D3E21765CF5E00A38C34 /* RMBTSpeedGraphView.m in Sources */,
+				E9F45923250D302800E800B0 /* RMBTHistoryResultPercentView.m in Sources */,
 				C73E792717673EBE0009855E /* RMBTSettings.m in Sources */,
 				C73E792A176761630009855E /* RMBTSettingsViewController.m in Sources */,
 				C79C94A617713106000CF5EE /* RMBTLogger.m in Sources */,

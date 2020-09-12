@@ -33,10 +33,11 @@
 
 @interface RMBTHistoryQOEResultItem : NSObject
 @property (nonatomic, readonly) NSString *category;
+@property (nonatomic, readonly) NSString *value;
 @property (nonatomic, readonly) NSString *quality;
 @property (nonatomic, readonly) NSInteger classification;
 - (instancetype)initWithResponse:(NSDictionary*)response;
-- (instancetype)initWithCategory:(NSString*)category quality:(NSString*)quality classification:(NSUInteger)classification;
+- (instancetype)initWithCategory:(NSString*)category quality:(NSString*)quality value:(NSString*)value classification:(NSInteger)classification;
 @end
 
 

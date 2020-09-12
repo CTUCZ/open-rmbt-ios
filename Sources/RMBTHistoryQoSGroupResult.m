@@ -129,4 +129,16 @@
     }
     return result;
 }
+
++ (NSString*)summarizePercents:(NSArray<RMBTHistoryQoSGroupResult*> *)results {
+    if (!results) return nil;
+
+    double success = 0;
+    double total = 0;
+    for (RMBTHistoryQoSGroupResult *r in results) {
+        success += r.succeededCount;
+        total += r.tests.count;
+    }
+    return [NSString stringWithFormat:@"%f",success / total];
+}
 @end

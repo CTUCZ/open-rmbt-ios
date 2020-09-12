@@ -79,12 +79,14 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
     } else {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
+    [_percentView setHidden:YES];
     [self setNeedsLayout];
 }
 
 - (void)setQOEItem:(RMBTHistoryQOEResultItem *)item {
     self.textLabel.text = [self categoryNameWithIdentifier:item.category];
-    self.detailTextLabel.text = nil;
+    self.detailTextLabel.text = item.value;
     self.imageView.image = [self categoryImageWithIdentifier:item.category];
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 
@@ -96,6 +98,7 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
         [_percentView setHidden:NO];
         [_percentView setPercents:item.quality.doubleValue];
         [_percentView setFilledColor:color];
+        [_percentView setNeedsDisplay];
     }
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -122,6 +125,9 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
         CGFloat height = 20.0f;
         
         _percentView.frame = CGRectMake(self.bounds.size.width - width - padding, (self.bounds.size.height - height) / 2, width, height);
+        
+        CGFloat widthWithPadding = _percentView.frameWidth + 20.0f;
+        self.detailTextLabel.frameRight -= (widthWithPadding - 10.0f);
     }
 }
 
@@ -210,7 +216,7 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
     } else if ([identifier isEqualToString:@"cloud"]) {
         image = [UIImage imageNamed:@"ic_qoe_image"];
     } else if ([identifier isEqualToString:@"qos"]) {
-        image = [UIImage imageNamed:@"ic_qoe_qoe"];
+        image = [UIImage imageNamed:@"ic_qoe"];
     }
     
     return image;
