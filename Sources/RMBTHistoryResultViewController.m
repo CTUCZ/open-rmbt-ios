@@ -182,6 +182,8 @@
         }
     } else if ((indexPath.section == 3) && (indexPath.row > 0)) {
         [self performSegueWithIdentifier:@"show_qos_group" sender:[_historyResult.qosResults objectAtIndex:indexPath.row - 1]];
+    } else {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
