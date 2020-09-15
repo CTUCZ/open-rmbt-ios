@@ -29,6 +29,9 @@
 @property (nonatomic, readonly) BOOL hasDetails;
 - (instancetype)initWithResponse:(NSDictionary*)response;
 - (instancetype)initWithTitle:(NSString*)title value:(NSString*)value classification:(NSUInteger)classification hasDetails:(BOOL)hasDetails;
+
+//Get classification from percent
++ (NSInteger)classification:(double)percent;
 @end
 
 @interface RMBTHistoryQOEResultItem : NSObject

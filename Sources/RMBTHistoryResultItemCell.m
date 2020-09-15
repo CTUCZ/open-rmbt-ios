@@ -62,6 +62,7 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
 }
 
 - (void)setItem:(RMBTHistoryResultItem *)item {
+    self.imageView.image = nil;
     self.textLabel.text = item.title;
     self.detailTextLabel.text = item.value;
 

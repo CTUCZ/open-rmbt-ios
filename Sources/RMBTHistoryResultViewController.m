@@ -218,19 +218,27 @@
         case 1:
             return _historyResult.netItems;
         case 2: {
-            NSString *summary = [RMBTHistoryQoSGroupResult summarize:_historyResult.qosResults withPercentage:YES];
-            NSString *percents = [RMBTHistoryQoSGroupResult summarizePercents:_historyResult.qosResults];
-            RMBTHistoryQOEResultItem * item = [[RMBTHistoryQOEResultItem alloc]
-             initWithCategory:@"qos"
-             quality:percents
-             value:summary
-             classification:NSIntegerMax];
-            return [_historyResult.qoeClassificationItems arrayByAddingObject:item];
+            return _historyResult.qoeClassificationItems;
         }
-        case 3:
-            return [_historyResult.qosResults bk_map:^id(RMBTHistoryQoSGroupResult* qr) {
+        case 3: {
+            NSArray *qosResults = [_historyResult.qosResults bk_map:^id(RMBTHistoryQoSGroupResult* qr) {
                 return [qr toResultItem];
             }];
+            
+            if (qosResults.count > 0) {
+                NSString *summary = [RMBTHistoryQoSGroupResult summarize:_historyResult.qosResults withPercentage:YES];
+                NSString *percents = [RMBTHistoryQoSGroupResult summarizePercents:_historyResult.qosResults];
+                NSInteger classification = [RMBTHistoryResultItem classification:percents.doubleValue];
+                RMBTHistoryResultItem *item = [[RMBTHistoryResultItem alloc]
+                                               initWithTitle:NSLocalizedString(@"qos", @"qos")
+                                               value:summary
+                                               classification:classification
+                                               hasDetails:YES];
+                
+                return [@[item] arrayByAddingObjectsFromArray:qosResults];
+            }
+            return qosResults;
+        }
         default:
             NSParameterAssert(false);
             return nil;

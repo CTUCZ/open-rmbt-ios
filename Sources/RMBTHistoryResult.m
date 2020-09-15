@@ -41,6 +41,20 @@
     }
     return self;
 }
+
++ (NSInteger)classification:(double)percent {
+    if (percent < 0.25) {
+        return 1;
+    } else if (percent < 0.5) {
+        return 2;
+    } else if (percent < 0.75) {
+        return 3;
+    } else if (percent <= 1) {
+        return 4;
+    } else {
+        return -1;
+    }
+}
 @end
 
 @implementation RMBTHistoryQOEResultItem
