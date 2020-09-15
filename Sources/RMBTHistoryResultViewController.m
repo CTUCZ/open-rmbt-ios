@@ -180,8 +180,8 @@
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:indexPath.section]]
                                   withRowAnimation:UITableViewRowAnimationAutomatic];
         }
-    } else if (indexPath.section == 3) {
-        [self performSegueWithIdentifier:@"show_qos_group" sender:[_historyResult.qosResults objectAtIndex:indexPath.row]];
+    } else if ((indexPath.section == 3) && (indexPath.row > 0)) {
+        [self performSegueWithIdentifier:@"show_qos_group" sender:[_historyResult.qosResults objectAtIndex:indexPath.row - 1]];
     }
 }
 
