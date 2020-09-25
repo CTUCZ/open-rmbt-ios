@@ -144,3 +144,18 @@
 /* Map overlay description */
 "Shapes" = "Shapes";
 
+"video_telephony" = "Video Telephony";
+"video_conferencing" = "Video Conferencing";
+"cloud" = "Cloud";
+"video_uhd" = "Videos UHD";
+"video_sd" = "Videos SD";
+"video_hd" = "Videos HD";
+"voip" = "VoIP";
+"streaming_audio_streaming" = "Audio Streaming";
+"web" = "Web";
+"messaging" = "Messaging";
+"gaming_download" = "Gaming Download";
+"gaming" = "Gaming";
+"gaming_cloud" = "Gaming Cloud";
+"gaming_streaming" = "Gaming Streaming";
+"qos" = "QoS Tests";

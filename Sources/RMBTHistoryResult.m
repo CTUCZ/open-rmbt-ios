@@ -41,10 +41,51 @@
     }
     return self;
 }
+
++ (NSInteger)classification:(double)percent {
+    if (percent < 0.25) {
+        return 1;
+    } else if (percent < 0.5) {
+        return 2;
+    } else if (percent < 0.75) {
+        return 3;
+    } else if (percent <= 1) {
+        return 4;
+    } else {
+        return -1;
+    }
+}
+@end
+
+@implementation RMBTHistoryQOEResultItem
+- (instancetype)initWithResponse:(NSDictionary*)response {
+    if (self = [super init]) {
+        _category = response[@"category"];
+        _quality = [response[@"quality"] description];
+        NSParameterAssert(_category);
+        NSParameterAssert(_quality);
+        _classification = -1;
+        if (response[@"classification"]) {
+            _classification = [response[@"classification"] unsignedIntegerValue];
+        }
+    }
+    return self;
+}
+
+- (instancetype)initWithCategory:(NSString*)category quality:(NSString*)quality value:(NSString*)value classification:(NSInteger)classification {
+    if (self = [super init]) {
+        _category = category;
+        _value = value;
+        _quality = quality;
+        _classification = classification;
+    }
+    return self;
+}
 @end
 
 @interface RMBTHistoryResult() {
     NSMutableArray *_netItems, *_measurementItems, *_fullDetailsItems;
+    NSMutableArray *_qoeClassificationItems;
 }
 @end
 
@@ -148,6 +189,11 @@
                 [_measurementItems addObject:[[RMBTHistoryResultItem alloc] initWithResponse:r]];
             }
 
+            _qoeClassificationItems = [NSMutableArray array];
+            for (NSDictionary *r in response[@"qoe_classification"]) {
+                [_qoeClassificationItems addObject:[[RMBTHistoryQOEResultItem alloc] initWithResponse:r]];
+            }
+            
             if (response[@"geo_lat"] && response[@"geo_long"]) {
                 _coordinate = CLLocationCoordinate2DMake([response[@"geo_lat"] doubleValue], [response[@"geo_long"] doubleValue]);
             }

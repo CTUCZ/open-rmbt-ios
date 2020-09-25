@@ -29,7 +29,20 @@
 @property (nonatomic, readonly) BOOL hasDetails;
 - (instancetype)initWithResponse:(NSDictionary*)response;
 - (instancetype)initWithTitle:(NSString*)title value:(NSString*)value classification:(NSUInteger)classification hasDetails:(BOOL)hasDetails;
+
+//Get classification from percent
++ (NSInteger)classification:(double)percent;
 @end
+
+@interface RMBTHistoryQOEResultItem : NSObject
+@property (nonatomic, readonly) NSString *category;
+@property (nonatomic, readonly) NSString *value;
+@property (nonatomic, readonly) NSString *quality;
+@property (nonatomic, readonly) NSInteger classification;
+- (instancetype)initWithResponse:(NSDictionary*)response;
+- (instancetype)initWithCategory:(NSString*)category quality:(NSString*)quality value:(NSString*)value classification:(NSInteger)classification;
+@end
+
 
 typedef NS_ENUM(NSUInteger, RMBTHistoryResultDataState) {
     RMBTHistoryResultDataStateIndex,
@@ -65,6 +78,7 @@ typedef NS_ENUM(NSUInteger, RMBTHistoryResultDataState) {
 
 @property (nonatomic, readonly) NSArray *netItems;
 @property (nonatomic, readonly) NSArray *measurementItems;
+@property (nonatomic, readonly) NSArray *qoeClassificationItems;
 @property (nonatomic, readonly) NSArray<RMBTHistoryQoSGroupResult *> *qosResults;
 
 - (void)ensureBasicDetails:(RMBTBlock)success;

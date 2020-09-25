@@ -465,7 +465,7 @@
                     <tabBarItem key="tabBarItem" title="Info" image="tab_info" id="Lj3-co-7HX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Ex-dG-4fs" customClass="RMBTNavigationBar">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1039,7 +1039,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="rGg-ZA-8dU">
-                                    <rect key="frame" x="0.0" y="249.5" width="320" height="84"/>
+                                    <rect key="frame" x="0.0" y="389.5" width="320" height="84"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czN-l1-tI6">
@@ -1121,6 +1121,55 @@
                                             <outlet property="activityView" destination="yeq-Uz-Dtj" id="bX1-nh-OQt"/>
                                             <outlet property="speedGraphView" destination="zPO-Zq-a0L" id="nVR-7b-zl5"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="qoe_result_cell" editingAccessoryType="checkmark" rowHeight="140" id="vKX-07-f9S" userLabel="qoe_result_cell" customClass="RMBTHistoryQOEResultItemCell">
+                                        <rect key="frame" x="0.0" y="239.5" width="320" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vKX-07-f9S" id="n01-ub-IBD">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GL0-GC-r7h">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <prototypes>
+                                                        <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="history_result_cell" editingAccessoryType="checkmark" textLabel="jVU-Ee-1JM" detailTextLabel="E87-4e-ATw" style="IBUITableViewCellStyleValue1" id="qcl-xm-SQu" customClass="RMBTHistoryResultItemCell">
+                                                            <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qcl-xm-SQu" id="NfN-0L-KB6">
+                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jVU-Ee-1JM">
+                                                                        <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E87-4e-ATw">
+                                                                        <rect key="frame" x="261" y="12" width="44" height="20.5"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </tableViewCellContentView>
+                                                        </tableViewCell>
+                                                    </prototypes>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="vKX-07-f9S" id="xXs-dB-23r"/>
+                                                    </connections>
+                                                </tableView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GL0-GC-r7h" firstAttribute="top" secondItem="n01-ub-IBD" secondAttribute="top" id="An7-O3-M2L"/>
+                                                <constraint firstAttribute="trailing" secondItem="GL0-GC-r7h" secondAttribute="trailing" id="VmU-n3-x8b"/>
+                                                <constraint firstItem="GL0-GC-r7h" firstAttribute="leading" secondItem="n01-ub-IBD" secondAttribute="leading" id="jd2-NQ-LtC"/>
+                                                <constraint firstAttribute="bottom" secondItem="GL0-GC-r7h" secondAttribute="bottom" id="qnc-Hi-yYN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -1349,7 +1398,7 @@
                     <navigationItem key="navigationItem" id="Z4m-fH-uSz">
                         <barButtonItem key="rightBarButtonItem" id="BaH-mQ-bkv">
                             <view key="customView" contentMode="scaleToFill" id="NmQ-27-c5i">
-                                <rect key="frame" x="254" y="8.5" width="50" height="33"/>
+                                <rect key="frame" x="254" y="6" width="50" height="33"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EN5-gj-g7y">
@@ -1667,7 +1716,7 @@
                     <tabBarItem key="tabBarItem" title="History" image="tab_history" id="zoN-J1-92T"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sQi-Ob-8Tm" customClass="RMBTNavigationBar">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1690,7 +1739,7 @@
                     <tabBarItem key="tabBarItem" title="Test" image="tab_test" id="UYh-Jo-SaU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Dh-v7-c2e" customClass="RMBTNavigationBar">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

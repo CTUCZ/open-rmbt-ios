@@ -101,7 +101,6 @@
 		C7BC5C731F747A9E00A91F0F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BC5C721F747A9E00A91F0F /* Launch Screen.storyboard */; };
 		C7C242EC1EE5A02500E3C6E2 /* RMBTLoopModeTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C242EB1EE5A02500E3C6E2 /* RMBTLoopModeTestViewController.m */; };
 		C7C242EF1EE5A20900E3C6E2 /* RMBTBaseTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C242EE1EE5A20900E3C6E2 /* RMBTBaseTestViewController.m */; };
-		C7C5424417A69E9C000180A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7C5424617A69E9C000180A1 /* InfoPlist.strings */; };
 		C7C5424D17A6DD3A000180A1 /* RMBTHistoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C5424C17A6DD3A000180A1 /* RMBTHistoryFilterViewController.m */; };
 		C7CBC54218105C140041301D /* RMBTModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CBC54118105C140041301D /* RMBTModalWebViewController.m */; };
 		C7DE147C173E8F610079477A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DE147B173E8F610079477A /* UIKit.framework */; };
@@ -131,6 +130,8 @@
 		C7FDBF2D1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */; };
 		E9789EEE24D74434007253EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9789EED24D74434007253EB /* WebKit.framework */; };
 		E9968A2624FD762A0042159C /* WKWebView+RMBTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */; };
+		E9968A2F2500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */; };
+		E999A69D24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -376,9 +377,15 @@
 		C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTHistoryIndexCell.xib; sourceTree = "<group>"; };
 		C7FDBF2B1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTLoopMeasurementsViewController.h; sourceTree = "<group>"; };
 		C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTLoopMeasurementsViewController.m; sourceTree = "<group>"; };
+		E945361B24F2DA6300D12303 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		E9789EED24D74434007253EB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E9968A2424FD762A0042159C /* WKWebView+RMBTConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKWebView+RMBTConfiguration.h"; sourceTree = "<group>"; };
 		E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+RMBTConfiguration.m"; sourceTree = "<group>"; };
+		E9968A2C2500F5180042159C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9968A2D2500F8150042159C /* RMBTHistoryResultPercentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryResultPercentView.h; sourceTree = "<group>"; };
+		E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryResultPercentView.m; sourceTree = "<group>"; };
+		E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQOEResultItemCell.m; sourceTree = "<group>"; };
+		E999A69624FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQOEResultItemCell.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -546,8 +553,12 @@
 				C75A118D179B3DEC00E2444F /* RMBTHistoryResultViewController.m */,
 				C7228DED17FC1ADF00FB984D /* RMBTHistoryResultItemCell.h */,
 				C7228DEE17FC1ADF00FB984D /* RMBTHistoryResultItemCell.m */,
+				E999A69624FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.h */,
+				E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */,
 				C77071021E96812A00043884 /* RMBTHistorySpeedGraphCell.h */,
 				C77071031E96812A00043884 /* RMBTHistorySpeedGraphCell.m */,
+				E9968A2D2500F8150042159C /* RMBTHistoryResultPercentView.h */,
+				E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */,
 			);
 			name = Result;
 			sourceTree = "<group>";
@@ -736,6 +747,7 @@
 		C7DE146F173E8F610079477A = {
 			isa = PBXGroup;
 			children = (
+				E945361B24F2DA6300D12303 /* GoogleMaps.bundle */,
 				1F9C078F216F751C00F1FC10 /* RMBT.entitlements */,
 				C7B47F87176CD47600B04ABF /* Configurations */,
 				C7E46730177CDDB600AAF7F0 /* Unit Tests */,
@@ -744,7 +756,6 @@
 				C7DE147A173E8F610079477A /* Frameworks */,
 				C7DE1479173E8F610079477A /* Products */,
 				B5AF762C1C3DE54BD04B4440 /* Pods */,
-				E9789EEC24D74080007253EB /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -906,14 +917,6 @@
 			name = Loop;
 			sourceTree = "<group>";
 		};
-		E9789EEC24D74080007253EB /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				C7C5424617A69E9C000180A1 /* InfoPlist.strings */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -963,7 +966,7 @@
 			attributes = {
 				CLASSPREFIX = RMBT;
 				LastTestingUpgradeCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = "appscape gmbh";
 				TargetAttributes = {
 					C70828011CB6792F00F482EB = {
@@ -1027,7 +1030,6 @@
 				C783F6911EDC7EB4001CB2F9 /* loop_mode_info.html in Resources */,
 				C7BC5C731F747A9E00A91F0F /* Launch Screen.storyboard in Resources */,
 				C7EF30741DFEBBF80002CCD0 /* RMBTHistoryQoSSingleResultCell.xib in Resources */,
-				C7C5424417A69E9C000180A1 /* InfoPlist.strings in Resources */,
 				C70C178C17D7BFC400F55964 /* Images.xcassets in Resources */,
 				C783F6921EDC7EB4001CB2F9 /* loop_mode_info2.html in Resources */,
 				C72F49A31F31CE3A00CCA650 /* TestStoryboard.storyboard in Resources */,
@@ -1169,6 +1171,7 @@
 				C7ECD920174EB8EB000DF966 /* RMBTGaugeView.m in Sources */,
 				C70AFDEE1F2E0DC50064D631 /* RMBTMapOptionsOverlaysViewController.m in Sources */,
 				C7EF30721DFEBBAA0002CCD0 /* RMBTHistoryQoSSingleResultCell.m in Sources */,
+				E9968A2F2500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */,
 				C7E5817518075B5400706848 /* RMBTIntroViewController.m in Sources */,
 				C73780971E09EBEA00CA0558 /* RMBTQoSHTTPTest.m in Sources */,
 				C7ECD97A174ED9AE000DF966 /* UIView+Position.m in Sources */,
@@ -1209,6 +1212,7 @@
 				C7770889179987B700BB478B /* RMBTInfoViewController.m in Sources */,
 				C77708941799CB3F00BB478B /* UIViewController+ModalBrowser.m in Sources */,
 				C75A1189179B12D800E2444F /* RMBTTOSViewController.m in Sources */,
+				E999A69D24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */,
 				C75A118E179B3DEC00E2444F /* RMBTHistoryResultViewController.m in Sources */,
 				C7CBC54218105C140041301D /* RMBTModalWebViewController.m in Sources */,
 				E9968A2624FD762A0042159C /* WKWebView+RMBTConfiguration.m in Sources */,
@@ -1292,13 +1296,6 @@
 			path = ../Resources;
 			sourceTree = "<group>";
 		};
-		C7C5424617A69E9C000180A1 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C7F3FB35179CC86900E336CF /* terms_conditions_long.html */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1316,6 +1313,7 @@
 				C7E8916318317A13003AECA6 /* es */,
 				C7C82100184908B2009B757F /* fr */,
 				C782A6F71AA62C7800297AFB /* cs */,
+				E9968A2C2500F5180042159C /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1401,11 +1399,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -1458,6 +1458,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/RMBT-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "${CONFIG_BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

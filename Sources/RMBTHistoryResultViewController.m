@@ -25,6 +25,7 @@
 #import "RMBTSettings.h"
 #import "RMBTHistoryResultItemCell.h"
 #import "RMBTHistorySpeedGraphCell.h"
+#import "RMBTHistoryQOEResultItemCell.h"
 
 #import "UIViewController+ModalBrowser.h"
 #import <Blockskit/NSArray+BlocksKit.h>
@@ -33,13 +34,14 @@
 
 @interface RMBTHistoryResultViewController() {
     NSArray *_measurementItems;
+    NSArray *_qosItems;
 
     // These are added to the above _measurementItems array if we find measurement item with
     // title "Download" or "Upload" to mimic the physical layout of the table. The value they contain
     // is the index of the measurement item they show the graph for in the above array:
-    NSNumber  * _Nullable _downloadItemIndex, *_uploadItemIndex;
+    NSNumber  * _Nullable _downloadItemIndex, *_uploadItemIndex, *_qosItemIndex;
 }
-@property (nonatomic, assign) BOOL downloadSpeedGraphExpanded, uploadSpeedGraphExpanded;
+@property (nonatomic, assign) BOOL downloadSpeedGraphExpanded, uploadSpeedGraphExpanded, qosExpanded;
 @end
 
 @implementation RMBTHistoryResultViewController
@@ -70,8 +72,7 @@
 
         // Add a summary "Quality tests 100% (90/90)" row
         if (_historyResult.qosResults) {
-            NSString *summary = [RMBTHistoryQoSGroupResult summarize:_historyResult.qosResults withPercentage:YES];
-            [items addObject:[[RMBTHistoryResultItem alloc] initWithTitle:NSLocalizedString(@"Quality tests", @"Measurement item title") value:summary classification:-1 hasDetails:NO]];
+            _qosItems = _historyResult.qoeClassificationItems;
         }
 
         _measurementItems = items;
@@ -106,8 +107,6 @@
     if (selectedIndexPath) {
         [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
     }
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trafficLightTapped:) name:RMBTTrafficLightTappedNotification object:nil];
 }
 
 
@@ -120,9 +119,9 @@
     if (_historyResult.dataState == RMBTHistoryResultDataStateIndex) {
         return 0;
     } else if (_historyResult.qosResults) {
-        return 3;
+        return 4;
     } else {
-        return 2;
+        return 3;
     }
 }
 
@@ -137,6 +136,10 @@
         RMBTHistorySpeedGraph *graph = (item == (RMBTHistoryResultItem *)_downloadItemIndex) ? _historyResult.downloadGraph : _historyResult.uploadGraph;
         [cell drawSpeedGraph:graph];
         return cell;
+    } else if ([item isKindOfClass:[RMBTHistoryQOEResultItem class]]) {
+        RMBTHistoryResultItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierResult];
+        [cell setQOEItem:(RMBTHistoryQOEResultItem *)item];
+        return cell;
     } else {
         RMBTHistoryResultItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierResult];
         if (!cell) {
@@ -146,7 +149,8 @@
         [cell setTrafficLightInteractionEnabled:NO];
         if (indexPath.section == 0) {
             if ((_downloadItemIndex && indexPath.row == [_downloadItemIndex integerValue]) ||
-                (_uploadItemIndex && indexPath.row == [_uploadItemIndex integerValue])) {
+                (_uploadItemIndex && indexPath.row == [_uploadItemIndex integerValue]) ||
+                (_qosItemIndex && indexPath.row == [_qosItemIndex integerValue])) {
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else {
                 // For measurements that we don't have a graph for, just show an empty placeholder to keep alignment:
@@ -160,21 +164,26 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         BOOL toggled = NO;
+        NSInteger row = indexPath.row;
         if (_downloadItemIndex && indexPath.row == [_downloadItemIndex integerValue]) {
             self.downloadSpeedGraphExpanded = !self.downloadSpeedGraphExpanded;
             [(RMBTHistoryResultItemCell *)[tableView cellForRowAtIndexPath:indexPath] setAccessoryRotated:self.downloadSpeedGraphExpanded];
             toggled = YES;
+            row = indexPath.row+1;
         } else if (_uploadItemIndex && indexPath.row == [_uploadItemIndex integerValue]) {
             self.uploadSpeedGraphExpanded = !self.uploadSpeedGraphExpanded;
             [(RMBTHistoryResultItemCell *)[tableView cellForRowAtIndexPath:indexPath] setAccessoryRotated:self.uploadSpeedGraphExpanded];
             toggled = YES;
+            row = indexPath.row+1;
         }
         if (toggled) {
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section]]
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:indexPath.section]]
                                   withRowAnimation:UITableViewRowAnimationAutomatic];
         }
-    } else if (indexPath.section == 2) {
-        [self performSegueWithIdentifier:@"show_qos_group" sender:[_historyResult.qosResults objectAtIndex:indexPath.row]];
+    } else if ((indexPath.section == 3) && (indexPath.row > 0)) {
+        [self performSegueWithIdentifier:@"show_qos_group" sender:[_historyResult.qosResults objectAtIndex:indexPath.row - 1]];
+    } else {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
@@ -196,7 +205,8 @@
     switch (section) {
         case 0: return NSLocalizedString(@"Measurement", @"History result section title");
         case 1: return NSLocalizedString(@"Network", @"History result section title");
-        case 2: return NSLocalizedString(@"QoS", @"History result section title");
+        case 2: return NSLocalizedString(@"Quality", @"History result section title");
+        case 3: return NSLocalizedString(@"QoS", @"History result section title");
         default:
             NSAssert(false, @"Invalid section");
             return @"";
@@ -209,10 +219,28 @@
             return _measurementItems;
         case 1:
             return _historyResult.netItems;
-        case 2:
-            return [_historyResult.qosResults bk_map:^id(RMBTHistoryQoSGroupResult* qr) {
+        case 2: {
+            return _historyResult.qoeClassificationItems;
+        }
+        case 3: {
+            NSArray *qosResults = [_historyResult.qosResults bk_map:^id(RMBTHistoryQoSGroupResult* qr) {
                 return [qr toResultItem];
             }];
+            
+            if (qosResults.count > 0) {
+                NSString *summary = [RMBTHistoryQoSGroupResult summarize:_historyResult.qosResults withPercentage:YES];
+                NSString *percents = [RMBTHistoryQoSGroupResult summarizePercents:_historyResult.qosResults];
+                NSInteger classification = [RMBTHistoryResultItem classification:percents.doubleValue];
+                RMBTHistoryResultItem *item = [[RMBTHistoryResultItem alloc]
+                                               initWithTitle:NSLocalizedString(@"qos", @"qos")
+                                               value:summary
+                                               classification:classification
+                                               hasDetails:YES];
+                
+                return [@[item] arrayByAddingObjectsFromArray:qosResults];
+            }
+            return qosResults;
+        }
         default:
             NSParameterAssert(false);
             return nil;

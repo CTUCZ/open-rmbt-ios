@@ -19,11 +19,13 @@
 
 extern NSString * const RMBTTrafficLightTappedNotification;
 
-@class RMBTHistoryResultItem;
+@class RMBTHistoryResultItem, RMBTHistoryQOEResultItem;
 
 @interface RMBTHistoryResultItemCell : UITableViewCell
 
 -(void)setItem:(RMBTHistoryResultItem*)item;
+-(void)setQOEItem:(RMBTHistoryQOEResultItem*)item;
+
 -(void)setEmbedded:(BOOL)embedded; // Set to YES when displayed in map annotation
 
 // Toggles rotation of the system UIButton behind accessoryType. Used to make expand/collapse effect on
