@@ -221,18 +221,18 @@
 /* Loop mode details title */
 "Location" = "Standort";
 
-"video_telephony" = "Video Telephony";
-"video_conferencing" = "Video Conferencing";
+"video_telephony" = "Video telephony";
+"video_conferencing" = "Video conferencing";
 "cloud" = "Cloud";
 "video_uhd" = "Videos UHD";
 "video_sd" = "Videos SD";
 "video_hd" = "Videos HD";
 "voip" = "VoIP";
-"streaming_audio_streaming" = "Audio Streaming";
+"streaming_audio_streaming" = "Audio streaming";
 "web" = "Web";
 "messaging" = "Messaging";
-"gaming_download" = "Gaming Download";
+"gaming_download" = "Gaming download";
 "gaming" = "Gaming";
-"gaming_cloud" = "Gaming Cloud";
-"gaming_streaming" = "Gaming Streaming";
-"qos" = "QoS Tests";
+"gaming_cloud" = "Gaming cloud";
+"gaming_streaming" = "Gaming streaming";
+"qos" = "QoS tests";
