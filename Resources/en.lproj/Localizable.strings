@@ -1,154 +1,154 @@
-"Cancel" = "Abbrechen";
+"Cancel" = "Cancel";
 
 /* History column */
-"Date" = "Datum";
+"Date" = "Date";
 
 /* History column */
-"Device" = "Gerät";
+"Device" = "Device";
 
 /* Sync dialog button */
-"Enter code" = "Code eingeben";
+"Enter code" = "Enter code";
 
 /* Sync alert title */
-"Enter sync code:" = "Codeeingabe:";
+"Enter sync code:" = "Enter sync code:";
 
 /* Sync success alert msg */
-"History synchronisation was successful." = "Verlauf wurde erfolgreich synchronisiert.";
+"History synchronisation was successful." = "History synchronisation was successful";
 
 /* History result section title */
-"Measurement" = "Messung";
+"Measurement" = "Measurement";
 
 /* History result section title */
-"Network" = "Netz";
+"Network" = "Network";
 
 /* Sync success button */
-"Reload" = "Neu laden";
+"Reload" = "Reload";
 
 /* Sync dialog button */
-"Request code" = "Code anfordern";
+"Request code" = "Request code";
 
 /* Sync success alert title */
-"Success" = "Synchronisation erfolgreich";
+"Success" = "Success";
 
 /* Sync alert button */
 "Sync" = "Sync";
 
 /* Sync intro text */
-"To merge history from two different devices, request the sync code on one device and enter it on another device" = "Um die Messergebnisse von einem anderen Gerät zusammenzuführen, fordern Sie bitte das Sync-Code an dem anderen Gerät an und geben Sie es hier ein.";
+"To merge history from two different devices, request the sync code on one device and enter it on another device" = "To merge history from two different devices, request the sync code on one device and enter it on another device";
 
 /* Abort test alert title */
-"Abort Test" = "Abbrechen";
+"Abort Test" = "Abort Test";
 
 /* Abort test alert title */
-"Continue" = "Fortfahren";
+"Continue" = "Continue";
 
 /* Display code alert button */
-"Copy code" = "Code kopieren";
+"Copy code" = "Copy code";
 
 /* Abort test alert title */
-"Do you really want to abort the running test?" = "Wollen Sie den laufenden Test abbrechen?";
+"Do you really want to abort the running test?" = "Do you really want to abort the running test?";
 
 /* Display code alert button */
 "OK" = "OK";
 
 /* Display code alert title */
-"Sync Code" = "Sync-Code";
+"Sync Code" = "Sync Code";
 
 /* Filter section title */
-"Network Type" = "Zugang";
+"Network Type" = "Network Type";
 
 /* Sync error alert button */
-"Dismiss" = "OK";
+"Dismiss" = "Dismiss";
 
 /* Map overlay description */
-"Auto" = "Automatisch";
+"Auto" = "Auto";
 
 /* Map overlay description */
 "Heatmap" = "Heatmap";
 
 /* Google Maps Legal Notice nevigation title */
-"Legal Notice" = "Google Maps";
+"Legal Notice" = "Legal Notice";
 
 /* Table section header title */
-"Overlay" = "Kartenoverlay";
+"Overlay" = "Overlay";
 
 /* Map overlay description */
-"Points" = "Punkte";
+"Points" = "Points";
 
 /* Footer status label */
-"Aborted" = "Abgebrochen";
+"Aborted" = "Aborted";
 
 /* Alert view button */
-"Close" = "Abbrechen";
+"Close" = "Close";
 
 /* Alert view title */
-"Connection Error" = "Verbindungsfehler";
+"Connection Error" = "Connection Error";
 
 /* Alert view message */
-"Couldn't connect to test server." = "Es konnte keine Verbindung zum Testserver aufgebaut werden.";
+"Couldn't connect to test server." = "Couldn't connect to test server.";
 
 /* Alert view title */
-"Error" = "Fehler";
+"Error" = "Error";
 
 /* Alert view button */
-"Repeat Test" = "Test wiederholen";
+"Repeat Test" = "Repeat Test";
 
 /* Alert view title */
-"Test aborted" = "Test abgebrochen";
+"Test aborted" = "Test aborted";
 
 /* Alert view message */
-"Test was aborted because the app went into background. Tests can only be performed while the app is running in foreground." = "Test wurde abgebrochen, weil die App in den Hintergrund gegangen ist. Um Tests vollständig durchzuführen, muss die App im Vordergrund laufen.";
+"Test was aborted because the app went into background. Tests can only be performed while the app is running in foreground." = "Test was aborted because the app went into background. Tests can only be performed while the app is running in foreground.";
 
 /* Alert view message */
-"Test was completed, but the results couldn't be submitted to the test server." = "Test wurde abgeschlossen, aber die Ergebnisse konnten nicht zum Server geschickt werden.";
+"Test was completed, but the results couldn't be submitted to the test server." = "Test was completed, but the results couldn't be submitted to the test server.";
 
 /* Alert view message */
-"The connection to the test server was lost. Test aborted." = "Die Verbindung zum Testserver wurde abgebrochen.";
+"The connection to the test server was lost. Test aborted." = "The connection to the test server was lost. Test aborted.";
 
 /* Alert view button */
-"Try Again" = "Erneut versuchen";
+"Try Again" = "Try Again";
 
 /* Phase status label */
-"Fetching test parameters" = "Test-Parameter werden geladen...";
+"Fetching test parameters" = "Fetching test parameters";
 
 /* Phase status label */
-"Finalizing" = "Finalisierung";
+"Finalizing" = "Finalizing";
 
 /* Phase status label */
-"Initializing Upload" = "Upload Initialisierung";
+"Initializing Upload" = "Initializing Upload";
 
 /* Phase status label */
-"Initializing" = "Initialisierung";
+"Initializing" = "Initializing";
 
 /* Phase status label */
-"Pinging" = "Ping";
+"Pinging" = "Pinging";
 
 /* Phase status label */
 "Upload" = "Upload";
 
 /* Phase status label */
-"Waiting for test server" = "Warten auf den Testserver...";
+"Waiting for test server" = "Waiting for test server";
 
 /* Test view label */
-"Connection" = "Verbindung";
+"Connection" = "Connection";
 
 /* Speed suffix */
-"Mbps" = "Mbit/s";
+"Mbps" = "Mbps";
 
 /* Phase status label */
 "Download" = "Download";
 
 /* Test intro screen title when thre's no connectivity */
-"No network connection available" = "Keine Netzwerkverbindung verfügbar";
+"No network connection available" = "No network connection available";
 
 /* Map overlay description */
-"Shapes" = "PLZ";
+"Shapes" = "Shapes";
 
 /* Measurement item title */
-"Quality tests" = "Qualitätstests";
+"Quality tests" = "Quality tests";
 
 /* QoS Details section header */
-"About" = "Details";
+"About" = "About";
 
 /* Section header */
 "Details" = "Details";
@@ -158,68 +158,68 @@
 "QoS" = "QoS";
 
 /* Section header for successful test */
-"Test Failed" = "Test fehlgeschlagen";
+"Test Failed" = "Test Failed";
 
 /* Section header for successful test */
-"Test Succeeded" = "Test erfolgreich";
+"Test Succeeded" = "Test Succeeded";
 
 /* QoS Details section header */
 "Tests" = "Tests";
 
 /* Map overlay summary */
-"Map shows tests as community shapes" = "Karte zeigt Tests nach Gemeinden an";
+"Map shows tests as community shapes" = "Map shows tests as community shapes";
 
 /* Map overlay summary */
-"Map shows tests as heatmap" = "Karte zeigt die Tests als Heatmap an";
+"Map shows tests as heatmap" = "Map shows tests as heatmap";
 
 /* Map overlay summary */
-"Map shows tests as points" = "Karte zeigt die Tests als Punkte an";
+"Map shows tests as points" = "Map shows tests as points";
 
 /* Map overlay summary */
-"Map switches automatically between heatmap and points" = "Karte wechselt automatisch zwischen Heatmap und Punkten";
+"Map switches automatically between heatmap and points" = "Map switches automatically between heatmap and points";
 
 /* Section title in the map options view
    Title of the map options subview */
-"Map type" = "Kartentyp";
+"Map type" = "Map type";
 
 /* Loop mode alert message */
-"You are about to start tests in loop mode. The distance is set to %@ meters. The waiting time between tests is %@ minutes." = "Sie sind dabei Tests im Wiederholungsmodus zu starten. Die Distanz beträgt %@ Meter. Die Wartezeit ist %@ Minuten.";
+"You are about to start tests in loop mode. The distance is set to %@ meters. The waiting time between tests is %@ minutes." = "You are about to start tests in loop mode. The distance is set to %@ meters. The waiting time between tests is %@ minutes.";
 
 /* Loop mode details title */
-"Access" = "Zugang";
+"Access" = "Access";
 
 /* Loop mode details title */
-"Data usage" = "Datenverbrauch";
+"Data usage" = "Data usage";
 
 /* Loop mode header title */
-"Previous test" = "Letzter Test";
+"Previous test" = "Previous test";
 
 /* Screen title */
-"Loop Mode" = "Wiederholungsmodus";
+"Loop Mode" = "Loop Mode";
 
 /* Loop mode alert title */
-"Number of tests" = "Anzahl der Tests";
+"Number of tests" = "Number of tests";
 
 /* Loop mode alert button */
-"Start tests" = "Tests starten";
+"Start tests" = "Start tests";
 
 /* Intro screen button title */
-"Test Connection" = "Verbindung testen";
+"Test Connection" = "Test Connection";
 
 /* Confirmation dialog title 1/2 */
-"Activation and privacy" = "Aktivierung";
+"Activation and privacy" = "Activation and privacy";
 
 /* Confirmation dialog title 1/2 */
-"Usage" = "Nutzung";
+"Usage" = "Usage";
 
 /* Confirmation dialog subtitle */
-"Loop mode %@/2" = "Wiederholungsmodus %@/2";
+"Loop mode %@/2" = "Loop mode %@/2";
 
 /* Loop Mode status */
-"Waiting" = "Warten";
+"Waiting" = "Waiting";
 
 /* Loop mode details title */
-"Location" = "Standort";
+"Location" = "Location";
 
 "video_telephony" = "Video telephony";
 "video_conferencing" = "Video conferencing";
