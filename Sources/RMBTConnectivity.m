@@ -165,19 +165,25 @@
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        lookup = @{
-           CTRadioAccessTechnologyGPRS:         @(1),
-           CTRadioAccessTechnologyEdge:         @(2),
-           CTRadioAccessTechnologyWCDMA:        @(3),
-           CTRadioAccessTechnologyCDMA1x:       @(4),
-           CTRadioAccessTechnologyCDMAEVDORev0: @(5),
-           CTRadioAccessTechnologyCDMAEVDORevA: @(6),
-           CTRadioAccessTechnologyHSDPA:        @(8),
-           CTRadioAccessTechnologyHSUPA:        @(9),
-           CTRadioAccessTechnologyCDMAEVDORevB: @(12),
-           CTRadioAccessTechnologyLTE:          @(13),
-           CTRadioAccessTechnologyeHRPD:        @(14),
-        };
+        NSMutableDictionary *_lookup = [NSMutableDictionary dictionaryWithDictionary:@{
+            CTRadioAccessTechnologyGPRS:         @(1),
+            CTRadioAccessTechnologyEdge:         @(2),
+            CTRadioAccessTechnologyWCDMA:        @(3),
+            CTRadioAccessTechnologyCDMA1x:       @(4),
+            CTRadioAccessTechnologyCDMAEVDORev0: @(5),
+            CTRadioAccessTechnologyCDMAEVDORevA: @(6),
+            CTRadioAccessTechnologyHSDPA:        @(8),
+            CTRadioAccessTechnologyHSUPA:        @(9),
+            CTRadioAccessTechnologyCDMAEVDORevB: @(12),
+            CTRadioAccessTechnologyLTE:          @(13),
+            CTRadioAccessTechnologyeHRPD:        @(14),
+        }];
+        if (@available(iOS 14.0, *)) {
+            _lookup[CTRadioAccessTechnologyNRNSA] = @(41);
+            _lookup[CTRadioAccessTechnologyNR] = @(20);
+        }
+        
+        lookup = _lookup;
     });
     return lookup[value];
 }
@@ -187,7 +193,7 @@
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        lookup = @{
+        NSMutableDictionary *_lookup = [NSMutableDictionary dictionaryWithDictionary:@{
             CTRadioAccessTechnologyGPRS:            @"GPRS (2G)",
             CTRadioAccessTechnologyEdge:            @"EDGE (2G)",
             CTRadioAccessTechnologyWCDMA:           @"UMTS (3G)",
@@ -199,7 +205,13 @@
             CTRadioAccessTechnologyCDMAEVDORevB:    @"EVDOB (2G)",
             CTRadioAccessTechnologyLTE:             @"LTE (4G)",
             CTRadioAccessTechnologyeHRPD:           @"HRPD (2G)",
-         };
+        }];
+        if (@available(iOS 14.0, *)) {
+            _lookup[CTRadioAccessTechnologyNRNSA] = @"NRNSA (5G)";
+            _lookup[CTRadioAccessTechnologyNR] = @"NR (5G)";
+        }
+        
+        lookup = _lookup;
     });
     return lookup[value];
 }
@@ -208,7 +220,7 @@
 //    static NSDictionary *lookup = nil;
 //    static dispatch_once_t onceToken;
 //    dispatch_once(&onceToken, ^{
-//        lookup = @{
+//        NSMutableDictionary *_lookup = [NSMutableDictionary dictionaryWithDictionary:@{
 //            CTRadioAccessTechnologyGPRS:            @"2G",
 //            CTRadioAccessTechnologyEdge:            @"2G",
 //            CTRadioAccessTechnologyWCDMA:           @"3G",
@@ -220,7 +232,13 @@
 //            CTRadioAccessTechnologyCDMAEVDORevB:    @"2G",
 //            CTRadioAccessTechnologyLTE:             @"4G",
 //            CTRadioAccessTechnologyeHRPD:           @"2G",
-//        };
+//        }];
+//        if (@available(iOS 14.0, *)) {
+//            _lookup[CTRadioAccessTechnologyNRNSA] = @"5G";
+//            _lookup[CTRadioAccessTechnologyNR] = @"5G";
+//        }
+//        
+//        lookup = _lookup;
 //    });
 //    return lookup[value];
 //}
