@@ -48,6 +48,8 @@
 - (void)main {
     NSParameterAssert(!self.cancelled);
 
+    uint64_t startTime = RMBTCurrentNanos();
+    
     ns_type t = [self queryType];
     if (t == ns_t_invalid) {
         RMBTLog(@"..unknown record type %@, won't run", _record);
@@ -87,7 +89,12 @@
         if (h_errno == HOST_NOT_FOUND) {
             _rcode = @"NXDOMAIN";
         } else if (h_errno == TRY_AGAIN) {
-            _timedOut = YES;
+            NSInteger secondsAfterStart = (NSInteger)((RMBTCurrentNanos() - startTime) / NSEC_PER_SEC);
+            if (secondsAfterStart < [self timeoutSeconds]) {
+                _rcode = @"TRY_AGAIN";
+            } else {
+                _timedOut = YES;
+            }
         }
     } else {
         ns_msg handle;
