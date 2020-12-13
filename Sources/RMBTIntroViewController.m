@@ -173,7 +173,10 @@ static const CGFloat kRadiateAnimationStartOffsetCellular = -28.0f;
             loopVC.info = info;
             loopVC.modalPresentationStyle = UIModalPresentationFullScreen;
             loopVC.transitioningDelegate = self;
-            [self presentViewController:loopVC animated:YES completion:^{}];
+            UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:loopVC];
+            navController.modalPresentationStyle = UIModalPresentationFullScreen;
+            navController.transitioningDelegate = self;
+            [self presentViewController:navController animated:YES completion:^{}];
         } else {
             RMBTTestViewController *testVC = [[UIStoryboard storyboardWithName:@"TestStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"test_vc"];
             NSParameterAssert(testVC);

@@ -89,8 +89,8 @@
         if (h_errno == HOST_NOT_FOUND) {
             _rcode = @"NXDOMAIN";
         } else if (h_errno == TRY_AGAIN) {
-            NSInteger secondsAfterStart = (NSInteger)((RMBTCurrentNanos() - startTime) / NSEC_PER_SEC);
-            if (secondsAfterStart < [self timeoutSeconds]) {
+            uint64_t nanoSecondsAfterStart = RMBTCurrentNanos() - startTime;
+            if (nanoSecondsAfterStart < [self timeoutSeconds] * NSEC_PER_SEC) {
                 _rcode = @"TRY_AGAIN";
             } else {
                 _timedOut = YES;

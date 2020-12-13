@@ -49,6 +49,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.navigationController.navigationBar.titleTextAttributes = self.navigationBar.titleTextAttributes;
+    self.navigationController.navigationBar.barTintColor = self.navigationBar.barTintColor;
+    self.navigationItem.rightBarButtonItems = self.navigationBar.topItem.rightBarButtonItems;
+    self.navigationItem.titleView = self.navigationBar.topItem.titleView;
     self.progressView.progress = 0;
     [self updateCount];
     [self updateLastTestStatus:nil];
@@ -206,7 +210,7 @@
 }
 
 - (void)updateCount {
-    self.navigationBar.topItem.title = [NSString stringWithFormat:@"%@ %lu/%lu", NSLocalizedString(@"Loop Mode", @"Screen title"), (unsigned long)_info.current, (unsigned long)_info.total];
+    self.navigationController.navigationBar.topItem.title = [NSString stringWithFormat:@"%@ %lu/%lu", NSLocalizedString(@"Loop Mode", @"Screen title"), (unsigned long)_info.current, (unsigned long)_info.total];
 }
 
 - (void)updateLastTestStatus:(NSString*)status {
