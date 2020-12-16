@@ -109,13 +109,13 @@
 
     if (!_countdownTimer) {
         __weak typeof(self) weakSelf = self;
-        _countdownTimer = [NSTimer bk_scheduledTimerWithTimeInterval:1.0 block:^(NSTimer *timer) {
+        _countdownTimer = [NSTimer bk_scheduleTimerWithTimeInterval:1.0 repeats:YES usingBlock:^(NSTimer * _Nonnull timer) {
             typeof(self) strongSelf = weakSelf;
             if (!strongSelf) return;
             [strongSelf tick];
-        } repeats:YES];
+        }];
+        [_countdownTimer setFireDate: [NSDate date]];
     }
-    [_countdownTimer fire];
     [super startTestWithExtraParams:[self.info params]];
 }
 
@@ -251,13 +251,13 @@
 
     __weak typeof(self) weakSelf = self;
 
-    _interfaceInfoTimer = [NSTimer bk_scheduledTimerWithTimeInterval:3.0 block:^(NSTimer *timer) {
+    _interfaceInfoTimer = [NSTimer bk_scheduleTimerWithTimeInterval:3.0 repeats:YES usingBlock:^(NSTimer * _Nonnull timer) {
         typeof(self) strongSelf = weakSelf;
         if (!strongSelf) return;
         uint64_t currentTraffic = [RMBTConnectivity countTraffic:RMBTConnectivityInterfaceInfoTrafficTotal between:strongSelf->_initialInterfaceInfo and:[connectivity getInterfaceInfo]];
         [strongSelf updateTraffic:strongSelf->_bytesOnPreviousConnectivity + currentTraffic];
-    } repeats:YES];
-    [_interfaceInfoTimer fire];
+    }];
+    [_interfaceInfoTimer setFireDate:[NSDate date]];
 }
 
 - (void)updateTraffic:(uint64_t)bytes {
