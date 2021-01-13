@@ -93,9 +93,14 @@
                         //one SIM card - default case for now, use this
                         carrier = allCarriers[0];
                     }
-                    else if (allCarriers.count > 1) {
+                    else if (allCarriers.count > 1) { //iPhone 12 return 2 dictionaries. 1 for primary sim, 2 for eSim, but with empty values. We try find first with any carrier name. In the future we have to improve this code
                         //dual SIM, we cannot handle this at the moment
                         _dualSim = YES;
+                        for (CTCarrier *c in allCarriers) {
+                            if ((c.carrierName != nil) && (c.carrierName.length > 0)) {
+                                carrier = c;
+                            }
+                        }
                     }
                     else {
                         //no SIM inserted
@@ -106,7 +111,7 @@
                 carrier = [netinfo subscriberCellularProvider];
             }
             
-            if (!_dualSim) {
+            if (carrier) {
                 _networkName = carrier.carrierName;
                 _telephonyNetworkSimCountry = carrier.isoCountryCode;
                 _telephonyNetworkSimOperator = [NSString stringWithFormat:@"%@-%@", carrier.mobileCountryCode, carrier.mobileNetworkCode];
