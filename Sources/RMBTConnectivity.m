@@ -258,17 +258,17 @@
         if (_networkName) result[@"wifi_ssid"] = _networkName;
         if (_bssid) result[@"wifi_bssid"] = _bssid;
     } else if (self.networkType == RMBTNetworkTypeCellular) {
+        //TODO: Imrove this code. Sometimes iPhone 12 always send two dictionaries as dial sim. We take first where we have carrier name
         if (_dualSim) {
             result[@"dual_sim"] = @YES;
         }
-        else {
-            if (_cellularCode) {
-                result[@"network_type"] = _cellularCode;
-            }
-            result[@"telephony_network_sim_operator_name"] = RMBTValueOrNull(self.networkName);
-            result[@"telephony_network_sim_country"] = RMBTValueOrNull(_telephonyNetworkSimCountry);
-            result[@"telephony_network_sim_operator"] = RMBTValueOrNull(_telephonyNetworkSimOperator);
+
+        if (_cellularCode) {
+            result[@"network_type"] = _cellularCode;
         }
+        result[@"telephony_network_sim_operator_name"] = RMBTValueOrNull(self.networkName);
+        result[@"telephony_network_sim_country"] = RMBTValueOrNull(_telephonyNetworkSimCountry);
+        result[@"telephony_network_sim_operator"] = RMBTValueOrNull(_telephonyNetworkSimOperator);
         
     }
     return result;
