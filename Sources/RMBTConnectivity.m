@@ -77,70 +77,7 @@
     
     switch (_networkType) {
         case RMBTNetworkTypeCellular: {
-            // Get carrier name
-            CTTelephonyNetworkInfo *netinfo = [[CTTelephonyNetworkInfo alloc] init];
-            CTCarrier *carrier = nil;
-            _dualSim = NO;
-            
-            //use new methods on iOS12, as subscriberCellularProvider is deprecated
-            if (@available(iOS 12.1, *)) {
-                //iOS 12: This is now deprecated, as it could esims are not
-                //detected using this
-                NSDictionary *carrierDict = netinfo.serviceSubscriberCellularProviders;
-                if (carrierDict != nil) {
-                    NSArray *allCarriers = carrierDict.allValues;
-                    if (allCarriers.count == 1) {
-                        //one SIM card - default case for now, use this
-                        carrier = allCarriers[0];
-                    }
-                    else if (allCarriers.count > 1) { //iPhone 12 return 2 dictionaries. 1 for primary sim, 2 for eSim, but with empty values. We try find first with any carrier name. In the future we have to improve this code
-                        //dual SIM, we cannot handle this at the moment
-                        _dualSim = YES;
-                        for (CTCarrier *c in allCarriers) {
-                            if ((c.carrierName != nil) && (c.carrierName.length > 0)) {
-                                carrier = c;
-                            }
-                        }
-                    }
-                    else {
-                        //no SIM inserted
-                    }
-                }
-            }
-            else {
-                carrier = [netinfo subscriberCellularProvider];
-            }
-            
-            if (carrier) {
-                _networkName = carrier.carrierName;
-                _telephonyNetworkSimCountry = carrier.isoCountryCode;
-                _telephonyNetworkSimOperator = [NSString stringWithFormat:@"%@-%@", carrier.mobileCountryCode, carrier.mobileNetworkCode];
-            }
-            
-            if ([netinfo respondsToSelector:@selector(serviceCurrentRadioAccessTechnology)] ||
-                [netinfo respondsToSelector:@selector(currentRadioAccessTechnology)]) {
-//                _cellularCodeGenerationString = [self cellularCodeGenerationString:netinfo.currentRadioAccessTechnology];
-                
-                //iOS12
-                if (@available(iOS 12.1, *)) {
-                    if ([netinfo respondsToSelector:@selector(serviceCurrentRadioAccessTechnology)]) {
-                        NSDictionary *accessDict = netinfo.serviceCurrentRadioAccessTechnology;
-                       
-                        //set cellular type for phones with one SIM card
-                        if (accessDict != nil && accessDict.count == 1) {
-                            NSString* currentAccessTechnology = accessDict.allValues[0];
-                            _cellularCode = [self cellularCodeForCTValue:currentAccessTechnology];
-                            _cellularCodeDescription = [self cellularCodeDescriptionForCTValue:currentAccessTechnology];
-                        }
-                    }
-                }
-                else {
-                    // iOS7
-                    _cellularCode = [self cellularCodeForCTValue:netinfo.currentRadioAccessTechnology];
-                    _cellularCodeDescription = [self cellularCodeDescriptionForCTValue:netinfo.currentRadioAccessTechnology];
-                }
-            }
-
+            [self updateCellularInformation];
             break;
         }
             
@@ -164,6 +101,53 @@
     }
 }
 
+- (void)updateCellularInformation {
+    // Get carrier name
+    CTTelephonyNetworkInfo *netinfo = [[CTTelephonyNetworkInfo alloc] init];
+    CTCarrier *carrier = nil;
+    _dualSim = NO;
+    
+    //use new methods on iOS12, as subscriberCellularProvider is deprecated
+    if (@available(iOS 13.0, *)) {
+        //iOS 12: This is now deprecated, as it could esims are not
+        //detected using this
+        NSDictionary *providers = netinfo.serviceSubscriberCellularProviders;
+        
+        _dualSim = providers.count == 2;
+        
+        NSString *identifier = netinfo.dataServiceIdentifier;
+        if (identifier == nil) {
+            return;
+        }
+        carrier = providers[identifier];
+    }
+    else {
+        carrier = [netinfo subscriberCellularProvider];
+    }
+    
+    _networkName = carrier.carrierName;
+    _telephonyNetworkSimCountry = carrier.isoCountryCode;
+    _telephonyNetworkSimOperator = [NSString stringWithFormat:@"%@-%@", carrier.mobileCountryCode, carrier.mobileNetworkCode];
+    
+    //Get Current Access Technology
+    if (@available(iOS 13.0, *)) {
+        if ([netinfo respondsToSelector:@selector(serviceCurrentRadioAccessTechnology)]) {
+            NSDictionary *accessDict = netinfo.serviceCurrentRadioAccessTechnology;
+            NSString *identifier = netinfo.dataServiceIdentifier;
+            if (identifier) {
+                NSString* currentAccessTechnology = accessDict[identifier];
+                _cellularCode = [self cellularCodeForCTValue:currentAccessTechnology];
+                _cellularCodeDescription = [self cellularCodeDescriptionForCTValue:currentAccessTechnology];
+            }
+        }
+    }
+    else {
+        if ([netinfo respondsToSelector:@selector(currentRadioAccessTechnology)]) {
+            _cellularCode = [self cellularCodeForCTValue:netinfo.currentRadioAccessTechnology];
+            _cellularCodeDescription = [self cellularCodeDescriptionForCTValue:netinfo.currentRadioAccessTechnology];
+        }
+    }
+}
 
 - (NSNumber*)cellularCodeForCTValue:(NSString*)value {
     static NSDictionary *lookup = nil;
