@@ -167,7 +167,7 @@
             CTRadioAccessTechnologyLTE:          @(13),
             CTRadioAccessTechnologyeHRPD:        @(14),
         }];
-        if (@available(iOS 14.0, *)) {
+        if (@available(iOS 14.1, *)) {
             _lookup[CTRadioAccessTechnologyNRNSA] = @(41);
             _lookup[CTRadioAccessTechnologyNR] = @(20);
         }
@@ -195,7 +195,7 @@
             CTRadioAccessTechnologyLTE:             @"LTE (4G)",
             CTRadioAccessTechnologyeHRPD:           @"HRPD (2G)",
         }];
-        if (@available(iOS 14.0, *)) {
+        if (@available(iOS 14.1, *)) {
             _lookup[CTRadioAccessTechnologyNRNSA] = @"NRNSA (5G)";
             _lookup[CTRadioAccessTechnologyNR] = @"NR (5G)";
         }
