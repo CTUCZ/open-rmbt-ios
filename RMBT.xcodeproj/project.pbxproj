@@ -243,7 +243,6 @@
 		C77071031E96812A00043884 /* RMBTHistorySpeedGraphCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistorySpeedGraphCell.m; sourceTree = "<group>"; };
 		C77071051E96BCC100043884 /* UIView+RMBTSubviews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RMBTSubviews.h"; sourceTree = "<group>"; };
 		C77071061E96BCC100043884 /* UIView+RMBTSubviews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RMBTSubviews.m"; sourceTree = "<group>"; };
-		C774E17017B0EBBD00C6129F /* RMBTConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTConfig.h; sourceTree = "<group>"; };
 		C774EE7517920C9C00D623A3 /* RMBTConnectivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTConnectivity.h; sourceTree = "<group>"; };
 		C774EE7617920C9C00D623A3 /* RMBTConnectivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTConnectivity.m; sourceTree = "<group>"; };
 		C774EE781792F73D00D623A3 /* RMBTLocationTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTLocationTracker.h; sourceTree = "<group>"; };
@@ -386,6 +385,7 @@
 		E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryResultPercentView.m; sourceTree = "<group>"; };
 		E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQOEResultItemCell.m; sourceTree = "<group>"; };
 		E999A69624FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQOEResultItemCell.h; sourceTree = "<group>"; };
+		E9F686BE2726BD9000708290 /* RMBTConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RMBTConfig.h; path = Configs/RMBTConfig.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -582,9 +582,9 @@
 		C774EE7B1792FA3700D623A3 /* _Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E9F686BE2726BD9000708290 /* RMBTConfig.h */,
 				C7DF2BB417D91AE400A0E76B /* RMBTNews.h */,
 				C7DF2BB517D91AE400A0E76B /* RMBTNews.m */,
-				C774E17017B0EBBD00C6129F /* RMBTConfig.h */,
 				C59D7B451764E6CF003E9702 /* RMBTHelpers.h */,
 				C59D7B461764E6CF003E9702 /* RMBTHelpers.m */,
 				C7A053771784923700B3F6A2 /* RMBTBlockTypes.h */,
@@ -942,6 +942,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7DE149E173E8F610079477A /* Build configuration list for PBXNativeTarget "RMBT" */;
 			buildPhases = (
+				E9F686BD2726BD1400708290 /* Update Configurations */,
 				D2C080EC48316E5A53399219 /* [CP] Check Pods Manifest.lock */,
 				C7DE1474173E8F610079477A /* Sources */,
 				C7DE1475173E8F610079477A /* Frameworks */,
@@ -1113,7 +1114,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Scripts/add_build_infos.sh\"";
+			shellScript = "\"${SRCROOT}/Scripts/add_build_infos.sh\"\n";
 		};
 		D2C080EC48316E5A53399219 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1132,6 +1133,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E9F686BD2726BD1400708290 /* Update Configurations */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Update Configurations";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/update_configurations_from_private.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
