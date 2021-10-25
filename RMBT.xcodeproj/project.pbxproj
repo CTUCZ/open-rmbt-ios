@@ -1497,6 +1497,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7DE149E173E8F610079477A /* Build configuration list for PBXNativeTarget "RMBT" */;
 			buildPhases = (
+				E9F686BF2726E52800708290 /* Update Configurations */,
 				D2C080EC48316E5A53399219 /* [CP] Check Pods Manifest.lock */,
 				C7DE1474173E8F610079477A /* Sources */,
 				C7DE1475173E8F610079477A /* Frameworks */,
@@ -1504,7 +1505,6 @@
 				C79401F017FB021000484B8A /* Run Script: Add Build Infos */,
 				2EFF0F7A027008F7C09ABC37 /* [CP] Copy Pods Resources */,
 				14F69917C001DA1C19CAA4FE /* [CP] Embed Pods Frameworks */,
-				E9F686BF2726E52800708290 /* Update Configurations */,
 			);
 			buildRules = (
 			);
@@ -1714,8 +1714,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\"${SRCROOT}/Scripts/update_configurations_from_private.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
