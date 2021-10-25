@@ -18,7 +18,7 @@
 #import "RMBTHistoryResultItemCell.h"
 #import "RMBTHistoryResult.h"
 #import "UIView+RMBTSubviews.h"
-#import "RMBTHistoryResultPercentView.h"
+#import "RMBT-Swift.h"
 
 NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNotification";
 
@@ -33,6 +33,10 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
 @end
 
 @implementation RMBTHistoryResultItemCell
+
++ (NSString *)ID {
+    return @"RMBTHistoryResultItemCell";
+}
 
 - (void)setup {
     _trafficLightButton = [UIButton buttonWithType:UIButtonTypeCustom];

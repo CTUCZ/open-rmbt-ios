@@ -20,6 +20,7 @@
 #import "RMBTLoopDetailsViewController.h"
 #import "RMBTSpeed.h"
 #import "RMBTLocationTracker.h"
+#import "RMBT-Swift.h"
 
 @interface RMBTLoopModeTestViewController()<RMBTBaseTestViewControllerSubclass> {
     NSTimer *_countdownTimer;
@@ -330,8 +331,8 @@
             NSString *summary = [RMBTHistoryQoSGroupResult summarize:[RMBTHistoryQoSGroupResult resultsWithResponse:response] withPercentage:NO];
             [_measurementsViewController setValue:summary forMeasurement:RMBTLoopMeasurementQoS final:YES];
             dispatch_group_leave(done);
-        } error:^(NSError *error, NSDictionary *info) {
-            RMBTLog(@"Error fetching QoS test results: %@. Info: %@", error, info);
+        } error:^(NSError *error) {
+            RMBTLog(@"Error fetching QoS test results: %@", error);
             dispatch_group_leave(done);
         }];
     }

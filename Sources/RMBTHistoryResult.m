@@ -16,6 +16,7 @@
  */
 
 #import "RMBTHistoryResult.h"
+#import "RMBT-Swift.h"
 
 @implementation RMBTHistoryResultItem
 - (instancetype)initWithResponse:(NSDictionary*)response {
@@ -101,6 +102,7 @@
         _networkTypeServerDescription = response[@"network_type"];
         _uuid = response[@"test_uuid"];
         _deviceModel = response[@"model"];
+        _timeString = response[@"time_string"];
         
         NSTimeInterval t = [((NSNumber*)response[@"time"]) doubleValue] / 1000.0;
         _timestamp = [NSDate dateWithTimeIntervalSince1970:t];
@@ -146,19 +148,20 @@
         dispatch_group_t allDone = dispatch_group_create();
 
         dispatch_group_enter(allDone);
-        [[RMBTControlServer sharedControlServer] getHistoryQoSResultWithUUID:self.uuid success:^(id response) {
-            NSArray *results = [RMBTHistoryQoSGroupResult resultsWithResponse:response];
+        [[RMBTControlServer sharedControlServer] getHistoryQoSResultWithUUID:self.uuid success:^(QosMeasurementResultResponse *response) {
+            NSArray *results = [RMBTHistoryQoSGroupResult resultsWithResponse:[response json]];
             if (results.count > 0) {
                 _qosResults = results;
             }
             dispatch_group_leave(allDone);
-        } error:^(NSError *error, NSDictionary *info) {
-            RMBTLog(@"Error fetching QoS test results: %@. Info: %@", error, info);
+        } error:^(NSError *error) {
+            RMBTLog(@"Error fetching QoS test results: %@.", error);
             dispatch_group_leave(allDone);
         }];
 
         dispatch_group_enter(allDone);
-        [[RMBTControlServer sharedControlServer] getHistoryResultWithUUID:self.uuid fullDetails:NO success:^(id response) {
+        [[RMBTControlServer sharedControlServer] getHistoryResultWithUUID:self.uuid fullDetails:NO success:^(HistoryMeasurementResponse *r) {
+            NSDictionary *response = [r.measurements.firstObject json];
             if (response[@"network_type"]) {
                 _networkType = RMBTNetworkTypeMake([response[@"network_type"] integerValue]);
             }
@@ -200,8 +203,8 @@
 
             _dataState = RMBTHistoryResultDataStateBasic;
             dispatch_group_leave(allDone);
-        } error:^(NSError *error, NSDictionary *info) {
-            RMBTLog(@"Error fetching test results: %@. Info: %@", error, info);
+        } error:^(NSError *error) {
+            RMBTLog(@"Error fetching test results: %@. Info: %@", error);
             dispatch_group_leave(allDone);
         }];
 
@@ -218,21 +221,24 @@
         success();
     } else {
         // Fetch data
-        [[RMBTControlServer sharedControlServer] getHistoryResultWithUUID:self.uuid fullDetails:YES success:^(id response) {
-            _fullDetailsItems = [NSMutableArray array];
-            for (NSDictionary *r in response) {
-                [_fullDetailsItems addObject:[[RMBTHistoryResultItem alloc] initWithResponse:r]];
+        [[RMBTControlServer sharedControlServer] getFullDetailsHistoryResultWithUUID:self.uuid success:^(FullMapMeasurementResponse *response) {
+            self->_fullDetailsItems = [NSMutableArray array];
+            NSArray *responseDictionary = [response json][@"testresultdetail"];
+            for (NSDictionary *r in responseDictionary) {
+                [self->_fullDetailsItems addObject:[[RMBTHistoryResultItem alloc] initWithResponse:r]];
             }
-            _dataState = RMBTHistoryResultDataStateFull;
+            self->_dataState = RMBTHistoryResultDataStateFull;
             success();
-        } error:^(NSError *error, NSDictionary *info) {
+        } error:^(NSError *error) {
+            // TODO: propagate error here
         }];
     }
 }
 
 - (void)ensureSpeedGraph:(RMBTBlock)success {
     NSParameterAssert(_openTestUuid);
-    [[RMBTControlServer sharedControlServer] getHistoryOpenDataResultWithUUID:_openTestUuid success:^(id response) {
+    [[RMBTControlServer sharedControlServer] getHistoryOpenDataResultWithUUID:_openTestUuid success:^(RMBTOpenDataResponse *r) {
+        NSDictionary *response = [r json];
         _downloadGraph = [[RMBTHistorySpeedGraph alloc] initWithResponse:response[@"speed_curve"][@"download"]];
         _uploadGraph = [[RMBTHistorySpeedGraph alloc] initWithResponse:response[@"speed_curve"][@"upload"]];
         success();

@@ -12,4 +12,5 @@ xcuserdata
 .idea
 *.xcworkspace
 
-Configs/
+#Configs/
+Pods/

@@ -19,12 +19,16 @@
 
 #import "RMBTQoSTestGroup.h"
 
+@class RMBTHistoryResultPercentView;
+
 @interface RMBTQoSProgressCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
-@property (nonatomic, weak) IBOutlet UIProgressView *progressView;
+@property (nonatomic, strong) RMBTHistoryResultPercentView *percentView;
 @end
 
 @interface RMBTQoSProgressViewController : UITableViewController
 @property (nonatomic, strong) NSArray<RMBTQoSTestGroup*> *testGroups;
 - (void)updateProgress:(float)progress forGroup:(RMBTQoSTestGroup*)group;
+
+- (NSString *)progressString;
 @end

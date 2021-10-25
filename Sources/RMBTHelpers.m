@@ -97,9 +97,13 @@ NSString* RMBTAppTitle() {
     return appName;
 }
 
-NSString* RMBTMillisecondsStringWithNanos(uint64_t nanos) {
+NSString* RMBTMillisecondsStringWithNanos(uint64_t nanos, BOOL withMS) {
     NSNumber *ms = [NSNumber numberWithDouble:((double)nanos * 1.0e-6)];
-    return [NSString stringWithFormat:@"%@ ms", RMBTFormatNumber(ms)];
+    if (withMS) {
+        return [NSString stringWithFormat:@"%@ ms", RMBTFormatNumber(ms)];
+    } else {
+        return [NSString stringWithFormat:@"%@", RMBTFormatNumber(ms)];
+    }
 }
 
 NSString* RMBTSecondsStringWithNanos(uint64_t nanos) {

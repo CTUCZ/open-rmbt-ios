@@ -20,13 +20,11 @@
 
 #import "RMBTMapViewController.h"
 #import "RMBTMapOptionsViewController.h"
-#import "RMBTMapServer.h"
 #import "RMBTMapMeasurement.h"
 #import "RMBTMapCalloutView.h"
 #import "RMBTLocationTracker.h"
 
-#import "UIViewController+ModalBrowser.h"
-
+#import "RMBT-Swift.h"
 // These values are passed to map server and are multiplied by 2x on retina displays to get pixel sizes
 static NSUInteger kTileSizePoints = 256;
 static NSUInteger kPointDiameterSizePoints = 8;
@@ -38,7 +36,6 @@ static NSString* const kCameraBearingKey = @"map.camera.bearing";
 static NSString* const kCameraAngleKey   = @"map.camera.angle";
 
 @interface RMBTMapViewController()<GMSMapViewDelegate, RMBTMapOptionsViewControllerDelegate, UITabBarControllerDelegate> {
-    RMBTMapServer *_mapServer;
     RMBTMapOptions *_mapOptions;
     
     GMSMapView *_mapView;
@@ -57,12 +54,15 @@ static NSString* const kCameraAngleKey   = @"map.camera.angle";
 
 @implementation RMBTMapViewController
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.navigationController.tabBarItem.title = @" ";
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if ([self.navigationController.viewControllers firstObject] == self) {
-        [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"tab_map_selected"]];
-    }
-
+    
     self.toastBarButtonItem.enabled = NO;
 
     self.settingsBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"map_options"] style:UIBarButtonItemStylePlain target:self action:@selector(showMapOptions)];
@@ -134,9 +134,14 @@ static NSString* const kCameraAngleKey   = @"map.camera.angle";
     _tileSize = (NSUInteger)(kTileSizePoints * [UIScreen mainScreen].scale);
     _pointDiameterSize = (NSUInteger)(kPointDiameterSizePoints * [UIScreen mainScreen].scale);
 
-    _mapServer = [[RMBTMapServer alloc] init];
-    [_mapServer getMapOptionsWithSuccess:^(id response) {
-        _mapOptions = response;
+    // TODO: make this happen in viewDidLoad but then wait for map to complete
+    [RMBTMapServer.shared getMapOptionsWithSuccess:^(MapOptionResponse *response) {
+        self->_mapOptions = [[RMBTMapOptions alloc] initWithResponse:[response json]];
+        self.settingsBarButtonItem.enabled = YES;
+        self.toastBarButtonItem.enabled = YES;
+        [self setupMapLayers];
+        [self refresh];
+    } error:^(NSError * error) {
         self.settingsBarButtonItem.enabled = YES;
         self.toastBarButtonItem.enabled = YES;
         [self setupMapLayers];
@@ -167,21 +172,22 @@ static NSString* const kCameraAngleKey   = @"map.camera.angle";
 
 - (void)setupMapLayers {
     _mapLayerShapes = [GMSURLTileLayer tileLayerWithURLConstructor:^NSURL *(NSUInteger x, NSUInteger y, NSUInteger zoom) {
-        return [_mapServer tileURLForMapOverlayType:RMBTMapOptionsOverlayShapes.identifier x:x y:y zoom:zoom params:_tileParamsDictionary];
+        
+        return [RMBTMapServer.shared getTileUrlForMapOverlayType:RMBTMapOptionsOverlayShapes.identifier x:x y:y zoom:zoom params:self->_tileParamsDictionary];
     }];
     _mapLayerShapes.tileSize = _tileSize;
     _mapLayerShapes.map = _mapView;
     _mapLayerShapes.zIndex = 100;
 
     _mapLayerHeatmap = [GMSURLTileLayer tileLayerWithURLConstructor:^NSURL *(NSUInteger x, NSUInteger y, NSUInteger zoom) {
-        return [_mapServer tileURLForMapOverlayType:RMBTMapOptionsOverlayHeatmap.identifier x:x y:y zoom:zoom params:_tileParamsDictionary];
+        return [RMBTMapServer.shared getTileUrlForMapOverlayType:RMBTMapOptionsOverlayHeatmap.identifier x:x y:y zoom:zoom params:self->_tileParamsDictionary];
     }];
     _mapLayerHeatmap.tileSize = _tileSize;
     _mapLayerHeatmap.map = _mapView;
     _mapLayerHeatmap.zIndex = 101;
 
     _mapLayerPoints = [GMSURLTileLayer tileLayerWithURLConstructor:^NSURL *(NSUInteger x, NSUInteger y, NSUInteger zoom) {
-        return [_mapServer tileURLForMapOverlayType:RMBTMapOptionsOverlayPoints.identifier x:x y:y zoom:zoom params:_tileParamsDictionary];
+        return [RMBTMapServer.shared getTileUrlForMapOverlayType:RMBTMapOptionsOverlayPoints.identifier x:x y:y zoom:zoom params:self->_tileParamsDictionary];
     }];
     _mapLayerPoints.tileSize = _tileSize;
     _mapLayerPoints.map = _mapView;
@@ -288,7 +294,7 @@ static NSString* const kCameraAngleKey   = @"map.camera.angle";
     // If we're not showing points, ignore this tap
     if (!_mapLayerPoints.map) return;
     
-    [_mapServer getMeasurementsAtCoordinate:coordinate zoom:_mapView.camera.zoom params:_mapOptions.activeSubtype.markerParamsDictionary success:^(NSArray *measurements) {
+    [RMBTMapServer.shared getMeasurementsAtCoordinate:coordinate zoom:_mapView.camera.zoom params:_mapOptions.activeSubtype.markerParamsDictionary success:^(NSArray *measurements) {
         RMBTMapMeasurement *measurement = measurements.count > 0 ? [measurements objectAtIndex:0] : nil;
         [self deselectCurrentMarker];
         if (measurement) {
@@ -305,6 +311,8 @@ static NSString* const kCameraAngleKey   = @"map.camera.angle";
             _mapMarker.map = _mapView;
             _mapView.selectedMarker = _mapMarker;
         }
+    } error:^(NSError * error) {
+        
     }];
 }
 
@@ -314,7 +322,7 @@ static NSString* const kCameraAngleKey   = @"map.camera.angle";
 
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
     RMBTMapMeasurement *m = marker.userData;
-    [_mapServer getURLStringForOpenTestUUID:m.openTestUUID success:^(id url) {
+    [RMBTMapServer.shared getURLStringForOpenTestUUID:m.openTestUUID success:^(id url) {
         [self presentModalBrowserWithURLString:url];
     }];
 }

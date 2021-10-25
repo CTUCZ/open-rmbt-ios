@@ -20,6 +20,6 @@
 
 @interface RMBTLoopModeConfirmationViewController : UIViewController
 @property (strong, nonatomic) WKWebView *webView;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIView *toolbar;
 - (IBAction)accept:(id)sender;
 @end

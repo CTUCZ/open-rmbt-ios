@@ -16,7 +16,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "RMBTThroughput.h"
+
+@class RMBTThroughput;
 
 @interface RMBTHistorySpeedGraph : NSObject
 @property (nonatomic, readonly) NSArray<RMBTThroughput*> *throughputs;

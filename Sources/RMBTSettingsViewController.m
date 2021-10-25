@@ -16,8 +16,8 @@
  */
 
 #import "RMBTSettingsViewController.h"
-#import "RMBTSettings.h"
 #import "UIView+RMBTSubviews.h"
+#import "RMBT-Swift.h"
 
 typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
     RMBTSettingsSectionGeneral = 0,
@@ -128,7 +128,11 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [[RMBTControlServer sharedControlServer] updateWithCurrentSettings];
+    [[RMBTControlServer sharedControlServer] updateWithCurrentSettingsWithSuccess:^{
+        
+    } error:^(NSError * error) {
+        
+    }];
 }
 
 #pragma mark - Two-way binding helpers

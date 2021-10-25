@@ -19,6 +19,7 @@
 #import "RMBTMapOptionsTypesViewController.h"
 #import "RMBTMapOptionsOverlaysViewController.h"
 #import "RMBTMapOptionsFilterViewController.h"
+#import "RMBT-Swift.h"
 
 @interface RMBTMapOptionsViewController() {
     RMBTMapOptionsSubtype *_activeSubtypeAtStart;

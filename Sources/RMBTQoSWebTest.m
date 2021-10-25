@@ -57,7 +57,7 @@
 
 - (void)main {
     _startedAt = 0;
-    _statusCode = @(-1);
+    _statusCode = @(200);
     _rxBytesCount = @(0);
     _sem = dispatch_semaphore_create(0);
 

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_marker_3g.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

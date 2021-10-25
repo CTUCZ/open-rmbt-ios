@@ -1,0 +1,348 @@
+//
+//  RMBTMap2ViewController.swift
+//  RMBT
+//
+//  Created by Sergey Glushchenko on 19.08.2021.
+//  Copyright © 2021 appscape gmbh. All rights reserved.
+//
+
+import UIKit
+import MapKit
+
+class RMBTMap2ViewController: UIViewController {
+
+    private let showMapOptionsSegue = "show_map_options"
+    private let showMapTypeSegue = "show_map_type"
+    
+    @IBOutlet weak var layerOptionsButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var mapOptionsButton: UIButton!
+    @IBOutlet weak var myLocationButton: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var measurementsListBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var measurementsListViewContainer: UIView!
+    
+    private var tileSize: CGSize = CGSize(width: 256, height: 256)
+    private var pointDiameterSize: UInt = 12
+    
+    private var tileParamsDictionary: [String: Any] = [:]
+    
+    private var mapOptions: RMBTMapOptions?
+    
+    private var tileRenderer: MKTileOverlayRenderer?
+    
+    private var currentOverlay: RMBTMapOptionsOverlay = RMBTMapOptionsOverlayShapes
+    
+    private var currentPin: MKAnnotation?
+    
+    private lazy var mapResultsListViewController: RMBTMapResultsListViewController = {
+        let vc = UIStoryboard(name: "MainStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RMBTMapResultsListViewController") as! RMBTMapResultsListViewController
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        vc.onCloseHandler = { [weak self] in
+            self?.hideResults()
+        }
+        vc.onDetailsHandler = { [weak self] measurement in
+            self?.showInfo(for: measurement)
+        }
+        vc.onChooseHandler = { [weak self] measurement in
+            self?.scroll(to: measurement)
+        }
+        return vc
+    }()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+            return .darkContent
+        } else {
+            return .default
+        }
+    }
+    
+    // If set, blue pin will be shown at this location and map initially zoomed here. Used to
+    // display a test on the map.
+    public var initialLocation: CLLocation?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.navigationController?.tabBarItem.title = " "
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.layerOptionsButton.isEnabled = false
+        self.mapOptionsButton.isEnabled = false
+        
+        self.setNeedsStatusBarAppearanceUpdate()
+        setupMapView()
+        
+        self.closeButton.isHidden = initialLocation == nil
+        if initialLocation != nil {
+            // TODO: Show back button
+        }
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(mapDidTap(_:)))
+        self.mapView.addGestureRecognizer(tapGesture)
+        
+        self.reloadMapOptions()
+        self.prepareResultListView()
+    }
+    
+    private func prepareResultListView() {
+        let vc = self.mapResultsListViewController
+        self.measurementsListViewContainer.addSubview(vc.view)
+        NSLayoutConstraint.activate([
+            measurementsListViewContainer.leftAnchor.constraint(equalTo: vc.view.leftAnchor),
+            measurementsListViewContainer.rightAnchor.constraint(equalTo: vc.view.rightAnchor),
+            measurementsListViewContainer.topAnchor.constraint(equalTo: vc.view.topAnchor),
+            measurementsListViewContainer.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor)
+        ])
+//        self.hideResults()
+    }
+    
+    private func hideResults() {
+        UIView.animate(withDuration: 0.3) {
+            self.measurementsListBottomConstraint.constant = -(self.measurementsListViewContainer.bounds.height + self.view.safeAreaInsets.bottom)
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func showResults() {
+        UIView.animate(withDuration: 0.3) {
+            self.measurementsListBottomConstraint.constant = 5
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    private func setupMapView() {
+        if let initialLocation = initialLocation {
+            // If test coordinates were provided, center map at the coordinates:
+           self.mapView.setCenter(initialLocation.coordinate, animated: false)
+        } else if let location = RMBTLocationTracker.shared().location {
+            // Otherwise, see if we have user's location available...
+            self.mapView.setCenter(location.coordinate, animated: false)
+        }
+        
+        self.mapView.showsBuildings = false
+        self.mapView.showsUserLocation = true
+        self.mapView.isRotateEnabled = false
+        self.mapView.delegate = self
+    }
+    
+    private func setupMapLayer() {
+        if let overlay = self.mapOptions?.oldActiveOverlay {
+            if overlay == RMBTMapOptionsOverlayAuto {
+                    if self.currentOverlay == RMBTMapOptionsOverlayShapes && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+                        self.currentOverlay = RMBTMapOptionsOverlayPoints
+                    } else if self.currentOverlay == RMBTMapOptionsOverlayPoints && Int32(mapView.getZoom()) < RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+                        self.currentOverlay = RMBTMapOptionsOverlayHeatmap
+                    } else if self.currentOverlay != RMBTMapOptionsOverlayHeatmap {
+                        self.currentOverlay = RMBTMapOptionsOverlayHeatmap
+                    }
+            } else {
+                self.currentOverlay = overlay
+            }
+        }
+        let template = RMBTMapServer.shared.getTileUrlTemplate(self.currentOverlay.identifier, params: tileParamsDictionary)
+        let layer = MKTileOverlay(urlTemplate: template)
+        
+        layer.tileSize = tileSize
+        
+        if let overlay = tileRenderer?.overlay {
+            mapView.removeOverlay(overlay)
+        }
+        tileRenderer = MKTileOverlayRenderer(overlay: layer)
+        mapView.addOverlay(layer)
+        tileRenderer?.reloadData()
+    }
+
+    private func reloadMapOptions() {
+        RMBTControlServer.shared.updateWithCurrentSettings {
+            RMBTMapServer.shared.getMapOptions { [weak self] response in
+                self?.mapOptions = RMBTMapOptions(response: response)
+                self?.layerOptionsButton.isEnabled = true
+                self?.mapOptionsButton.isEnabled = true
+                self?.setupMapLayer()
+                self?.refresh()
+            } error: { [weak self] error in
+                Log.logger.error(error)
+                self?.setupMapLayer()
+                self?.refresh()
+            }
+        } error: { error in
+            Log.logger.error(error)
+        }        
+    }
+    
+    private func refresh() {
+        tileParamsDictionary = mapOptions?.oldActiveSubtype?.paramsDictionary() as? [String: Any] ?? [:]
+        tileParamsDictionary["size"] = "\(tileSize.width)"
+        tileParamsDictionary["point_diameter"] = "\(pointDiameterSize)"
+        setupMapLayer()
+    }
+    
+    @IBAction func myLocationButtonClick(_ sender: Any) {
+        guard let location = RMBTLocationTracker.shared().location else { return }
+        
+        self.mapView.setCenter(location.coordinate, animated: true)
+    }
+    
+    @IBAction func mapOptionsButtonClick(_ sender: Any) {
+        self.performSegue(withIdentifier: showMapOptionsSegue, sender: self)
+    }
+    
+    @IBAction func layerOptionsButtonClick(_ sender: Any) {
+        self.performSegue(withIdentifier: "show_map_type", sender: self)
+    }
+    
+    @IBAction func closeButtonClick(_ sender: Any) {
+    }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == self.showMapOptionsSegue,
+           let navController = segue.destination as? UINavigationController,
+           let vc = navController.topViewController as? RMBTMapOptions2ViewController {
+            navController.modalPresentationStyle = .overFullScreen
+            vc.modalPresentationStyle = .overFullScreen
+            vc.mapOptions = self.mapOptions
+            vc.delegate = self
+        } else if segue.identifier == self.showMapTypeSegue,
+           let vc = segue.destination as? RMBTMapOverlays2ViewController {
+            vc.mapOptions = self.mapOptions
+            vc.delegate = self
+        }
+    }
+    
+    private func deselectCurrentMarker() {
+        guard let pin = self.currentPin else { return }
+        self.mapView.deselectAnnotation(pin, animated: true)
+        self.mapView.removeAnnotation(pin)
+    }
+    
+    private func showInfo(for measurement: SpeedMeasurementResultResponse) {
+        // TODO: Show measurement info
+    }
+    
+    private func scroll(to measurement: SpeedMeasurementResultResponse) {
+        guard let uuid = measurement.openTestUuid,
+              let lat = measurement.latitude,
+              let long = measurement.longitude else { return }
+        self.deselectCurrentMarker()
+        
+        let pin = RMBTMeasurementPin(id: uuid, title: measurement.timeString, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+        self.currentPin = pin
+        self.mapView.addAnnotation(pin)
+        self.mapView.selectAnnotation(pin, animated: true)
+    }
+    
+    @objc private func mapDidTap(_ sender: UITapGestureRecognizer) {
+        guard sender.state == .ended else { return }
+        
+        // If we're not showing points, ignore this tap
+        guard self.currentOverlay == RMBTMapOptionsOverlayPoints else { return }
+        
+        let touchLocation = sender.location(in: mapView)
+        let coordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
+        let zoom = mapView.getZoom()
+        let params = self.mapOptions?.oldActiveSubtype?.markerParamsDictionary() as? [String: Any] ?? [:]
+        RMBTMapServer.shared.getMeasurementsAtCoordinate(coordinate, zoom: Int(zoom), params: params) { [weak self] response in
+            guard let self = self else { return }
+            
+            self.deselectCurrentMarker()
+            
+            guard let measurement = response.first,
+                  let uuid = measurement.openTestUuid,
+                  let lat = measurement.latitude,
+                  let long = measurement.longitude else {
+                self.hideResults()
+                return
+            }
+            
+            let pin = RMBTMeasurementPin(id: uuid, title: "Pin", coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+            self.currentPin = pin
+            self.mapResultsListViewController.measurements = response
+            self.mapView.addAnnotation(pin)
+            self.mapView.selectAnnotation(pin, animated: true)
+            self.showInfo(for: measurement)
+            self.showResults()
+        } error: { [weak self] error in
+            Log.logger.error(error)
+            guard let self = self else { return }
+            
+            self.deselectCurrentMarker()
+        }
+    }
+
+}
+
+extension RMBTMap2ViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        return tileRenderer!
+    }
+    
+    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+        if self.mapOptions?.oldActiveOverlay == RMBTMapOptionsOverlayAuto {
+            if self.currentOverlay == RMBTMapOptionsOverlayShapes && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+                self.setupMapLayer()
+            } else if self.currentOverlay == RMBTMapOptionsOverlayPoints && Int32(mapView.getZoom()) < RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+                self.setupMapLayer()
+            }
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is RMBTMeasurementPin {
+            let identifier = "Pin"
+            guard let image = UIImage(named: "map_pin_icon") else { return nil }
+            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            
+            annotationView.image = image
+            annotationView.canShowCallout = false
+            annotationView.centerOffset = CGPoint(x: 0, y: -image.size.height / 2)
+            return annotationView
+        }
+        return nil
+    }
+}
+
+extension RMBTMap2ViewController: RMBTMapOptions2ViewControllerDelegate {
+    func mapOptionsViewController(_ vc: RMBTMapOptions2ViewController, willDisappearWithChange isChange: Bool) {
+        guard isChange else { return }
+        
+        Log.logger.debug("Map options changed, refreshing...")
+        mapOptions?.saveSelection()
+        
+        switch(mapOptions?.oldMapViewType) {
+        case .hybrid: mapView.mapType = .hybrid
+        case .satellite: mapView.mapType = .satellite
+        case .standard: mapView.mapType = .standard
+        default: mapView.mapType = .standard
+        }
+        self.refresh()
+    }
+}
+
+extension RMBTMap2ViewController: RMBTMapOverlays2ViewControllerDelegate {
+    func mapOverlaysViewControllerMapTypeDidChange(_ vc: RMBTMapOverlays2ViewController) {
+        Log.logger.debug("Map options changed, refreshing...")
+        mapOptions?.saveSelection()
+        
+        switch(mapOptions?.oldMapViewType) {
+        case .hybrid: mapView.mapType = .hybrid
+        case .satellite: mapView.mapType = .satellite
+        case .standard: mapView.mapType = .standard
+        default: mapView.mapType = .standard
+        }
+    }
+    
+    func mapOverlaysViewControllerOverlayDidChange(_ vc: RMBTMapOverlays2ViewController) {
+        Log.logger.debug("Map overlay changed, refreshing...")
+        mapOptions?.saveSelection()
+        self.refresh()
+    }
+}

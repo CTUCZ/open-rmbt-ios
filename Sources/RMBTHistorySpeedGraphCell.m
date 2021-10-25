@@ -17,6 +17,7 @@
 
 #import "RMBTHistorySpeedGraphCell.h"
 #import "RMBTSpeed.h"
+#import "RMBT-Swift.h"
 
 @implementation RMBTHistorySpeedGraphCell
 
@@ -30,7 +31,7 @@
         [self.activityView stopAnimating];
         [self.speedGraphView clear];
         for (RMBTThroughput* t in graph.throughputs) {
-            [self.speedGraphView addValue:RMBTSpeedLogValue(t.kilobitsPerSecond) atTimeInterval:(double)t.endNanos/NSEC_PER_SEC];
+//            [self.speedGraphView addValue:RMBTSpeedLogValue(t.kilobitsPerSecond) atTimeInterval:(double)t.endNanos/NSEC_PER_SEC];
         }
         self.speedGraphView.hidden = NO;
     } else {

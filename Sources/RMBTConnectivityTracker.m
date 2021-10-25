@@ -15,14 +15,10 @@
  *
  */
 
-#import "GCNetworkReachability.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 
 #import "RMBTConnectivityTracker.h"
-
-// GCNetworkReachability is not made to be multiply instantiated, so we create a global
-// singleton first time a RMBTConnectivityTracker is instatiated
-static GCNetworkReachability* sharedReachability;
+#import "RMBT-Swift.h"
 
 // According to http://www.objc.io/issue-5/iOS7-hidden-gems-and-workarounds.html one should
 // keep a reference to CTTelephonyNetworkInfo live if we want to receive radio changed notifications (?)
@@ -47,8 +43,6 @@ static CTTelephonyNetworkInfo *sharedNetworkInfo;
         _queue = dispatch_queue_create("at.rtr.rmbt.connectivitytracker", DISPATCH_QUEUE_SERIAL);
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            sharedReachability = [GCNetworkReachability reachabilityForInternetConnection];
-            [sharedReachability startMonitoringNetworkReachabilityWithNotification];
             sharedNetworkInfo = [[CTTelephonyNetworkInfo alloc] init];
         });
     }
@@ -72,11 +66,13 @@ static CTTelephonyNetworkInfo *sharedNetworkInfo;
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityDidChange:) name:kGCNetworkReachabilityDidChangeNotification object:nil];
+        [NetworkReachability.shared addReachabilityCallback:^(NetworkReachabilityStatus status) {
+            [self reachabilityDidChangeToStatus:status];
+        }];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(radioDidChange:) name:CTServiceRadioAccessTechnologyDidChangeNotification object:nil];
 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(radioDidChange:) name:CTRadioAccessTechnologyDidChangeNotification object:nil];
-
-        [self reachabilityDidChangeToStatus:sharedReachability.currentReachabilityStatus];
+        [self reachabilityDidChangeToStatus:NetworkReachability.shared.status];
     });
 }
 
@@ -88,16 +84,10 @@ static CTTelephonyNetworkInfo *sharedNetworkInfo;
 }
 
 - (void)forceUpdate {
+    if (_lastConnectivity == nil) { return; }
     dispatch_async(_queue, ^{
         NSAssert(_lastConnectivity, @"Connectivity should be known by now");
         [_delegate connectivityTracker:self didDetectConnectivity:_lastConnectivity];
-    });
-}
-
-- (void)reachabilityDidChange:(NSNotification*)n {
-    GCNetworkReachabilityStatus status = [[n.userInfo objectForKey:kGCNetworkReachabilityStatusKey] integerValue];
-    dispatch_async(_queue, ^{
-        [self reachabilityDidChangeToStatus:status];
     });
 }
 
@@ -106,20 +96,21 @@ static CTTelephonyNetworkInfo *sharedNetworkInfo;
         // Note:Sometimes iOS delivers multiple notification w/o radio technology actually changing
         if (n.object == _lastRadioAccessTechnology) return;
         _lastRadioAccessTechnology = n.object;
-        [self reachabilityDidChangeToStatus:sharedReachability.currentReachabilityStatus];
+        [self reachabilityDidChangeToStatus:NetworkReachability.shared.status];
     });
 }
 
-- (void)reachabilityDidChangeToStatus:(GCNetworkReachabilityStatus)status {
+- (void)reachabilityDidChangeToStatus:(NetworkReachabilityStatus)status {
     RMBTNetworkType networkType;
     switch (status) {
-        case GCNetworkReachabilityStatusNotReachable:
+        case NetworkReachabilityStatusNotReachability:
+        case NetworkReachabilityStatusUnknown:
             networkType = RMBTNetworkTypeNone;
             break;
-        case GCNetworkReachabilityStatusWiFi:
+        case NetworkReachabilityStatusWifi:
             networkType = RMBTNetworkTypeWiFi;
             break;
-        case GCNetworkReachabilityStatusWWAN:
+        case NetworkReachabilityStatusMobile:
             networkType = RMBTNetworkTypeCellular;
             break;
         default:

@@ -18,6 +18,7 @@
 #import "RMBTBaseTestViewController.h"
 #import "CLLocation+RMBTFormat.h"
 #import "RMBTTestRunner.h"
+#import "RMBT-Swift.h"
 
 @interface RMBTBaseTestViewController ()<RMBTTestRunnerDelegate> {
     NSUInteger _finishedPercentage;

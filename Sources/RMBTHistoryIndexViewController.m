@@ -17,10 +17,11 @@
 
 #import "RMBTHistoryIndexViewController.h"
 #import "RMBTHistoryResult.h"
-#import "RMBTHistoryIndexCell.h"
 
 #import "RMBTHistoryResultViewController.h"
 #import "RMBTHistoryFilterViewController.h"
+
+#import "RMBT-Swift.h"
 
 static NSUInteger const kBatchSize = 25; // Entries to fetch from server
 
@@ -37,9 +38,6 @@ typedef NS_ENUM(NSUInteger, RMBTHistoryIndexViewControllerState) {
 };
 
 #define COLS 6
-static CGFloat kColumnWidthsPre6[COLS]  = {40,50,80,50,50,50};
-static CGFloat kColumnWidths6[COLS]     = {50,55,85,62,62,61};
-static CGFloat kColumnWidths6Plus[COLS] = {50,76,90,66,66,66};
 
 @interface RMBTHistoryIndexViewController ()<UIActionSheetDelegate, UIAlertViewDelegate> {
     UIAlertView *_enterCodeAlertView;
@@ -60,8 +58,12 @@ static CGFloat kColumnWidths6Plus[COLS] = {50,76,90,66,66,66};
     BOOL _firstAppearance;
     BOOL _showingLastTestResult;
 
-    CGFloat *_columnWidths;
+    NSArray<NSNumber *> *_columnWidths;
     BOOL _bigScreen;
+    
+    NSArray<NSNumber *> * kColumnWidthsPre6;
+    NSArray<NSNumber *> * kColumnWidths6;
+    NSArray<NSNumber *> * kColumnWidths6Plus;
 }
 
 @property (nonatomic, assign) RMBTHistoryIndexViewControllerState state;
@@ -69,14 +71,25 @@ static CGFloat kColumnWidths6Plus[COLS] = {50,76,90,66,66,66};
 
 @implementation RMBTHistoryIndexViewController
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.navigationController.tabBarItem.title = @" ";
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"tab_history_selected"]];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    kColumnWidthsPre6 = @[@(40),@(50),@(80),@(50),@(50),@(50)];
+    kColumnWidths6    = @[@(50),@(55),@(85),@(62),@(62),@(61)];
+     kColumnWidths6Plus = @[@(50),@(76),@(90),@(66),@(66),@(66)];
+    
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
 
     if (screenWidth == 375.0) {
@@ -111,12 +124,12 @@ static CGFloat kColumnWidths6Plus[COLS] = {50,76,90,66,66,66};
     e.bottom = tabBarHeight;
     self.tableView.scrollIndicatorInsets = e;
 
-    [self addHeaderColumnWithWidth:_columnWidths[0] title:@"" identifier:@"network"];
-    [self addHeaderColumnWithWidth:_columnWidths[1] title:NSLocalizedString(@"Date", @"History column") identifier:nil];
-    [self addHeaderColumnWithWidth:_columnWidths[2] title:NSLocalizedString(@"Device", @"History column")identifier:@"device"];
-    [self addHeaderColumnWithWidth:_columnWidths[3] title:@"Down" identifier:nil];
-    [self addHeaderColumnWithWidth:_columnWidths[4] title:@"Up" identifier:nil];
-    [self addHeaderColumnWithWidth:_columnWidths[5] title:@"Ping" identifier:nil];
+    [self addHeaderColumnWithWidth:_columnWidths[0].floatValue title:@"" identifier:@"network"];
+    [self addHeaderColumnWithWidth:_columnWidths[1].floatValue title:NSLocalizedString(@"Date", @"History column") identifier:nil];
+    [self addHeaderColumnWithWidth:_columnWidths[2].floatValue title:NSLocalizedString(@"Device", @"History column")identifier:@"device"];
+    [self addHeaderColumnWithWidth:_columnWidths[3].floatValue title:@"Down" identifier:nil];
+    [self addHeaderColumnWithWidth:_columnWidths[4].floatValue title:@"Up" identifier:nil];
+    [self addHeaderColumnWithWidth:_columnWidths[5].floatValue title:@"Ping" identifier:nil];
 }
 
 - (void)setState:(RMBTHistoryIndexViewControllerState)state {
@@ -137,13 +150,13 @@ static CGFloat kColumnWidths6Plus[COLS] = {50,76,90,66,66,66};
 
 - (void)refreshFilters {
     // Wait for UUID to be retrieved
-    [[RMBTControlServer sharedControlServer] performWithUUID:^{
+    [[RMBTControlServer sharedControlServer] ensureClientUuidWithSuccess:^(NSString * uuid) {
         [[RMBTControlServer sharedControlServer] getSettings:^{
             _allFilters = [RMBTControlServer sharedControlServer].historyFilters;
-        } error:^(NSError *error, NSDictionary *info) {
+        } error:^(NSError *error) {
             //TODO: handle error
         }];
-    } error:^(NSError *error, NSDictionary *info) {
+    } error:^(NSError * error) {
         // TODO: //handle error
     }];
 }
@@ -169,13 +182,14 @@ static CGFloat kColumnWidths6Plus[COLS] = {50,76,90,66,66,66};
     _loading = YES;
     BOOL firstBatch = (_nextBatchIndex == 0);
     NSUInteger offset = _nextBatchIndex * kBatchSize;
-    [[RMBTControlServer sharedControlServer] getHistoryWithFilters:_activeFilters length:kBatchSize offset:offset success:^(NSArray* responses) {
+    [[RMBTControlServer sharedControlServer] getHistoryWithFilters:_activeFilters length:kBatchSize offset:offset success:^(HistoryWithFiltersResponse* r) {
+        NSArray* responses = r.records;
         NSUInteger oldCount = _testResults.count;
         
         NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:responses.count];
         NSMutableArray *results = [NSMutableArray arrayWithCapacity:responses.count];
-        for (NSDictionary *r in responses) {
-            [results addObject:[[RMBTHistoryResult alloc] initWithResponse:r]];
+        for (HistoryItem *r in responses) {
+            [results addObject:[[RMBTHistoryResult alloc] initWithResponse:[r json]]];
             [indexPaths addObject:[NSIndexPath indexPathForRow: oldCount-1 + results.count inSection:0]];
         }
         
@@ -205,7 +219,7 @@ static CGFloat kColumnWidths6Plus[COLS] = {50,76,90,66,66,66};
         _loading = NO;
 
         [_tableViewController.refreshControl endRefreshing];
-    } error:^(NSError *error, NSDictionary *info) {
+    } error:^(NSError *error) {
         //TODO: handle loading error
     }];
 }
@@ -294,17 +308,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         RMBTHistoryIndexCell *cell = [tableView dequeueReusableCellWithIdentifier:kIndexCellReuseIdentifier];
         NSParameterAssert(cell);
 
-        [cell setColumnWidths:_columnWidths];
+//        [cell setColumnWidths:_columnWidths];
         
         RMBTHistoryResult *testResult = [_testResults objectAtIndex:indexPath.row];
 
-        cell.networkTypeLabel.text = testResult.networkTypeServerDescription;
+//        cell.networkTypeLabel.text = testResult.networkTypeServerDescription;
         cell.dateLabel.text = [testResult formattedTimestamp];
         if (_bigScreen) {
             cell.dateLabel.text = [cell.dateLabel.text stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         }
         
-        cell.deviceModelLabel.text = testResult.deviceModel;
+//        cell.deviceModelLabel.text = testResult.deviceModel;
         cell.downloadSpeedLabel.text = testResult.downloadSpeedMbpsString;
         cell.uploadSpeedLabel.text = testResult.uploadSpeedMbpsString;
         cell.pingLabel.text = testResult.shortestPingMillisString;
@@ -334,18 +348,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == kSyncSheetRequestCodeButtonIndex) {
-        [[RMBTControlServer sharedControlServer] getSyncCode:^(NSString* code) {
+        [[RMBTControlServer sharedControlServer] getSyncCode:^(GetSyncCodeResponse* response) {
             [UIAlertView bk_showAlertViewWithTitle:NSLocalizedString(@"Sync Code", @"Display code alert title")
-                                        message:code
+                                        message:response.codes.firstObject.code
                               cancelButtonTitle:NSLocalizedString(@"OK", @"Display code alert button")
                               otherButtonTitles:@[NSLocalizedString(@"Copy code", @"Display code alert button")]
                                         handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 if (buttonIndex == 1) {
                     // Copy
-                    [[UIPasteboard generalPasteboard] setString:code];
+                    [[UIPasteboard generalPasteboard] setString:response.codes.firstObject.code];
                 } // else just dismiss
             }];
-        } error:^(NSError *error, NSDictionary *info) {
+        } error:^(NSError *error) {
             //TODO: handle error
         }];
     } else if (buttonIndex == kSyncSheetEnterCodeButtonIndex) {
@@ -365,7 +379,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     if (alertView == _enterCodeAlertView && buttonIndex == 1) {
         NSString* code = [[alertView textFieldAtIndex:0].text uppercaseString];
 
-        [[RMBTControlServer sharedControlServer] syncWithCode:code success:^{
+        [[RMBTControlServer sharedControlServer] syncWithCode:code success:^(SyncCodeResponse *response){
             [UIAlertView bk_showAlertViewWithTitle:NSLocalizedString(@"Success", @"Sync success alert title")
                                       message:NSLocalizedString(@"History synchronisation was successful.", @"Sync success alert msg")
                             cancelButtonTitle:NSLocalizedString(@"Reload", @"Sync success button")
@@ -374,7 +388,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                                             [self refresh];
                                             [self refreshFilters];
                                         }];
-        } error:^(NSError *error, NSDictionary *response) {
+        } error:^(NSError *error) {
             NSString *title = error.userInfo[@"msg_title"];
             NSString *text = error.userInfo[@"msg_text"];
             [UIAlertView bk_showAlertViewWithTitle:title message:text cancelButtonTitle:NSLocalizedString(@"Dismiss",@"Alert view button") otherButtonTitles:@[] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {

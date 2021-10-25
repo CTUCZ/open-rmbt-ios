@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "map_pin_small_icon.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

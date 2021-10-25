@@ -28,12 +28,8 @@
 #import "RMBTConnectivity.h"
 
 @interface RMBTConnectivity()
-@property (nonatomic, readonly) NSString *bssid;
-@property (nonatomic, readonly) NSNumber *cellularCode;
 @property (nonatomic, readonly) NSString *cellularCodeDescription;
 //@property (nonatomic, readonly) NSString *cellularCodeGenerationString;
-@property (nonatomic, readonly) NSString *telephonyNetworkSimOperator;
-@property (nonatomic, readonly) NSString *telephonyNetworkSimCountry;
 @property (nonatomic, readonly) BOOL dualSim;
 @end
 
@@ -53,7 +49,7 @@
         case RMBTNetworkTypeNone:
             return @"Not connected";
         case RMBTNetworkTypeWiFi:
-            return @"Wi-Fi";
+            return @"WLAN";
         case RMBTNetworkTypeCellular:
             if (_cellularCodeDescription) {
                 return _cellularCodeDescription;
@@ -125,7 +121,11 @@
         carrier = [netinfo subscriberCellularProvider];
     }
     
-    _networkName = carrier.carrierName;
+    if ([carrier.carrierName isEqualToString:@"Carrier"]) {
+        _networkName = nil;
+    } else {
+        _networkName = carrier.carrierName;
+    }
     _telephonyNetworkSimCountry = carrier.isoCountryCode;
     _telephonyNetworkSimOperator = [NSString stringWithFormat:@"%@-%@", carrier.mobileCountryCode, carrier.mobileNetworkCode];
     
@@ -183,21 +183,21 @@
     
     dispatch_once(&onceToken, ^{
         NSMutableDictionary *_lookup = [NSMutableDictionary dictionaryWithDictionary:@{
-            CTRadioAccessTechnologyGPRS:            @"GPRS (2G)",
-            CTRadioAccessTechnologyEdge:            @"EDGE (2G)",
-            CTRadioAccessTechnologyWCDMA:           @"UMTS (3G)",
-            CTRadioAccessTechnologyCDMA1x:          @"CDMA (2G)",
-            CTRadioAccessTechnologyCDMAEVDORev0:    @"EVDO0 (2G)",
-            CTRadioAccessTechnologyCDMAEVDORevA:    @"EVDOA (2G)",
-            CTRadioAccessTechnologyHSDPA:           @"HSDPA (3G)",
-            CTRadioAccessTechnologyHSUPA:           @"HSUPA (3G)",
-            CTRadioAccessTechnologyCDMAEVDORevB:    @"EVDOB (2G)",
-            CTRadioAccessTechnologyLTE:             @"LTE (4G)",
-            CTRadioAccessTechnologyeHRPD:           @"HRPD (2G)",
+            CTRadioAccessTechnologyGPRS:            @"2G (GSM)",
+            CTRadioAccessTechnologyEdge:            @"2G (EDGE)",
+            CTRadioAccessTechnologyWCDMA:           @"3G (UMTS)",
+            CTRadioAccessTechnologyCDMA1x:          @"2G (CDMA)",
+            CTRadioAccessTechnologyCDMAEVDORev0:    @"2G (EVDO_0)",
+            CTRadioAccessTechnologyCDMAEVDORevA:    @"2G (EVDO_A)",
+            CTRadioAccessTechnologyHSDPA:           @"3G (HSDPA)",
+            CTRadioAccessTechnologyHSUPA:           @"3G (HSUPA)",
+            CTRadioAccessTechnologyCDMAEVDORevB:    @"2G (EVDO_B)",
+            CTRadioAccessTechnologyLTE:             @"4G (LTE)",
+            CTRadioAccessTechnologyeHRPD:           @"2G (HRPD)",
         }];
         if (@available(iOS 14.1, *)) {
-            _lookup[CTRadioAccessTechnologyNRNSA] = @"NRNSA (5G)";
-            _lookup[CTRadioAccessTechnologyNR] = @"NR (5G)";
+            _lookup[CTRadioAccessTechnologyNRNSA] = @"5G (NRNSA)";
+            _lookup[CTRadioAccessTechnologyNR] = @"5G (NR)";
         }
         
         lookup = _lookup;

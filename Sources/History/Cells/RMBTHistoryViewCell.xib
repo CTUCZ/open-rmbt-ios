@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RMBTHistoryViewCell" customModule="RMBT" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="130" height="32"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="130" height="32"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQf-cf-eqK">
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="32"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUE-sd-nZe">
+                                <rect key="frame" x="16" y="5.5" width="86" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Phm-Tb-D50">
+                                <rect key="frame" x="108" y="5" width="14" height="22"/>
+                                <state key="normal" image="close_btn_dark"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Phm-Tb-D50" secondAttribute="trailing" constant="8" id="2e8-e7-FhH"/>
+                            <constraint firstItem="oUE-sd-nZe" firstAttribute="centerY" secondItem="OQf-cf-eqK" secondAttribute="centerY" id="6A0-Th-csd"/>
+                            <constraint firstItem="oUE-sd-nZe" firstAttribute="leading" secondItem="OQf-cf-eqK" secondAttribute="leading" constant="16" id="6EZ-4g-YtM"/>
+                            <constraint firstAttribute="height" constant="32" id="F93-Bz-dSc"/>
+                            <constraint firstItem="Phm-Tb-D50" firstAttribute="centerY" secondItem="OQf-cf-eqK" secondAttribute="centerY" id="Xhl-P2-E8Z"/>
+                            <constraint firstItem="Phm-Tb-D50" firstAttribute="leading" secondItem="oUE-sd-nZe" secondAttribute="trailing" constant="6" id="x8e-wy-AMI"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="OQf-cf-eqK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Bw7-dL-Ilr"/>
+                <constraint firstItem="OQf-cf-eqK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="JIc-tY-YWW"/>
+                <constraint firstAttribute="bottom" secondItem="OQf-cf-eqK" secondAttribute="bottom" id="Ph7-DU-DD6"/>
+                <constraint firstAttribute="trailing" secondItem="OQf-cf-eqK" secondAttribute="trailing" id="zwq-WA-SYk"/>
+            </constraints>
+            <size key="customSize" width="130" height="50"/>
+            <connections>
+                <outlet property="rootView" destination="OQf-cf-eqK" id="9Vj-b3-erB"/>
+                <outlet property="titleLabel" destination="oUE-sd-nZe" id="qWN-cs-7XV"/>
+            </connections>
+            <point key="canvasLocation" x="21.739130434782609" y="103.79464285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="close_btn_dark" width="14" height="14"/>
+    </resources>
+</document>

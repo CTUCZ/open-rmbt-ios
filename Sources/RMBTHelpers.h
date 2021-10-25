@@ -46,7 +46,7 @@ extern NSString* RMBTAppTitle(void);
 NS_INLINE id RMBTValueOrNull(id value) { return value ?: [NSNull null]; }
 NS_INLINE id RMBTValueOrString(id value, NSString *result) { return value ?: result; }
 
-NSString* RMBTMillisecondsStringWithNanos(uint64_t nanos);
+NSString* RMBTMillisecondsStringWithNanos(uint64_t nanos, BOOL withMS);
 NSString* RMBTSecondsStringWithNanos(uint64_t nanos);
 
 // Returns mm:ss string from time interval

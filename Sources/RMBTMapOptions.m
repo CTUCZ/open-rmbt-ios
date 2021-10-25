@@ -15,8 +15,8 @@
  *
  */
 
-#import "RMBTSettings.h"
 #import "RMBTMapOptions.h"
+#import "RMBT-Swift.h"
 
 RMBTMapOptionsOverlay* RMBTMapOptionsOverlayAuto;
 RMBTMapOptionsOverlay* RMBTMapOptionsOverlayHeatmap;
@@ -167,20 +167,6 @@ NSString * const RMBTMapOptionsToastInfoValues = @"values";
 
 @end
 
-
-#pragma mark - RMBTMapOptionsOverlay
-
-@implementation RMBTMapOptionsOverlay
-- (instancetype)initWithIdentifier:(NSString*)identifier localizedDescription:(NSString*)localizedDescription localizedSummary:(NSString*)localizedSummary {
-    if (self = [super init]) {
-        _identifier = identifier;
-        _localizedDescription = localizedDescription;
-        _localizedSummary = localizedSummary;
-    }
-    return self;
-}
-@end
-
 #pragma mark - RMBTMapOptionsType
 
 @interface RMBTMapOptionsType() {
@@ -279,50 +265,4 @@ NSString * const RMBTMapOptionsToastInfoValues = @"values";
     return result;
 }
 
-@end
-
-#pragma mark - RMBTMapOptionsFilterValue
-
-@implementation RMBTMapOptionsFilterValue
-
-- (instancetype)initWithResponse:(id)response {
-    if (self = [super init]) {
-        _title = response[@"title"];
-        _summary = response[@"summary"];
-        _isDefault = [response[@"default"] boolValue];
-        NSMutableDictionary *d = [NSMutableDictionary dictionaryWithDictionary:response];
-        [d removeObjectsForKeys:@[@"title", @"summary", @"default"]];
-        
-        // Remove empty keys
-        for (id key in d) {
-            if ([d[key] isEqual:@""]) [d removeObjectForKey:key];
-        }
-        
-        _info = d;
-    }
-    return self;
-}
-@end
-
-#pragma mark - RMBTMapOptionsFilter
-
-@implementation RMBTMapOptionsFilter
-
-- (instancetype)initWithResponse:(id)response {
-    if (self = [super init]) {
-        _title = response[@"title"];
-        _possibleValues = [NSMutableArray array];
-        for (id subresponse in response[@"options"]) {
-            RMBTMapOptionsFilterValue *filterValue = [[RMBTMapOptionsFilterValue alloc] initWithResponse:subresponse];
-            if (filterValue.isDefault) _activeValue = filterValue;
-            [((NSMutableArray*)_possibleValues) addObject:filterValue];
-        }
-    }
-    return self;
-}
-@end
-
-#pragma mark - RMBTMapOptionsSelection
-
-@implementation RMBTMapOptionsSelection
 @end

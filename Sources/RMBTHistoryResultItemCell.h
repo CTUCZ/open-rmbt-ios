@@ -23,6 +23,8 @@ extern NSString * const RMBTTrafficLightTappedNotification;
 
 @interface RMBTHistoryResultItemCell : UITableViewCell
 
++ (NSString *)ID;
+
 -(void)setItem:(RMBTHistoryResultItem*)item;
 -(void)setQOEItem:(RMBTHistoryQOEResultItem*)item;
 

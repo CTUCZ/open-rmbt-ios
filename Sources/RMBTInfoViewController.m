@@ -21,9 +21,9 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
-#import "RMBTSettings.h"
-#import "UIViewController+ModalBrowser.h"
 #import "UITableViewCell+RMBTHeight.h"
+
+#import "RMBT-Swift.h"
 
 typedef NS_ENUM(NSUInteger, RMBTInfoViewControllerSection) {
     RMBTInfoViewControllerSectionLinks = 0,
@@ -45,9 +45,11 @@ typedef NS_ENUM(NSUInteger, RMBTInfoViewControllerSection) {
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"tab_info_selected"]];
 
     self.buildDetailsLabel.lineBreakMode = NSLineBreakByCharWrapping;
-    self.buildDetailsLabel.text = [NSString stringWithFormat:@"%@ %@\n(%@)",
+    self.buildDetailsLabel.text = [NSString stringWithFormat:@"%@(%@) %@\n(%@)",
                                    [[NSBundle mainBundle] infoDictionary]
                                     [@"CFBundleShortVersionString"],
+                                   [[NSBundle mainBundle] infoDictionary]
+                                    [@"CFBundleVersion"],
                                    RMBTBuildInfoString(),
                                    RMBTBuildDateString()];
 
@@ -77,6 +79,10 @@ typedef NS_ENUM(NSUInteger, RMBTInfoViewControllerSection) {
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.tabBarController.delegate = nil;
+}
+
+- (IBAction)backButtonClick:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

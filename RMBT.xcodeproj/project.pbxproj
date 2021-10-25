@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7ABF93939D07A19DF172C790 /* libPods-RMBT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B5D1F96A5D607CBD1C4902 /* libPods-RMBT.a */; };
 		C573F2A5175281D300C728FC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C573F2A4175281D300C728FC /* MapKit.framework */; };
 		C573F2B1175294A500C728FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C573F2B0175294A500C728FC /* CoreLocation.framework */; };
 		C59D7B471764E6CF003E9702 /* RMBTHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C59D7B461764E6CF003E9702 /* RMBTHelpers.m */; };
@@ -44,20 +43,16 @@
 		C737AEE91E7D7C53007962EB /* RMBTQoSControlConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C737AEE81E7D7C53007962EB /* RMBTQoSControlConnection.m */; };
 		C737AEEC1E7D8F59007962EB /* RMBTQoSCCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C737AEEB1E7D8F59007962EB /* RMBTQoSCCTest.m */; };
 		C737AEF01E7D9F25007962EB /* RMBTQoSControlConnectionParams.m in Sources */ = {isa = PBXBuildFile; fileRef = C737AEEF1E7D9F25007962EB /* RMBTQoSControlConnectionParams.m */; };
-		C73E792717673EBE0009855E /* RMBTSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C73E792617673EBE0009855E /* RMBTSettings.m */; };
 		C73E792A176761630009855E /* RMBTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73E7929176761630009855E /* RMBTSettingsViewController.m */; };
 		C741B62C1DD99D7A0097D84D /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C741B62B1DD99D7A0097D84D /* libresolv.tbd */; };
 		C7459B4D1EAC0B8A00042A42 /* RMBTQoSNonTransparentProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C7459B4C1EAC0B8A00042A42 /* RMBTQoSNonTransparentProxyTest.m */; };
 		C7535B4818298F84003A8CC8 /* UITableViewCell+RMBTHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = C7535B4718298F84003A8CC8 /* UITableViewCell+RMBTHeight.m */; };
-		C75A1189179B12D800E2444F /* RMBTTOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75A1188179B12D800E2444F /* RMBTTOSViewController.m */; };
 		C75A118E179B3DEC00E2444F /* RMBTHistoryResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75A118D179B3DEC00E2444F /* RMBTHistoryResultViewController.m */; };
 		C75A1191179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75A1190179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.m */; };
 		C75FF5C817B15DA600A58056 /* RMBTInfoTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5C717B15DA600A58056 /* RMBTInfoTextViewController.m */; };
-		C75FF5CB17B16ABE00A58056 /* RMBTMapServer.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5CA17B16ABE00A58056 /* RMBTMapServer.m */; };
 		C75FF5CE17B16C2700A58056 /* RMBTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5CD17B16C2700A58056 /* RMBTMapViewController.m */; };
 		C75FF5D517B1970600A58056 /* RMBTMapOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5D417B1970600A58056 /* RMBTMapOptions.m */; };
 		C75FF5D817B2602F00A58056 /* RMBTMapOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5D717B2602E00A58056 /* RMBTMapOptionsViewController.m */; };
-		C764BEED1F0F65BF00F5CF80 /* RMBTLoopInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C764BEEC1F0F65BF00F5CF80 /* RMBTLoopInfo.m */; };
 		C76B8C87177709C800925BE1 /* RMBTThroughputHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = C76B8C86177709C800925BE1 /* RMBTThroughputHistory.m */; };
 		C7704EA31E95531B00044AF6 /* RMBTHistorySpeedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = C7704EA21E95531B00044AF6 /* RMBTHistorySpeedGraph.m */; };
 		C77071041E96812A00043884 /* RMBTHistorySpeedGraphCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C77071031E96812A00043884 /* RMBTHistorySpeedGraphCell.m */; };
@@ -66,9 +61,7 @@
 		C774EE7A1792F73D00D623A3 /* RMBTLocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = C774EE791792F73D00D623A3 /* RMBTLocationTracker.m */; };
 		C774EE7F1793676700D623A3 /* RMBTHistoryIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C774EE7E1793676700D623A3 /* RMBTHistoryIndexViewController.m */; };
 		C774EE8317936AF700D623A3 /* RMBTHistoryResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C774EE8217936AF700D623A3 /* RMBTHistoryResult.m */; };
-		C774EE861793742900D623A3 /* RMBTHistoryIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C774EE851793742900D623A3 /* RMBTHistoryIndexCell.m */; };
 		C7770889179987B700BB478B /* RMBTInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7770888179987B700BB478B /* RMBTInfoViewController.m */; };
-		C77708941799CB3F00BB478B /* UIViewController+ModalBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C77708931799CB3F00BB478B /* UIViewController+ModalBrowser.m */; };
 		C777D97D1DD8AA8700D1C824 /* RMBTQoSTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D97C1DD8AA8700D1C824 /* RMBTQoSTestRunner.m */; };
 		C777D9801DD8AEC000D1C824 /* RMBTQoSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D97F1DD8AEC000D1C824 /* RMBTQoSTest.m */; };
 		C777D9831DD8AED000D1C824 /* RMBTQoSDNSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D9821DD8AED000D1C824 /* RMBTQoSDNSTest.m */; };
@@ -82,56 +75,198 @@
 		C783F68C1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C783F68B1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.m */; };
 		C783F6911EDC7EB4001CB2F9 /* loop_mode_info.html in Resources */ = {isa = PBXBuildFile; fileRef = C783F68D1EDC7EB4001CB2F9 /* loop_mode_info.html */; };
 		C783F6921EDC7EB4001CB2F9 /* loop_mode_info2.html in Resources */ = {isa = PBXBuildFile; fileRef = C783F68F1EDC7EB4001CB2F9 /* loop_mode_info2.html */; };
-		C78D26BF1764A65D008143DF /* RMBTThroughput.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D26BE1764A65D008143DF /* RMBTThroughput.m */; };
 		C7912CB6177D581F004AD2A4 /* RMBTSpeed.m in Sources */ = {isa = PBXBuildFile; fileRef = C7912CB5177D581F004AD2A4 /* RMBTSpeed.m */; };
-		C7916EB2173E9B6400B40152 /* RMBTControlServer.m in Sources */ = {isa = PBXBuildFile; fileRef = C7916EB1173E9B6400B40152 /* RMBTControlServer.m */; };
 		C7916EB7173EB65F00B40152 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7916EB6173EB65F00B40152 /* SystemConfiguration.framework */; };
 		C7916EB9173EB68200B40152 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7916EB8173EB68200B40152 /* MobileCoreServices.framework */; };
 		C7978FD717F1D07100BF986C /* RMBTConnectivityTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = C7978FD617F1D07100BF986C /* RMBTConnectivityTracker.m */; };
 		C79C94A617713106000CF5EE /* RMBTLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C79C94A517713106000CF5EE /* RMBTLogger.m */; };
-		C79E7B081DF5884700CFC95F /* RMBTHistoryQoSGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79E7B071DF5884700CFC95F /* RMBTHistoryQoSGroupViewController.m */; };
 		C7A19B231E919BDD0044B6C8 /* RMBTQoSWebTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A19B221E919BDD0044B6C8 /* RMBTQoSWebTest.m */; };
-		C7A25B3917D95DAB00B7A44B /* RMBTTOS.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A25B3817D95DAB00B7A44B /* RMBTTOS.m */; };
 		C7A4B75A17B43C8400176B92 /* RMBTMapMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A4B75917B43C8400176B92 /* RMBTMapMeasurement.m */; };
 		C7A8CC071DFDAC7E00D9E979 /* RMBTHistoryQoSSingleResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A8CC061DFDAC7E00D9E979 /* RMBTHistoryQoSSingleResult.m */; };
-		C7B15A34180AA6810097676F /* RMBTStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B15A33180AA6810097676F /* RMBTStatsViewController.m */; };
-		C7B4A99F17E8D3E700223ABD /* RMBTPing.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B4A99E17E8D3E700223ABD /* RMBTPing.m */; };
 		C7B4E9EE1F0CE4E500FA34F8 /* RMBTLoopDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B4E9ED1F0CE4E500FA34F8 /* RMBTLoopDetailsViewController.m */; };
 		C7B5C1C41A3B2B5F002BECF3 /* UIColor+RMBTHex.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B5C1C31A3B2B5F002BECF3 /* UIColor+RMBTHex.m */; };
 		C7BC5C731F747A9E00A91F0F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BC5C721F747A9E00A91F0F /* Launch Screen.storyboard */; };
 		C7C242EC1EE5A02500E3C6E2 /* RMBTLoopModeTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C242EB1EE5A02500E3C6E2 /* RMBTLoopModeTestViewController.m */; };
 		C7C242EF1EE5A20900E3C6E2 /* RMBTBaseTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C242EE1EE5A20900E3C6E2 /* RMBTBaseTestViewController.m */; };
 		C7C5424D17A6DD3A000180A1 /* RMBTHistoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C5424C17A6DD3A000180A1 /* RMBTHistoryFilterViewController.m */; };
-		C7CBC54218105C140041301D /* RMBTModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CBC54118105C140041301D /* RMBTModalWebViewController.m */; };
 		C7DE147C173E8F610079477A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DE147B173E8F610079477A /* UIKit.framework */; };
 		C7DE147E173E8F610079477A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DE147D173E8F610079477A /* Foundation.framework */; };
 		C7DE1480173E8F610079477A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DE147F173E8F610079477A /* CoreGraphics.framework */; };
-		C7DE1488173E8F610079477A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DE1487173E8F610079477A /* main.m */; };
-		C7DE148C173E8F610079477A /* RMBTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DE148B173E8F610079477A /* RMBTAppDelegate.m */; };
-		C7DE149B173E8F610079477A /* RMBTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DE149A173E8F610079477A /* RMBTTestViewController.m */; };
 		C7DF2BB617D91AE400A0E76B /* RMBTNews.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DF2BB517D91AE400A0E76B /* RMBTNews.m */; };
-		C7E58170180726E100706848 /* RMBTNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E5816D180726E000706848 /* RMBTNavigationBar.m */; };
 		C7E5817518075B5400706848 /* RMBTIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E5817418075B5400706848 /* RMBTIntroViewController.m */; };
-		C7E5817818078CDD00706848 /* RMBTVerticalTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E5817718078CDD00706848 /* RMBTVerticalTransitionController.m */; };
-		C7EBA1A5173FD3F40055F578 /* RMBTTestParams.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EBA1A4173FD3F40055F578 /* RMBTTestParams.m */; };
 		C7EBA1A8173FE4A50055F578 /* RMBTTestWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EBA1A7173FE4A40055F578 /* RMBTTestWorker.m */; };
 		C7ECD90F174DB042000DF966 /* RMBTTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ECD90E174DB042000DF966 /* RMBTTestRunner.m */; };
 		C7ECD919174E93E1000DF966 /* RMBTTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ECD918174E93E1000DF966 /* RMBTTestResult.m */; };
-		C7ECD920174EB8EB000DF966 /* RMBTGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ECD91F174EB8EB000DF966 /* RMBTGaugeView.m */; };
 		C7ECD97A174ED9AE000DF966 /* UIView+Position.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ECD979174ED9AD000DF966 /* UIView+Position.m */; };
-		C7EF30721DFEBBAA0002CCD0 /* RMBTHistoryQoSSingleResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EF30711DFEBBAA0002CCD0 /* RMBTHistoryQoSSingleResultCell.m */; };
-		C7EF30741DFEBBF80002CCD0 /* RMBTHistoryQoSSingleResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7EF30731DFEBBF80002CCD0 /* RMBTHistoryQoSSingleResultCell.xib */; };
 		C7EF307C1DFEEB140002CCD0 /* RMBTQoSProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EF307B1DFEEB140002CCD0 /* RMBTQoSProgressViewController.m */; };
-		C7EF69721E096F7D002F429C /* RMBTHistoryQoSSingleResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EF69711E096F7D002F429C /* RMBTHistoryQoSSingleResultViewController.m */; };
 		C7F08F6A1769F37700741844 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F08F691769F37600741844 /* CoreTelephony.framework */; };
 		C7F3FB33179CC86900E336CF /* terms_conditions_long.html in Resources */ = {isa = PBXBuildFile; fileRef = C7F3FB35179CC86900E336CF /* terms_conditions_long.html */; };
 		C7F3FB3C179CCCD600E336CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7F3FB3E179CCCD600E336CF /* Localizable.strings */; };
 		C7F599A71A2A81940020ADC4 /* RMBTHistoryIndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */; };
 		C7FDBF2D1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */; };
+		E91316AE26AD72F200368DCD /* RMBTTOSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316AD26AD72F200368DCD /* RMBTTOSViewController.swift */; };
+		E91316B026AD95B300368DCD /* RMBTTOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316AF26AD95B300368DCD /* RMBTTOS.swift */; };
+		E91316B226AD966300368DCD /* UserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316B126AD966300368DCD /* UserDefaults+Additions.swift */; };
+		E91316B426ADB1E000368DCD /* RMBTStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316B326ADB1E000368DCD /* RMBTStatsViewController.swift */; };
+		E91316B626ADC2C100368DCD /* UIViewController+ModalBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316B526ADC2C100368DCD /* UIViewController+ModalBrowser.swift */; };
+		E91316B826ADCA6000368DCD /* RMBTModalWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316B726ADCA6000368DCD /* RMBTModalWebViewController.swift */; };
+		E91316BA26ADCB7300368DCD /* RMBTIntro2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316B926ADCB7300368DCD /* RMBTIntro2ViewController.swift */; };
+		E91316BD26ADD4DE00368DCD /* RMBTGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316BC26ADD4DE00368DCD /* RMBTGradientView.swift */; };
+		E91316D626B3E98900368DCD /* RMBTWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316D526B3E98800368DCD /* RMBTWaveView.swift */; };
+		E930769926CE247F0046A17B /* RMBTMap2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930769826CE247F0046A17B /* RMBTMap2ViewController.swift */; };
+		E930769B26CE3AA80046A17B /* RMBTMapOptions2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930769A26CE3AA80046A17B /* RMBTMapOptions2ViewController.swift */; };
+		E930769F26CE83200046A17B /* RMBTMapOptions2LayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930769E26CE83200046A17B /* RMBTMapOptions2LayoutViewController.swift */; };
+		E939AAA526DA837D00D73F0B /* MKMapView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939AAA426DA837D00D73F0B /* MKMapView+Additions.swift */; };
+		E939AAA926DB8B0800D73F0B /* RMBTMeasurementPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939AAA826DB8B0800D73F0B /* RMBTMeasurementPin.swift */; };
+		E939AAAB26DB98E900D73F0B /* RMBTMapResultsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939AAAA26DB98E900D73F0B /* RMBTMapResultsListViewController.swift */; };
+		E939AAAE26DB9A2200D73F0B /* RMBTMapMeasurementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939AAAC26DB9A2200D73F0B /* RMBTMapMeasurementCell.swift */; };
+		E939AAAF26DB9A2200D73F0B /* RMBTMapMeasurementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E939AAAD26DB9A2200D73F0B /* RMBTMapMeasurementCell.xib */; };
+		E93FB0EF26F39A7B00DD24CD /* RMBTHistoryQoSSingleResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93FB0EC26F39A7A00DD24CD /* RMBTHistoryQoSSingleResultCell.xib */; };
+		E93FB0F226F39A8C00DD24CD /* RMBTHistoryQoSSingleResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FB0F126F39A8C00DD24CD /* RMBTHistoryQoSSingleResultCell.swift */; };
+		E93FB0F726F39E0200DD24CD /* RMBTHistoryQoSSingleResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FB0F626F39E0200DD24CD /* RMBTHistoryQoSSingleResultViewController.swift */; };
+		E93FB0FC26F3A1DD00DD24CD /* RMBTHistoryResultPercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FB0FB26F3A1DD00DD24CD /* RMBTHistoryResultPercentView.swift */; };
+		E93FB0FF26F4B9B300DD24CD /* RMBTNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FB0FE26F4B9B300DD24CD /* RMBTNavigationBar.swift */; };
+		E93FB10326F4BA7A00DD24CD /* RMBTLoopInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FB10226F4BA7A00DD24CD /* RMBTLoopInfo.swift */; };
+		E93FB10726F4BCE000DD24CD /* RMBTTestParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FB10626F4BCE000DD24CD /* RMBTTestParams.swift */; };
+		E93FB10926F4C41600DD24CD /* RMBTVerticalTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FB10826F4C41600DD24CD /* RMBTVerticalTransitionController.swift */; };
+		E93FB10B26F4C77800DD24CD /* RMBTTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FB10A26F4C77800DD24CD /* RMBTTestViewController.swift */; };
+		E9400EE126BA2F710067273A /* ConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EE026BA2F710067273A /* ConnectivityService.swift */; };
+		E9400EE426BA32150067273A /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EE226BA32150067273A /* Log.swift */; };
+		E9400EE526BA32150067273A /* LogConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EE326BA32150067273A /* LogConfig.swift */; };
+		E9400EE726BA6A9D0067273A /* SocketUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EE626BA6A9D0067273A /* SocketUtils.swift */; };
+		E9400EEB26BA6B600067273A /* RMBTControlServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EEA26BA6B600067273A /* RMBTControlServer.swift */; };
+		E9400EED26BA6BFD0067273A /* RMBTSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EEC26BA6BFD0067273A /* RMBTSettings.swift */; };
+		E9400EF126BA6E2E0067273A /* IpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EF026BA6E2E0067273A /* IpResponse.swift */; };
+		E9400EF326BA6E560067273A /* BasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EF226BA6E560067273A /* BasicResponse.swift */; };
+		E9400EF626BA702D0067273A /* RMBTMapOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EF526BA702D0067273A /* RMBTMapOptions.swift */; };
+		E9400EF826BA752D0067273A /* MapOptionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EF726BA752D0067273A /* MapOptionResponse.swift */; };
+		E9400EFA26BA758F0067273A /* OperatorsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EF926BA758E0067273A /* OperatorsResponse.swift */; };
+		E9400EFC26BA78FD0067273A /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EFB26BA78FD0067273A /* Requests.swift */; };
+		E9400EFE26BA79100067273A /* BasicRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EFD26BA79100067273A /* BasicRequest.swift */; };
+		E9400F0026BA79310067273A /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400EFF26BA79310067273A /* GeoLocation.swift */; };
+		E9400F0226BACF340067273A /* ServerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F0126BACF340067273A /* ServerHelper.swift */; };
+		E9400F0426BAD0CE0067273A /* BasicRequestBuilder_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F0326BAD0CE0067273A /* BasicRequestBuilder_iOS.swift */; };
+		E9400F0626BAD0F40067273A /* UIDeviceHardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F0526BAD0F40067273A /* UIDeviceHardware.swift */; };
+		E9400F0826BAD10C0067273A /* AbstractBasicRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F0726BAD10C0067273A /* AbstractBasicRequestBuilder.swift */; };
+		E9400F0A26BADB3C0067273A /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F0926BADB3C0067273A /* Responses.swift */; };
+		E9400F0E26BAE30A0067273A /* QOSMeasurementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F0D26BAE30A0067273A /* QOSMeasurementType.swift */; };
+		E9400F1026BAE3460067273A /* OperatorsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F0F26BAE3460067273A /* OperatorsRequest.swift */; };
+		E9400F1226BE707C0067273A /* RMBTMapServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F1126BE707C0067273A /* RMBTMapServer.swift */; };
+		E9400F1426BE71D60067273A /* SpeedMeasurementResultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F1326BE71D50067273A /* SpeedMeasurementResultResponse.swift */; };
+		E9400F1626BE71EE0067273A /* MapMeasurementRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F1526BE71EE0067273A /* MapMeasurementRequest.swift */; };
+		E9400F1826BE72070067273A /* MapMeasurementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F1726BE72070067273A /* MapMeasurementResponse.swift */; };
+		E9400F1B26BE86FC0067273A /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F1A26BE86FC0067273A /* HistoryItem.swift */; };
+		E9400F1D26BE87450067273A /* ObjectMapperHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F1C26BE87450067273A /* ObjectMapperHelper.swift */; };
+		E9400F1F26BE89440067273A /* QosMeasurementResultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F1E26BE89440067273A /* QosMeasurementResultResponse.swift */; };
+		E9400F2126BE8C360067273A /* SpeedMeasurementResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F2026BE8C360067273A /* SpeedMeasurementResult.swift */; };
+		E9400F2326BE8C690067273A /* SpeedMeasurementJPLResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F2226BE8C690067273A /* SpeedMeasurementJPLResult.swift */; };
+		E9400F2526BE8C7B0067273A /* ExtendedTestStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F2426BE8C7B0067273A /* ExtendedTestStat.swift */; };
+		E9400F2726BE8C880067273A /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F2626BE8C880067273A /* Ping.swift */; };
+		E9400F2926BE8C990067273A /* SpeedRawItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F2826BE8C980067273A /* SpeedRawItem.swift */; };
+		E9400F2B26BE8CB70067273A /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F2A26BE8CB70067273A /* Signal.swift */; };
+		E9400F2D26BE8CC50067273A /* TelephonyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F2C26BE8CC50067273A /* TelephonyInfo.swift */; };
+		E9400F2F26BE8CCD0067273A /* WifiInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F2E26BE8CCD0067273A /* WifiInfo.swift */; };
+		E9400F3126BE8CDA0067273A /* RMBTThroughputHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F3026BE8CDA0067273A /* RMBTThroughputHistory.swift */; };
+		E9400F3326BE8D000067273A /* RMBTThroughput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F3226BE8D000067273A /* RMBTThroughput.swift */; };
+		E9400F3526BE8D250067273A /* MeasurementSpeedRawItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F3426BE8D250067273A /* MeasurementSpeedRawItem.swift */; };
+		E9400F3726BE8D4C0067273A /* SpeedMeasurementSubmitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F3626BE8D4C0067273A /* SpeedMeasurementSubmitResponse.swift */; };
+		E9400F3926BE8D850067273A /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F3826BE8D840067273A /* Speed.swift */; };
+		E9400F3B26BEA1C40067273A /* QosMeasurementRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F3A26BEA1C30067273A /* QosMeasurementRequest.swift */; };
+		E9400F3D26BEA1D70067273A /* QosMeasurmentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9400F3C26BEA1D70067273A /* QosMeasurmentResponse.swift */; };
+		E946B93F26D28BA20006E1F1 /* RMBTMapOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946B93D26D28BA20006E1F1 /* RMBTMapOptionsCell.swift */; };
+		E946B94026D28BA20006E1F1 /* RMBTMapOptionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E946B93E26D28BA20006E1F1 /* RMBTMapOptionsCell.xib */; };
+		E946B94A26D62EAA0006E1F1 /* RMBTBottomPresentSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946B94926D62EAA0006E1F1 /* RMBTBottomPresentSegue.swift */; };
+		E946B94E26D65F0D0006E1F1 /* RMBTMapOptionsFilter2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946B94D26D65F0D0006E1F1 /* RMBTMapOptionsFilter2ViewController.swift */; };
+		E946B95026D661730006E1F1 /* RMBTMapOptionsTypes2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946B94F26D661730006E1F1 /* RMBTMapOptionsTypes2ViewController.swift */; };
+		E946B95326D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946B95126D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.swift */; };
+		E946B95426D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E946B95226D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.xib */; };
+		E946B95726D6736F0006E1F1 /* RMBTMapOptionsTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946B95526D6736F0006E1F1 /* RMBTMapOptionsTypeCell.swift */; };
+		E946B95826D6736F0006E1F1 /* RMBTMapOptionsTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E946B95626D6736F0006E1F1 /* RMBTMapOptionsTypeCell.xib */; };
+		E946B95A26D684260006E1F1 /* RMBTMapOverlays2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946B95926D684260006E1F1 /* RMBTMapOverlays2ViewController.swift */; };
+		E94ED1CF26C3C22F00B17B25 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94ED1CE26C3C22F00B17B25 /* NetworkReachability.swift */; };
+		E94ED1D126C615F500B17B25 /* RMBTPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94ED1D026C615F500B17B25 /* RMBTPopupViewController.swift */; };
+		E94ED1D326C63C7400B17B25 /* RMBTGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94ED1D226C63C7400B17B25 /* RMBTGaugeView.swift */; };
+		E959547826E38AF7004EA6D9 /* RMBTHistoryIndex2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959547726E38AF6004EA6D9 /* RMBTHistoryIndex2ViewController.swift */; };
+		E959547C26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959547A26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift */; };
+		E959547D26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E959547B26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib */; };
+		E959547F26E3B74B004EA6D9 /* RMBTHistoryIndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959547E26E3B74B004EA6D9 /* RMBTHistoryIndexCell.swift */; };
+		E959549126E4F17D004EA6D9 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959548426E4F17D004EA6D9 /* Roboto-Medium.ttf */; };
+		E959549226E4F17D004EA6D9 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959548526E4F17D004EA6D9 /* Roboto-Light.ttf */; };
+		E959549326E4F17D004EA6D9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959548626E4F17D004EA6D9 /* Roboto-Regular.ttf */; };
+		E959549426E4F17D004EA6D9 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959548726E4F17D004EA6D9 /* Roboto-MediumItalic.ttf */; };
+		E959549526E4F17D004EA6D9 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959548826E4F17D004EA6D9 /* Roboto-ThinItalic.ttf */; };
+		E959549626E4F17D004EA6D9 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959548926E4F17D004EA6D9 /* Roboto-BoldItalic.ttf */; };
+		E959549726E4F17D004EA6D9 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959548A26E4F17D004EA6D9 /* Roboto-LightItalic.ttf */; };
+		E959549826E4F17D004EA6D9 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959548B26E4F17D004EA6D9 /* Roboto-Italic.ttf */; };
+		E959549926E4F17E004EA6D9 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = E959548C26E4F17D004EA6D9 /* LICENSE.txt */; };
+		E959549A26E4F17E004EA6D9 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959548D26E4F17D004EA6D9 /* Roboto-BlackItalic.ttf */; };
+		E959549B26E4F17E004EA6D9 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959548E26E4F17D004EA6D9 /* Roboto-Bold.ttf */; };
+		E959549C26E4F17E004EA6D9 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959548F26E4F17D004EA6D9 /* Roboto-Thin.ttf */; };
+		E959549D26E4F17E004EA6D9 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E959549026E4F17D004EA6D9 /* Roboto-Black.ttf */; };
+		E95954A026E4F218004EA6D9 /* RMBTHistoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959549F26E4F218004EA6D9 /* RMBTHistoryFilterView.swift */; };
+		E95954A226E4F223004EA6D9 /* RMBTHistoryFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95954A126E4F223004EA6D9 /* RMBTHistoryFilterView.xib */; };
+		E95954A526E5008E004EA6D9 /* RMBTConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95954A426E5008E004EA6D9 /* RMBTConstants.swift */; };
+		E95954AA26E60287004EA6D9 /* RMBTHistoryFilterTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95954A826E60286004EA6D9 /* RMBTHistoryFilterTitleCell.xib */; };
+		E95954AB26E60287004EA6D9 /* RMBTHistoryFilterTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95954A926E60287004EA6D9 /* RMBTHistoryFilterTitleCell.swift */; };
+		E95954AF26E602EC004EA6D9 /* RMBTHistoryFilter2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95954AE26E602EC004EA6D9 /* RMBTHistoryFilter2ViewController.swift */; };
+		E95954B126E614F7004EA6D9 /* RMBTHistoryFiltersOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95954B026E614F6004EA6D9 /* RMBTHistoryFiltersOptionsViewController.swift */; };
+		E95954B426E62E34004EA6D9 /* RMBTHistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95954B226E62E34004EA6D9 /* RMBTHistoryViewCell.swift */; };
+		E95954B526E62E34004EA6D9 /* RMBTHistoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95954B326E62E34004EA6D9 /* RMBTHistoryViewCell.xib */; };
 		E9789EEE24D74434007253EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9789EED24D74434007253EB /* WebKit.framework */; };
+		E981D280271E892400CD970A /* RMBTLocationPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E981D27F271E892400CD970A /* RMBTLocationPopupViewController.swift */; };
+		E981D283271E8B9500CD970A /* RMBTLocationPopupCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E981D281271E8B9400CD970A /* RMBTLocationPopupCollectionView.swift */; };
+		E981D284271E8B9500CD970A /* RMBTLocationPopupCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E981D282271E8B9400CD970A /* RMBTLocationPopupCollectionView.xib */; };
+		E9881C82270C1190008EFDF6 /* RMBTLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9881C81270C1190008EFDF6 /* RMBTLoaderView.swift */; };
+		E98B7B1926CB769E0063F44F /* RMBTAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98B7B1826CB769E0063F44F /* RMBTAppDelegate.swift */; };
 		E9968A2624FD762A0042159C /* WKWebView+RMBTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */; };
-		E9968A2F2500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */; };
+		E99765B926FD885E009A1A4C /* UIFont+Roboto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99765B826FD885E009A1A4C /* UIFont+Roboto.swift */; };
 		E999A69D24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
+		E9B51CC627240B84006ED0C7 /* UIApplication+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B51CC527240B84006ED0C7 /* UIApplication+Additions.swift */; };
+		E9B51CC8272431A0006ED0C7 /* RMBTIntroPortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B51CC7272431A0006ED0C7 /* RMBTIntroPortraitView.swift */; };
+		E9B51CCA27243208006ED0C7 /* RMBTIntroPortraitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B51CC927243208006ED0C7 /* RMBTIntroPortraitView.xib */; };
+		E9B51CCD27243229006ED0C7 /* RMBTIntroLandscapeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B51CCB27243229006ED0C7 /* RMBTIntroLandscapeView.xib */; };
+		E9B51CCE27243229006ED0C7 /* RMBTIntroLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B51CCC27243229006ED0C7 /* RMBTIntroLandscapeView.swift */; };
+		E9C4BA2727140B8F00D6FAE8 /* CLLocation+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4BA2627140B8E00D6FAE8 /* CLLocation+Additions.swift */; };
+		E9C4BA2C2714112600D6FAE8 /* RMBTPopupCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4BA2A2714112600D6FAE8 /* RMBTPopupCollectionView.swift */; };
+		E9C4BA2D2714112600D6FAE8 /* RMBTPopupCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C4BA2B2714112600D6FAE8 /* RMBTPopupCollectionView.xib */; };
+		E9E993B726E9FE0C00E7EED6 /* RMBTHistoryResult2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993B626E9FE0B00E7EED6 /* RMBTHistoryResult2ViewController.swift */; };
+		E9E993BA26EA398500E7EED6 /* RMBTHistoryMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993B826EA398500E7EED6 /* RMBTHistoryMapCell.swift */; };
+		E9E993BB26EA398500E7EED6 /* RMBTHistoryMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993B926EA398500E7EED6 /* RMBTHistoryMapCell.xib */; };
+		E9E993BE26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993BC26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.swift */; };
+		E9E993BF26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993BD26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.xib */; };
+		E9E993C226EA435200E7EED6 /* RMBTHistoryBasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993C026EA435200E7EED6 /* RMBTHistoryBasicInfoCell.swift */; };
+		E9E993C326EA435200E7EED6 /* RMBTHistoryBasicInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993C126EA435200E7EED6 /* RMBTHistoryBasicInfoCell.xib */; };
+		E9E993C626EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993C426EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.swift */; };
+		E9E993C726EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993C526EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.xib */; };
+		E9E993CA26EA538700E7EED6 /* RMBTHistoryGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993C826EA538700E7EED6 /* RMBTHistoryGraphCell.swift */; };
+		E9E993CB26EA538700E7EED6 /* RMBTHistoryGraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993C926EA538700E7EED6 /* RMBTHistoryGraphCell.xib */; };
+		E9E993CD26EA617200E7EED6 /* RMBTOpenDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993CC26EA617200E7EED6 /* RMBTOpenDataResponse.swift */; };
+		E9E993D026EB0CC300E7EED6 /* RMBTHistoryTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993CE26EB0CC300E7EED6 /* RMBTHistoryTitleCell.swift */; };
+		E9E993D126EB0CC300E7EED6 /* RMBTHistoryTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993CF26EB0CC300E7EED6 /* RMBTHistoryTitleCell.xib */; };
+		E9E993D426EB0E4700E7EED6 /* RMBTQOEListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993D226EB0E4700E7EED6 /* RMBTQOEListCell.swift */; };
+		E9E993D526EB0E4700E7EED6 /* RMBTQOEListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993D326EB0E4700E7EED6 /* RMBTQOEListCell.xib */; };
+		E9E993D826EB185300E7EED6 /* RMBTQOEItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993D626EB185300E7EED6 /* RMBTQOEItemCell.swift */; };
+		E9E993D926EB185300E7EED6 /* RMBTQOEItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993D726EB185300E7EED6 /* RMBTQOEItemCell.xib */; };
+		E9E993DE26EB24AE00E7EED6 /* RMBTNetInfoItemtCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993DA26EB24AD00E7EED6 /* RMBTNetInfoItemtCell.xib */; };
+		E9E993DF26EB24AE00E7EED6 /* RMBTNetInfoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993DB26EB24AD00E7EED6 /* RMBTNetInfoListCell.xib */; };
+		E9E993E026EB24AE00E7EED6 /* RMBTNetInfoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993DC26EB24AE00E7EED6 /* RMBTNetInfoListCell.swift */; };
+		E9E993E126EB24AE00E7EED6 /* RMBTNetInfoItemtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993DD26EB24AE00E7EED6 /* RMBTNetInfoItemtCell.swift */; };
+		E9E993E626EB27BD00E7EED6 /* RMBTQOSListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993E226EB27BC00E7EED6 /* RMBTQOSListCell.swift */; };
+		E9E993E726EB27BD00E7EED6 /* RMBTQOSItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993E326EB27BD00E7EED6 /* RMBTQOSItemCell.swift */; };
+		E9E993E826EB27BD00E7EED6 /* RMBTQOSListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993E426EB27BD00E7EED6 /* RMBTQOSListCell.xib */; };
+		E9E993E926EB27BD00E7EED6 /* RMBTQOSItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993E526EB27BD00E7EED6 /* RMBTQOSItemCell.xib */; };
+		E9E993F426EC814900E7EED6 /* QosMeasurementResultRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993F326EC814800E7EED6 /* QosMeasurementResultRequest.swift */; };
+		E9E993F626EC816800E7EED6 /* QOSTypeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993F526EC816800E7EED6 /* QOSTypeDefinition.swift */; };
+		E9E993F826EC822300E7EED6 /* QosMeasurementSubmitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993F726EC822300E7EED6 /* QosMeasurementSubmitResponse.swift */; };
+		E9E993FA26EC8F8F00E7EED6 /* RMBTHistoryQoSGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993F926EC8F8F00E7EED6 /* RMBTHistoryQoSGroupViewController.swift */; };
+		E9E993FD26EC951200E7EED6 /* RMBTHistoryQoSGroupResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993FB26EC951200E7EED6 /* RMBTHistoryQoSGroupResultCell.swift */; };
+		E9E993FE26EC951200E7EED6 /* RMBTHistoryQoSGroupResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993FC26EC951200E7EED6 /* RMBTHistoryQoSGroupResultCell.xib */; };
+		E9E9940026EC9CB100E7EED6 /* RMBTHistoryQoSSingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993FF26EC9CB100E7EED6 /* RMBTHistoryQoSSingleViewController.swift */; };
+		E9E9940526ECCF7400E7EED6 /* RMBTSettings2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9940426ECCF7400E7EED6 /* RMBTSettings2ViewController.swift */; };
+		E9E9940826ECDABE00E7EED6 /* RMBTSwitcherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9940726ECDABE00E7EED6 /* RMBTSwitcherCell.swift */; };
+		E9E9940A26ECDAD100E7EED6 /* RMBTSwitcherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E9940926ECDAD100E7EED6 /* RMBTSwitcherCell.xib */; };
+		E9F686C32726EA2B00708290 /* RMBTConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F686C22726EA2B00708290 /* RMBTConfig.swift */; };
+		F71B138A4E5F6DC41FF14268 /* Pods_RMBT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DE166B881B73366FE005F9 /* Pods_RMBT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,8 +280,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F8A14F2251DFA530010367D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F9C078F216F751C00F1FC10 /* RMBT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RMBT.entitlements; sourceTree = "<group>"; };
-		74B5D1F96A5D607CBD1C4902 /* libPods-RMBT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RMBT.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32DE166B881B73366FE005F9 /* Pods_RMBT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMBT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89CA21386C488DD817CA1DC2 /* Pods-RMBT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMBT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMBT/Pods-RMBT.debug.xcconfig"; sourceTree = "<group>"; };
 		C573F2A4175281D300C728FC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C573F2B0175294A500C728FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -206,8 +342,6 @@
 		C737AEEE1E7D9F25007962EB /* RMBTQoSControlConnectionParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTQoSControlConnectionParams.h; sourceTree = "<group>"; };
 		C737AEEF1E7D9F25007962EB /* RMBTQoSControlConnectionParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQoSControlConnectionParams.m; sourceTree = "<group>"; };
 		C737DE0A182F013100E5551C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/terms_conditions_long.html; sourceTree = "<group>"; };
-		C73E792517673EBE0009855E /* RMBTSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTSettings.h; sourceTree = "<group>"; };
-		C73E792617673EBE0009855E /* RMBTSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTSettings.m; sourceTree = "<group>"; };
 		C73E7928176761630009855E /* RMBTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTSettingsViewController.h; sourceTree = "<group>"; };
 		C73E7929176761630009855E /* RMBTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTSettingsViewController.m; sourceTree = "<group>"; };
 		C741B62B1DD99D7A0097D84D /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
@@ -215,26 +349,18 @@
 		C7459B4C1EAC0B8A00042A42 /* RMBTQoSNonTransparentProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQoSNonTransparentProxyTest.m; sourceTree = "<group>"; };
 		C7535B4618298F84003A8CC8 /* UITableViewCell+RMBTHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+RMBTHeight.h"; sourceTree = "<group>"; };
 		C7535B4718298F84003A8CC8 /* UITableViewCell+RMBTHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+RMBTHeight.m"; sourceTree = "<group>"; };
-		C75A1187179B12D800E2444F /* RMBTTOSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTTOSViewController.h; sourceTree = "<group>"; };
-		C75A1188179B12D800E2444F /* RMBTTOSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTTOSViewController.m; sourceTree = "<group>"; };
 		C75A118C179B3DEB00E2444F /* RMBTHistoryResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryResultViewController.h; sourceTree = "<group>"; };
 		C75A118D179B3DEC00E2444F /* RMBTHistoryResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryResultViewController.m; sourceTree = "<group>"; };
 		C75A118F179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryResultDetailsViewController.h; sourceTree = "<group>"; };
 		C75A1190179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryResultDetailsViewController.m; sourceTree = "<group>"; };
-		C75DEAFE1826C91200BC091E /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
-		C75DEB021826CB2900BC091E /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C75FF5C617B15DA600A58056 /* RMBTInfoTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTInfoTextViewController.h; sourceTree = "<group>"; };
 		C75FF5C717B15DA600A58056 /* RMBTInfoTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTInfoTextViewController.m; sourceTree = "<group>"; };
-		C75FF5C917B16ABE00A58056 /* RMBTMapServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTMapServer.h; sourceTree = "<group>"; };
-		C75FF5CA17B16ABE00A58056 /* RMBTMapServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTMapServer.m; sourceTree = "<group>"; };
 		C75FF5CC17B16C2700A58056 /* RMBTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTMapViewController.h; sourceTree = "<group>"; };
 		C75FF5CD17B16C2700A58056 /* RMBTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTMapViewController.m; sourceTree = "<group>"; };
 		C75FF5D317B1970600A58056 /* RMBTMapOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTMapOptions.h; sourceTree = "<group>"; };
 		C75FF5D417B1970600A58056 /* RMBTMapOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTMapOptions.m; sourceTree = "<group>"; };
 		C75FF5D617B2602E00A58056 /* RMBTMapOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTMapOptionsViewController.h; sourceTree = "<group>"; };
 		C75FF5D717B2602E00A58056 /* RMBTMapOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTMapOptionsViewController.m; sourceTree = "<group>"; };
-		C764BEEB1F0F65BF00F5CF80 /* RMBTLoopInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTLoopInfo.h; sourceTree = "<group>"; };
-		C764BEEC1F0F65BF00F5CF80 /* RMBTLoopInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTLoopInfo.m; sourceTree = "<group>"; };
 		C76B8C85177709C800925BE1 /* RMBTThroughputHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTThroughputHistory.h; sourceTree = "<group>"; };
 		C76B8C86177709C800925BE1 /* RMBTThroughputHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTThroughputHistory.m; sourceTree = "<group>"; };
 		C7704EA11E95531B00044AF6 /* RMBTHistorySpeedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistorySpeedGraph.h; sourceTree = "<group>"; };
@@ -251,12 +377,8 @@
 		C774EE7E1793676700D623A3 /* RMBTHistoryIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryIndexViewController.m; sourceTree = "<group>"; };
 		C774EE8117936AF700D623A3 /* RMBTHistoryResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryResult.h; sourceTree = "<group>"; };
 		C774EE8217936AF700D623A3 /* RMBTHistoryResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryResult.m; sourceTree = "<group>"; };
-		C774EE841793742900D623A3 /* RMBTHistoryIndexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryIndexCell.h; sourceTree = "<group>"; };
-		C774EE851793742900D623A3 /* RMBTHistoryIndexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryIndexCell.m; sourceTree = "<group>"; };
 		C7770887179987B700BB478B /* RMBTInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTInfoViewController.h; sourceTree = "<group>"; };
 		C7770888179987B700BB478B /* RMBTInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTInfoViewController.m; sourceTree = "<group>"; };
-		C77708921799CB3F00BB478B /* UIViewController+ModalBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ModalBrowser.h"; sourceTree = "<group>"; };
-		C77708931799CB3F00BB478B /* UIViewController+ModalBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ModalBrowser.m"; sourceTree = "<group>"; };
 		C777D97B1DD8AA8700D1C824 /* RMBTQoSTestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTQoSTestRunner.h; sourceTree = "<group>"; };
 		C777D97C1DD8AA8700D1C824 /* RMBTQoSTestRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQoSTestRunner.m; sourceTree = "<group>"; };
 		C777D97E1DD8AEC000D1C824 /* RMBTQoSTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTQoSTest.h; sourceTree = "<group>"; };
@@ -267,26 +389,18 @@
 		C777D9851DD8BEF700D1C824 /* RMBTQoSTestGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQoSTestGroup.m; sourceTree = "<group>"; };
 		C77952DA1E23DF5200B95FFF /* RMBTQoSTracerouteTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTQoSTracerouteTest.h; sourceTree = "<group>"; };
 		C77952DB1E23DF5200B95FFF /* RMBTQoSTracerouteTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQoSTracerouteTest.m; sourceTree = "<group>"; };
-		C779CAA7182EFF6200398781 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
-		C779CAA9182EFF6200398781 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C779E9E817403364003874AB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C780CE4D1EA287C800332423 /* RMBTQosWebTestURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTQosWebTestURLProtocol.h; sourceTree = "<group>"; };
 		C780CE4E1EA287C800332423 /* RMBTQosWebTestURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQosWebTestURLProtocol.m; sourceTree = "<group>"; };
-		C782A6F71AA62C7800297AFB /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C782A6F81AA62C8600297AFB /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
 		C783F6871ED85312001CB2F9 /* RMBTQoSIPTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTQoSIPTest.h; sourceTree = "<group>"; };
 		C783F6881ED85312001CB2F9 /* RMBTQoSIPTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQoSIPTest.m; sourceTree = "<group>"; };
 		C783F68A1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTLoopModeConfirmationViewController.h; sourceTree = "<group>"; };
 		C783F68B1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTLoopModeConfirmationViewController.m; sourceTree = "<group>"; };
 		C783F68E1EDC7EB4001CB2F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/loop_mode_info.html; sourceTree = "<group>"; };
 		C783F6901EDC7EB4001CB2F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/loop_mode_info2.html; sourceTree = "<group>"; };
-		C78D26BD1764A65C008143DF /* RMBTThroughput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTThroughput.h; sourceTree = "<group>"; };
-		C78D26BE1764A65D008143DF /* RMBTThroughput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTThroughput.m; sourceTree = "<group>"; };
 		C7912CB4177D581F004AD2A4 /* RMBTSpeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTSpeed.h; sourceTree = "<group>"; };
 		C7912CB5177D581F004AD2A4 /* RMBTSpeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTSpeed.m; sourceTree = "<group>"; };
 		C7916EAA173E945E00B40152 /* RMBT-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RMBT-Info.plist"; sourceTree = "<group>"; };
-		C7916EB0173E9B6400B40152 /* RMBTControlServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTControlServer.h; sourceTree = "<group>"; };
-		C7916EB1173E9B6400B40152 /* RMBTControlServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTControlServer.m; sourceTree = "<group>"; };
 		C7916EB6173EB65F00B40152 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C7916EB8173EB68200B40152 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C792B8741814AEC700D504DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -296,96 +410,223 @@
 		C7978FD617F1D07100BF986C /* RMBTConnectivityTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTConnectivityTracker.m; sourceTree = "<group>"; };
 		C79C94A417713106000CF5EE /* RMBTLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTLogger.h; sourceTree = "<group>"; };
 		C79C94A517713106000CF5EE /* RMBTLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTLogger.m; sourceTree = "<group>"; };
-		C79E7B061DF5884700CFC95F /* RMBTHistoryQoSGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQoSGroupViewController.h; sourceTree = "<group>"; };
-		C79E7B071DF5884700CFC95F /* RMBTHistoryQoSGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQoSGroupViewController.m; sourceTree = "<group>"; };
 		C7A053771784923700B3F6A2 /* RMBTBlockTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTBlockTypes.h; sourceTree = "<group>"; };
 		C7A19B221E919BDD0044B6C8 /* RMBTQoSWebTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQoSWebTest.m; sourceTree = "<group>"; };
 		C7A19B241E919BE30044B6C8 /* RMBTQoSWebTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTQoSWebTest.h; sourceTree = "<group>"; };
-		C7A25B3717D95DAB00B7A44B /* RMBTTOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTTOS.h; sourceTree = "<group>"; };
-		C7A25B3817D95DAB00B7A44B /* RMBTTOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTTOS.m; sourceTree = "<group>"; };
 		C7A4B75817B43C8400176B92 /* RMBTMapMeasurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTMapMeasurement.h; sourceTree = "<group>"; };
 		C7A4B75917B43C8400176B92 /* RMBTMapMeasurement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTMapMeasurement.m; sourceTree = "<group>"; };
 		C7A8CC051DFDAC7E00D9E979 /* RMBTHistoryQoSSingleResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQoSSingleResult.h; sourceTree = "<group>"; };
 		C7A8CC061DFDAC7E00D9E979 /* RMBTHistoryQoSSingleResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQoSSingleResult.m; sourceTree = "<group>"; };
-		C7B15A32180AA6810097676F /* RMBTStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTStatsViewController.h; sourceTree = "<group>"; };
-		C7B15A33180AA6810097676F /* RMBTStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTStatsViewController.m; sourceTree = "<group>"; };
-		C7B4A99D17E8D3E700223ABD /* RMBTPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTPing.h; sourceTree = "<group>"; };
-		C7B4A99E17E8D3E700223ABD /* RMBTPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTPing.m; sourceTree = "<group>"; };
 		C7B4E9EC1F0CE4E500FA34F8 /* RMBTLoopDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTLoopDetailsViewController.h; sourceTree = "<group>"; };
 		C7B4E9ED1F0CE4E500FA34F8 /* RMBTLoopDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTLoopDetailsViewController.m; sourceTree = "<group>"; };
 		C7B5C1C21A3B2B5F002BECF3 /* UIColor+RMBTHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RMBTHex.h"; sourceTree = "<group>"; };
 		C7B5C1C31A3B2B5F002BECF3 /* UIColor+RMBTHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RMBTHex.m"; sourceTree = "<group>"; };
 		C7BC5C721F747A9E00A91F0F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		C7C0EFE3176CD18F003758AA /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Configurations/Debug.xcconfig; sourceTree = SOURCE_ROOT; };
 		C7C242EA1EE5A02500E3C6E2 /* RMBTLoopModeTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTLoopModeTestViewController.h; sourceTree = "<group>"; };
 		C7C242EB1EE5A02500E3C6E2 /* RMBTLoopModeTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTLoopModeTestViewController.m; sourceTree = "<group>"; };
 		C7C242ED1EE5A20900E3C6E2 /* RMBTBaseTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTBaseTestViewController.h; sourceTree = "<group>"; };
 		C7C242EE1EE5A20900E3C6E2 /* RMBTBaseTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTBaseTestViewController.m; sourceTree = "<group>"; };
 		C7C5424B17A6DD3A000180A1 /* RMBTHistoryFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryFilterViewController.h; sourceTree = "<group>"; };
 		C7C5424C17A6DD3A000180A1 /* RMBTHistoryFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryFilterViewController.m; sourceTree = "<group>"; };
-		C7C820FD184908B2009B757F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
-		C7C82100184908B2009B757F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C7CBC54018105C140041301D /* RMBTModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTModalWebViewController.h; sourceTree = "<group>"; };
-		C7CBC54118105C140041301D /* RMBTModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTModalWebViewController.m; sourceTree = "<group>"; };
-		C7CC5560176CEAF300861605 /* _Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = _Shared.xcconfig; path = Configurations/_Shared.xcconfig; sourceTree = "<group>"; };
 		C7DE1478173E8F610079477A /* RMBT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMBT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DE147B173E8F610079477A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C7DE147D173E8F610079477A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C7DE147F173E8F610079477A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C7DE1487173E8F610079477A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C7DE1489173E8F610079477A /* RMBT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMBT-Prefix.pch"; sourceTree = "<group>"; };
-		C7DE148A173E8F610079477A /* RMBTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMBTAppDelegate.h; sourceTree = "<group>"; };
-		C7DE148B173E8F610079477A /* RMBTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTAppDelegate.m; sourceTree = "<group>"; };
-		C7DE1499173E8F610079477A /* RMBTTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMBTTestViewController.h; sourceTree = "<group>"; };
-		C7DE149A173E8F610079477A /* RMBTTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTTestViewController.m; sourceTree = "<group>"; };
 		C7DF2BB417D91AE400A0E76B /* RMBTNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTNews.h; sourceTree = "<group>"; };
 		C7DF2BB517D91AE400A0E76B /* RMBTNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTNews.m; sourceTree = "<group>"; };
 		C7E4672C177CDDB600AAF7F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C7E46737177CDDB600AAF7F0 /* RMBTThroughputHistoryTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTThroughputHistoryTest.m; sourceTree = "<group>"; };
 		C7E46739177CDDB600AAF7F0 /* RMBTTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMBTTests-Prefix.pch"; sourceTree = "<group>"; };
-		C7E5816C180726E000706848 /* RMBTNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMBTNavigationBar.h; path = Sources/RMBTNavigationBar.h; sourceTree = SOURCE_ROOT; };
-		C7E5816D180726E000706848 /* RMBTNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMBTNavigationBar.m; path = Sources/RMBTNavigationBar.m; sourceTree = SOURCE_ROOT; };
 		C7E5817318075B5400706848 /* RMBTIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTIntroViewController.h; sourceTree = "<group>"; };
 		C7E5817418075B5400706848 /* RMBTIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTIntroViewController.m; sourceTree = "<group>"; };
-		C7E5817618078CDD00706848 /* RMBTVerticalTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTVerticalTransitionController.h; sourceTree = "<group>"; };
-		C7E5817718078CDD00706848 /* RMBTVerticalTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTVerticalTransitionController.m; sourceTree = "<group>"; };
 		C7E8916218317A13003AECA6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
 		C7E8916318317A13003AECA6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C7EBA1A3173FD3F30055F578 /* RMBTTestParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTTestParams.h; sourceTree = "<group>"; };
-		C7EBA1A4173FD3F40055F578 /* RMBTTestParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTTestParams.m; sourceTree = "<group>"; };
 		C7EBA1A6173FE4A40055F578 /* RMBTTestWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTTestWorker.h; sourceTree = "<group>"; };
 		C7EBA1A7173FE4A40055F578 /* RMBTTestWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTTestWorker.m; sourceTree = "<group>"; };
 		C7ECD90D174DB042000DF966 /* RMBTTestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTTestRunner.h; sourceTree = "<group>"; };
 		C7ECD90E174DB042000DF966 /* RMBTTestRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTTestRunner.m; sourceTree = "<group>"; };
 		C7ECD917174E93E1000DF966 /* RMBTTestResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTTestResult.h; sourceTree = "<group>"; };
 		C7ECD918174E93E1000DF966 /* RMBTTestResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTTestResult.m; sourceTree = "<group>"; };
-		C7ECD91E174EB8EB000DF966 /* RMBTGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTGaugeView.h; sourceTree = "<group>"; };
-		C7ECD91F174EB8EB000DF966 /* RMBTGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTGaugeView.m; sourceTree = "<group>"; };
 		C7ECD978174ED9AD000DF966 /* UIView+Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Position.h"; sourceTree = "<group>"; };
 		C7ECD979174ED9AD000DF966 /* UIView+Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Position.m"; sourceTree = "<group>"; };
-		C7EF30701DFEBBAA0002CCD0 /* RMBTHistoryQoSSingleResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQoSSingleResultCell.h; sourceTree = "<group>"; };
-		C7EF30711DFEBBAA0002CCD0 /* RMBTHistoryQoSSingleResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQoSSingleResultCell.m; sourceTree = "<group>"; };
-		C7EF30731DFEBBF80002CCD0 /* RMBTHistoryQoSSingleResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTHistoryQoSSingleResultCell.xib; sourceTree = "<group>"; };
 		C7EF307A1DFEEB140002CCD0 /* RMBTQoSProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTQoSProgressViewController.h; sourceTree = "<group>"; };
 		C7EF307B1DFEEB140002CCD0 /* RMBTQoSProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQoSProgressViewController.m; sourceTree = "<group>"; };
-		C7EF69701E096F7D002F429C /* RMBTHistoryQoSSingleResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQoSSingleResultViewController.h; sourceTree = "<group>"; };
-		C7EF69711E096F7D002F429C /* RMBTHistoryQoSSingleResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQoSSingleResultViewController.m; sourceTree = "<group>"; };
 		C7F08F691769F37600741844 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C7F3FB26179CA64D00E336CF /* RMBTSpeedTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTSpeedTest.m; sourceTree = "<group>"; };
+		C7F3FB36179CC87300E336CF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/terms_conditions_long.html; sourceTree = "<group>"; };
 		C7F3FB3F179CCCD800E336CF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTHistoryIndexCell.xib; sourceTree = "<group>"; };
 		C7FDBF2B1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTLoopMeasurementsViewController.h; sourceTree = "<group>"; };
 		C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTLoopMeasurementsViewController.m; sourceTree = "<group>"; };
+		E91316AC26AD72F200368DCD /* RMBT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMBT-Bridging-Header.h"; sourceTree = "<group>"; };
+		E91316AD26AD72F200368DCD /* RMBTTOSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTTOSViewController.swift; sourceTree = "<group>"; };
+		E91316AF26AD95B300368DCD /* RMBTTOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTTOS.swift; sourceTree = "<group>"; };
+		E91316B126AD966300368DCD /* UserDefaults+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Additions.swift"; sourceTree = "<group>"; };
+		E91316B326ADB1E000368DCD /* RMBTStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTStatsViewController.swift; sourceTree = "<group>"; };
+		E91316B526ADC2C100368DCD /* UIViewController+ModalBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ModalBrowser.swift"; sourceTree = "<group>"; };
+		E91316B726ADCA6000368DCD /* RMBTModalWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTModalWebViewController.swift; sourceTree = "<group>"; };
+		E91316B926ADCB7300368DCD /* RMBTIntro2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTIntro2ViewController.swift; sourceTree = "<group>"; };
+		E91316BC26ADD4DE00368DCD /* RMBTGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTGradientView.swift; sourceTree = "<group>"; };
+		E91316D526B3E98800368DCD /* RMBTWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTWaveView.swift; sourceTree = "<group>"; };
+		E930769826CE247F0046A17B /* RMBTMap2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMap2ViewController.swift; sourceTree = "<group>"; };
+		E930769A26CE3AA80046A17B /* RMBTMapOptions2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptions2ViewController.swift; sourceTree = "<group>"; };
+		E930769E26CE83200046A17B /* RMBTMapOptions2LayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptions2LayoutViewController.swift; sourceTree = "<group>"; };
+		E939AAA426DA837D00D73F0B /* MKMapView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Additions.swift"; sourceTree = "<group>"; };
+		E939AAA826DB8B0800D73F0B /* RMBTMeasurementPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMeasurementPin.swift; sourceTree = "<group>"; };
+		E939AAAA26DB98E900D73F0B /* RMBTMapResultsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapResultsListViewController.swift; sourceTree = "<group>"; };
+		E939AAAC26DB9A2200D73F0B /* RMBTMapMeasurementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapMeasurementCell.swift; sourceTree = "<group>"; };
+		E939AAAD26DB9A2200D73F0B /* RMBTMapMeasurementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTMapMeasurementCell.xib; sourceTree = "<group>"; };
+		E93FB0EC26F39A7A00DD24CD /* RMBTHistoryQoSSingleResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTHistoryQoSSingleResultCell.xib; sourceTree = "<group>"; };
+		E93FB0F126F39A8C00DD24CD /* RMBTHistoryQoSSingleResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQoSSingleResultCell.swift; sourceTree = "<group>"; };
+		E93FB0F626F39E0200DD24CD /* RMBTHistoryQoSSingleResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQoSSingleResultViewController.swift; sourceTree = "<group>"; };
+		E93FB0FB26F3A1DD00DD24CD /* RMBTHistoryResultPercentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryResultPercentView.swift; sourceTree = "<group>"; };
+		E93FB0FE26F4B9B300DD24CD /* RMBTNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTNavigationBar.swift; sourceTree = "<group>"; };
+		E93FB10226F4BA7A00DD24CD /* RMBTLoopInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTLoopInfo.swift; sourceTree = "<group>"; };
+		E93FB10626F4BCE000DD24CD /* RMBTTestParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTTestParams.swift; sourceTree = "<group>"; };
+		E93FB10826F4C41600DD24CD /* RMBTVerticalTransitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTVerticalTransitionController.swift; sourceTree = "<group>"; };
+		E93FB10A26F4C77800DD24CD /* RMBTTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTTestViewController.swift; sourceTree = "<group>"; };
+		E9400EE026BA2F710067273A /* ConnectivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityService.swift; sourceTree = "<group>"; };
+		E9400EE226BA32150067273A /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		E9400EE326BA32150067273A /* LogConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogConfig.swift; sourceTree = "<group>"; };
+		E9400EE626BA6A9D0067273A /* SocketUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketUtils.swift; sourceTree = "<group>"; };
+		E9400EEA26BA6B600067273A /* RMBTControlServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTControlServer.swift; sourceTree = "<group>"; };
+		E9400EEC26BA6BFD0067273A /* RMBTSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTSettings.swift; sourceTree = "<group>"; };
+		E9400EF026BA6E2E0067273A /* IpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpResponse.swift; sourceTree = "<group>"; };
+		E9400EF226BA6E560067273A /* BasicResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicResponse.swift; sourceTree = "<group>"; };
+		E9400EF526BA702D0067273A /* RMBTMapOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTMapOptions.swift; sourceTree = "<group>"; };
+		E9400EF726BA752D0067273A /* MapOptionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOptionResponse.swift; sourceTree = "<group>"; };
+		E9400EF926BA758E0067273A /* OperatorsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorsResponse.swift; sourceTree = "<group>"; };
+		E9400EFB26BA78FD0067273A /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		E9400EFD26BA79100067273A /* BasicRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicRequest.swift; sourceTree = "<group>"; };
+		E9400EFF26BA79310067273A /* GeoLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
+		E9400F0126BACF340067273A /* ServerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerHelper.swift; sourceTree = "<group>"; };
+		E9400F0326BAD0CE0067273A /* BasicRequestBuilder_iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicRequestBuilder_iOS.swift; sourceTree = "<group>"; };
+		E9400F0526BAD0F40067273A /* UIDeviceHardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceHardware.swift; sourceTree = "<group>"; };
+		E9400F0726BAD10C0067273A /* AbstractBasicRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractBasicRequestBuilder.swift; sourceTree = "<group>"; };
+		E9400F0926BADB3C0067273A /* Responses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
+		E9400F0D26BAE30A0067273A /* QOSMeasurementType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QOSMeasurementType.swift; sourceTree = "<group>"; };
+		E9400F0F26BAE3460067273A /* OperatorsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorsRequest.swift; sourceTree = "<group>"; };
+		E9400F1126BE707C0067273A /* RMBTMapServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTMapServer.swift; sourceTree = "<group>"; };
+		E9400F1326BE71D50067273A /* SpeedMeasurementResultResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedMeasurementResultResponse.swift; sourceTree = "<group>"; };
+		E9400F1526BE71EE0067273A /* MapMeasurementRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapMeasurementRequest.swift; sourceTree = "<group>"; };
+		E9400F1726BE72070067273A /* MapMeasurementResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapMeasurementResponse.swift; sourceTree = "<group>"; };
+		E9400F1A26BE86FC0067273A /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
+		E9400F1C26BE87450067273A /* ObjectMapperHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapperHelper.swift; sourceTree = "<group>"; };
+		E9400F1E26BE89440067273A /* QosMeasurementResultResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QosMeasurementResultResponse.swift; sourceTree = "<group>"; };
+		E9400F2026BE8C360067273A /* SpeedMeasurementResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedMeasurementResult.swift; sourceTree = "<group>"; };
+		E9400F2226BE8C690067273A /* SpeedMeasurementJPLResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedMeasurementJPLResult.swift; sourceTree = "<group>"; };
+		E9400F2426BE8C7B0067273A /* ExtendedTestStat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedTestStat.swift; sourceTree = "<group>"; };
+		E9400F2626BE8C880067273A /* Ping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
+		E9400F2826BE8C980067273A /* SpeedRawItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedRawItem.swift; sourceTree = "<group>"; };
+		E9400F2A26BE8CB70067273A /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
+		E9400F2C26BE8CC50067273A /* TelephonyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelephonyInfo.swift; sourceTree = "<group>"; };
+		E9400F2E26BE8CCD0067273A /* WifiInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiInfo.swift; sourceTree = "<group>"; };
+		E9400F3026BE8CDA0067273A /* RMBTThroughputHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTThroughputHistory.swift; sourceTree = "<group>"; };
+		E9400F3226BE8D000067273A /* RMBTThroughput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTThroughput.swift; sourceTree = "<group>"; };
+		E9400F3426BE8D250067273A /* MeasurementSpeedRawItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementSpeedRawItem.swift; sourceTree = "<group>"; };
+		E9400F3626BE8D4C0067273A /* SpeedMeasurementSubmitResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedMeasurementSubmitResponse.swift; sourceTree = "<group>"; };
+		E9400F3826BE8D840067273A /* Speed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
+		E9400F3A26BEA1C30067273A /* QosMeasurementRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QosMeasurementRequest.swift; sourceTree = "<group>"; };
+		E9400F3C26BEA1D70067273A /* QosMeasurmentResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QosMeasurmentResponse.swift; sourceTree = "<group>"; };
 		E945361B24F2DA6300D12303 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		E946B93D26D28BA20006E1F1 /* RMBTMapOptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptionsCell.swift; sourceTree = "<group>"; };
+		E946B93E26D28BA20006E1F1 /* RMBTMapOptionsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTMapOptionsCell.xib; sourceTree = "<group>"; };
+		E946B94926D62EAA0006E1F1 /* RMBTBottomPresentSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTBottomPresentSegue.swift; sourceTree = "<group>"; };
+		E946B94D26D65F0D0006E1F1 /* RMBTMapOptionsFilter2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptionsFilter2ViewController.swift; sourceTree = "<group>"; };
+		E946B94F26D661730006E1F1 /* RMBTMapOptionsTypes2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptionsTypes2ViewController.swift; sourceTree = "<group>"; };
+		E946B95126D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptionsFilterCell.swift; sourceTree = "<group>"; };
+		E946B95226D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTMapOptionsFilterCell.xib; sourceTree = "<group>"; };
+		E946B95526D6736F0006E1F1 /* RMBTMapOptionsTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptionsTypeCell.swift; sourceTree = "<group>"; };
+		E946B95626D6736F0006E1F1 /* RMBTMapOptionsTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTMapOptionsTypeCell.xib; sourceTree = "<group>"; };
+		E946B95926D684260006E1F1 /* RMBTMapOverlays2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOverlays2ViewController.swift; sourceTree = "<group>"; };
+		E94ED1CE26C3C22F00B17B25 /* NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
+		E94ED1D026C615F500B17B25 /* RMBTPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTPopupViewController.swift; sourceTree = "<group>"; };
+		E94ED1D226C63C7400B17B25 /* RMBTGaugeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTGaugeView.swift; sourceTree = "<group>"; };
+		E959547726E38AF6004EA6D9 /* RMBTHistoryIndex2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTHistoryIndex2ViewController.swift; sourceTree = "<group>"; };
+		E959547A26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryLoadingCell.swift; sourceTree = "<group>"; };
+		E959547B26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryLoadingCell.xib; sourceTree = "<group>"; };
+		E959547E26E3B74B004EA6D9 /* RMBTHistoryIndexCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryIndexCell.swift; sourceTree = "<group>"; };
+		E959548426E4F17D004EA6D9 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		E959548526E4F17D004EA6D9 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		E959548626E4F17D004EA6D9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		E959548726E4F17D004EA6D9 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		E959548826E4F17D004EA6D9 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		E959548926E4F17D004EA6D9 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		E959548A26E4F17D004EA6D9 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		E959548B26E4F17D004EA6D9 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		E959548C26E4F17D004EA6D9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		E959548D26E4F17D004EA6D9 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		E959548E26E4F17D004EA6D9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		E959548F26E4F17D004EA6D9 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		E959549026E4F17D004EA6D9 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		E959549F26E4F218004EA6D9 /* RMBTHistoryFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryFilterView.swift; sourceTree = "<group>"; };
+		E95954A126E4F223004EA6D9 /* RMBTHistoryFilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryFilterView.xib; sourceTree = "<group>"; };
+		E95954A426E5008E004EA6D9 /* RMBTConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTConstants.swift; sourceTree = "<group>"; };
+		E95954A826E60286004EA6D9 /* RMBTHistoryFilterTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTHistoryFilterTitleCell.xib; sourceTree = "<group>"; };
+		E95954A926E60287004EA6D9 /* RMBTHistoryFilterTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTHistoryFilterTitleCell.swift; sourceTree = "<group>"; };
+		E95954AE26E602EC004EA6D9 /* RMBTHistoryFilter2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTHistoryFilter2ViewController.swift; sourceTree = "<group>"; };
+		E95954B026E614F6004EA6D9 /* RMBTHistoryFiltersOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTHistoryFiltersOptionsViewController.swift; sourceTree = "<group>"; };
+		E95954B226E62E34004EA6D9 /* RMBTHistoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryViewCell.swift; sourceTree = "<group>"; };
+		E95954B326E62E34004EA6D9 /* RMBTHistoryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryViewCell.xib; sourceTree = "<group>"; };
 		E9789EED24D74434007253EB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		E981D27F271E892400CD970A /* RMBTLocationPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTLocationPopupViewController.swift; sourceTree = "<group>"; };
+		E981D281271E8B9400CD970A /* RMBTLocationPopupCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTLocationPopupCollectionView.swift; sourceTree = "<group>"; };
+		E981D282271E8B9400CD970A /* RMBTLocationPopupCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTLocationPopupCollectionView.xib; sourceTree = "<group>"; };
+		E9881C81270C1190008EFDF6 /* RMBTLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTLoaderView.swift; sourceTree = "<group>"; };
+		E98B7B1826CB769E0063F44F /* RMBTAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTAppDelegate.swift; sourceTree = "<group>"; };
 		E9968A2424FD762A0042159C /* WKWebView+RMBTConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKWebView+RMBTConfiguration.h"; sourceTree = "<group>"; };
 		E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+RMBTConfiguration.m"; sourceTree = "<group>"; };
-		E9968A2C2500F5180042159C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E9968A2D2500F8150042159C /* RMBTHistoryResultPercentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryResultPercentView.h; sourceTree = "<group>"; };
-		E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryResultPercentView.m; sourceTree = "<group>"; };
+		E99765B826FD885E009A1A4C /* UIFont+Roboto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Roboto.swift"; sourceTree = "<group>"; };
 		E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQOEResultItemCell.m; sourceTree = "<group>"; };
 		E999A69624FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQOEResultItemCell.h; sourceTree = "<group>"; };
-		E9F686BE2726BD9000708290 /* RMBTConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RMBTConfig.h; path = Configs/RMBTConfig.h; sourceTree = SOURCE_ROOT; };
+		E9B51CC527240B84006ED0C7 /* UIApplication+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Additions.swift"; sourceTree = "<group>"; };
+		E9B51CC7272431A0006ED0C7 /* RMBTIntroPortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTIntroPortraitView.swift; sourceTree = "<group>"; };
+		E9B51CC927243208006ED0C7 /* RMBTIntroPortraitView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTIntroPortraitView.xib; sourceTree = "<group>"; };
+		E9B51CCB27243229006ED0C7 /* RMBTIntroLandscapeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTIntroLandscapeView.xib; sourceTree = "<group>"; };
+		E9B51CCC27243229006ED0C7 /* RMBTIntroLandscapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTIntroLandscapeView.swift; sourceTree = "<group>"; };
+		E9C4BA2627140B8E00D6FAE8 /* CLLocation+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Additions.swift"; sourceTree = "<group>"; };
+		E9C4BA2A2714112600D6FAE8 /* RMBTPopupCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTPopupCollectionView.swift; sourceTree = "<group>"; };
+		E9C4BA2B2714112600D6FAE8 /* RMBTPopupCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTPopupCollectionView.xib; sourceTree = "<group>"; };
+		E9E993B626E9FE0B00E7EED6 /* RMBTHistoryResult2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryResult2ViewController.swift; sourceTree = "<group>"; };
+		E9E993B826EA398500E7EED6 /* RMBTHistoryMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryMapCell.swift; sourceTree = "<group>"; };
+		E9E993B926EA398500E7EED6 /* RMBTHistoryMapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryMapCell.xib; sourceTree = "<group>"; };
+		E9E993BC26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryNetworkCell.swift; sourceTree = "<group>"; };
+		E9E993BD26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryNetworkCell.xib; sourceTree = "<group>"; };
+		E9E993C026EA435200E7EED6 /* RMBTHistoryBasicInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryBasicInfoCell.swift; sourceTree = "<group>"; };
+		E9E993C126EA435200E7EED6 /* RMBTHistoryBasicInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryBasicInfoCell.xib; sourceTree = "<group>"; };
+		E9E993C426EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistorySpeedGrapshCell.swift; sourceTree = "<group>"; };
+		E9E993C526EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistorySpeedGrapshCell.xib; sourceTree = "<group>"; };
+		E9E993C826EA538700E7EED6 /* RMBTHistoryGraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryGraphCell.swift; sourceTree = "<group>"; };
+		E9E993C926EA538700E7EED6 /* RMBTHistoryGraphCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryGraphCell.xib; sourceTree = "<group>"; };
+		E9E993CC26EA617200E7EED6 /* RMBTOpenDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTOpenDataResponse.swift; sourceTree = "<group>"; };
+		E9E993CE26EB0CC300E7EED6 /* RMBTHistoryTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryTitleCell.swift; sourceTree = "<group>"; };
+		E9E993CF26EB0CC300E7EED6 /* RMBTHistoryTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryTitleCell.xib; sourceTree = "<group>"; };
+		E9E993D226EB0E4700E7EED6 /* RMBTQOEListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTQOEListCell.swift; sourceTree = "<group>"; };
+		E9E993D326EB0E4700E7EED6 /* RMBTQOEListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTQOEListCell.xib; sourceTree = "<group>"; };
+		E9E993D626EB185300E7EED6 /* RMBTQOEItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTQOEItemCell.swift; sourceTree = "<group>"; };
+		E9E993D726EB185300E7EED6 /* RMBTQOEItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTQOEItemCell.xib; sourceTree = "<group>"; };
+		E9E993DA26EB24AD00E7EED6 /* RMBTNetInfoItemtCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTNetInfoItemtCell.xib; sourceTree = "<group>"; };
+		E9E993DB26EB24AD00E7EED6 /* RMBTNetInfoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTNetInfoListCell.xib; sourceTree = "<group>"; };
+		E9E993DC26EB24AE00E7EED6 /* RMBTNetInfoListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTNetInfoListCell.swift; sourceTree = "<group>"; };
+		E9E993DD26EB24AE00E7EED6 /* RMBTNetInfoItemtCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTNetInfoItemtCell.swift; sourceTree = "<group>"; };
+		E9E993E226EB27BC00E7EED6 /* RMBTQOSListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTQOSListCell.swift; sourceTree = "<group>"; };
+		E9E993E326EB27BD00E7EED6 /* RMBTQOSItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTQOSItemCell.swift; sourceTree = "<group>"; };
+		E9E993E426EB27BD00E7EED6 /* RMBTQOSListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTQOSListCell.xib; sourceTree = "<group>"; };
+		E9E993E526EB27BD00E7EED6 /* RMBTQOSItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTQOSItemCell.xib; sourceTree = "<group>"; };
+		E9E993F326EC814800E7EED6 /* QosMeasurementResultRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QosMeasurementResultRequest.swift; sourceTree = "<group>"; };
+		E9E993F526EC816800E7EED6 /* QOSTypeDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QOSTypeDefinition.swift; sourceTree = "<group>"; };
+		E9E993F726EC822300E7EED6 /* QosMeasurementSubmitResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QosMeasurementSubmitResponse.swift; sourceTree = "<group>"; };
+		E9E993F926EC8F8F00E7EED6 /* RMBTHistoryQoSGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQoSGroupViewController.swift; sourceTree = "<group>"; };
+		E9E993FB26EC951200E7EED6 /* RMBTHistoryQoSGroupResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQoSGroupResultCell.swift; sourceTree = "<group>"; };
+		E9E993FC26EC951200E7EED6 /* RMBTHistoryQoSGroupResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryQoSGroupResultCell.xib; sourceTree = "<group>"; };
+		E9E993FF26EC9CB100E7EED6 /* RMBTHistoryQoSSingleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQoSSingleViewController.swift; sourceTree = "<group>"; };
+		E9E9940426ECCF7400E7EED6 /* RMBTSettings2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTSettings2ViewController.swift; sourceTree = "<group>"; };
+		E9E9940726ECDABE00E7EED6 /* RMBTSwitcherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTSwitcherCell.swift; sourceTree = "<group>"; };
+		E9E9940926ECDAD100E7EED6 /* RMBTSwitcherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTSwitcherCell.xib; sourceTree = "<group>"; };
+		E9F686C12726E62000708290 /* RMBTConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTConfig.h; sourceTree = "<group>"; };
+		E9F686C22726EA2B00708290 /* RMBTConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTConfig.swift; sourceTree = "<group>"; };
+		F620A48D0EF31330DAC04D48 /* Pods-RMBT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMBT.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMBT/Pods-RMBT.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,7 +661,7 @@
 				C7DE147C173E8F610079477A /* UIKit.framework in Frameworks */,
 				C7DE147E173E8F610079477A /* Foundation.framework in Frameworks */,
 				C7DE1480173E8F610079477A /* CoreGraphics.framework in Frameworks */,
-				7ABF93939D07A19DF172C790 /* libPods-RMBT.a in Frameworks */,
+				F71B138A4E5F6DC41FF14268 /* Pods_RMBT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +672,7 @@
 			isa = PBXGroup;
 			children = (
 				89CA21386C488DD817CA1DC2 /* Pods-RMBT.debug.xcconfig */,
+				F620A48D0EF31330DAC04D48 /* Pods-RMBT.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -488,8 +730,7 @@
 		C73E792417673EA40009855E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				C73E792517673EBE0009855E /* RMBTSettings.h */,
-				C73E792617673EBE0009855E /* RMBTSettings.m */,
+				E9400EEC26BA6BFD0067273A /* RMBTSettings.swift */,
 				C73E7928176761630009855E /* RMBTSettingsViewController.h */,
 				C73E7929176761630009855E /* RMBTSettingsViewController.m */,
 				C783F68A1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.h */,
@@ -501,8 +742,7 @@
 		C750D9EC17E8B29E0028969E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C7A25B3717D95DAB00B7A44B /* RMBTTOS.h */,
-				C7A25B3817D95DAB00B7A44B /* RMBTTOS.m */,
+				E91316AF26AD95B300368DCD /* RMBTTOS.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -526,8 +766,7 @@
 			isa = PBXGroup;
 			children = (
 				C750D9EC17E8B29E0028969E /* Models */,
-				C75A1187179B12D800E2444F /* RMBTTOSViewController.h */,
-				C75A1188179B12D800E2444F /* RMBTTOSViewController.m */,
+				E91316AD26AD72F200368DCD /* RMBTTOSViewController.swift */,
 			);
 			name = TOS;
 			sourceTree = "<group>";
@@ -537,9 +776,6 @@
 			children = (
 				C774EE7D1793676700D623A3 /* RMBTHistoryIndexViewController.h */,
 				C774EE7E1793676700D623A3 /* RMBTHistoryIndexViewController.m */,
-				C774EE841793742900D623A3 /* RMBTHistoryIndexCell.h */,
-				C774EE851793742900D623A3 /* RMBTHistoryIndexCell.m */,
-				C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */,
 				C7C5424B17A6DD3A000180A1 /* RMBTHistoryFilterViewController.h */,
 				C7C5424C17A6DD3A000180A1 /* RMBTHistoryFilterViewController.m */,
 			);
@@ -557,8 +793,6 @@
 				E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */,
 				C77071021E96812A00043884 /* RMBTHistorySpeedGraphCell.h */,
 				C77071031E96812A00043884 /* RMBTHistorySpeedGraphCell.m */,
-				E9968A2D2500F8150042159C /* RMBTHistoryResultPercentView.h */,
-				E9968A2E2500F8150042159C /* RMBTHistoryResultPercentView.m */,
 			);
 			name = Result;
 			sourceTree = "<group>";
@@ -568,13 +802,6 @@
 			children = (
 				C75A118F179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.h */,
 				C75A1190179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.m */,
-				C79E7B061DF5884700CFC95F /* RMBTHistoryQoSGroupViewController.h */,
-				C79E7B071DF5884700CFC95F /* RMBTHistoryQoSGroupViewController.m */,
-				C7EF30701DFEBBAA0002CCD0 /* RMBTHistoryQoSSingleResultCell.h */,
-				C7EF30711DFEBBAA0002CCD0 /* RMBTHistoryQoSSingleResultCell.m */,
-				C7EF30731DFEBBF80002CCD0 /* RMBTHistoryQoSSingleResultCell.xib */,
-				C7EF69701E096F7D002F429C /* RMBTHistoryQoSSingleResultViewController.h */,
-				C7EF69711E096F7D002F429C /* RMBTHistoryQoSSingleResultViewController.m */,
 			);
 			name = "Full Details";
 			sourceTree = "<group>";
@@ -582,7 +809,6 @@
 		C774EE7B1792FA3700D623A3 /* _Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E9F686BE2726BD9000708290 /* RMBTConfig.h */,
 				C7DF2BB417D91AE400A0E76B /* RMBTNews.h */,
 				C7DF2BB517D91AE400A0E76B /* RMBTNews.m */,
 				C59D7B451764E6CF003E9702 /* RMBTHelpers.h */,
@@ -590,8 +816,8 @@
 				C7A053771784923700B3F6A2 /* RMBTBlockTypes.h */,
 				C774EE781792F73D00D623A3 /* RMBTLocationTracker.h */,
 				C774EE791792F73D00D623A3 /* RMBTLocationTracker.m */,
-				C7916EB0173E9B6400B40152 /* RMBTControlServer.h */,
-				C7916EB1173E9B6400B40152 /* RMBTControlServer.m */,
+				E9400EEA26BA6B600067273A /* RMBTControlServer.swift */,
+				E9400F0126BACF340067273A /* ServerHelper.swift */,
 				C79C94A417713106000CF5EE /* RMBTLogger.h */,
 				C79C94A517713106000CF5EE /* RMBTLogger.m */,
 				C71161631E3CFA4800D8CC0C /* RMBTProgress.h */,
@@ -618,10 +844,7 @@
 				C7ECD90C174DAECD000DF966 /* Models */,
 				C7C242ED1EE5A20900E3C6E2 /* RMBTBaseTestViewController.h */,
 				C7C242EE1EE5A20900E3C6E2 /* RMBTBaseTestViewController.m */,
-				C7DE1499173E8F610079477A /* RMBTTestViewController.h */,
-				C7DE149A173E8F610079477A /* RMBTTestViewController.m */,
-				C7ECD91E174EB8EB000DF966 /* RMBTGaugeView.h */,
-				C7ECD91F174EB8EB000DF966 /* RMBTGaugeView.m */,
+				E94ED1D226C63C7400B17B25 /* RMBTGaugeView.swift */,
 				C703D3E01765CF5E00A38C34 /* RMBTSpeedGraphView.h */,
 				C703D3E11765CF5E00A38C34 /* RMBTSpeedGraphView.m */,
 				C7EF307A1DFEEB140002CCD0 /* RMBTQoSProgressViewController.h */,
@@ -668,8 +891,10 @@
 		C7916E9A173E90DB00B40152 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E959548226E4F17D004EA6D9 /* Fonts */,
 				C70C178B17D7BFC400F55964 /* Images.xcassets */,
 				C7916EAA173E945E00B40152 /* RMBT-Info.plist */,
+				C7C5424617A69E9C000180A1 /* InfoPlist.strings */,
 				C7F3FB3E179CCCD600E336CF /* Localizable.strings */,
 				C7F3FB35179CC86900E336CF /* terms_conditions_long.html */,
 				C783F68D1EDC7EB4001CB2F9 /* loop_mode_info.html */,
@@ -682,10 +907,6 @@
 			isa = PBXGroup;
 			children = (
 				C7CBC53F18105BFC0041301D /* Modal Web View */,
-				C7E5817618078CDD00706848 /* RMBTVerticalTransitionController.h */,
-				C7E5817718078CDD00706848 /* RMBTVerticalTransitionController.m */,
-				C7E5816C180726E000706848 /* RMBTNavigationBar.h */,
-				C7E5816D180726E000706848 /* RMBTNavigationBar.m */,
 				C7ECD978174ED9AD000DF966 /* UIView+Position.h */,
 				C7ECD979174ED9AD000DF966 /* UIView+Position.m */,
 				C7228DE817FBAC0300FB984D /* CLLocation+RMBTFormat.h */,
@@ -698,6 +919,16 @@
 				C77071061E96BCC100043884 /* UIView+RMBTSubviews.m */,
 				E9968A2424FD762A0042159C /* WKWebView+RMBTConfiguration.h */,
 				E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */,
+				E91316B126AD966300368DCD /* UserDefaults+Additions.swift */,
+				E9400EE026BA2F710067273A /* ConnectivityService.swift */,
+				E9400EE626BA6A9D0067273A /* SocketUtils.swift */,
+				E9400EE226BA32150067273A /* Log.swift */,
+				E9400EE326BA32150067273A /* LogConfig.swift */,
+				E9400F0726BAD10C0067273A /* AbstractBasicRequestBuilder.swift */,
+				E9400F0526BAD0F40067273A /* UIDeviceHardware.swift */,
+				E9400F1C26BE87450067273A /* ObjectMapperHelper.swift */,
+				E9400F3826BE8D840067273A /* Speed.swift */,
+				E94ED1CE26C3C22F00B17B25 /* NetworkReachability.swift */,
 			);
 			name = _Utility;
 			sourceTree = "<group>";
@@ -705,26 +936,15 @@
 		C7B15A35180AA99B0097676F /* Stats */ = {
 			isa = PBXGroup;
 			children = (
-				C7B15A32180AA6810097676F /* RMBTStatsViewController.h */,
-				C7B15A33180AA6810097676F /* RMBTStatsViewController.m */,
+				E91316B326ADB1E000368DCD /* RMBTStatsViewController.swift */,
 			);
 			name = Stats;
-			sourceTree = "<group>";
-		};
-		C7B47F87176CD47600B04ABF /* Configurations */ = {
-			isa = PBXGroup;
-			children = (
-				C7CC5560176CEAF300861605 /* _Shared.xcconfig */,
-				C7C0EFE3176CD18F003758AA /* Debug.xcconfig */,
-			);
-			name = Configurations;
 			sourceTree = "<group>";
 		};
 		C7C5B54E17E887040035D752 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C75FF5C917B16ABE00A58056 /* RMBTMapServer.h */,
-				C75FF5CA17B16ABE00A58056 /* RMBTMapServer.m */,
+				E9400F1126BE707C0067273A /* RMBTMapServer.swift */,
 				C7A4B75817B43C8400176B92 /* RMBTMapMeasurement.h */,
 				C7A4B75917B43C8400176B92 /* RMBTMapMeasurement.m */,
 				C75FF5D317B1970600A58056 /* RMBTMapOptions.h */,
@@ -736,10 +956,8 @@
 		C7CBC53F18105BFC0041301D /* Modal Web View */ = {
 			isa = PBXGroup;
 			children = (
-				C77708921799CB3F00BB478B /* UIViewController+ModalBrowser.h */,
-				C77708931799CB3F00BB478B /* UIViewController+ModalBrowser.m */,
-				C7CBC54018105C140041301D /* RMBTModalWebViewController.h */,
-				C7CBC54118105C140041301D /* RMBTModalWebViewController.m */,
+				E91316B526ADC2C100368DCD /* UIViewController+ModalBrowser.swift */,
+				E91316B726ADCA6000368DCD /* RMBTModalWebViewController.swift */,
 			);
 			name = "Modal Web View";
 			sourceTree = "<group>";
@@ -749,7 +967,7 @@
 			children = (
 				E945361B24F2DA6300D12303 /* GoogleMaps.bundle */,
 				1F9C078F216F751C00F1FC10 /* RMBT.entitlements */,
-				C7B47F87176CD47600B04ABF /* Configurations */,
+				E9F686C02726E62000708290 /* Configs */,
 				C7E46730177CDDB600AAF7F0 /* Unit Tests */,
 				C7DE1481173E8F610079477A /* Sources */,
 				C7916E9A173E90DB00B40152 /* Resources */,
@@ -792,7 +1010,7 @@
 				C7DE147D173E8F610079477A /* Foundation.framework */,
 				C7DE147F173E8F610079477A /* CoreGraphics.framework */,
 				C7E4672C177CDDB600AAF7F0 /* SenTestingKit.framework */,
-				74B5D1F96A5D607CBD1C4902 /* libPods-RMBT.a */,
+				32DE166B881B73366FE005F9 /* Pods_RMBT.framework */,
 			);
 			name = Frameworks;
 			path = Vendor;
@@ -801,6 +1019,16 @@
 		C7DE1481173E8F610079477A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E9C4BA282714110D00D6FAE8 /* Intro */,
+				E93FB10426F4BCD200DD24CD /* Network */,
+				E93FB10026F4BA5E00DD24CD /* Test */,
+				E93FB0FD26F4B9A400DD24CD /* Common */,
+				E9E9940326ECCF7400E7EED6 /* Settings */,
+				E959547626E38AF6004EA6D9 /* History */,
+				E946B93B26D28B4D0006E1F1 /* Map */,
+				E9400EF426BA70220067273A /* Models */,
+				E9400EEE26BA6E190067273A /* Requests */,
+				E9400EEF26BA6E190067273A /* Responses */,
 				C7ECD90A174DAE92000DF966 /* App */,
 				C7DE1482173E8F610079477A /* Supporting Files */,
 			);
@@ -810,7 +1038,7 @@
 		C7DE1482173E8F610079477A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C7DE1487173E8F610079477A /* main.m */,
+				E91316AC26AD72F200368DCD /* RMBT-Bridging-Header.h */,
 				C7DE1489173E8F610079477A /* RMBT-Prefix.pch */,
 				C7BC5C721F747A9E00A91F0F /* Launch Screen.storyboard */,
 			);
@@ -842,8 +1070,10 @@
 		C7E5817218075B3400706848 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
+				E91316BB26ADD4CC00368DCD /* Views */,
 				C7E5817318075B5400706848 /* RMBTIntroViewController.h */,
 				C7E5817418075B5400706848 /* RMBTIntroViewController.m */,
+				E91316B926ADCB7300368DCD /* RMBTIntro2ViewController.swift */,
 			);
 			name = Intro;
 			sourceTree = "<group>";
@@ -851,8 +1081,7 @@
 		C7ECD90A174DAE92000DF966 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				C7DE148A173E8F610079477A /* RMBTAppDelegate.h */,
-				C7DE148B173E8F610079477A /* RMBTAppDelegate.m */,
+				E98B7B1826CB769E0063F44F /* RMBTAppDelegate.swift */,
 				C792B8751814AEC700D504DF /* MainStoryboard.storyboard */,
 				C72F49A51F31CE3A00CCA650 /* TestStoryboard.storyboard */,
 				C774EE7B1792FA3700D623A3 /* _Shared */,
@@ -884,18 +1113,12 @@
 				C774EE7617920C9C00D623A3 /* RMBTConnectivity.m */,
 				C7978FD517F1D07100BF986C /* RMBTConnectivityTracker.h */,
 				C7978FD617F1D07100BF986C /* RMBTConnectivityTracker.m */,
-				C7EBA1A3173FD3F30055F578 /* RMBTTestParams.h */,
-				C7EBA1A4173FD3F40055F578 /* RMBTTestParams.m */,
 				C7ECD917174E93E1000DF966 /* RMBTTestResult.h */,
 				C7ECD918174E93E1000DF966 /* RMBTTestResult.m */,
-				C78D26BD1764A65C008143DF /* RMBTThroughput.h */,
-				C78D26BE1764A65D008143DF /* RMBTThroughput.m */,
 				C76B8C85177709C800925BE1 /* RMBTThroughputHistory.h */,
 				C76B8C86177709C800925BE1 /* RMBTThroughputHistory.m */,
 				C7912CB4177D581F004AD2A4 /* RMBTSpeed.h */,
 				C7912CB5177D581F004AD2A4 /* RMBTSpeed.m */,
-				C7B4A99D17E8D3E700223ABD /* RMBTPing.h */,
-				C7B4A99E17E8D3E700223ABD /* RMBTPing.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -911,10 +1134,342 @@
 				C7B4E9ED1F0CE4E500FA34F8 /* RMBTLoopDetailsViewController.m */,
 				C72F49AA1F32341100CCA650 /* RMBTLoopDetailsCell.h */,
 				C72F49AB1F32341100CCA650 /* RMBTLoopDetailsCell.m */,
-				C764BEEB1F0F65BF00F5CF80 /* RMBTLoopInfo.h */,
-				C764BEEC1F0F65BF00F5CF80 /* RMBTLoopInfo.m */,
 			);
 			name = Loop;
+			sourceTree = "<group>";
+		};
+		E91316BB26ADD4CC00368DCD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E91316BC26ADD4DE00368DCD /* RMBTGradientView.swift */,
+				E91316D526B3E98800368DCD /* RMBTWaveView.swift */,
+				E981D27F271E892400CD970A /* RMBTLocationPopupViewController.swift */,
+				E94ED1D026C615F500B17B25 /* RMBTPopupViewController.swift */,
+				E9B51CC7272431A0006ED0C7 /* RMBTIntroPortraitView.swift */,
+				E9B51CC927243208006ED0C7 /* RMBTIntroPortraitView.xib */,
+				E9B51CCC27243229006ED0C7 /* RMBTIntroLandscapeView.swift */,
+				E9B51CCB27243229006ED0C7 /* RMBTIntroLandscapeView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E939AAA626DB8AE700D73F0B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E939AAA426DA837D00D73F0B /* MKMapView+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E939AAA726DB8AE700D73F0B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E939AAA826DB8B0800D73F0B /* RMBTMeasurementPin.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E93FB0FD26F4B9A400DD24CD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E93FB0FE26F4B9B300DD24CD /* RMBTNavigationBar.swift */,
+				E93FB10826F4C41600DD24CD /* RMBTVerticalTransitionController.swift */,
+				E99765B826FD885E009A1A4C /* UIFont+Roboto.swift */,
+				E9C4BA2627140B8E00D6FAE8 /* CLLocation+Additions.swift */,
+				E9B51CC527240B84006ED0C7 /* UIApplication+Additions.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E93FB10026F4BA5E00DD24CD /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				E9881C80270C117C008EFDF6 /* View */,
+				E93FB10126F4BA6E00DD24CD /* Models */,
+				E93FB10A26F4C77800DD24CD /* RMBTTestViewController.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		E93FB10126F4BA6E00DD24CD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E93FB10226F4BA7A00DD24CD /* RMBTLoopInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E93FB10426F4BCD200DD24CD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E93FB10526F4BCD200DD24CD /* Models */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E93FB10526F4BCD200DD24CD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E93FB10626F4BCE000DD24CD /* RMBTTestParams.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E9400EEE26BA6E190067273A /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				E9400F0326BAD0CE0067273A /* BasicRequestBuilder_iOS.swift */,
+				E9400EFD26BA79100067273A /* BasicRequest.swift */,
+				E9400EFB26BA78FD0067273A /* Requests.swift */,
+				E9400F0F26BAE3460067273A /* OperatorsRequest.swift */,
+				E9400F1526BE71EE0067273A /* MapMeasurementRequest.swift */,
+				E9400F3A26BEA1C30067273A /* QosMeasurementRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		E9400EEF26BA6E190067273A /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				E9400F1726BE72070067273A /* MapMeasurementResponse.swift */,
+				E9400F3C26BEA1D70067273A /* QosMeasurmentResponse.swift */,
+				E9400F3626BE8D4C0067273A /* SpeedMeasurementSubmitResponse.swift */,
+				E9400F1326BE71D50067273A /* SpeedMeasurementResultResponse.swift */,
+				E9E993CC26EA617200E7EED6 /* RMBTOpenDataResponse.swift */,
+				E9400F1E26BE89440067273A /* QosMeasurementResultResponse.swift */,
+				E9400EF726BA752D0067273A /* MapOptionResponse.swift */,
+				E9400EF026BA6E2E0067273A /* IpResponse.swift */,
+				E9400EF226BA6E560067273A /* BasicResponse.swift */,
+				E9400EF926BA758E0067273A /* OperatorsResponse.swift */,
+				E9400F0926BADB3C0067273A /* Responses.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		E9400EF426BA70220067273A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E9400F3226BE8D000067273A /* RMBTThroughput.swift */,
+				E9400F3026BE8CDA0067273A /* RMBTThroughputHistory.swift */,
+				E9400F2E26BE8CCD0067273A /* WifiInfo.swift */,
+				E9400F2C26BE8CC50067273A /* TelephonyInfo.swift */,
+				E9400F2A26BE8CB70067273A /* Signal.swift */,
+				E9400F3426BE8D250067273A /* MeasurementSpeedRawItem.swift */,
+				E9400F2826BE8C980067273A /* SpeedRawItem.swift */,
+				E9400F2626BE8C880067273A /* Ping.swift */,
+				E9400F2426BE8C7B0067273A /* ExtendedTestStat.swift */,
+				E9400F2226BE8C690067273A /* SpeedMeasurementJPLResult.swift */,
+				E9400F2026BE8C360067273A /* SpeedMeasurementResult.swift */,
+				E9E993F326EC814800E7EED6 /* QosMeasurementResultRequest.swift */,
+				E9E993F726EC822300E7EED6 /* QosMeasurementSubmitResponse.swift */,
+				E9400F0D26BAE30A0067273A /* QOSMeasurementType.swift */,
+				E9400EFF26BA79310067273A /* GeoLocation.swift */,
+				E9400EF526BA702D0067273A /* RMBTMapOptions.swift */,
+				E9400F1A26BE86FC0067273A /* HistoryItem.swift */,
+				E9E993F526EC816800E7EED6 /* QOSTypeDefinition.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E946B93B26D28B4D0006E1F1 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				E939AAA626DB8AE700D73F0B /* Extensions */,
+				E939AAA726DB8AE700D73F0B /* Models */,
+				E946B94826D62E680006E1F1 /* Segues */,
+				E946B93C26D28B880006E1F1 /* Cells */,
+				E930769826CE247F0046A17B /* RMBTMap2ViewController.swift */,
+				E930769A26CE3AA80046A17B /* RMBTMapOptions2ViewController.swift */,
+				E930769E26CE83200046A17B /* RMBTMapOptions2LayoutViewController.swift */,
+				E946B94D26D65F0D0006E1F1 /* RMBTMapOptionsFilter2ViewController.swift */,
+				E946B94F26D661730006E1F1 /* RMBTMapOptionsTypes2ViewController.swift */,
+				E946B95926D684260006E1F1 /* RMBTMapOverlays2ViewController.swift */,
+				E939AAAA26DB98E900D73F0B /* RMBTMapResultsListViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		E946B93C26D28B880006E1F1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E946B93D26D28BA20006E1F1 /* RMBTMapOptionsCell.swift */,
+				E946B93E26D28BA20006E1F1 /* RMBTMapOptionsCell.xib */,
+				E946B95126D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.swift */,
+				E946B95226D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.xib */,
+				E946B95526D6736F0006E1F1 /* RMBTMapOptionsTypeCell.swift */,
+				E946B95626D6736F0006E1F1 /* RMBTMapOptionsTypeCell.xib */,
+				E939AAAC26DB9A2200D73F0B /* RMBTMapMeasurementCell.swift */,
+				E939AAAD26DB9A2200D73F0B /* RMBTMapMeasurementCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E946B94826D62E680006E1F1 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				E946B94926D62EAA0006E1F1 /* RMBTBottomPresentSegue.swift */,
+			);
+			path = Segues;
+			sourceTree = "<group>";
+		};
+		E959547626E38AF6004EA6D9 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				E95954A326E50071004EA6D9 /* Models */,
+				E959549E26E4F204004EA6D9 /* Views */,
+				E959547926E3B53E004EA6D9 /* Cells */,
+				E959547726E38AF6004EA6D9 /* RMBTHistoryIndex2ViewController.swift */,
+				E95954AE26E602EC004EA6D9 /* RMBTHistoryFilter2ViewController.swift */,
+				E95954B026E614F6004EA6D9 /* RMBTHistoryFiltersOptionsViewController.swift */,
+				E9E993B626E9FE0B00E7EED6 /* RMBTHistoryResult2ViewController.swift */,
+				E9E993F926EC8F8F00E7EED6 /* RMBTHistoryQoSGroupViewController.swift */,
+				E9E993FF26EC9CB100E7EED6 /* RMBTHistoryQoSSingleViewController.swift */,
+				E93FB0F626F39E0200DD24CD /* RMBTHistoryQoSSingleResultViewController.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		E959547926E3B53E004EA6D9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E93FB0F126F39A8C00DD24CD /* RMBTHistoryQoSSingleResultCell.swift */,
+				E93FB0EC26F39A7A00DD24CD /* RMBTHistoryQoSSingleResultCell.xib */,
+				E95954A926E60287004EA6D9 /* RMBTHistoryFilterTitleCell.swift */,
+				E95954A826E60286004EA6D9 /* RMBTHistoryFilterTitleCell.xib */,
+				E959547E26E3B74B004EA6D9 /* RMBTHistoryIndexCell.swift */,
+				C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */,
+				E959547A26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift */,
+				E959547B26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib */,
+				E95954B226E62E34004EA6D9 /* RMBTHistoryViewCell.swift */,
+				E95954B326E62E34004EA6D9 /* RMBTHistoryViewCell.xib */,
+				E9E993BC26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.swift */,
+				E9E993BD26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.xib */,
+				E9E993B826EA398500E7EED6 /* RMBTHistoryMapCell.swift */,
+				E9E993B926EA398500E7EED6 /* RMBTHistoryMapCell.xib */,
+				E9E993C026EA435200E7EED6 /* RMBTHistoryBasicInfoCell.swift */,
+				E9E993C126EA435200E7EED6 /* RMBTHistoryBasicInfoCell.xib */,
+				E9E993C426EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.swift */,
+				E9E993C526EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.xib */,
+				E9E993C826EA538700E7EED6 /* RMBTHistoryGraphCell.swift */,
+				E9E993C926EA538700E7EED6 /* RMBTHistoryGraphCell.xib */,
+				E9E993CE26EB0CC300E7EED6 /* RMBTHistoryTitleCell.swift */,
+				E9E993CF26EB0CC300E7EED6 /* RMBTHistoryTitleCell.xib */,
+				E9E993D226EB0E4700E7EED6 /* RMBTQOEListCell.swift */,
+				E9E993D326EB0E4700E7EED6 /* RMBTQOEListCell.xib */,
+				E9E993D626EB185300E7EED6 /* RMBTQOEItemCell.swift */,
+				E9E993D726EB185300E7EED6 /* RMBTQOEItemCell.xib */,
+				E9E993DD26EB24AE00E7EED6 /* RMBTNetInfoItemtCell.swift */,
+				E9E993DA26EB24AD00E7EED6 /* RMBTNetInfoItemtCell.xib */,
+				E9E993DC26EB24AE00E7EED6 /* RMBTNetInfoListCell.swift */,
+				E9E993DB26EB24AD00E7EED6 /* RMBTNetInfoListCell.xib */,
+				E9E993E326EB27BD00E7EED6 /* RMBTQOSItemCell.swift */,
+				E9E993E526EB27BD00E7EED6 /* RMBTQOSItemCell.xib */,
+				E9E993E226EB27BC00E7EED6 /* RMBTQOSListCell.swift */,
+				E9E993E426EB27BD00E7EED6 /* RMBTQOSListCell.xib */,
+				E9E993FB26EC951200E7EED6 /* RMBTHistoryQoSGroupResultCell.swift */,
+				E9E993FC26EC951200E7EED6 /* RMBTHistoryQoSGroupResultCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E959548226E4F17D004EA6D9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E959548326E4F17D004EA6D9 /* Roboto */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E959548326E4F17D004EA6D9 /* Roboto */ = {
+			isa = PBXGroup;
+			children = (
+				E959548426E4F17D004EA6D9 /* Roboto-Medium.ttf */,
+				E959548526E4F17D004EA6D9 /* Roboto-Light.ttf */,
+				E959548626E4F17D004EA6D9 /* Roboto-Regular.ttf */,
+				E959548726E4F17D004EA6D9 /* Roboto-MediumItalic.ttf */,
+				E959548826E4F17D004EA6D9 /* Roboto-ThinItalic.ttf */,
+				E959548926E4F17D004EA6D9 /* Roboto-BoldItalic.ttf */,
+				E959548A26E4F17D004EA6D9 /* Roboto-LightItalic.ttf */,
+				E959548B26E4F17D004EA6D9 /* Roboto-Italic.ttf */,
+				E959548C26E4F17D004EA6D9 /* LICENSE.txt */,
+				E959548D26E4F17D004EA6D9 /* Roboto-BlackItalic.ttf */,
+				E959548E26E4F17D004EA6D9 /* Roboto-Bold.ttf */,
+				E959548F26E4F17D004EA6D9 /* Roboto-Thin.ttf */,
+				E959549026E4F17D004EA6D9 /* Roboto-Black.ttf */,
+			);
+			path = Roboto;
+			sourceTree = "<group>";
+		};
+		E959549E26E4F204004EA6D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E959549F26E4F218004EA6D9 /* RMBTHistoryFilterView.swift */,
+				E95954A126E4F223004EA6D9 /* RMBTHistoryFilterView.xib */,
+				E93FB0FB26F3A1DD00DD24CD /* RMBTHistoryResultPercentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E95954A326E50071004EA6D9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E95954A426E5008E004EA6D9 /* RMBTConstants.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E9881C80270C117C008EFDF6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E9881C81270C1190008EFDF6 /* RMBTLoaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E9C4BA282714110D00D6FAE8 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				E9C4BA292714110D00D6FAE8 /* Cells */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		E9C4BA292714110D00D6FAE8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E981D281271E8B9400CD970A /* RMBTLocationPopupCollectionView.swift */,
+				E981D282271E8B9400CD970A /* RMBTLocationPopupCollectionView.xib */,
+				E9C4BA2A2714112600D6FAE8 /* RMBTPopupCollectionView.swift */,
+				E9C4BA2B2714112600D6FAE8 /* RMBTPopupCollectionView.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E9E9940326ECCF7400E7EED6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E9E9940626ECDAAB00E7EED6 /* Cells */,
+				E9E9940426ECCF7400E7EED6 /* RMBTSettings2ViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E9E9940626ECDAAB00E7EED6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E9E9940726ECDABE00E7EED6 /* RMBTSwitcherCell.swift */,
+				E9E9940926ECDAD100E7EED6 /* RMBTSwitcherCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E9F686C02726E62000708290 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				E9F686C12726E62000708290 /* RMBTConfig.h */,
+				E9F686C22726EA2B00708290 /* RMBTConfig.swift */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -942,13 +1497,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7DE149E173E8F610079477A /* Build configuration list for PBXNativeTarget "RMBT" */;
 			buildPhases = (
-				E9F686BD2726BD1400708290 /* Update Configurations */,
 				D2C080EC48316E5A53399219 /* [CP] Check Pods Manifest.lock */,
 				C7DE1474173E8F610079477A /* Sources */,
 				C7DE1475173E8F610079477A /* Frameworks */,
 				C7DE1476173E8F610079477A /* Resources */,
 				C79401F017FB021000484B8A /* Run Script: Add Build Infos */,
 				2EFF0F7A027008F7C09ABC37 /* [CP] Copy Pods Resources */,
+				14F69917C001DA1C19CAA4FE /* [CP] Embed Pods Frameworks */,
+				E9F686BF2726E52800708290 /* Update Configurations */,
 			);
 			buildRules = (
 			);
@@ -967,7 +1523,7 @@
 			attributes = {
 				CLASSPREFIX = RMBT;
 				LastTestingUpgradeCheck = 0730;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "appscape gmbh";
 				TargetAttributes = {
 					C70828011CB6792F00F482EB = {
@@ -977,6 +1533,8 @@
 					};
 					C7DE1477173E8F610079477A = {
 						DevelopmentTeam = T7Y947AEPK;
+						LastSwiftMigration = 1250;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.AccessWiFi = {
 								enabled = 1;
@@ -986,19 +1544,14 @@
 				};
 			};
 			buildConfigurationList = C7DE1473173E8F610079477A /* Build configuration list for PBXProject "RMBT" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				de,
-				hr,
-				sv,
 				es,
-				fr,
-				cs,
 			);
 			mainGroup = C7DE146F173E8F610079477A;
 			productRefGroup = C7DE1479173E8F610079477A /* Products */;
@@ -1023,16 +1576,55 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E959549C26E4F17E004EA6D9 /* Roboto-Thin.ttf in Resources */,
+				E959547D26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib in Resources */,
+				E9E993E826EB27BD00E7EED6 /* RMBTQOSListCell.xib in Resources */,
 				C780408D1814B09D0015EB24 /* MainStoryboard.storyboard in Resources */,
 				C7228DEC17FC199F00FB984D /* RMBTMapCalloutView.xib in Resources */,
+				E9E993BF26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.xib in Resources */,
+				E9B51CCA27243208006ED0C7 /* RMBTIntroPortraitView.xib in Resources */,
+				E959549526E4F17D004EA6D9 /* Roboto-ThinItalic.ttf in Resources */,
+				E9E993D126EB0CC300E7EED6 /* RMBTHistoryTitleCell.xib in Resources */,
+				E959549126E4F17D004EA6D9 /* Roboto-Medium.ttf in Resources */,
+				E9E993DF26EB24AE00E7EED6 /* RMBTNetInfoListCell.xib in Resources */,
+				E95954A226E4F223004EA6D9 /* RMBTHistoryFilterView.xib in Resources */,
+				E9E993D526EB0E4700E7EED6 /* RMBTQOEListCell.xib in Resources */,
+				E959549B26E4F17E004EA6D9 /* Roboto-Bold.ttf in Resources */,
+				E959549D26E4F17E004EA6D9 /* Roboto-Black.ttf in Resources */,
 				C7F3FB33179CC86900E336CF /* terms_conditions_long.html in Resources */,
+				E9E993CB26EA538700E7EED6 /* RMBTHistoryGraphCell.xib in Resources */,
+				E95954B526E62E34004EA6D9 /* RMBTHistoryViewCell.xib in Resources */,
+				E9E993C726EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.xib in Resources */,
+				E95954AA26E60287004EA6D9 /* RMBTHistoryFilterTitleCell.xib in Resources */,
 				C7F3FB3C179CCCD600E336CF /* Localizable.strings in Resources */,
+				E9E993C326EA435200E7EED6 /* RMBTHistoryBasicInfoCell.xib in Resources */,
 				C7F599A71A2A81940020ADC4 /* RMBTHistoryIndexCell.xib in Resources */,
+				E946B95426D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.xib in Resources */,
+				E959549226E4F17D004EA6D9 /* Roboto-Light.ttf in Resources */,
 				C783F6911EDC7EB4001CB2F9 /* loop_mode_info.html in Resources */,
+				E959549726E4F17D004EA6D9 /* Roboto-LightItalic.ttf in Resources */,
+				E939AAAF26DB9A2200D73F0B /* RMBTMapMeasurementCell.xib in Resources */,
+				E9E993E926EB27BD00E7EED6 /* RMBTQOSItemCell.xib in Resources */,
+				E959549826E4F17D004EA6D9 /* Roboto-Italic.ttf in Resources */,
+				E9E9940A26ECDAD100E7EED6 /* RMBTSwitcherCell.xib in Resources */,
+				E959549626E4F17D004EA6D9 /* Roboto-BoldItalic.ttf in Resources */,
+				E946B94026D28BA20006E1F1 /* RMBTMapOptionsCell.xib in Resources */,
+				E946B95826D6736F0006E1F1 /* RMBTMapOptionsTypeCell.xib in Resources */,
 				C7BC5C731F747A9E00A91F0F /* Launch Screen.storyboard in Resources */,
-				C7EF30741DFEBBF80002CCD0 /* RMBTHistoryQoSSingleResultCell.xib in Resources */,
+				E93FB0EF26F39A7B00DD24CD /* RMBTHistoryQoSSingleResultCell.xib in Resources */,
+				E9E993DE26EB24AE00E7EED6 /* RMBTNetInfoItemtCell.xib in Resources */,
+				E959549A26E4F17E004EA6D9 /* Roboto-BlackItalic.ttf in Resources */,
+				E981D284271E8B9500CD970A /* RMBTLocationPopupCollectionView.xib in Resources */,
+				E959549326E4F17D004EA6D9 /* Roboto-Regular.ttf in Resources */,
+				E9B51CCD27243229006ED0C7 /* RMBTIntroLandscapeView.xib in Resources */,
+				E959549426E4F17D004EA6D9 /* Roboto-MediumItalic.ttf in Resources */,
+				E9E993FE26EC951200E7EED6 /* RMBTHistoryQoSGroupResultCell.xib in Resources */,
 				C70C178C17D7BFC400F55964 /* Images.xcassets in Resources */,
 				C783F6921EDC7EB4001CB2F9 /* loop_mode_info2.html in Resources */,
+				E9C4BA2D2714112600D6FAE8 /* RMBTPopupCollectionView.xib in Resources */,
+				E959549926E4F17E004EA6D9 /* LICENSE.txt in Resources */,
+				E9E993D926EB185300E7EED6 /* RMBTQOEItemCell.xib in Resources */,
+				E9E993BB26EA398500E7EED6 /* RMBTHistoryMapCell.xib in Resources */,
 				C72F49A31F31CE3A00CCA650 /* TestStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1040,62 +1632,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		14F69917C001DA1C19CAA4FE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RMBT/Pods-RMBT-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RMBT/Pods-RMBT-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RMBT/Pods-RMBT-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2EFF0F7A027008F7C09ABC37 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RMBT/Pods-RMBT-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/SVWebViewController.bundle/SVWebViewControllerBack.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/SVWebViewController.bundle/SVWebViewControllerBack@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/SVWebViewController.bundle/SVWebViewControllerNext.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/SVWebViewController.bundle/SVWebViewControllerNext@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Chrome/SVWebViewControllerActivityChrome-iPad.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Chrome/SVWebViewControllerActivityChrome-iPad@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Chrome/SVWebViewControllerActivityChrome@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Safari/SVWebViewControllerActivitySafari-iPad.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Safari/SVWebViewControllerActivitySafari-iPad@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/UIActivities/Safari/SVWebViewControllerActivitySafari@2x.png",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/da.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/de.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/en.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/es-ES.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/es.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/fr.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/ja.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/pt.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/SVWebViewController.bundle",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/zh-Hans.lproj",
-				"${PODS_ROOT}/SVWebViewController/SVWebViewController/zh-Hant.lproj",
-				"${PODS_CONFIGURATION_BUILD_DIR}/TUSafariActivity/TUSafariActivity.bundle",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RMBT/Pods-RMBT-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerBack.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerBack@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerNext.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerNext@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivityChrome-iPad.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivityChrome-iPad@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivityChrome@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivitySafari-iPad.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivitySafari-iPad@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewControllerActivitySafari@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/da.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/de.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/es-ES.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/es.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fr.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ja.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pt.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVWebViewController.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hant.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TUSafariActivity.bundle",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RMBT/Pods-RMBT-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1134,9 +1698,9 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E9F686BD2726BD1400708290 /* Update Configurations */ = {
+		E9F686BF2726E52800708290 /* Update Configurations */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1150,7 +1714,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Scripts/update_configurations_from_private.sh\"\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1171,94 +1736,190 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9400EE426BA32150067273A /* Log.swift in Sources */,
 				C777D9801DD8AEC000D1C824 /* RMBTQoSTest.m in Sources */,
+				E946B94A26D62EAA0006E1F1 /* RMBTBottomPresentSegue.swift in Sources */,
+				E939AAAB26DB98E900D73F0B /* RMBTMapResultsListViewController.swift in Sources */,
+				E9400F3526BE8D250067273A /* MeasurementSpeedRawItem.swift in Sources */,
 				C7535B4818298F84003A8CC8 /* UITableViewCell+RMBTHeight.m in Sources */,
-				C7DE1488173E8F610079477A /* main.m in Sources */,
-				C7DE148C173E8F610079477A /* RMBTAppDelegate.m in Sources */,
+				E94ED1D326C63C7400B17B25 /* RMBTGaugeView.swift in Sources */,
+				E930769B26CE3AA80046A17B /* RMBTMapOptions2ViewController.swift in Sources */,
 				C783F6891ED85312001CB2F9 /* RMBTQoSIPTest.m in Sources */,
-				C7DE149B173E8F610079477A /* RMBTTestViewController.m in Sources */,
-				C7916EB2173E9B6400B40152 /* RMBTControlServer.m in Sources */,
+				E959547826E38AF7004EA6D9 /* RMBTHistoryIndex2ViewController.swift in Sources */,
+				E9400EE726BA6A9D0067273A /* SocketUtils.swift in Sources */,
+				E93FB10B26F4C77800DD24CD /* RMBTTestViewController.swift in Sources */,
+				E9400F3D26BEA1D70067273A /* QosMeasurmentResponse.swift in Sources */,
+				E9400F2526BE8C7B0067273A /* ExtendedTestStat.swift in Sources */,
 				C72F49AC1F32341100CCA650 /* RMBTLoopDetailsCell.m in Sources */,
-				C7EBA1A5173FD3F40055F578 /* RMBTTestParams.m in Sources */,
-				C7A25B3917D95DAB00B7A44B /* RMBTTOS.m in Sources */,
+				E9E993E726EB27BD00E7EED6 /* RMBTQOSItemCell.swift in Sources */,
+				E9400EF326BA6E560067273A /* BasicResponse.swift in Sources */,
+				E9400F3126BE8CDA0067273A /* RMBTThroughputHistory.swift in Sources */,
+				E9400F1B26BE86FC0067273A /* HistoryItem.swift in Sources */,
+				E98B7B1926CB769E0063F44F /* RMBTAppDelegate.swift in Sources */,
+				E91316B226AD966300368DCD /* UserDefaults+Additions.swift in Sources */,
 				C7EBA1A8173FE4A50055F578 /* RMBTTestWorker.m in Sources */,
 				C7C242EF1EE5A20900E3C6E2 /* RMBTBaseTestViewController.m in Sources */,
+				E9400F1226BE707C0067273A /* RMBTMapServer.swift in Sources */,
+				E9E993BA26EA398500E7EED6 /* RMBTHistoryMapCell.swift in Sources */,
+				E93FB0F226F39A8C00DD24CD /* RMBTHistoryQoSSingleResultCell.swift in Sources */,
+				E9400F1426BE71D60067273A /* SpeedMeasurementResultResponse.swift in Sources */,
+				E9400EE126BA2F710067273A /* ConnectivityService.swift in Sources */,
 				C7ECD90F174DB042000DF966 /* RMBTTestRunner.m in Sources */,
 				C7FDBF2D1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m in Sources */,
+				E946B95326D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.swift in Sources */,
+				E9400F2726BE8C880067273A /* Ping.swift in Sources */,
 				C71DD2421ED0ACDF009B449E /* RMBTQoSTCPTest.m in Sources */,
+				E91316B626ADC2C100368DCD /* UIViewController+ModalBrowser.swift in Sources */,
+				E91316B826ADCA6000368DCD /* RMBTModalWebViewController.swift in Sources */,
 				C7ECD919174E93E1000DF966 /* RMBTTestResult.m in Sources */,
-				C7ECD920174EB8EB000DF966 /* RMBTGaugeView.m in Sources */,
+				E9400EF826BA752D0067273A /* MapOptionResponse.swift in Sources */,
 				C70AFDEE1F2E0DC50064D631 /* RMBTMapOptionsOverlaysViewController.m in Sources */,
-				C7EF30721DFEBBAA0002CCD0 /* RMBTHistoryQoSSingleResultCell.m in Sources */,
-				E9968A2F2500F8150042159C /* RMBTHistoryResultPercentView.m in Sources */,
+				E9400F3926BE8D850067273A /* Speed.swift in Sources */,
+				E9E9940026EC9CB100E7EED6 /* RMBTHistoryQoSSingleViewController.swift in Sources */,
+				E95954B426E62E34004EA6D9 /* RMBTHistoryViewCell.swift in Sources */,
+				E981D283271E8B9500CD970A /* RMBTLocationPopupCollectionView.swift in Sources */,
 				C7E5817518075B5400706848 /* RMBTIntroViewController.m in Sources */,
 				C73780971E09EBEA00CA0558 /* RMBTQoSHTTPTest.m in Sources */,
+				E93FB0FF26F4B9B300DD24CD /* RMBTNavigationBar.swift in Sources */,
+				E9400F0026BA79310067273A /* GeoLocation.swift in Sources */,
+				E9C4BA2727140B8F00D6FAE8 /* CLLocation+Additions.swift in Sources */,
+				E959547F26E3B74B004EA6D9 /* RMBTHistoryIndexCell.swift in Sources */,
 				C7ECD97A174ED9AE000DF966 /* UIView+Position.m in Sources */,
-				C7B4A99F17E8D3E700223ABD /* RMBTPing.m in Sources */,
-				C78D26BF1764A65D008143DF /* RMBTThroughput.m in Sources */,
-				C764BEED1F0F65BF00F5CF80 /* RMBTLoopInfo.m in Sources */,
+				E9400EFC26BA78FD0067273A /* Requests.swift in Sources */,
+				E9400F0226BACF340067273A /* ServerHelper.swift in Sources */,
+				E91316B426ADB1E000368DCD /* RMBTStatsViewController.swift in Sources */,
+				E9E993D826EB185300E7EED6 /* RMBTQOEItemCell.swift in Sources */,
+				E9400EFA26BA758F0067273A /* OperatorsResponse.swift in Sources */,
+				E9E993FA26EC8F8F00E7EED6 /* RMBTHistoryQoSGroupViewController.swift in Sources */,
+				E9400F2326BE8C690067273A /* SpeedMeasurementJPLResult.swift in Sources */,
+				E9E993C626EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.swift in Sources */,
+				E9400F2926BE8C990067273A /* SpeedRawItem.swift in Sources */,
+				E9E993D426EB0E4700E7EED6 /* RMBTQOEListCell.swift in Sources */,
 				C77071071E96BCC100043884 /* UIView+RMBTSubviews.m in Sources */,
 				C59D7B471764E6CF003E9702 /* RMBTHelpers.m in Sources */,
 				C7228DF317FC1CC900FB984D /* RMBTMapCalloutView.m in Sources */,
 				C7228DEA17FBAC0300FB984D /* CLLocation+RMBTFormat.m in Sources */,
+				E94ED1D126C615F500B17B25 /* RMBTPopupViewController.swift in Sources */,
 				C71F38961F2CF60000D2F83A /* RMBTMapOptionsFilterViewController.m in Sources */,
+				E95954B126E614F7004EA6D9 /* RMBTHistoryFiltersOptionsViewController.swift in Sources */,
 				C7EF307C1DFEEB140002CCD0 /* RMBTQoSProgressViewController.m in Sources */,
+				E9E993F826EC822300E7EED6 /* QosMeasurementSubmitResponse.swift in Sources */,
+				E91316BA26ADCB7300368DCD /* RMBTIntro2ViewController.swift in Sources */,
+				E99765B926FD885E009A1A4C /* UIFont+Roboto.swift in Sources */,
 				C7228DEF17FC1ADF00FB984D /* RMBTHistoryResultItemCell.m in Sources */,
+				E91316B026AD95B300368DCD /* RMBTTOS.swift in Sources */,
+				E9400F3726BE8D4C0067273A /* SpeedMeasurementSubmitResponse.swift in Sources */,
+				E9400F0626BAD0F40067273A /* UIDeviceHardware.swift in Sources */,
+				E93FB10726F4BCE000DD24CD /* RMBTTestParams.swift in Sources */,
+				E9E9940826ECDABE00E7EED6 /* RMBTSwitcherCell.swift in Sources */,
 				C7B5C1C41A3B2B5F002BECF3 /* UIColor+RMBTHex.m in Sources */,
+				E9B51CC8272431A0006ED0C7 /* RMBTIntroPortraitView.swift in Sources */,
+				E939AAAE26DB9A2200D73F0B /* RMBTMapMeasurementCell.swift in Sources */,
 				C703D3E21765CF5E00A38C34 /* RMBTSpeedGraphView.m in Sources */,
-				C73E792717673EBE0009855E /* RMBTSettings.m in Sources */,
+				E9400F3B26BEA1C40067273A /* QosMeasurementRequest.swift in Sources */,
 				C73E792A176761630009855E /* RMBTSettingsViewController.m in Sources */,
+				E939AAA526DA837D00D73F0B /* MKMapView+Additions.swift in Sources */,
 				C79C94A617713106000CF5EE /* RMBTLogger.m in Sources */,
 				C76B8C87177709C800925BE1 /* RMBTThroughputHistory.m in Sources */,
 				C71161651E3CFA4800D8CC0C /* RMBTProgress.m in Sources */,
+				E9E993E126EB24AE00E7EED6 /* RMBTNetInfoItemtCell.swift in Sources */,
 				C7912CB6177D581F004AD2A4 /* RMBTSpeed.m in Sources */,
-				C7B15A34180AA6810097676F /* RMBTStatsViewController.m in Sources */,
+				E91316BD26ADD4DE00368DCD /* RMBTGradientView.swift in Sources */,
+				E9E993CA26EA538700E7EED6 /* RMBTHistoryGraphCell.swift in Sources */,
 				C774EE7717920C9C00D623A3 /* RMBTConnectivity.m in Sources */,
 				C70AFDEB1F2E06E40064D631 /* RMBTMapOptionsTypesViewController.m in Sources */,
-				C7E58170180726E100706848 /* RMBTNavigationBar.m in Sources */,
+				E9400F0826BAD10C0067273A /* AbstractBasicRequestBuilder.swift in Sources */,
+				E9400F1D26BE87450067273A /* ObjectMapperHelper.swift in Sources */,
+				E93FB0FC26F3A1DD00DD24CD /* RMBTHistoryResultPercentView.swift in Sources */,
+				E9E993D026EB0CC300E7EED6 /* RMBTHistoryTitleCell.swift in Sources */,
+				E9400F0E26BAE30A0067273A /* QOSMeasurementType.swift in Sources */,
 				C737AEF01E7D9F25007962EB /* RMBTQoSControlConnectionParams.m in Sources */,
+				E9400F2D26BE8CC50067273A /* TelephonyInfo.swift in Sources */,
 				C774EE7A1792F73D00D623A3 /* RMBTLocationTracker.m in Sources */,
+				E9E993CD26EA617200E7EED6 /* RMBTOpenDataResponse.swift in Sources */,
 				C7DF2BB617D91AE400A0E76B /* RMBTNews.m in Sources */,
+				E9881C82270C1190008EFDF6 /* RMBTLoaderView.swift in Sources */,
 				C72A27A417E1ECD400EC98B3 /* RMBTSSLHelper.m in Sources */,
-				C7E5817818078CDD00706848 /* RMBTVerticalTransitionController.m in Sources */,
+				E9400F0426BAD0CE0067273A /* BasicRequestBuilder_iOS.swift in Sources */,
+				E9400EE526BA32150067273A /* LogConfig.swift in Sources */,
+				E95954AF26E602EC004EA6D9 /* RMBTHistoryFilter2ViewController.swift in Sources */,
+				E91316AE26AD72F200368DCD /* RMBTTOSViewController.swift in Sources */,
+				E91316D626B3E98900368DCD /* RMBTWaveView.swift in Sources */,
 				C774EE7F1793676700D623A3 /* RMBTHistoryIndexViewController.m in Sources */,
+				E9F686C32726EA2B00708290 /* RMBTConfig.swift in Sources */,
+				E9400F2126BE8C360067273A /* SpeedMeasurementResult.swift in Sources */,
 				C7C242EC1EE5A02500E3C6E2 /* RMBTLoopModeTestViewController.m in Sources */,
+				E9400F1026BAE3460067273A /* OperatorsRequest.swift in Sources */,
 				C774EE8317936AF700D623A3 /* RMBTHistoryResult.m in Sources */,
+				E9E993E626EB27BD00E7EED6 /* RMBTQOSListCell.swift in Sources */,
 				C737AEEC1E7D8F59007962EB /* RMBTQoSCCTest.m in Sources */,
 				C777D9831DD8AED000D1C824 /* RMBTQoSDNSTest.m in Sources */,
-				C774EE861793742900D623A3 /* RMBTHistoryIndexCell.m in Sources */,
+				E9400EFE26BA79100067273A /* BasicRequest.swift in Sources */,
+				E9400EEB26BA6B600067273A /* RMBTControlServer.swift in Sources */,
+				E9E9940526ECCF7400E7EED6 /* RMBTSettings2ViewController.swift in Sources */,
+				E9400F0A26BADB3C0067273A /* Responses.swift in Sources */,
 				C737AEE91E7D7C53007962EB /* RMBTQoSControlConnection.m in Sources */,
 				C7770889179987B700BB478B /* RMBTInfoViewController.m in Sources */,
-				C77708941799CB3F00BB478B /* UIViewController+ModalBrowser.m in Sources */,
-				C75A1189179B12D800E2444F /* RMBTTOSViewController.m in Sources */,
+				E93FB10326F4BA7A00DD24CD /* RMBTLoopInfo.swift in Sources */,
+				E95954A026E4F218004EA6D9 /* RMBTHistoryFilterView.swift in Sources */,
+				E9400F1826BE72070067273A /* MapMeasurementResponse.swift in Sources */,
+				E95954A526E5008E004EA6D9 /* RMBTConstants.swift in Sources */,
 				E999A69D24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */,
+				E946B95A26D684260006E1F1 /* RMBTMapOverlays2ViewController.swift in Sources */,
+				E9400F3326BE8D000067273A /* RMBTThroughput.swift in Sources */,
 				C75A118E179B3DEC00E2444F /* RMBTHistoryResultViewController.m in Sources */,
-				C7CBC54218105C140041301D /* RMBTModalWebViewController.m in Sources */,
 				E9968A2624FD762A0042159C /* WKWebView+RMBTConfiguration.m in Sources */,
+				E946B95726D6736F0006E1F1 /* RMBTMapOptionsTypeCell.swift in Sources */,
+				E9400EF626BA702D0067273A /* RMBTMapOptions.swift in Sources */,
+				E9B51CCE27243229006ED0C7 /* RMBTIntroLandscapeView.swift in Sources */,
 				C75A1191179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.m in Sources */,
 				C77071041E96812A00043884 /* RMBTHistorySpeedGraphCell.m in Sources */,
+				E9C4BA2C2714112600D6FAE8 /* RMBTPopupCollectionView.swift in Sources */,
+				E930769F26CE83200046A17B /* RMBTMapOptions2LayoutViewController.swift in Sources */,
+				E9E993BE26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.swift in Sources */,
+				E9E993FD26EC951200E7EED6 /* RMBTHistoryQoSGroupResultCell.swift in Sources */,
+				E9400F1626BE71EE0067273A /* MapMeasurementRequest.swift in Sources */,
 				C7C5424D17A6DD3A000180A1 /* RMBTHistoryFilterViewController.m in Sources */,
+				E959547C26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift in Sources */,
 				C75FF5C817B15DA600A58056 /* RMBTInfoTextViewController.m in Sources */,
-				C75FF5CB17B16ABE00A58056 /* RMBTMapServer.m in Sources */,
+				E9400F1F26BE89440067273A /* QosMeasurementResultResponse.swift in Sources */,
 				C75FF5CE17B16C2700A58056 /* RMBTMapViewController.m in Sources */,
 				C777D97D1DD8AA8700D1C824 /* RMBTQoSTestRunner.m in Sources */,
 				C75FF5D517B1970600A58056 /* RMBTMapOptions.m in Sources */,
+				E9E993E026EB24AE00E7EED6 /* RMBTNetInfoListCell.swift in Sources */,
 				C7A8CC071DFDAC7E00D9E979 /* RMBTHistoryQoSSingleResult.m in Sources */,
+				E946B95026D661730006E1F1 /* RMBTMapOptionsTypes2ViewController.swift in Sources */,
 				C777D9861DD8BEF700D1C824 /* RMBTQoSTestGroup.m in Sources */,
+				E9400F2F26BE8CCD0067273A /* WifiInfo.swift in Sources */,
+				E9E993F426EC814900E7EED6 /* QosMeasurementResultRequest.swift in Sources */,
+				E9E993F626EC816800E7EED6 /* QOSTypeDefinition.swift in Sources */,
 				C75FF5D817B2602F00A58056 /* RMBTMapOptionsViewController.m in Sources */,
 				C77952DC1E23DF5200B95FFF /* RMBTQoSTracerouteTest.m in Sources */,
+				E9E993B726E9FE0C00E7EED6 /* RMBTHistoryResult2ViewController.swift in Sources */,
+				E9400F2B26BE8CB70067273A /* Signal.swift in Sources */,
+				E95954AB26E60287004EA6D9 /* RMBTHistoryFilterTitleCell.swift in Sources */,
 				C737AEE61E7D6947007962EB /* RMBTQoSUDPTest.m in Sources */,
+				E946B93F26D28BA20006E1F1 /* RMBTMapOptionsCell.swift in Sources */,
+				E9E993C226EA435200E7EED6 /* RMBTHistoryBasicInfoCell.swift in Sources */,
+				E93FB10926F4C41600DD24CD /* RMBTVerticalTransitionController.swift in Sources */,
+				E946B94E26D65F0D0006E1F1 /* RMBTMapOptionsFilter2ViewController.swift in Sources */,
+				E9400EED26BA6BFD0067273A /* RMBTSettings.swift in Sources */,
 				C7978FD717F1D07100BF986C /* RMBTConnectivityTracker.m in Sources */,
+				E93FB0F726F39E0200DD24CD /* RMBTHistoryQoSSingleResultViewController.swift in Sources */,
 				C7459B4D1EAC0B8A00042A42 /* RMBTQoSNonTransparentProxyTest.m in Sources */,
 				C7A19B231E919BDD0044B6C8 /* RMBTQoSWebTest.m in Sources */,
-				C79E7B081DF5884700CFC95F /* RMBTHistoryQoSGroupViewController.m in Sources */,
+				E981D280271E892400CD970A /* RMBTLocationPopupViewController.swift in Sources */,
+				E9400EF126BA6E2E0067273A /* IpResponse.swift in Sources */,
+				E939AAA926DB8B0800D73F0B /* RMBTMeasurementPin.swift in Sources */,
 				C7704EA31E95531B00044AF6 /* RMBTHistorySpeedGraph.m in Sources */,
 				C780CE4F1EA287C800332423 /* RMBTQosWebTestURLProtocol.m in Sources */,
 				C783F68C1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.m in Sources */,
 				C7B4E9EE1F0CE4E500FA34F8 /* RMBTLoopDetailsViewController.m in Sources */,
-				C7EF69721E096F7D002F429C /* RMBTHistoryQoSSingleResultViewController.m in Sources */,
+				E94ED1CF26C3C22F00B17B25 /* NetworkReachability.swift in Sources */,
 				C733B6D91DDE1EB2005B9105 /* RMBTHistoryQoSGroupResult.m in Sources */,
 				C7A4B75A17B43C8400176B92 /* RMBTMapMeasurement.m in Sources */,
+				E9B51CC627240B84006ED0C7 /* UIApplication+Additions.swift in Sources */,
+				E930769926CE247F0046A17B /* RMBTMap2ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1305,19 +1966,23 @@
 			children = (
 				C792B8741814AEC700D504DF /* Base */,
 				C792B8791814AED000D504DF /* de */,
-				C75DEAFE1826C91200BC091E /* hr */,
-				C779CAA7182EFF6200398781 /* sv */,
 				C7E8916218317A13003AECA6 /* es */,
-				C7C820FD184908B2009B757F /* fr */,
-				C782A6F81AA62C8600297AFB /* cs */,
 			);
 			name = MainStoryboard.storyboard;
 			path = ../Resources;
 			sourceTree = "<group>";
 		};
+		C7C5424617A69E9C000180A1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		C7F3FB35179CC86900E336CF /* terms_conditions_long.html */ = {
 			isa = PBXVariantGroup;
 			children = (
+				C7F3FB36179CC87300E336CF /* de */,
 				C737DE0A182F013100E5551C /* Base */,
 			);
 			name = terms_conditions_long.html;
@@ -1327,12 +1992,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C7F3FB3F179CCCD800E336CF /* de */,
-				C75DEB021826CB2900BC091E /* hr */,
-				C779CAA9182EFF6200398781 /* sv */,
 				C7E8916318317A13003AECA6 /* es */,
-				C7C82100184908B2009B757F /* fr */,
-				C782A6F71AA62C7800297AFB /* cs */,
-				E9968A2C2500F5180042159C /* en */,
+				1F8A14F2251DFA530010367D /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1343,6 +2004,7 @@
 		C708280A1CB6792F00F482EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -1365,8 +2027,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = RMBTTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = at.rtr.RMBTTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1377,6 +2043,7 @@
 		C708280B1CB6792F00F482EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -1397,8 +2064,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = RMBTTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = at.rtr.RMBTTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1426,6 +2097,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1433,6 +2105,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = T7Y947AEPK;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1448,23 +2121,77 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				New_Setting = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DDEBUG=1";
+				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
+		C7DE149D173E8F610079477A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = T7Y947AEPK;
+				ENABLE_BITCODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				New_Setting = "";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = "RTRNetztest App Store Distribution";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		C7DE149F173E8F610079477A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7C0EFE3176CD18F003758AA /* Debug.xcconfig */;
+			baseConfigurationReference = 89CA21386C488DD817CA1DC2 /* Pods-RMBT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RMBT.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = T7Y947AEPK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1476,13 +2203,58 @@
 					"DEBUG=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/RMBT-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "${CONFIG_BUNDLE_ID}";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.6.3;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = at.rtr.openrmbt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/RMBT-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
+		};
+		C7DE14A0173E8F610079477A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F620A48D0EF31330DAC04D48 /* Pods-RMBT.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RMBT.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = T7Y947AEPK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sources/RMBT-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/RMBT-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.6.3;
+				PRODUCT_BUNDLE_IDENTIFIER = at.rtr.openrmbt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/RMBT-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1500,17 +2272,19 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C7DE149C173E8F610079477A /* Debug */,
+				C7DE149D173E8F610079477A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		C7DE149E173E8F610079477A /* Build configuration list for PBXNativeTarget "RMBT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C7DE149F173E8F610079477A /* Debug */,
+				C7DE14A0173E8F610079477A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

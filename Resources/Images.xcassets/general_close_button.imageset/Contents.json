@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "general_close_button.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

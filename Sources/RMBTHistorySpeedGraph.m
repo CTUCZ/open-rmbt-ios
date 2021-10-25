@@ -16,8 +16,8 @@
  */
 
 #import "RMBTHistorySpeedGraph.h"
-#import "RMBTThroughput.h"
 #import "RMBTSpeed.h"
+#import "RMBT-Swift.h"
 
 @implementation RMBTHistorySpeedGraph
 

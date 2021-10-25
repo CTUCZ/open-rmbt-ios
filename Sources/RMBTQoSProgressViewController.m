@@ -16,18 +16,44 @@
  */
 
 #import "RMBTQoSProgressViewController.h"
+#import "RMBT-Swift.h"
+
+@interface RMBTQoSProgressCell ()
+
+@end
 
 @implementation RMBTQoSProgressCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.progressView.clipsToBounds = YES;
-    self.progressView.layer.cornerRadius = 11.0f;
+    
+    self.percentView = [[RMBTHistoryResultPercentView alloc] initWithFrame:CGRectZero];
+    
+    self.percentView.templateImage = [[UIImage imageNamed:@"traffic_lights_small_template"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.percentView setHidden:NO];
+    [self.percentView setUnfilledColor:[[UIColor whiteColor] colorWithAlphaComponent:0.4]];
+    [self.percentView setFilledColor:[UIColor.whiteColor colorWithAlphaComponent:1.0]];
+    [self.contentView addSubview:self.percentView];
 }
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    self.progressView.progress = 0.0;
+    self.percentView.percents = 0.0;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    if (_percentView.isHidden == NO) {
+        CGFloat padding = 20.0f;
+        CGFloat width = 95.0f;
+        CGFloat height = 11.0f;
+        
+        _percentView.frame = CGRectMake(self.bounds.size.width - width - padding, (self.bounds.size.height - height) / 2, width, height);
+        
+        CGFloat widthWithPadding = _percentView.frameWidth + 20.0f;
+        self.detailTextLabel.frameRight -= (widthWithPadding - 10.0f);
+    }
 }
 
 @end
@@ -41,6 +67,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.backgroundColor = UIColor.clearColor;
 }
 
 - (void)updateProgress:(float)progress forGroup:(RMBTQoSTestGroup*)group {
@@ -52,7 +79,7 @@
         [_progressForGroupKey setObject:[NSNumber numberWithFloat:progress] forKey:group.key];
         RMBTQoSProgressCell *cell = (RMBTQoSProgressCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [cell.progressView setProgress:progress animated:YES];
+            cell.percentView.percents = progress;
         });
     } else {
         NSParameterAssert(false);
@@ -68,6 +95,18 @@
     [self.tableView reloadData];
 }
 
+- (NSString *)progressString {
+    NSInteger total = self.testGroups.count;
+    NSInteger finished = 0;
+    for (RMBTQoSTestGroup *g in self.testGroups) {
+        if ([_progressForGroupKey[g.key] floatValue] == 1.0) {
+            finished += 1;
+        }
+    }
+    
+    return [NSString stringWithFormat:@"%ld/%ld", (long)finished, (long)total];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -79,11 +118,15 @@
     return self.testGroups.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 49;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RMBTQoSTestGroup *g = [_testGroups objectAtIndex:indexPath.row];
 
     RMBTQoSProgressCell *cell = (RMBTQoSProgressCell *)[tableView dequeueReusableCellWithIdentifier:@"qos_progress_cell" forIndexPath:indexPath];
-    cell.progressView.progress = [_progressForGroupKey[g.key] floatValue];
+    cell.percentView.percents = [_progressForGroupKey[g.key] floatValue];
     cell.descriptionLabel.text = g.localizedDescription;
     return cell;
 }

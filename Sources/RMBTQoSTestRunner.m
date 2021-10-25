@@ -21,6 +21,7 @@
 #import "RMBTQoSCCTest.h"
 #import "RMBTProgress.h"
 #import "RMBTQosWebTestURLProtocol.h"
+#import "RMBT-Swift.h"
 
 @interface RMBTQoSTestRunner() {
     __weak id<RMBTQoSTestRunnerDelegate> _delegate;
@@ -56,8 +57,8 @@
 - (void)startWithToken:(NSString*)token {
     _results = [NSMutableDictionary dictionary];
 
-    [[RMBTControlServer sharedControlServer] getQoSParams:^(NSDictionary* response) {
-        NSDictionary *objectives = response[@"objectives"];
+    [[RMBTControlServer sharedControlServer] getQoSParams:^(QosMeasurmentResponse* response) {
+        NSDictionary *objectives = response.objectives;
         if (!objectives) {
             RMBTLog(@"Error getting QoS params: no objectives received");
             [self fail];
@@ -125,8 +126,8 @@
 
             [self enqueue];
         }
-    } error:^(NSError *error, NSDictionary *info) {
-        RMBTLog(@"Error getting QoS params %@ %@", error, info);
+    } error:^(NSError *error) {
+        RMBTLog(@"Error getting QoS params %@", error);
         [self fail];
     }];
 }

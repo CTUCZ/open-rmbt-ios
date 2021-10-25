@@ -16,6 +16,7 @@
  */
 
 #import "RMBTThroughputHistory.h"
+#import "RMBT-Swift.h"
 
 @interface RMBTThroughputHistoryTest : XCTestCase
 @end

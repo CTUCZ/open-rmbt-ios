@@ -16,6 +16,7 @@
  */
 
 #import "RMBTMapOptionsFilterViewController.h"
+#import "RMBT-Swift.h"
 
 @interface RMBTMapOptionsFilterViewController ()
 

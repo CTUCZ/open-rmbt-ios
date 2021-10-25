@@ -17,7 +17,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RMBTThroughput.h"
+@class RMBTThroughput;
 
 @interface RMBTThroughputHistory : NSObject
 

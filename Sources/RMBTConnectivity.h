@@ -42,6 +42,12 @@ typedef struct {
 // Timestamp at which connectivity was detected
 @property (nonatomic, readonly) NSDate *timestamp;
 
+@property (nonatomic, readonly) NSNumber *cellularCode;
+@property (nonatomic, readonly) NSString *telephonyNetworkSimOperator;
+@property (nonatomic, readonly) NSString *telephonyNetworkSimCountry;
+
+@property (nonatomic, readonly) NSString *bssid;
+
 - (instancetype)initWithNetworkType:(RMBTNetworkType)networkType;
 
 - (NSDictionary*)testResultDictionary;

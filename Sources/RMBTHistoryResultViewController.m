@@ -20,15 +20,13 @@
 #import "RMBTHistoryResultViewController.h"
 #import "RMBTHistoryResultDetailsViewController.h"
 #import "RMBTHistoryQoSGroupResult.h"
-#import "RMBTHistoryQoSGroupViewController.h"
 #import "RMBTMapViewController.h"
-#import "RMBTSettings.h"
 #import "RMBTHistoryResultItemCell.h"
 #import "RMBTHistorySpeedGraphCell.h"
 #import "RMBTHistoryQOEResultItemCell.h"
 
-#import "UIViewController+ModalBrowser.h"
 #import <Blockskit/NSArray+BlocksKit.h>
+#import "RMBT-Swift.h"
 
 // cellatindex -> item | download graph | upload graph
 

@@ -18,11 +18,10 @@
 #import "RMBTTestRunner.h"
 #import "RMBTTestWorker.h"
 #import "RMBTQoSTestRunner.h"
-#import "RMBTSettings.h"
-#import "RMBTPing.h"
 
 #import "RMBTLocationTracker.h"
 #import "RMBTConnectivityTracker.h"
+#import "RMBT-Swift.h"
 
 static NSString * const RMBTTestStatusNone = @"NONE";
 static NSString * const RMBTTestStatusAborted = @"ABORTED";
@@ -103,6 +102,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
         NSAssert(_phase == RMBTTestRunnerPhaseNone, @"Invalid state");
         NSAssert(!_dead, @"Invalid state");
 
+        // TODO: unify location serialization with test runner and here
         CLLocation *l = [RMBTLocationTracker sharedTracker].location;
 
         NSDictionary *locationJSON = nil;
@@ -127,11 +127,16 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
         [RMBTSettings sharedSettings].testCounter += 1;
         self.phase = RMBTTestRunnerPhaseFetchingTestParams;
 
-        [[RMBTControlServer sharedControlServer] getTestParamsWithParams:params success:^(id testParams) {
+        SpeedMeasurementRequest_Old *request = [[SpeedMeasurementRequest_Old alloc] init];
+        request.testCounter = [RMBTSettings sharedSettings].testCounter;
+        request.previousTestStatus = RMBTValueOrString([RMBTSettings sharedSettings].previousTestStatus, RMBTTestStatusNone);
+        request.geoLocation = [[GeoLocation alloc] initWithLocation:l];
+        
+        [[RMBTControlServer sharedControlServer] getTestParamsWithRequest:request success:^(id testParams) {
             dispatch_async(_workerQueue, ^{
                 [self continueWithTestParams:testParams];
             });
-        } error:^{
+        } error:^(NSError *error){
             dispatch_async(_workerQueue, ^{
                 [self cancelWithReason:RMBTTestRunnerCancelReasonErrorFetchingTestingParams];
             });
@@ -384,16 +389,20 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
         dispatch_semaphore_t qosSem = dispatch_semaphore_create(0);
 
         if (hasQos) {
-            [[RMBTControlServer sharedControlServer] submitResult:qosResult endpoint:_testParams.resultQoSURLString success:^(id response) {
+            QosMeasurementResultRequest *qosResultRequest = [self qosResultWithDictionary:qosResult];
+            [[RMBTControlServer sharedControlServer] submitQOSResult:qosResultRequest endpoint:self->_testParams.resultQoSURLString success:^(id response) {
                 NSLog(@"Submit QoS = %@", response);
                 dispatch_semaphore_signal(qosSem);
-            } error:^{
+            } error:^(NSError *error){
                 NSLog(@"Submit QoS errored");
                 dispatch_semaphore_signal(qosSem);
             }];
         }
 
-        [[RMBTControlServer sharedControlServer] submitResult:[self resultDictionary] endpoint:nil success:^(id response) {
+        SpeedMeasurementResult *result = [self resultWithDictionary:[self resultDictionary]];
+//        result.uuid = _testParams.testUUID
+        
+        [[RMBTControlServer sharedControlServer] submitResult:result endpoint:nil success:^(id response) {
             dispatch_async(_workerQueue, ^{
                 self.phase = RMBTTestRunnerPhaseNone;
                 _dead = YES;
@@ -411,7 +420,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
                     [_delegate testRunnerDidCompleteWithResult:historyResult];
                 });
             });
-        } error:^{
+        } error:^(NSError *error){
             dispatch_async(_workerQueue, ^{
                 [self cancelWithReason:RMBTTestRunnerCancelReasonErrorSubmittingTestResult];
             });
@@ -430,10 +439,19 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
     }
 }
 
+- (QosMeasurementResultRequest *)qosResultWithDictionary:(NSDictionary *)dictionary {
+    return [[QosMeasurementResultRequest alloc] initWithJSON: dictionary];
+}
+
+- (SpeedMeasurementResult *)resultWithDictionary:(NSDictionary *)dictionary {
+    return [[SpeedMeasurementResult alloc] initWithJSON: dictionary];
+}
+
 - (NSDictionary*)resultDictionary {
     NSMutableDictionary *result = [NSMutableDictionary dictionaryWithDictionary:[_testResult resultDictionary]];
 
     result[@"test_token"] = _testParams.testToken;
+    result[@"uuid"] = _testParams.testUUID;
 
     // Collect total transfers from all threads
     uint64_t sumBytesDownloaded = 0;

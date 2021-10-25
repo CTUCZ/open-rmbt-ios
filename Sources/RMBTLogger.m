@@ -16,8 +16,8 @@
  */
 
 #import "RMBTLogger.h"
-#import "RMBTSettings.h"
 #import <CocoaAsyncSocket/GCDAsyncUdpSocket.h>
+#import "RMBT-Swift.h"
 
 @interface RMBTLogger : NSObject {
     GCDAsyncUdpSocket *_udpSocket;

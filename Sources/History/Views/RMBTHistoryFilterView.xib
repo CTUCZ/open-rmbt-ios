@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RMBTHistoryFilterView" customModule="RMBT" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfx-oE-67Y">
+                    <rect key="frame" x="20" y="18" width="32" height="16.5"/>
+                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                    <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="0.56000000000000005" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VoN-9f-EBu">
+                    <rect key="frame" x="0.0" y="34.5" width="414" height="53.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AsT-ON-Xwy">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="PyI-68-UiR"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="C2k-4m-6ab"/>
+                    </connections>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGb-x6-2ZD">
+                    <rect key="frame" x="20" y="87" width="374" height="1"/>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="IoB-0r-EXg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Cfx-oE-67Y" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="88D-lh-9F7"/>
+                <constraint firstAttribute="bottom" secondItem="VoN-9f-EBu" secondAttribute="bottom" id="A0E-7Z-IWj"/>
+                <constraint firstItem="Cfx-oE-67Y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="D7G-e0-EyP"/>
+                <constraint firstItem="VoN-9f-EBu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Dqf-GM-AjG"/>
+                <constraint firstItem="VoN-9f-EBu" firstAttribute="top" secondItem="Cfx-oE-67Y" secondAttribute="bottom" id="e1j-v2-u58"/>
+                <constraint firstItem="cGb-x6-2ZD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="iAJ-4H-jUS"/>
+                <constraint firstAttribute="trailing" secondItem="cGb-x6-2ZD" secondAttribute="trailing" constant="20" id="nhK-8D-3ex"/>
+                <constraint firstAttribute="bottom" secondItem="cGb-x6-2ZD" secondAttribute="bottom" id="vIE-0s-rVv"/>
+                <constraint firstAttribute="trailing" secondItem="VoN-9f-EBu" secondAttribute="trailing" id="xGv-nM-7Ee"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="collectionView" destination="VoN-9f-EBu" id="2g2-sG-vNl"/>
+                <outlet property="collectionViewFlowLayout" destination="AsT-ON-Xwy" id="4xD-6U-LDz"/>
+            </connections>
+            <point key="canvasLocation" x="-46.376811594202906" y="-132.92410714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

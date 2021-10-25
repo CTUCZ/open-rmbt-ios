@@ -20,13 +20,9 @@
 #import "RMBTIntroViewController.h"
 #import "RMBTConnectivityTracker.h"
 #import "RMBTLocationTracker.h"
-#import "RMBTTestViewController.h"
 #import "RMBTLoopModeTestViewController.h"
 #import "RMBTHistoryIndexViewController.h"
-#import "RMBTVerticalTransitionController.h"
-#import "RMBTTOS.h"
-#import "RMBTSettings.h"
-#import "UIViewController+ModalBrowser.h"
+#import "RMBT-Swift.h"
 
 static const CGFloat kRadiateAnimationStartRadius = 9.0;
 static const CGFloat kRadiateAnimationStartOffsetWifi = 22.0f;
@@ -48,6 +44,7 @@ static const CGFloat kRadiateAnimationStartOffsetCellular = -28.0f;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.navigationController.tabBarItem.title = @" ";
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"tab_test_selected"]];
 }
 
@@ -58,7 +55,7 @@ static const CGFloat kRadiateAnimationStartOffsetCellular = -28.0f;
     self.networkTypeLabel.text = @"";
     self.networkTypeImageView.image = nil; // Clear placeholder image
 
-    RMBTTOS *tos = [RMBTTOS sharedTOS];
+    RMBTTOS *tos = [RMBTTOS shared];
 
     // If user hasn't agreed to new TOS version, show TOS modally
     if (!tos.isCurrentVersionAccepted) {
@@ -151,7 +148,7 @@ static const CGFloat kRadiateAnimationStartOffsetCellular = -28.0f;
             } else {
                 settings.loopModeLastCount = i;
 
-                RMBTLoopInfo *info = [[RMBTLoopInfo alloc] initWithMeters:settings.loopModeEveryMeters minutes:settings.loopModeEveryMinutes total:i];
+                RMBTLoopInfo *info = [[RMBTLoopInfo alloc] initWith:settings.loopModeEveryMeters minutes:settings.loopModeEveryMinutes total:i];
                 [self startTestWithLoopModeInfo:info];
             }
         }];

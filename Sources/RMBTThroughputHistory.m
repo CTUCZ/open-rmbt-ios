@@ -16,7 +16,7 @@
  */
 
 #import "RMBTThroughputHistory.h"
-#import "RMBTThroughput.h"
+#import "RMBT-Swift.h"
 
 @interface RMBTThroughputHistory() {
     NSMutableArray *_periods;

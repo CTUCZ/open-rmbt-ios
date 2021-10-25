@@ -236,3 +236,46 @@
 "gaming_cloud" = "Spiele Cloud";
 "gaming_streaming" = "Spiele Streaming";
 "qos" = "Qualitätstests";
+
+"text_button_decline" = "Abbrechen";
+"text_button_accept" = "Akzeptieren";
+
+"title_loop_instruction_1" = "Aktivierung";
+"title_loop_instruction_2" = "Nutzung";
+
+"tos.agree" = "Agree";
+"tos.decline" = "Decline";
+"tos.agreements.title" = "I agree with RTR’s privacy policy and terms of use for RTR-NetTest.";
+
+"public_ip_address" = "Öffentliche Adresse";
+"private_ip_address" = "Lokale Adresse";
+
+"title_loop_mode" = "Wiederholungsmodus";
+
+/* Location Dialog */
+"location_dialog_label_title" = "Standort";
+"location_dialog_label_position" = "Position";
+"location_dialog_label_accuracy" = "Genauigkeit";
+"location_dialog_label_age" = "Aktualität";
+"location_dialog_label_source" = "Quelle";
+"location_dialog_label_altitude" = "Höhe";
+"location_dialog_label_speed" = "Geschwindigkeit";
+"location_dialog_label_satellites" = "Satelliten";
+"location_dialog_label_location_progress_message" = "Der Standort wird bestimmt, bitte warten…";
+"open_gps_setting_dialog_label_gps_not_enabled" = "Standort nicht verfügbar. Möchten Sie die Standorteinstellungen ändern?";
+"open_gps_setting_dialog_label_open_gps_setting" = "Standort-Einstellungen öffnen";
+"open_gps_setting_dialog_label_cancel" = "Abbrechen";
+"location_dialog_not_available" = "Nicht verfügbar";
+"location_dialog_age" = "%1$s s";
+"location_dialog_accuracy" = "%1$s m";
+"location_dialog_speed" = "%1$s km/h";
+"location_dialog_position" = "%1$s %2$s";
+"location_location_direction_n" = "N";
+"location_location_direction_e" = "E";
+"location_location_direction_s" = "S";
+"location_location_direction_w" = "W";
+"open_location_permission_dialog_label_location_not_permitted" = "Standort nicht verfügbar. Zulassen, dass RTR-Netztest auf den Standort Ihres Geräts zugreift?";
+"open_location_permission_dialog_label_open_permission_setting" = "Einstellungen öffnen";
+
+/* Menu Items */
+"menu_button_history" = "Verlauf";

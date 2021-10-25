@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_marker_wifi.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

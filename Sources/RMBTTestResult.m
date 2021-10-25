@@ -17,7 +17,7 @@
 
 #import "RMBTTestResult.h"
 #import "RMBTThroughputHistory.h"
-#import "RMBTPing.h"
+#import "RMBT-Swift.h"
 
 const int32_t RMBTTestResultSpeedNotAvailable = -1;
 const int32_t RMBTTestResultSpeedMeasurementFinished = -2;
@@ -223,6 +223,7 @@ const int32_t RMBTTestResultSpeedMeasurementFinished = -2;
     }
 
     // Remove last measurement from result, as we don't want to plot that one as it's usually too short
+    // TODO: return result after squashing
     if (result.count > 0) {
         result = [result subarrayWithRange:NSMakeRange(0, result.count-1)];
     }
@@ -269,7 +270,7 @@ const int32_t RMBTTestResultSpeedMeasurementFinished = -2;
     NSMutableArray *pings = [NSMutableArray array];
 
     for (RMBTPing* p in _pings) {
-        [pings addObject:[p testResultDictionary]];
+        [pings addObject:[p json]];
     }
 
     NSMutableArray *speedDetails = [NSMutableArray array];
@@ -278,7 +279,7 @@ const int32_t RMBTTestResultSpeedMeasurementFinished = -2;
     [speedDetails addObjectsFromArray:[self subresultForThreadThroughputs:self.perThreadUploadHistories withDirectionString:@"upload"]];
 
     NSMutableDictionary *result = [NSMutableDictionary dictionaryWithDictionary:@{
-        @"test_ping_shortest": [NSNumber numberWithUnsignedLongLong:_bestPingNanos],
+        @"test_ping_shortest": [NSNumber numberWithUnsignedLongLong:_bestPingNanos], // TODO: helper
         @"pings": pings,
         @"speed_detail": speedDetails,
         @"test_num_threads": [NSNumber numberWithUnsignedInteger:_threadCount],

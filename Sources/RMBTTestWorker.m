@@ -19,6 +19,7 @@
 
 #import "RMBTTestWorker.h"
 #import "RMBTSSLHelper.h"
+#import "RMBT-Swift.h"
 
 typedef enum {
     RMBTTestWorkerStateInitialized,
@@ -194,6 +195,7 @@ typedef NS_ENUM(long, RMBTTestTag) {
 - (void)connect {
     NSError *error;
     [_socket connectToHost:_params.serverAddress onPort:_params.serverPort withTimeout:RMBT_TEST_SOCKET_TIMEOUT_S error:&error];
+    // TODO: handle connect error
 }
 
 

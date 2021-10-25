@@ -16,9 +16,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "RMBTTestParams.h"
 
-@class RMBTTestWorker;
+@class RMBTTestWorker, RMBTTestParams;
 
 // All delegate methods are dispatched on the supplied delegate queue
 @protocol RMBTTestWorkerDelegate <NSObject>
@@ -50,7 +49,7 @@
 @property (nonatomic, readonly) NSString *negotiatedEncryptionString;
 @property (nonatomic, readonly) NSString *localIp, *serverIp;
 
-- (id)initWithDelegate:(id<RMBTTestWorkerDelegate>)delegate delegateQueue:(dispatch_queue_t)queue index:(NSUInteger)index testParams:(RMBTTestParams*)params;
+- (id)initWithDelegate:(id<RMBTTestWorkerDelegate>)delegate delegateQueue:(dispatch_queue_t)queue index:(NSUInteger)index testParams:(RMBTTestParams *)params;
 
 - (void)startDownlinkPretest;
 - (void)stop;

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "history_sync_icon.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -236,3 +236,46 @@
 "gaming_cloud" = "Gaming cloud";
 "gaming_streaming" = "Gaming streaming";
 "qos" = "QoS tests";
+
+"text_button_decline" = "Decline";
+"text_button_accept" = "Accept";
+
+"title_loop_instruction_1" = "Activation";
+"title_loop_instruction_2" = "Usage";
+
+"tos.agree" = "Agree";
+"tos.decline" = "Decline";
+"tos.agreements.title" = "I agree with RTR’s privacy policy and terms of use for RTR-NetTest.";
+
+"public_ip_address" = "Public address";
+"private_ip_address" = "Private address";
+
+"title_loop_mode" = "Loop mode";
+
+/* Location Dialog */
+"location_dialog_label_title" = "Location";
+"location_dialog_label_position" = "Position";
+"location_dialog_label_accuracy" = "Accuracy";
+"location_dialog_label_age" = "Age";
+"location_dialog_label_source" = "Source";
+"location_dialog_label_altitude" = "Altitude";
+"location_dialog_label_speed" = "Speed";
+"location_dialog_label_satellites" = "Satellites";
+"location_dialog_label_location_progress_message" = "Determining location, please wait…";
+"open_gps_setting_dialog_label_gps_not_enabled" = "Location services are not enabled. Would you like to modify location settings?";
+"open_gps_setting_dialog_label_open_gps_setting" = "Open location settings";
+"open_gps_setting_dialog_label_cancel" = "Cancel";
+"location_dialog_not_available" = "Not available";
+"location_dialog_age" = "%1$s s";
+"location_dialog_accuracy" = "%1$s m";
+"location_dialog_speed" = "%1$s km/h";
+"location_dialog_position" = "%1$s %2$s";
+"location_location_direction_n" = "N";
+"location_location_direction_e" = "E";
+"location_location_direction_s" = "S";
+"location_location_direction_w" = "W";
+"open_location_permission_dialog_label_location_not_permitted" = "RTR-NetTest is not allowed to use your location. Would you like to allow RTR-NetTest to use your location?";
+"open_location_permission_dialog_label_open_permission_setting" = "Open application settings";
+
+/* Menu Items */
+"menu_button_history" = "History";

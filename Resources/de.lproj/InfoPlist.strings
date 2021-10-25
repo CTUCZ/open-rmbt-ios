@@ -1,0 +1,3 @@
+CFBundleDisplayName = "RTR-Netztest";
+CFBundleName = "RTR-Netztest";
+NSLocationWhenInUseUsageDescription = "Diese Information wird zur Bestimmung des Standorts Ihrer Messungen verwendet.";

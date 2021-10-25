@@ -21,12 +21,20 @@
 @interface RMBTLoopModeConfirmationViewController () {
     BOOL _step2;
 }
+
+@property (weak, nonatomic) IBOutlet UIButton *declineButton;
+@property (weak, nonatomic) IBOutlet UIButton *acceptButton;
+
 @end
 
 @implementation RMBTLoopModeConfirmationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.acceptButton setTitle:NSLocalizedString(@"text_button_accept", @"") forState:UIControlStateNormal];
+    [self.declineButton setTitle:NSLocalizedString(@"text_button_decline", @"") forState:UIControlStateNormal];
+    self.acceptButton.layer.cornerRadius = 8;
+    self.declineButton.layer.cornerRadius = 8;
     [self createWebView];
     [self show];
 }
@@ -47,12 +55,13 @@
 
 - (void)show {
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"Loop mode %@/2", @"Confirmation dialog subtitle"), _step2 ? @2 : @1];
-    self.navigationItem.title = NSLocalizedString(@"Activation and privacy", @"Confirmation dialog title 1/2");
+    
+    self.navigationItem.prompt = nil;
+    self.navigationItem.title = NSLocalizedString(@"title_loop_instruction_1", @"Confirmation dialog title 1/2");
     NSString *html = @"loop_mode_info";
 
     if (_step2) {
-        self.navigationItem.title = NSLocalizedString(@"Usage", @"Confirmation dialog title 1/2");
+        self.navigationItem.title = NSLocalizedString(@"title_loop_instruction_2", @"Confirmation dialog title 1/2");
         html = @"loop_mode_info2";
     }
 
@@ -60,7 +69,7 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
-- (void)accept:(id)sender {
+- (IBAction)accept:(id)sender {
     if (!_step2) {
         _step2 = YES;
         [self show];

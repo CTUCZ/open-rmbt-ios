@@ -17,7 +17,8 @@
 
 #import <UIKit/UIKit.h>
 #import "RMBTBaseTestViewController.h"
-#import "RMBTLoopInfo.h"
+
+@class RMBTLoopInfo;
 
 @interface RMBTLoopModeTestViewController : RMBTBaseTestViewController
 

@@ -16,6 +16,7 @@
  */
 
 #import "RMBTMapOptionsOverlaysViewController.h"
+#import "RMBT-Swift.h"
 
 @implementation RMBTMapOptionsOverlaysViewController
 

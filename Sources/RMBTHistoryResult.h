@@ -59,6 +59,8 @@ typedef NS_ENUM(NSUInteger, RMBTHistoryResultDataState) {
 @property (nonatomic, readonly) NSString *uuid;
 @property (nonatomic, readonly) NSString *openTestUuid;
 @property (nonatomic, readonly) NSDate   *timestamp;
+@property (nonatomic, readonly) NSString *timeString;
+
 @property (nonatomic, readonly) NSString *downloadSpeedMbpsString, *uploadSpeedMbpsString;
 @property (nonatomic, readonly) NSString *shortestPingMillisString;
 @property (nonatomic, readonly) NSString *deviceModel;

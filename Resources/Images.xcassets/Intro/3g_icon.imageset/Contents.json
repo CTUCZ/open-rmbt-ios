@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "3g_icon.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
