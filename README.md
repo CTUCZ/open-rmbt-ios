@@ -22,6 +22,9 @@ You can ignore changes in RMBTConfig.h and RMBTConfig.swift:
 For ignore `git update-index --skip-worktree Configs/RMBTConfig.h` 
 For undo ignore `git update-index --skip-worktree Configs/RMBTConfig.h`
 
+For ignore `git update-index --skip-worktree Configs/RMBTConfig.swift` 
+For undo ignore `git update-index --skip-worktree Configs/RMBTConfig.swift`
+
 Third-party Libraries
 ---------------------
 
