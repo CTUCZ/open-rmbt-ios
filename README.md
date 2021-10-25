@@ -18,6 +18,10 @@ Xcode 9+ with iOS 11 SDK is required to build the Open-RMBT iOS App.
 
 Before building, you need to supply a correct Google Maps API key as well as a Open-RMBT server parameters in `RMBTConfig.h`.
 
+You can ignore changes in RMBTConfig.h and RMBTConfig.swift:
+For ignore `git update-index --skip-worktree Configs/RMBTConfig.h` 
+For undo ignore `git update-index --skip-worktree Configs/RMBTConfig.h`
+
 Third-party Libraries
 ---------------------
 
