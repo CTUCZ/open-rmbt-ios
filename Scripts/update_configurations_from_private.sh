@@ -17,5 +17,3 @@ DESTINATION_IMAGES_DIR="./Resources/Images.xcassets"
 if [ -d "$IMAGES_DIR" ]; then
     cp -a "$IMAGES_DIR/." $DESTINATION_IMAGES_DIR
 fi
-
-exit 123

@@ -13,12 +13,10 @@
 		C5DEB476176364B100187C94 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB475176364B100187C94 /* AVFoundation.framework */; };
 		C5DEB478176364BC00187C94 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB477176364BC00187C94 /* CoreData.framework */; };
 		C5DEB47A176364C300187C94 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB479176364C300187C94 /* CoreText.framework */; };
-		C5DEB47C176364C900187C94 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB47B176364C900187C94 /* GLKit.framework */; };
 		C5DEB47E176364CE00187C94 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB47D176364CE00187C94 /* ImageIO.framework */; };
 		C5DEB480176364D500187C94 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB47F176364D500187C94 /* libc++.dylib */; };
 		C5DEB482176364D900187C94 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB481176364D900187C94 /* libicucore.dylib */; };
 		C5DEB484176364DF00187C94 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB483176364DF00187C94 /* libz.dylib */; };
-		C5DEB486176364E400187C94 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB485176364E400187C94 /* OpenGLES.framework */; };
 		C703D3E21765CF5E00A38C34 /* RMBTSpeedGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = C703D3E11765CF5E00A38C34 /* RMBTSpeedGraphView.m */; };
 		C708280C1CB6795D00F482EB /* RMBTThroughputHistoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E46737177CDDB600AAF7F0 /* RMBTThroughputHistoryTest.m */; };
 		C708280D1CB6795F00F482EB /* RMBTSpeedTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F3FB26179CA64D00E336CF /* RMBTSpeedTest.m */; };
@@ -35,7 +33,6 @@
 		C7228DEF17FC1ADF00FB984D /* RMBTHistoryResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7228DEE17FC1ADF00FB984D /* RMBTHistoryResultItemCell.m */; };
 		C7228DF317FC1CC900FB984D /* RMBTMapCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7228DF217FC1CC900FB984D /* RMBTMapCalloutView.m */; };
 		C72A27A417E1ECD400EC98B3 /* RMBTSSLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C72A27A317E1ECD400EC98B3 /* RMBTSSLHelper.m */; };
-		C72F49A31F31CE3A00CCA650 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C72F49A51F31CE3A00CCA650 /* TestStoryboard.storyboard */; };
 		C72F49AC1F32341100CCA650 /* RMBTLoopDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72F49AB1F32341100CCA650 /* RMBTLoopDetailsCell.m */; };
 		C733B6D91DDE1EB2005B9105 /* RMBTHistoryQoSGroupResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C733B6D81DDE1EB2005B9105 /* RMBTHistoryQoSGroupResult.m */; };
 		C73780971E09EBEA00CA0558 /* RMBTQoSHTTPTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C73780961E09EBEA00CA0558 /* RMBTQoSHTTPTest.m */; };
@@ -69,7 +66,6 @@
 		C77952DC1E23DF5200B95FFF /* RMBTQoSTracerouteTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C77952DB1E23DF5200B95FFF /* RMBTQoSTracerouteTest.m */; };
 		C77952DD1E23DF5200B95FFF /* RMBTQoSTracerouteTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C77952DB1E23DF5200B95FFF /* RMBTQoSTracerouteTest.m */; };
 		C779E9E917403364003874AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C779E9E817403364003874AB /* QuartzCore.framework */; };
-		C780408D1814B09D0015EB24 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C792B8751814AEC700D504DF /* MainStoryboard.storyboard */; };
 		C780CE4F1EA287C800332423 /* RMBTQosWebTestURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C780CE4E1EA287C800332423 /* RMBTQosWebTestURLProtocol.m */; };
 		C783F6891ED85312001CB2F9 /* RMBTQoSIPTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C783F6881ED85312001CB2F9 /* RMBTQoSIPTest.m */; };
 		C783F68C1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C783F68B1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.m */; };
@@ -77,7 +73,6 @@
 		C783F6921EDC7EB4001CB2F9 /* loop_mode_info2.html in Resources */ = {isa = PBXBuildFile; fileRef = C783F68F1EDC7EB4001CB2F9 /* loop_mode_info2.html */; };
 		C7912CB6177D581F004AD2A4 /* RMBTSpeed.m in Sources */ = {isa = PBXBuildFile; fileRef = C7912CB5177D581F004AD2A4 /* RMBTSpeed.m */; };
 		C7916EB7173EB65F00B40152 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7916EB6173EB65F00B40152 /* SystemConfiguration.framework */; };
-		C7916EB9173EB68200B40152 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7916EB8173EB68200B40152 /* MobileCoreServices.framework */; };
 		C7978FD717F1D07100BF986C /* RMBTConnectivityTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = C7978FD617F1D07100BF986C /* RMBTConnectivityTracker.m */; };
 		C79C94A617713106000CF5EE /* RMBTLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C79C94A517713106000CF5EE /* RMBTLogger.m */; };
 		C7A19B231E919BDD0044B6C8 /* RMBTQoSWebTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A19B221E919BDD0044B6C8 /* RMBTQoSWebTest.m */; };
@@ -101,7 +96,6 @@
 		C7EF307C1DFEEB140002CCD0 /* RMBTQoSProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EF307B1DFEEB140002CCD0 /* RMBTQoSProgressViewController.m */; };
 		C7F08F6A1769F37700741844 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F08F691769F37600741844 /* CoreTelephony.framework */; };
 		C7F3FB33179CC86900E336CF /* terms_conditions_long.html in Resources */ = {isa = PBXBuildFile; fileRef = C7F3FB35179CC86900E336CF /* terms_conditions_long.html */; };
-		C7F3FB3C179CCCD600E336CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7F3FB3E179CCCD600E336CF /* Localizable.strings */; };
 		C7F599A71A2A81940020ADC4 /* RMBTHistoryIndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */; };
 		C7FDBF2D1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */; };
 		E91316AE26AD72F200368DCD /* RMBTTOSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316AD26AD72F200368DCD /* RMBTTOSViewController.swift */; };
@@ -186,6 +180,12 @@
 		E94ED1CF26C3C22F00B17B25 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94ED1CE26C3C22F00B17B25 /* NetworkReachability.swift */; };
 		E94ED1D126C615F500B17B25 /* RMBTPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94ED1D026C615F500B17B25 /* RMBTPopupViewController.swift */; };
 		E94ED1D326C63C7400B17B25 /* RMBTGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94ED1D226C63C7400B17B25 /* RMBTGaugeView.swift */; };
+		E9555EA32727D3DE003547B0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9555EA22727D3DE003547B0 /* MainStoryboard.storyboard */; };
+		E9555EA52727D413003547B0 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9555EA42727D413003547B0 /* TestStoryboard.storyboard */; };
+		E9555EA62727D478003547B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9555EA82727D478003547B0 /* Localizable.strings */; };
+		E9555EAC2727D49C003547B0 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9555EAA2727D49C003547B0 /* Metal.framework */; };
+		E9555EAD2727D49C003547B0 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9555EAB2727D49C003547B0 /* MetalKit.framework */; };
+		E9555EAF2727D4B1003547B0 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9555EAE2727D4B0003547B0 /* CoreServices.framework */; };
 		E959547826E38AF7004EA6D9 /* RMBTHistoryIndex2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959547726E38AF6004EA6D9 /* RMBTHistoryIndex2ViewController.swift */; };
 		E959547C26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959547A26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift */; };
 		E959547D26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E959547B26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib */; };
@@ -280,7 +280,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F8A14F2251DFA530010367D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F9C078F216F751C00F1FC10 /* RMBT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RMBT.entitlements; sourceTree = "<group>"; };
 		32DE166B881B73366FE005F9 /* Pods_RMBT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMBT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89CA21386C488DD817CA1DC2 /* Pods-RMBT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMBT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMBT/Pods-RMBT.debug.xcconfig"; sourceTree = "<group>"; };
@@ -323,8 +322,6 @@
 		C7228DF217FC1CC900FB984D /* RMBTMapCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTMapCalloutView.m; sourceTree = "<group>"; };
 		C72A27A217E1ECD400EC98B3 /* RMBTSSLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTSSLHelper.h; sourceTree = "<group>"; };
 		C72A27A317E1ECD400EC98B3 /* RMBTSSLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTSSLHelper.m; sourceTree = "<group>"; };
-		C72F49A41F31CE3A00CCA650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TestStoryboard.storyboard; sourceTree = "<group>"; };
-		C72F49A71F31CE3F00CCA650 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/TestStoryboard.strings; sourceTree = "<group>"; };
 		C72F49A81F320F3D00CCA650 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/loop_mode_info.html; sourceTree = "<group>"; };
 		C72F49A91F320F4100CCA650 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/loop_mode_info2.html; sourceTree = "<group>"; };
 		C72F49AA1F32341100CCA650 /* RMBTLoopDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTLoopDetailsCell.h; sourceTree = "<group>"; };
@@ -400,11 +397,8 @@
 		C783F6901EDC7EB4001CB2F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/loop_mode_info2.html; sourceTree = "<group>"; };
 		C7912CB4177D581F004AD2A4 /* RMBTSpeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTSpeed.h; sourceTree = "<group>"; };
 		C7912CB5177D581F004AD2A4 /* RMBTSpeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTSpeed.m; sourceTree = "<group>"; };
-		C7916EAA173E945E00B40152 /* RMBT-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RMBT-Info.plist"; sourceTree = "<group>"; };
 		C7916EB6173EB65F00B40152 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C7916EB8173EB68200B40152 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		C792B8741814AEC700D504DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		C792B8791814AED000D504DF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
 		C79401EF17FAE2EF00484B8A /* RMBTNetworkType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTNetworkType.h; sourceTree = "<group>"; };
 		C7978FD517F1D07100BF986C /* RMBTConnectivityTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTConnectivityTracker.h; sourceTree = "<group>"; };
 		C7978FD617F1D07100BF986C /* RMBTConnectivityTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTConnectivityTracker.m; sourceTree = "<group>"; };
@@ -440,8 +434,6 @@
 		C7E46739177CDDB600AAF7F0 /* RMBTTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMBTTests-Prefix.pch"; sourceTree = "<group>"; };
 		C7E5817318075B5400706848 /* RMBTIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTIntroViewController.h; sourceTree = "<group>"; };
 		C7E5817418075B5400706848 /* RMBTIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTIntroViewController.m; sourceTree = "<group>"; };
-		C7E8916218317A13003AECA6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
-		C7E8916318317A13003AECA6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C7EBA1A6173FE4A40055F578 /* RMBTTestWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTTestWorker.h; sourceTree = "<group>"; };
 		C7EBA1A7173FE4A40055F578 /* RMBTTestWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTTestWorker.m; sourceTree = "<group>"; };
 		C7ECD90D174DB042000DF966 /* RMBTTestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTTestRunner.h; sourceTree = "<group>"; };
@@ -455,7 +447,6 @@
 		C7F08F691769F37600741844 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C7F3FB26179CA64D00E336CF /* RMBTSpeedTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTSpeedTest.m; sourceTree = "<group>"; };
 		C7F3FB36179CC87300E336CF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/terms_conditions_long.html; sourceTree = "<group>"; };
-		C7F3FB3F179CCCD800E336CF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C7F599A61A2A81940020ADC4 /* RMBTHistoryIndexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTHistoryIndexCell.xib; sourceTree = "<group>"; };
 		C7FDBF2B1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTLoopMeasurementsViewController.h; sourceTree = "<group>"; };
 		C7FDBF2C1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTLoopMeasurementsViewController.m; sourceTree = "<group>"; };
@@ -543,6 +534,17 @@
 		E94ED1CE26C3C22F00B17B25 /* NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		E94ED1D026C615F500B17B25 /* RMBTPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTPopupViewController.swift; sourceTree = "<group>"; };
 		E94ED1D226C63C7400B17B25 /* RMBTGaugeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTGaugeView.swift; sourceTree = "<group>"; };
+		E9555E9A2727D309003547B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/terms_conditions_long.html; sourceTree = "<group>"; };
+		E9555E9B2727D318003547B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/loop_mode_info.html; sourceTree = "<group>"; };
+		E9555E9C2727D31B003547B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/loop_mode_info2.html; sourceTree = "<group>"; };
+		E9555EA22727D3DE003547B0 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		E9555EA42727D413003547B0 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestStoryboard.storyboard; sourceTree = "<group>"; };
+		E9555EA72727D478003547B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9555EA92727D47A003547B0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9555EAA2727D49C003547B0 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		E9555EAB2727D49C003547B0 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		E9555EAE2727D4B0003547B0 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		E9555EB02727D880003547B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E959547726E38AF6004EA6D9 /* RMBTHistoryIndex2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTHistoryIndex2ViewController.swift; sourceTree = "<group>"; };
 		E959547A26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryLoadingCell.swift; sourceTree = "<group>"; };
 		E959547B26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryLoadingCell.xib; sourceTree = "<group>"; };
@@ -641,26 +643,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9555EAD2727D49C003547B0 /* MetalKit.framework in Frameworks */,
 				C741B62C1DD99D7A0097D84D /* libresolv.tbd in Frameworks */,
 				C7F08F6A1769F37700741844 /* CoreTelephony.framework in Frameworks */,
-				C5DEB486176364E400187C94 /* OpenGLES.framework in Frameworks */,
 				C5DEB484176364DF00187C94 /* libz.dylib in Frameworks */,
 				C5DEB482176364D900187C94 /* libicucore.dylib in Frameworks */,
 				C5DEB480176364D500187C94 /* libc++.dylib in Frameworks */,
 				C5DEB47E176364CE00187C94 /* ImageIO.framework in Frameworks */,
-				C5DEB47C176364C900187C94 /* GLKit.framework in Frameworks */,
 				C5DEB47A176364C300187C94 /* CoreText.framework in Frameworks */,
 				C5DEB478176364BC00187C94 /* CoreData.framework in Frameworks */,
 				C5DEB476176364B100187C94 /* AVFoundation.framework in Frameworks */,
 				C573F2B1175294A500C728FC /* CoreLocation.framework in Frameworks */,
+				E9555EAC2727D49C003547B0 /* Metal.framework in Frameworks */,
 				C573F2A5175281D300C728FC /* MapKit.framework in Frameworks */,
 				C779E9E917403364003874AB /* QuartzCore.framework in Frameworks */,
 				E9789EEE24D74434007253EB /* WebKit.framework in Frameworks */,
-				C7916EB9173EB68200B40152 /* MobileCoreServices.framework in Frameworks */,
 				C7916EB7173EB65F00B40152 /* SystemConfiguration.framework in Frameworks */,
 				C7DE147C173E8F610079477A /* UIKit.framework in Frameworks */,
 				C7DE147E173E8F610079477A /* Foundation.framework in Frameworks */,
 				C7DE1480173E8F610079477A /* CoreGraphics.framework in Frameworks */,
+				E9555EAF2727D4B1003547B0 /* CoreServices.framework in Frameworks */,
 				F71B138A4E5F6DC41FF14268 /* Pods_RMBT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -893,9 +895,7 @@
 			children = (
 				E959548226E4F17D004EA6D9 /* Fonts */,
 				C70C178B17D7BFC400F55964 /* Images.xcassets */,
-				C7916EAA173E945E00B40152 /* RMBT-Info.plist */,
-				C7C5424617A69E9C000180A1 /* InfoPlist.strings */,
-				C7F3FB3E179CCCD600E336CF /* Localizable.strings */,
+				E9555EA82727D478003547B0 /* Localizable.strings */,
 				C7F3FB35179CC86900E336CF /* terms_conditions_long.html */,
 				C783F68D1EDC7EB4001CB2F9 /* loop_mode_info.html */,
 				C783F68F1EDC7EB4001CB2F9 /* loop_mode_info2.html */,
@@ -989,6 +989,9 @@
 		C7DE147A173E8F610079477A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9555EAE2727D4B0003547B0 /* CoreServices.framework */,
+				E9555EAA2727D49C003547B0 /* Metal.framework */,
+				E9555EAB2727D49C003547B0 /* MetalKit.framework */,
 				E9789EED24D74434007253EB /* WebKit.framework */,
 				C741B62B1DD99D7A0097D84D /* libresolv.tbd */,
 				C7F08F691769F37600741844 /* CoreTelephony.framework */,
@@ -1082,8 +1085,8 @@
 			isa = PBXGroup;
 			children = (
 				E98B7B1826CB769E0063F44F /* RMBTAppDelegate.swift */,
-				C792B8751814AEC700D504DF /* MainStoryboard.storyboard */,
-				C72F49A51F31CE3A00CCA650 /* TestStoryboard.storyboard */,
+				E9555EA42727D413003547B0 /* TestStoryboard.storyboard */,
+				E9555EA22727D3DE003547B0 /* MainStoryboard.storyboard */,
 				C774EE7B1792FA3700D623A3 /* _Shared */,
 				C7946870175FF1B000B0DECD /* _Utility */,
 				C75A1186179B12C800E2444F /* TOS */,
@@ -1551,7 +1554,6 @@
 				en,
 				Base,
 				de,
-				es,
 			);
 			mainGroup = C7DE146F173E8F610079477A;
 			productRefGroup = C7DE1479173E8F610079477A /* Products */;
@@ -1579,7 +1581,6 @@
 				E959549C26E4F17E004EA6D9 /* Roboto-Thin.ttf in Resources */,
 				E959547D26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib in Resources */,
 				E9E993E826EB27BD00E7EED6 /* RMBTQOSListCell.xib in Resources */,
-				C780408D1814B09D0015EB24 /* MainStoryboard.storyboard in Resources */,
 				C7228DEC17FC199F00FB984D /* RMBTMapCalloutView.xib in Resources */,
 				E9E993BF26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.xib in Resources */,
 				E9B51CCA27243208006ED0C7 /* RMBTIntroPortraitView.xib in Resources */,
@@ -1596,7 +1597,7 @@
 				E95954B526E62E34004EA6D9 /* RMBTHistoryViewCell.xib in Resources */,
 				E9E993C726EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.xib in Resources */,
 				E95954AA26E60287004EA6D9 /* RMBTHistoryFilterTitleCell.xib in Resources */,
-				C7F3FB3C179CCCD600E336CF /* Localizable.strings in Resources */,
+				E9555EA52727D413003547B0 /* TestStoryboard.storyboard in Resources */,
 				E9E993C326EA435200E7EED6 /* RMBTHistoryBasicInfoCell.xib in Resources */,
 				C7F599A71A2A81940020ADC4 /* RMBTHistoryIndexCell.xib in Resources */,
 				E946B95426D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.xib in Resources */,
@@ -1612,7 +1613,9 @@
 				E946B95826D6736F0006E1F1 /* RMBTMapOptionsTypeCell.xib in Resources */,
 				C7BC5C731F747A9E00A91F0F /* Launch Screen.storyboard in Resources */,
 				E93FB0EF26F39A7B00DD24CD /* RMBTHistoryQoSSingleResultCell.xib in Resources */,
+				E9555EA62727D478003547B0 /* Localizable.strings in Resources */,
 				E9E993DE26EB24AE00E7EED6 /* RMBTNetInfoItemtCell.xib in Resources */,
+				E9555EA32727D3DE003547B0 /* MainStoryboard.storyboard in Resources */,
 				E959549A26E4F17E004EA6D9 /* Roboto-BlackItalic.ttf in Resources */,
 				E981D284271E8B9500CD970A /* RMBTLocationPopupCollectionView.xib in Resources */,
 				E959549326E4F17D004EA6D9 /* Roboto-Regular.ttf in Resources */,
@@ -1625,7 +1628,6 @@
 				E959549926E4F17E004EA6D9 /* LICENSE.txt in Resources */,
 				E9E993D926EB185300E7EED6 /* RMBTQOEItemCell.xib in Resources */,
 				E9E993BB26EA398500E7EED6 /* RMBTHistoryMapCell.xib in Resources */,
-				C72F49A31F31CE3A00CCA650 /* TestStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1933,20 +1935,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C72F49A51F31CE3A00CCA650 /* TestStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C72F49A41F31CE3A00CCA650 /* Base */,
-				C72F49A71F31CE3F00CCA650 /* de */,
-			);
-			name = TestStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
 		C783F68D1EDC7EB4001CB2F9 /* loop_mode_info.html */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C783F68E1EDC7EB4001CB2F9 /* Base */,
 				C72F49A81F320F3D00CCA650 /* de */,
+				E9555E9B2727D318003547B0 /* en */,
 			);
 			name = loop_mode_info.html;
 			sourceTree = "<group>";
@@ -1956,26 +1950,9 @@
 			children = (
 				C783F6901EDC7EB4001CB2F9 /* Base */,
 				C72F49A91F320F4100CCA650 /* de */,
+				E9555E9C2727D31B003547B0 /* en */,
 			);
 			name = loop_mode_info2.html;
-			sourceTree = "<group>";
-		};
-		C792B8751814AEC700D504DF /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C792B8741814AEC700D504DF /* Base */,
-				C792B8791814AED000D504DF /* de */,
-				C7E8916218317A13003AECA6 /* es */,
-			);
-			name = MainStoryboard.storyboard;
-			path = ../Resources;
-			sourceTree = "<group>";
-		};
-		C7C5424617A69E9C000180A1 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		C7F3FB35179CC86900E336CF /* terms_conditions_long.html */ = {
@@ -1983,16 +1960,17 @@
 			children = (
 				C7F3FB36179CC87300E336CF /* de */,
 				C737DE0A182F013100E5551C /* Base */,
+				E9555E9A2727D309003547B0 /* en */,
 			);
 			name = terms_conditions_long.html;
 			sourceTree = "<group>";
 		};
-		C7F3FB3E179CCCD600E336CF /* Localizable.strings */ = {
+		E9555EA82727D478003547B0 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C7F3FB3F179CCCD800E336CF /* de */,
-				C7E8916318317A13003AECA6 /* es */,
-				1F8A14F2251DFA530010367D /* en */,
+				E9555EA72727D478003547B0 /* en */,
+				E9555EA92727D47A003547B0 /* de */,
+				E9555EB02727D880003547B0 /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

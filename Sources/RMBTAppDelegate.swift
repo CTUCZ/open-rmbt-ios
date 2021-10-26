@@ -82,6 +82,10 @@ final class RMBTAppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func applyAppearance() {
+        //Disable dark mode
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
         // Background color
         if #available(iOS 13.0, *) {
             let navigationBarAppearance = UINavigationBarAppearance()

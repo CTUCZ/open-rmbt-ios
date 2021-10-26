@@ -1,0 +1,281 @@
+"Cancel" = "Cancel";
+
+/* History column */
+"Date" = "Date";
+
+/* History column */
+"Device" = "Device";
+
+/* Sync dialog button */
+"Enter code" = "Enter code";
+
+/* Sync alert title */
+"Enter sync code:" = "Enter sync code:";
+
+/* Sync success alert msg */
+"History synchronisation was successful." = "History synchronisation was successful";
+
+/* History result section title */
+"Measurement" = "Measurement";
+
+/* History result section title */
+"Network" = "Network";
+
+/* Sync success button */
+"Reload" = "Reload";
+
+/* Sync dialog button */
+"Request code" = "Request code";
+
+/* Sync success alert title */
+"Success" = "Success";
+
+/* Sync alert button */
+"Sync" = "Sync";
+
+/* Sync intro text */
+"To merge history from two different devices, request the sync code on one device and enter it on another device" = "To merge history from two different devices, request the sync code on one device and enter it on another device";
+
+/* Abort test alert title */
+"Abort Test" = "Abort Test";
+
+/* Abort test alert title */
+"Continue" = "Continue";
+
+/* Display code alert button */
+"Copy code" = "Copy code";
+
+/* Abort test alert title */
+"Do you really want to abort the running test?" = "Do you really want to abort the running test?";
+
+/* Display code alert button */
+"OK" = "OK";
+
+/* Display code alert title */
+"Sync Code" = "Sync Code";
+
+/* Filter section title */
+"Network Type" = "Network Type";
+
+/* Sync error alert button */
+"Dismiss" = "Dismiss";
+
+/* Map overlay description */
+"Auto" = "Auto";
+
+/* Map overlay description */
+"Heatmap" = "Heatmap";
+
+/* Google Maps Legal Notice nevigation title */
+"Legal Notice" = "Legal Notice";
+
+/* Table section header title */
+"Overlay" = "Overlay";
+
+/* Map overlay description */
+"Points" = "Points";
+
+/* Footer status label */
+"Aborted" = "Aborted";
+
+/* Alert view button */
+"Close" = "Close";
+
+/* Alert view title */
+"Connection Error" = "Connection Error";
+
+/* Alert view message */
+"Couldn't connect to test server." = "Couldn't connect to test server.";
+
+/* Alert view title */
+"Error" = "Error";
+
+/* Alert view button */
+"Repeat Test" = "Repeat Test";
+
+/* Alert view title */
+"Test aborted" = "Test aborted";
+
+/* Alert view message */
+"Test was aborted because the app went into background. Tests can only be performed while the app is running in foreground." = "Test was aborted because the app went into background. Tests can only be performed while the app is running in foreground.";
+
+/* Alert view message */
+"Test was completed, but the results couldn't be submitted to the test server." = "Test was completed, but the results couldn't be submitted to the test server.";
+
+/* Alert view message */
+"The connection to the test server was lost. Test aborted." = "The connection to the test server was lost. Test aborted.";
+
+/* Alert view button */
+"Try Again" = "Try Again";
+
+/* Phase status label */
+"Fetching test parameters" = "Fetching test parameters";
+
+/* Phase status label */
+"Finalizing" = "Finalizing";
+
+/* Phase status label */
+"Initializing Upload" = "Initializing Upload";
+
+/* Phase status label */
+"Initializing" = "Initializing";
+
+/* Phase status label */
+"Pinging" = "Pinging";
+
+/* Phase status label */
+"Upload" = "Upload";
+
+/* Phase status label */
+"Waiting for test server" = "Waiting for test server";
+
+/* Test view label */
+"Connection" = "Connection";
+
+/* Speed suffix */
+"Mbps" = "Mbps";
+
+/* Phase status label */
+"Download" = "Download";
+
+/* Test intro screen title when thre's no connectivity */
+"No network connection available" = "No network connection available";
+
+/* Map overlay description */
+"Shapes" = "Shapes";
+
+/* Measurement item title */
+"Quality tests" = "Quality tests";
+
+/* QoS Details section header */
+"About" = "About";
+
+/* Section header */
+"Details" = "Details";
+
+/* History result section title
+   Phase status label */
+"QoS" = "QoS";
+
+/* Section header for successful test */
+"Test Failed" = "Test Failed";
+
+/* Section header for successful test */
+"Test Succeeded" = "Test Succeeded";
+
+/* QoS Details section header */
+"Tests" = "Tests";
+
+/* Map overlay summary */
+"Map shows tests as community shapes" = "Map shows tests as community shapes";
+
+/* Map overlay summary */
+"Map shows tests as heatmap" = "Map shows tests as heatmap";
+
+/* Map overlay summary */
+"Map shows tests as points" = "Map shows tests as points";
+
+/* Map overlay summary */
+"Map switches automatically between heatmap and points" = "Map switches automatically between heatmap and points";
+
+/* Section title in the map options view
+   Title of the map options subview */
+"Map type" = "Map type";
+
+/* Loop mode alert message */
+"You are about to start tests in loop mode. The distance is set to %@ meters. The waiting time between tests is %@ minutes." = "You are about to start tests in loop mode. The distance is set to %@ meters. The waiting time between tests is %@ minutes.";
+
+/* Loop mode details title */
+"Access" = "Access";
+
+/* Loop mode details title */
+"Data usage" = "Data usage";
+
+/* Loop mode header title */
+"Previous test" = "Previous test";
+
+/* Screen title */
+"Loop Mode" = "Loop Mode";
+
+/* Loop mode alert title */
+"Number of tests" = "Number of tests";
+
+/* Loop mode alert button */
+"Start tests" = "Start tests";
+
+/* Intro screen button title */
+"Test Connection" = "Test Connection";
+
+/* Confirmation dialog title 1/2 */
+"Activation and privacy" = "Activation and privacy";
+
+/* Confirmation dialog title 1/2 */
+"Usage" = "Usage";
+
+/* Confirmation dialog subtitle */
+"Loop mode %@/2" = "Loop mode %@/2";
+
+/* Loop Mode status */
+"Waiting" = "Waiting";
+
+/* Loop mode details title */
+"Location" = "Location";
+
+"video_telephony" = "Video telephony";
+"video_conferencing" = "Video conferencing";
+"cloud" = "Cloud";
+"video_uhd" = "Videos UHD";
+"video_sd" = "Videos SD";
+"video_hd" = "Videos HD";
+"voip" = "VoIP";
+"streaming_audio_streaming" = "Audio streaming";
+"web" = "Web";
+"messaging" = "Messaging";
+"gaming_download" = "Gaming download";
+"gaming" = "Gaming";
+"gaming_cloud" = "Gaming cloud";
+"gaming_streaming" = "Gaming streaming";
+"qos" = "QoS tests";
+
+"text_button_decline" = "Decline";
+"text_button_accept" = "Accept";
+
+"title_loop_instruction_1" = "Activation";
+"title_loop_instruction_2" = "Usage";
+
+"tos.agree" = "Agree";
+"tos.decline" = "Decline";
+"tos.agreements.title" = "I agree with RTR’s privacy policy and terms of use for RTR-NetTest.";
+
+"public_ip_address" = "Public address";
+"private_ip_address" = "Private address";
+
+"title_loop_mode" = "Loop mode";
+
+/* Location Dialog */
+"location_dialog_label_title" = "Location";
+"location_dialog_label_position" = "Position";
+"location_dialog_label_accuracy" = "Accuracy";
+"location_dialog_label_age" = "Age";
+"location_dialog_label_source" = "Source";
+"location_dialog_label_altitude" = "Altitude";
+"location_dialog_label_speed" = "Speed";
+"location_dialog_label_satellites" = "Satellites";
+"location_dialog_label_location_progress_message" = "Determining location, please wait…";
+"open_gps_setting_dialog_label_gps_not_enabled" = "Location services are not enabled. Would you like to modify location settings?";
+"open_gps_setting_dialog_label_open_gps_setting" = "Open location settings";
+"open_gps_setting_dialog_label_cancel" = "Cancel";
+"location_dialog_not_available" = "Not available";
+"location_dialog_age" = "%1$s s";
+"location_dialog_accuracy" = "%1$s m";
+"location_dialog_speed" = "%1$s km/h";
+"location_dialog_position" = "%1$s %2$s";
+"location_location_direction_n" = "N";
+"location_location_direction_e" = "E";
+"location_location_direction_s" = "S";
+"location_location_direction_w" = "W";
+"open_location_permission_dialog_label_location_not_permitted" = "RTR-NetTest is not allowed to use your location. Would you like to allow RTR-NetTest to use your location?";
+"open_location_permission_dialog_label_open_permission_setting" = "Open application settings";
+
+/* Menu Items */
+"menu_button_history" = "History";
