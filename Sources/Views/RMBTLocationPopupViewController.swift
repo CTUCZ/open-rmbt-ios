@@ -22,6 +22,7 @@ final class RMBTLocationPopupViewController: RMBTPopupViewController {
         guard let popupViewController = navController.topViewController as? RMBTPopupViewController else { return }
         popupViewController.info = info
         popupViewController.onTickHandler = tickHandler
+        popupViewController.popupType = .location
         navController.modalPresentationStyle = .overFullScreen
         navController.modalTransitionStyle = .crossDissolve
         vc.present(navController, animated: false, completion: nil)

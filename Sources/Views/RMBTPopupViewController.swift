@@ -32,6 +32,12 @@ struct RMBTPopupInfo {
     }
 }
 
+enum PopupType {
+    case location
+    case ipv4
+    case ipv6
+}
+
 class RMBTPopupViewController: UIViewController {
 
     @IBOutlet private weak var heightConstraint: NSLayoutConstraint!
@@ -43,6 +49,8 @@ class RMBTPopupViewController: UIViewController {
     
     private var timer: Timer?
     
+    public var popupType: PopupType = .ipv4
+    
     public var info: RMBTPopupInfo? {
         didSet {
             if self.isViewLoaded {
@@ -53,14 +61,15 @@ class RMBTPopupViewController: UIViewController {
     
     public var onTickHandler: (_ vc: RMBTPopupViewController) -> Void = { _ in }
     
-    static func present(with info: RMBTPopupInfo, in vc: UIViewController, tickHandler: @escaping (_ vc: RMBTPopupViewController) -> Void = {_ in }) {
+    static func present(with info: RMBTPopupInfo, in vc: UIViewController, tickHandler: @escaping (_ vc: RMBTPopupViewController) -> Void = {_ in }) -> RMBTPopupViewController? {
         let navController = UIStoryboard(name: "MainStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RMBTPopupNavigationController") as! UINavigationController
-        guard let popupViewController = navController.topViewController as? RMBTPopupViewController else { return }
+        guard let popupViewController = navController.topViewController as? RMBTPopupViewController else { return nil }
         popupViewController.info = info
         popupViewController.onTickHandler = tickHandler
         navController.modalPresentationStyle = .overFullScreen
         navController.modalTransitionStyle = .crossDissolve
         vc.present(navController, animated: false, completion: nil)
+        return popupViewController
     }
     
     override func viewDidLoad() {

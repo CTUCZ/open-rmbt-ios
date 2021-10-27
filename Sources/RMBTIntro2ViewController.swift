@@ -10,10 +10,8 @@ import UIKit
 import BlocksKit
 
 class RMBTIntro2ViewController: UIViewController {
-    
     private let showTosSegue = "show_tos"
     private let showSettingsSegue = "show_settings_segue"
-    
     
     private var isRoaming: Bool = false
     private var isLoopMode: Bool {
@@ -40,6 +38,8 @@ class RMBTIntro2ViewController: UIViewController {
             return self.portraitView
         }
     }
+    
+    private weak var currentPopupViewController: RMBTPopupViewController?
     
     func initView(_ view: RMBTIntroPortraitView) {
         view.ipV4Tapped = { [weak self] color in
@@ -186,22 +186,34 @@ class RMBTIntro2ViewController: UIViewController {
         }
     }
     
-    private func ipv4TapHandler(_ tintColor: UIColor) {
-        guard let connectivityInfo = self.connectivityInfo else { return }
+    private func ipV4PopupInfo(with connectivityInfo: ConnectivityInfo, tintColor: UIColor) -> RMBTPopupInfo {
         let popupInfo = RMBTPopupInfo(with: .ipv4Icon, tintColor: tintColor, style: .line, values: [
             RMBTPopupInfo.Value(title: .localIP, value: connectivityInfo.ipv4.internalIp ?? ""),
             RMBTPopupInfo.Value(title: .externalIP, value: connectivityInfo.ipv4.externalIp ?? ""),
         ])
-        RMBTPopupViewController.present(with: popupInfo, in: self)
+        return popupInfo
     }
     
-    private func ipv6TapHandler(_ tintColor: UIColor) {
+    private func ipv4TapHandler(_ tintColor: UIColor) {
         guard let connectivityInfo = self.connectivityInfo else { return }
+        let popupInfo = self.ipV4PopupInfo(with: connectivityInfo, tintColor: tintColor)
+        currentPopupViewController = RMBTPopupViewController.present(with: popupInfo, in: self)
+        currentPopupViewController?.popupType = .ipv4
+    }
+    
+    private func ipV6PopupInfo(with connectivityInfo: ConnectivityInfo, tintColor: UIColor) -> RMBTPopupInfo {
         let popupInfo = RMBTPopupInfo(with: .ipv6Icon, tintColor: tintColor, style: .list, values: [
             RMBTPopupInfo.Value(title: .localIP, value: connectivityInfo.ipv6.internalIp ?? ""),
             RMBTPopupInfo.Value(title: .externalIP, value: connectivityInfo.ipv6.externalIp ?? ""),
         ])
-        RMBTPopupViewController.present(with: popupInfo, in: self)
+        return popupInfo
+    }
+    
+    private func ipv6TapHandler(_ tintColor: UIColor) {
+        guard let connectivityInfo = self.connectivityInfo else { return }
+        let popupInfo = self.ipV6PopupInfo(with: connectivityInfo, tintColor: tintColor)
+        currentPopupViewController = RMBTPopupViewController.present(with: popupInfo, in: self)
+        currentPopupViewController?.popupType = .ipv6
     }
     
     private func locationPopupInfo(with location: CLLocation, tintColor: UIColor) -> RMBTPopupInfo {
@@ -385,6 +397,20 @@ class RMBTIntro2ViewController: UIViewController {
             currentView.networkMobileClassImage = technology.technologyIcon
         } else {
             currentView.networkMobileClassImage = nil
+        }
+        
+        if let popup = self.currentPopupViewController {
+            switch popup.popupType {
+            case .ipv4:
+                let tintColor = currentView.ipV4TintColor ?? UIColor.ipAvailable
+                let popupInfo = self.ipV4PopupInfo(with: connectivity, tintColor: tintColor)
+                popup.info = popupInfo
+            case .ipv6:
+                let tintColor = currentView.ipV6TintColor ?? UIColor.ipAvailable
+                let popupInfo = self.ipV6PopupInfo(with: connectivity, tintColor: tintColor)
+                popup.info = popupInfo
+            case .location: break
+            }
         }
     }
     
