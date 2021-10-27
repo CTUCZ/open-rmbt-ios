@@ -159,6 +159,11 @@ class RMBTIntro2ViewController: UIViewController {
         self.updateOrientation(to: UIApplication.shared.windowSize)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updateStates()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         currentView.updateLoopModeUI()

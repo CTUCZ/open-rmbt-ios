@@ -250,7 +250,8 @@ extension ConnectivityService {
         }
         if let ip = sock.localHost_IPv6() {
             connectivityInfo.ipv6.internalIp = ip
-            connectivityInfo.ipv6.externalIp = ip
+            // TODO: Check external ip
+//            connectivityInfo.ipv6.externalIp = ip
         }
         
         Log.logger.debug("local ipv4 address from socket: \(String(describing: self.connectivityInfo.ipv4.internalIp))")
