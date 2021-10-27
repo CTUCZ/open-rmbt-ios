@@ -18,3 +18,4 @@
 #import "RMBTSpeedGraphView.h"
 #import "RMBTQoSProgressViewController.h"
 #import "RMBTBaseTestViewController.h"
+#import "RMBTSettingsViewController.h"

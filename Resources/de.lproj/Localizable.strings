@@ -279,3 +279,9 @@
 
 /* Menu Items */
 "menu_button_history" = "Verlauf";
+
+"preferences_enter_code" = "Bitte geben Sie den Code ein";
+
+"input_setting_dialog_ok" = "OK";
+"input_setting_dialog_cancel" = "Abbrechen";
+"button_sync_enter_code" = "Code eingeben";

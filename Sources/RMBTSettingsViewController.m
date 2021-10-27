@@ -31,7 +31,11 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
+    tapGestureRecognizer.numberOfTapsRequired = 10;
+    [self.navigationController.navigationBar addGestureRecognizer:tapGestureRecognizer];
+    
     RMBTSettings *settings = [RMBTSettings sharedSettings];
 
     [self bindSwitch:self.forceIPv4Switch

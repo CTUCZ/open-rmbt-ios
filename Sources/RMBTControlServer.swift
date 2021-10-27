@@ -134,14 +134,25 @@ extension RMBTControlServer {
     
     ///
     @objc func updateWithCurrentSettings(success successCallback: @escaping EmptyCallback, error failure: @escaping ErrorCallback) {
-        
-        baseUrl = RMBTConfig.shared.RMBT_CONTROL_SERVER_URL
+
+        if (RMBTSettings.shared.debugUnlocked && RMBTSettings.shared.debugControlServerCustomizationEnabled) {
+            let scheme = RMBTSettings.shared.debugControlServerUseSSL ? "https" : "http"
+            var hostname = RMBTSettings.shared.debugControlServerHostname ?? ""
+            if (RMBTSettings.shared.debugControlServerPort != 0 && RMBTSettings.shared.debugControlServerPort != 80) {
+                hostname = hostname.appending(":\(RMBTSettings.shared.debugControlServerPort)")
+            }
+            baseUrl = "\(scheme)://\(hostname)\(RMBTConfig.shared.RMBT_CONTROL_SERVER_PATH)"
+        } else {
+            baseUrl = RMBTConfig.shared.RMBT_CONTROL_SERVER_URL
+        }
         uuidKey = "\(storeUUIDKey)\(URL(string: baseUrl)!.host!)"
         
         if self.uuid == nil,
             let key = uuidKey {
             uuid = UserDefaults.checkStoredUUID(uuidKey: key)
         }
+        
+        Log.logger.info("Control Server base url = \(self.baseUrl)")
         
         // get settings of control server
         getSettings({
@@ -152,28 +163,6 @@ extension RMBTControlServer {
             } else if RMBTSettings.shared.forceIPv4 {
                 baseUrl = self.ipv4
             }
-            
-            //
-            if RMBTSettings.shared.debugUnlocked {
-                // check for custom control server
-                if RMBTSettings.shared.debugControlServerCustomizationEnabled {
-                    let scheme = RMBTSettings.shared.debugControlServerUseSSL ? "https" : "http"
-                    var hostname = RMBTSettings.shared.debugControlServerHostname
-                    
-                    if RMBTSettings.shared.debugControlServerPort != 0 && RMBTSettings.shared.debugControlServerPort != 80 {
-                        hostname = "\(String(describing: hostname)):\(RMBTSettings.shared.debugControlServerPort)"
-                    }
-
-                    let theUrl = NSURLComponents()
-                    theUrl.host = hostname
-                    theUrl.scheme = scheme
-                    
-                    baseUrl = theUrl.url
-                    self.uuidKey = "\(self.storeUUIDKey)\(theUrl.host!)"
-                }
-            }
-            
-            Log.logger.info("Control Server base url = \(self.baseUrl)")
 
             if let baseUrl = baseUrl {
                 self.baseUrl = baseUrl.absoluteString

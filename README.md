@@ -20,10 +20,10 @@ Before building, you need to supply a correct Google Maps API key as well as a O
 
 You can ignore changes in RMBTConfig.h and RMBTConfig.swift:
 For ignore `git update-index --skip-worktree Configs/RMBTConfig.h` 
-For undo ignore `git update-index --skip-worktree Configs/RMBTConfig.h`
+For undo ignore `git update-index --no-skip-worktree Configs/RMBTConfig.h`
 
 For ignore `git update-index --skip-worktree Configs/RMBTConfig.swift` 
-For undo ignore `git update-index --skip-worktree Configs/RMBTConfig.swift`
+For undo ignore `git update-index --no-skip-worktree Configs/RMBTConfig.swift`
 
 Third-party Libraries
 ---------------------

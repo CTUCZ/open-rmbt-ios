@@ -226,6 +226,8 @@
 		E9B51CCA27243208006ED0C7 /* RMBTIntroPortraitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B51CC927243208006ED0C7 /* RMBTIntroPortraitView.xib */; };
 		E9B51CCD27243229006ED0C7 /* RMBTIntroLandscapeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B51CCB27243229006ED0C7 /* RMBTIntroLandscapeView.xib */; };
 		E9B51CCE27243229006ED0C7 /* RMBTIntroLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B51CCC27243229006ED0C7 /* RMBTIntroLandscapeView.swift */; };
+		E9C13F7F27298A6800DA60D4 /* RMBTSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C13F7E27298A6800DA60D4 /* RMBTSettingsViewController.swift */; };
+		E9C13F8127298B3C00DA60D4 /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C13F8027298B3C00DA60D4 /* UIAlertController+Additions.swift */; };
 		E9C4BA2727140B8F00D6FAE8 /* CLLocation+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4BA2627140B8E00D6FAE8 /* CLLocation+Additions.swift */; };
 		E9C4BA2C2714112600D6FAE8 /* RMBTPopupCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4BA2A2714112600D6FAE8 /* RMBTPopupCollectionView.swift */; };
 		E9C4BA2D2714112600D6FAE8 /* RMBTPopupCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C4BA2B2714112600D6FAE8 /* RMBTPopupCollectionView.xib */; };
@@ -587,6 +589,8 @@
 		E9B51CC927243208006ED0C7 /* RMBTIntroPortraitView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTIntroPortraitView.xib; sourceTree = "<group>"; };
 		E9B51CCB27243229006ED0C7 /* RMBTIntroLandscapeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTIntroLandscapeView.xib; sourceTree = "<group>"; };
 		E9B51CCC27243229006ED0C7 /* RMBTIntroLandscapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTIntroLandscapeView.swift; sourceTree = "<group>"; };
+		E9C13F7E27298A6800DA60D4 /* RMBTSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTSettingsViewController.swift; sourceTree = "<group>"; };
+		E9C13F8027298B3C00DA60D4 /* UIAlertController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Additions.swift"; sourceTree = "<group>"; };
 		E9C4BA2627140B8E00D6FAE8 /* CLLocation+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Additions.swift"; sourceTree = "<group>"; };
 		E9C4BA2A2714112600D6FAE8 /* RMBTPopupCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTPopupCollectionView.swift; sourceTree = "<group>"; };
 		E9C4BA2B2714112600D6FAE8 /* RMBTPopupCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTPopupCollectionView.xib; sourceTree = "<group>"; };
@@ -735,6 +739,7 @@
 				E9400EEC26BA6BFD0067273A /* RMBTSettings.swift */,
 				C73E7928176761630009855E /* RMBTSettingsViewController.h */,
 				C73E7929176761630009855E /* RMBTSettingsViewController.m */,
+				E9C13F7E27298A6800DA60D4 /* RMBTSettingsViewController.swift */,
 				C783F68A1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.h */,
 				C783F68B1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.m */,
 			);
@@ -1180,6 +1185,7 @@
 				E99765B826FD885E009A1A4C /* UIFont+Roboto.swift */,
 				E9C4BA2627140B8E00D6FAE8 /* CLLocation+Additions.swift */,
 				E9B51CC527240B84006ED0C7 /* UIApplication+Additions.swift */,
+				E9C13F8027298B3C00DA60D4 /* UIAlertController+Additions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1850,6 +1856,7 @@
 				E9F686C32726EA2B00708290 /* RMBTConfig.swift in Sources */,
 				E9400F2126BE8C360067273A /* SpeedMeasurementResult.swift in Sources */,
 				C7C242EC1EE5A02500E3C6E2 /* RMBTLoopModeTestViewController.m in Sources */,
+				E9C13F7F27298A6800DA60D4 /* RMBTSettingsViewController.swift in Sources */,
 				E9400F1026BAE3460067273A /* OperatorsRequest.swift in Sources */,
 				C774EE8317936AF700D623A3 /* RMBTHistoryResult.m in Sources */,
 				E9E993E626EB27BD00E7EED6 /* RMBTQOSListCell.swift in Sources */,
@@ -1884,6 +1891,7 @@
 				E959547C26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift in Sources */,
 				C75FF5C817B15DA600A58056 /* RMBTInfoTextViewController.m in Sources */,
 				E9400F1F26BE89440067273A /* QosMeasurementResultResponse.swift in Sources */,
+				E9C13F8127298B3C00DA60D4 /* UIAlertController+Additions.swift in Sources */,
 				C75FF5CE17B16C2700A58056 /* RMBTMapViewController.m in Sources */,
 				C777D97D1DD8AA8700D1C824 /* RMBTQoSTestRunner.m in Sources */,
 				C75FF5D517B1970600A58056 /* RMBTMapOptions.m in Sources */,
