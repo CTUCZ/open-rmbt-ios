@@ -49,4 +49,6 @@ public class RMBTConfig {
     //Colors
     let darkColor = UIColor.rmbt_color(withRGBHex: 0xFFFFFF)
     let tintColor = UIColor.rmbt_color(withRGBHex: 0x424242)
+    
+    let DEV_CODE = "any_code"
 }
