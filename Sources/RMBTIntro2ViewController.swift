@@ -157,6 +157,14 @@ class RMBTIntro2ViewController: UIViewController {
         
         currentView.updateLoopModeUI()
         self.updateOrientation(to: UIApplication.shared.windowSize)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(forceUpdateNetwork(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    @objc func forceUpdateNetwork(_ sender: Any) {
+        RMBTLocationTracker.shared().start {
+            self.connectivityTracker.forceUpdate()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
