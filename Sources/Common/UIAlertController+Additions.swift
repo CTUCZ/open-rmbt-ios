@@ -13,6 +13,13 @@ typealias AlertGetTextAction = ((UITextField) -> Void)?
 typealias GenericCompletition = (() -> Void)?
 
 extension UIAlertController {
+    @discardableResult class func presentAlert(title: String?, text: String?, _ dismissAction: AlertAction) -> UIAlertController? {
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction.genericCancelAction(dismissAction))
+        alert.show()
+        return alert
+    }
+    
     class func presentAlertDevCode(_ dismissAction: AlertAction, codeAction: AlertGetTextAction, textFieldConfiguration: AlertGetTextAction) -> UIAlertController? {
         
         let alert = UIAlertController(title: .devCodeTitle, message: nil, preferredStyle: .alert)
