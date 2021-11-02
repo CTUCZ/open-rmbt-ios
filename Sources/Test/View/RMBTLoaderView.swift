@@ -32,13 +32,11 @@ final class RMBTLoaderView: UIView {
     
     public var isAnimating: Bool = false {
         didSet {
-            guard isAnimating != oldValue else { return }
+            self.shapeLayer.removeFromSuperlayer()
+            self.layer.removeAllAnimations()
             if isAnimating {
                 self.animateStroke()
                 self.animateRotation()
-            } else {
-                self.shapeLayer.removeFromSuperlayer()
-                self.layer.removeAllAnimations()
             }
         }
     }
@@ -64,7 +62,7 @@ final class RMBTLoaderView: UIView {
         strokeAnimationGroup.repeatDuration = .infinity
         strokeAnimationGroup.animations = [startAnimation, endAnimation]
         
-        self.shapeLayer.add(strokeAnimationGroup, forKey: nil)
+        self.shapeLayer.add(strokeAnimationGroup, forKey: "stroke")
         self.layer.addSublayer(shapeLayer)
     }
     
@@ -77,7 +75,7 @@ final class RMBTLoaderView: UIView {
             repeatCount: .greatestFiniteMagnitude
         )
             
-        self.layer.add(rotationAnimation, forKey: nil)
+        self.layer.add(rotationAnimation, forKey: "rotation")
     }
     
     override func layoutSubviews() {

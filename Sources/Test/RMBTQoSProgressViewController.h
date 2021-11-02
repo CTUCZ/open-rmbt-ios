@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 appscape gmbh
+ * Copyright 2017 appscape gmbh
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,20 @@
  *
  */
 
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
+#import <UIKit/UIKit.h>
 
-#import "RMBTBlockTypes.h"
-#import "CLLocation+RMBTFormat.h"
+#import "RMBTQoSTestGroup.h"
 
-extern NSString * const RMBTLocationTrackerNotification;
+@class RMBTHistoryResultPercentView;
 
-@interface RMBTLocationTracker : NSObject
-+ (instancetype)sharedTracker;
+@interface RMBTQoSProgressCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
+@property (nonatomic, strong) RMBTHistoryResultPercentView *percentView;
+@end
 
-@property(nonatomic, readonly) CLLocation* location;
+@interface RMBTQoSProgressViewController : UITableViewController
+@property (nonatomic, strong) NSArray<RMBTQoSTestGroup*> *testGroups;
+- (void)updateProgress:(float)progress forGroup:(RMBTQoSTestGroup*)group;
 
-- (BOOL)startIfAuthorized;
-- (void)startAfterDeterminingAuthorizationStatus:(RMBTBlock)callback;
-- (void)stop;
-
-- (void)forceUpdate;
-
-+ (BOOL)isAuthorized;
-
+- (NSString *)progressString;
 @end

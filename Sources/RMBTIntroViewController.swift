@@ -288,29 +288,18 @@ class RMBTIntroViewController: UIViewController {
     private func startTest(with loopModeInfo: RMBTLoopInfo?) {
         // Before transitioning to test view controller, we want to wait for user to allow/deny location services first
         RMBTLocationTracker.shared().start {
-            if let info = loopModeInfo {
-                guard let loopVC = UIStoryboard(name: "TestStoryboard", bundle: nil).instantiateViewController(withIdentifier: "loop_test_vc") as? RMBTLoopModeTestViewController else {
-                    fatalError()
-                }
-                loopVC.info = info
-                loopVC.modalPresentationStyle = .fullScreen
-                loopVC.transitioningDelegate = self
-                let navController = UINavigationController(rootViewController: loopVC)
-                navController.modalPresentationStyle = .fullScreen
-                navController.transitioningDelegate = self
-                
-                self.present(navController, animated: true, completion: nil)
-            } else {
-                guard let testVC = UIStoryboard(name: "TestStoryboard", bundle: nil).instantiateViewController(withIdentifier: "test_vc") as? RMBTTestViewController else {
-                    fatalError()
-                }
-                testVC.modalPresentationStyle = .fullScreen
-                testVC.transitioningDelegate = self
-                testVC.delegate = self
-                testVC.roaming = self.isRoaming
-                
-                self.present(testVC, animated: true, completion: nil)
+            guard
+                let navController = UIStoryboard(name: "TestStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RMBTTestNavigationControllerID") as? UINavigationController,
+                let testVC = navController.topViewController as? RMBTTestViewController else {
+                fatalError()
             }
+            testVC.loopModeInfo = loopModeInfo
+            navController.modalPresentationStyle = .fullScreen
+            navController.transitioningDelegate = self
+            testVC.delegate = self
+            testVC.roaming = self.isRoaming
+            
+            self.present(navController, animated: true, completion: nil)
         }
     }
     
@@ -461,6 +450,14 @@ extension RMBTIntroViewController: UIViewControllerTransitioningDelegate {
 }
 
 extension RMBTIntroViewController: RMBTTestViewControllerDelegate {
+    func testViewController(_ controller: RMBTTestViewController, didFinishLoopWithTest result: RMBTHistoryResult?) {
+        defer {
+            controller.dismiss(animated: true, completion: nil)
+        }
+        
+        self.tabBarController?.selectedIndex = 1
+    }
+    
     func testViewController(_ controller: RMBTTestViewController, didFinishWithTest result: RMBTHistoryResult?) {
         defer {
             controller.dismiss(animated: true, completion: nil)

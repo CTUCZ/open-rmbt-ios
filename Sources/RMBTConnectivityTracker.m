@@ -141,7 +141,7 @@ static CTTelephonyNetworkInfo *sharedNetworkInfo;
             if (connectivity.networkType != _lastConnectivity.networkType) {
                 RMBTLog(@"Connectivity network mismatched %@ -> %@", _lastConnectivity.networkTypeDescription, connectivity.networkTypeDescription);
                 compatible = NO;
-            } else if (![connectivity.networkName isEqualToString:_lastConnectivity.networkName]) {
+            } else if ((![connectivity.networkName isEqualToString:_lastConnectivity.networkName]) && ((connectivity.networkName != nil) || (_lastConnectivity.networkName != nil))) {
                 RMBTLog(@"Connectivity network name mismatched %@ -> %@", _lastConnectivity.networkName, connectivity.networkName);
                 compatible = NO;
             }
