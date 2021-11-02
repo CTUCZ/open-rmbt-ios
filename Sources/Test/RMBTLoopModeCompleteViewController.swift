@@ -18,6 +18,8 @@ final class RMBTLoopModeCompleteViewController: UIViewController {
     var onRunAgainHandler: () -> Void = {}
     var onResultsHandler: () -> Void = {}
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
