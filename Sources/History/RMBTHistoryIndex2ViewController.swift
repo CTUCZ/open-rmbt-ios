@@ -20,7 +20,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         case kSyncSheetEnterCodeButtonIndex = 2
     }
     
-    private let kBatchSize = 25
+    private let kBatchSize = 100
 
     @IBOutlet weak var headerView: UIView!
     
@@ -37,8 +37,17 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.onFilterChanged = { [weak self] filters in
             guard let self = self else { return }
-            self.activeFilters = filters
-            self.changedFilters()
+            var validFilters: [String:[String]] = [:]
+            
+            for filter in self.allFilters {
+                if let filtersByKey = filters[filter.key], filtersByKey.count > 0 {
+                    validFilters[filter.key] = filtersByKey
+                } else {
+                    validFilters[filter.key] = filter.value
+                }
+            }
+            
+            self.activeFilters = validFilters
         }
         return view
     }()
@@ -117,17 +126,20 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if (firstAppearance) {
-            firstAppearance = false
-        } else if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
-            self.tableView.deselectRow(at: selectedIndexPath, animated: true)
-        } else if showingLastTestResult {
-            // Note: This shouldn't be necessary once we have info required for index view in the
-            // test result object. See -displayTestResult.
-            showingLastTestResult = false
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
+        } else {
+            if firstAppearance {
+                firstAppearance = false
+            }
+            if showingLastTestResult {
+                // Note: This shouldn't be necessary once we have info required for index view in the
+                // test result object. See -displayTestResult.
+                showingLastTestResult = false
+            }
+            loading = true // to avoid duplicate calls to getNextBatch()
+            refreshFilters()
         }
-        self.refresh()
-        self.refreshFilters()
     }
     
     override func awakeFromNib() {
@@ -183,17 +195,25 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
     }
     
     private func changedFilters() {
+        var activeFilters: [String: [String]] = [:]
+        for filter in self.activeFilters {
+            if filter.value.count != self.allFilters[filter.key]?.count {
+                activeFilters[filter.key] = filter.value
+            }
+        }
+        filterView.activeFilters = activeFilters
         updateFilterViewPosition()
-        filterView.activeFilters = self.activeFilters
         refresh()
     }
     
     private func updateFilterViewPosition() {
         var isShow = false
-        for filters in activeFilters {
-            if filters.value.count > 0 {
-                isShow = true
-                break
+        if (filterView.activeFilters != allFilters) {
+            for filters in filterView.activeFilters {
+                if filters.value.count > 0 {
+                    isShow = true
+                    break
+                }
             }
         }
         
@@ -251,6 +271,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         RMBTControlServer.shared.ensureClientUuid { uuid in
             RMBTControlServer.shared.getSettings {
                 self.allFilters = RMBTControlServer.shared.historyFilters ?? [:]
+                self.activeFilters = self.activeFilters.count > 0 ? self.activeFilters : self.allFilters
             } error: { error in
                 Log.logger.error(error)
             }
