@@ -285,3 +285,27 @@
 "input_setting_dialog_ok" = "OK";
 "input_setting_dialog_cancel" = "Cancel";
 "button_sync_enter_code" = "Enter Code";
+
+"title_loop_mode" = "Loop mode";
+"title_loop_count" = "Choose the number of tests";
+"text_loop_start" = "Start tests";
+"text_loop_mode" = "New test after waiting or covering the distance. Max. 2 days";
+"preferences_loop_mode_summary" = "New test after waiting time or covering the distance. Max. 2 days";
+"preferences_loop_mode_min_delay" = "Waiting time (in minutes)";
+"preferences_loop_mode_max_movement" = "Distance (in meters)";
+
+"invalide_loop_mode_count" = "Invalid number of tests";
+"invalide_loop_mode_distance" = "Invalid waiting distance";
+"invalide_loop_mode_waiting_minutes" = "Invalid waiting minutes";
+"loop_mode_enter_value_between_format" = "Please enter a value between %i and %i";
+
+"loop_mode_next_test" = "Next Test";
+"loop_mode_minutes" = "Minutes";
+"loop_mode_meters" = "Meters";
+"loop_mode_no_gps" = "No GPS";
+"or" = "or";
+
+"loop_mode_finished" = "RTR-NetTest loop mode finished!";
+"loop_mode_finished_description" = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquya.";
+"loop_continue_to_results" = "Continue to the result";
+"loop_run_again" = "Run again";

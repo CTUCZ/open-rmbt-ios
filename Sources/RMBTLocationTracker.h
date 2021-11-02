@@ -34,4 +34,6 @@ extern NSString * const RMBTLocationTrackerNotification;
 
 - (void)forceUpdate;
 
++ (BOOL)isAuthorized;
+
 @end

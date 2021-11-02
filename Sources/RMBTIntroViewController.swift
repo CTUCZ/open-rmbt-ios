@@ -9,9 +9,10 @@
 import UIKit
 import BlocksKit
 
-class RMBTIntro2ViewController: UIViewController {
+class RMBTIntroViewController: UIViewController {
     private let showTosSegue = "show_tos"
     private let showSettingsSegue = "show_settings_segue"
+    private let showLoopModeSettingsSegue = "show_loop_mode_settings_segue"
     
     private var isRoaming: Bool = false
     private var isLoopMode: Bool {
@@ -157,6 +158,14 @@ class RMBTIntro2ViewController: UIViewController {
         
         currentView.updateLoopModeUI()
         self.updateOrientation(to: UIApplication.shared.windowSize)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(forceUpdateNetwork(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    @objc func forceUpdateNetwork(_ sender: Any) {
+        RMBTLocationTracker.shared().start {
+            self.connectivityTracker.forceUpdate()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -270,44 +279,7 @@ class RMBTIntro2ViewController: UIViewController {
     
     private func startTest() {
         if isLoopMode {
-            let settings = RMBTSettings.shared
-
-            // Ask user how many tests to run
-            let title = NSLocalizedString("Number of tests", comment: "Loop mode alert title")
-            let message = String(format: NSLocalizedString("You are about to start tests in loop mode. The distance is set to %@ meters. The waiting time between tests is %@ minutes.", comment: "Loop mode alert message"), NSNumber(value: settings.loopModeEveryMeters), NSNumber(value: settings.loopModeEveryMinutes))
-            
-            let av = UIAlertView.bk_alertView(withTitle: title, message: message)
-            av?.alertViewStyle = .plainTextInput
-            let tf = av?.textField(at: 0)
-            tf?.text = String(format: "%@", NSNumber(value: settings.loopModeLastCount))
-            tf?.keyboardType = .numberPad
-          
-            av?.bk_addButton(withTitle: NSLocalizedString("Start tests", comment: "Loop mode alert button"), handler: {
-                guard let text = tf?.text,
-                      let i = UInt(text)
-                else { return }
-                
-                let max = settings.debugUnlocked ? Int32.max : RMBT_TEST_LOOPMODE_MAX_COUNT
-                
-                if (i < RMBT_TEST_LOOPMODE_MIN_COUNT || i > max) {
-                    UIAlertView.bk_show(withTitle: "Invalid number of tests",
-                                        message: String(format: "Please enter a value between %@ and %@", NSNumber(value: RMBT_TEST_LOOPMODE_MIN_COUNT), NSNumber(value: max)),
-                                        cancelButtonTitle: "OK",
-                                        otherButtonTitles: []) { [weak self] _, _ in
-                        guard let self = self else { return }
-                        self.startTest()
-                    }
-                } else {
-                    settings.loopModeLastCount = i
-
-                    let info = RMBTLoopInfo(with: settings.loopModeEveryMeters,
-                                            minutes: settings.loopModeEveryMinutes,
-                                            total: i)
-                    self.startTest(with: info)
-                }
-            })
-            av?.bk_setCancelButton(withTitle: NSLocalizedString("Cancel", comment: "Button title"), handler: {})
-            av?.show()
+            self.performSegue(withIdentifier: showLoopModeSettingsSegue, sender: self)
         } else {
             self.startTest(with: nil)
         }
@@ -316,29 +288,18 @@ class RMBTIntro2ViewController: UIViewController {
     private func startTest(with loopModeInfo: RMBTLoopInfo?) {
         // Before transitioning to test view controller, we want to wait for user to allow/deny location services first
         RMBTLocationTracker.shared().start {
-            if let info = loopModeInfo {
-                guard let loopVC = UIStoryboard(name: "TestStoryboard", bundle: nil).instantiateViewController(withIdentifier: "loop_test_vc") as? RMBTLoopModeTestViewController else {
-                    fatalError()
-                }
-                loopVC.info = info
-                loopVC.modalPresentationStyle = .fullScreen
-                loopVC.transitioningDelegate = self
-                let navController = UINavigationController(rootViewController: loopVC)
-                navController.modalPresentationStyle = .fullScreen
-                navController.transitioningDelegate = self
-                
-                self.present(navController, animated: true, completion: nil)
-            } else {
-                guard let testVC = UIStoryboard(name: "TestStoryboard", bundle: nil).instantiateViewController(withIdentifier: "test_vc") as? RMBTTestViewController else {
-                    fatalError()
-                }
-                testVC.modalPresentationStyle = .fullScreen
-                testVC.transitioningDelegate = self
-                testVC.delegate = self
-                testVC.roaming = self.isRoaming
-                
-                self.present(testVC, animated: true, completion: nil)
+            guard
+                let navController = UIStoryboard(name: "TestStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RMBTTestNavigationControllerID") as? UINavigationController,
+                let testVC = navController.topViewController as? RMBTTestViewController else {
+                fatalError()
             }
+            testVC.loopModeInfo = loopModeInfo
+            navController.modalPresentationStyle = .fullScreen
+            navController.transitioningDelegate = self
+            testVC.delegate = self
+            testVC.roaming = self.isRoaming
+            
+            self.present(navController, animated: true, completion: nil)
         }
     }
     
@@ -450,9 +411,18 @@ class RMBTIntro2ViewController: UIViewController {
         self.navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showLoopModeSettingsSegue,
+           let navigationController = segue.destination as? UINavigationController,
+           let vc = navigationController.topViewController as? RMBTLoopModeSettingsViewController {
+            vc.loopModeHandler = { [weak self] loopModeInfo in
+                self?.startTest(with: loopModeInfo)
+            }
+        }
+    }
 }
 
-extension RMBTIntro2ViewController: RMBTConnectivityTrackerDelegate {
+extension RMBTIntroViewController: RMBTConnectivityTrackerDelegate {
     func connectivityTracker(_ tracker: RMBTConnectivityTracker!, didDetect connectivity: RMBTConnectivity!) {
         DispatchQueue.main.async {
             self.connectivity = connectivity
@@ -467,7 +437,7 @@ extension RMBTIntro2ViewController: RMBTConnectivityTrackerDelegate {
     }
 }
 
-extension RMBTIntro2ViewController: UIViewControllerTransitioningDelegate {
+extension RMBTIntroViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return RMBTVerticalTransitionController()
     }
@@ -479,7 +449,15 @@ extension RMBTIntro2ViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
-extension RMBTIntro2ViewController: RMBTTestViewControllerDelegate {
+extension RMBTIntroViewController: RMBTTestViewControllerDelegate {
+    func testViewController(_ controller: RMBTTestViewController, didFinishLoopWithTest result: RMBTHistoryResult?) {
+        defer {
+            controller.dismiss(animated: true, completion: nil)
+        }
+        
+        self.tabBarController?.selectedIndex = 1
+    }
+    
     func testViewController(_ controller: RMBTTestViewController, didFinishWithTest result: RMBTHistoryResult?) {
         defer {
             controller.dismiss(animated: true, completion: nil)

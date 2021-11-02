@@ -106,4 +106,7 @@ NSString * const RMBTLocationTrackerNotification = @"RMBTLocationTrackerNotifica
     return result;
 }
 
++ (BOOL)isAuthorized {
+    return (([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) || ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse));
+}
 @end

@@ -64,7 +64,7 @@ static CTTelephonyNetworkInfo *sharedNetworkInfo;
         // Re-Register for notifications
         [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationDidBecomeActiveNotification object:nil];
 
         [NetworkReachability.shared addReachabilityCallback:^(NetworkReachabilityStatus status) {
             [self reachabilityDidChangeToStatus:status];
@@ -84,9 +84,10 @@ static CTTelephonyNetworkInfo *sharedNetworkInfo;
 }
 
 - (void)forceUpdate {
-    if (_lastConnectivity == nil) { return; }
+//    if (_lastConnectivity == nil) { return; }
     dispatch_async(_queue, ^{
-        NSAssert(_lastConnectivity, @"Connectivity should be known by now");
+//        NSAssert(_lastConnectivity, @"Connectivity should be known by now");
+        [self reachabilityDidChangeToStatus:NetworkReachability.shared.status];
         [_delegate connectivityTracker:self didDetectConnectivity:_lastConnectivity];
     });
 }
@@ -140,7 +141,7 @@ static CTTelephonyNetworkInfo *sharedNetworkInfo;
             if (connectivity.networkType != _lastConnectivity.networkType) {
                 RMBTLog(@"Connectivity network mismatched %@ -> %@", _lastConnectivity.networkTypeDescription, connectivity.networkTypeDescription);
                 compatible = NO;
-            } else if (![connectivity.networkName isEqualToString:_lastConnectivity.networkName]) {
+            } else if ((![connectivity.networkName isEqualToString:_lastConnectivity.networkName]) && ((connectivity.networkName != nil) || (_lastConnectivity.networkName != nil))) {
                 RMBTLog(@"Connectivity network name mismatched %@ -> %@", _lastConnectivity.networkName, connectivity.networkName);
                 compatible = NO;
             }

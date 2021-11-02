@@ -148,6 +148,7 @@ class RMBTIntroPortraitView: UIView {
     }
     
     func networkAvailable(_ networkType: RMBTNetworkType, networkName: String?, networkDescription: String?) {
+        self.loopIconImageView.isHidden = !RMBTSettings.shared.loopMode
         self.startTestButton.isHidden = false
         self.networkNameLabel.text = networkName
         self.networkTypeLabel.text = networkDescription
@@ -182,6 +183,7 @@ class RMBTIntroPortraitView: UIView {
         self.startTestButton.isHidden = true
         self.networkMobileView.isHidden = true
         self.networkWifiView.isHidden = false
+        self.loopIconImageView.isHidden = true
         
         UIView.animate(withDuration: 0.3) {
             self.backgroundColor = .noNetworkAvailable

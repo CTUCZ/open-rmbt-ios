@@ -285,3 +285,27 @@
 "input_setting_dialog_ok" = "OK";
 "input_setting_dialog_cancel" = "Abbrechen";
 "button_sync_enter_code" = "Code eingeben";
+
+"title_loop_mode" = "Wiederholungsmodus";
+"title_loop_count" = "Wählen Sie die Anzahl der Tests";
+"text_loop_start" = "Tests starten";
+"text_loop_mode" = "Neuer Test nach Wartezeit oder Zurücklegen der Distanz. Max. 2 Tage";
+"preferences_loop_mode_summary" = "Neuer Test nach Wartezeit oder Zurücklegen der Distanz. Max. 2 Tage";
+"preferences_loop_mode_min_delay" = "Wartezeit (in Minuten)";
+"preferences_loop_mode_max_movement" = "Distanz (in Metern)";
+
+"invalide_loop_mode_count" = "Invalid number of tests";
+"invalide_loop_mode_distance" = "Invalid waiting distance";
+"invalide_loop_mode_waiting_minutes" = "Invalid waiting minutes";
+"loop_mode_enter_value_between_format" = "Please enter a value between %i and %i";
+
+"loop_mode_next_test" = "Nächster Test";
+"loop_mode_minutes" = "Minuten";
+"loop_mode_meters" = "Meter";
+"loop_mode_no_gps" = "Kein GPS";
+"or" = "oder";
+
+"loop_mode_finished" = "Netztest abgeschlossen!";
+"loop_mode_finished_description" = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquya.";
+"loop_continue_to_results" = "Weiter zum Ergebnis";
+"loop_run_again" = "Nochmals ausführen";

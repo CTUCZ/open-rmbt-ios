@@ -8,19 +8,36 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 @objc protocol RMBTTestViewControllerDelegate: AnyObject {
     func testViewController(_ controller: RMBTTestViewController, didFinishWithTest result: RMBTHistoryResult?)
+    func testViewController(_ controller: RMBTTestViewController, didFinishLoopWithTest result: RMBTHistoryResult?)
 }
 
-class RMBTTestViewController: RMBTBaseTestViewController {
+final class RMBTTestViewController: RMBTBaseTestViewController {
+    private let actionsSegue = "actions_segue"
+    private var locationTracker: RMBTLocationTracker?
+    
     @IBOutlet weak var detailTestView: UIView!
     
+    @IBOutlet weak var infoTitleView: UIView!
+    @IBOutlet weak var loopModeTitleHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var loopModeCounterLoaderView: RMBTLoaderView!
+    @IBOutlet weak var loopModeCounterLabel: UILabel!
+    @IBOutlet weak var loopModeCounterView: UIView!
+    @IBOutlet weak var loopModeTitleLabel: UILabel!
+    @IBOutlet weak var loopModeTitleView: UIView!
+    
+    var loopModeInfo: RMBTLoopInfo?
+    
+    @IBOutlet weak var infoTitleHeightConstraint: NSLayoutConstraint!
     var alertView: UIAlertView?
     var footerLabelTitleAttributes: [String: Any] = [:]
     var footerLabelDetailsAttributes: [String: Any] = [:]
 
-    var qosProgressViewController: RMBTQoSProgressViewController?
+    private var qosProgressViewController: RMBTQoSProgressViewController?
+    private var loopModeWaitingViewController: RMBTLoopModeWaitingViewController?
     
     @objc weak var delegate: RMBTTestViewControllerDelegate?
     
@@ -64,6 +81,9 @@ class RMBTTestViewController: RMBTBaseTestViewController {
     // QoS
     @IBOutlet weak var qosProgressView: UIView!
 
+    // Loop Mode Waiting
+    @IBOutlet weak var loopModeWaitingView: UIView!
+    
     // Layout constraints
     @IBOutlet weak var networkSymbolTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var networkSymbolLeftConstraint: NSLayoutConstraint!
@@ -85,9 +105,9 @@ class RMBTTestViewController: RMBTBaseTestViewController {
         }
     }
     
-    open override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
-    open override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         self.isQOSState = false
@@ -104,7 +124,7 @@ class RMBTTestViewController: RMBTBaseTestViewController {
         self.infoView.layer.shadowOpacity = 0.2
         self.infoView.layer.shadowRadius = 3
         
-        self.infoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(infoViewTap)))
+        self.infoTitleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(infoViewTap)))
         
         // Only clear connectivity and location labels once at start to avoid blinking during test restart
         self.networkNameLabel.text = ""
@@ -127,17 +147,17 @@ class RMBTTestViewController: RMBTBaseTestViewController {
         self.speedGaugePlaceholderView.isHidden = true
 
         self.view.layoutSubviews()
-
         self.startTest()
     }
     
-    open override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.updateDetailInfoView()
+        self.loopModeCounterLoaderView.isAnimating = true
         self.counterAnimationView.isAnimating = true
     }
     
-    open override func viewWillLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.progressGaugeView.frame = self.progressGaugePlaceholderView.frame
         self.speedGaugeView.frame = self.speedGaugePlaceholderView.frame
@@ -146,6 +166,14 @@ class RMBTTestViewController: RMBTBaseTestViewController {
     @objc func infoViewTap() {
         isInfoCollapsed = !isInfoCollapsed
         self.updateDetailInfoView()
+    }
+    
+    func updateInfoTitleView() {
+        infoTitleHeightConstraint.constant = loopModeInfo == nil ? 63 : 111
+        loopModeTitleHeightConstraint.constant = loopModeInfo == nil ? 0 : 48
+        loopModeTitleView.isHidden = loopModeInfo == nil
+        loopModeTitleLabel.text = .loopMode
+        loopModeCounterLabel.text = "\(loopModeInfo?.current ?? 0)/\(loopModeInfo?.total ?? 0)"
     }
     
     @objc func updateDetailInfoView() {
@@ -166,6 +194,7 @@ class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     @objc func startTest() {
+        self.loopModeInfo?.increment()
         self.showQoSUI(false) // in case we're restarting because test was cancelled in qos phase
         
         self.display(text: "-", for: self.pingResultLabel)
@@ -179,16 +208,28 @@ class RMBTTestViewController: RMBTBaseTestViewController {
         self.speedSuffixLabel.isHidden = true
         self.speedGraphView.clear()
         
-        super.startTest(withExtraParams: nil)
+        if let info = self.loopModeInfo {
+            super.startTest(withExtraParams: info.params)
+        } else {
+            super.startTest(withExtraParams: nil)
+        }
+        self.updateInfoTitleView()
     }
     
     @objc func showQoSUI(_ state: Bool) {
+        self.loopModeWaitingView.isHidden = !state;
         self.speedGraphView.isHidden = state;
     //    _speedGaugeView.hidden = state;
         self.speedLabel.isHidden = state;
         self.speedSuffixLabel.isHidden = state;
         self.arrowImageView.isHidden = state;
         self.qosProgressView.isHidden = !state;
+    }
+    
+    @objc func showWaitingUI() {
+        self.loopModeWaitingView.isHidden = false
+        self.speedGraphView.isHidden = true
+        self.qosProgressView.isHidden = true
     }
     
     // MARK: - Footer
@@ -250,7 +291,114 @@ class RMBTTestViewController: RMBTBaseTestViewController {
         if (segue.identifier == "embed_qos_progress") {
             qosProgressViewController = segue.destination as? RMBTQoSProgressViewController
         }
+        if (segue.identifier == "embed_waiting_view") {
+            loopModeWaitingViewController = segue.destination as? RMBTLoopModeWaitingViewController
+        }
+        if segue.identifier == actionsSegue,
+           let vc = segue.destination as? RMBTLoopModeCompleteViewController {
+            vc.onResultsHandler = { [weak self] in
+                guard let self = self else { return }
+                self.delegate?.testViewController(self, didFinishLoopWithTest: nil)
+            }
+            vc.onRunAgainHandler = { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
+    
+    var movementReached: Bool = false
+    var durationReached: Bool = false
+    var lastTestFirstGoodLocation: CLLocation?
+    
+    var startDate: Date?
+    
+    var timer: Timer?
+    
+    private func cleanup () {
+        movementReached = false
+        durationReached = false
+        if timer?.isValid == true {
+            timer?.invalidate()
+            timer = nil
+        }
+        locationTracker?.stop()
+        locationTracker = nil
+        lastTestFirstGoodLocation = nil
+        startDate = nil
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.RMBTLocationTracker, object: nil)
+        loopModeWaitingViewController?.minutesValue = ""
+        loopModeWaitingViewController?.minutesPercents = 0.0
+        loopModeWaitingViewController?.distanceValue = ""
+        loopModeWaitingViewController?.distancePercents = 0.0
+    }
+    
+    private func startNextTestIfNeeded() {
+        if movementReached || durationReached {
+            cleanup()
+            startTest()
+        }
+    }
+    
+    @objc private func tick() {
+        guard let startDate = startDate else { return }
+        let time = Date().timeIntervalSince(startDate)
+        let endDate = Date(timeInterval: Double((self.loopModeInfo?.waitMinutes ?? 0)) * 60, since: startDate)
+        let totalTime = endDate.timeIntervalSince(startDate)
+        let percents = time / totalTime
+        let restTime = totalTime - time
+        let minutes = Int(restTime / 60)
+        let seconds = Int(restTime) % 60
+        loopModeWaitingViewController?.minutesValue = String(format: "%02d:%02d", minutes, seconds)
+        loopModeWaitingViewController?.minutesPercents = percents
+        
+        if time >= Double((self.loopModeInfo?.waitMinutes ?? 0)) * 60 {
+            timer?.invalidate()
+            durationReached = true
+            startNextTestIfNeeded()
+        }
+    }
+    
+    private func startWaitingNextTest() {
+        // Start monitoring location changes
+        NotificationCenter.default.addObserver(self, selector: #selector(locationsDidChange(_:)), name: NSNotification.Name.RMBTLocationTracker, object: nil)
+        locationTracker = RMBTLocationTracker()
+        locationTracker?.startIfAuthorized()
+        
+        self.startDate = Date()
+        timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
+        
+    }
+    
+    @objc private func locationsDidChange(_ notification: Notification) {
+        guard let l = (notification.userInfo?["locations"] as? [CLLocation])?.last,
+              CLLocationCoordinate2DIsValid(l.coordinate)
+        else {
+            return
+        }
+
+        if (lastTestFirstGoodLocation == nil) {
+            lastTestFirstGoodLocation = l
+        }
+
+        updateLocation(l)
+    }
+
+    private func updateLocation(_ location: CLLocation) {
+        var d: CLLocationDistance = 0
+        if let l = lastTestFirstGoodLocation {
+            d = location.distance(from: l)
+        }
+        
+        // TODO: Update distance in waiting view
+        let percents = d / Double(self.loopModeInfo?.waitMeters ?? 0)
+        loopModeWaitingViewController?.distanceValue = String(format: "%0.1f", Double(self.loopModeInfo?.waitMeters ?? 0) - d)
+        loopModeWaitingViewController?.distancePercents = percents
+        movementReached = (d >= Double(self.loopModeInfo?.waitMeters ?? 0))
+        if movementReached {
+            startNextTestIfNeeded()
+        }
+    }
+
 }
 
 extension RMBTTestViewController: UIViewControllerTransitioningDelegate {
@@ -368,7 +516,17 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     func onTestCompleted(with result: RMBTHistoryResult!, qos qosPerformed: Bool) {
         self.counterLabel.text = self.qosProgressViewController?.progressString()
         self.hideAlert()
-        self.delegate?.testViewController(self, didFinishWithTest: result)
+        if let loopModeInfo = self.loopModeInfo {
+            if !loopModeInfo.isFinished {
+                showWaitingUI()
+                self.display(text: .nextTest, for: self.statusLabel)
+                startWaitingNextTest()
+            } else {
+                self.performSegue(withIdentifier: actionsSegue, sender: self)
+            }
+        } else {
+            self.delegate?.testViewController(self, didFinishWithTest: result)
+        }
     }
     
     func onTestCancelled(with reason: RMBTTestRunnerCancelReason) {
@@ -417,4 +575,9 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
             }
         }
     }
+}
+
+private extension String {
+    static let nextTest = NSLocalizedString("loop_mode_next_test", comment: "")
+    static let loopMode = NSLocalizedString("title_loop_mode", comment: "")
 }
