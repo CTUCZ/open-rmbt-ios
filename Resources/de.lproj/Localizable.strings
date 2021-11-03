@@ -309,3 +309,9 @@
 "loop_mode_finished_description" = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquya.";
 "loop_continue_to_results" = "Weiter zum Ergebnis";
 "loop_run_again" = "Nochmals ausführen";
+
+/* History */
+"history.sync-modal-title" = "Synchronisieren";
+"history.sync-modal-description.default" = "Es besteht die Möglichkeit, Messergebnisse von anderen Endgeräten zusammenzuführen. Dazu müssen Sie einen bereits erhaltenen Synchronisations-Code eingeben oder einen neuen anfordern.";
+"history.sync-modal-description.enter-code" = "Geben Sie hier bitte den Code ein, den Sie auf Ihrem anderen Gerät angefordert haben.";
+"history.sync-modal-description.request-code" = "Bitte geben Sie den unten angezeigten Code auf dem anderen Gerät ein, um die Ergebnisse zu synchronisieren.";

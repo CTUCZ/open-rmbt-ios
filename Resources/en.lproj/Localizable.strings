@@ -309,3 +309,9 @@
 "loop_mode_finished_description" = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquya.";
 "loop_continue_to_results" = "Continue to the result";
 "loop_run_again" = "Run again";
+
+/* History */
+"history.sync-modal-title" = "Synchronization";
+"history.sync-modal-description.default" = "You have the possibility to join results from different devices. To do so, you have to enter an already requested synchronisation code or request a new one.";
+"history.sync-modal-description.enter-code" = "Please enter the code you received on your other device.";
+"histoty.sync-modal-description.request-code" = "Please enter the code shown below on the other device to synchronise the results.";

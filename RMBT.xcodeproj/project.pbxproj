@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		361443482732793E00D0FC26 /* RMBTHistorySyncModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361443472732793D00D0FC26 /* RMBTHistorySyncModalViewController.swift */; };
 		36A9DF3F272C4E190099A57C /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A9DF3E272C4E190099A57C /* UILabel.swift */; };
 		C573F2A5175281D300C728FC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C573F2A4175281D300C728FC /* MapKit.framework */; };
 		C573F2B1175294A500C728FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C573F2B0175294A500C728FC /* CoreLocation.framework */; };
@@ -287,6 +288,7 @@
 /* Begin PBXFileReference section */
 		1F9C078F216F751C00F1FC10 /* RMBT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RMBT.entitlements; sourceTree = "<group>"; };
 		32DE166B881B73366FE005F9 /* Pods_RMBT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMBT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		361443472732793D00D0FC26 /* RMBTHistorySyncModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistorySyncModalViewController.swift; sourceTree = "<group>"; };
 		36A9DF3E272C4E190099A57C /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		89CA21386C488DD817CA1DC2 /* Pods-RMBT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMBT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMBT/Pods-RMBT.debug.xcconfig"; sourceTree = "<group>"; };
 		C573F2A4175281D300C728FC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -1342,6 +1344,7 @@
 				E9E993F926EC8F8F00E7EED6 /* RMBTHistoryQoSGroupViewController.swift */,
 				E9E993FF26EC9CB100E7EED6 /* RMBTHistoryQoSSingleViewController.swift */,
 				E93FB0F626F39E0200DD24CD /* RMBTHistoryQoSSingleResultViewController.swift */,
+				361443472732793D00D0FC26 /* RMBTHistorySyncModalViewController.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -1784,6 +1787,7 @@
 				C7ECD90F174DB042000DF966 /* RMBTTestRunner.m in Sources */,
 				C7FDBF2D1F03AECE0051E745 /* RMBTLoopMeasurementsViewController.m in Sources */,
 				E946B95326D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.swift in Sources */,
+				361443482732793E00D0FC26 /* RMBTHistorySyncModalViewController.swift in Sources */,
 				E9400F2726BE8C880067273A /* Ping.swift in Sources */,
 				C71DD2421ED0ACDF009B449E /* RMBTQoSTCPTest.m in Sources */,
 				E91316B626ADC2C100368DCD /* UIViewController+ModalBrowser.swift in Sources */,

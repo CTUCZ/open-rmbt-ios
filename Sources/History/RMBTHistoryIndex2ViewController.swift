@@ -150,17 +150,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
     }
     
     @IBAction func sync(_ sender: Any?) {
-        let title = NSLocalizedString("To merge history from two different devices, request the sync code on one device and enter it on another device", comment: "Sync intro text");
-        
-        let actionSheet = UIActionSheet(title: title,
-                                        delegate: self,
-                                        cancelButtonTitle: NSLocalizedString("Cancel", comment: "Sync dialog button"),
-                                        destructiveButtonTitle: nil,
-                                        otherButtonTitles:
-                                            NSLocalizedString("Request code", comment: "Sync dialog button"),
-                                            NSLocalizedString("Enter code", comment: "Sync dialog button")
-                                        )
-        actionSheet.show(in: self.view)
+        performSegue(withIdentifier: "show_sync_modal", sender: self)
     }
     
     @IBAction func updateFilters(_ segue: UIStoryboardSegue) {
