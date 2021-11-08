@@ -54,6 +54,9 @@
 /* Display code alert title */
 "Sync Code" = "Sync-Code";
 
+/* Text field placholder */
+"Code" = "Code";
+
 /* Filter section title */
 "Network Type" = "Zugang";
 
@@ -311,7 +314,9 @@
 "loop_run_again" = "Nochmals ausführen";
 
 /* History */
-"history.sync-modal-title" = "Synchronisieren";
+"history.sync-modal-title.default" = "Synchronisieren";
+"history.sync-modal-title.sync-success" = "Erfolgreich";
 "history.sync-modal-description.default" = "Es besteht die Möglichkeit, Messergebnisse von anderen Endgeräten zusammenzuführen. Dazu müssen Sie einen bereits erhaltenen Synchronisations-Code eingeben oder einen neuen anfordern.";
 "history.sync-modal-description.enter-code" = "Geben Sie hier bitte den Code ein, den Sie auf Ihrem anderen Gerät angefordert haben.";
 "history.sync-modal-description.request-code" = "Bitte geben Sie den unten angezeigten Code auf dem anderen Gerät ein, um die Ergebnisse zu synchronisieren.";
+"history.sync-modal-description.sync-success" = "Die Synchronisierung war erfolgreich.";

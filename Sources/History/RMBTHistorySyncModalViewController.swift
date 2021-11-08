@@ -11,6 +11,7 @@ import UIKit
 class RMBTHistorySyncModalViewController: UIViewController {
     
     @IBOutlet weak var dialogView: UIView!
+    @IBOutlet weak var dialogTitle: UILabel!
     @IBOutlet weak var dialogDescription: UILabel!
     @IBOutlet weak var defaultButtonsView: UIStackView!
     @IBOutlet weak var requestCodeButton: UIButton!
@@ -23,6 +24,8 @@ class RMBTHistorySyncModalViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var spinnerView: UIView!
+    @IBOutlet weak var syncSuccessView: UIStackView!
+    @IBOutlet weak var syncSuccessCloseButton: UIButton!
     
     private var state: RMBTHistorySyncModalState?
     
@@ -45,10 +48,12 @@ class RMBTHistorySyncModalViewController: UIViewController {
         closeButton.addTarget(self, action: #selector(closeDialog), for: .touchUpInside)
         enterCodeButton.addTarget(self, action: #selector(showEnterCodeView), for: .touchUpInside)
         requestCodeButton.addTarget(self, action: #selector(showRequestCodeView), for: .touchUpInside)
+        syncSuccessCloseButton.addTarget(self, action: #selector(closeDialog), for: .touchUpInside)
     }
     
     private func setState(_ state: RMBTHistorySyncModalState) {
         self.state = state
+        dialogTitle.text = state.dialogTitle
         dialogDescription.text = state.dialogDescription
         requestCodeView.isHidden = state.isRequestCodeViewHidden
         syncCode.text = state.syncCode
@@ -62,6 +67,8 @@ class RMBTHistorySyncModalViewController: UIViewController {
         enterCodeButton.setTitle(.enterCodeButton, for: .normal)
         enterCodeConfirmButton.setTitle(.enterCodeButton, for: .normal)
         requestCodeButton.setTitle(.requestCodeButton, for: .normal)
+        syncCodeTextField.placeholder = .code
+        syncSuccessCloseButton.setTitle(.closeButton, for: .normal)
     }
 }
 
@@ -92,94 +99,10 @@ extension RMBTHistorySyncModalViewController {
     }
 }
 
-// MARK: RMBTHistorySyncModalState
-
-class RMBTHistorySyncModalState {
-    var dialogDescription: String {
-        return .dialogDescriptionDefault
-    }
-
-    var isEnterCodeViewHidden: Bool {
-        return true
-    }
-    
-    var isDefaultButtonsViewHidden: Bool {
-        return false
-    }
-    
-    var isRequestCodeViewHidden: Bool {
-        return true
-    }
-    
-    var isSpinnerViewHidden = true
-    
-    var syncCode: String? {
-        return nil
-    }
-    
-    func copyWith(isSpinnerViewHidden: Bool?) -> RMBTHistorySyncModalState {
-        self.isSpinnerViewHidden = isSpinnerViewHidden ?? true
-        return self
-    }
-}
-
-class RMBTHistorySyncModalStateEnterCode: RMBTHistorySyncModalState {
-    override var dialogDescription: String {
-        return .dialogDescriptionEnterCode
-    }
-    
-    override var isEnterCodeViewHidden: Bool {
-        return false
-    }
-    
-    override var isDefaultButtonsViewHidden: Bool {
-        return true
-    }
-    
-    override var isRequestCodeViewHidden: Bool {
-        return true
-    }
-    
-    override var syncCode: String? {
-        return nil
-    }
-    
-}
-
-class RMBTHistorySyncModalStateRequestCode: RMBTHistorySyncModalState {
-    override var dialogDescription: String {
-        return .dialogDescriptionRequestCode
-    }
-    
-    override var isEnterCodeViewHidden: Bool {
-        return true
-    }
-    
-    override var isDefaultButtonsViewHidden: Bool {
-        return true
-    }
-    
-    override var isRequestCodeViewHidden: Bool {
-        return false
-    }
-    
-    override var syncCode: String? {
-        return _syncCode
-    }
-    
-    private var _syncCode: String?
-    
-    init(_ syncCode: String?) {
-        self._syncCode = syncCode
-    }
-}
-
 // MARK: Localizations
 private extension String {
-    static let dialogDescriptionDefault = NSLocalizedString("history.sync-modal-description.default", comment: "")
-    static let dialogDescriptionEnterCode = NSLocalizedString("history.sync-modal-description.enter-code", comment: "")
-    static let dialogDescriptionRequestCode = NSLocalizedString("history.sync-modal-description.request-code", comment: "")
     static let enterCodeButton = NSLocalizedString("Enter code", comment: "").uppercased()
     static let requestCodeButton = NSLocalizedString("Request code", comment: "").uppercased()
     static let closeButton = NSLocalizedString("Close", comment: "").uppercased()
+    static let code = NSLocalizedString("Code", comment: "")
 }
