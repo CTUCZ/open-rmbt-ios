@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: Init
+
 class RMBTHistorySyncModalViewController: UIViewController {
     
     @IBOutlet weak var dialogView: UIView!
@@ -17,17 +19,18 @@ class RMBTHistorySyncModalViewController: UIViewController {
     @IBOutlet weak var requestCodeButton: UIButton!
     @IBOutlet weak var enterCodeButton: UIButton!
     @IBOutlet weak var enterCodeView: UIStackView!
-    @IBOutlet weak var syncCodeTextField: UITextField!
+    @IBOutlet weak var syncCodeTextField: RMBTMaterialTextField!
     @IBOutlet weak var enterCodeConfirmButton: UIButton!
     @IBOutlet weak var requestCodeView: UIStackView!
     @IBOutlet weak var syncCode: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var spinnerView: UIView!
-    @IBOutlet weak var syncSuccessView: UIStackView!
-    @IBOutlet weak var syncSuccessCloseButton: UIButton!
+    @IBOutlet weak var syncResultView: UIStackView!
+    @IBOutlet weak var syncResultCloseButton: UIButton!
     
     private var state: RMBTHistorySyncModalState?
+    var onSyncSuccess: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,16 +44,6 @@ class RMBTHistorySyncModalViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
-    private func setActionHandlers() {
-        backgroundView.addGestureRecognizer(
-            UITapGestureRecognizer(target: self, action: #selector(closeDialog))
-        )
-        closeButton.addTarget(self, action: #selector(closeDialog), for: .touchUpInside)
-        enterCodeButton.addTarget(self, action: #selector(showEnterCodeView), for: .touchUpInside)
-        requestCodeButton.addTarget(self, action: #selector(showRequestCodeView), for: .touchUpInside)
-        syncSuccessCloseButton.addTarget(self, action: #selector(closeDialog), for: .touchUpInside)
-    }
-    
     private func setState(_ state: RMBTHistorySyncModalState) {
         self.state = state
         dialogTitle.text = state.dialogTitle
@@ -60,6 +53,11 @@ class RMBTHistorySyncModalViewController: UIViewController {
         enterCodeView.isHidden = state.isEnterCodeViewHidden
         defaultButtonsView.isHidden = state.isDefaultButtonsViewHidden
         spinnerView.isHidden = state.isSpinnerViewHidden
+        syncResultView.isHidden = state.isSyncResultViewHidden
+        if !state.isEnterCodeViewHidden {
+            syncCodeTextField.becomeFirstResponder()
+        }
+        syncCodeTextField.errorText = state.syncError
     }
     
     private func setTexts() {
@@ -68,13 +66,25 @@ class RMBTHistorySyncModalViewController: UIViewController {
         enterCodeConfirmButton.setTitle(.enterCodeButton, for: .normal)
         requestCodeButton.setTitle(.requestCodeButton, for: .normal)
         syncCodeTextField.placeholder = .code
-        syncSuccessCloseButton.setTitle(.closeButton, for: .normal)
+        syncResultCloseButton.setTitle(.closeButton, for: .normal)
     }
 }
 
 // MARK: Action handlers
 
 extension RMBTHistorySyncModalViewController {
+    private func setActionHandlers() {
+        backgroundView.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(closeDialog))
+        )
+        dialogView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDialogTap)))
+        closeButton.addTarget(self, action: #selector(closeDialog), for: .touchUpInside)
+        enterCodeButton.addTarget(self, action: #selector(showEnterCodeView), for: .touchUpInside)
+        enterCodeConfirmButton.addTarget(self, action: #selector(syncWithCode), for: .touchUpInside)
+        requestCodeButton.addTarget(self, action: #selector(showRequestCodeView), for: .touchUpInside)
+        syncResultCloseButton.addTarget(self, action: #selector(closeDialog), for: .touchUpInside)
+    }
+
     @objc func closeDialog() {
         self.dismiss(animated: true)
     }
@@ -97,12 +107,36 @@ extension RMBTHistorySyncModalViewController {
             self.setState(RMBTHistorySyncModalState())
         })
     }
+    
+    @objc func syncWithCode() {
+        guard let code = syncCodeTextField.text?.uppercased(), code.count == 12 else {
+            return setState(RMBTHistorySyncModalStateSyncError(.codeLengthError))
+        }
+        if let state = state {
+            setState(state.copyWith(isSpinnerViewHidden: false))
+        }
+        RMBTControlServer.shared.syncWithCode(syncCodeTextField.text?.uppercased() ?? "") { response in
+            self.setState(RMBTHistorySyncModalStateSyncSuccess())
+            self.onSyncSuccess?()
+        } error: { error in
+            self.setState(RMBTHistorySyncModalStateSyncError(
+                (error as NSError?)?.userInfo["msg_text"] as? String
+            ))
+        }
+
+    }
+    
+    @objc func handleDialogTap() {
+        syncCodeTextField.resignFirstResponder()
+    }
 }
 
 // MARK: Localizations
+
 private extension String {
     static let enterCodeButton = NSLocalizedString("Enter code", comment: "").uppercased()
     static let requestCodeButton = NSLocalizedString("Request code", comment: "").uppercased()
     static let closeButton = NSLocalizedString("Close", comment: "").uppercased()
     static let code = NSLocalizedString("Code", comment: "")
+    static let codeLengthError = NSLocalizedString("The code must consist of twelve characters", comment: "")
 }

@@ -31,13 +31,17 @@ class RMBTHistorySyncModalState {
         return true
     }
     
-    var isSyncSuccessViewHidden: Bool {
+    var isSyncResultViewHidden: Bool {
         return true
     }
     
     var isSpinnerViewHidden = true
     
     var syncCode: String? {
+        return nil
+    }
+    
+    var syncError: String? {
         return nil
     }
     
@@ -66,7 +70,7 @@ class RMBTHistorySyncModalStateEnterCode: RMBTHistorySyncModalState {
         return true
     }
     
-    override var isSyncSuccessViewHidden: Bool {
+    override var isSyncResultViewHidden: Bool {
         return true
     }
     
@@ -91,7 +95,7 @@ class RMBTHistorySyncModalStateRequestCode: RMBTHistorySyncModalState {
         return false
     }
     
-    override var isSyncSuccessViewHidden: Bool {
+    override var isSyncResultViewHidden: Bool {
         return true
     }
     
@@ -102,7 +106,7 @@ class RMBTHistorySyncModalStateRequestCode: RMBTHistorySyncModalState {
     private var _syncCode: String?
     
     init(_ syncCode: String?) {
-        self._syncCode = syncCode
+        _syncCode = syncCode
     }
 }
 
@@ -129,8 +133,42 @@ class RMBTHistorySyncModalStateSyncSuccess: RMBTHistorySyncModalState {
         return true
     }
     
-    override var isSyncSuccessViewHidden: Bool {
+    override var isSyncResultViewHidden: Bool {
         return false
+    }
+}
+
+// MARK: Sync error state
+
+class RMBTHistorySyncModalStateSyncError: RMBTHistorySyncModalState {
+    override var dialogDescription: String {
+        return .descriptionEnterCode
+    }
+
+    override var isEnterCodeViewHidden: Bool {
+        return false
+    }
+    
+    override var isDefaultButtonsViewHidden: Bool {
+        return true
+    }
+    
+    override var isRequestCodeViewHidden: Bool {
+        return true
+    }
+    
+    override var isSyncResultViewHidden: Bool {
+        return true
+    }
+    
+    override var syncError: String? {
+        return _syncError
+    }
+    
+    private var _syncError: String?
+    
+    init(_ syncError: String?) {
+        _syncError = syncError
     }
 }
 

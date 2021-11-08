@@ -1583,11 +1583,11 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nLq-s3-qGJ">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="nLq-s3-qGJ">
                                         <rect key="frame" x="8" y="296" width="396" height="108"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SYNC_CODE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00h-rP-VUC">
-                                                <rect key="frame" x="0.0" y="0.0" width="396" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="396" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59588501780000003" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -1608,20 +1608,22 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
+                                        <color key="tintColor" name="greenButtonBackground"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="108" id="2aG-Bc-M9W"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zzo-ae-wc5">
-                                        <rect key="frame" x="48" y="296" width="316" height="108"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="Zzo-ae-wc5">
+                                        <rect key="frame" x="32" y="272" width="348" height="132"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZh-fO-nCj" customClass="MaterialTextField" customModule="RMBT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="316" height="60"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZh-fO-nCj" customClass="RMBTMaterialTextField" customModule="RMBT" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="348" height="48"/>
+                                                <color key="tintColor" name="greenButtonBackground"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="viG-rU-hfG">
-                                                <rect key="frame" x="0.0" y="60" width="316" height="48"/>
+                                                <rect key="frame" x="0.0" y="84" width="348" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="Tf9-KV-RRF"/>
                                                 </constraints>
@@ -1637,7 +1639,7 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="108" id="dMO-l7-KGG"/>
+                                            <constraint firstAttribute="height" constant="132" id="dMO-l7-KGG"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="r6Y-nt-YPP">
@@ -1686,12 +1688,12 @@
                                     <constraint firstItem="b1e-hn-WNk" firstAttribute="centerX" secondItem="XFb-SW-YFa" secondAttribute="centerX" id="AeN-0H-dJr"/>
                                     <constraint firstAttribute="bottom" secondItem="yjE-gf-mFq" secondAttribute="bottom" id="DlX-6B-dxU"/>
                                     <constraint firstAttribute="trailing" secondItem="nLq-s3-qGJ" secondAttribute="trailing" constant="8" id="Eui-i7-RMR"/>
-                                    <constraint firstAttribute="trailing" secondItem="Zzo-ae-wc5" secondAttribute="trailing" constant="48" id="ODk-r6-MPS"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zzo-ae-wc5" secondAttribute="trailing" constant="32" id="ODk-r6-MPS"/>
                                     <constraint firstAttribute="trailing" secondItem="axG-Eu-I83" secondAttribute="trailing" constant="8" id="QN1-jY-Kb5"/>
                                     <constraint firstAttribute="trailing" secondItem="yjE-gf-mFq" secondAttribute="trailing" id="QbU-aA-Hek"/>
                                     <constraint firstItem="yjE-gf-mFq" firstAttribute="leading" secondItem="XFb-SW-YFa" secondAttribute="leading" id="Sqe-ua-XLB"/>
                                     <constraint firstItem="nLq-s3-qGJ" firstAttribute="leading" secondItem="XFb-SW-YFa" secondAttribute="leading" constant="8" id="W8x-Pd-9QA"/>
-                                    <constraint firstItem="Zzo-ae-wc5" firstAttribute="leading" secondItem="XFb-SW-YFa" secondAttribute="leading" constant="48" id="YvT-JQ-oQw"/>
+                                    <constraint firstItem="Zzo-ae-wc5" firstAttribute="leading" secondItem="XFb-SW-YFa" secondAttribute="leading" constant="32" id="YvT-JQ-oQw"/>
                                     <constraint firstItem="r6Y-nt-YPP" firstAttribute="leading" secondItem="XFb-SW-YFa" secondAttribute="leading" constant="8" id="bUU-nw-HTS"/>
                                     <constraint firstItem="8t1-4q-3uv" firstAttribute="top" secondItem="b1e-hn-WNk" secondAttribute="bottom" constant="32" id="i4g-uK-ZpA"/>
                                     <constraint firstAttribute="trailing" secondItem="dR0-rC-ev2" secondAttribute="trailing" constant="4" id="iOt-aq-saF"/>
@@ -1737,8 +1739,8 @@
                         <outlet property="spinnerView" destination="yjE-gf-mFq" id="TaN-PS-xcj"/>
                         <outlet property="syncCode" destination="00h-rP-VUC" id="8MN-jr-9hd"/>
                         <outlet property="syncCodeTextField" destination="rZh-fO-nCj" id="DWu-19-ipx"/>
-                        <outlet property="syncSuccessCloseButton" destination="fbq-ga-lPO" id="wYH-jj-Ttw"/>
-                        <outlet property="syncSuccessView" destination="axG-Eu-I83" id="08j-Xk-fcr"/>
+                        <outlet property="syncResultCloseButton" destination="fbq-ga-lPO" id="wYH-jj-Ttw"/>
+                        <outlet property="syncResultView" destination="axG-Eu-I83" id="08j-Xk-fcr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAq-P9-sBu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
