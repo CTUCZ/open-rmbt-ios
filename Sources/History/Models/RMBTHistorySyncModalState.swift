@@ -11,6 +11,10 @@ import Foundation
 // MARK: Default state
 
 class RMBTHistorySyncModalState {
+    var dialogHeight: CGFloat {
+        return 420
+    }
+    
     var dialogTitle: String {
         return .titleDefault
     }
@@ -113,6 +117,10 @@ class RMBTHistorySyncModalStateRequestCode: RMBTHistorySyncModalState {
 // MARK: Sync success state
 
 class RMBTHistorySyncModalStateSyncSuccess: RMBTHistorySyncModalState {
+    override var dialogHeight: CGFloat {
+        return 280
+    }
+    
     override var dialogTitle: String {
         return .titleSyncSuccess
     }

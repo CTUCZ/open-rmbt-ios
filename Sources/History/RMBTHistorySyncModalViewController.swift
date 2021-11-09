@@ -13,6 +13,7 @@ import UIKit
 class RMBTHistorySyncModalViewController: UIViewController {
     
     @IBOutlet weak var dialogView: UIView!
+    @IBOutlet weak var dialogHeightContraint: NSLayoutConstraint!
     @IBOutlet weak var dialogTitle: UILabel!
     @IBOutlet weak var dialogDescription: UILabel!
     @IBOutlet weak var defaultButtonsView: UIStackView!
@@ -58,6 +59,9 @@ class RMBTHistorySyncModalViewController: UIViewController {
             syncCodeTextField.becomeFirstResponder()
         }
         syncCodeTextField.errorText = state.syncError
+        UIView.animate(withDuration: 0.1) {
+            self.dialogHeightContraint.constant = state.dialogHeight
+        }
     }
     
     private func setTexts() {
@@ -86,6 +90,9 @@ extension RMBTHistorySyncModalViewController {
     }
 
     @objc func closeDialog() {
+        if state is RMBTHistorySyncModalStateRequestCode {
+            self.onSyncSuccess?()
+        }
         self.dismiss(animated: true)
     }
     
@@ -115,14 +122,14 @@ extension RMBTHistorySyncModalViewController {
         if let state = state {
             setState(state.copyWith(isSpinnerViewHidden: false))
         }
-        RMBTControlServer.shared.syncWithCode(syncCodeTextField.text?.uppercased() ?? "") { response in
+        RMBTControlServer.shared.syncWithCode(syncCodeTextField.text?.uppercased() ?? "", success: { response in
             self.setState(RMBTHistorySyncModalStateSyncSuccess())
             self.onSyncSuccess?()
-        } error: { error in
+        }, error: { error in
             self.setState(RMBTHistorySyncModalStateSyncError(
                 (error as NSError?)?.userInfo["msg_text"] as? String
             ))
-        }
+        })
 
     }
     
