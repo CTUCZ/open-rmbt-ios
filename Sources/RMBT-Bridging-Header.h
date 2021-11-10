@@ -15,7 +15,6 @@
 #import <SVWebViewController/SVWebViewController.h>
 #import <SVWebViewController/SVModalWebViewController.h>
 
-#import "RMBTSpeedGraphView.h"
 #import "RMBTQoSProgressViewController.h"
 #import "RMBTBaseTestViewController.h"
 #import "RMBTSettingsViewController.h"
