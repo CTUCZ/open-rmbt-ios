@@ -15,7 +15,7 @@ class RMBTHistorySyncModalViewController: UIViewController {
     @IBOutlet weak var dialogView: UIView!
     @IBOutlet weak var dialogHeightContraint: NSLayoutConstraint!
     @IBOutlet weak var dialogTitle: UILabel!
-    @IBOutlet weak var dialogDescription: UILabel!
+    @IBOutlet weak var dialogDescription: UITextView!
     @IBOutlet weak var defaultButtonsView: UIStackView!
     @IBOutlet weak var requestCodeButton: UIButton!
     @IBOutlet weak var enterCodeButton: UIButton!
@@ -39,10 +39,15 @@ class RMBTHistorySyncModalViewController: UIViewController {
         setState(RMBTHistorySyncModalState())
         setActionHandlers()
         setTexts()
+        setSyncCodePlaceholderVisibility(for: view.frame.size)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        setSyncCodePlaceholderVisibility(for: size)
     }
     
     private func setState(_ state: RMBTHistorySyncModalState) {
@@ -71,6 +76,14 @@ class RMBTHistorySyncModalViewController: UIViewController {
         requestCodeButton.setTitle(.requestCodeButton, for: .normal)
         syncCodeTextField.placeholder = .code
         syncResultCloseButton.setTitle(.closeButton, for: .normal)
+    }
+    
+    private func setSyncCodePlaceholderVisibility(for size: CGSize) {
+        if size.width > size.height && size.height < 428 {
+            syncCodeTextField.placeholderLabel.isHidden = true
+        } else {
+            syncCodeTextField.placeholderLabel.isHidden = false
+        }
     }
 }
 

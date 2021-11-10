@@ -62,7 +62,8 @@ class RMBTMaterialTextField: UITextField {
         let flotingLabelFrame = CGRect(x: 0, y: 0, width: frame.width, height: 0)
         errorLabel = UILabel(frame: flotingLabelFrame)
         errorLabel.font = floatingLabelFont
-        errorLabel.numberOfLines = 2
+        errorLabel.numberOfLines = 0
+        errorLabel.textAlignment = .center
         addSubview(errorLabel)
     }
     
