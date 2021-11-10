@@ -272,6 +272,12 @@ import UIKit
         }
         
         context?.strokePath()
+        
+        context?.move(to: CGPoint(x: size.width, y: size.height))
+        context?.addLine(to: CGPoint(x: size.width, y: 0))
+        context?.setLineDash(phase: 0.0, lengths: [2, 3])
+        context?.strokePath()
+        
         let markedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext();
     
