@@ -122,7 +122,7 @@ extension RMBTHistorySyncModalViewController {
         if let state = state {
             setState(state.copyWith(isSpinnerViewHidden: false))
         }
-        RMBTControlServer.shared.syncWithCode(syncCodeTextField.text?.uppercased() ?? "", success: { response in
+        RMBTControlServer.shared.syncWithCode(code, success: { response in
             self.setState(RMBTHistorySyncModalStateSyncSuccess())
             self.onSyncSuccess?()
         }, error: { error in
