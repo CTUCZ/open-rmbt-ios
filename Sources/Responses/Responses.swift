@@ -211,23 +211,25 @@ public class GetSyncCodeResponse: BasicResponse {
 public class SyncCodeResponse: BasicResponse {
     
     //
-    var codes:Result?
+    var sync:Result?
     
     ///
     override open func mapping(map: Map) {
         super.mapping(map: map)
         
-        codes <- map["sync"]
+        sync <- map["sync"]
     }
     
     class Result: Mappable {
         
         //
-        var results:[[String:Any?]] = []
+        var success:[[String:Any?]] = []
         
         //
-        var isSynchronize:Bool = false
+        var messageTitle: String?
         
+        //
+        var messageText: String?
         
         ///
         init() {
@@ -241,7 +243,9 @@ public class SyncCodeResponse: BasicResponse {
         
         ///
         func mapping(map: Map) {
-            results <- map["success"]
+            success <- map["success"]
+            messageTitle <- map["msg_title"]
+            messageText <- map["msg_text"]
         }
         
     }

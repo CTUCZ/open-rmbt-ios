@@ -34,7 +34,7 @@ extension RMBTBottomPresentSegue: UIViewControllerTransitioningDelegate {
 class PresentAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 0.2
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -94,7 +94,7 @@ class PresentAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             toViewController.view.alpha = 1
             frame.origin.y = container.frame.maxY - frame.size.height
             toViewController.view.frame = frame
-            dimView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+            dimView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         }, completion: { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
@@ -104,7 +104,7 @@ class PresentAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 class DismissAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5
+        return 0.3
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {

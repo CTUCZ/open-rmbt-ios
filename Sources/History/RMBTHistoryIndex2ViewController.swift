@@ -150,17 +150,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
     }
     
     @IBAction func sync(_ sender: Any?) {
-        let title = NSLocalizedString("To merge history from two different devices, request the sync code on one device and enter it on another device", comment: "Sync intro text");
-        
-        let actionSheet = UIActionSheet(title: title,
-                                        delegate: self,
-                                        cancelButtonTitle: NSLocalizedString("Cancel", comment: "Sync dialog button"),
-                                        destructiveButtonTitle: nil,
-                                        otherButtonTitles:
-                                            NSLocalizedString("Request code", comment: "Sync dialog button"),
-                                            NSLocalizedString("Enter code", comment: "Sync dialog button")
-                                        )
-        actionSheet.show(in: self.view)
+        performSegue(withIdentifier: "show_sync_modal", sender: self)
     }
     
     @IBAction func updateFilters(_ segue: UIStoryboardSegue) {
@@ -294,10 +284,17 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         } else if segue.identifier == "show_result",
             let rvc = segue.destination as? RMBTHistoryResult2ViewController {
             rvc.historyResult = sender as? RMBTHistoryResult
+        } else if segue.identifier == "show_sync_modal", let vc = segue.destination as? RMBTHistorySyncModalViewController {
+            vc.onSyncSuccess = {
+                self.refresh()
+                self.refreshFilters()
+            }
         }
     }
     
 }
+
+// MARK: UITableViewDataSource
 
 extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -349,66 +346,7 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
     }
 }
 
-extension RMBTHistoryIndex2ViewController: UIActionSheetDelegate {
-    func actionSheet(_ actionSheet: UIActionSheet, didDismissWithButtonIndex buttonIndex: Int) {
-        if (buttonIndex == ActionSheetState.kSyncSheetRequestCodeButtonIndex.rawValue) {
-            RMBTControlServer.shared.getSyncCode { response in
-                UIAlertView.bk_show(
-                    withTitle: NSLocalizedString("Sync Code", comment: "Display code alert title"),
-                    message: response.codes?.first?.code,
-                    cancelButtonTitle: NSLocalizedString("OK", comment: "Display code alert button"),
-                    otherButtonTitles: [NSLocalizedString("Copy code", comment: "Display code alert button")]) { alertView, buttonIndex in
-                    if (buttonIndex == 1) {
-                        // Copy
-                        UIPasteboard.general.string = response.codes?.first?.code
-                    } // else just dismiss
-                }
-            } error: { error in
-                Log.logger.error(error)
-            }
-
-        } else if (buttonIndex == ActionSheetState.kSyncSheetEnterCodeButtonIndex.rawValue) {
-            enterCodeAlertView = UIAlertView(
-                title: NSLocalizedString("Enter sync code:", comment: "Sync alert title"),
-                message: "",
-                delegate: self,
-                cancelButtonTitle: NSLocalizedString("Cancel", comment: "Sync alert button"),
-                otherButtonTitles: NSLocalizedString("Sync", comment: "Sync alert button")
-                )
-            enterCodeAlertView?.alertViewStyle = .plainTextInput
-            enterCodeAlertView?.show()
-        }
-    }
-}
-
-extension RMBTHistoryIndex2ViewController: UIAlertViewDelegate {
-    func alertView(_ alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
-        if (alertView == enterCodeAlertView && buttonIndex == 1) {
-            guard let code = alertView.textField(at: 0)?.text?.uppercased() else { return }
-
-            RMBTControlServer.shared.syncWithCode(code) { response in
-                UIAlertView.bk_show(
-                    withTitle: NSLocalizedString("Success", comment: "Sync success alert title"),
-                    message: NSLocalizedString("History synchronisation was successful.", comment: "Sync success alert msg"),
-                    cancelButtonTitle: NSLocalizedString("Reload", comment: "Sync success button"),
-                    otherButtonTitles: nil) { _, buttonIndex in
-                    self.refresh()
-                    self.refreshFilters()
-                }
-            } error: { error in
-                let title = (error as NSError?)?.userInfo["msg_title"] as? String
-                let text = (error as NSError?)?.userInfo["msg_text"] as? String
-                
-                UIAlertView.bk_show(
-                    withTitle: title,
-                    message: text,
-                    cancelButtonTitle: NSLocalizedString("Dismiss", comment: "Alert view button"), otherButtonTitles: []) { _, buttonIndex in
-                    
-                }
-            }
-        }
-    }
-}
+// MARK: Localizations
 
 private extension String {
     static let title = NSLocalizedString("menu_button_history", comment: "History")
