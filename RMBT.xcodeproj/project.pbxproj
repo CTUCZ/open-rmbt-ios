@@ -270,6 +270,7 @@
 		E9E9940826ECDABE00E7EED6 /* RMBTSwitcherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9940726ECDABE00E7EED6 /* RMBTSwitcherCell.swift */; };
 		E9E9940A26ECDAD100E7EED6 /* RMBTSwitcherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E9940926ECDAD100E7EED6 /* RMBTSwitcherCell.xib */; };
 		E9E9E8F9273BDA52005EB393 /* RMBTSpeedGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9E8F8273BDA51005EB393 /* RMBTSpeedGraphView.swift */; };
+		E9E9E8FB273CDECB005EB393 /* RMBTGraphLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9E8FA273CDECB005EB393 /* RMBTGraphLabel.swift */; };
 		E9F686C32726EA2B00708290 /* RMBTConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F686C22726EA2B00708290 /* RMBTConfig.swift */; };
 		F71B138A4E5F6DC41FF14268 /* Pods_RMBT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DE166B881B73366FE005F9 /* Pods_RMBT.framework */; };
 /* End PBXBuildFile section */
@@ -635,6 +636,7 @@
 		E9E9940726ECDABE00E7EED6 /* RMBTSwitcherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTSwitcherCell.swift; sourceTree = "<group>"; };
 		E9E9940926ECDAD100E7EED6 /* RMBTSwitcherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTSwitcherCell.xib; sourceTree = "<group>"; };
 		E9E9E8F8273BDA51005EB393 /* RMBTSpeedGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTSpeedGraphView.swift; sourceTree = "<group>"; };
+		E9E9E8FA273CDECB005EB393 /* RMBTGraphLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTGraphLabel.swift; sourceTree = "<group>"; };
 		E9F686C12726E62000708290 /* RMBTConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTConfig.h; sourceTree = "<group>"; };
 		E9F686C22726EA2B00708290 /* RMBTConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTConfig.swift; sourceTree = "<group>"; };
 		F620A48D0EF31330DAC04D48 /* Pods-RMBT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMBT.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMBT/Pods-RMBT.release.xcconfig"; sourceTree = "<group>"; };
@@ -1188,6 +1190,7 @@
 				E9B51CC527240B84006ED0C7 /* UIApplication+Additions.swift */,
 				E9C13F8027298B3C00DA60D4 /* UIAlertController+Additions.swift */,
 				36A9DF3E272C4E190099A57C /* UILabel.swift */,
+				E9E9E8FA273CDECB005EB393 /* RMBTGraphLabel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1835,6 +1838,7 @@
 				E939AAA526DA837D00D73F0B /* MKMapView+Additions.swift in Sources */,
 				C79C94A617713106000CF5EE /* RMBTLogger.m in Sources */,
 				C76B8C87177709C800925BE1 /* RMBTThroughputHistory.m in Sources */,
+				E9E9E8FB273CDECB005EB393 /* RMBTGraphLabel.swift in Sources */,
 				C71161651E3CFA4800D8CC0C /* RMBTProgress.m in Sources */,
 				E9E993E126EB24AE00E7EED6 /* RMBTNetInfoItemtCell.swift in Sources */,
 				C7912CB6177D581F004AD2A4 /* RMBTSpeed.m in Sources */,

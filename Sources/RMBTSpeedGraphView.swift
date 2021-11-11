@@ -32,60 +32,42 @@ import UIKit
     
     private var value1TopConstraint: NSLayoutConstraint?
     private lazy var value1Label: UILabel = {
-        let label = UILabel()
+        let label = RMBTGraphLabel(text: "1", textColor: labelsColor)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.roboto(size: 11, weight: .regular)
-        label.textColor = labelsColor
-        label.text = "1"
         return label
     }()
     
     private var value10TopConstraint: NSLayoutConstraint?
     private lazy var value10Label: UILabel = {
-        let label = UILabel()
+        let label = RMBTGraphLabel(text: "10", textColor: labelsColor)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.roboto(size: 11, weight: .regular)
-        label.textColor = labelsColor
-        label.text = "10"
         return label
     }()
     
     private var value100TopConstraint: NSLayoutConstraint?
     private lazy var value100Label: UILabel = {
-        let label = UILabel()
+        let label = RMBTGraphLabel(text: "100", textColor: labelsColor)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.roboto(size: 11, weight: .regular)
-        label.textColor = labelsColor
-        label.text = "100"
         return label
     }()
     
     private var value1000TopConstraint: NSLayoutConstraint?
     private lazy var value1000Label: UILabel = {
-        let label = UILabel()
+        let label = RMBTGraphLabel(text: "1000", textColor: labelsColor)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.roboto(size: 11, weight: .regular)
-        label.textColor = labelsColor
-        label.text = "1000"
         return label
     }()
     
     
     private lazy var startIntervalLabel: UILabel = {
-        let label = UILabel()
+        let label = RMBTGraphLabel(text: "0s", textColor: labelsColor)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.roboto(size: 11, weight: .regular)
-        label.textColor = labelsColor
-        label.text = "0s"
         return label
     }()
     
     private lazy var endIntervalLabel: UILabel = {
-        let label = UILabel()
+        let label = RMBTGraphLabel(text: "8s", textColor: labelsColor)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.roboto(size: 11, weight: .regular)
-        label.textColor = self.labelsColor
-        label.text = "8s"
         return label
     }()
     
@@ -175,47 +157,27 @@ import UIKit
             endIntervalLabel.heightAnchor.constraint(equalToConstant: 11)
         ])
         
-        self.addSubview(value1000Label)
-        let top1000 = value1000Label.topAnchor.constraint(equalTo: self.topAnchor, constant: 2)
-        self.value1000TopConstraint = top1000
-        NSLayoutConstraint.activate([
-            value1000Label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
-            top1000,
-            value1000Label.heightAnchor.constraint(equalToConstant: 11),
-            value1000Label.widthAnchor.constraint(equalToConstant: 32)
-        ])
+        self.value1000TopConstraint = addValueLabel(value1000Label)
+        self.value100TopConstraint = addValueLabel(value100Label)
+        self.value10TopConstraint = addValueLabel(value10Label)
+        self.value1TopConstraint = addValueLabel(value1Label)
         
-        self.addSubview(value100Label)
-        let top100 = value100Label.topAnchor.constraint(equalTo: self.topAnchor, constant: 24)
-        self.value100TopConstraint = top100
-        NSLayoutConstraint.activate([
-            value100Label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
-            top100,
-            value100Label.heightAnchor.constraint(equalToConstant: 11),
-            value100Label.widthAnchor.constraint(equalToConstant: 32)
-        ])
-        
-        self.addSubview(value10Label)
-        let top10 = value10Label.topAnchor.constraint(equalTo: self.topAnchor, constant: 45)
-        self.value10TopConstraint = top10
-        NSLayoutConstraint.activate([
-            value10Label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
-            top10,
-            value10Label.heightAnchor.constraint(equalToConstant: 11),
-            value10Label.widthAnchor.constraint(equalToConstant: 32)
-        ])
-        
-        self.addSubview(value1Label)
-        let top1 = value1Label.topAnchor.constraint(equalTo: self.topAnchor, constant: 68)
-        self.value1TopConstraint = top1
-        NSLayoutConstraint.activate([
-            value1Label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
-            top1,
-            value1Label.heightAnchor.constraint(equalToConstant: 11),
-            value1Label.widthAnchor.constraint(equalToConstant: 32)
-        ])
+        updateUI()
     }
 
+    func addValueLabel(_ label: UILabel) -> NSLayoutConstraint {
+        self.addSubview(label)
+        let constraint = label.topAnchor.constraint(equalTo: self.topAnchor, constant: 0)
+        NSLayoutConstraint.activate([
+            label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
+            constraint,
+            label.heightAnchor.constraint(equalToConstant: 11),
+            label.widthAnchor.constraint(equalToConstant: 32)
+        ])
+        
+        return constraint
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
