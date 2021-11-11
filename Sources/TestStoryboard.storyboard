@@ -158,13 +158,9 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmQ-HS-ITL" customClass="RMBTSpeedGraphView">
-                                        <rect key="frame" x="5.5" y="28" width="309" height="145"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmQ-HS-ITL" customClass="RMBTSpeedGraphView" customModule="RMBT" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="48" width="320" height="125"/>
                                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="309" id="17W-mT-AX3"/>
-                                            <constraint firstAttribute="height" constant="145" id="Sz5-BQ-goi"/>
-                                        </constraints>
                                     </view>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RgU-GG-FBu">
                                         <rect key="frame" x="0.0" y="48" width="320" height="145"/>
@@ -182,16 +178,17 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="LmQ-HS-ITL" firstAttribute="top" secondItem="Fze-Jz-4KV" secondAttribute="bottom" constant="-20" id="3DI-A8-Qzm"/>
+                                    <constraint firstItem="LmQ-HS-ITL" firstAttribute="top" secondItem="Fze-Jz-4KV" secondAttribute="bottom" id="3DI-A8-Qzm"/>
                                     <constraint firstAttribute="height" constant="193" id="55c-d5-VTo"/>
                                     <constraint firstAttribute="trailing" secondItem="s7d-Ux-Rpe" secondAttribute="trailing" id="7ML-5X-QV1"/>
                                     <constraint firstAttribute="bottom" secondItem="RgU-GG-FBu" secondAttribute="bottom" id="GSp-YC-NmN"/>
-                                    <constraint firstItem="LmQ-HS-ITL" firstAttribute="centerX" secondItem="bw4-lu-8TH" secondAttribute="centerX" id="LT2-nL-B5Q"/>
                                     <constraint firstAttribute="bottom" secondItem="s7d-Ux-Rpe" secondAttribute="bottom" id="MCp-xb-nTY"/>
                                     <constraint firstAttribute="bottom" secondItem="LmQ-HS-ITL" secondAttribute="bottom" constant="20" id="PRa-n5-DcA"/>
                                     <constraint firstAttribute="trailing" secondItem="VP4-8a-fqt" secondAttribute="trailing" constant="16" id="RCR-wB-CsP"/>
                                     <constraint firstItem="s7d-Ux-Rpe" firstAttribute="top" secondItem="Fze-Jz-4KV" secondAttribute="bottom" id="UWC-AA-7Hy"/>
+                                    <constraint firstItem="LmQ-HS-ITL" firstAttribute="leading" secondItem="bw4-lu-8TH" secondAttribute="leading" id="V7R-PA-YcM"/>
                                     <constraint firstItem="s7d-Ux-Rpe" firstAttribute="leading" secondItem="bw4-lu-8TH" secondAttribute="leading" id="YbU-6e-Pqk"/>
+                                    <constraint firstAttribute="trailing" secondItem="LmQ-HS-ITL" secondAttribute="trailing" id="YhM-1R-Qgo"/>
                                     <constraint firstAttribute="trailing" secondItem="Fze-Jz-4KV" secondAttribute="trailing" constant="20" id="ini-UQ-g0d"/>
                                     <constraint firstItem="RgU-GG-FBu" firstAttribute="leading" secondItem="bw4-lu-8TH" secondAttribute="leading" id="jB3-L1-2Tu"/>
                                     <constraint firstItem="VP4-8a-fqt" firstAttribute="centerY" secondItem="Fze-Jz-4KV" secondAttribute="centerY" id="pHb-dF-erh"/>
@@ -1218,6 +1215,7 @@
                     <view key="view" contentMode="scaleToFill" id="3FM-u6-LwH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UXn-1U-n97"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
