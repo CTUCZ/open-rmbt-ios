@@ -320,3 +320,24 @@
 "history.sync-modal-description.enter-code" = "Geben Sie hier bitte den Code ein, den Sie auf Ihrem anderen Gerät angefordert haben.";
 "history.sync-modal-description.request-code" = "Bitte geben Sie den unten angezeigten Code auf dem anderen Gerät ein, um die Ergebnisse zu synchronisieren.";
 "history.sync-modal-description.sync-success" = "Die Synchronisierung war erfolgreich.";
+
+/* Test */
+"test.network.label" = "Netzwerk";
+"test.technology.label" = "Technologie";
+"label_upload" = "Upload";
+"label_download" = "Download";
+"label_ping" = "Ping";
+
+"measurement_ping" = "Ping";
+"measurement_down" = "Down";
+"measurement_up" = "Up";
+
+"measurement_qos" = "Servicequalität (QoS)";
+"measurement_qos_website" = "Webseite";
+"measurement_qos_non_transparent_proxy" = "Transparente Verbindung";
+"measurement_qos_dns" = "DNS";
+"measurement_qos_tcp" = "TCP Ports";
+"measurement_qos_udp" = "UDP Ports";
+"measurement_qos_http_proxy" = "Unveränderter Inhalt";
+"measurement_qos_traceroute_masked" = "Traceroute";
+"measurement_qos_voip" = "VoIP";
