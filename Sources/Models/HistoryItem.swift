@@ -62,6 +62,8 @@ import ObjectMapper
     public var operatorName: String?
     
     public var qosResult: String?
+    
+    public var loopUuid: String?
 
     @objc func json() -> [String: Any] {
         return self.toJSON()
@@ -91,5 +93,6 @@ import ObjectMapper
         networkName         <- map["network_name"]
         operatorName         <- map["operator"]
         qosResult           <- map["qos_result"]
+        loopUuid            <- map["loop_uuid"]
     }
 }

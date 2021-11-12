@@ -131,13 +131,17 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
         request.testCounter = [RMBTSettings sharedSettings].testCounter;
         request.previousTestStatus = RMBTValueOrString([RMBTSettings sharedSettings].previousTestStatus, RMBTTestStatusNone);
         request.geoLocation = [[GeoLocation alloc] initWithLocation:l];
+        if (extraParams) {
+            request.loopModeEnabled = true;
+            request.loopModeInfo = params[@"loopmode_info"];
+        }
         
         [[RMBTControlServer sharedControlServer] getTestParamsWithRequest:request success:^(id testParams) {
-            dispatch_async(_workerQueue, ^{
+            dispatch_async(self->_workerQueue, ^{
                 [self continueWithTestParams:testParams];
             });
         } error:^(NSError *error){
-            dispatch_async(_workerQueue, ^{
+            dispatch_async(self->_workerQueue, ^{
                 [self cancelWithReason:RMBTTestRunnerCancelReasonErrorFetchingTestingParams];
             });
         }];
@@ -379,13 +383,13 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
 - (void)submitResult {
     [self cleanup]; // Stop observing now, test is finished
 
-    dispatch_async(_workerQueue, ^{
+    dispatch_async(self->_workerQueue, ^{
         self.phase = RMBTTestRunnerPhaseSubmittingTestResult;
 
-        if (_dead) return; // cancelled
+        if (self->_dead) return; // cancelled
 
         NSDictionary* qosResult = [self qosResultDictionary];
-        BOOL hasQos = (qosResult && _testParams.resultQoSURLString);
+        BOOL hasQos = (qosResult && self->_testParams.resultQoSURLString);
         dispatch_semaphore_t qosSem = dispatch_semaphore_create(0);
 
         if (hasQos) {
@@ -400,16 +404,14 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
         }
 
         SpeedMeasurementResult *result = [self resultWithDictionary:[self resultDictionary]];
-//        result.uuid = _testParams.testUUID
-        
         [[RMBTControlServer sharedControlServer] submitResult:result endpoint:nil success:^(id response) {
-            dispatch_async(_workerQueue, ^{
+            dispatch_async(self->_workerQueue, ^{
                 self.phase = RMBTTestRunnerPhaseNone;
-                _dead = YES;
+                self->_dead = YES;
 
                 [RMBTSettings sharedSettings].previousTestStatus = RMBTTestStatusEnded;
 
-                RMBTHistoryResult *historyResult = [[RMBTHistoryResult alloc] initWithResponse:@{@"test_uuid": _testParams.testUUID}];
+                RMBTHistoryResult *historyResult = [[RMBTHistoryResult alloc] initWithResponse:@{@"test_uuid": self->_testParams.testUUID}];
 
                 if (hasQos) {
                     if (dispatch_semaphore_wait(qosSem, dispatch_time(DISPATCH_TIME_NOW, RMBT_QOS_CC_TIMEOUT_S * NSEC_PER_SEC)) != 0) {
@@ -417,11 +419,11 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
                     }
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [_delegate testRunnerDidCompleteWithResult:historyResult];
+                    [self->_delegate testRunnerDidCompleteWithResult:historyResult];
                 });
             });
         } error:^(NSError *error){
-            dispatch_async(_workerQueue, ^{
+            dispatch_async(self->_workerQueue, ^{
                 [self cancelWithReason:RMBTTestRunnerCancelReasonErrorSubmittingTestResult];
             });
         }];

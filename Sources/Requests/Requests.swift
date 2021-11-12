@@ -98,7 +98,8 @@ public class IPRequest_Old: BasicRequest {
 ///
 ///
 @objc public class SpeedMeasurementRequest_Old: BasicRequest {
-    
+    @objc var loopModeEnabled: Bool = false
+    @objc var loopModeInfo: [String:Any]?
     
     ///
     var ndt = false
@@ -139,6 +140,9 @@ public class IPRequest_Old: BasicRequest {
         //
         measurementServerId <- map["measurement_server_id"]
         measurementTypeFlag <- map["measurement_type_flag"]
+        
+        loopModeEnabled     <- map["user_loop_mode"]
+        loopModeInfo        <- map["loopmode_info"]
     }
 }
 
