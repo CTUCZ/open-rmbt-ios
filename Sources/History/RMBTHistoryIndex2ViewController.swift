@@ -60,10 +60,8 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
     
     var loading = false
     
-    private var testResults: [RMBTHistoryResult] = []
+    private var testResults: [RMBTHistoryResultGroup] = []
     private var nextBatchIndex: Int = 0
-    
-    private var enterCodeAlertView: UIAlertView?
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
@@ -110,6 +108,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         self.tableView.tableFooterView = footerView
         self.tableView.register(UINib(nibName: RMBTHistoryIndexCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryIndexCell.ID)
         self.tableView.register(UINib(nibName: RMBTHistoryLoadingCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryLoadingCell.ID)
+        self.tableView.register(UINib(nibName: RMBTHistoryLoopCell.ID, bundle: nil), forHeaderFooterViewReuseIdentifier: RMBTHistoryLoopCell.ID)
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.addTarget(self, action: #selector(refreshFromTableView(_:)), for: .valueChanged)
         
@@ -223,25 +222,37 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
                                                        offset: UInt(offset)) { [weak self] response in
             guard let self = self else { return }
             
-            let responses: [HistoryItem] = response.records
-            let oldCount = self.testResults.count
-            
-            var indexPaths: [IndexPath] = []
-            var results: [RMBTHistoryResult] = []
-            
-            for r in responses {
-                results.append(RMBTHistoryResult(response: r.json()))
-                indexPaths.append(IndexPath(row: oldCount-1 + results.count, section: 0))
-            }
-            
+            let records: [HistoryItem] = response.records
             // We got less results than batch size, this means this was the last batch
-            if (results.count < self.kBatchSize) {
+            if (records.count < self.kBatchSize) {
                 self.nextBatchIndex = NSNotFound
             } else {
                 self.nextBatchIndex += 1
             }
             
-            self.testResults.append(contentsOf: results)
+            var results: [String:[RMBTHistoryResult]] = [:]
+            
+            for r in records {
+                if let result = RMBTHistoryResult(response: r.json()) {
+                    if let loopUuid = r.loopUuid {
+                        if var _ = results[loopUuid] {
+                            results[loopUuid]!.append(result)
+                        } else {
+                            results[loopUuid] = [result]
+                        }
+                    } else if let testUuid = r.testUuid {
+                        results[testUuid] = [result]
+                    }
+                }
+            }
+            
+            for (_, loopResults) in results {
+                if loopResults.count > 0 {
+                    self.testResults.append(RMBTHistoryResultGroup(from: loopResults))
+                }
+            }
+            self.testResults.sort { $0.timestamp.timeIntervalSince1970 > $1.timestamp.timeIntervalSince1970
+            }
             
             if (firstBatch) {
                 self.state = self.testResults.count == 0 ? .empty : .hasEntries
@@ -298,28 +309,47 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
 
 extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var result = testResults.count
         if (nextBatchIndex != NSNotFound) { result += 1 }
         return result
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section >= testResults.count {
+            return 1
+        }
+        return testResults[section].loopResults.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard section < testResults.count, testResults[section].loopResults.count > 1 else {
+            return 0
+        }
         return 48
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section < testResults.count, testResults[section].loopResults.count > 1 else {
+            return nil
+        }
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: RMBTHistoryLoopCell.ID) as! RMBTHistoryLoopCell
+        header.dateLabel.text = testResults[section].loopResults.first!.formattedTimestamp()
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 48
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.row >= testResults.count) {
+        if (indexPath.section >= testResults.count) {
             // Loading cell
             let cell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryLoadingCell.ID, for: indexPath) as! RMBTHistoryLoadingCell
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryIndexCell.ID, for: indexPath) as! RMBTHistoryIndexCell
+            let testResult = testResults[indexPath.section].loopResults[indexPath.row]
             
-            let testResult = testResults[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryIndexCell.ID, for: indexPath) as! RMBTHistoryIndexCell
 
             let networTypeIcon = RMBTNetworkTypeConstants.networkTypeDictionary[testResult.networkTypeServerDescription]?.icon
             cell.typeImageView.image = networTypeIcon
@@ -333,12 +363,13 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let result = testResults[indexPath.row]
+        guard indexPath.section < testResults.count else { return }
+        let result = testResults[indexPath.section].loopResults[indexPath.row]
         self.performSegue(withIdentifier: "show_result", sender: result)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row >= (testResults.count - 5) {
+        if indexPath.section >= (testResults.count - 5) {
             if (!loading && nextBatchIndex != NSNotFound) {
                 self.getNextBatch()
             }
