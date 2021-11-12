@@ -1840,18 +1840,16 @@
                                                     <rect key="frame" x="240" y="56" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </activityIndicatorView>
-                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zPO-Zq-a0L" customClass="RMBTSpeedGraphView">
-                                                    <rect key="frame" x="67.666666666666686" y="-8.6666666666666714" width="309" height="145.33333333333337"/>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zPO-Zq-a0L" customClass="RMBTSpeedGraphView" customModule="RMBT" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="428" height="140"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="145" id="0Ji-uC-kQC"/>
-                                                        <constraint firstAttribute="width" constant="309" id="bRU-Vo-IWp"/>
-                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zPO-Zq-a0L" firstAttribute="centerY" secondItem="kyM-KT-Ju3" secondAttribute="centerY" constant="-6" id="dut-hQ-Vfh"/>
-                                                <constraint firstItem="zPO-Zq-a0L" firstAttribute="centerX" secondItem="kyM-KT-Ju3" secondAttribute="centerX" constant="8" id="yoC-eb-Gck"/>
+                                                <constraint firstAttribute="trailing" secondItem="zPO-Zq-a0L" secondAttribute="trailing" id="15Y-Xe-qKL"/>
+                                                <constraint firstItem="zPO-Zq-a0L" firstAttribute="leading" secondItem="kyM-KT-Ju3" secondAttribute="leading" id="3Qw-bR-4Vt"/>
+                                                <constraint firstAttribute="bottom" secondItem="zPO-Zq-a0L" secondAttribute="bottom" id="oNu-0N-gnR"/>
+                                                <constraint firstItem="zPO-Zq-a0L" firstAttribute="top" secondItem="kyM-KT-Ju3" secondAttribute="top" id="prC-Pt-Y8d"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

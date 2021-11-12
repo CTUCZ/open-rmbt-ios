@@ -98,7 +98,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     var speedGaugeView: RMBTGaugeView!
     var progressGaugeView: RMBTGaugeView!
     
-    var isInfoCollapsed = false
+    var isInfoCollapsed = true
     var isQOSState = false {
         didSet {
             self.counterView.isHidden = !isQOSState
@@ -196,6 +196,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     @objc func startTest() {
         self.loopModeInfo?.increment()
         self.showQoSUI(false) // in case we're restarting because test was cancelled in qos phase
+        loopModeWaitingView.isHidden = true
         
         self.display(text: "-", for: self.pingResultLabel)
         self.display(text: "-", for: self.downResultLabel)
@@ -217,8 +218,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     @objc func showQoSUI(_ state: Bool) {
-        self.loopModeWaitingView.isHidden = !state;
-        self.speedGraphView.isHidden = state;
+        self.speedGraphView.isHidden = state
     //    _speedGaugeView.hidden = state;
         self.speedLabel.isHidden = state;
         self.speedSuffixLabel.isHidden = state;
@@ -481,7 +481,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         for t in throughputs as? [RMBTThroughput] ?? [] {
             kbps = Int(t.kilobitsPerSecond())
             l = RMBTSpeedLogValue(Double(kbps))
-            self.speedGraphView.addValue(Float(l), atTimeInterval: TimeInterval(t.endNanos / NSEC_PER_SEC))
+            self.speedGraphView.add(value: CGFloat(l), at: TimeInterval(t.endNanos / NSEC_PER_SEC))
         }
 
         if (throughputs.count > 0) {

@@ -16,9 +16,9 @@
  */
 
 #import <UIKit/UIKit.h>
-
-#import "RMBTSpeedGraphView.h"
 #import "RMBTHistorySpeedGraph.h"
+
+@class RMBTSpeedGraphView;
 
 @interface RMBTHistorySpeedGraphCell : UITableViewCell
 @property (nonatomic, readwrite) IBOutlet UIActivityIndicatorView *activityView;
