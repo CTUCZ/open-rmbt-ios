@@ -29,6 +29,8 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     @IBOutlet weak var loopModeTitleLabel: UILabel!
     @IBOutlet weak var loopModeTitleView: UIView!
     
+    @IBOutlet weak var offsetGaugesConstraint: NSLayoutConstraint!
+    @IBOutlet weak var aspectGaugesConstraint: NSLayoutConstraint!
     var loopModeInfo: RMBTLoopInfo?
     
     @IBOutlet weak var infoTitleHeightConstraint: NSLayoutConstraint!
@@ -159,6 +161,15 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        let originalOffsetScreenWidth: CGFloat = 375
+        let originalOffsetConstraint: CGFloat = -85
+        let offsetAspect = self.view.frame.width / originalOffsetScreenWidth
+        self.offsetGaugesConstraint.constant = originalOffsetConstraint * offsetAspect
+        
+        let originalScreenWidth: CGFloat = 375
+        let originalConstraint: CGFloat = -39
+        let aspect = originalScreenWidth / self.view.frame.width
+        self.aspectGaugesConstraint.constant = originalConstraint * aspect
         self.progressGaugeView.frame = self.progressGaugePlaceholderView.frame
         self.speedGaugeView.frame = self.speedGaugePlaceholderView.frame
     }
@@ -422,7 +433,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         }
 
         if (connectivity.networkType == .cellular) {
-            self.networkTypeImageView.image = UIImage(named: "mobile_icon")?.withRenderingMode(.alwaysTemplate)
+            self.networkTypeImageView.image = UIImage(named: "mobile_icon_full")?.withRenderingMode(.alwaysTemplate)
         } else if (connectivity.networkType == .wiFi) {
             self.networkTypeImageView.image = UIImage(named: "wifi_icon")?.withRenderingMode(.alwaysTemplate)
         } else {
