@@ -275,6 +275,11 @@
 		E9E9940A26ECDAD100E7EED6 /* RMBTSwitcherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E9940926ECDAD100E7EED6 /* RMBTSwitcherCell.xib */; };
 		E9E9E8F9273BDA52005EB393 /* RMBTSpeedGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9E8F8273BDA51005EB393 /* RMBTSpeedGraphView.swift */; };
 		E9E9E8FB273CDECB005EB393 /* RMBTGraphLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9E8FA273CDECB005EB393 /* RMBTGraphLabel.swift */; };
+		E9E9E8FD27423892005EB393 /* RMBTTestPortraitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E9E8FC27423892005EB393 /* RMBTTestPortraitView.xib */; };
+		E9E9E8FF274238B6005EB393 /* RMBTTestPortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9E8FE274238B6005EB393 /* RMBTTestPortraitView.swift */; };
+		E9E9E9012742685E005EB393 /* UIView+XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9E9002742685E005EB393 /* UIView+XibLoadable.swift */; };
+		E9E9E90327429B6C005EB393 /* RMBTTestLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E9E90227429B6B005EB393 /* RMBTTestLandscapeView.swift */; };
+		E9E9E90527429B90005EB393 /* RMBTTestLandscapeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E9E90427429B90005EB393 /* RMBTTestLandscapeView.xib */; };
 		E9F686C32726EA2B00708290 /* RMBTConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F686C22726EA2B00708290 /* RMBTConfig.swift */; };
 		F71B138A4E5F6DC41FF14268 /* Pods_RMBT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DE166B881B73366FE005F9 /* Pods_RMBT.framework */; };
 /* End PBXBuildFile section */
@@ -645,6 +650,11 @@
 		E9E9940926ECDAD100E7EED6 /* RMBTSwitcherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTSwitcherCell.xib; sourceTree = "<group>"; };
 		E9E9E8F8273BDA51005EB393 /* RMBTSpeedGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTSpeedGraphView.swift; sourceTree = "<group>"; };
 		E9E9E8FA273CDECB005EB393 /* RMBTGraphLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTGraphLabel.swift; sourceTree = "<group>"; };
+		E9E9E8FC27423892005EB393 /* RMBTTestPortraitView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTTestPortraitView.xib; sourceTree = "<group>"; };
+		E9E9E8FE274238B6005EB393 /* RMBTTestPortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTTestPortraitView.swift; sourceTree = "<group>"; };
+		E9E9E9002742685E005EB393 /* UIView+XibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+XibLoadable.swift"; sourceTree = "<group>"; };
+		E9E9E90227429B6B005EB393 /* RMBTTestLandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTTestLandscapeView.swift; sourceTree = "<group>"; };
+		E9E9E90427429B90005EB393 /* RMBTTestLandscapeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTTestLandscapeView.xib; sourceTree = "<group>"; };
 		E9F686C12726E62000708290 /* RMBTConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTConfig.h; sourceTree = "<group>"; };
 		E9F686C22726EA2B00708290 /* RMBTConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTConfig.swift; sourceTree = "<group>"; };
 		F620A48D0EF31330DAC04D48 /* Pods-RMBT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMBT.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMBT/Pods-RMBT.release.xcconfig"; sourceTree = "<group>"; };
@@ -1199,6 +1209,7 @@
 				E9C13F8027298B3C00DA60D4 /* UIAlertController+Additions.swift */,
 				36A9DF3E272C4E190099A57C /* UILabel.swift */,
 				E9E9E8FA273CDECB005EB393 /* RMBTGraphLabel.swift */,
+				E9E9E9002742685E005EB393 /* UIView+XibLoadable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1452,6 +1463,10 @@
 			isa = PBXGroup;
 			children = (
 				E9881C81270C1190008EFDF6 /* RMBTLoaderView.swift */,
+				E9E9E8FE274238B6005EB393 /* RMBTTestPortraitView.swift */,
+				E9E9E8FC27423892005EB393 /* RMBTTestPortraitView.xib */,
+				E9E9E90227429B6B005EB393 /* RMBTTestLandscapeView.swift */,
+				E9E9E90427429B90005EB393 /* RMBTTestLandscapeView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1612,6 +1627,7 @@
 				E9E993E826EB27BD00E7EED6 /* RMBTQOSListCell.xib in Resources */,
 				C7228DEC17FC199F00FB984D /* RMBTMapCalloutView.xib in Resources */,
 				E9E993BF26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.xib in Resources */,
+				E9E9E90527429B90005EB393 /* RMBTTestLandscapeView.xib in Resources */,
 				E9B51CCA27243208006ED0C7 /* RMBTIntroPortraitView.xib in Resources */,
 				E959549526E4F17D004EA6D9 /* Roboto-ThinItalic.ttf in Resources */,
 				E9E993D126EB0CC300E7EED6 /* RMBTHistoryTitleCell.xib in Resources */,
@@ -1632,6 +1648,7 @@
 				E946B95426D66C5B0006E1F1 /* RMBTMapOptionsFilterCell.xib in Resources */,
 				E959549226E4F17D004EA6D9 /* Roboto-Light.ttf in Resources */,
 				C783F6911EDC7EB4001CB2F9 /* loop_mode_info.html in Resources */,
+				E9E9E8FD27423892005EB393 /* RMBTTestPortraitView.xib in Resources */,
 				E959549726E4F17D004EA6D9 /* Roboto-LightItalic.ttf in Resources */,
 				E939AAAF26DB9A2200D73F0B /* RMBTMapMeasurementCell.xib in Resources */,
 				E9E993E926EB27BD00E7EED6 /* RMBTQOSItemCell.xib in Resources */,
@@ -1776,6 +1793,7 @@
 				E930769B26CE3AA80046A17B /* RMBTMapOptions2ViewController.swift in Sources */,
 				C783F6891ED85312001CB2F9 /* RMBTQoSIPTest.m in Sources */,
 				E959547826E38AF7004EA6D9 /* RMBTHistoryIndex2ViewController.swift in Sources */,
+				E9E9E8FF274238B6005EB393 /* RMBTTestPortraitView.swift in Sources */,
 				E9400EE726BA6A9D0067273A /* SocketUtils.swift in Sources */,
 				E93FB10B26F4C77800DD24CD /* RMBTTestViewController.swift in Sources */,
 				E9400F3D26BEA1D70067273A /* QosMeasurmentResponse.swift in Sources */,
@@ -1950,7 +1968,9 @@
 				E981D280271E892400CD970A /* RMBTLocationPopupViewController.swift in Sources */,
 				E9400EF126BA6E2E0067273A /* IpResponse.swift in Sources */,
 				E939AAA926DB8B0800D73F0B /* RMBTMeasurementPin.swift in Sources */,
+				E9E9E90327429B6C005EB393 /* RMBTTestLandscapeView.swift in Sources */,
 				C7704EA31E95531B00044AF6 /* RMBTHistorySpeedGraph.m in Sources */,
+				E9E9E9012742685E005EB393 /* UIView+XibLoadable.swift in Sources */,
 				E9824442272FC31600081732 /* RMBTLoopModeSettingsViewController.swift in Sources */,
 				C780CE4F1EA287C800332423 /* RMBTQosWebTestURLProtocol.m in Sources */,
 				C783F68C1EDC7A15001CB2F9 /* RMBTLoopModeConfirmationViewController.m in Sources */,

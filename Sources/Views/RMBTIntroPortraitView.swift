@@ -8,14 +8,7 @@
 
 import UIKit
 
-class RMBTIntroPortraitView: UIView {
-
-    static var nibName: String { return String(describing: Self.self) }
-    
-    static func view() -> RMBTIntroPortraitView {
-        let nib = UINib(nibName: nibName, bundle: nil)
-        return nib.instantiate(withOwner: self, options: nil).first as! RMBTIntroPortraitView
-    }
+class RMBTIntroPortraitView: UIView, XibLoadable {
     
     @IBOutlet private weak var locationImageView: UIImageView!
     @IBOutlet private weak var ipV6ImageView: UIImageView!

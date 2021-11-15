@@ -18,7 +18,7 @@ extension MKMapView {
       } else if angleCamera > 90 {
         angleCamera = abs(angleCamera - 180)
       }
-      let angleRad = M_PI * angleCamera / 180 // map rotation in radians
+      let angleRad = Double.pi * angleCamera / 180 // map rotation in radians
       let width = Double(self.frame.size.width)
       let height = Double(self.frame.size.height)
       let heightOffset : Double = 20

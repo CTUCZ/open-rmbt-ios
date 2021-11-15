@@ -19,228 +19,301 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     private let actionsSegue = "actions_segue"
     private var locationTracker: RMBTLocationTracker?
     
-    @IBOutlet weak var detailTestView: UIView!
+    enum State {
+        case test
+        case qos
+        case waiting
+    }
     
-    @IBOutlet weak var infoTitleView: UIView!
-    @IBOutlet weak var loopModeTitleHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var loopModeCounterLoaderView: RMBTLoaderView!
-    @IBOutlet weak var loopModeCounterLabel: UILabel!
-    @IBOutlet weak var loopModeCounterView: UIView!
-    @IBOutlet weak var loopModeTitleLabel: UILabel!
-    @IBOutlet weak var loopModeTitleView: UIView!
+    var state: State = .test
     
-    @IBOutlet weak var offsetGaugesConstraint: NSLayoutConstraint!
-    @IBOutlet weak var aspectGaugesConstraint: NSLayoutConstraint!
-    var loopModeInfo: RMBTLoopInfo?
+    var loopModeInfo: RMBTLoopInfo? {
+        didSet {
+            if isViewLoaded {
+                updateLoopModeInfo()
+            }
+        }
+    }
     
-    @IBOutlet weak var infoTitleHeightConstraint: NSLayoutConstraint!
-    var alertView: UIAlertView?
-    var footerLabelTitleAttributes: [String: Any] = [:]
-    var footerLabelDetailsAttributes: [String: Any] = [:]
+    var networkName: String? {
+        didSet {
+            self.currentView.networkName = networkName
+        }
+    }
+    
+    var networkType: String? {
+        didSet {
+            self.currentView.networkType = networkType
+        }
+    }
+    
+    var networkTypeImage: UIImage? {
+        didSet {
+            self.currentView.networkTypeImage = networkTypeImage
+        }
+    }
+    
+    var technology: String? {
+        didSet {
+            self.currentView.technology = technology
+        }
+    }
+    
+    var status: String? {
+        didSet {
+            self.currentView.status = status
+        }
+    }
+    
+    var progress: UInt = 0 {
+        didSet {
+            self.currentView.progress = progress
+        }
+    }
+    
+    var speed: UInt32 = 0 {
+        didSet {
+            self.currentView.speed = speed
+        }
+    }
+    
+    var ping: String? {
+        didSet {
+            self.currentView.ping = ping
+        }
+    }
+    
+    var down: String? {
+        didSet {
+            self.currentView.down = down
+        }
+    }
+    
+    var up: String? {
+        didSet {
+            self.currentView.up = up
+        }
+    }
+    
+    var phase: RMBTTestRunnerPhase = .none {
+        didSet {
+            self.currentView.phase = phase
+        }
+    }
+    
+    var isShowSpeedSuffix: Bool = false {
+        didSet {
+            self.currentView.isShowSpeedSuffix = isShowSpeedSuffix
+        }
+    }
+    
+    var qosCounterText: String? {
+        didSet {
+            self.currentView.qosCounterText = qosCounterText
+        }
+    }
+    
+    var speedValues: [RMBTThroughput] = [] {
+        didSet {
+            self.currentView.clearSpeedGraph()
+            for t in speedValues {
+                let kbps = Int(t.kilobitsPerSecond())
+                let l = RMBTSpeedLogValue(Double(kbps))
+                self.currentView.addSpeed(CGFloat(l), at: TimeInterval(t.endNanos / NSEC_PER_SEC))
+            }
+        }
+    }
 
-    private var qosProgressViewController: RMBTQoSProgressViewController?
-    private var loopModeWaitingViewController: RMBTLoopModeWaitingViewController?
+    var speedGauge: Double = 0 {
+        didSet {
+            self.currentView.speedGauge = speedGauge
+        }
+    }
+    
+    var alertView: UIAlertView?
+
+    private lazy var qosProgressViewController: RMBTQoSProgressViewController = {
+        let vc = UIStoryboard(name: "TestStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RMBTQoSProgressViewController")
+        if let view = vc.view {
+            self.currentView.setQosView(view)
+        }
+        return vc as! RMBTQoSProgressViewController
+    }()
+    
+    private lazy var loopModeWaitingViewController: RMBTLoopModeWaitingViewController = {
+        let vc = UIStoryboard(name: "TestStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RMBTLoopModeWaitingViewController")
+        if let view = vc.view {
+            self.currentView.setWaitingView(view)
+        }
+        return vc as! RMBTLoopModeWaitingViewController
+    }()
     
     @objc weak var delegate: RMBTTestViewControllerDelegate?
     
     // This will hide the network name label in case of cellular connection
     @objc var roaming = false
     
-    // Network name and type
-    @IBOutlet weak var technologyTitleLabel: UILabel!
-    @IBOutlet weak var technologyValueLabel: UILabel!
-    @IBOutlet weak var networkTypeLabel: UILabel?
-    @IBOutlet weak var networkNameLabel: UILabel!
-    @IBOutlet weak var networkTypeImageView: UIImageView!
-    @IBOutlet weak var infoView: UIView!
-    @IBOutlet weak var bottomSpeedConstraint: NSLayoutConstraint!
+    var isInfoCollapsed = true {
+        didSet {
+            self.currentView.isInfoCollapsed = isInfoCollapsed
+        }
+    }
     
-    @IBOutlet weak var counterAnimationView: RMBTLoaderView!
-    @IBOutlet weak var counterLabel: UILabel!
-    @IBOutlet weak var counterView: UIView!
-    // Progress
-    @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var progressGaugePlaceholderView: UIImageView!
-
-    // Results
-    @IBOutlet weak var pingResultLabel: UILabel!
-    @IBOutlet weak var downResultLabel: UILabel!
-    @IBOutlet weak var upResultLabel: UILabel!
-
-    // Speed chart
-    @IBOutlet weak var speedGaugePlaceholderView: UIImageView!
-    @IBOutlet weak var speedGraphView: RMBTSpeedGraphView!
-    @IBOutlet weak var arrowImageView: UIImageView!
-    @IBOutlet weak var speedLabel: UILabel!
-    @IBOutlet weak var speedSuffixLabel: UILabel!
-
-    // Footer
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var footerTestServerLabel: UILabel?
-    @IBOutlet weak var footerLocalIpLabel: UILabel?
-    @IBOutlet weak var footerLocationLabel: UILabel?
-    
-    // QoS
-    @IBOutlet weak var qosProgressView: UIView!
-
-    // Loop Mode Waiting
-    @IBOutlet weak var loopModeWaitingView: UIView!
-    
-    // Layout constraints
-    @IBOutlet weak var networkSymbolTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var networkSymbolLeftConstraint: NSLayoutConstraint!
-    @IBOutlet weak var networkNameWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var testServerLabelHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var speedGraphBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var progressGaugeTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var footerBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var detailInfoHeightConstraint: NSLayoutConstraint!
-    
-    // Views
-    var speedGaugeView: RMBTGaugeView!
-    var progressGaugeView: RMBTGaugeView!
-    
-    var isInfoCollapsed = true
     var isQOSState = false {
         didSet {
-            self.counterView.isHidden = !isQOSState
+            self.currentView.isQOSState = isQOSState
         }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
+    private lazy var landscapeView: RMBTTestLandscapeView = {
+        let view = RMBTTestLandscapeView.view()
+        self.initView(view)
+        return view
+    }()
+    
+    private lazy var portraitView: RMBTTestPortraitView = {
+        let view = RMBTTestPortraitView.view()
+        self.initView(view)
+        return view
+    }()
+    
+    private var currentView: RMBTTestPortraitView {
+        let size = UIApplication.shared.windowSize
+        if size.width > size.height {
+            return self.landscapeView
+        } else {
+            return self.portraitView
+        }
+    }
+    
+    func updateLoopModeInfo() {
+        self.currentView.isLoopMode = loopModeInfo != nil
+        self.currentView.currentTest = loopModeInfo?.current ?? 0
+        self.currentView.totalTests = loopModeInfo?.total ?? 0
+    }
+    
+    func initView(_ view: RMBTTestPortraitView) {
+        view.onCloseHandler = { [weak self] in
+            self?.tapped()
+        }
+    }
+    
+    private func updateOrientation(to size: CGSize) {
+        let newView: UIView
+        if size.width > size.height {
+            newView = self.landscapeView
+        } else {
+            newView = self.portraitView
+        }
+        
+        guard let superview = self.view.superview else {
+            self.view = newView
+            newView.bounds.size = size
+            return
+        }
+        newView.frame = self.view.frame
+        UIView.transition(with: superview, duration: 0.3, options: [.transitionCrossDissolve]) {
+            self.view = newView
+            newView.bounds.size = size
+        } completion: { _ in
+            self.updateStates()
+            self.currentView.startAnimation()
+        }
+    }
+    
+    func updateStates() {
+        self.currentView.isLoopMode = self.loopModeInfo != nil
+        self.currentView.networkName = self.networkName
+        self.currentView.networkType = self.networkType
+        self.currentView.networkTypeImage = self.networkTypeImage
+        self.currentView.technology = self.technology
+        self.currentView.status = self.status
+        self.currentView.progress = self.progress
+        self.currentView.speed = self.speed
+        self.currentView.ping = self.ping
+        self.currentView.down = self.down
+        self.currentView.up = self.up
+        self.currentView.isInfoCollapsed = self.isInfoCollapsed
+        self.currentView.isQOSState = self.isQOSState
+        self.currentView.currentTest = self.loopModeInfo?.current ?? 0
+        self.currentView.totalTests = self.loopModeInfo?.total ?? 0
+        self.currentView.phase = self.phase
+        self.currentView.isShowSpeedSuffix = self.isShowSpeedSuffix
+        self.currentView.qosCounterText = self.qosCounterText
+        self.currentView.setQosView(self.qosProgressViewController.view)
+        self.currentView.setWaitingView(self.loopModeWaitingViewController.view)
+        self.currentView.speedGauge = self.speedGauge
+        
+        // Update graph
+        let speedValues = self.speedValues
+        self.speedValues = []
+        self.speedValues = speedValues
+        
+        switch state {
+        case .test:
+            self.currentView.showQoSUI(false)
+            self.currentView.loopModeWaitingView.isHidden = true
+        case .qos:
+            self.currentView.showQoSUI(true)
+            self.currentView.loopModeWaitingView.isHidden = true
+        case .waiting:
+            self.currentView.showWaitingUI()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateLoopModeInfo()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
         self.isQOSState = false
-        
-        if (self.roaming) {
-            self.networkNameLabel.isHidden = true
-        }
 
-        self.networkTypeImageView.tintColor = UIColor.white
-        self.speedSuffixLabel.text = RMBTSpeedMbpsSuffix()
-
-        self.infoView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.infoView.layer.shadowColor = UIColor.black.cgColor
-        self.infoView.layer.shadowOpacity = 0.2
-        self.infoView.layer.shadowRadius = 3
-        
-        self.infoTitleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(infoViewTap)))
-        
         // Only clear connectivity and location labels once at start to avoid blinking during test restart
-        self.networkNameLabel.text = ""
+        self.networkName = ""
+        self.networkType = "-"
         
-        if let label = self.networkTypeLabel {
-            self.display(text: "-", for: label)
-        }
-        if let label = self.footerLocationLabel {
-            self.display(text: "-", for: label)
-        }
-
-        // Replace placeholder with speed gauges:
-        self.progressGaugeView = RMBTGaugeView(frame: self.progressGaugePlaceholderView.frame, name: "progress", startAngle: 214.0, endAngle: 214.0 + 261.0, ovalRect: CGRect(x: 0.0,y: 0,width: 175.0, height: 175.0))
-        self.view.insertSubview(progressGaugeView, belowSubview:self.progressLabel)
-
-        self.speedGaugeView = RMBTGaugeView(frame: self.speedGaugePlaceholderView.frame, name: "speed", startAngle: 33.5, endAngle: 299.0, ovalRect: CGRect(x: 0,y: 0,width: 175.0, height: 175.0))
-        self.view.insertSubview(speedGaugeView, belowSubview:self.progressLabel)
-
-        self.progressGaugePlaceholderView.isHidden = true
-        self.speedGaugePlaceholderView.isHidden = true
-
+        self.updateOrientation(to: UIApplication.shared.windowSize)
+        
         self.view.layoutSubviews()
         self.startTest()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.updateDetailInfoView()
-        self.loopModeCounterLoaderView.isAnimating = true
-        self.counterAnimationView.isAnimating = true
+        self.currentView.updateDetailInfoView()
+        self.currentView.startAnimation()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        let originalOffsetScreenWidth: CGFloat = 375
-        let originalOffsetConstraint: CGFloat = -85
-        let offsetAspect = self.view.frame.width / originalOffsetScreenWidth
-        self.offsetGaugesConstraint.constant = originalOffsetConstraint * offsetAspect
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         
-        let originalScreenWidth: CGFloat = 375
-        let originalConstraint: CGFloat = -39
-        let aspect = originalScreenWidth / self.view.frame.width
-        self.aspectGaugesConstraint.constant = originalConstraint * aspect
-        self.progressGaugeView.frame = self.progressGaugePlaceholderView.frame
-        self.speedGaugeView.frame = self.speedGaugePlaceholderView.frame
+        self.updateOrientation(to: size)
     }
     
-    @objc func infoViewTap() {
-        isInfoCollapsed = !isInfoCollapsed
-        self.updateDetailInfoView()
-    }
-    
-    func updateInfoTitleView() {
-        infoTitleHeightConstraint.constant = loopModeInfo == nil ? 63 : 111
-        loopModeTitleHeightConstraint.constant = loopModeInfo == nil ? 0 : 48
-        loopModeTitleView.isHidden = loopModeInfo == nil
-        loopModeTitleLabel.text = .loopMode
-        loopModeCounterLabel.text = "\(loopModeInfo?.current ?? 0)/\(loopModeInfo?.total ?? 0)"
-    }
-    
-    @objc func updateDetailInfoView() {
-        if (isInfoCollapsed) {
-            UIView.animate(withDuration: 0.3) {
-                let height: CGFloat = self.isQOSState ? 267 : 195
-                self.detailInfoHeightConstraint.constant = height
-                self.bottomSpeedConstraint.constant = 0
-                self.view.layoutIfNeeded()
-            }
-        } else {
-            UIView.animate(withDuration: 0.3) {
-                let offset = self.detailInfoHeightConstraint.constant
-                self.bottomSpeedConstraint.constant = -(offset + self.view.safeAreaInsets.bottom)
-                self.view.layoutIfNeeded()
-            }
-        }
+    @objc private func didBecomeActive(_ sender: Any) {
+        currentView.startAnimation()
     }
     
     @objc func startTest() {
         self.loopModeInfo?.increment()
-        self.showQoSUI(false) // in case we're restarting because test was cancelled in qos phase
-        loopModeWaitingView.isHidden = true
         
-        self.display(text: "-", for: self.pingResultLabel)
-        self.display(text: "-", for: self.downResultLabel)
-        self.display(text: "-", for: self.upResultLabel)
-
-        self.arrowImageView.image = nil
-
-        speedGaugeView.value = 0.0
-        self.speedLabel.text = ""
-        self.speedSuffixLabel.isHidden = true
-        self.speedGraphView.clear()
+        self.state = .test
+        self.speedValues = []
+        self.speedGauge = 0.0
+        
+        self.currentView.clearValues()
+        self.currentView.currentTest = self.loopModeInfo?.current ?? 0
+        self.currentView.totalTests = self.loopModeInfo?.total ?? 0
         
         if let info = self.loopModeInfo {
             super.startTest(withExtraParams: info.params)
         } else {
             super.startTest(withExtraParams: nil)
         }
-        self.updateInfoTitleView()
-    }
-    
-    @objc func showQoSUI(_ state: Bool) {
-        self.speedGraphView.isHidden = state
-    //    _speedGaugeView.hidden = state;
-        self.speedLabel.isHidden = state;
-        self.speedSuffixLabel.isHidden = state;
-        self.arrowImageView.isHidden = state;
-        self.qosProgressView.isHidden = !state;
-    }
-    
-    @objc func showWaitingUI() {
-        self.loopModeWaitingView.isHidden = false
-        self.speedGraphView.isHidden = true
-        self.qosProgressView.isHidden = true
     }
     
     // MARK: - Footer
@@ -265,10 +338,13 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     func updateSpeedLabel(for phase: RMBTTestRunnerPhase, withSpeed kbps: UInt32, isFinal: Bool) {
-        self.speedSuffixLabel.isHidden = false
-        guard let l = (phase == .down) ? self.downResultLabel : self.upResultLabel else { return }
-        self.display(text: RMBTSpeedMbpsStringWithSuffix(kbps, false), for: l)
-        self.speedLabel.text = RMBTSpeedMbpsStringWithSuffix(kbps, false)
+        self.isShowSpeedSuffix = false
+        if phase == .down {
+            self.down = RMBTSpeedMbpsStringWithSuffix(kbps, false)
+        } else {
+            self.up = RMBTSpeedMbpsStringWithSuffix(kbps, false)
+        }
+        self.speed = kbps
     }
     
     func hideAlert() {
@@ -299,12 +375,12 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "embed_qos_progress") {
-            qosProgressViewController = segue.destination as? RMBTQoSProgressViewController
-        }
-        if (segue.identifier == "embed_waiting_view") {
-            loopModeWaitingViewController = segue.destination as? RMBTLoopModeWaitingViewController
-        }
+//        if (segue.identifier == "embed_qos_progress") {
+//            qosProgressViewController = segue.destination as? RMBTQoSProgressViewController
+//        }
+//        if (segue.identifier == "embed_waiting_view") {
+//            loopModeWaitingViewController = segue.destination as? RMBTLoopModeWaitingViewController
+//        }
         if segue.identifier == actionsSegue,
            let vc = segue.destination as? RMBTLoopModeCompleteViewController {
             vc.onResultsHandler = { [weak self] in
@@ -337,10 +413,10 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         lastTestFirstGoodLocation = nil
         startDate = nil
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.RMBTLocationTracker, object: nil)
-        loopModeWaitingViewController?.minutesValue = ""
-        loopModeWaitingViewController?.minutesPercents = 0.0
-        loopModeWaitingViewController?.distanceValue = ""
-        loopModeWaitingViewController?.distancePercents = 0.0
+        loopModeWaitingViewController.minutesValue = ""
+        loopModeWaitingViewController.minutesPercents = 0.0
+        loopModeWaitingViewController.distanceValue = ""
+        loopModeWaitingViewController.distancePercents = 0.0
     }
     
     private func startNextTestIfNeeded() {
@@ -359,8 +435,8 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         let restTime = totalTime - time
         let minutes = Int(restTime / 60)
         let seconds = Int(restTime) % 60
-        loopModeWaitingViewController?.minutesValue = String(format: "%02d:%02d", minutes, seconds)
-        loopModeWaitingViewController?.minutesPercents = percents
+        loopModeWaitingViewController.minutesValue = String(format: "%02d:%02d", minutes, seconds)
+        loopModeWaitingViewController.minutesPercents = percents
         
         if time >= Double((self.loopModeInfo?.waitMinutes ?? 0)) * 60 {
             timer?.invalidate()
@@ -402,8 +478,8 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         
         // TODO: Update distance in waiting view
         let percents = d / Double(self.loopModeInfo?.waitMeters ?? 0)
-        loopModeWaitingViewController?.distanceValue = String(format: "%0.1f", Double(self.loopModeInfo?.waitMeters ?? 0) - d)
-        loopModeWaitingViewController?.distancePercents = percents
+        loopModeWaitingViewController.distanceValue = String(format: "%0.1f", Double(self.loopModeInfo?.waitMeters ?? 0) - d)
+        loopModeWaitingViewController.distancePercents = percents
         movementReached = (d >= Double(self.loopModeInfo?.waitMeters ?? 0))
         if movementReached {
             startNextTestIfNeeded()
@@ -427,83 +503,66 @@ extension RMBTTestViewController: UIViewControllerTransitioningDelegate {
 
 extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     func onTestUpdatedConnectivity(_ connectivity: RMBTConnectivity) {
-        self.networkNameLabel.text = RMBTValueOrString(connectivity.networkName, "Unknown") as? String
-        if let label = self.networkTypeLabel {
-            self.display(text: RMBTValueOrString(connectivity.networkTypeDescription, "n/a") as? String ?? "", for: label)
-        }
-
+        self.networkName = RMBTValueOrString(connectivity.networkName, "Unknown") as? String
+        self.networkType = RMBTValueOrString(connectivity.networkTypeDescription, "n/a") as? String ?? ""
+        
         if (connectivity.networkType == .cellular) {
-            self.networkTypeImageView.image = UIImage(named: "mobile_icon_full")?.withRenderingMode(.alwaysTemplate)
+            self.networkTypeImage = UIImage(named: "mobile_icon_full")?.withRenderingMode(.alwaysTemplate)
         } else if (connectivity.networkType == .wiFi) {
-            self.networkTypeImageView.image = UIImage(named: "wifi_icon")?.withRenderingMode(.alwaysTemplate)
+            self.networkTypeImage = UIImage(named: "wifi_icon")?.withRenderingMode(.alwaysTemplate)
         } else {
-            self.networkTypeImageView.image = nil
+            self.networkTypeImage = nil
         }
 
-        self.technologyValueLabel.text = connectivity.networkTypeDescription
+        self.technology = connectivity.networkTypeDescription
     }
     
-    func onTestUpdatedLocation(_ location: CLLocation!) {
-        if let label = self.footerLocationLabel {
-            self.display(text: location.rmbtFormattedString(), for: label)
-        }
-    }
+    func onTestUpdatedLocation(_ location: CLLocation!) { }
     
-    func onTestUpdatedServerName(_ name: String!) {
-        if let label = footerTestServerLabel {
-            self.display(text: name, for: label)
-        }
-    }
+    func onTestUpdatedServerName(_ name: String!) { }
     
     func onTestUpdatedStatus(_ status: String!) {
-        self.display(text: status, for: self.statusLabel)
+        self.status = status
     }
     
     func onTestUpdatedTotalProgress(_ percentage: UInt) {
-        self.progressLabel.text = "\(percentage)"
-        self.progressGaugeView.value = CGFloat(percentage) / 100.0
+        self.progress = percentage
     }
     
     func onTestStartedPhase(_ phase: RMBTTestRunnerPhase) {
-        if (phase == .down) {
-            self.arrowImageView.image = UIImage(named: "download_icon")
-        } else if (phase == .up) {
-            self.speedGraphView.clear()
-            self.speedLabel.text = ""
-            self.speedSuffixLabel.isHidden = true
-            self.arrowImageView.image = UIImage(named: "upload_icon")
-        } else if (phase == .qoS) {
+        self.phase = phase
+        self.speedValues = []
+        if (phase == .qoS) {
             self.isQOSState = true
             self.isInfoCollapsed = true
-            self.updateDetailInfoView()
         }
     }
     
     func onTestFinishedPhase(_ phase: RMBTTestRunnerPhase) { }
     
     func onTestMeasuredLatency(_ nanos: UInt64) {
-        self.display(text: RMBTMillisecondsStringWithNanos(nanos, false), for: self.pingResultLabel)
+        self.currentView.ping = RMBTMillisecondsStringWithNanos(nanos, false)
     }
     
     func onTestMeasuredTroughputs(_ throughputs: [Any]!, in phase: RMBTTestRunnerPhase) {
         var kbps = 0
         var l: Double = 0.0
 
+        self.speedValues += throughputs as? [RMBTThroughput] ?? []
         for t in throughputs as? [RMBTThroughput] ?? [] {
             kbps = Int(t.kilobitsPerSecond())
             l = RMBTSpeedLogValue(Double(kbps))
-            self.speedGraphView.add(value: CGFloat(l), at: TimeInterval(t.endNanos / NSEC_PER_SEC))
         }
 
         if (throughputs.count > 0) {
             // Use last values for momentary display (gauge and label)
-            speedGaugeView.value = CGFloat(l)
+            self.speedGauge = l
             self.updateSpeedLabel(for: phase, withSpeed: UInt32(kbps), isFinal: false)
         }
     }
     
     func onTestMeasuredDownloadSpeed(_ kbps: UInt32) {
-        self.speedGaugeView.value = 0
+        self.speedGauge = 0
         // Speed gauge set to 0, but leave the chart until we have measurements for the upload
         // [self.speedGraphView clear];
         self.updateSpeedLabel(for: .down, withSpeed: kbps, isFinal: true)
@@ -514,23 +573,25 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     }
     
     func onTestStartedQoS(withGroups groups: [Any]!) {
-        self.qosProgressViewController?.testGroups = groups as? [RMBTQoSTestGroup]
-        self.counterLabel.text = self.qosProgressViewController?.progressString()
-        self.showQoSUI(true)
+        self.qosProgressViewController.testGroups = groups as? [RMBTQoSTestGroup]
+        self.qosCounterText = self.qosProgressViewController.progressString()
+        self.state = .qos
+        self.currentView.showQoSUI(true)
     }
     
     func onTestUpdatedProgress(_ progress: Float, inQoSGroup group: RMBTQoSTestGroup!) {
-        self.qosProgressViewController?.updateProgress(progress, for: group)
-        self.counterLabel.text = self.qosProgressViewController?.progressString()
+        self.qosProgressViewController.updateProgress(progress, for: group)
+        self.qosCounterText = self.qosProgressViewController.progressString()
     }
     
     func onTestCompleted(with result: RMBTHistoryResult!, qos qosPerformed: Bool) {
-        self.counterLabel.text = self.qosProgressViewController?.progressString()
+        self.qosCounterText = self.qosProgressViewController.progressString()
         self.hideAlert()
         if let loopModeInfo = self.loopModeInfo {
             if !loopModeInfo.isFinished {
-                showWaitingUI()
-                self.display(text: .nextTest, for: self.statusLabel)
+                self.state = .waiting
+                self.currentView.showWaitingUI()
+                self.status = .nextTest
                 startWaitingNextTest()
             } else {
                 self.performSegue(withIdentifier: actionsSegue, sender: self)
@@ -590,5 +651,5 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
 
 private extension String {
     static let nextTest = NSLocalizedString("loop_mode_next_test", comment: "")
-    static let loopMode = NSLocalizedString("title_loop_mode", comment: "")
 }
+
