@@ -127,7 +127,13 @@
 
     RMBTQoSProgressCell *cell = (RMBTQoSProgressCell *)[tableView dequeueReusableCellWithIdentifier:@"qos_progress_cell" forIndexPath:indexPath];
     cell.percentView.percents = [_progressForGroupKey[g.key] floatValue];
-    cell.descriptionLabel.text = g.localizedDescription;
+    NSString *localizedKey = [NSString stringWithFormat:@"measurement_qos_%@", g.localizedDescription];
+    NSString *localized = g.localizedDescription;
+    if (![NSLocalizedString(localizedKey, @"") isEqualToString:localizedKey]) {
+        localized = NSLocalizedString(localizedKey, @"");
+    }
+    
+    cell.descriptionLabel.text = localized;
     return cell;
 }
 @end

@@ -320,3 +320,14 @@
 "history.sync-modal-description.enter-code" = "Please enter the code you received on your other device.";
 "history.sync-modal-description.request-code" = "Please enter the code shown below on the other device to synchronise the results.";
 "history.sync-modal-description.sync-success" = "The synchronisation was successful.";
+
+/* Test */
+"test.network.label" = "Network";
+"test.technology.label" = "Technology";
+"label_upload" = "Upload";
+"label_download" = "Download";
+"label_ping" = "Ping";
+
+"measurement_ping" = "Ping";
+"measurement_down" = "Down";
+"measurement_up" = "Up";

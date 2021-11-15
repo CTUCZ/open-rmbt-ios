@@ -102,7 +102,7 @@
         case RMBTTestRunnerPhaseUp:
             return NSLocalizedString(@"Upload", @"Phase status label");
         case RMBTTestRunnerPhaseQoS:
-            return NSLocalizedString(@"QoS", @"Phase status label");
+            return NSLocalizedString(@"measurement_qos", @"Phase status label");
         case RMBTTestRunnerPhaseSubmittingTestResult:
             return NSLocalizedString(@"Finalizing", @"Phase status label");
     }
