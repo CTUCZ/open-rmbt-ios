@@ -22,6 +22,7 @@ class RMBTHistorySyncModalViewController: UIViewController {
     @IBOutlet weak var enterCodeView: UIStackView!
     @IBOutlet weak var syncCodeTextField: RMBTMaterialTextField!
     @IBOutlet weak var enterCodeConfirmButton: UIButton!
+    @IBOutlet weak var enterCodeConfirmButtonLandscape: UIButton!
     @IBOutlet weak var requestCodeView: UIStackView!
     @IBOutlet weak var syncCode: UILabel!
     @IBOutlet weak var closeButton: UIButton!
@@ -31,6 +32,13 @@ class RMBTHistorySyncModalViewController: UIViewController {
     @IBOutlet weak var syncResultCloseButton: UIButton!
     @IBOutlet weak var dialogYConstraint: NSLayoutConstraint!
     @IBOutlet weak var syncImageView: UIImageView!
+    @IBOutlet weak var enterCodeViewWidthConstraint: NSLayoutConstraint!
+    lazy var enterCodeViewBottomConstraint: NSLayoutConstraint = {
+        return NSLayoutConstraint(item: self.enterCodeView!, attribute: .bottom, relatedBy: .equal, toItem: self.dialogView, attribute: .bottom, multiplier: 1.0, constant: 16)
+    }()
+    lazy var enterCodeViewTopConstraint: NSLayoutConstraint = {
+        return NSLayoutConstraint(item: self.enterCodeView!, attribute: .centerY, relatedBy: .equal, toItem: self.dialogView, attribute: .centerY, multiplier: 1.0, constant: 24)
+    }()
     
     private var state: RMBTHistorySyncModalState?
     var onSyncSuccess: (() -> Void)?
@@ -38,14 +46,16 @@ class RMBTHistorySyncModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundView.backgroundColor = .black.withAlphaComponent(0.0)
+        NSLayoutConstraint.activate([enterCodeViewBottomConstraint])
         setState(RMBTHistorySyncModalState())
         setActionHandlers()
         setTexts()
         NotificationCenter.default.addObserver(self, selector: #selector(moveDialogOnTopOfKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.view.endEditing(true)
     }
     
     deinit {
@@ -75,6 +85,7 @@ class RMBTHistorySyncModalViewController: UIViewController {
         closeButton.setTitle(.closeButton, for: .normal)
         enterCodeButton.setTitle(.enterCodeButton, for: .normal)
         enterCodeConfirmButton.setTitle(.enterCodeButton, for: .normal)
+        enterCodeConfirmButtonLandscape.setTitle(.enterCodeButton, for: .normal)
         requestCodeButton.setTitle(.requestCodeButton, for: .normal)
         syncCodeTextField.placeholder = .code
         syncResultCloseButton.setTitle(.closeButton, for: .normal)
@@ -92,6 +103,7 @@ extension RMBTHistorySyncModalViewController {
         closeButton.addTarget(self, action: #selector(closeDialog), for: .touchUpInside)
         enterCodeButton.addTarget(self, action: #selector(showEnterCodeView), for: .touchUpInside)
         enterCodeConfirmButton.addTarget(self, action: #selector(syncWithCode), for: .touchUpInside)
+        enterCodeConfirmButtonLandscape.addTarget(self, action: #selector(syncWithCode), for: .touchUpInside)
         requestCodeButton.addTarget(self, action: #selector(showRequestCodeView), for: .touchUpInside)
         syncResultCloseButton.addTarget(self, action: #selector(closeDialog), for: .touchUpInside)
     }
@@ -151,12 +163,36 @@ extension RMBTHistorySyncModalViewController {
         let isNotProMax = view.frame.height < 418.0
         
         UIView.animate(withDuration: 0.1) {
-            self.dialogYConstraint.constant = isCodeViewHiddenByKeyboard ? -(
-                self.enterCodeView.frame.height -
-                self.enterCodeConfirmButton.frame.height
-            ) : 0.0
-            self.syncImageView.layer.opacity = isCodeViewHiddenByKeyboard && isLandscape && isNotProMax ? 0.0 : 1.0
-            self.dialogTitle.layer.opacity = isCodeViewHiddenByKeyboard && isLandscape ? 0.0 : 1.0
+            self.dialogYConstraint.constant = isCodeViewHiddenByKeyboard ? -keyboardFrame.cgRectValue.size.height / 2 : 0.0
+            if isLandscape && isCodeViewHiddenByKeyboard {
+                self.syncImageView.layer.opacity = 0.0
+                self.dialogTitle.layer.opacity = 0.0
+                self.enterCodeViewWidthConstraint.constant = self.dialogView.frame.width - 32
+                NSLayoutConstraint.deactivate([ self.enterCodeViewBottomConstraint ])
+                NSLayoutConstraint.activate([ self.enterCodeViewTopConstraint ])
+                self.syncCodeTextField.placeholderLabel.layer.opacity = 1.0
+                if self.enterCodeConfirmButtonLandscape.isHidden {
+                    self.enterCodeConfirmButtonLandscape.isHidden = false
+                }
+                self.enterCodeConfirmButton.layer.opacity = 0.0
+                self.syncCodeTextField.placeholderLabel.textAlignment = .left
+                self.syncCodeTextField.errorLabel.textAlignment = .left
+                self.syncCodeTextField.textAlignment = .left
+            } else {
+                self.syncImageView.layer.opacity = 1.0
+                self.dialogTitle.layer.opacity = 1.0
+                self.enterCodeViewWidthConstraint.constant = 320
+                NSLayoutConstraint.activate([ self.enterCodeViewBottomConstraint ])
+                NSLayoutConstraint.deactivate([ self.enterCodeViewTopConstraint ])
+                self.syncCodeTextField.placeholderLabel.layer.opacity = isNotProMax ? 0.0 : 1.0
+                if !self.enterCodeConfirmButtonLandscape.isHidden {
+                    self.enterCodeConfirmButtonLandscape.isHidden = true
+                }
+                self.enterCodeConfirmButton.layer.opacity = 1.0
+                self.syncCodeTextField.placeholderLabel.textAlignment = .center
+                self.syncCodeTextField.errorLabel.textAlignment = .center
+                self.syncCodeTextField.textAlignment = .center
+            }
             self.view.layoutIfNeeded()
         }
     }

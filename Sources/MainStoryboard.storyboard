@@ -1669,20 +1669,40 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Zzo-ae-wc5">
                                         <rect key="frame" x="46" y="290" width="320" height="114"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZh-fO-nCj" customClass="RMBTMaterialTextField" customModule="RMBT" customModuleProvider="target">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SyC-Mt-MZn">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
-                                                <color key="tintColor" name="greenButtonBackground"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZh-fO-nCj" customClass="RMBTMaterialTextField" customModule="RMBT" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" name="greenButtonBackground"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OO4-WY-w0e">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="48"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="48" id="FKY-7U-sJs"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Enter Code">
+                                                            <color key="titleColor" name="greenButtonBackground"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="48" id="Qrx-Ev-gC6"/>
+                                                    <constraint firstAttribute="height" constant="48" id="iDi-2i-OXj"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="viG-rU-hfG">
                                                 <rect key="frame" x="0.0" y="80" width="320" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="48" id="Tf9-KV-RRF"/>
-                                                </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Enter Code">
                                                     <color key="titleColor" name="greenButtonBackground"/>
@@ -1695,8 +1715,8 @@
                                             </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="114" id="LeA-sU-8Ms"/>
                                             <constraint firstAttribute="width" constant="320" id="MeM-wG-BdE"/>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="132" id="dMO-l7-KGG"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -1760,7 +1780,9 @@
                         <outlet property="dialogYConstraint" destination="6hG-Ku-52k" id="Seu-YV-cbZ"/>
                         <outlet property="enterCodeButton" destination="VLC-KN-sUR" id="hbZ-as-JU4"/>
                         <outlet property="enterCodeConfirmButton" destination="viG-rU-hfG" id="ce8-jb-NIc"/>
+                        <outlet property="enterCodeConfirmButtonLandscape" destination="OO4-WY-w0e" id="7Qr-Vg-97r"/>
                         <outlet property="enterCodeView" destination="Zzo-ae-wc5" id="Sfr-ax-Gea"/>
+                        <outlet property="enterCodeViewWidthConstraint" destination="MeM-wG-BdE" id="5m9-xb-dNm"/>
                         <outlet property="requestCodeButton" destination="TMD-r5-jYh" id="a4C-tJ-Uvl"/>
                         <outlet property="requestCodeView" destination="nLq-s3-qGJ" id="k3w-ns-bAN"/>
                         <outlet property="spinnerView" destination="yjE-gf-mFq" id="TaN-PS-xcj"/>
