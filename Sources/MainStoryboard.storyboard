@@ -1569,6 +1569,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ol2-mr-IWR" userLabel="Keyboard Activated Mask">
+                                        <rect key="frame" x="0.0" y="296" width="412" height="124"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="124" id="xCw-VU-vwZ"/>
+                                        </constraints>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="r6Y-nt-YPP">
                                         <rect key="frame" x="12" y="310" width="388" height="94"/>
                                         <subviews>
@@ -1711,8 +1718,11 @@
                                     <constraint firstItem="8t1-4q-3uv" firstAttribute="top" secondItem="b1e-hn-WNk" secondAttribute="bottom" constant="24" id="i4g-uK-ZpA"/>
                                     <constraint firstItem="KIh-j5-TZT" firstAttribute="leading" secondItem="XFb-SW-YFa" secondAttribute="leading" constant="8" id="jAo-27-NF2"/>
                                     <constraint firstItem="yjE-gf-mFq" firstAttribute="top" secondItem="XFb-SW-YFa" secondAttribute="top" id="k1c-tp-yh4"/>
+                                    <constraint firstAttribute="bottom" secondItem="ol2-mr-IWR" secondAttribute="bottom" id="kLb-1f-4sf"/>
                                     <constraint firstAttribute="bottom" secondItem="nLq-s3-qGJ" secondAttribute="bottom" constant="16" id="leq-MX-zjj"/>
                                     <constraint firstAttribute="trailing" secondItem="r6Y-nt-YPP" secondAttribute="trailing" constant="12" id="nYB-mP-B3D"/>
+                                    <constraint firstAttribute="trailing" secondItem="ol2-mr-IWR" secondAttribute="trailing" id="oC2-Wn-qpJ"/>
+                                    <constraint firstItem="ol2-mr-IWR" firstAttribute="leading" secondItem="XFb-SW-YFa" secondAttribute="leading" id="ocJ-xb-aQc"/>
                                     <constraint firstAttribute="bottom" secondItem="r6Y-nt-YPP" secondAttribute="bottom" constant="16" id="qCQ-UT-Qx5"/>
                                     <constraint firstAttribute="bottom" secondItem="Zzo-ae-wc5" secondAttribute="bottom" constant="16" id="qwB-zd-6z6"/>
                                     <constraint firstItem="8t1-4q-3uv" firstAttribute="centerX" secondItem="XFb-SW-YFa" secondAttribute="centerX" id="qwS-be-l77"/>
@@ -1747,6 +1757,7 @@
                         <outlet property="dialogHeightContraint" destination="7Rv-UI-LDp" id="V7D-JM-2Yt"/>
                         <outlet property="dialogTitle" destination="8t1-4q-3uv" id="sZ0-1t-maF"/>
                         <outlet property="dialogView" destination="XFb-SW-YFa" id="ojH-p3-hz4"/>
+                        <outlet property="dialogYConstraint" destination="6hG-Ku-52k" id="Seu-YV-cbZ"/>
                         <outlet property="enterCodeButton" destination="VLC-KN-sUR" id="hbZ-as-JU4"/>
                         <outlet property="enterCodeConfirmButton" destination="viG-rU-hfG" id="ce8-jb-NIc"/>
                         <outlet property="enterCodeView" destination="Zzo-ae-wc5" id="Sfr-ax-Gea"/>
@@ -1755,6 +1766,7 @@
                         <outlet property="spinnerView" destination="yjE-gf-mFq" id="TaN-PS-xcj"/>
                         <outlet property="syncCode" destination="00h-rP-VUC" id="8MN-jr-9hd"/>
                         <outlet property="syncCodeTextField" destination="rZh-fO-nCj" id="DWu-19-ipx"/>
+                        <outlet property="syncImageView" destination="b1e-hn-WNk" id="DMm-jZ-YdX"/>
                         <outlet property="syncResultCloseButton" destination="fbq-ga-lPO" id="wYH-jj-Ttw"/>
                         <outlet property="syncResultView" destination="axG-Eu-I83" id="08j-Xk-fcr"/>
                     </connections>

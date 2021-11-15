@@ -29,6 +29,8 @@ class RMBTHistorySyncModalViewController: UIViewController {
     @IBOutlet weak var spinnerView: UIView!
     @IBOutlet weak var syncResultView: UIStackView!
     @IBOutlet weak var syncResultCloseButton: UIButton!
+    @IBOutlet weak var dialogYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var syncImageView: UIImageView!
     
     private var state: RMBTHistorySyncModalState?
     var onSyncSuccess: (() -> Void)?
@@ -39,15 +41,15 @@ class RMBTHistorySyncModalViewController: UIViewController {
         setState(RMBTHistorySyncModalState())
         setActionHandlers()
         setTexts()
-        setSyncCodePlaceholderVisibility(for: view.frame.size)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveDialogOnTopOfKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        setSyncCodePlaceholderVisibility(for: size)
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func setState(_ state: RMBTHistorySyncModalState) {
@@ -76,14 +78,6 @@ class RMBTHistorySyncModalViewController: UIViewController {
         requestCodeButton.setTitle(.requestCodeButton, for: .normal)
         syncCodeTextField.placeholder = .code
         syncResultCloseButton.setTitle(.closeButton, for: .normal)
-    }
-    
-    private func setSyncCodePlaceholderVisibility(for size: CGSize) {
-        if size.width > size.height && size.height < 428 {
-            syncCodeTextField.placeholderLabel.isHidden = true
-        } else {
-            syncCodeTextField.placeholderLabel.isHidden = false
-        }
     }
 }
 
@@ -148,6 +142,23 @@ extension RMBTHistorySyncModalViewController {
     
     @objc func handleDialogTap() {
         syncCodeTextField.resignFirstResponder()
+    }
+    
+    @objc func moveDialogOnTopOfKeyboard(notification: NSNotification) {
+        guard let info = notification.userInfo, let keyboardFrame = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let isCodeViewHiddenByKeyboard = keyboardFrame.cgRectValue.origin.y < UIScreen.main.bounds.size.height
+        let isLandscape = view.frame.width > view.frame.height
+        let isNotProMax = view.frame.height < 418.0
+        
+        UIView.animate(withDuration: 0.1) {
+            self.dialogYConstraint.constant = isCodeViewHiddenByKeyboard ? -(
+                self.enterCodeView.frame.height -
+                self.enterCodeConfirmButton.frame.height
+            ) : 0.0
+            self.syncImageView.layer.opacity = isCodeViewHiddenByKeyboard && isLandscape && isNotProMax ? 0.0 : 1.0
+            self.dialogTitle.layer.opacity = isCodeViewHiddenByKeyboard && isLandscape ? 0.0 : 1.0
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
