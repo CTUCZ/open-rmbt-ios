@@ -32,20 +32,26 @@ class RMBTHistorySyncModalViewController: UIViewController {
     @IBOutlet weak var syncResultCloseButton: UIButton!
     @IBOutlet weak var dialogYConstraint: NSLayoutConstraint!
     @IBOutlet weak var syncImageView: UIImageView!
-    @IBOutlet weak var enterCodeViewWidthConstraint: NSLayoutConstraint!
     lazy var enterCodeViewBottomConstraint: NSLayoutConstraint = {
-        return NSLayoutConstraint(item: self.enterCodeView!, attribute: .bottom, relatedBy: .equal, toItem: self.dialogView, attribute: .bottom, multiplier: 1.0, constant: 16)
+        return NSLayoutConstraint(item: self.enterCodeView!, attribute: .bottom, relatedBy: .equal, toItem: self.dialogView, attribute: .bottom, multiplier: 1.0, constant: -16)
     }()
     lazy var enterCodeViewTopConstraint: NSLayoutConstraint = {
         return NSLayoutConstraint(item: self.enterCodeView!, attribute: .centerY, relatedBy: .equal, toItem: self.dialogView, attribute: .centerY, multiplier: 1.0, constant: 24)
     }()
     
     private var state: RMBTHistorySyncModalState?
+    private var isLandscape: Bool {
+        return view.frame.width > view.frame.height
+    }
+    private var isPlaceholderOverlappingWithDescription: Bool {
+        return view.frame.height < 667.0
+    }
     var onSyncSuccess: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundView.backgroundColor = .black.withAlphaComponent(0.0)
+        syncCodeTextField.placeholderLabel.isHidden = isPlaceholderOverlappingWithDescription
         NSLayoutConstraint.activate([enterCodeViewBottomConstraint])
         setState(RMBTHistorySyncModalState())
         setActionHandlers()
@@ -159,18 +165,15 @@ extension RMBTHistorySyncModalViewController {
     @objc func moveDialogOnTopOfKeyboard(notification: NSNotification) {
         guard let info = notification.userInfo, let keyboardFrame = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let isCodeViewHiddenByKeyboard = keyboardFrame.cgRectValue.origin.y < UIScreen.main.bounds.size.height
-        let isLandscape = view.frame.width > view.frame.height
-        let isNotProMax = view.frame.height < 418.0
         
         UIView.animate(withDuration: 0.1) {
-            self.dialogYConstraint.constant = isCodeViewHiddenByKeyboard ? -keyboardFrame.cgRectValue.size.height / 2 : 0.0
-            if isLandscape && isCodeViewHiddenByKeyboard {
+            self.dialogYConstraint.constant = isCodeViewHiddenByKeyboard ? -(keyboardFrame.cgRectValue.size.height / 2 - (self.isLandscape ? 0 : 20)) : 0.0
+            if self.isLandscape && isCodeViewHiddenByKeyboard {
                 self.syncImageView.layer.opacity = 0.0
                 self.dialogTitle.layer.opacity = 0.0
-                self.enterCodeViewWidthConstraint.constant = self.dialogView.frame.width - 32
+                self.dialogDescription.layer.opacity = 0.0
                 NSLayoutConstraint.deactivate([ self.enterCodeViewBottomConstraint ])
                 NSLayoutConstraint.activate([ self.enterCodeViewTopConstraint ])
-                self.syncCodeTextField.placeholderLabel.layer.opacity = 1.0
                 if self.enterCodeConfirmButtonLandscape.isHidden {
                     self.enterCodeConfirmButtonLandscape.isHidden = false
                 }
@@ -181,10 +184,9 @@ extension RMBTHistorySyncModalViewController {
             } else {
                 self.syncImageView.layer.opacity = 1.0
                 self.dialogTitle.layer.opacity = 1.0
-                self.enterCodeViewWidthConstraint.constant = 320
+                self.dialogDescription.layer.opacity = isCodeViewHiddenByKeyboard && self.isPlaceholderOverlappingWithDescription ? 0.0 : 1.0
                 NSLayoutConstraint.activate([ self.enterCodeViewBottomConstraint ])
                 NSLayoutConstraint.deactivate([ self.enterCodeViewTopConstraint ])
-                self.syncCodeTextField.placeholderLabel.layer.opacity = isNotProMax ? 0.0 : 1.0
                 if !self.enterCodeConfirmButtonLandscape.isHidden {
                     self.enterCodeConfirmButtonLandscape.isHidden = true
                 }
