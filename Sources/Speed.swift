@@ -30,23 +30,26 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-let GAUGE_PARTS = 4.25
+let GAUGE_PARTS = 4.0
 let LOG10_MAX = log10(250.0)
 
 ///
 public func RMBTSpeedLogValue(_ kbps: Double) -> Double {
-    let bps = UInt64(kbps * 1_000)
     var log: Double
 
-    if bps < 10_000 {
+    if kbps < 100 {
         log = 0
     } else {
-        log = ((GAUGE_PARTS - LOG10_MAX) + log10(Double(bps) / Double(1e6))) / GAUGE_PARTS
+        log = log10(Double(kbps) / 100.0) / GAUGE_PARTS
     }
 
-    //if (log > 1.0) {
-    //    log = 1.0
-    //}
+    if (log > 1.0) {
+        log = 1.0
+    }
+    
+    if (log < 0.0) {
+        log = 0.0
+    }
 
     return log
 }
