@@ -19,7 +19,6 @@ class RMBTTestLandscapeView: RMBTTestPortraitView {
     }
     
     override func updateGaugesPosition() {
-        // Magic
         self.progressGaugeView.frame = self.progressGaugePlaceholderView.frame
         self.speedGaugeView.frame = self.speedGaugePlaceholderView.frame
     }

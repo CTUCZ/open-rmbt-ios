@@ -54,7 +54,7 @@ import UIKit
         self.backgroundView?.frame = self.bounds
     }
     ///
-    @objc public required init(frame: CGRect, name: String, startAngle: CGFloat, endAngle: CGFloat, ovalRect: CGRect) {
+    @objc public required init(frame: CGRect, name: String, startAngle: CGFloat, endAngle: CGFloat) {
         super.init(frame: frame)
         isOpaque = false
         backgroundColor = UIColor.clear

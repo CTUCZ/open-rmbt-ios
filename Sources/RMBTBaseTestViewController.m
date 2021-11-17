@@ -22,8 +22,10 @@
 
 @interface RMBTBaseTestViewController ()<RMBTTestRunnerDelegate> {
     NSUInteger _finishedPercentage;
+    NSUInteger _finishedGaugePercentage;
     RMBTTestRunner *_testRunner;
     BOOL _qosPerformed;
+    BOOL _qosWillPerformed;
 }
 @end
 
@@ -33,6 +35,11 @@
 #define subself ((RMBTBaseTestViewController<RMBTBaseTestViewControllerSubclass>*)self)
 
 @implementation RMBTBaseTestViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    _qosWillPerformed = !([RMBTSettings sharedSettings].skipQoS);
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -58,9 +65,32 @@
         case RMBTTestRunnerPhaseWait:
             return 4;
         case RMBTTestRunnerPhaseInit:
-            return 12;
+            return 20;
         case RMBTTestRunnerPhaseLatency:
-            return 25;
+            return 40;
+        case RMBTTestRunnerPhaseDown:
+        case RMBTTestRunnerPhaseInitUp:  // no visualization for init up
+            return 70;
+        case RMBTTestRunnerPhaseUp:
+            return 100;
+        case RMBTTestRunnerPhaseQoS:
+            return 100;
+        case RMBTTestRunnerPhaseSubmittingTestResult:
+            return 100; // also no visualization for submission
+      }
+}
+
+- (NSUInteger)percentageAfterPhaseWithQos:(RMBTTestRunnerPhase)phase {
+    switch (phase) {
+        case RMBTTestRunnerPhaseNone:
+            return 0;
+        case RMBTTestRunnerPhaseFetchingTestParams:
+        case RMBTTestRunnerPhaseWait:
+            return 4;
+        case RMBTTestRunnerPhaseInit:
+            return 15;
+        case RMBTTestRunnerPhaseLatency:
+            return 30;
         case RMBTTestRunnerPhaseDown:
         case RMBTTestRunnerPhaseInitUp:  // no visualization for init up
             return 50;
@@ -73,7 +103,65 @@
       }
 }
 
+- (NSUInteger)gaugePercentageAfterPhase:(RMBTTestRunnerPhase)phase {
+    switch (phase) {
+        case RMBTTestRunnerPhaseNone:
+            return 0;
+        case RMBTTestRunnerPhaseFetchingTestParams:
+        case RMBTTestRunnerPhaseWait:
+            return 4;
+        case RMBTTestRunnerPhaseInit:
+            return 10;
+        case RMBTTestRunnerPhaseLatency:
+            return 23;
+        case RMBTTestRunnerPhaseDown:
+        case RMBTTestRunnerPhaseInitUp:  // no visualization for init up
+            return 49;
+        case RMBTTestRunnerPhaseUp:
+            return 74;
+        case RMBTTestRunnerPhaseQoS:
+            return 100;
+        case RMBTTestRunnerPhaseSubmittingTestResult:
+            return 100; // also no visualization for submission
+      }
+}
+
 - (NSUInteger)percentageForPhase:(RMBTTestRunnerPhase)phase {
+    switch (phase) {
+        case RMBTTestRunnerPhaseWait:    return 4 /* waiting phase, visualized as init */;
+        case RMBTTestRunnerPhaseInit:    return 16 /* waiting phase, visualized as init */;
+        case RMBTTestRunnerPhaseLatency: return 20;
+        case RMBTTestRunnerPhaseDown:    return 30;
+        case RMBTTestRunnerPhaseUp:      return 30;
+        case RMBTTestRunnerPhaseQoS:     return 30;
+        default: return 0;
+    }
+}
+
+- (NSUInteger)gaugePercentageForPhase:(RMBTTestRunnerPhase)phase {
+    switch (phase) {
+        case RMBTTestRunnerPhaseWait:    return 4 /* waiting phase, visualized as init */;
+        case RMBTTestRunnerPhaseInit:    return 6 /* waiting phase, visualized as init */;
+        case RMBTTestRunnerPhaseLatency: return 13;
+        case RMBTTestRunnerPhaseDown:    return 26;
+        case RMBTTestRunnerPhaseUp:      return 25;
+        default: return 0;
+    }
+}
+
+- (NSUInteger)gaugePercentageForPhaseWithQos:(RMBTTestRunnerPhase)phase {
+    switch (phase) {
+        case RMBTTestRunnerPhaseWait:    return 4 /* waiting phase, visualized as init */;
+        case RMBTTestRunnerPhaseInit:    return 6 /* waiting phase, visualized as init */;
+        case RMBTTestRunnerPhaseLatency: return 13;
+        case RMBTTestRunnerPhaseDown:    return 26;
+        case RMBTTestRunnerPhaseUp:      return 25;
+        case RMBTTestRunnerPhaseQoS:      return 26;
+        default: return 0;
+    }
+}
+
+- (NSUInteger)percentageForPhaseWithQos:(RMBTTestRunnerPhase)phase {
     switch (phase) {
         case RMBTTestRunnerPhaseInit:    return 12 - 4 /* waiting phase, visualized as init */;
         case RMBTTestRunnerPhaseLatency: return 13;
@@ -110,8 +198,9 @@
 
 - (void)startTestWithExtraParams:(NSDictionary*)extraParams {
     _finishedPercentage = 0;
+    _finishedGaugePercentage = 0;
     _qosPerformed = NO;
-    [subself onTestUpdatedTotalProgress:0];
+    [subself onTestUpdatedTotalProgress:0 gaugeProgress:0];
     [subself onTestUpdatedServerName:@"-"];
     [subself onTestUpdatedStatus:@"-"];
     _testRunner = [[RMBTTestRunner alloc] initWithDelegate:self];
@@ -140,9 +229,15 @@
 }
 
 - (void)testRunnerDidFinishPhase:(RMBTTestRunnerPhase)phase {
-    _finishedPercentage = [self percentageAfterPhase:phase];
+    if (_qosWillPerformed) {
+        _finishedPercentage = [self percentageAfterPhaseWithQos:phase];
+    } else {
+        _finishedPercentage = [self percentageAfterPhase:phase];
+    }
+    _finishedGaugePercentage = [self gaugePercentageAfterPhase:phase];
+    
     NSAssert(_finishedPercentage <= 100, @"Invalid percentage");
-    [subself onTestUpdatedTotalProgress:_finishedPercentage];
+    [subself onTestUpdatedTotalProgress:_finishedPercentage gaugeProgress:_finishedGaugePercentage];
 
     if (phase == RMBTTestRunnerPhaseLatency) {
         [subself onTestMeasuredLatency:_testRunner.testResult.medianPingNanos];
@@ -158,9 +253,17 @@
 }
 
 - (void)testRunnerDidUpdateProgress:(float)progress inPhase:(RMBTTestRunnerPhase)phase {
-    NSUInteger totalPercentage = _finishedPercentage + [self percentageForPhase:phase] * progress;
+    NSUInteger totalPercentage = _finishedPercentage;
+    NSUInteger totalGaugePercentage = _finishedGaugePercentage;
+    if (_qosWillPerformed) {
+        totalPercentage += [self percentageForPhaseWithQos:phase] * progress;
+        totalGaugePercentage += [self gaugePercentageForPhaseWithQos:phase] * progress;
+    } else {
+        totalPercentage += [self percentageForPhase:phase] * progress;
+        totalGaugePercentage += [self gaugePercentageForPhase:phase] * progress;
+    }
     NSAssert(totalPercentage <= 100, @"Invalid percentage");
-    [subself onTestUpdatedTotalProgress:totalPercentage];
+    [subself onTestUpdatedTotalProgress:totalPercentage gaugeProgress:totalGaugePercentage];
 }
 
 - (void)testRunnerDidMeasureThroughputs:(NSArray*)throughputs inPhase:(RMBTTestRunnerPhase)phase {
