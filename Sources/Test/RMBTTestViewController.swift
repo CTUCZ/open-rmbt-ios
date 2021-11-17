@@ -130,6 +130,12 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         }
     }
     
+    var progressGauge: Double = 0 {
+        didSet {
+            self.currentView.progressGauge = progressGauge
+        }
+    }
+    
     var alertView: UIAlertView?
 
     private lazy var qosProgressViewController: RMBTQoSProgressViewController = {
@@ -245,6 +251,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         self.currentView.setQosView(self.qosProgressViewController.view)
         self.currentView.setWaitingView(self.loopModeWaitingViewController.view)
         self.currentView.speedGauge = self.speedGauge
+        self.currentView.progressGauge = self.progressGauge
         
         // Update graph
         let speedValues = self.speedValues
@@ -375,12 +382,6 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier == "embed_qos_progress") {
-//            qosProgressViewController = segue.destination as? RMBTQoSProgressViewController
-//        }
-//        if (segue.identifier == "embed_waiting_view") {
-//            loopModeWaitingViewController = segue.destination as? RMBTLoopModeWaitingViewController
-//        }
         if segue.identifier == actionsSegue,
            let vc = segue.destination as? RMBTLoopModeCompleteViewController {
             vc.onResultsHandler = { [weak self] in
@@ -525,8 +526,9 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         self.status = status
     }
     
-    func onTestUpdatedTotalProgress(_ percentage: UInt) {
+    func onTestUpdatedTotalProgress(_ percentage: UInt, gaugeProgress gaugePercentage: UInt) {
         self.progress = percentage
+        self.progressGauge = Double(gaugePercentage) / 100.0
     }
     
     func onTestStartedPhase(_ phase: RMBTTestRunnerPhase) {

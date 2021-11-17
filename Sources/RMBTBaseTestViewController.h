@@ -29,7 +29,7 @@
 
 @protocol RMBTBaseTestViewControllerSubclass
 
-- (void)onTestUpdatedTotalProgress:(NSUInteger)percentage;
+- (void)onTestUpdatedTotalProgress:(NSUInteger)percentage gaugeProgress:(NSUInteger)gaugePercentage;
 
 - (void)onTestUpdatedStatus:(NSString*)status;
 - (void)onTestUpdatedConnectivity:(RMBTConnectivity*)connectivity;

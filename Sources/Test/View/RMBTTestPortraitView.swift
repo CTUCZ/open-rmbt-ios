@@ -78,11 +78,11 @@ class RMBTTestPortraitView: UIView, XibLoadable {
     
     // Views
     lazy var speedGaugeView: RMBTGaugeView = {
-        return RMBTGaugeView(frame: self.speedGaugePlaceholderView.frame, name: "speed", startAngle: 33.5, endAngle: 299.0, ovalRect: CGRect(x: 0,y: 0,width: 175.0, height: 175.0))
+        return RMBTGaugeView(frame: self.speedGaugePlaceholderView.frame, name: "speed", startAngle: 29, endAngle: 295.0)
     }()
     
     lazy var progressGaugeView: RMBTGaugeView = {
-        return RMBTGaugeView(frame: self.progressGaugePlaceholderView.frame, name: "progress", startAngle: 214.0, endAngle: 214.0 + 261.0, ovalRect: CGRect(x: 0.0,y: 0,width: 175.0, height: 175.0))
+        return RMBTGaugeView(frame: self.progressGaugePlaceholderView.frame, name: "progress", startAngle: 215.0, endAngle: 215.0 + 280.0)
     }()
     
     var networkName: String? {
@@ -118,7 +118,12 @@ class RMBTTestPortraitView: UIView, XibLoadable {
     var progress: UInt = 0 {
         didSet {
             self.progressLabel.text = "\(progress)"
-            self.progressGaugeView.value = CGFloat(progress) / 100.0
+        }
+    }
+    
+    var progressGauge: Double = 0 {
+        didSet {
+            self.progressGaugeView.value = progressGauge
         }
     }
     

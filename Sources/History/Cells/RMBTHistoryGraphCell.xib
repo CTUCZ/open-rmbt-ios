@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2m-cv-pFl" customClass="RMBTSpeedGraphView" customModule="RMBT" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="50" width="218" height="145"/>
+                        <rect key="frame" x="0.0" y="0.0" width="218" height="195"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </subviews>
@@ -29,7 +29,7 @@
                 <constraint firstAttribute="bottom" secondItem="N2m-cv-pFl" secondAttribute="bottom" constant="5" id="UUx-LP-jw1"/>
                 <constraint firstItem="N2m-cv-pFl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gCE-yR-cXW"/>
                 <constraint firstAttribute="trailing" secondItem="N2m-cv-pFl" secondAttribute="trailing" id="jiq-1O-yuG"/>
-                <constraint firstItem="N2m-cv-pFl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="50" id="kCn-WP-h5u"/>
+                <constraint firstItem="N2m-cv-pFl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kCn-WP-h5u"/>
             </constraints>
             <size key="customSize" width="218" height="200"/>
             <connections>
