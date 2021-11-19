@@ -32,7 +32,7 @@ class RMBTMaterialTextField: UITextField {
         }
     }
 
-    var floatingLabelFont: UIFont = UIFont.systemFont(ofSize: 15)
+    var floatingLabelFont: UIFont = UIFont.systemFont(ofSize: 13)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

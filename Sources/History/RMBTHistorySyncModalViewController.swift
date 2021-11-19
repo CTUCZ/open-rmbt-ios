@@ -148,12 +148,16 @@ extension RMBTHistorySyncModalViewController {
             setState(state.copyWith(isSpinnerViewHidden: false))
         }
         RMBTControlServer.shared.syncWithCode(code, success: { response in
+            if response.sync.count > 0, response.sync[0].success == false {
+                let errorMsg = response.sync[0].messageText
+                self.setState(RMBTHistorySyncModalStateSyncError(errorMsg))
+                return
+            }
             self.setState(RMBTHistorySyncModalStateSyncSuccess())
             self.onSyncSuccess?()
         }, error: { error in
-            self.setState(RMBTHistorySyncModalStateSyncError(
-                (error as NSError?)?.userInfo["msg_text"] as? String
-            ))
+            let errorMsg = (error as NSError?)?.userInfo["msg_text"] as? String
+            self.setState(RMBTHistorySyncModalStateSyncError(errorMsg))
         })
 
     }
