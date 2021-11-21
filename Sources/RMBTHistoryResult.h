@@ -58,6 +58,7 @@ typedef NS_ENUM(NSUInteger, RMBTHistoryResultDataState) {
 
 @property (nonatomic, readonly) NSString *uuid;
 @property (nonatomic, readonly) NSString *openTestUuid;
+@property (nonatomic, readonly) NSString *loopUuid;
 @property (nonatomic, readonly) NSDate   *timestamp;
 @property (nonatomic, readonly) NSString *timeString;
 

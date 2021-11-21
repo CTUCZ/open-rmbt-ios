@@ -11,7 +11,14 @@ import UIKit
 class RMBTHistoryLoopCell: UITableViewHeaderFooterView {
     static let ID = "RMBTHistoryLoopCell"
     
+    var onExpand: (()->Void)?
+    
     @IBOutlet weak var typeImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var expandButton: UIButton!
+    
+    @IBAction func expand(_ sender: UIButton) {
+        expandButton.imageView!.transform = expandButton.imageView!.transform.rotated(by: .pi)
+        onExpand?()
+    }
 }

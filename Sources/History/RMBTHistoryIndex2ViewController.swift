@@ -60,7 +60,8 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
     
     var loading = false
     
-    private var testResults: [RMBTHistoryResultGroup] = []
+    private var testResults: [RMBTHistoryLoopResult] = []
+    private var expandedLoopUuids: [String] = []
     private var nextBatchIndex: Int = 0
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -248,7 +249,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
             
             for (_, loopResults) in results {
                 if loopResults.count > 0 {
-                    self.testResults.append(RMBTHistoryResultGroup(from: loopResults))
+                    self.testResults.append(RMBTHistoryLoopResult(from: loopResults))
                 }
             }
             self.testResults.sort { $0.timestamp.timeIntervalSince1970 > $1.timestamp.timeIntervalSince1970
@@ -333,12 +334,35 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
             return nil
         }
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: RMBTHistoryLoopCell.ID) as! RMBTHistoryLoopCell
-        header.dateLabel.text = testResults[section].loopResults.first!.formattedTimestamp()
+        header.dateLabel.text = testResults[section].timeString
+        let networkTypeIcon = RMBTNetworkTypeConstants.networkTypeDictionary[testResults[section].networkTypeServerDescription]?.icon
+        header.typeImageView.image = networkTypeIcon
+        header.onExpand = {
+            self.expandLoopSection(self.testResults[section].loopUuid)
+            self.tableView.reloadData()
+        }
         return header
     }
     
+    private func expandLoopSection(_ loopUuid: String) {
+        if expandedLoopUuids.contains(loopUuid) {
+            expandedLoopUuids = expandedLoopUuids.filter({ l in
+                l != loopUuid
+            })
+        } else {
+            expandedLoopUuids.append(loopUuid)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 48
+        guard indexPath.section < testResults.count else {
+            return 0
+        }
+        let section = testResults[indexPath.section]
+        if let loopUuid = section.loopUuid, expandedLoopUuids.contains(loopUuid) {
+            return 48
+        }
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
