@@ -211,7 +211,7 @@ public class GetSyncCodeResponse: BasicResponse {
 public class SyncCodeResponse: BasicResponse {
     
     //
-    var sync:Result?
+    var sync:[Result] = []
     
     ///
     override open func mapping(map: Map) {
@@ -223,7 +223,7 @@ public class SyncCodeResponse: BasicResponse {
     class Result: Mappable {
         
         //
-        var success:[[String:Any?]] = []
+        var success: Bool?
         
         //
         var messageTitle: String?
