@@ -64,10 +64,6 @@ class RMBTHistorySyncModalViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     private func setState(_ state: RMBTHistorySyncModalState) {
         self.state = state
         dialogTitle.text = state.dialogTitle
