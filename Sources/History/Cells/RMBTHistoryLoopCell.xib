@@ -19,6 +19,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Tl-ZQ-9fx">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                    <color key="backgroundColor" red="0.92596392859999999" green="0.92149067299999998" blue="0.9304371843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Iu6-fe-OQN"/>
+                    </constraints>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULK-WF-9Hg">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
@@ -54,7 +61,7 @@
                                             <color key="textColor" red="0.36252330441796787" green="0.37613656499712522" blue="0.3959132511206348" alpha="0.59638865894039739" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="localizableText" value="Loop mode"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizableText" value="title_loop_mode"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
@@ -105,18 +112,34 @@
                         </view>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOB-1i-Age">
+                    <rect key="frame" x="0.0" y="895" width="414" height="1"/>
+                    <color key="backgroundColor" red="0.92596392859999999" green="0.92149067299999998" blue="0.9304371843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="YJq-ke-fUB"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="nsv-rD-8RW"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="9Tl-ZQ-9fx" firstAttribute="leading" secondItem="sj6-aP-P3A" secondAttribute="leading" id="94B-8h-AiX"/>
                 <constraint firstItem="ULK-WF-9Hg" firstAttribute="top" secondItem="sj6-aP-P3A" secondAttribute="top" id="ACU-MG-Uqh"/>
+                <constraint firstAttribute="trailing" secondItem="gOB-1i-Age" secondAttribute="trailing" id="IZ9-fB-fzc"/>
+                <constraint firstAttribute="trailing" secondItem="9Tl-ZQ-9fx" secondAttribute="trailing" id="Jb0-7g-uTz"/>
                 <constraint firstAttribute="trailing" secondItem="ULK-WF-9Hg" secondAttribute="trailing" id="K7w-QJ-Lz2"/>
+                <constraint firstAttribute="bottom" secondItem="gOB-1i-Age" secondAttribute="bottom" id="MU0-Ib-pKW"/>
+                <constraint firstItem="gOB-1i-Age" firstAttribute="leading" secondItem="sj6-aP-P3A" secondAttribute="leading" id="kaM-0P-FFN"/>
                 <constraint firstItem="ULK-WF-9Hg" firstAttribute="leading" secondItem="sj6-aP-P3A" secondAttribute="leading" id="pTc-Ij-tfk"/>
                 <constraint firstAttribute="bottom" secondItem="ULK-WF-9Hg" secondAttribute="bottom" id="t0n-gQ-tkS"/>
+                <constraint firstItem="9Tl-ZQ-9fx" firstAttribute="top" secondItem="sj6-aP-P3A" secondAttribute="top" id="tOd-gg-GvM"/>
             </constraints>
             <connections>
+                <outlet property="bottomBorder" destination="gOB-1i-Age" id="usz-Iq-ANB"/>
                 <outlet property="dateLabel" destination="axw-jq-gDV" id="k2J-Ot-KZN"/>
                 <outlet property="expandButton" destination="qYQ-cZ-VzO" id="A4d-mc-gcq"/>
                 <outlet property="stackView" destination="ULK-WF-9Hg" id="y2K-CJ-kSc"/>
+                <outlet property="topBorder" destination="9Tl-ZQ-9fx" id="1t6-5P-kyM"/>
                 <outlet property="typeImageView" destination="Owh-Pp-wWa" id="ijC-tt-68V"/>
             </connections>
             <point key="canvasLocation" x="-1893" y="-1079"/>

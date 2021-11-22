@@ -113,7 +113,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.addTarget(self, action: #selector(refreshFromTableView(_:)), for: .valueChanged)
         if #available(iOS 15.0, *) {
-            tableView.sectionHeaderTopPadding = .leastNormalMagnitude
+            tableView.sectionHeaderTopPadding = 0
         }
         
         self.filterContainer.addSubview(self.filterView)
@@ -333,7 +333,7 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
         guard section < testResults.count, testResults[section].loopResults.count > 1 else {
             return 0
         }
-        return 48
+        return 56
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
