@@ -11,6 +11,7 @@ import Foundation
 @objc final class RMBTLoopInfo: NSObject {
     @objc var waitMeters: UInt = 0
     @objc var waitMinutes: UInt = 0
+    let loopUuid = UUID().uuidString
     
     @objc var current: UInt = 0 // 1-based, but initialized with 0 -> increment before first run
     @objc var total: UInt = 0
@@ -36,8 +37,7 @@ import Foundation
                 "max_movement": waitMeters,
                 "max_tests": total,
                 "test_counter": current,
-                // text_counter was a typo in old server api, send for compatibility
-                "text_counter": current
+                "loop_uuid": loopUuid
             ]
         ]
     }

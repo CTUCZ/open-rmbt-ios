@@ -101,6 +101,7 @@
         // it's a numeric code
         _networkTypeServerDescription = response[@"network_type"];
         _uuid = response[@"test_uuid"];
+        _loopUuid = response[@"loop_uuid"];
         _deviceModel = response[@"model"];
         _timeString = response[@"time_string"];
         

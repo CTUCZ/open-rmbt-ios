@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,7 +45,7 @@
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" text="Jul 15 18:39" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="50" translatesAutoresizingMaskIntoConstraints="NO" id="rg5-kl-dG4">
                                         <rect key="frame" x="39" y="5.5" width="52" height="33"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                        <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.39423227622792434" green="0.39232777247803102" blue="0.39613677997781771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -148,27 +148,40 @@
                             </view>
                         </subviews>
                     </stackView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quv-Dm-Jxc">
-                        <rect key="frame" x="20" y="43" width="280" height="1"/>
-                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quv-Dm-Jxc">
+                        <rect key="frame" x="0.0" y="43" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.92596392864947552" green="0.92149067295551679" blue="0.93043718434343436" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="ZBM-KZ-mbi"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ty6-8x-BPI" userLabel="Top Border">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.92596392859999999" green="0.92149067299999998" blue="0.9304371843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="foS-oO-4BP"/>
+                            <constraint firstAttribute="height" constant="1" id="tPR-cg-PpC"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="DWz-Ew-ZFt" secondAttribute="trailing" id="4Ke-MD-Tex"/>
                     <constraint firstAttribute="bottom" secondItem="quv-Dm-Jxc" secondAttribute="bottom" id="HBZ-DM-35f"/>
-                    <constraint firstItem="quv-Dm-Jxc" firstAttribute="leading" secondItem="2TF-bf-Go1" secondAttribute="leading" constant="20" id="Sdm-k9-0yq"/>
-                    <constraint firstAttribute="trailing" secondItem="quv-Dm-Jxc" secondAttribute="trailing" constant="20" id="Yhm-PG-NXw"/>
+                    <constraint firstAttribute="trailing" secondItem="Ty6-8x-BPI" secondAttribute="trailing" id="MA5-9o-Zey"/>
+                    <constraint firstItem="Ty6-8x-BPI" firstAttribute="top" secondItem="2TF-bf-Go1" secondAttribute="top" id="NQi-1G-tyF"/>
+                    <constraint firstItem="quv-Dm-Jxc" firstAttribute="leading" secondItem="2TF-bf-Go1" secondAttribute="leading" id="Sdm-k9-0yq"/>
+                    <constraint firstAttribute="trailing" secondItem="quv-Dm-Jxc" secondAttribute="trailing" id="Yhm-PG-NXw"/>
+                    <constraint firstItem="Ty6-8x-BPI" firstAttribute="leading" secondItem="2TF-bf-Go1" secondAttribute="leading" id="aIs-r5-TgI"/>
                     <constraint firstItem="DWz-Ew-ZFt" firstAttribute="leading" secondItem="2TF-bf-Go1" secondAttribute="leading" id="n60-gh-iUE"/>
                     <constraint firstItem="DWz-Ew-ZFt" firstAttribute="top" secondItem="2TF-bf-Go1" secondAttribute="top" id="zI3-ag-shU"/>
                     <constraint firstAttribute="bottom" secondItem="DWz-Ew-ZFt" secondAttribute="bottom" id="zvq-G6-HUf"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bottomBorder" destination="quv-Dm-Jxc" id="box-PT-uC0"/>
                 <outlet property="dateLabel" destination="rg5-kl-dG4" id="bIj-JE-seT"/>
                 <outlet property="downloadSpeedLabel" destination="quA-3S-NeC" id="XnS-NF-Nuq"/>
+                <outlet property="leftPaddingConstraint" destination="AWK-MX-lI5" id="0Az-KZ-vnK"/>
                 <outlet property="pingLabel" destination="i0c-xx-B2W" id="x0t-D7-Bgn"/>
                 <outlet property="typeImageView" destination="wUV-aK-ziW" id="umi-ew-x5p"/>
                 <outlet property="uploadSpeedLabel" destination="O8d-VY-jSy" id="T3l-h1-DhE"/>

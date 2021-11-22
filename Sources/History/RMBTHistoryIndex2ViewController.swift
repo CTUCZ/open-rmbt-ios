@@ -60,10 +60,9 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
     
     var loading = false
     
-    private var testResults: [RMBTHistoryResult] = []
+    private var testResults: [RMBTHistoryLoopResult] = []
+    private var expandedLoopUuids: [String] = []
     private var nextBatchIndex: Int = 0
-    
-    private var enterCodeAlertView: UIAlertView?
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
@@ -110,8 +109,12 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         self.tableView.tableFooterView = footerView
         self.tableView.register(UINib(nibName: RMBTHistoryIndexCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryIndexCell.ID)
         self.tableView.register(UINib(nibName: RMBTHistoryLoadingCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryLoadingCell.ID)
+        self.tableView.register(UINib(nibName: RMBTHistoryLoopCell.ID, bundle: nil), forHeaderFooterViewReuseIdentifier: RMBTHistoryLoopCell.ID)
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.addTarget(self, action: #selector(refreshFromTableView(_:)), for: .valueChanged)
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
         
         self.filterContainer.addSubview(self.filterView)
         
@@ -223,25 +226,41 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
                                                        offset: UInt(offset)) { [weak self] response in
             guard let self = self else { return }
             
-            let responses: [HistoryItem] = response.records
-            let oldCount = self.testResults.count
-            
-            var indexPaths: [IndexPath] = []
-            var results: [RMBTHistoryResult] = []
-            
-            for r in responses {
-                results.append(RMBTHistoryResult(response: r.json()))
-                indexPaths.append(IndexPath(row: oldCount-1 + results.count, section: 0))
-            }
-            
+            let records: [HistoryItem] = response.records
             // We got less results than batch size, this means this was the last batch
-            if (results.count < self.kBatchSize) {
+            if (records.count < self.kBatchSize) {
                 self.nextBatchIndex = NSNotFound
             } else {
                 self.nextBatchIndex += 1
             }
             
-            self.testResults.append(contentsOf: results)
+            var results: [String:[RMBTHistoryResult]] = [:]
+            
+            for r in records {
+                if let result = RMBTHistoryResult(response: r.json()) {
+                    if let loopUuid = r.loopUuid {
+                        if var _ = results[loopUuid] {
+                            results[loopUuid]!.append(result)
+                        } else {
+                            results[loopUuid] = [result]
+                        }
+                    } else if let testUuid = r.testUuid {
+                        results[testUuid] = [result]
+                    }
+                }
+            }
+            
+            for (_, loopResults) in results {
+                if loopResults.count > 0 {
+                    let resultGroup = RMBTHistoryLoopResult(from: loopResults)
+                    self.testResults.append(resultGroup)
+                    if resultGroup.loopResults.count == 1, let loopUuid = resultGroup.loopUuid {
+                        self.expandedLoopUuids.append(loopUuid)
+                    }
+                }
+            }
+            self.testResults.sort { $0.timestamp.timeIntervalSince1970 > $1.timestamp.timeIntervalSince1970
+            }
             
             if (firstBatch) {
                 self.state = self.testResults.count == 0 ? .empty : .hasEntries
@@ -285,9 +304,9 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
             let rvc = segue.destination as? RMBTHistoryResult2ViewController {
             rvc.historyResult = sender as? RMBTHistoryResult
         } else if segue.identifier == "show_sync_modal", let vc = segue.destination as? RMBTHistorySyncModalViewController {
-            vc.onSyncSuccess = {
-                self.refresh()
-                self.refreshFilters()
+            vc.onSyncSuccess = { [weak self] in
+                self?.refresh()
+                self?.refreshFilters()
             }
         }
     }
@@ -298,28 +317,73 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
 
 extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var result = testResults.count
         if (nextBatchIndex != NSNotFound) { result += 1 }
         return result
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 48
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section >= testResults.count {
+            return 1
+        }
+        return testResults[section].loopResults.count
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard section < testResults.count, testResults[section].loopResults.count > 1 else {
+            return 0
+        }
+        return 56
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section < testResults.count, testResults[section].loopResults.count > 1 else {
+            return nil
+        }
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: RMBTHistoryLoopCell.ID) as! RMBTHistoryLoopCell
+        header.dateLabel.text = testResults[section].timeString
+        let networkTypeIcon = RMBTNetworkTypeConstants.networkTypeDictionary[testResults[section].networkTypeServerDescription]?.icon
+        header.typeImageView.image = networkTypeIcon
+        header.onExpand = { [unowned self] in
+            self.expandLoopSection(self.testResults[section].loopUuid)
+        }
+        // header.bottomBorder is hidden by default to avoid border overlapping
+        if section < testResults.count - 1 {
+            header.bottomBorder.isHidden = true
+        }
+        return header
+    }
+    
+    private func expandLoopSection(_ loopUuid: String) {
+        if let loopUuidIndex = expandedLoopUuids.firstIndex(of: loopUuid) {
+            expandedLoopUuids.remove(at: loopUuidIndex)
+        } else {
+            expandedLoopUuids.append(loopUuid)
+        }
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard indexPath.section < testResults.count else {
+            return 0
+        }
+        let section = testResults[indexPath.section]
+        if let loopUuid = section.loopUuid, expandedLoopUuids.contains(loopUuid) {
+            return 48
+        }
+        return 0
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.row >= testResults.count) {
+        if (indexPath.section >= testResults.count) {
             // Loading cell
             let cell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryLoadingCell.ID, for: indexPath) as! RMBTHistoryLoadingCell
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryIndexCell.ID, for: indexPath) as! RMBTHistoryIndexCell
+            let testResult = testResults[indexPath.section].loopResults[indexPath.row]
             
-            let testResult = testResults[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryIndexCell.ID, for: indexPath) as! RMBTHistoryIndexCell
 
             let networTypeIcon = RMBTNetworkTypeConstants.networkTypeDictionary[testResult.networkTypeServerDescription]?.icon
             cell.typeImageView.image = networTypeIcon
@@ -327,18 +391,27 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
             cell.downloadSpeedLabel.text = testResult.downloadSpeedMbpsString
             cell.uploadSpeedLabel.text = testResult.uploadSpeedMbpsString
             cell.pingLabel.text = testResult.shortestPingMillisString
-
+            if testResults[indexPath.section].loopResults.count > 1 {
+                cell.leftPaddingConstraint?.constant = 32
+            } else {
+                cell.leftPaddingConstraint?.constant = 20
+            }
+            // cell.bottomBorder is hidden by default to avoid border overlapping
+            if indexPath.section == testResults.count - 1 && indexPath.row == testResults[indexPath.section].loopResults.count - 1 {
+                cell.bottomBorder.isHidden = false
+            }
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let result = testResults[indexPath.row]
+        guard indexPath.section < testResults.count else { return }
+        let result = testResults[indexPath.section].loopResults[indexPath.row]
         self.performSegue(withIdentifier: "show_result", sender: result)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row >= (testResults.count - 5) {
+        if indexPath.section >= (testResults.count - 5) {
             if (!loading && nextBatchIndex != NSNotFound) {
                 self.getNextBatch()
             }
