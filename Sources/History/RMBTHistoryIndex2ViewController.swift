@@ -344,7 +344,7 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
         header.dateLabel.text = testResults[section].timeString
         let networkTypeIcon = RMBTNetworkTypeConstants.networkTypeDictionary[testResults[section].networkTypeServerDescription]?.icon
         header.typeImageView.image = networkTypeIcon
-        header.onExpand = {
+        header.onExpand = { [unowned self] in
             self.expandLoopSection(self.testResults[section].loopUuid)
         }
         // header.bottomBorder is hidden by default to avoid border overlapping
