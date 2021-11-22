@@ -304,9 +304,9 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
             let rvc = segue.destination as? RMBTHistoryResult2ViewController {
             rvc.historyResult = sender as? RMBTHistoryResult
         } else if segue.identifier == "show_sync_modal", let vc = segue.destination as? RMBTHistorySyncModalViewController {
-            vc.onSyncSuccess = {
-                self.refresh()
-                self.refreshFilters()
+            vc.onSyncSuccess = { [weak self] in
+                self?.refresh()
+                self?.refreshFilters()
             }
         }
     }
