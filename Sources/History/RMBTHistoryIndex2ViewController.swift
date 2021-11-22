@@ -112,6 +112,9 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         self.tableView.register(UINib(nibName: RMBTHistoryLoopCell.ID, bundle: nil), forHeaderFooterViewReuseIdentifier: RMBTHistoryLoopCell.ID)
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.addTarget(self, action: #selector(refreshFromTableView(_:)), for: .valueChanged)
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = .leastNormalMagnitude
+        }
         
         self.filterContainer.addSubview(self.filterView)
         
@@ -249,7 +252,11 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
             
             for (_, loopResults) in results {
                 if loopResults.count > 0 {
-                    self.testResults.append(RMBTHistoryLoopResult(from: loopResults))
+                    let resultGroup = RMBTHistoryLoopResult(from: loopResults)
+                    self.testResults.append(resultGroup)
+                    if resultGroup.loopResults.count == 1, let loopUuid = resultGroup.loopUuid {
+                        self.expandedLoopUuids.append(loopUuid)
+                    }
                 }
             }
             self.testResults.sort { $0.timestamp.timeIntervalSince1970 > $1.timestamp.timeIntervalSince1970
@@ -339,7 +346,12 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
         header.typeImageView.image = networkTypeIcon
         header.onExpand = {
             self.expandLoopSection(self.testResults[section].loopUuid)
-            self.tableView.reloadData()
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }
+        // header.bottomBorder is hidden by default to avoid border overlapping
+        if section < testResults.count - 1 {
+            header.bottomBorder.isHidden = true
         }
         return header
     }
@@ -381,7 +393,15 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
             cell.downloadSpeedLabel.text = testResult.downloadSpeedMbpsString
             cell.uploadSpeedLabel.text = testResult.uploadSpeedMbpsString
             cell.pingLabel.text = testResult.shortestPingMillisString
-
+            if testResults[indexPath.section].loopResults.count > 1 {
+                cell.leftPaddingConstraint?.constant = 32
+            } else {
+                cell.leftPaddingConstraint?.constant = 20
+            }
+            // cell.bottomBorder is hidden by default to avoid border overlapping
+            if indexPath.section == testResults.count - 1 && indexPath.row == testResults[indexPath.section].loopResults.count - 1 {
+                cell.bottomBorder.isHidden = false
+            }
             return cell
         }
     }

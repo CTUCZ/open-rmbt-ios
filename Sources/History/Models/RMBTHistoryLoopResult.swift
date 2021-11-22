@@ -25,17 +25,23 @@ class RMBTHistoryLoopResult: RMBTHistoryResult {
         get { return _timeString }
     }
     
+    override var timestamp: Date! {
+        get { return _timestamp }
+    }
+    
     private var _networkTypeServerDescription: String!
     private var _timeString: String!
     private var _loopResults: [RMBTHistoryResult] = []
     private var _loopUuid: String!
+    private var _timestamp: Date!
     
     init(from loopResults: [RMBTHistoryResult]) {
         super.init()
         if let firstResult = loopResults.last {
+            _timestamp = firstResult.timestamp
             _timeString = firstResult.timeString
             _networkTypeServerDescription = firstResult.networkTypeServerDescription
-            _loopUuid = firstResult.loopUuid
+            _loopUuid = firstResult.loopUuid ?? firstResult.uuid
         }
         _loopResults = loopResults
     }
