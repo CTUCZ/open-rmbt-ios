@@ -357,10 +357,8 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
     }
     
     private func expandLoopSection(_ loopUuid: String) {
-        if expandedLoopUuids.contains(loopUuid) {
-            expandedLoopUuids = expandedLoopUuids.filter({ l in
-                l != loopUuid
-            })
+        if let loopUuidIndex = expandedLoopUuids.firstIndex(of: loopUuid) {
+            expandedLoopUuids.remove(at: loopUuidIndex)
         } else {
             expandedLoopUuids.append(loopUuid)
         }
