@@ -346,8 +346,6 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
         header.typeImageView.image = networkTypeIcon
         header.onExpand = {
             self.expandLoopSection(self.testResults[section].loopUuid)
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
         }
         // header.bottomBorder is hidden by default to avoid border overlapping
         if section < testResults.count - 1 {
@@ -362,6 +360,8 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
         } else {
             expandedLoopUuids.append(loopUuid)
         }
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
