@@ -22,7 +22,7 @@
 
 typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
     RMBTSettingsSectionGeneral = 0,
-    RMBTSettingsSectionLoop,
+    RMBTSettingsSectionAdvanced,
     RMBTSettingsSectionContacts,
     RMBTSettingsSectionInfo,
     RMBTSettingsSectionSupport,
@@ -40,6 +40,8 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
 @property (weak, nonatomic) IBOutlet UILabel *buildDetailsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *developerNameLabel;
 
+@property (strong, nonatomic) NSMutableArray *advancedSettings;
+
 @end
 
 @implementation RMBTSettingsViewController
@@ -47,6 +49,7 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self prepareAdvancedSettings];
     self.title = NSLocalizedString(@"preferences_general_settings", @"");
     self.navigationItem.leftBarButtonItem = self.closeBarButtonItem;
     
@@ -85,14 +88,8 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
     [self bindSwitch:self.expertModeSwitch
    toSettingsKeyPath:@keypath(settings, expertMode)
             onToggle:^(BOOL value) {
-        if (!value) {
-            // expert mode off -> loop mode off
-            [self.loopModeSwitch setOn:NO animated:NO];
-            [self.loopModeSwitch sendActionsForControlEvents:UIControlEventValueChanged];
-        }
-        // reload (section will be hidden)
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:RMBTSettingsSectionLoop]
-                      withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self prepareAdvancedSettings];
+        [self.tableView reloadData];
     }];
 
     [self bindSwitch:self.loopModeSwitch
@@ -101,9 +98,11 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
                 if (value) {
                     // forget value in case user terminates the app while in the modal dialog
                     settings.loopMode = NO;
+                    [self prepareAdvancedSettings];
                     [self performSegueWithIdentifier:@"show_loop_mode_confirmation" sender:self];
                 } else {
-                    [self refreshSection:RMBTSettingsSectionLoop];
+                    [self prepareAdvancedSettings];
+                    [self refreshSection:RMBTSettingsSectionAdvanced];
                 }
     }];
 
@@ -182,6 +181,18 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
     [super viewWillDisappear:animated];
 }
 
+- (void)prepareAdvancedSettings {
+    self.advancedSettings = [NSMutableArray array];
+    [self.advancedSettings addObject:[NSIndexPath indexPathForRow:0 inSection:RMBTSettingsSectionAdvanced]];
+    if ([RMBTSettings sharedSettings].loopMode) {
+        [self.advancedSettings addObject:[NSIndexPath indexPathForRow:1 inSection:RMBTSettingsSectionAdvanced]];
+        [self.advancedSettings addObject:[NSIndexPath indexPathForRow:2 inSection:RMBTSettingsSectionAdvanced]];
+    }
+    [self.advancedSettings addObject:[NSIndexPath indexPathForRow:3 inSection:RMBTSettingsSectionAdvanced]];
+    if ([RMBTSettings sharedSettings].expertMode) {
+        [self.advancedSettings addObject:[NSIndexPath indexPathForRow:4 inSection:RMBTSettingsSectionAdvanced]];
+    }
+}
 #pragma mark - Two-way binding helpers
 
 - (void)bindSwitch:(UISwitch*)aSwitch toSettingsKeyPath:(NSString*)keyPath onToggle:(void(^)(BOOL value))onToggle {
@@ -221,10 +232,19 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
     return lastSectionIndex + 1;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == RMBTSettingsSectionAdvanced) {
+        NSIndexPath *itemIndexPath = self.advancedSettings[indexPath.row];
+        return [super tableView:tableView cellForRowAtIndexPath:itemIndexPath];
+    } else {
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == RMBTSettingsSectionLoop && ![RMBTSettings sharedSettings].expertMode) {
-        return 0;
-    } else if (section == RMBTSettingsSectionLoop && ![RMBTSettings sharedSettings].loopMode)  {
+    if (section == RMBTSettingsSectionAdvanced) {
+        return self.advancedSettings.count;
+    } else if (section == RMBTSettingsSectionAdvanced && ![RMBTSettings sharedSettings].loopMode)  {
         return 1; // hide customization
     } else if (section == RMBTSettingsSectionDebugCustomControlServer && ![RMBTSettings sharedSettings].debugControlServerCustomizationEnabled) {
         return 1; // hide customization
@@ -251,50 +271,38 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == RMBTSettingsSectionLoop && ![RMBTSettings sharedSettings].expertMode) {
-        return CGFLOAT_MIN;
-    } else {
-        return 48;
-    }
+    return 48;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == RMBTSettingsSectionLoop && ![RMBTSettings sharedSettings].expertMode) {
-        return nil;
-    } else {
-        switch (section) {
-            case RMBTSettingsSectionGeneral:
-                return NSLocalizedString(@"preferences_general_settings", @"");
-            case RMBTSettingsSectionLoop:
-                return NSLocalizedString(@"preferences_loop_mode", @"");
-            case RMBTSettingsSectionContacts:
-                return NSLocalizedString(@"preferences_contact", @"");
-            case RMBTSettingsSectionInfo:
-                return NSLocalizedString(@"preferences_additional_Information", @"");
-            case RMBTSettingsSectionSupport:
-                return NSLocalizedString(@"preferences_about", @"");
-            case RMBTSettingsSectionDebug:
-                return NSLocalizedString(@"preferences_debug_options", @"");
-            case RMBTSettingsSectionDebugCustomControlServer:
-                return NSLocalizedString(@"preferences_developer_control_server", @"");
-            case RMBTSettingsSectionDebugLogging:
-                return NSLocalizedString(@"preferences_developer_logging", @"");
-            default:
-                break;
-        }
-        return [super tableView:tableView titleForHeaderInSection:section];
+    switch (section) {
+        case RMBTSettingsSectionGeneral:
+            return NSLocalizedString(@"preferences_general_settings", @"");
+        case RMBTSettingsSectionAdvanced:
+            return NSLocalizedString(@"preferences_advanced_settings", @"");
+        case RMBTSettingsSectionContacts:
+            return NSLocalizedString(@"preferences_contact", @"");
+        case RMBTSettingsSectionInfo:
+            return NSLocalizedString(@"preferences_additional_Information", @"");
+        case RMBTSettingsSectionSupport:
+            return NSLocalizedString(@"preferences_about", @"");
+        case RMBTSettingsSectionDebug:
+            return NSLocalizedString(@"preferences_debug_options", @"");
+        case RMBTSettingsSectionDebugCustomControlServer:
+            return NSLocalizedString(@"preferences_developer_control_server", @"");
+        case RMBTSettingsSectionDebugLogging:
+            return NSLocalizedString(@"preferences_developer_logging", @"");
+        default:
+            break;
     }
+    return [super tableView:tableView titleForHeaderInSection:section];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if (section == RMBTSettingsSectionLoop && ![RMBTSettings sharedSettings].expertMode) {
-        return nil;
-    } else {
-        if (section == RMBTSettingsSectionDebugLogging) {
-            return NSLocalizedString(@"preferences_developer_logging_summary", @"");
-        }
-        return [super tableView:tableView titleForFooterInSection:section];
+    if (section == RMBTSettingsSectionDebugLogging) {
+        return NSLocalizedString(@"preferences_developer_logging_summary", @"");
     }
+    return [super tableView:tableView titleForFooterInSection:section];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -388,7 +396,8 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
 
 - (IBAction)acceptLoopModeConfirmation:(UIStoryboardSegue*)segue {
     [RMBTSettings sharedSettings].loopMode = YES;
-    [self refreshSection:RMBTSettingsSectionLoop];
+    [self prepareAdvancedSettings];
+    [self refreshSection:RMBTSettingsSectionAdvanced];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
