@@ -28,7 +28,7 @@
 @property (nonatomic, readonly) NSInteger classification;
 @property (nonatomic, readonly) BOOL hasDetails;
 - (instancetype)initWithResponse:(NSDictionary*)response;
-- (instancetype)initWithTitle:(NSString*)title value:(NSString*)value classification:(NSUInteger)classification hasDetails:(BOOL)hasDetails;
+- (instancetype)initWithTitle:(NSString*)title value:(NSString*)value classification:(NSInteger)classification hasDetails:(BOOL)hasDetails;
 
 //Get classification from percent
 + (NSInteger)classification:(double)percent;
@@ -63,6 +63,8 @@ typedef NS_ENUM(NSUInteger, RMBTHistoryResultDataState) {
 @property (nonatomic, readonly) NSString *timeString;
 
 @property (nonatomic, readonly) NSString *downloadSpeedMbpsString, *uploadSpeedMbpsString;
+@property (nonatomic, readonly) NSInteger downloadSpeedClass, uploadSpeedClass, pingClass, signalClass;
+@property (nonatomic, readonly) NSNumber *signal;
 @property (nonatomic, readonly) NSString *shortestPingMillisString;
 @property (nonatomic, readonly) NSString *deviceModel;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;

@@ -20,6 +20,7 @@ final class RMBTHistoryResult2ViewController: UIViewController {
         case qoe
         case netInfo
         case qos
+        case testDetails
     }
     
     @IBOutlet private weak var tableView: UITableView!
@@ -30,13 +31,14 @@ final class RMBTHistoryResult2ViewController: UIViewController {
     private var measurementItems: [Any] = []
     
     public var historyResult: RMBTHistoryResult?
+    public var isShowingLastResult = false
     
     private var sections: [Section] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = self.historyResult?.timeString
+        self.title = self.historyResult?.timeStringIn24hFormat
         
         self.tableView.register(UINib(nibName: RMBTHistoryMapCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryMapCell.ID)
         self.tableView.register(UINib(nibName: RMBTHistoryNetworkCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryNetworkCell.ID)
@@ -46,11 +48,23 @@ final class RMBTHistoryResult2ViewController: UIViewController {
         self.tableView.register(UINib(nibName: RMBTQOEListCell.ID, bundle: nil), forCellReuseIdentifier: RMBTQOEListCell.ID)
         self.tableView.register(UINib(nibName: RMBTNetInfoListCell.ID, bundle: nil), forCellReuseIdentifier: RMBTNetInfoListCell.ID)
         self.tableView.register(UINib(nibName: RMBTQOSListCell.ID, bundle: nil), forCellReuseIdentifier: RMBTQOSListCell.ID)
+        self.tableView.register(UINib(nibName: RMBTTestDetailTitleCell.ID, bundle: nil), forCellReuseIdentifier: RMBTTestDetailTitleCell.ID)
         
-        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
         
         self.fetchHistoryResultInformation()
         self.prepareSections()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isMovingFromParent, isShowingLastResult, let tabCtrl = tabBarController {
+            tabCtrl.selectedIndex = 0
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else {return}
+                self.navigationController?.popToRootViewController(animated: false)
+            }
+        }
     }
     
     private func prepareSections() {
@@ -80,17 +94,21 @@ final class RMBTHistoryResult2ViewController: UIViewController {
             historyResult.qosResults?.count ?? 0 > 0 {
             sections.append(.title(NSLocalizedString("Weitere Details", comment: "")))
             
-            if historyResult.qoeClassificationItems?.count ?? 0 > 0 {
-                sections.append(.qoe)
-            }
-            
             if historyResult.netItems?.count ?? 0 > 0 {
                 sections.append(.netInfo)
+            }
+
+            if historyResult.qoeClassificationItems?.count ?? 0 > 0 {
+                sections.append(.qoe)
             }
             
             if historyResult.qosResults?.count ?? 0 > 0 {
                 sections.append(.qos)
             }
+        }
+        
+        if historyResult.fullDetailsItems?.count ?? 0 > 0 {
+            sections.append(.testDetails)
         }
         
         self.sections = sections
@@ -106,11 +124,12 @@ final class RMBTHistoryResult2ViewController: UIViewController {
                 return
             }
             
+            self.title = historyResult.timeStringIn24hFormat
+            
             var items: [Any] = []
             
             for item in historyResult.measurementItems ?? [] {
                 items.append(item)
-                
             }
             
             // Add a summary "Quality tests 100% (90/90)" row
@@ -136,16 +155,20 @@ final class RMBTHistoryResult2ViewController: UIViewController {
             
             self.sections.append(.title(NSLocalizedString("Weitere Details", comment: "")))
             
-            if historyResult.qoeClassificationItems.count > 0 {
-                self.sections.append(.qoe)
-            }
-            
             if historyResult.netItems.count > 0 {
                 self.sections.append(.netInfo)
             }
             
+            if historyResult.qoeClassificationItems.count > 0 {
+                self.sections.append(.qoe)
+            }
+            
             if historyResult.qosResults?.count ?? 0 > 0 {
                 self.sections.append(.qos)
+            }
+            
+            historyResult.ensureFullDetails { [weak self] in
+                self?.prepareSections()
             }
             
             self.loadingIndicatorView.stopAnimating()
@@ -179,6 +202,10 @@ final class RMBTHistoryResult2ViewController: UIViewController {
         if segue.identifier == "show_qos_group",
            let vc = segue.destination as? RMBTHistoryQoSGroupViewController {
             vc.result = sender as? RMBTHistoryQoSGroupResult
+        } else if segue.identifier == "show_test_details", let vc = segue.destination as? RMBTHistoryTestDetailsViewController, let historyResult = historyResult, let testDetails = historyResult.fullDetailsItems as? [RMBTHistoryResultItem] {
+            vc.testDetails = testDetails
+            vc.navigationItem.backBarButtonItem = UIBarButtonItem()
+            vc.title = title
         }
     }
 }
@@ -197,17 +224,19 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
         case .network:
             return 73
         case .basicInfo:
-            return 61
+            return 36
         case .speedGraphs:
             return 178
         case .title(_):
-            return 48
-        case .qoe:
-            return CGFloat(48 + (historyResult?.qoeClassificationItems.count ?? 0) * 48)
+            return 60
         case .netInfo:
-            return CGFloat(48 + (historyResult?.netItems.count ?? 0) * 48)
+            return CGFloat(60 + (historyResult?.netItems.count ?? 0) * 24)
+        case .qoe:
+            return CGFloat(60 + (historyResult?.qoeClassificationItems.count ?? 0) * 48)
         case .qos:
-            return CGFloat(48 + (historyResult?.qosResults.count ?? 0) * 48)
+            return CGFloat(60 + (historyResult?.qosResults.count ?? 0) * 48)
+        case .testDetails:
+            return 48
         }
     }
     
@@ -224,15 +253,22 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
             return mapCell
         case .network:
             let networkCell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryNetworkCell.ID, for: indexPath) as! RMBTHistoryNetworkCell
-            networkCell.networkName = (historyResult.netItems[0] as? RMBTHistoryResultItem)?.value
+            networkCell.networkName = (historyResult.netItems as? [RMBTHistoryResultItem])?.first(where: { item in
+                item.title == "WLAN SSID" || item.title == NSLocalizedString("history.result.operator", comment: "");
+            })?.value
             networkCell.networkType = historyResult.networkTypeServerDescription
             networkCell.selectionStyle = .none
             return networkCell
         case .basicInfo:
             let networkCell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryBasicInfoCell.ID, for: indexPath) as! RMBTHistoryBasicInfoCell
             networkCell.pingValue = historyResult.shortestPingMillisString
+            networkCell.pingIcon.tintColor = .byResultClass(historyResult.pingClass)
             networkCell.downloadValue = historyResult.downloadSpeedMbpsString
+            networkCell.downIcon.tintColor = .byResultClass(historyResult.downloadSpeedClass)
             networkCell.uploadValue = historyResult.uploadSpeedMbpsString
+            networkCell.upIcon.tintColor = .byResultClass(historyResult.uploadSpeedClass)
+            networkCell.signalValue = historyResult.signal?.stringValue
+            networkCell.signalIcon.tintColor = .byResultClass(historyResult.signalClass)
             networkCell.selectionStyle = .none
             return networkCell
         case .speedGraphs:
@@ -256,7 +292,7 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
             return qoeCell
         case .netInfo:
             let netInfoCell = tableView.dequeueReusableCell(withIdentifier: RMBTNetInfoListCell.ID, for: indexPath) as! RMBTNetInfoListCell
-            netInfoCell.title = NSLocalizedString("Netz", comment: "")
+            netInfoCell.title = NSLocalizedString("Network", comment: "")
             netInfoCell.items = historyResult.netItems as? [RMBTHistoryResultItem] ?? []
             netInfoCell.selectionStyle = .none
             return netInfoCell
@@ -269,6 +305,21 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
                 self?.showQosGroup(item)
             }
             return qosCell
+        case .testDetails:
+            let cell = tableView.dequeueReusableCell(withIdentifier: RMBTTestDetailTitleCell.ID, for: indexPath)
+            cell.accessoryType = .disclosureIndicator
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = sections[indexPath.row]
+        switch(section) {
+        case .testDetails:
+            tableView.deselectRow(at: indexPath, animated: true)
+            performSegue(withIdentifier: "show_test_details", sender: nil)
+        default:
+            return
         }
     }
    
