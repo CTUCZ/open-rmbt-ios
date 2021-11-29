@@ -11,7 +11,6 @@ import UIKit
 final class RMBTHistoryQoSSingleViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var statusIconImageView: UIImageView!
     
     public var result: RMBTHistoryQoSSingleResult?
     public var seqNumber: UInt = 0
@@ -19,7 +18,6 @@ final class RMBTHistoryQoSSingleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.statusIconImageView.image = self.result?.statusIcon()
         self.title = "Test #\(seqNumber)"
         
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)

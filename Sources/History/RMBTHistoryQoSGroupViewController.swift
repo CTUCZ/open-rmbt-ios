@@ -79,8 +79,9 @@ extension RMBTHistoryQoSGroupViewController: UITableViewDelegate, UITableViewDat
             return titleCell
         } else if (indexPath.section == 2) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RMBTHistoryQoSSingleResultCell", for: indexPath) as! RMBTHistoryQoSSingleResultCell
-            let r = self.result?.tests[indexPath.row]
-            cell.set(result: r, sequenceNumber: UInt(indexPath.row + 1))
+            if let result = self.result?.tests[indexPath.row] {
+                cell.set(result: result, sequenceNumber: UInt(indexPath.row + 1))
+            }
             return cell;
         }
         return UITableViewCell()
