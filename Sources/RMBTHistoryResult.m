@@ -21,7 +21,13 @@
 @implementation RMBTHistoryResultItem
 - (instancetype)initWithResponse:(NSDictionary*)response {
     if (self = [super init]) {
-        _title = response[@"title"];
+        if ( [response[@"title"] isEqualToString:@"Connection"] ) {
+            _title = NSLocalizedString(@"history.result.connection", comment: "");
+        } else if ( [response[@"title"] isEqualToString:@"Operator"] ) {
+            _title = NSLocalizedString(@"history.result.operator", comment: "");
+        } else {
+            _title = response[@"title"];
+        }
         _value = [response[@"value"] description];
         NSParameterAssert(_title);
         NSParameterAssert(_value);
@@ -33,7 +39,7 @@
     return self;
 }
 
-- (instancetype)initWithTitle:(NSString*)title value:(NSString*)value classification:(NSUInteger)classification hasDetails:(BOOL)hasDetails {
+- (instancetype)initWithTitle:(NSString*)title value:(NSString*)value classification:(NSInteger)classification hasDetails:(BOOL)hasDetails {
     if (self = [super init]) {
         _title = title;
         _value = value;
@@ -110,6 +116,10 @@
         _coordinate = kCLLocationCoordinate2DInvalid;
 
         _dataState = RMBTHistoryResultDataStateIndex;
+        
+        _downloadSpeedClass = [((NSNumber *) response[@"speed_download_classification"]) integerValue];
+        _uploadSpeedClass = [((NSNumber *) response[@"speed_upload_classification"]) integerValue];
+        _pingClass = [((NSNumber *) response[@"ping_classification"]) integerValue];
     }
     return self;
 }
@@ -164,13 +174,16 @@
         [[RMBTControlServer sharedControlServer] getHistoryResultWithUUID:self.uuid fullDetails:NO success:^(HistoryMeasurementResponse *r) {
             NSDictionary *response = [r.measurements.firstObject json];
             if (response[@"network_type"]) {
-                _networkType = RMBTNetworkTypeMake([response[@"network_type"] integerValue]);
+                self->_networkType = RMBTNetworkTypeMake([response[@"network_type"] integerValue]);
             }
+            if (response[@"network_info"] && response[@"network_info"][@"network_type_label"]) {
+                self->_networkTypeServerDescription = response[@"network_info"][@"network_type_label"];
+            }
+            self->_timeString = response[@"time_string"];
+            self->_openTestUuid = response[@"open_test_uuid"];
 
-            _openTestUuid = response[@"open_test_uuid"];
-
-            _shareURL = nil;
-            _shareText = response[@"share_text"];
+            self->_shareURL = nil;
+            self->_shareText = response[@"share_text"];
             if (_shareText) {
                 NSDataDetector *linkDetector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
                 NSArray *matches = [linkDetector matchesInString:_shareText options:0 range:NSMakeRange(0, [_shareText length])];
@@ -183,14 +196,23 @@
                 }
             }
             
-            _netItems = [NSMutableArray array];
+            self->_netItems = [NSMutableArray array];
             for (NSDictionary *r in response[@"net"]) {
-                [_netItems addObject:[[RMBTHistoryResultItem alloc] initWithResponse:r]];
+                RMBTHistoryResultItem *item = [[RMBTHistoryResultItem alloc] initWithResponse:r];
+                [self->_netItems addObject:item];
             }
 
-            _measurementItems = [NSMutableArray array];
+            self->_measurementItems = [NSMutableArray array];
             for (NSDictionary *r in response[@"measurement"]) {
-                [_measurementItems addObject:[[RMBTHistoryResultItem alloc] initWithResponse:r]];
+                RMBTHistoryResultItem *item = [[RMBTHistoryResultItem alloc] initWithResponse:r];
+                if ([item.title isEqualToString:@"Download"]) {
+                    self->_downloadSpeedClass = item.classification;
+                } else if ([item.title isEqualToString:@"Upload"]) {
+                    self->_uploadSpeedClass = item.classification;
+                } else if ([item.title isEqualToString:@"Ping"]) {
+                    self->_pingClass = item.classification;
+                }
+                [self->_measurementItems addObject:item];
             }
 
             _qoeClassificationItems = [NSMutableArray array];
@@ -218,7 +240,7 @@
             _dataState = RMBTHistoryResultDataStateBasic;
             dispatch_group_leave(allDone);
         } error:^(NSError *error) {
-            RMBTLog(@"Error fetching test results: %@. Info: %@", error);
+            NSLog(@"Error fetching test results: %@", error);
             dispatch_group_leave(allDone);
         }];
 
@@ -241,6 +263,11 @@
             for (NSDictionary *r in responseDictionary) {
                 [self->_fullDetailsItems addObject:[[RMBTHistoryResultItem alloc] initWithResponse:r]];
             }
+            [self->_fullDetailsItems sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                RMBTHistoryResultItem *item1 = (RMBTHistoryResultItem*) obj1;
+                RMBTHistoryResultItem *item2 = (RMBTHistoryResultItem*) obj2;
+                return [item1.title localizedCaseInsensitiveCompare:item2.title];
+            }];
             self->_dataState = RMBTHistoryResultDataStateFull;
             success();
         } error:^(NSError *error) {
@@ -253,8 +280,10 @@
     NSParameterAssert(_openTestUuid);
     [[RMBTControlServer sharedControlServer] getHistoryOpenDataResultWithUUID:_openTestUuid success:^(RMBTOpenDataResponse *r) {
         NSDictionary *response = [r json];
-        _downloadGraph = [[RMBTHistorySpeedGraph alloc] initWithResponse:response[@"speed_curve"][@"download"]];
-        _uploadGraph = [[RMBTHistorySpeedGraph alloc] initWithResponse:response[@"speed_curve"][@"upload"]];
+        self->_downloadGraph = [[RMBTHistorySpeedGraph alloc] initWithResponse:response[@"speed_curve"][@"download"]];
+        self->_uploadGraph = [[RMBTHistorySpeedGraph alloc] initWithResponse:response[@"speed_curve"][@"upload"]];
+        self->_signal = (NSNumber *) response[@"signal_strength"];
+        self->_signalClass = [((NSNumber *) response[@"signal_classification"]) integerValue];
         success();
     } error:^(NSError *error, NSDictionary *info) {
         // TODO

@@ -19,7 +19,16 @@
 "Measurement" = "Messung";
 
 /* History result section title */
+"Weitere Details" = "Weitere Details";
+
+/* History result section title */
 "Network" = "Netz";
+
+/* History result section title */
+"Qualität" = "Qualität";
+
+/* History result section title */
+"Test details" = "Test Details";
 
 /* Sync success button */
 "Reload" = "Neu laden";
@@ -225,11 +234,11 @@
 "Location" = "Standort";
 
 "video_telephony" = "Videotelefonie";
-"video_conferencing" = "Videokonferenz";
+"video_conferencing" = "Videokonferenzen";
 "cloud" = "Cloud";
-"video_uhd" = "Videos UHD";
-"video_sd" = "Videos SD";
-"video_hd" = "Videos HD";
+"video_uhd" = "Video UHD";
+"video_sd" = "Video SD";
+"video_hd" = "Video HD";
 "voip" = "VoIP";
 "streaming_audio_streaming" = "Audiostreaming";
 "web" = "Web";
@@ -321,8 +330,10 @@
 "history.sync-modal-description.request-code" = "Bitte geben Sie den unten angezeigten Code auf dem anderen Gerät ein, um die Ergebnisse zu synchronisieren.";
 "history.sync-modal-description.sync-success" = "Die Synchronisierung war erfolgreich.";
 "The code must consist of twelve characters" = "Der Code muss aus zwölf Zeichen bestehen";
-"The devices are already synchronized..." = "Die Geräte sind bereits synchronisiert...";
+"The devices are already synchronized with each other." = "Die Geräte sind bereits synchronisiert.";
 "The code you entered does not exist." = "Der eingegebene Code existiert nicht.";
+"history.result.connection" = "Zugang";
+"history.result.operator" = "Betreiber";
 
 /* Test */
 "test.network.label" = "Netzwerk";

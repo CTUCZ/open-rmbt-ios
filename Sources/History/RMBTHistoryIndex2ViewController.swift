@@ -169,8 +169,10 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         
         let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "result2_vc") as! RMBTHistoryResult2ViewController
         resultVC.historyResult = result
+        resultVC.isShowingLastResult = showingLastTestResult
         
-        self.navigationController?.pushViewController(resultVC, animated: false)
+        navigationItem.backBarButtonItem = UIBarButtonItem()
+        navigationController?.pushViewController(resultVC, animated: false)
     }
     
     @objc private func refreshFromTableView(_ sender: Any) {
@@ -303,6 +305,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         } else if segue.identifier == "show_result",
             let rvc = segue.destination as? RMBTHistoryResult2ViewController {
             rvc.historyResult = sender as? RMBTHistoryResult
+            navigationItem.backBarButtonItem = UIBarButtonItem()
         } else if segue.identifier == "show_sync_modal", let vc = segue.destination as? RMBTHistorySyncModalViewController {
             vc.onSyncSuccess = { [weak self] in
                 self?.refresh()
@@ -341,7 +344,7 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
             return nil
         }
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: RMBTHistoryLoopCell.ID) as! RMBTHistoryLoopCell
-        header.dateLabel.text = testResults[section].timeString
+        header.dateLabel.text = testResults[section].timeStringIn24hFormat
         let networkTypeIcon = RMBTNetworkTypeConstants.networkTypeDictionary[testResults[section].networkTypeServerDescription]?.icon
         header.typeImageView.image = networkTypeIcon
         header.onExpand = { [unowned self] in
@@ -387,10 +390,13 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
 
             let networTypeIcon = RMBTNetworkTypeConstants.networkTypeDictionary[testResult.networkTypeServerDescription]?.icon
             cell.typeImageView.image = networTypeIcon
-            cell.dateLabel.text = testResult.timeString
+            cell.dateLabel.text = testResult.timeStringIn24hFormat
             cell.downloadSpeedLabel.text = testResult.downloadSpeedMbpsString
+            cell.downloadSpeedIcon.tintColor = .byResultClass(testResult.downloadSpeedClass)
             cell.uploadSpeedLabel.text = testResult.uploadSpeedMbpsString
+            cell.uploadSpeedIcon.tintColor = .byResultClass(testResult.uploadSpeedClass)
             cell.pingLabel.text = testResult.shortestPingMillisString
+            cell.pingIcon.tintColor = .byResultClass(testResult.pingClass)
             if testResults[indexPath.section].loopResults.count > 1 {
                 cell.leftPaddingConstraint?.constant = 32
             } else {

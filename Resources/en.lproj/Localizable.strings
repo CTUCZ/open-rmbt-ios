@@ -19,7 +19,16 @@
 "Measurement" = "Measurement";
 
 /* History result section title */
+"Weitere Details" = "Further details";
+
+/* History result section title */
 "Network" = "Network";
+
+/* History result section title */
+"Qualität" = "Quality";
+
+/* History result section title */
+"Test details" = "Test details";
 
 /* Sync success button */
 "Reload" = "Reload";
@@ -227,9 +236,9 @@
 "video_telephony" = "Video telephony";
 "video_conferencing" = "Video conferencing";
 "cloud" = "Cloud";
-"video_uhd" = "Videos UHD";
-"video_sd" = "Videos SD";
-"video_hd" = "Videos HD";
+"video_uhd" = "Video UHD";
+"video_sd" = "Video SD";
+"video_hd" = "Video HD";
 "voip" = "VoIP";
 "streaming_audio_streaming" = "Audio streaming";
 "web" = "Web";
@@ -321,8 +330,10 @@
 "history.sync-modal-description.request-code" = "Please enter the code shown below on the other device to synchronise the results.";
 "history.sync-modal-description.sync-success" = "The synchronisation was successful.";
 "The code must consist of twelve characters" = "The code must consist of twelve characters";
-"The devices are already synchronized..." = "The devices are already synchronized...";
+"The devices are already synchronized with each other." = "The devices are already synchronized.";
 "The code you entered does not exist." = "The code you entered does not exist.";
+"history.result.connection" = "Type";
+"history.result.operator" = "Operator";
 
 /* Test */
 "test.network.label" = "Network";
