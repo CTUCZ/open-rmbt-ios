@@ -181,10 +181,6 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
     [self.locationSwitcher setOn:[RMBTLocationTracker isAuthorized] animated:NO];
 }
 
-- (void)updateLocationState:(id)sender {
-    [self.locationSwitcher setOn:[RMBTLocationTracker isAuthorized] animated:NO];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     // Refresh test counter and uuid labels:
