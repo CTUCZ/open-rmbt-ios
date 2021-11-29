@@ -13,7 +13,9 @@ class RMBTMap2ViewController: UIViewController {
 
     private let showMapOptionsSegue = "show_map_options"
     private let showMapTypeSegue = "show_map_type"
+    private let searchSegue = "searchSegue"
     
+    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var layerOptionsButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var mapOptionsButton: UIButton!
@@ -183,6 +185,10 @@ class RMBTMap2ViewController: UIViewController {
         setupMapLayer()
     }
     
+    @IBAction func searchButtonClick(_ sender: Any) {
+        self.performSegue(withIdentifier: searchSegue, sender: self)
+    }
+    
     @IBAction func myLocationButtonClick(_ sender: Any) {
         guard let location = RMBTLocationTracker.shared().location else { return }
         
@@ -215,6 +221,16 @@ class RMBTMap2ViewController: UIViewController {
            let vc = segue.destination as? RMBTMapOverlays2ViewController {
             vc.mapOptions = self.mapOptions
             vc.delegate = self
+        } else if segue.identifier == searchSegue,
+                  let navController = segue.destination as? UINavigationController,
+                  let vc = navController.topViewController as? RMBTSearchMapViewController {
+            navController.modalPresentationStyle = .overCurrentContext
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.onFindItem = { item in
+                if let item = item {
+                    self.mapView.setCenter(item.placemark.coordinate, animated: true)
+                }
+            }
         }
     }
     

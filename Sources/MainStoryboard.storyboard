@@ -2408,7 +2408,7 @@
                     <navigationItem key="navigationItem" id="3F7-bM-HO4">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ukd-lk-huW">
                             <view key="customView" contentMode="scaleToFill" id="glt-5O-65X">
-                                <rect key="frame" x="358" y="5.6666666666666679" width="50" height="33"/>
+                                <rect key="frame" x="358" y="6" width="50" height="33"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b8J-nS-rYd">
@@ -2487,7 +2487,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDp-om-dgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4618.115942028986" y="349.88839285714283"/>
+            <point key="canvasLocation" x="5101" y="299"/>
         </scene>
         <!--Map-->
         <scene sceneID="SFY-jo-ReR">
@@ -2542,8 +2542,16 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHE-qy-BXu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avA-iW-FB9">
                                 <rect key="frame" x="365" y="53" width="56" height="56"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="map_search"/>
+                                <connections>
+                                    <action selector="searchButtonClick:" destination="YIU-3Z-B4q" eventType="touchUpInside" id="T43-MO-ISQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHE-qy-BXu">
+                                <rect key="frame" x="365" y="109" width="56" height="56"/>
                                 <state key="normal" image="map_layers_btn"/>
                                 <connections>
                                     <action selector="layerOptionsButtonClick:" destination="YIU-3Z-B4q" eventType="touchUpInside" id="aKb-yz-Y9H"/>
@@ -2565,16 +2573,18 @@
                             <constraint firstItem="QEW-1d-fVD" firstAttribute="bottom" secondItem="IDI-ee-euM" secondAttribute="bottom" constant="7" id="5mn-bS-ILM"/>
                             <constraint firstItem="zQy-1n-dPd" firstAttribute="leading" secondItem="V5L-tR-iAa" secondAttribute="leading" id="6Ru-B3-cIk"/>
                             <constraint firstItem="QEW-1d-fVD" firstAttribute="trailing" secondItem="yS4-6s-RCM" secondAttribute="trailing" id="6yx-n5-brH"/>
+                            <constraint firstItem="QEW-1d-fVD" firstAttribute="trailing" secondItem="avA-iW-FB9" secondAttribute="trailing" constant="7" id="7ym-zr-CXt"/>
                             <constraint firstAttribute="trailing" secondItem="zQy-1n-dPd" secondAttribute="trailing" id="8ay-98-Ek3"/>
                             <constraint firstAttribute="bottom" secondItem="zQy-1n-dPd" secondAttribute="bottom" id="8cq-yQ-DGS"/>
                             <constraint firstItem="Qjx-Fc-lmF" firstAttribute="leading" secondItem="QEW-1d-fVD" secondAttribute="leading" constant="7" id="B9l-55-NyY"/>
+                            <constraint firstItem="KHE-qy-BXu" firstAttribute="top" secondItem="avA-iW-FB9" secondAttribute="bottom" id="GNw-m8-YBT"/>
                             <constraint firstItem="QEW-1d-fVD" firstAttribute="bottom" secondItem="yS4-6s-RCM" secondAttribute="bottom" constant="-350" id="IXq-IM-cFx"/>
                             <constraint firstItem="zQy-1n-dPd" firstAttribute="top" secondItem="V5L-tR-iAa" secondAttribute="top" id="OqR-eb-bM2"/>
                             <constraint firstItem="Qjx-Fc-lmF" firstAttribute="top" secondItem="QEW-1d-fVD" secondAttribute="top" constant="9" id="fbJ-5S-lcm"/>
                             <constraint firstItem="IDI-ee-euM" firstAttribute="top" secondItem="xAQ-7K-MhP" secondAttribute="bottom" id="iwz-VW-u8S"/>
-                            <constraint firstItem="KHE-qy-BXu" firstAttribute="top" secondItem="QEW-1d-fVD" secondAttribute="top" constant="9" id="ltR-01-LPo"/>
                             <constraint firstItem="QEW-1d-fVD" firstAttribute="trailing" secondItem="KHE-qy-BXu" secondAttribute="trailing" constant="7" id="r8E-aK-pZE"/>
                             <constraint firstItem="QEW-1d-fVD" firstAttribute="trailing" secondItem="IDI-ee-euM" secondAttribute="trailing" constant="7" id="seI-3D-p90"/>
+                            <constraint firstItem="avA-iW-FB9" firstAttribute="top" secondItem="QEW-1d-fVD" secondAttribute="top" constant="9" id="wzM-i0-a14"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uh0-0P-eVO"/>
@@ -2586,12 +2596,143 @@
                         <outlet property="measurementsListBottomConstraint" destination="IXq-IM-cFx" id="4fe-4P-uUn"/>
                         <outlet property="measurementsListViewContainer" destination="yS4-6s-RCM" id="Bft-H6-Un9"/>
                         <outlet property="myLocationButton" destination="IDI-ee-euM" id="aiH-vi-c4C"/>
+                        <outlet property="searchButton" destination="avA-iW-FB9" id="NRm-5j-jIk"/>
                         <segue destination="j4l-dx-0NM" kind="custom" identifier="show_map_type" customClass="RMBTBottomPresentSegue" customModule="RMBT" customModuleProvider="target" id="eFd-Ru-xCc"/>
+                        <segue destination="wuF-1s-WJT" kind="modal" identifier="searchSegue" modalTransitionStyle="crossDissolve" id="K00-O3-mnt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snU-er-mnX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2405" y="1498"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RIw-Q5-rmC">
+            <objects>
+                <navigationController id="wuF-1s-WJT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qAi-9C-0wu">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="VoZ-iG-vdH" kind="relationship" relationship="rootViewController" id="Grl-eE-jb1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hJO-N9-Meq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3350" y="571"/>
+        </scene>
+        <!--Search Map View Controller-->
+        <scene sceneID="FSl-lc-Yyp">
+            <objects>
+                <viewController id="VoZ-iG-vdH" customClass="RMBTSearchMapViewController" customModule="RMBT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QEc-Jf-8ic">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVq-MW-Zjd">
+                                <rect key="frame" x="16" y="375.66666666666669" width="396" height="176.66666666666669"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzT-R6-sZs">
+                                        <rect key="frame" x="16" y="17" width="364" height="23.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for an address or city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pjo-rx-8Zg">
+                                        <rect key="frame" x="16" y="44.666666666666629" width="364" height="19"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="address or city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Us1-jm-qDg">
+                                        <rect key="frame" x="16" y="83.666666666666629" width="364" height="30"/>
+                                        <color key="tintColor" red="0.34901960780000002" green="0.69803921570000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="G3m-gI-xuh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldChanged:" destination="VoZ-iG-vdH" eventType="editingChanged" id="Pls-jV-BWm"/>
+                                        </connections>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rob-CT-NuS">
+                                        <rect key="frame" x="16" y="115.66666666666663" width="364" height="1"/>
+                                        <color key="backgroundColor" red="0.34901960780000002" green="0.69803921570000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="2S4-Ww-24j"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okZ-Bh-v5n">
+                                        <rect key="frame" x="264" y="129.66666666666663" width="50" height="31"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.34901960780000002" green="0.69803921570000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonClick:" destination="VoZ-iG-vdH" eventType="touchUpInside" id="Vtf-gg-eMg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdd-2t-Rbb">
+                                        <rect key="frame" x="330" y="129.66666666666663" width="50" height="31"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Search">
+                                            <color key="titleColor" red="0.34901960780000002" green="0.69803921570000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchButtonClick:" destination="VoZ-iG-vdH" eventType="touchUpInside" id="HUm-oD-fgj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="QzT-R6-sZs" firstAttribute="top" secondItem="dVq-MW-Zjd" secondAttribute="top" constant="17" id="1Pj-zh-Ju8"/>
+                                    <constraint firstItem="QzT-R6-sZs" firstAttribute="leading" secondItem="dVq-MW-Zjd" secondAttribute="leading" constant="16" id="7bX-rK-55n"/>
+                                    <constraint firstItem="gdd-2t-Rbb" firstAttribute="top" secondItem="Us1-jm-qDg" secondAttribute="bottom" constant="16" id="BIY-Rp-ee3"/>
+                                    <constraint firstAttribute="bottom" secondItem="okZ-Bh-v5n" secondAttribute="bottom" constant="16" id="Hto-BF-8e0"/>
+                                    <constraint firstItem="Rob-CT-NuS" firstAttribute="top" secondItem="Us1-jm-qDg" secondAttribute="bottom" constant="2" id="KHK-Sc-IPP"/>
+                                    <constraint firstItem="Rob-CT-NuS" firstAttribute="leading" secondItem="Us1-jm-qDg" secondAttribute="leading" id="QeL-UU-EjD"/>
+                                    <constraint firstAttribute="trailing" secondItem="gdd-2t-Rbb" secondAttribute="trailing" constant="16" id="XbV-nh-dD2"/>
+                                    <constraint firstItem="gdd-2t-Rbb" firstAttribute="leading" secondItem="okZ-Bh-v5n" secondAttribute="trailing" constant="16" id="ZI3-si-aNY"/>
+                                    <constraint firstAttribute="bottom" secondItem="gdd-2t-Rbb" secondAttribute="bottom" constant="16" id="aGU-GE-ACd"/>
+                                    <constraint firstItem="Us1-jm-qDg" firstAttribute="top" secondItem="Pjo-rx-8Zg" secondAttribute="bottom" constant="20" id="cxr-5s-CDb"/>
+                                    <constraint firstItem="Rob-CT-NuS" firstAttribute="trailing" secondItem="Us1-jm-qDg" secondAttribute="trailing" id="d0o-1l-Qjt"/>
+                                    <constraint firstItem="Pjo-rx-8Zg" firstAttribute="top" secondItem="QzT-R6-sZs" secondAttribute="bottom" constant="4" id="fZn-cS-Rmf"/>
+                                    <constraint firstAttribute="trailing" secondItem="QzT-R6-sZs" secondAttribute="trailing" constant="16" id="hOx-6p-0vf"/>
+                                    <constraint firstItem="Pjo-rx-8Zg" firstAttribute="leading" secondItem="dVq-MW-Zjd" secondAttribute="leading" constant="16" id="lBw-IZ-2Sf"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pjo-rx-8Zg" secondAttribute="trailing" constant="16" id="p5D-75-sav"/>
+                                    <constraint firstItem="Us1-jm-qDg" firstAttribute="leading" secondItem="dVq-MW-Zjd" secondAttribute="leading" constant="16" id="uGr-oH-q5h"/>
+                                    <constraint firstAttribute="trailing" secondItem="Us1-jm-qDg" secondAttribute="trailing" constant="16" id="xRK-af-pQs"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="utv-fi-oRD"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="utv-fi-oRD" firstAttribute="trailing" secondItem="dVq-MW-Zjd" secondAttribute="trailing" constant="16" id="1dt-vh-l2W"/>
+                            <constraint firstItem="dVq-MW-Zjd" firstAttribute="centerY" secondItem="utv-fi-oRD" secondAttribute="centerY" id="A2s-hF-AMu"/>
+                            <constraint firstItem="dVq-MW-Zjd" firstAttribute="leading" secondItem="utv-fi-oRD" secondAttribute="leading" constant="16" id="bdH-y0-aBb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="aJ4-cn-a9i"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="okZ-Bh-v5n" id="9F5-kx-W0V"/>
+                        <outlet property="centerConstraint" destination="A2s-hF-AMu" id="c5Q-2V-hgh"/>
+                        <outlet property="contentView" destination="dVq-MW-Zjd" id="WXT-xM-dTU"/>
+                        <outlet property="searchButton" destination="gdd-2t-Rbb" id="CZl-Ku-jUA"/>
+                        <outlet property="searchTextField" destination="Us1-jm-qDg" id="yEs-5j-ToS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="czz-92-UOq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4138" y="571"/>
         </scene>
         <!--Map Results List View Controller-->
         <scene sceneID="1um-Yq-vE6">
@@ -4176,6 +4317,7 @@
         <image name="map_overlay_heatmap" width="40" height="40"/>
         <image name="map_overlay_points" width="40" height="40"/>
         <image name="map_overlay_shapes" width="40" height="40"/>
+        <image name="map_search" width="56" height="56"/>
         <image name="map_settings_btn" width="66" height="66"/>
         <image name="map_type_hybrid" width="40" height="40"/>
         <image name="map_type_satellite" width="40" height="40"/>
