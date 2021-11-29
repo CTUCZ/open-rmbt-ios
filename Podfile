@@ -27,5 +27,4 @@ target 'RMBT' do
 #  end
 
   pod 'BCGenieEffect'
-  pod 'GoogleMaps', '~> 2.1'
 end

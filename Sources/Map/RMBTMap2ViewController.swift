@@ -13,7 +13,9 @@ class RMBTMap2ViewController: UIViewController {
 
     private let showMapOptionsSegue = "show_map_options"
     private let showMapTypeSegue = "show_map_type"
+    private let searchSegue = "searchSegue"
     
+    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var layerOptionsButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var mapOptionsButton: UIButton!
@@ -134,7 +136,7 @@ class RMBTMap2ViewController: UIViewController {
     private func setupMapLayer() {
         if let overlay = self.mapOptions?.oldActiveOverlay {
             if overlay == RMBTMapOptionsOverlayAuto {
-                    if self.currentOverlay == RMBTMapOptionsOverlayShapes && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+                    if self.currentOverlay == RMBTMapOptionsOverlayHeatmap && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                         self.currentOverlay = RMBTMapOptionsOverlayPoints
                     } else if self.currentOverlay == RMBTMapOptionsOverlayPoints && Int32(mapView.getZoom()) < RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                         self.currentOverlay = RMBTMapOptionsOverlayHeatmap
@@ -183,6 +185,10 @@ class RMBTMap2ViewController: UIViewController {
         setupMapLayer()
     }
     
+    @IBAction func searchButtonClick(_ sender: Any) {
+        self.performSegue(withIdentifier: searchSegue, sender: self)
+    }
+    
     @IBAction func myLocationButtonClick(_ sender: Any) {
         guard let location = RMBTLocationTracker.shared().location else { return }
         
@@ -215,6 +221,16 @@ class RMBTMap2ViewController: UIViewController {
            let vc = segue.destination as? RMBTMapOverlays2ViewController {
             vc.mapOptions = self.mapOptions
             vc.delegate = self
+        } else if segue.identifier == searchSegue,
+                  let navController = segue.destination as? UINavigationController,
+                  let vc = navController.topViewController as? RMBTSearchMapViewController {
+            navController.modalPresentationStyle = .overCurrentContext
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.onFindItem = { item in
+                if let item = item {
+                    self.mapView.setCenter(item.placemark.coordinate, animated: true)
+                }
+            }
         }
     }
     
@@ -287,7 +303,7 @@ extension RMBTMap2ViewController: MKMapViewDelegate {
     
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         if self.mapOptions?.oldActiveOverlay == RMBTMapOptionsOverlayAuto {
-            if self.currentOverlay == RMBTMapOptionsOverlayShapes && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+            if self.currentOverlay == RMBTMapOptionsOverlayHeatmap && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                 self.setupMapLayer()
             } else if self.currentOverlay == RMBTMapOptionsOverlayPoints && Int32(mapView.getZoom()) < RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                 self.setupMapLayer()
