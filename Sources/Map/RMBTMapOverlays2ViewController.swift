@@ -116,6 +116,7 @@ class RMBTMapOverlays2ViewController: UIViewController {
             shapesOveralyButton.backgroundColor = .mapTypeSelectedBackground
             shapesOveralyButton.tintColor = .mapTypeSelectedTintImage
             shapesOverlayLabel.textColor = .mapTypeSelectedTitle
+        case RMBTMapOptionsOverlayAuto: break
         default:
             heatmapOverlayButton.backgroundColor = .mapTypeSelectedBackground
             heatmapOverlayButton.tintColor = .mapTypeSelectedTintImage
@@ -140,13 +141,18 @@ class RMBTMapOverlays2ViewController: UIViewController {
     }
     
     @IBAction func changeMapOverlay(_ sender: UIView) {
+        var newOverlay: RMBTMapOptionsOverlay?
         switch sender.tag {
-        case 0: mapOptions?.oldActiveOverlay = RMBTMapOptionsOverlayHeatmap
-        case 1: mapOptions?.oldActiveOverlay = RMBTMapOptionsOverlayPoints
-        case 2: mapOptions?.oldActiveOverlay = RMBTMapOptionsOverlayShapes
-        default: mapOptions?.oldActiveOverlay = RMBTMapOptionsOverlayAuto
+        case 0: newOverlay = RMBTMapOptionsOverlayHeatmap
+        case 1: newOverlay = RMBTMapOptionsOverlayPoints
+        case 2: newOverlay = RMBTMapOptionsOverlayShapes
+        default: newOverlay = RMBTMapOptionsOverlayAuto
         }
         
+        if newOverlay == mapOptions?.oldActiveOverlay {
+            newOverlay = RMBTMapOptionsOverlayAuto
+        }
+        mapOptions?.oldActiveOverlay = newOverlay
         self.updateOverlaySelection()
         self.delegate?.mapOverlaysViewControllerOverlayDidChange(self)
     }

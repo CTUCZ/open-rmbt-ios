@@ -134,7 +134,7 @@ class RMBTMap2ViewController: UIViewController {
     private func setupMapLayer() {
         if let overlay = self.mapOptions?.oldActiveOverlay {
             if overlay == RMBTMapOptionsOverlayAuto {
-                    if self.currentOverlay == RMBTMapOptionsOverlayShapes && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+                    if self.currentOverlay == RMBTMapOptionsOverlayHeatmap && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                         self.currentOverlay = RMBTMapOptionsOverlayPoints
                     } else if self.currentOverlay == RMBTMapOptionsOverlayPoints && Int32(mapView.getZoom()) < RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                         self.currentOverlay = RMBTMapOptionsOverlayHeatmap
@@ -287,7 +287,7 @@ extension RMBTMap2ViewController: MKMapViewDelegate {
     
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         if self.mapOptions?.oldActiveOverlay == RMBTMapOptionsOverlayAuto {
-            if self.currentOverlay == RMBTMapOptionsOverlayShapes && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+            if self.currentOverlay == RMBTMapOptionsOverlayHeatmap && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                 self.setupMapLayer()
             } else if self.currentOverlay == RMBTMapOptionsOverlayPoints && Int32(mapView.getZoom()) < RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                 self.setupMapLayer()
