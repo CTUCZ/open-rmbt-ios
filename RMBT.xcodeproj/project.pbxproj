@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		361443482732793E00D0FC26 /* RMBTHistorySyncModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361443472732793D00D0FC26 /* RMBTHistorySyncModalViewController.swift */; };
+		3628C539275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3628C538275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib */; };
+		3628C53B27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3628C53A27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift */; };
 		36933A73274E68B4009A52BE /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36933A72274E68B4009A52BE /* UIColor.swift */; };
 		36933A75274FBF00009A52BE /* RMBTTestDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36933A74274FBF00009A52BE /* RMBTTestDetailCell.swift */; };
 		36933A77274FCA96009A52BE /* RMBTHistoryTestDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36933A76274FCA96009A52BE /* RMBTHistoryTestDetailsViewController.swift */; };
@@ -310,6 +312,8 @@
 		1F9C078F216F751C00F1FC10 /* RMBT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RMBT.entitlements; sourceTree = "<group>"; };
 		32DE166B881B73366FE005F9 /* Pods_RMBT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMBT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		361443472732793D00D0FC26 /* RMBTHistorySyncModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistorySyncModalViewController.swift; sourceTree = "<group>"; };
+		3628C538275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryQoSTitledResultCell.xib; sourceTree = "<group>"; };
+		3628C53A27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQoSTitledResultCell.swift; sourceTree = "<group>"; };
 		36933A72274E68B4009A52BE /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		36933A74274FBF00009A52BE /* RMBTTestDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTTestDetailCell.swift; sourceTree = "<group>"; };
 		36933A76274FCA96009A52BE /* RMBTHistoryTestDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryTestDetailsViewController.swift; sourceTree = "<group>"; };
@@ -1439,6 +1443,8 @@
 				36933A78274FD72B009A52BE /* RMBTTestDetailCell.xib */,
 				36933A7A274FE1E0009A52BE /* RMBTTestDetailTitleCell.swift */,
 				36933A7C274FE220009A52BE /* RMBTTestDetailTitleCell.xib */,
+				3628C538275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib */,
+				3628C53A27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1690,6 +1696,7 @@
 				E9E993E926EB27BD00E7EED6 /* RMBTQOSItemCell.xib in Resources */,
 				E959549826E4F17D004EA6D9 /* Roboto-Italic.ttf in Resources */,
 				E9E9940A26ECDAD100E7EED6 /* RMBTSwitcherCell.xib in Resources */,
+				3628C539275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib in Resources */,
 				36933A7D274FE220009A52BE /* RMBTTestDetailTitleCell.xib in Resources */,
 				E959549626E4F17D004EA6D9 /* Roboto-BoldItalic.ttf in Resources */,
 				E946B94026D28BA20006E1F1 /* RMBTMapOptionsCell.xib in Resources */,
@@ -1959,6 +1966,7 @@
 				E9400EEB26BA6B600067273A /* RMBTControlServer.swift in Sources */,
 				E9E9940526ECCF7400E7EED6 /* RMBTSettings2ViewController.swift in Sources */,
 				E9400F0A26BADB3C0067273A /* Responses.swift in Sources */,
+				3628C53B27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift in Sources */,
 				C737AEE91E7D7C53007962EB /* RMBTQoSControlConnection.m in Sources */,
 				E93FB10326F4BA7A00DD24CD /* RMBTLoopInfo.swift in Sources */,
 				E95954A026E4F218004EA6D9 /* RMBTHistoryFilterView.swift in Sources */,

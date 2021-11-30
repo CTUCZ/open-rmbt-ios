@@ -180,6 +180,8 @@
                 self->_networkTypeServerDescription = response[@"network_info"][@"network_type_label"];
             }
             self->_timeString = response[@"time_string"];
+            NSTimeInterval t = [((NSNumber*)response[@"time"]) doubleValue] / 1000.0;
+            self->_timestamp = [NSDate dateWithTimeIntervalSince1970:t];
             self->_openTestUuid = response[@"open_test_uuid"];
 
             self->_shareURL = nil;

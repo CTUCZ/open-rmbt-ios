@@ -13,30 +13,29 @@ final class RMBTHistoryQoSSingleViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     public var result: RMBTHistoryQoSSingleResult?
+    public var groupResult: RMBTHistoryQoSGroupResult?
     public var seqNumber: UInt = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Test #\(seqNumber)"
+        self.title = groupResult?.name
         
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         self.tableView.estimatedRowHeight = 140.0;
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.tableFooterView = UIView()
+        self.tableView.tableHeaderView = UIView()
 
         self.tableView.register(UINib(nibName: RMBTHistoryQoSGroupResultCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryQoSGroupResultCell.ID)
+        self.tableView.register(UINib(nibName: RMBTHistoryQoSTitledResultCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryQoSTitledResultCell.ID)
     }
     
     private func titleForSection(section: Int) -> String? {
         if (section == 0) {
-            if (self.result?.successful == true) {
-                return NSLocalizedString("Test Succeeded", comment: "Section header for successful test");
-            } else {
-                return NSLocalizedString("Test Failed", comment: "Section header for successful test");
-            }
+            return NSLocalizedString("Description", comment: "").uppercased();
         } else if (section == 1) {
-            return NSLocalizedString("Details", comment: "Section header");
+            return NSLocalizedString("Details", comment: "Section header").uppercased();
         } else {
             return nil
         }
@@ -58,13 +57,17 @@ extension RMBTHistoryQoSSingleViewController: UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let descriptionCell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryQoSGroupResultCell.ID, for: indexPath) as! RMBTHistoryQoSGroupResultCell
-        descriptionCell.titleLabel.text = self.titleForSection(section: indexPath.section)
         if (indexPath.section == 0) {
-            descriptionCell.descriptionLabel?.text = self.result?.statusDetails
+            let descriptionCell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryQoSGroupResultCell.ID, for: indexPath) as! RMBTHistoryQoSGroupResultCell
+            descriptionCell.titleLabel.text = self.titleForSection(section: indexPath.section)
+            descriptionCell.descriptionLabel.text = self.result?.summary
+            descriptionCell.result = self.result
+            return descriptionCell
         } else {
-            descriptionCell.descriptionLabel?.text = self.result?.details
+            let descriptionCell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryQoSTitledResultCell.ID, for: indexPath) as! RMBTHistoryQoSTitledResultCell
+            descriptionCell.titleLabel.text = self.titleForSection(section: indexPath.section)
+            descriptionCell.descriptionLabel.text = self.result?.details
+            return descriptionCell
         }
-        return descriptionCell
     }
 }
