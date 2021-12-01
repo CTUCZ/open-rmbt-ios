@@ -28,4 +28,5 @@ target 'RMBT' do
 
   pod 'BCGenieEffect'
   pod 'GoogleMaps', '~> 2.1'
+  pod 'MaterialComponents/Tabs+TabBarView'
 end

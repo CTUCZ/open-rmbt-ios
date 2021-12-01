@@ -21,6 +21,22 @@ PODS:
   - libextobjc/EXTKeyPathCoding (0.6):
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.6)
+  - MaterialComponents/AnimationTiming (124.2.0)
+  - MaterialComponents/Availability (124.2.0)
+  - MaterialComponents/private/Color (124.2.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/Math (124.2.0)
+  - MaterialComponents/Ripple (124.2.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - "MaterialComponents/Tabs+TabBarView (124.2.0)":
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MDFInternationalization
+  - MDFInternationalization (3.0.0)
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
@@ -42,6 +58,7 @@ DEPENDENCIES:
   - CocoaAsyncSocket
   - GoogleMaps (~> 2.1)
   - libextobjc/EXTKeyPathCoding
+  - "MaterialComponents/Tabs+TabBarView"
   - ReachabilitySwift
   - SVWebViewController (from `https://github.com/bazingatechnologies/SVWebViewController`, commit `e5e85d2df62c3baed76a2dec343cdb1c239aa719`, branch `master`)
   - TUSafariActivity
@@ -55,6 +72,8 @@ SPEC REPOS:
     - CocoaAsyncSocket
     - GoogleMaps
     - libextobjc
+    - MaterialComponents
+    - MDFInternationalization
     - ObjcExceptionBridging
     - ObjectMapper
     - ReachabilitySwift
@@ -86,6 +105,8 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
+  MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
+  MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
@@ -93,6 +114,6 @@ SPEC CHECKSUMS:
   TUSafariActivity: afc55a00965377939107ce4fdc7f951f62454546
   XCGLogger: 1943831ef907df55108b0b18657953f868de973b
 
-PODFILE CHECKSUM: 3fd1aeb72cdbb75bbb42ad53f9226903dd707f59
+PODFILE CHECKSUM: 299e841366165b4d4b2549edc465fffb192fbe71
 
 COCOAPODS: 1.11.2

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialTabs_TabBarView
 
 final class RMBTHistoryQoSSingleViewController: UIViewController {
 
@@ -15,17 +16,38 @@ final class RMBTHistoryQoSSingleViewController: UIViewController {
     public var result: RMBTHistoryQoSSingleResult?
     public var groupResult: RMBTHistoryQoSGroupResult?
     public var seqNumber: UInt = 0
+    
+    private lazy var mdcTabBarView: MDCTabBarView? = {
+        if let results = groupResult?.tests {
+            let mdcTabBarView = MDCTabBarView()
+            mdcTabBarView.setContentPadding(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), for: .scrollable)
+            mdcTabBarView.items = results.enumerated().map({ (index, item) in
+                return UITabBarItem(title: "#\(index+1)", image: nil, tag: item.uid as! Int)
+            })
+            mdcTabBarView.selectedItem = mdcTabBarView.items[Int(seqNumber) - 1]
+            mdcTabBarView.preferredLayoutStyle = .scrollable // or .fixed
+            mdcTabBarView.tabBarDelegate = self
+            mdcTabBarView.selectionIndicatorStrokeColor = UIColor(named: "greenButtonBackground")
+            mdcTabBarView.rippleColor = mdcTabBarView.selectionIndicatorStrokeColor?.withAlphaComponent(0.1) ?? .clear
+            mdcTabBarView.setTitleFont(UIFont.roboto(size: 14, weight: .regular), for: .normal)
+            return mdcTabBarView
+        }
+        return nil
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = groupResult?.name
         
-        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         self.tableView.estimatedRowHeight = 140.0;
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.tableFooterView = UIView()
         self.tableView.tableHeaderView = UIView()
+        if #available(iOS 15.0, *) {
+            self.tableView.sectionHeaderTopPadding = 0
+        }
 
         self.tableView.register(UINib(nibName: RMBTHistoryQoSGroupResultCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryQoSGroupResultCell.ID)
         self.tableView.register(UINib(nibName: RMBTHistoryQoSTitledResultCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryQoSTitledResultCell.ID)
@@ -46,6 +68,17 @@ extension RMBTHistoryQoSSingleViewController: UITableViewDelegate, UITableViewDa
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return mdcTabBarView
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 48 : 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,5 +102,15 @@ extension RMBTHistoryQoSSingleViewController: UITableViewDelegate, UITableViewDa
             descriptionCell.descriptionLabel.text = self.result?.details
             return descriptionCell
         }
+    }
+}
+
+extension RMBTHistoryQoSSingleViewController: MDCTabBarViewDelegate {
+    func tabBarView(_ tabBarView: MDCTabBarView, didSelect item: UITabBarItem) {
+        guard let results = groupResult?.tests else { return }
+        result = results.first(where: { res in
+            res.uid as! Int == item.tag
+        })
+        tableView.reloadData()
     }
 }
