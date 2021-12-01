@@ -71,14 +71,11 @@ extension RMBTHistoryQoSSingleViewController: UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return mdcTabBarView
-        }
-        return nil
+        return section == 0 ? mdcTabBarView : nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 48 : 0
+        return section == 0 && mdcTabBarView != nil ? 48 : 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
