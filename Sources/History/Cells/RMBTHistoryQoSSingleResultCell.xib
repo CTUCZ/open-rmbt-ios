@@ -28,7 +28,7 @@
                         <rect key="frame" x="20" y="37.5" width="12" height="12"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="755" verticalCompressionResistancePriority="755" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rH4-EQ-KE7">
-                        <rect key="frame" x="40" y="16" width="29" height="55"/>
+                        <rect key="frame" x="40" y="16" width="301.5" height="55"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                         <color key="textColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -42,6 +42,7 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="rH4-EQ-KE7" secondAttribute="trailing" constant="8" id="4de-Qk-h1J"/>
                     <constraint firstAttribute="bottom" secondItem="rH4-EQ-KE7" secondAttribute="bottom" constant="14" id="5CI-vM-Wig"/>
                     <constraint firstItem="Phy-8R-eXr" firstAttribute="centerY" secondItem="dbJ-tP-tyx" secondAttribute="centerY" constant="1" id="EAO-V3-xJl"/>
                     <constraint firstItem="Phy-8R-eXr" firstAttribute="leading" secondItem="dbJ-tP-tyx" secondAttribute="leading" constant="20" id="Yul-WK-wS8"/>
@@ -62,7 +63,7 @@
                 <outlet property="successIcon" destination="Phy-8R-eXr" id="fq6-RL-OZA"/>
                 <outlet property="summaryLabel" destination="rH4-EQ-KE7" id="Jl9-UM-uPv"/>
             </connections>
-            <point key="canvasLocation" x="113.5" y="31.5"/>
+            <point key="canvasLocation" x="112.8" y="31.03448275862069"/>
         </tableViewCell>
     </objects>
     <resources>
