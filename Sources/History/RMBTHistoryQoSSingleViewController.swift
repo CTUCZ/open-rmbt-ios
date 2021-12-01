@@ -20,7 +20,7 @@ final class RMBTHistoryQoSSingleViewController: UIViewController {
     private lazy var mdcTabBarView: MDCTabBarView? = {
         if let results = groupResult?.tests {
             let mdcTabBarView = MDCTabBarView()
-            mdcTabBarView.setContentPadding(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), for: .scrollable)
+            mdcTabBarView.setContentPadding(UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0), for: .scrollable)
             mdcTabBarView.items = results.enumerated().map({ (index, item) in
                 return UITabBarItem(title: "#\(index+1)", image: nil, tag: item.uid as! Int)
             })
@@ -40,7 +40,7 @@ final class RMBTHistoryQoSSingleViewController: UIViewController {
 
         self.title = groupResult?.name
         
-        self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         self.tableView.estimatedRowHeight = 140.0;
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.tableFooterView = UIView()
