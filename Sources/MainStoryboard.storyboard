@@ -880,7 +880,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lw-HP-bXA">
-                                                    <rect key="frame" x="20" y="18.666666666666668" width="363.33333333333331" height="19.000000000000004"/>
+                                                    <rect key="frame" x="20" y="18.666666666666671" width="363.33333333333331" height="19"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                     <color key="textColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -889,7 +889,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="-" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geb-Fs-fpz">
-                                                    <rect key="frame" x="403.33333333333331" y="18.666666666666668" width="4.6666666666666856" height="19.000000000000004"/>
+                                                    <rect key="frame" x="403.33333333333326" y="18.666666666666671" width="4.6666666666666856" height="19"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                     <color key="textColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2197,6 +2197,9 @@
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <color key="textColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizableText" value="Options"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKs-bn-FbC">
                                         <rect key="frame" x="384" y="2" width="44" height="44"/>
@@ -2405,28 +2408,8 @@
                             <constraint firstItem="5qa-E7-TeN" firstAttribute="leading" secondItem="9qt-3z-ZXX" secondAttribute="leading" id="zW6-H4-a8T"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="3F7-bM-HO4">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="ukd-lk-huW">
-                            <view key="customView" contentMode="scaleToFill" id="glt-5O-65X">
-                                <rect key="frame" x="358" y="6" width="50" height="33"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b8J-nS-rYd">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="33"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="b8J-nS-rYd" firstAttribute="top" secondItem="glt-5O-65X" secondAttribute="top" id="Bbd-jD-2Vd"/>
-                                    <constraint firstAttribute="bottom" secondItem="b8J-nS-rYd" secondAttribute="bottom" id="JSa-fF-i3e"/>
-                                    <constraint firstItem="b8J-nS-rYd" firstAttribute="leading" secondItem="glt-5O-65X" secondAttribute="leading" id="OKu-Wy-0L5"/>
-                                    <constraint firstAttribute="trailing" secondItem="b8J-nS-rYd" secondAttribute="trailing" id="hca-0t-4ZT"/>
-                                </constraints>
-                            </view>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="3F7-bM-HO4"/>
                     <connections>
-                        <outlet property="statusIconImageView" destination="b8J-nS-rYd" id="vpb-JJ-mGy"/>
                         <outlet property="tableView" destination="5qa-E7-TeN" id="x9A-pi-zjS"/>
                     </connections>
                 </viewController>

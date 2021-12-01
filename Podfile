@@ -27,4 +27,5 @@ target 'RMBT' do
 #  end
 
   pod 'BCGenieEffect'
+  pod 'MaterialComponents/Tabs+TabBarView'
 end

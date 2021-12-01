@@ -18,11 +18,11 @@ final class RMBTHistoryQoSGroupViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = self.result?.name
-        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         self.tableView.estimatedRowHeight = 140.0;
         self.tableView.rowHeight = UITableView.automaticDimension
 
-        self.tableView.register(UINib(nibName: RMBTHistoryQoSGroupResultCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryQoSGroupResultCell.ID)
+        self.tableView.register(UINib(nibName: RMBTHistoryQoSTitledResultCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryQoSTitledResultCell.ID)
         self.tableView.register(UINib(nibName: RMBTHistoryTitleCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryTitleCell.ID)
 
         
@@ -34,13 +34,15 @@ final class RMBTHistoryQoSGroupViewController: UIViewController {
            let result = sender as? RMBTHistoryQoSSingleResult,
            let vc = segue.destination as? RMBTHistoryQoSSingleViewController {
             vc.result = result
+            vc.groupResult = self.result
             vc.seqNumber = UInt((self.result?.tests.firstIndex(of: result) ?? 0) + 1)
+            navigationItem.backBarButtonItem = UIBarButtonItem()
         }
     }
     
     private func titleForSection(section: Int) -> String? {
         if (section == 0) {
-            return NSLocalizedString("About", comment: "QoS Details section header");
+            return NSLocalizedString("Information", comment: "QoS Details section header");
         } else {
             return NSLocalizedString("Tests", comment: "QoS Details section header");
         }
@@ -48,6 +50,13 @@ final class RMBTHistoryQoSGroupViewController: UIViewController {
 }
 
 extension RMBTHistoryQoSGroupViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 1 {
+            return 52
+        }
+        return UITableView.automaticDimension
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -65,9 +74,9 @@ extension RMBTHistoryQoSGroupViewController: UITableViewDelegate, UITableViewDat
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
-            let descriptionCell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryQoSGroupResultCell.ID, for: indexPath) as! RMBTHistoryQoSGroupResultCell
+            let descriptionCell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryQoSTitledResultCell.ID, for: indexPath) as! RMBTHistoryQoSTitledResultCell
             descriptionCell.titleLabel.text = self.titleForSection(section: indexPath.section)
-            descriptionCell.descriptionLabel?.text = self.result?.about
+            descriptionCell.descriptionLabel.text = self.result?.about
             descriptionCell.selectionStyle = .none
             return descriptionCell
         } else if indexPath.section == 1 {
@@ -79,8 +88,9 @@ extension RMBTHistoryQoSGroupViewController: UITableViewDelegate, UITableViewDat
             return titleCell
         } else if (indexPath.section == 2) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RMBTHistoryQoSSingleResultCell", for: indexPath) as! RMBTHistoryQoSSingleResultCell
-            let r = self.result?.tests[indexPath.row]
-            cell.set(result: r, sequenceNumber: UInt(indexPath.row + 1))
+            if let result = self.result?.tests[indexPath.row] {
+                cell.set(result: result, sequenceNumber: UInt(indexPath.row + 1))
+            }
             return cell;
         }
         return UITableViewCell()

@@ -202,6 +202,7 @@ final class RMBTHistoryResult2ViewController: UIViewController {
         if segue.identifier == "show_qos_group",
            let vc = segue.destination as? RMBTHistoryQoSGroupViewController {
             vc.result = sender as? RMBTHistoryQoSGroupResult
+            navigationItem.backBarButtonItem = UIBarButtonItem()
         } else if segue.identifier == "show_test_details", let vc = segue.destination as? RMBTHistoryTestDetailsViewController, let historyResult = historyResult, let testDetails = historyResult.fullDetailsItems as? [RMBTHistoryResultItem] {
             vc.testDetails = testDetails
             vc.navigationItem.backBarButtonItem = UIBarButtonItem()

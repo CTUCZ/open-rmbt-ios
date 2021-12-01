@@ -1,3 +1,11 @@
+"Options" = "Einstellungen";
+
+"Description" = "Beschreibung";
+
+"Succeeded" = "Erfolgreich";
+
+"Failed" = "Gescheitert";
+
 "Cancel" = "Abbrechen";
 
 /* History column */
@@ -160,7 +168,7 @@
 "Quality tests" = "Qualitätstests";
 
 /* QoS Details section header */
-"About" = "Details";
+"Information" = "Informationen";
 
 /* Section header */
 "Details" = "Details";
