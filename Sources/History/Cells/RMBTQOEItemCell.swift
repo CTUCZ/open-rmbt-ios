@@ -14,11 +14,12 @@ final class RMBTQOEItemCell: UITableViewCell {
     
     @IBOutlet weak var percentViewContainer: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var qoeImageView: UIImageView!
     
     lazy var percentView: RMBTHistoryResultPercentView = {
         let view = RMBTHistoryResultPercentView()
-        view.unfilledColor = UIColor.rmbt_color(withRGBHex: 0xf2f2f2)
+        view.unfilledColor = UIColor.rmbt_color(withRGBHex: 0xF2F3F5)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -34,6 +35,13 @@ final class RMBTQOEItemCell: UITableViewCell {
                 percentView.percents = CGFloat(Double(item.quality) ?? 0.0)
                 percentView.filledColor = color ?? UIColor.white
                 percentView.setNeedsDisplay()
+            }
+            
+            if let subtitle = item.value, item.category == "qos" {
+                subtitleLabel.text = subtitle
+                subtitleLabel.isHidden = false
+            } else {
+                subtitleLabel.isHidden = true
             }
             
             self.selectionStyle = .none
@@ -104,15 +112,15 @@ final class RMBTQOEItemCell: UITableViewCell {
     func classificationColor(for classification: NSInteger) -> UIColor? {
         var color: UIColor?
         if (classification == 1) {
-            color = UIColor.rmbt_color(withRGBHex:0xfc441e)
+            color = UIColor.rmbt_color(withRGBHex:0xF5001C)
         } else if (classification == 2) {
-            color = UIColor.rmbt_color(withRGBHex:0xddde2f)
+            color = UIColor.rmbt_color(withRGBHex:0xFFBA00)
         } else if (classification == 3) {
-            color = UIColor.rmbt_color(withRGBHex:0x3cc828)
+            color = UIColor.rmbt_color(withRGBHex:0x59B200)
         } else if (classification == 4) {
-            color = UIColor.rmbt_color(withRGBHex:0x2c941c)
+            color = UIColor.rmbt_color(withRGBHex:0x007C0E)
         } else {
-            color = UIColor.clear
+            color = UIColor.rmbt_color(withRGBHex: 0xF2F3F5)
         }
         
         return color
