@@ -1,5 +1,11 @@
 "Options" = "Einstellungen";
 
+"Description" = "Beschreibung";
+
+"Succeeded" = "Erfolgreich";
+
+"Failed" = "Gescheitert";
+
 "Cancel" = "Abbrechen";
 
 /* History column */

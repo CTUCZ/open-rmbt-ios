@@ -1,5 +1,11 @@
 "Options" = "Options";
 
+"Description" = "Description";
+
+"Succeeded" = "Succeeded";
+
+"Failed" = "Failed";
+
 "Cancel" = "Cancel";
 
 /* History column */
