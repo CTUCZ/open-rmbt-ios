@@ -394,3 +394,16 @@
 
 "preferences_qos_measurement_only_after_some_time" = "Only after 2 hours";
 "preferences_qos_measurement_only_after_some_time_summary" = "Do not perform new QoS measurements, if the last one was done less than 2 hours ago.";
+
+"button_accept.title" = "ACCEPT";
+
+"map.map_view" = "Map appearance";
+"map.cart_details" = "Overlay type";
+
+"map_style_hybrid" = "Hybrid";
+"map_style_satellite" = "Satellite";
+"map_style_standard" = "Standard";
+
+"map_layer_communities" = "Communities";
+"map_layer_points" = "Points";
+"map_layer_automatic" = "Automatic";

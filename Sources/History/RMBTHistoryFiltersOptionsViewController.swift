@@ -23,6 +23,7 @@ class RMBTHistoryFiltersOptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.confirmButton.setTitle(.accept, for: .normal)
         self.titleLabel.text = self.title
         
         self.tableView.register(UINib(nibName: RMBTMapOptionsTypeCell.ID, bundle: nil), forCellReuseIdentifier: RMBTMapOptionsTypeCell.ID)
@@ -91,4 +92,8 @@ extension RMBTHistoryFiltersOptionsViewController: RMBTBottomCardProtocol {
             height = 500
         }
         return CGSize(width: 0, height: height) }
+}
+
+private extension String {
+    static let accept = NSLocalizedString("button_accept.title", comment: "")
 }
