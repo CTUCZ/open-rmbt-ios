@@ -402,3 +402,5 @@
 "preferences_developer_loggind_host" = "Protokollierung Host";
 "preferences_developer_loggind_port" = "Protokollierung Port";
 
+"preferences_qos_measurement_only_after_some_time" = "Nur alle 2 Stunden";
+"preferences_qos_measurement_only_after_some_time_summary" = "Keine neue QoS-Messung, wenn die letzte vor weniger als 2 Stunden durchgeführt wurde.";

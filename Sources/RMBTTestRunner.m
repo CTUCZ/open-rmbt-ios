@@ -23,6 +23,7 @@
 #import "RMBTConnectivityTracker.h"
 #import "RMBT-Swift.h"
 
+static const float RMBTQosSkipTimeInterval = 60 * 60 * 2; //2 hours
 static NSString * const RMBTTestStatusNone = @"NONE";
 static NSString * const RMBTTestStatusAborted = @"ABORTED";
 static NSString * const RMBTTestStatusError = @"ERROR";
@@ -722,14 +723,39 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
 #pragma mark - QoS
 
 - (void)startQoS {
-    if ([RMBTSettings sharedSettings].skipQoS) {
-        RMBTLog(@"Skipping QoS per user setting");
+    BOOL willPerformed = [RMBTTestRunner willQoSPerformed];
+    if (!willPerformed) {
+        if (([RMBTSettings sharedSettings].skipQoS) && (![RMBTSettings sharedSettings].only2Hours)) {
+            RMBTLog(@"Skipping QoS per user setting");
+            
+        } if (([RMBTSettings sharedSettings].skipQoS) && ([RMBTSettings sharedSettings].only2Hours) && (fabs([[RMBTSettings sharedSettings].previousLaunchQoSDate timeIntervalSinceNow]) > RMBTQosSkipTimeInterval)) {
+            RMBTLog(@"Skipping QoS per user setting. Previous qos was launched less 2 hours");
+        }
         [self submitResult];
     } else {
+        [RMBTSettings sharedSettings].previousLaunchQoSDate = [NSDate date];
         self.phase = RMBTTestRunnerPhaseQoS;
         _qosRunner = [[RMBTQoSTestRunner alloc] initWithDelegate:self];
         [_qosRunner startWithToken:_testParams.testToken];
     }
+}
+
++ (BOOL)willQoSPerformed {
+    // Skip qos
+    if (([RMBTSettings sharedSettings].skipQoS) && (![RMBTSettings sharedSettings].only2Hours)) {
+        return NO;
+    } if (([RMBTSettings sharedSettings].skipQoS) && ([RMBTSettings sharedSettings].only2Hours)) {
+        // Never haven't launched before
+        if ([RMBTSettings sharedSettings].previousLaunchQoSDate == nil) {
+            return YES;
+            // previous launch was 2 hours after
+        } else if (fabs([[RMBTSettings sharedSettings].previousLaunchQoSDate timeIntervalSinceNow]) > RMBTQosSkipTimeInterval) {
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 - (void)qosRunnerDidStartWithTestGroups:(NSArray<RMBTQoSTestGroup *> *)groups {

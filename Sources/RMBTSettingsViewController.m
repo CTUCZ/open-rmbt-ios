@@ -35,12 +35,15 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
     NSString* _uuid;
 }
 
+@property (weak, nonatomic) IBOutlet UISwitch *only2HoursSwitcher;
 @property (weak, nonatomic) IBOutlet UILabel *uuidLabel;
 @property (weak, nonatomic) IBOutlet UILabel *testCounterLabel;
 @property (weak, nonatomic) IBOutlet UILabel *buildDetailsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *developerNameLabel;
 
+@property (strong, nonatomic) NSMutableArray *generalSettings;
 @property (strong, nonatomic) NSMutableArray *advancedSettings;
+
 @property (weak, nonatomic) IBOutlet UISwitch *locationSwitcher;
 
 @end
@@ -54,6 +57,7 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self prepareGeneralSettings];
     [self prepareAdvancedSettings];
     self.title = NSLocalizedString(@"preferences_general_settings", @"");
     self.navigationItem.leftBarButtonItem = self.closeBarButtonItem;
@@ -92,11 +96,28 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
 
     [self bindSwitch:self.skipQoSSwitch
    toSettingsKeyPath:@keypath(settings, skipQoS)
-            onToggle:nil];
+            onToggle:^(BOOL value) {
+        if (value == NO) {
+            settings.only2Hours = NO;
+            [self.only2HoursSwitcher setOn:NO animated:YES];
+        }
+        [self prepareGeneralSettings];
+        [self refreshSection:RMBTSettingsSectionGeneral];
+    }];
+    
+    [self bindSwitch:self.only2HoursSwitcher
+   toSettingsKeyPath:@keypath(settings, only2Hours)
+            onToggle:^(BOOL value) {
+        //Remove previousLaunchQoSDate. We can't set nil, because we will have crash
+        settings.previousLaunchQoSDate = [NSDate dateWithTimeIntervalSince1970:0];
+    }];
 
     [self bindSwitch:self.expertModeSwitch
    toSettingsKeyPath:@keypath(settings, expertMode)
             onToggle:^(BOOL value) {
+        if (value == NO) {
+            settings.forceIPv4 = NO;
+        }
         [self prepareAdvancedSettings];
         [self.tableView reloadData];
     }];
@@ -201,6 +222,15 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
     [super viewWillDisappear:animated];
 }
 
+- (void)prepareGeneralSettings {
+    self.generalSettings = [NSMutableArray array];
+    [self.generalSettings addObject:[NSIndexPath indexPathForRow:0 inSection:RMBTSettingsSectionGeneral]];
+    if ([RMBTSettings sharedSettings].skipQoS) {
+        [self.generalSettings addObject:[NSIndexPath indexPathForRow:1 inSection:RMBTSettingsSectionGeneral]];
+    }
+    [self.generalSettings addObject:[NSIndexPath indexPathForRow:2 inSection:RMBTSettingsSectionGeneral]];
+}
+
 - (void)prepareAdvancedSettings {
     self.advancedSettings = [NSMutableArray array];
     [self.advancedSettings addObject:[NSIndexPath indexPathForRow:0 inSection:RMBTSettingsSectionAdvanced]];
@@ -264,7 +294,10 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == RMBTSettingsSectionAdvanced) {
+    if (indexPath.section == RMBTSettingsSectionGeneral) {
+        NSIndexPath *itemIndexPath = self.generalSettings[indexPath.row];
+        return [super tableView:tableView cellForRowAtIndexPath:itemIndexPath];
+    } else if (indexPath.section == RMBTSettingsSectionAdvanced) {
         NSIndexPath *itemIndexPath = self.advancedSettings[indexPath.row];
         return [super tableView:tableView cellForRowAtIndexPath:itemIndexPath];
     } else {
@@ -273,6 +306,9 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == RMBTSettingsSectionGeneral) {
+        return self.generalSettings.count;
+    }
     if (section == RMBTSettingsSectionAdvanced) {
         return self.advancedSettings.count;
     } else if (section == RMBTSettingsSectionAdvanced && ![RMBTSettings sharedSettings].loopMode)  {

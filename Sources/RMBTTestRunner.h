@@ -73,4 +73,6 @@ typedef NS_ENUM(NSInteger, RMBTTestRunnerCancelReason) {
 - (id)initWithDelegate:(id<RMBTTestRunnerDelegate>)delegate;
 - (void)startWithExtraParams:(NSDictionary*)extraParams; // optional extra params like loop info
 - (void)cancel;
+
++ (BOOL)willQoSPerformed;
 @end
