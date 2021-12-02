@@ -1,3 +1,5 @@
+"ÜBERNEHMEN" = "ÜBERNEHMEN";
+
 "Options" = "Einstellungen";
 
 "Description" = "Beschreibung";
@@ -255,7 +257,7 @@
 "gaming" = "Spiele";
 "gaming_cloud" = "Spiele Cloud";
 "gaming_streaming" = "Spiele Streaming";
-"qos" = "Qualitätstests";
+"qos" = "QoS Tests";
 
 "text_button_decline" = "Abbrechen";
 "text_button_accept" = "Akzeptieren";
