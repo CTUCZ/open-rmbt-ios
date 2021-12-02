@@ -38,7 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _qosWillPerformed = !([RMBTSettings sharedSettings].skipQoS);
+    _qosWillPerformed = [RMBTTestRunner willQoSPerformed];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

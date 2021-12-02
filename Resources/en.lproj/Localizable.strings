@@ -389,5 +389,8 @@
 
 "preferences_developer_logging" = "Logging";
 "preferences_developer_logging_summary" = "Log messages will be sent to the selected destination via UDP.";
-"preferences_developer_loggind_host" = "Control host";
-"preferences_developer_loggind_port" = "Control port";
+"preferences_developer_loggind_host" = "Logging host";
+"preferences_developer_loggind_port" = "Logging port";
+
+"preferences_qos_measurement_only_after_some_time" = "Only after 2 hours";
+"preferences_qos_measurement_only_after_some_time_summary" = "Do not perform new QoS measurements, if the last one was done less than 2 hours ago.";
