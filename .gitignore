@@ -14,3 +14,5 @@ xcuserdata
 
 Configs/
 Pods/
+Resources/RMBT-Info.plist
+Resources/Images.xcassets/AppIcon.appiconset/
