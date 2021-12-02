@@ -117,6 +117,7 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
             onToggle:^(BOOL value) {
         if (value == NO) {
             settings.forceIPv4 = NO;
+            [self.forceIPv4Switch setOn:NO animated:NO];
         }
         [self prepareAdvancedSettings];
         [self.tableView reloadData];

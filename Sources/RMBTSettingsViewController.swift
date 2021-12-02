@@ -12,8 +12,9 @@ extension RMBTSettingsViewController {
     @objc func tapHandler(_ sender: UIGestureRecognizer) {
         _ = UIAlertController.presentAlertDevCode(nil, codeAction: { (textField) in
             if textField.text == RMBTConfig.shared.DEV_CODE {
-                RMBTSettings.shared.isDevModeEnabled = true
-                RMBTSettings.shared.debugUnlocked = true
+                RMBTSettings.shared.isDevModeEnabled = !RMBTSettings.shared.isDevModeEnabled
+                RMBTSettings.shared.debugUnlocked = RMBTSettings.shared.isDevModeEnabled
+                RMBTSettings.shared.debugForceIPv6 = false
                 self.tableView.reloadData()
             }
         }, textFieldConfiguration: nil)
