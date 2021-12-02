@@ -99,9 +99,7 @@ open class ConnectivityService: NSObject { // TODO: rewrite with ControlServerNe
         }
         
         getLocalIpAddresses()
-        getLocalIpAddressesFromSocket()
 
-        
         checkIPV4()
         checkIPV6()
     }
@@ -167,59 +165,65 @@ open class ConnectivityService: NSObject { // TODO: rewrite with ControlServerNe
 
 ///
 extension ConnectivityService {
-
-    ///
-    fileprivate func getLocalIpAddresses() { // see: http://stackoverflow.com/questions/25626117/how-to-get-ip-address-in-swift
-        // Get list of all interfaces on the local machine:
-        var ifaddr: UnsafeMutablePointer<ifaddrs>? = nil
+    
+    // Source: https://stackoverflow.com/a/53528838
+    private struct InterfaceNames {
+        static let wifi = ["en0"]
+        static let wired = ["en2", "en3", "en4"]
+        static let cellular = ["pdp_ip0","pdp_ip1","pdp_ip2","pdp_ip3"]
+        static let supported = wifi + wired + cellular
+    }
+    
+    // Source: https://stackoverflow.com/a/53528838
+    fileprivate func getLocalIpAddresses() {
+        var ifaddr: UnsafeMutablePointer<ifaddrs>?
         if getifaddrs(&ifaddr) == 0 {
-
-            // For each interface ...
-            var ptr = ifaddr
-            while ptr != nil {
-            // for (var ptr = ifaddr; ptr != nil; ptr = ptr.memory.ifa_next) {
-                let flags = Int32((ptr?.pointee.ifa_flags)!)
-                var addr = ptr?.pointee.ifa_addr.pointee
-                let ifa_addr = ptr?.pointee.ifa_addr
-
-                // Check for running IPv4, IPv6 interfaces. Skip the loopback interface.
-                if (flags & (IFF_UP|IFF_RUNNING|IFF_LOOPBACK)) == (IFF_UP|IFF_RUNNING) {
-                    if addr?.sa_family == UInt8(AF_INET) || addr?.sa_family == UInt8(AF_INET6) {
-
-                        // Convert interface address to a human readable string:
-                        var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-                        if getnameinfo(&addr!, socklen_t((addr?.sa_len)!), &hostname, socklen_t(hostname.count), nil, socklen_t(0), NI_NUMERICHOST) == 0,
-                            getnameinfo(ifa_addr!, socklen_t((addr?.sa_len)!), &hostname, socklen_t(hostname.count), nil, socklen_t(0), NI_NUMERICHOST) == 0 {
-                            if let address = String(validatingUTF8: hostname) {
-
-                                if addr?.sa_family == UInt8(AF_INET) {
-                                    if self.connectivityInfo.ipv4.internalIp != address {
-                                        self.connectivityInfo.ipv4.internalIp = address
-                                        Log.logger.debug("local ipv4 address from getifaddrs: \(address)")
-                                    }
-                                }
-                                
-                                if addr?.sa_family == UInt8(AF_INET6) {
-                                    if self.connectivityInfo.ipv6.internalIp != address {
-                                        self.connectivityInfo.ipv6.internalIp = address
-//                                        self.connectivityInfo.ipv6.externalIp = address
-                                        Log.logger.debug("local ipv6 address from getifaddrs: \(address)")
-                                    }
-                                }
-                                
-                                //If IPv4 mode only
-                                if RMBTSettings.shared.forceIPv4 {
-                                    self.connectivityInfo.ipv6.internalIp = nil
-                                    self.connectivityInfo.ipv6.externalIp = nil
-                                    self.connectivityInfo.ipv6.connectionAvailable = false
-                                }
-                            }
-                        }
+            var pointer = ifaddr
+            while pointer != nil {
+                defer { pointer = pointer?.pointee.ifa_next }
+                
+                guard let interface = pointer?.pointee,
+                    interface.ifa_addr.pointee.sa_family == UInt8(AF_INET) || interface.ifa_addr.pointee.sa_family == UInt8(AF_INET6),
+                    let interfaceName = interface.ifa_name,
+                    let interfaceNameFormatted = String(cString: interfaceName, encoding: .utf8),
+                    InterfaceNames.supported.contains(interfaceNameFormatted)
+                    else { continue }
+                
+                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+                
+                getnameinfo(interface.ifa_addr,
+                    socklen_t(interface.ifa_addr.pointee.sa_len),
+                    &hostname,
+                    socklen_t(hostname.count),
+                    nil,
+                    socklen_t(0),
+                    NI_NUMERICHOST)
+                
+                guard let formattedIpAddress = String(cString: hostname, encoding: .utf8),
+                    !formattedIpAddress.isEmpty
+                    else { continue }
+                
+                if interface.ifa_addr.pointee.sa_family == UInt8(AF_INET) {
+                    if self.connectivityInfo.ipv4.internalIp != formattedIpAddress {
+                        self.connectivityInfo.ipv4.internalIp = formattedIpAddress
+                        Log.logger.debug("local ipv4 address from getifaddrs: \(formattedIpAddress)")
                     }
                 }
-
-                ptr = ptr?.pointee.ifa_next
+                
+                if interface.ifa_addr.pointee.sa_family == UInt8(AF_INET6) {
+                    if self.connectivityInfo.ipv6.internalIp != formattedIpAddress {
+                        self.connectivityInfo.ipv6.internalIp = formattedIpAddress
+                        Log.logger.debug("local ipv6 address from getifaddrs: \(formattedIpAddress)")
+                    }
+                }
             }
+            
+            if RMBTSettings.shared.forceIPv4 {
+                self.connectivityInfo.ipv6.internalIp = nil
+                self.connectivityInfo.ipv6.externalIp = nil
+                self.connectivityInfo.ipv6.connectionAvailable = false
+            }
+            
             freeifaddrs(ifaddr)
         }
     }
