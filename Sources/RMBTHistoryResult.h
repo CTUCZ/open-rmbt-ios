@@ -88,6 +88,9 @@ typedef NS_ENUM(NSUInteger, RMBTHistoryResultDataState) {
 
 - (void)ensureBasicDetails:(RMBTBlock)success;
 
+#pragma mark - QoS in QoE
+- (void)addQosToQoeClassifications;
+
 #pragma mark - Full Details
 
 @property (nonatomic, readonly) NSArray *fullDetailsItems;

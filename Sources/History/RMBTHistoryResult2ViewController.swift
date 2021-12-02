@@ -27,9 +27,6 @@ final class RMBTHistoryResult2ViewController: UIViewController {
     @IBOutlet private weak var shareButton: UIBarButtonItem!
     @IBOutlet private weak var loadingIndicatorView: UIActivityIndicatorView!
     
-    private var qosItems: [Any] = []
-    private var measurementItems: [Any] = []
-    
     public var historyResult: RMBTHistoryResult?
     public var isShowingLastResult = false
     
@@ -131,13 +128,6 @@ final class RMBTHistoryResult2ViewController: UIViewController {
             for item in historyResult.measurementItems ?? [] {
                 items.append(item)
             }
-            
-            // Add a summary "Quality tests 100% (90/90)" row
-            if (historyResult.qosResults != nil) {
-                self.qosItems = historyResult.qoeClassificationItems ?? []
-            }
-            
-            self.measurementItems = items
 
             historyResult.ensureSpeedGraph({ [weak self] in
                 self?.prepareSections()
@@ -202,6 +192,7 @@ final class RMBTHistoryResult2ViewController: UIViewController {
         if segue.identifier == "show_qos_group",
            let vc = segue.destination as? RMBTHistoryQoSGroupViewController {
             vc.result = sender as? RMBTHistoryQoSGroupResult
+            navigationItem.backBarButtonItem = UIBarButtonItem()
         } else if segue.identifier == "show_test_details", let vc = segue.destination as? RMBTHistoryTestDetailsViewController, let historyResult = historyResult, let testDetails = historyResult.fullDetailsItems as? [RMBTHistoryResultItem] {
             vc.testDetails = testDetails
             vc.navigationItem.backBarButtonItem = UIBarButtonItem()
@@ -284,18 +275,18 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
             titleCell.title = title
             titleCell.selectionStyle = .none
             return titleCell
-        case .qoe:
-            let qoeCell = tableView.dequeueReusableCell(withIdentifier: RMBTQOEListCell.ID, for: indexPath) as! RMBTQOEListCell
-            qoeCell.title = NSLocalizedString("Qualität", comment: "")
-            qoeCell.items = historyResult.qoeClassificationItems as? [RMBTHistoryQOEResultItem] ?? []
-            qoeCell.selectionStyle = .none
-            return qoeCell
         case .netInfo:
             let netInfoCell = tableView.dequeueReusableCell(withIdentifier: RMBTNetInfoListCell.ID, for: indexPath) as! RMBTNetInfoListCell
             netInfoCell.title = NSLocalizedString("Network", comment: "")
             netInfoCell.items = historyResult.netItems as? [RMBTHistoryResultItem] ?? []
             netInfoCell.selectionStyle = .none
             return netInfoCell
+        case .qoe:
+            let qoeCell = tableView.dequeueReusableCell(withIdentifier: RMBTQOEListCell.ID, for: indexPath) as! RMBTQOEListCell
+            qoeCell.title = NSLocalizedString("Qualität", comment: "")
+            qoeCell.items = historyResult.qoeClassificationItems as? [RMBTHistoryQOEResultItem] ?? []
+            qoeCell.selectionStyle = .none
+            return qoeCell
         case .qos:
             let qosCell = tableView.dequeueReusableCell(withIdentifier: RMBTQOSListCell.ID, for: indexPath) as! RMBTQOSListCell
             qosCell.title = NSLocalizedString("QoS", comment: "")

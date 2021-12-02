@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -30,7 +31,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXm-Vs-G1K">
-                        <rect key="frame" x="60" y="16" width="153" height="16.5"/>
+                        <rect key="frame" x="60" y="16" width="43" height="16.5"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -50,19 +51,26 @@
                             <constraint firstAttribute="width" constant="82" id="T3e-Hr-tvf"/>
                         </constraints>
                     </view>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6F-Nn-lzW">
+                        <rect key="frame" x="111" y="16" width="34" height="16.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                        <color key="textColor" systemColor="systemGray2Color"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="AXm-Vs-G1K" firstAttribute="leading" secondItem="yco-3Z-JH0" secondAttribute="trailing" constant="16" id="K6C-DO-ui1"/>
+                    <constraint firstItem="m6F-Nn-lzW" firstAttribute="leading" secondItem="AXm-Vs-G1K" secondAttribute="trailing" constant="8" id="KhL-ZZ-mki"/>
                     <constraint firstItem="tNS-Bt-DNu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="RyI-55-Okn"/>
-                    <constraint firstItem="b1x-i6-Vez" firstAttribute="leading" secondItem="AXm-Vs-G1K" secondAttribute="trailing" constant="5" id="UQs-HM-8qT"/>
                     <constraint firstAttribute="bottom" secondItem="tNS-Bt-DNu" secondAttribute="bottom" id="Yxf-7o-zSA"/>
+                    <constraint firstItem="m6F-Nn-lzW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="daa-Ft-YrA"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <constraints>
                 <constraint firstItem="b1x-i6-Vez" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="Hjb-8v-TMy"/>
                 <constraint firstItem="yco-3Z-JH0" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="gg8-b0-Et5"/>
-                <constraint firstItem="AXm-Vs-G1K" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="kO5-oX-q08"/>
+                <constraint firstItem="AXm-Vs-G1K" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kO5-oX-q08"/>
                 <constraint firstItem="yco-3Z-JH0" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" constant="20" id="nJ4-oD-1lB"/>
                 <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="b1x-i6-Vez" secondAttribute="trailing" constant="20" id="oJs-GB-nJR"/>
                 <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="tNS-Bt-DNu" secondAttribute="trailing" constant="20" id="zww-1m-tp2"/>
@@ -70,9 +78,15 @@
             <connections>
                 <outlet property="percentViewContainer" destination="b1x-i6-Vez" id="aO8-Ou-bzO"/>
                 <outlet property="qoeImageView" destination="yco-3Z-JH0" id="XBt-Vx-OwE"/>
+                <outlet property="subtitleLabel" destination="m6F-Nn-lzW" id="LRt-HO-L68"/>
                 <outlet property="titleLabel" destination="AXm-Vs-G1K" id="3jQ-gb-d4Q"/>
             </connections>
             <point key="canvasLocation" x="-75.362318840579718" y="42.857142857142854"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

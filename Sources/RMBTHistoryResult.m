@@ -162,7 +162,7 @@
         [[RMBTControlServer sharedControlServer] getHistoryQoSResultWithUUID:self.uuid success:^(QosMeasurementResultResponse *response) {
             NSArray *results = [RMBTHistoryQoSGroupResult resultsWithResponse:[response json]];
             if (results.count > 0) {
-                _qosResults = results;
+                self->_qosResults = results;
             }
             dispatch_group_leave(allDone);
         } error:^(NSError *error) {
@@ -180,6 +180,8 @@
                 self->_networkTypeServerDescription = response[@"network_info"][@"network_type_label"];
             }
             self->_timeString = response[@"time_string"];
+            NSTimeInterval t = [((NSNumber*)response[@"time"]) doubleValue] / 1000.0;
+            self->_timestamp = [NSDate dateWithTimeIntervalSince1970:t];
             self->_openTestUuid = response[@"open_test_uuid"];
 
             self->_shareURL = nil;
@@ -245,10 +247,42 @@
         }];
 
         dispatch_group_notify(allDone, dispatch_get_main_queue(),^{
-            if (_dataState == RMBTHistoryResultDataStateBasic) {
+            if (self->_dataState == RMBTHistoryResultDataStateBasic) {
+                [self addQosToQoeClassifications];
                 success();
             }
         });
+    }
+}
+
+- (void)addQosToQoeClassifications {
+    int totalQos = 0;
+    int okQos = 0;
+    NSNumber* okQosPercent = 0;
+    if (self->_qosResults.count > 0) {
+        for (RMBTHistoryQoSGroupResult* resGroup in self->_qosResults) {
+            for (RMBTHistoryQoSSingleResult* res in resGroup.tests) {
+                totalQos += 1;
+                if (res.successful) {
+                    okQos += 1;
+                }
+            }
+        }
+        okQosPercent = [NSNumber numberWithDouble:((double) okQos / totalQos)];
+    }
+    NSInteger classification;
+    if (okQosPercent.doubleValue >= 1) {
+        classification = 4;
+    } else if (okQosPercent.doubleValue > 0.95) {
+        classification = 3;
+    } else if (okQosPercent.doubleValue > 0.5) {
+        classification = 2;
+    } else {
+        classification = 1;
+    }
+    if (totalQos > 0) {
+        RMBTHistoryQOEResultItem* qosResultItem = [[RMBTHistoryQOEResultItem alloc] initWithCategory:@"qos" quality: okQosPercent.stringValue value: [NSString stringWithFormat:@"%d%% (%d/%d)", (int) (okQosPercent.doubleValue * 100), okQos, totalQos] classification:classification];
+        [self->_qoeClassificationItems addObject:qosResultItem];
     }
 }
 

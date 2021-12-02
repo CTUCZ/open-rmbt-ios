@@ -12,6 +12,20 @@ final class RMBTHistoryQoSGroupResultCell: UITableViewCell {
 
     static let ID = "RMBTHistoryQoSGroupResultCell"
     
+    @IBOutlet weak var statusDescriptionLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    
+    var result: RMBTHistoryQoSSingleResult? {
+        didSet {
+            guard let result = result else {
+                return
+            }
+            statusLabel.text = NSLocalizedString(result.successful ? "Succeeded" : "Failed", comment: "").uppercased()
+            statusLabel.textColor = result.successful ? UIColor(named: "greenButtonBackground") : .red
+            statusDescriptionLabel.text = result.statusDetails
+            statusDescriptionLabel.textColor = result.successful ? UIColor(named: "greenButtonBackground") : .red
+        }
+    }
 }

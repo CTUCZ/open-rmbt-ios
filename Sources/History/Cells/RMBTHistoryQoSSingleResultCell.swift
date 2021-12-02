@@ -10,13 +10,13 @@ import UIKit
 
 final class RMBTHistoryQoSSingleResultCell: UITableViewCell {
 
-    @IBOutlet weak var sequenceNumberLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
-    @IBOutlet weak var successImageView: UIImageView!
+    @IBOutlet weak var successIcon: UIImageView!
+    @IBOutlet weak var failureIcon: UIImageView!
 
-    public func set(result: RMBTHistoryQoSSingleResult?, sequenceNumber: UInt) {
-        self.sequenceNumberLabel.text = "\(sequenceNumber)"
-        self.summaryLabel.text = result?.summary
-        self.successImageView.image = result?.statusIcon()
+    public func set(result: RMBTHistoryQoSSingleResult, sequenceNumber: UInt) {
+        summaryLabel.text = "#\(sequenceNumber) \(result.summary ?? "")"
+        successIcon.isHidden = !result.successful
+        failureIcon.isHidden = result.successful
     }
 }

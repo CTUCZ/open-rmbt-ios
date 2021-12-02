@@ -1,3 +1,13 @@
+"ÜBERNEHMEN" = "ACCEPT";
+
+"Options" = "Options";
+
+"Description" = "Description";
+
+"Succeeded" = "Succeeded";
+
+"Failed" = "Failed";
+
 "Cancel" = "Cancel";
 
 /* History column */
@@ -160,7 +170,7 @@
 "Quality tests" = "Quality tests";
 
 /* QoS Details section header */
-"About" = "About";
+"Information" = "Information";
 
 /* Section header */
 "Details" = "Details";
