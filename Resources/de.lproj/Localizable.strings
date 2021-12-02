@@ -404,3 +404,16 @@
 
 "preferences_qos_measurement_only_after_some_time" = "Nur alle 2 Stunden";
 "preferences_qos_measurement_only_after_some_time_summary" = "Keine neue QoS-Messung, wenn die letzte vor weniger als 2 Stunden durchgeführt wurde.";
+
+"button_accept.title" = "ÜBERNEHMEN";
+
+"map.map_view" = "Kartenansicht";
+"map.cart_details" = "Kartendetails";
+
+"map_style_hybrid" = "Hybrid";
+"map_style_satellite" = "Satellite";
+"map_style_standard" = "Standard";
+
+"map_layer_communities" = "Gemeinden";
+"map_layer_points" = "Punkte";
+"map_layer_automatic" = "Automatisch";

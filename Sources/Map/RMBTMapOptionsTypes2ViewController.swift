@@ -21,6 +21,8 @@ class RMBTMapOptionsTypes2ViewController: UIViewController {
 
         self.navigationItem.title = NSLocalizedString("Map type", comment: "Title of the map options subview")
         
+        self.confirmButton.setTitle(.accept, for: .normal)
+        
         self.tableView.register(UINib(nibName: RMBTMapOptionsTypeCell.ID, bundle: nil), forCellReuseIdentifier: RMBTMapOptionsTypeCell.ID)
         
         self.tableView.tintColor = UIColor(red: 89.0/255.0, green: 178.0/255.0, blue: 0.0, alpha: 1.0)
@@ -74,4 +76,8 @@ extension RMBTMapOptionsTypes2ViewController: UITableViewDelegate, UITableViewDa
 
 extension RMBTMapOptionsTypes2ViewController: RMBTBottomCardProtocol {
     var contentSize: CGSize { return CGSize(width: 0, height: 600) }
+}
+
+private extension String {
+    static let accept = NSLocalizedString("button_accept.title", comment: "")
 }

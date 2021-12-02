@@ -148,10 +148,7 @@ class RMBTMapOverlays2ViewController: UIViewController {
         case 2: newOverlay = RMBTMapOptionsOverlayShapes
         default: newOverlay = RMBTMapOptionsOverlayAuto
         }
-        
-        if newOverlay == mapOptions?.oldActiveOverlay {
-            newOverlay = RMBTMapOptionsOverlayAuto
-        }
+
         mapOptions?.oldActiveOverlay = newOverlay
         self.updateOverlaySelection()
         self.delegate?.mapOverlaysViewControllerOverlayDidChange(self)

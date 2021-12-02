@@ -24,7 +24,7 @@ class RMBTMapOptionsFilter2ViewController: UIViewController {
         
         self.tableView.tintColor = UIColor(red: 89.0/255.0, green: 178.0/255.0, blue: 0.0, alpha: 1.0)
         
-        self.confirmButton.setTitle("ÜBERNEHMEN", for: .normal)
+        self.confirmButton.setTitle(.accept, for: .normal)
     }
     
     @IBAction func confirmButtonClick(_ sender: Any) {
@@ -56,4 +56,8 @@ extension RMBTMapOptionsFilter2ViewController: UITableViewDelegate, UITableViewD
         self.filter?.activeValue = newValue
         self.tableView.reloadData()
     }
+}
+
+private extension String {
+    static let accept = NSLocalizedString("button_accept.title", comment: "")
 }
