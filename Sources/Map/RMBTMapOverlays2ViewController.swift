@@ -143,7 +143,7 @@ class RMBTMapOverlays2ViewController: UIViewController {
     @IBAction func changeMapOverlay(_ sender: UIView) {
         var newOverlay: RMBTMapOptionsOverlay?
         switch sender.tag {
-        case 0: newOverlay = RMBTMapOptionsOverlayHeatmap
+        case 0: newOverlay = RMBTMapOptionsOverlayAuto
         case 1: newOverlay = RMBTMapOptionsOverlayPoints
         case 2: newOverlay = RMBTMapOptionsOverlayShapes
         default: newOverlay = RMBTMapOptionsOverlayAuto
