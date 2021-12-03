@@ -228,7 +228,7 @@ class RMBTMap2ViewController: UIViewController {
             vc.modalPresentationStyle = .overCurrentContext
             vc.onFindItem = { item in
                 if let item = item {
-                    self.mapView.setCenter(item.placemark.coordinate, animated: true)
+                    self.mapView.setCenter(item.placemark.coordinate, zoom: 8, animated: true)
                 }
             }
         }
