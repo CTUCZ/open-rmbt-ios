@@ -238,6 +238,10 @@
 		E9968A2624FD762A0042159C /* WKWebView+RMBTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9968A2524FD762A0042159C /* WKWebView+RMBTConfiguration.m */; };
 		E99765B926FD885E009A1A4C /* UIFont+Roboto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99765B826FD885E009A1A4C /* UIFont+Roboto.swift */; };
 		E999A69D24FC2B5A002FFE77 /* RMBTHistoryQOEResultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */; };
+		E9AA641B275DC1890079E5A1 /* RMBTPingGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AA641A275DC1880079E5A1 /* RMBTPingGraphView.swift */; };
+		E9AA641D275DCEEE0079E5A1 /* RMBTHistoryPingGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AA641C275DCEEE0079E5A1 /* RMBTHistoryPingGraph.swift */; };
+		E9AA6420275DD6FA0079E5A1 /* RMBTHistoryPingGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AA641E275DD6FA0079E5A1 /* RMBTHistoryPingGraphCell.swift */; };
+		E9AA6421275DD6FA0079E5A1 /* RMBTHistoryPingGraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9AA641F275DD6FA0079E5A1 /* RMBTHistoryPingGraphCell.xib */; };
 		E9B51CC627240B84006ED0C7 /* UIApplication+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B51CC527240B84006ED0C7 /* UIApplication+Additions.swift */; };
 		E9B51CC8272431A0006ED0C7 /* RMBTIntroPortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B51CC7272431A0006ED0C7 /* RMBTIntroPortraitView.swift */; };
 		E9B51CCA27243208006ED0C7 /* RMBTIntroPortraitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B51CC927243208006ED0C7 /* RMBTIntroPortraitView.xib */; };
@@ -609,6 +613,10 @@
 		E99765B826FD885E009A1A4C /* UIFont+Roboto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Roboto.swift"; sourceTree = "<group>"; };
 		E999A69524FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTHistoryQOEResultItemCell.m; sourceTree = "<group>"; };
 		E999A69624FC1416002FFE77 /* RMBTHistoryQOEResultItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistoryQOEResultItemCell.h; sourceTree = "<group>"; };
+		E9AA641A275DC1880079E5A1 /* RMBTPingGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTPingGraphView.swift; sourceTree = "<group>"; };
+		E9AA641C275DCEEE0079E5A1 /* RMBTHistoryPingGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryPingGraph.swift; sourceTree = "<group>"; };
+		E9AA641E275DD6FA0079E5A1 /* RMBTHistoryPingGraphCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTHistoryPingGraphCell.swift; sourceTree = "<group>"; };
+		E9AA641F275DD6FA0079E5A1 /* RMBTHistoryPingGraphCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMBTHistoryPingGraphCell.xib; sourceTree = "<group>"; };
 		E9B51CC527240B84006ED0C7 /* UIApplication+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Additions.swift"; sourceTree = "<group>"; };
 		E9B51CC7272431A0006ED0C7 /* RMBTIntroPortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTIntroPortraitView.swift; sourceTree = "<group>"; };
 		E9B51CC927243208006ED0C7 /* RMBTIntroPortraitView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTIntroPortraitView.xib; sourceTree = "<group>"; };
@@ -800,6 +808,7 @@
 				C774EE8217936AF700D623A3 /* RMBTHistoryResult.m */,
 				C7704EA11E95531B00044AF6 /* RMBTHistorySpeedGraph.h */,
 				C7704EA21E95531B00044AF6 /* RMBTHistorySpeedGraph.m */,
+				E9AA641C275DCEEE0079E5A1 /* RMBTHistoryPingGraph.swift */,
 				C733B6D71DDE1EB2005B9105 /* RMBTHistoryQoSGroupResult.h */,
 				C733B6D81DDE1EB2005B9105 /* RMBTHistoryQoSGroupResult.m */,
 				C7A8CC051DFDAC7E00D9E979 /* RMBTHistoryQoSSingleResult.h */,
@@ -886,6 +895,7 @@
 				C7C242EE1EE5A20900E3C6E2 /* RMBTBaseTestViewController.m */,
 				E94ED1D226C63C7400B17B25 /* RMBTGaugeView.swift */,
 				E9E9E8F8273BDA51005EB393 /* RMBTSpeedGraphView.swift */,
+				E9AA641A275DC1880079E5A1 /* RMBTPingGraphView.swift */,
 			);
 			name = Test;
 			sourceTree = "<group>";
@@ -1402,6 +1412,8 @@
 				E9E993C526EA49D200E7EED6 /* RMBTHistorySpeedGrapshCell.xib */,
 				E9E993C826EA538700E7EED6 /* RMBTHistoryGraphCell.swift */,
 				E9E993C926EA538700E7EED6 /* RMBTHistoryGraphCell.xib */,
+				E9AA641E275DD6FA0079E5A1 /* RMBTHistoryPingGraphCell.swift */,
+				E9AA641F275DD6FA0079E5A1 /* RMBTHistoryPingGraphCell.xib */,
 				E9E993CE26EB0CC300E7EED6 /* RMBTHistoryTitleCell.swift */,
 				E9E993CF26EB0CC300E7EED6 /* RMBTHistoryTitleCell.xib */,
 				E9E993D226EB0E4700E7EED6 /* RMBTQOEListCell.swift */,
@@ -1676,6 +1688,7 @@
 				E9E993E926EB27BD00E7EED6 /* RMBTQOSItemCell.xib in Resources */,
 				E959549826E4F17D004EA6D9 /* Roboto-Italic.ttf in Resources */,
 				E9E9940A26ECDAD100E7EED6 /* RMBTSwitcherCell.xib in Resources */,
+				E9AA6421275DD6FA0079E5A1 /* RMBTHistoryPingGraphCell.xib in Resources */,
 				3628C539275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib in Resources */,
 				36933A7D274FE220009A52BE /* RMBTTestDetailTitleCell.xib in Resources */,
 				E959549626E4F17D004EA6D9 /* Roboto-BoldItalic.ttf in Resources */,
@@ -1896,6 +1909,7 @@
 				C70AFDEB1F2E06E40064D631 /* RMBTMapOptionsTypesViewController.m in Sources */,
 				E9400F0826BAD10C0067273A /* AbstractBasicRequestBuilder.swift in Sources */,
 				E9400F1D26BE87450067273A /* ObjectMapperHelper.swift in Sources */,
+				E9AA641D275DCEEE0079E5A1 /* RMBTHistoryPingGraph.swift in Sources */,
 				E93FB0FC26F3A1DD00DD24CD /* RMBTHistoryResultPercentView.swift in Sources */,
 				E9E993D026EB0CC300E7EED6 /* RMBTHistoryTitleCell.swift in Sources */,
 				E9400F0E26BAE30A0067273A /* QOSMeasurementType.swift in Sources */,
@@ -1910,6 +1924,7 @@
 				C7DF2BB617D91AE400A0E76B /* RMBTNews.m in Sources */,
 				36A9DF3F272C4E190099A57C /* UILabel.swift in Sources */,
 				E9881C82270C1190008EFDF6 /* RMBTLoaderView.swift in Sources */,
+				E9AA641B275DC1890079E5A1 /* RMBTPingGraphView.swift in Sources */,
 				C72A27A417E1ECD400EC98B3 /* RMBTSSLHelper.m in Sources */,
 				E9400F0426BAD0CE0067273A /* BasicRequestBuilder_iOS.swift in Sources */,
 				E9400EE526BA32150067273A /* LogConfig.swift in Sources */,
@@ -1950,6 +1965,7 @@
 				E9E993BE26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.swift in Sources */,
 				E9E993FD26EC951200E7EED6 /* RMBTHistoryQoSGroupResultCell.swift in Sources */,
 				E9400F1626BE71EE0067273A /* MapMeasurementRequest.swift in Sources */,
+				E9AA6420275DD6FA0079E5A1 /* RMBTHistoryPingGraphCell.swift in Sources */,
 				E959547C26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift in Sources */,
 				C75FF5C817B15DA600A58056 /* RMBTInfoTextViewController.m in Sources */,
 				E9400F1F26BE89440067273A /* QosMeasurementResultResponse.swift in Sources */,

@@ -316,6 +316,7 @@
         NSDictionary *response = [r json];
         self->_downloadGraph = [[RMBTHistorySpeedGraph alloc] initWithResponse:response[@"speed_curve"][@"download"]];
         self->_uploadGraph = [[RMBTHistorySpeedGraph alloc] initWithResponse:response[@"speed_curve"][@"upload"]];
+        self->_pingGraph = [[RMBTHistoryPingGraph alloc] initWithPings: r.pingGraphValues];
         self->_signal = (NSNumber *) response[@"signal_strength"];
         self->_signalClass = [((NSNumber *) response[@"signal_classification"]) integerValue];
         success();
