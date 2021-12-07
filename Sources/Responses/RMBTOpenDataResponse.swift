@@ -13,6 +13,7 @@ import ObjectMapper
 
     var downloadSpeedCurve: [RMBTOpenDataSpeedCurveValue] = []
     var uploadSpeedCurve: [RMBTOpenDataSpeedCurveValue] = []
+    @objc var pingGraphValues: [RMBTHistoryPing] = []
     var signal: Int?
     var signalClass: Int?
     
@@ -23,6 +24,7 @@ import ObjectMapper
     public override func mapping(map: Map) {
         downloadSpeedCurve <- map["speed_curve.download"]
         uploadSpeedCurve <- map["speed_curve.upload"]
+        pingGraphValues <- map["speed_curve.ping"]
         signal <- map["signal_strength"]
         signalClass <- map["signal_classification"]
     }

@@ -22,6 +22,8 @@
 #import "RMBTHistoryQoSGroupResult.h"
 #import "RMBTHistorySpeedGraph.h"
 
+@class RMBTHistoryPingGraph;
+
 @interface RMBTHistoryResultItem : NSObject
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSString *value;
@@ -99,6 +101,8 @@ typedef NS_ENUM(NSUInteger, RMBTHistoryResultDataState) {
 #pragma mark - Speed graphs
 
 @property (nonatomic, readonly) RMBTHistorySpeedGraph *downloadGraph, *uploadGraph;
+@property (nonatomic, readonly) RMBTHistoryPingGraph *pingGraph;
+
 - (void)ensureSpeedGraph:(RMBTBlock)success;
 
 @end

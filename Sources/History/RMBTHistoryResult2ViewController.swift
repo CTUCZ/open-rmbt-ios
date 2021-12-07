@@ -82,7 +82,7 @@ final class RMBTHistoryResult2ViewController: UIViewController {
         
         sections.append(.basicInfo)
         
-        if (historyResult.downloadGraph != nil) || (historyResult.uploadGraph != nil) {
+        if (historyResult.downloadGraph != nil) || (historyResult.uploadGraph != nil) || (historyResult.pingGraph != nil) {
             sections.append(.speedGraphs)
         }
         
@@ -264,10 +264,17 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
             return networkCell
         case .speedGraphs:
             let speedGraphsCell = tableView.dequeueReusableCell(withIdentifier: RMBTHistorySpeedGrapshCell.ID, for: indexPath) as! RMBTHistorySpeedGrapshCell
-            speedGraphsCell.graphs = [
-                ("Download", historyResult.downloadGraph),
-                ("Upload", historyResult.uploadGraph)
-            ]
+            var graphs: [(title: String, value: NSObject)] = []
+            if let graph = historyResult.downloadGraph {
+                graphs.append(("Download", graph))
+            }
+            if let graph = historyResult.uploadGraph {
+                graphs.append(("Upload", graph))
+            }
+            if let graph = historyResult.pingGraph {
+                graphs.append(("Ping", graph))
+            }
+            speedGraphsCell.graphs = graphs
             speedGraphsCell.selectionStyle = .none
             return speedGraphsCell
         case .title(let title):

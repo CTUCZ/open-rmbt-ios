@@ -16,7 +16,7 @@ final class RMBTHistorySpeedGrapshCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var graphs: [(title: String, value: RMBTHistorySpeedGraph)] = [] {
+    var graphs: [(title: String, value: NSObject)] = [] {
         didSet {
             collectionView.reloadData()
             collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
@@ -39,6 +39,7 @@ final class RMBTHistorySpeedGrapshCell: UITableViewCell {
         super.awakeFromNib()
         
         collectionView.register(UINib(nibName: RMBTHistoryGraphCell.ID, bundle: nil), forCellWithReuseIdentifier: RMBTHistoryGraphCell.ID)
+        collectionView.register(UINib(nibName: RMBTHistoryPingGraphCell.ID, bundle: nil), forCellWithReuseIdentifier: RMBTHistoryPingGraphCell.ID)
     }
     
     override func layoutSubviews() {
@@ -58,13 +59,15 @@ extension RMBTHistorySpeedGrapshCell: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RMBTHistoryGraphCell.ID, for: indexPath) as! RMBTHistoryGraphCell
-        
-        let graph = self.graphs[indexPath.row]
-        
-        cell.graph = graph.value
-        
-        return cell
+        if let graph = self.graphs[indexPath.row].value as? RMBTHistorySpeedGraph {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RMBTHistoryGraphCell.ID, for: indexPath) as! RMBTHistoryGraphCell
+            cell.graph = graph
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RMBTHistoryPingGraphCell.ID, for: indexPath) as! RMBTHistoryPingGraphCell
+            cell.graph = self.graphs[indexPath.row].value as? RMBTHistoryPingGraph
+            return cell
+        }
     }
 }
 
