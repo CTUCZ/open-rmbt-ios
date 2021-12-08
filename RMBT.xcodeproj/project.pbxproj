@@ -62,7 +62,6 @@
 		C75A1191179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75A1190179B50CE00E2444F /* RMBTHistoryResultDetailsViewController.m */; };
 		C75FF5C817B15DA600A58056 /* RMBTInfoTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5C717B15DA600A58056 /* RMBTInfoTextViewController.m */; };
 		C75FF5D517B1970600A58056 /* RMBTMapOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5D417B1970600A58056 /* RMBTMapOptions.m */; };
-		C75FF5D817B2602F00A58056 /* RMBTMapOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5D717B2602E00A58056 /* RMBTMapOptionsViewController.m */; };
 		C76B8C87177709C800925BE1 /* RMBTThroughputHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = C76B8C86177709C800925BE1 /* RMBTThroughputHistory.m */; };
 		C7704EA31E95531B00044AF6 /* RMBTHistorySpeedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = C7704EA21E95531B00044AF6 /* RMBTHistorySpeedGraph.m */; };
 		C77071041E96812A00043884 /* RMBTHistorySpeedGraphCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C77071031E96812A00043884 /* RMBTHistorySpeedGraphCell.m */; };
@@ -113,7 +112,7 @@
 		E91316BD26ADD4DE00368DCD /* RMBTGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316BC26ADD4DE00368DCD /* RMBTGradientView.swift */; };
 		E91316D626B3E98900368DCD /* RMBTWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316D526B3E98800368DCD /* RMBTWaveView.swift */; };
 		E930769926CE247F0046A17B /* RMBTMap2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930769826CE247F0046A17B /* RMBTMap2ViewController.swift */; };
-		E930769B26CE3AA80046A17B /* RMBTMapOptions2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930769A26CE3AA80046A17B /* RMBTMapOptions2ViewController.swift */; };
+		E930769B26CE3AA80046A17B /* RMBTMapOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930769A26CE3AA80046A17B /* RMBTMapOptionsViewController.swift */; };
 		E930769F26CE83200046A17B /* RMBTMapOptions2LayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930769E26CE83200046A17B /* RMBTMapOptions2LayoutViewController.swift */; };
 		E939AAA526DA837D00D73F0B /* MKMapView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939AAA426DA837D00D73F0B /* MKMapView+Additions.swift */; };
 		E939AAA926DB8B0800D73F0B /* RMBTMeasurementPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939AAA826DB8B0800D73F0B /* RMBTMeasurementPin.swift */; };
@@ -388,8 +387,6 @@
 		C75FF5C717B15DA600A58056 /* RMBTInfoTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTInfoTextViewController.m; sourceTree = "<group>"; };
 		C75FF5D317B1970600A58056 /* RMBTMapOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTMapOptions.h; sourceTree = "<group>"; };
 		C75FF5D417B1970600A58056 /* RMBTMapOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTMapOptions.m; sourceTree = "<group>"; };
-		C75FF5D617B2602E00A58056 /* RMBTMapOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTMapOptionsViewController.h; sourceTree = "<group>"; };
-		C75FF5D717B2602E00A58056 /* RMBTMapOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTMapOptionsViewController.m; sourceTree = "<group>"; };
 		C76B8C85177709C800925BE1 /* RMBTThroughputHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTThroughputHistory.h; sourceTree = "<group>"; };
 		C76B8C86177709C800925BE1 /* RMBTThroughputHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTThroughputHistory.m; sourceTree = "<group>"; };
 		C7704EA11E95531B00044AF6 /* RMBTHistorySpeedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTHistorySpeedGraph.h; sourceTree = "<group>"; };
@@ -474,7 +471,7 @@
 		E91316BC26ADD4DE00368DCD /* RMBTGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTGradientView.swift; sourceTree = "<group>"; };
 		E91316D526B3E98800368DCD /* RMBTWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTWaveView.swift; sourceTree = "<group>"; };
 		E930769826CE247F0046A17B /* RMBTMap2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMap2ViewController.swift; sourceTree = "<group>"; };
-		E930769A26CE3AA80046A17B /* RMBTMapOptions2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptions2ViewController.swift; sourceTree = "<group>"; };
+		E930769A26CE3AA80046A17B /* RMBTMapOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptionsViewController.swift; sourceTree = "<group>"; };
 		E930769E26CE83200046A17B /* RMBTMapOptions2LayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptions2LayoutViewController.swift; sourceTree = "<group>"; };
 		E939AAA426DA837D00D73F0B /* MKMapView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Additions.swift"; sourceTree = "<group>"; };
 		E939AAA826DB8B0800D73F0B /* RMBTMeasurementPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMeasurementPin.swift; sourceTree = "<group>"; };
@@ -724,8 +721,6 @@
 			children = (
 				C7228DF017FC1CB100FB984D /* Callout */,
 				C7C5B54E17E887040035D752 /* Models */,
-				C75FF5D617B2602E00A58056 /* RMBTMapOptionsViewController.h */,
-				C75FF5D717B2602E00A58056 /* RMBTMapOptionsViewController.m */,
 				C71F38941F2CF60000D2F83A /* RMBTMapOptionsFilterViewController.h */,
 				C71F38951F2CF60000D2F83A /* RMBTMapOptionsFilterViewController.m */,
 				C70AFDE91F2E06E40064D631 /* RMBTMapOptionsTypesViewController.h */,
@@ -1306,7 +1301,7 @@
 				E946B94826D62E680006E1F1 /* Segues */,
 				E946B93C26D28B880006E1F1 /* Cells */,
 				E930769826CE247F0046A17B /* RMBTMap2ViewController.swift */,
-				E930769A26CE3AA80046A17B /* RMBTMapOptions2ViewController.swift */,
+				E930769A26CE3AA80046A17B /* RMBTMapOptionsViewController.swift */,
 				E930769E26CE83200046A17B /* RMBTMapOptions2LayoutViewController.swift */,
 				E946B94D26D65F0D0006E1F1 /* RMBTMapOptionsFilter2ViewController.swift */,
 				E946B94F26D661730006E1F1 /* RMBTMapOptionsTypes2ViewController.swift */,
@@ -1781,7 +1776,7 @@
 				E9400F3526BE8D250067273A /* MeasurementSpeedRawItem.swift in Sources */,
 				C7535B4818298F84003A8CC8 /* UITableViewCell+RMBTHeight.m in Sources */,
 				E94ED1D326C63C7400B17B25 /* RMBTGaugeView.swift in Sources */,
-				E930769B26CE3AA80046A17B /* RMBTMapOptions2ViewController.swift in Sources */,
+				E930769B26CE3AA80046A17B /* RMBTMapOptionsViewController.swift in Sources */,
 				C783F6891ED85312001CB2F9 /* RMBTQoSIPTest.m in Sources */,
 				E959547826E38AF7004EA6D9 /* RMBTHistoryIndex2ViewController.swift in Sources */,
 				E9E9E8FF274238B6005EB393 /* RMBTTestPortraitView.swift in Sources */,
@@ -1946,7 +1941,6 @@
 				E9400F2F26BE8CCD0067273A /* WifiInfo.swift in Sources */,
 				E9E993F426EC814900E7EED6 /* QosMeasurementResultRequest.swift in Sources */,
 				E9E993F626EC816800E7EED6 /* QOSTypeDefinition.swift in Sources */,
-				C75FF5D817B2602F00A58056 /* RMBTMapOptionsViewController.m in Sources */,
 				C77952DC1E23DF5200B95FFF /* RMBTQoSTracerouteTest.m in Sources */,
 				E9E993B726E9FE0C00E7EED6 /* RMBTHistoryResult2ViewController.swift in Sources */,
 				E9400F2B26BE8CB70067273A /* Signal.swift in Sources */,

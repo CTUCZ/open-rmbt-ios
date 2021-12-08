@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol RMBTMapOptions2ViewControllerDelegate: AnyObject {
-    func mapOptionsViewController(_ vc: RMBTMapOptions2ViewController, willDisappearWithChange isChange: Bool)
+protocol RMBTMapOptionsViewControllerDelegate: AnyObject {
+    func mapOptionsViewController(_ vc: RMBTMapOptionsViewController, willDisappearWithChange isChange: Bool)
 }
 
-final class RMBTMapOptions2ViewController: UIViewController {
+final class RMBTMapOptionsViewController: UIViewController {
 
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,7 +26,7 @@ final class RMBTMapOptions2ViewController: UIViewController {
     
     var constraint: NSLayoutConstraint?
     
-    weak var delegate: RMBTMapOptions2ViewControllerDelegate?
+    weak var delegate: RMBTMapOptionsViewControllerDelegate?
     
     var mapOptions: RMBTMapOptions?
     
@@ -108,7 +108,7 @@ final class RMBTMapOptions2ViewController: UIViewController {
     }
 }
 
-extension RMBTMapOptions2ViewController: UITableViewDelegate, UITableViewDataSource {
+extension RMBTMapOptionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = (self.mapOptions?.oldActiveSubtype?.type.filters.count ?? 0)
         return count + 1 // type
@@ -135,11 +135,11 @@ extension RMBTMapOptions2ViewController: UITableViewDelegate, UITableViewDataSou
 
 }
 
-extension RMBTMapOptions2ViewController: RMBTBottomCardProtocol {
+extension RMBTMapOptionsViewController: RMBTBottomCardProtocol {
     var contentSize: CGSize { return CGSize(width: 0, height: 400) }
 }
 
-extension RMBTMapOptions2ViewController: UINavigationControllerDelegate {
+extension RMBTMapOptionsViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch operation {
         case .push: return PushAnimator()
