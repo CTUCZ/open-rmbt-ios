@@ -5,6 +5,7 @@
 #import "RMBTConfig.h"
 #import "RMBTHelpers.h"
 
+#import "WKWebView+RMBTConfiguration.h"
 #import "RMBTMapOptions.h"
 #import "RMBTSpeed.h"
 #import "RMBTLocationTracker.h"

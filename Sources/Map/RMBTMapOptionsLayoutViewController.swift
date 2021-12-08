@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RMBTMapOptions2LayoutViewController: UIViewController {
+class RMBTMapOptionsLayoutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,6 @@ protocol RMBTBottomCardProtocol {
     var contentSize: CGSize { get }
 }
 
-extension RMBTMapOptions2LayoutViewController: RMBTBottomCardProtocol {
+extension RMBTMapOptionsLayoutViewController: RMBTBottomCardProtocol {
     var contentSize: CGSize { return CGSize(width: 0, height: 600) }
 }

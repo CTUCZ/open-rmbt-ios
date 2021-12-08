@@ -2845,7 +2845,7 @@
                                 <rect key="frame" x="0.0" y="44" width="428" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Einstellungen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aer-Tf-nVK">
-                                        <rect key="frame" x="20.000000000000007" y="14.666666666666664" width="95.666666666666686" height="19"/>
+                                        <rect key="frame" x="20" y="14.666666666666664" width="97" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3291,10 +3291,10 @@
             </objects>
             <point key="canvasLocation" x="6257" y="493"/>
         </scene>
-        <!--Map Options2 Layout View Controller-->
+        <!--Map Options Layout View Controller-->
         <scene sceneID="M7t-k2-Rwd">
             <objects>
-                <viewController id="REF-fa-MAz" customClass="RMBTMapOptions2LayoutViewController" customModule="RMBT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="REF-fa-MAz" customClass="RMBTMapOptionsLayoutViewController" customModule="RMBT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NxG-hp-xBM">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3857,7 +3857,7 @@
         <!--Activation and privacy-->
         <scene sceneID="72Z-fS-kqR">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" id="Vjw-SS-k0o" customClass="RMBTLoopModeConfirmationViewController" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="Vjw-SS-k0o" customClass="RMBTLoopModeConfirmationViewController" customModule="RMBT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n8N-iB-BuV">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
