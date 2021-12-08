@@ -3538,41 +3538,6 @@
         <scene sceneID="pDX-Cg-Z6d">
             <objects>
                 <tableViewController id="Izs-Qc-hhz" customClass="RMBTMapOptionsOverlaysViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="bQA-kx-ZpV">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="map_overlay_cell" textLabel="hLY-Sc-poj" detailTextLabel="zGy-WF-y0j" style="IBUITableViewCellStyleSubtitle" id="p4B-w4-pd5">
-                                <rect key="frame" x="0.0" y="49" width="428" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p4B-w4-pd5" id="p5F-q1-dmS">
-                                    <rect key="frame" x="0.0" y="0.0" width="428" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hLY-Sc-poj">
-                                            <rect key="frame" x="20" y="5" width="33" height="20"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" id="zGy-WF-y0j">
-                                            <rect key="frame" x="19.999999999999996" y="24.999999999999996" width="40.666666666666664" height="14.333333333333334"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Izs-Qc-hhz" id="L20-Dn-LLP"/>
-                            <outlet property="delegate" destination="Izs-Qc-hhz" id="zLh-7S-Qa4"/>
-                        </connections>
-                    </tableView>
                     <navigationItem key="navigationItem" id="jUU-3M-ssh"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzY-e1-7TE" userLabel="First Responder" sceneMemberID="firstResponder"/>
