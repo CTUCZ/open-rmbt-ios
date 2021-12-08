@@ -16,7 +16,7 @@ final class RMBTLoopModeConfirmationViewController: UIViewController {
     @IBOutlet weak var acceptButton: UIButton!
     
     lazy var webView: WKWebView = {
-        let webView = WKWebView.wideWebView(withFrame: self.view.bounds)
+        let webView = WKWebView.wideWebView(with: self.view.bounds)
         webView.translatesAutoresizingMaskIntoConstraints = false
         return webView
     }()
