@@ -5,13 +5,11 @@
 #import "RMBTConfig.h"
 #import "RMBTHelpers.h"
 
+#import "RMBTMapOptions.h"
 #import "RMBTSpeed.h"
 #import "RMBTLocationTracker.h"
 #import "RMBTConnectivityTracker.h"
-#import "RMBTLoopModeTestViewController.h"
-#import "RMBTNews.h"
 #import "UIColor+RMBTHex.h"
-#import "RMBTMapOptionsViewController.h"
 #import <SVWebViewController/SVWebViewController.h>
 #import <SVWebViewController/SVModalWebViewController.h>
 

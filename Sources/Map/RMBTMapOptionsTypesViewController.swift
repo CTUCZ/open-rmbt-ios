@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RMBTMapOptionsTypes2ViewController: UIViewController {
+class RMBTMapOptionsTypesViewController: UIViewController {
 
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -39,7 +39,7 @@ class RMBTMapOptionsTypes2ViewController: UIViewController {
     }
 }
 
-extension RMBTMapOptionsTypes2ViewController: UITableViewDelegate, UITableViewDataSource {
+extension RMBTMapOptionsTypesViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.mapOptions?.oldTypes.count ?? 0
     }
@@ -74,7 +74,7 @@ extension RMBTMapOptionsTypes2ViewController: UITableViewDelegate, UITableViewDa
     }
 }
 
-extension RMBTMapOptionsTypes2ViewController: RMBTBottomCardProtocol {
+extension RMBTMapOptionsTypesViewController: RMBTBottomCardProtocol {
     var contentSize: CGSize { return CGSize(width: 0, height: 600) }
 }
 
