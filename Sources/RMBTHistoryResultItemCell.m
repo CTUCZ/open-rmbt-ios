@@ -138,8 +138,8 @@ NSString * const RMBTTrafficLightTappedNotification = @"RMBTTrafficLightTappedNo
 
 - (void)setEmbedded:(BOOL)embedded {
     if (embedded) {
-        self.textLabel.font = [UIFont systemFontOfSize:15.0f];
-        self.detailTextLabel.font = [UIFont systemFontOfSize:15.0f];
+        self.textLabel.font = [UIFont robotoWithSize:15.0f weight:UIFontWeightRegular];
+        self.detailTextLabel.font = [UIFont robotoWithSize:15.0f weight:UIFontWeightRegular];
         self.detailTextLabel.numberOfLines = 2;
     }
 }

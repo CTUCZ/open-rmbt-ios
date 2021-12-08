@@ -38,7 +38,7 @@ class RMBTTOSViewController: UIViewController {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .center
         titleLabel.text = self.navigationItem.title
-        titleLabel.font = UIFont.systemFont(ofSize: 20)
+        titleLabel.font = UIFont.roboto(size: 20, weight: .regular)
         titleLabel.textColor = UIColor(named: "titleNavigationBar")
         titleLabel.adjustsFontSizeToFitWidth = true
         return titleLabel

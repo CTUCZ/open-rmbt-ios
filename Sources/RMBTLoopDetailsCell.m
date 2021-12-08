@@ -16,6 +16,7 @@
  */
 
 #import "RMBTLoopDetailsCell.h"
+#import "RMBT-Swift.h"
 
 @implementation RMBTLoopDetailsCell
 
@@ -27,7 +28,8 @@
 }
 
 - (void)setCompact:(BOOL)compact {
-    self.fieldLabel.font = [UIFont systemFontOfSize:compact ? 15.0f : 17.0f];
-    self.detailsLabel.font = [UIFont systemFontOfSize:compact ? 15.0f : 17.0f];
+    [UIFont robotoWithSize:compact ? 15.0f : 17.0f weight:UIFontWeightRegular];
+    self.fieldLabel.font = [UIFont robotoWithSize:compact ? 15.0f : 17.0f weight:UIFontWeightRegular];
+    self.detailsLabel.font = [UIFont robotoWithSize:compact ? 15.0f : 17.0f weight:UIFontWeightRegular];
 }
 @end

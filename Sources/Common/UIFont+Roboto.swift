@@ -8,9 +8,11 @@
 
 import Foundation
 
-extension UIFont {
-    static func roboto(size: CGFloat, weight: Weight) -> UIFont {
-        if weight == .medium {
+@objc extension UIFont {
+    @objc static func roboto(size: CGFloat, weight: Weight) -> UIFont {
+        if weight == .bold {
+            return UIFont(name: "Roboto-Bold", size: size) ?? UIFont.systemFont(ofSize: size, weight: weight)
+        } else if weight == .medium {
             return UIFont(name: "Roboto-Medium", size: size) ?? UIFont.systemFont(ofSize: size, weight: weight)
         } else {
             return UIFont(name: "Roboto", size: size) ?? UIFont.systemFont(ofSize: size, weight: weight)
