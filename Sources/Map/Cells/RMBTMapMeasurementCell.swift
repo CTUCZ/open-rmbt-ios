@@ -87,7 +87,7 @@ class RMBTMapMeasurementCell: UICollectionViewCell {
         
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont.systemFont(ofSize: 14)
+        titleLabel.font = UIFont.roboto(size: 14, weight: .regular)
         titleLabel.text = item.title
         
         view.addSubview(titleLabel)
@@ -96,7 +96,7 @@ class RMBTMapMeasurementCell: UICollectionViewCell {
         
         let valueLabel = UILabel()
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
-        valueLabel.font = UIFont.systemFont(ofSize: 14)
+        valueLabel.font = UIFont.roboto(size: 14, weight: .regular)
         valueLabel.textAlignment = .right
         valueLabel.text = item.value
         

@@ -16,6 +16,7 @@
  */
 
 #import "UITableViewCell+RMBTHeight.h"
+#import "RMBT-Swift.h"
 
 @implementation UITableViewCell (RMBTHeight)
 +(CGFloat)rmbtApproximateOptimalHeightForText:(NSString*)text
@@ -23,8 +24,8 @@
     static UIFont *cellTextFont, *cellDetailTextFont;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        cellTextFont = [UIFont boldSystemFontOfSize:17.0f];
-        cellDetailTextFont = [UIFont systemFontOfSize:17.0f];
+        cellTextFont = [UIFont robotoWithSize:17 weight:UIFontWeightBold];
+        cellDetailTextFont = [UIFont robotoWithSize:17 weight:UIFontWeightRegular];
     });
     CGSize textSize = [text sizeWithAttributes:@{NSFontAttributeName: cellTextFont}];
     CGSize detailTextSize = [detailText sizeWithAttributes:@{NSFontAttributeName: cellDetailTextFont}];
