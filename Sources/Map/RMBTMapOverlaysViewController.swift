@@ -1,5 +1,5 @@
 //
-//  RMBTMapOverlays2ViewController.swift
+//  RMBTMapOverlaysViewController.swift
 //  RMBT
 //
 //  Created by Sergey Glushchenko on 25.08.2021.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol RMBTMapOverlays2ViewControllerDelegate: AnyObject {
-    func mapOverlaysViewControllerMapTypeDidChange(_ vc: RMBTMapOverlays2ViewController)
-    func mapOverlaysViewControllerOverlayDidChange(_ vc: RMBTMapOverlays2ViewController)
+protocol RMBTMapOverlaysViewControllerDelegate: AnyObject {
+    func mapOverlaysViewControllerMapTypeDidChange(_ vc: RMBTMapOverlaysViewController)
+    func mapOverlaysViewControllerOverlayDidChange(_ vc: RMBTMapOverlaysViewController)
 }
 
-class RMBTMapOverlays2ViewController: UIViewController {
+class RMBTMapOverlaysViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -32,7 +32,7 @@ class RMBTMapOverlays2ViewController: UIViewController {
     @IBOutlet weak var heatmapOverlayButton: UIButton!
     var mapOptions: RMBTMapOptions?
     
-    weak var delegate: RMBTMapOverlays2ViewControllerDelegate?
+    weak var delegate: RMBTMapOverlaysViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,7 +104,7 @@ class RMBTMapOverlays2ViewController: UIViewController {
         shapesOverlayLabel.textColor = .mapTypeUnSelectedTitle
         
         switch mapOptions?.oldActiveOverlay {
-        case RMBTMapOptionsOverlayHeatmap:
+        case RMBTMapOptionsOverlayAuto:
             heatmapOverlayButton.backgroundColor = .mapTypeSelectedBackground
             heatmapOverlayButton.tintColor = .mapTypeSelectedTintImage
             heatmapOverlayLabel.textColor = .mapTypeSelectedTitle
@@ -156,7 +156,7 @@ class RMBTMapOverlays2ViewController: UIViewController {
     
 }
 
-extension RMBTMapOverlays2ViewController: RMBTBottomCardProtocol {
+extension RMBTMapOverlaysViewController: RMBTBottomCardProtocol {
     var contentSize: CGSize { return CGSize(width: 0, height: 302) }
 }
 

@@ -218,7 +218,7 @@ class RMBTMap2ViewController: UIViewController {
             vc.mapOptions = self.mapOptions
             vc.delegate = self
         } else if segue.identifier == self.showMapTypeSegue,
-           let vc = segue.destination as? RMBTMapOverlays2ViewController {
+           let vc = segue.destination as? RMBTMapOverlaysViewController {
             vc.mapOptions = self.mapOptions
             vc.delegate = self
         } else if segue.identifier == searchSegue,
@@ -343,8 +343,8 @@ extension RMBTMap2ViewController: RMBTMapOptionsViewControllerDelegate {
     }
 }
 
-extension RMBTMap2ViewController: RMBTMapOverlays2ViewControllerDelegate {
-    func mapOverlaysViewControllerMapTypeDidChange(_ vc: RMBTMapOverlays2ViewController) {
+extension RMBTMap2ViewController: RMBTMapOverlaysViewControllerDelegate {
+    func mapOverlaysViewControllerMapTypeDidChange(_ vc: RMBTMapOverlaysViewController) {
         Log.logger.debug("Map options changed, refreshing...")
         mapOptions?.saveSelection()
         
@@ -356,7 +356,7 @@ extension RMBTMap2ViewController: RMBTMapOverlays2ViewControllerDelegate {
         }
     }
     
-    func mapOverlaysViewControllerOverlayDidChange(_ vc: RMBTMapOverlays2ViewController) {
+    func mapOverlaysViewControllerOverlayDidChange(_ vc: RMBTMapOverlaysViewController) {
         Log.logger.debug("Map overlay changed, refreshing...")
         mapOptions?.saveSelection()
         self.refresh()
