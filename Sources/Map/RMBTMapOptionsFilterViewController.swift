@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RMBTMapOptionsFilter2ViewController: UIViewController {
+class RMBTMapOptionsFilterViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -32,7 +32,7 @@ class RMBTMapOptionsFilter2ViewController: UIViewController {
     }
 }
 
-extension RMBTMapOptionsFilter2ViewController: UITableViewDelegate, UITableViewDataSource {
+extension RMBTMapOptionsFilterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filter?.possibleValues.count ?? 0
     }

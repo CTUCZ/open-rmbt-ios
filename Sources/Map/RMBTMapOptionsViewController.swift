@@ -98,11 +98,11 @@ final class RMBTMapOptionsViewController: UIViewController {
         lastSelection = indexPath
 
         if segue.identifier == "show_filter",
-           let vc = segue.destination as? RMBTMapOptionsFilter2ViewController {
+           let vc = segue.destination as? RMBTMapOptionsFilterViewController {
             let filter = self.filter(at: indexPath?.row ?? 0)
             vc.filter = filter
         } else if segue.identifier == "show_types",
-           let vc = segue.destination as? RMBTMapOptionsTypes2ViewController {
+           let vc = segue.destination as? RMBTMapOptionsTypesViewController {
             vc.mapOptions = self.mapOptions
         }
     }

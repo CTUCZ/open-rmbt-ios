@@ -3262,35 +3262,6 @@
             </objects>
             <point key="canvasLocation" x="3422" y="2246"/>
         </scene>
-        <!--Map Options Filter View Controller-->
-        <scene sceneID="EwU-hX-5cz">
-            <objects>
-                <tableViewController id="lp2-nF-6Fj" customClass="RMBTMapOptionsFilterViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="SI6-vs-akK">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="map_options_filter_value_cell" id="Hk2-aw-KXI">
-                                <rect key="frame" x="0.0" y="49" width="428" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hk2-aw-KXI" id="VM3-R2-MlN">
-                                    <rect key="frame" x="0.0" y="0.0" width="428" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="lp2-nF-6Fj" id="mRP-mQ-3Sn"/>
-                            <outlet property="delegate" destination="lp2-nF-6Fj" id="ouO-LB-sVW"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="MZb-aI-LRp"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sy8-oj-uv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6257" y="493"/>
-        </scene>
         <!--Map Options Layout View Controller-->
         <scene sceneID="M7t-k2-Rwd">
             <objects>
@@ -3307,10 +3278,10 @@
             </objects>
             <point key="canvasLocation" x="5349" y="2230"/>
         </scene>
-        <!--Map Options Filter2 View Controller-->
+        <!--Map Options Filter View Controller-->
         <scene sceneID="rp9-jj-8Ol">
             <objects>
-                <viewController id="i7Q-Vl-3Vm" customClass="RMBTMapOptionsFilter2ViewController" customModule="RMBT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="i7Q-Vl-3Vm" customClass="RMBTMapOptionsFilterViewController" customModule="RMBT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8NX-Nb-D9I">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3470,10 +3441,10 @@
             </objects>
             <point key="canvasLocation" x="4838" y="-1455"/>
         </scene>
-        <!--Map Options Types2 View Controller-->
+        <!--Map Options Types View Controller-->
         <scene sceneID="yh9-Ti-AhR">
             <objects>
-                <viewController id="AWt-kP-Z0C" customClass="RMBTMapOptionsTypes2ViewController" customModule="RMBT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AWt-kP-Z0C" customClass="RMBTMapOptionsTypesViewController" customModule="RMBT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rob-Vu-eJ2">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3557,41 +3528,6 @@
         <scene sceneID="2ht-nI-1Hb">
             <objects>
                 <tableViewController id="kl1-nn-QMw" customClass="RMBTMapOptionsTypesViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="TPF-RU-BEW">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="map_type_cell" textLabel="6Nj-As-oga" detailTextLabel="SSk-Pc-BnD" style="IBUITableViewCellStyleSubtitle" id="rPm-W2-khp">
-                                <rect key="frame" x="0.0" y="49" width="428" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rPm-W2-khp" id="qAj-fP-uyU">
-                                    <rect key="frame" x="0.0" y="0.0" width="428" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Nj-As-oga">
-                                            <rect key="frame" x="20" y="5" width="33" height="20"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" id="SSk-Pc-BnD">
-                                            <rect key="frame" x="19.999999999999996" y="24.999999999999996" width="40.666666666666664" height="14.333333333333334"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="kl1-nn-QMw" id="9lx-eX-9ii"/>
-                            <outlet property="delegate" destination="kl1-nn-QMw" id="6ln-75-1WA"/>
-                        </connections>
-                    </tableView>
                     <navigationItem key="navigationItem" id="QWC-bV-aHE"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t92-yI-kqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
