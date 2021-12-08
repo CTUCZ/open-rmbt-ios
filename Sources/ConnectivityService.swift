@@ -174,6 +174,8 @@ extension ConnectivityService {
         static let supported = wifi + wired + cellular
     }
     
+    static let internalIpV6Prefix = "FE80"
+    
     // Source: https://stackoverflow.com/a/53528838
     fileprivate func getLocalIpAddresses() {
         var ifaddr: UnsafeMutablePointer<ifaddrs>?
@@ -210,7 +212,8 @@ extension ConnectivityService {
                     }
                 }
                 
-                if interface.ifa_addr.pointee.sa_family == UInt8(AF_INET6) {
+                if interface.ifa_addr.pointee.sa_family == UInt8(AF_INET6),
+                   !formattedIpAddress.uppercased().hasPrefix(ConnectivityService.internalIpV6Prefix) {
                     if self.connectivityInfo.ipv6.internalIp != formattedIpAddress {
                         self.connectivityInfo.ipv6.internalIp = formattedIpAddress
                         Log.logger.debug("local ipv6 address from getifaddrs: \(formattedIpAddress)")
