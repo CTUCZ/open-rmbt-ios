@@ -122,7 +122,7 @@ class RMBTMap2ViewController: UIViewController {
         if let initialLocation = initialLocation {
             // If test coordinates were provided, center map at the coordinates:
            self.mapView.setCenter(initialLocation.coordinate, animated: false)
-        } else if let location = RMBTLocationTracker.shared().location {
+        } else if let location = RMBTLocationTracker.shared.location {
             // Otherwise, see if we have user's location available...
             self.mapView.setCenter(location.coordinate, animated: false)
         }
@@ -190,7 +190,7 @@ class RMBTMap2ViewController: UIViewController {
     }
     
     @IBAction func myLocationButtonClick(_ sender: Any) {
-        guard let location = RMBTLocationTracker.shared().location else { return }
+        guard let location = RMBTLocationTracker.shared.location else { return }
         
         self.mapView.setCenter(location.coordinate, animated: true)
     }

@@ -19,7 +19,6 @@
 #import "RMBTTestWorker.h"
 #import "RMBTQoSTestRunner.h"
 
-#import "RMBTLocationTracker.h"
 #import "RMBTConnectivityTracker.h"
 #import "RMBT-Swift.h"
 
@@ -170,7 +169,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidSwitchToBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 
     // Register as observer for location tracker updates
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationsDidChange:) name:RMBTLocationTrackerNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationsDidChange:) name:NSNotification.RMBTLocationTrackerNotification object:nil];
     // ..and force an update right away
     [[RMBTLocationTracker sharedTracker] forceUpdate];
     [_connectivityTracker forceUpdate];
