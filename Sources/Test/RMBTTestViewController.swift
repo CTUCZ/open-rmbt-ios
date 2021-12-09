@@ -367,7 +367,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     func tapped() {
-        self.displayAlert(with: RMBTAppTitle() ?? "",
+        self.displayAlert(with: RMBTHelpers.RMBTAppTitle() ?? "",
                           message: NSLocalizedString("Do you really want to abort the running test?", comment: "Abort test alert title"),
                           cancelButtonTitle: NSLocalizedString("Abort Test", comment: "Abort test alert button"),
                           otherButtonTitle: NSLocalizedString("Continue", comment: "Abort test alert button")) { [weak self] in
@@ -557,7 +557,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     func onTestFinishedPhase(_ phase: RMBTTestRunnerPhase) { }
     
     func onTestMeasuredLatency(_ nanos: UInt64) {
-        self.currentView.ping = RMBTMillisecondsStringWithNanos(nanos, false)
+        self.currentView.ping = RMBTHelpers.RMBTMillisecondsString(with: Int64(nanos), withMS: false)
     }
     
     func onTestMeasuredTroughputs(_ throughputs: [Any]!, in phase: RMBTTestRunnerPhase) {

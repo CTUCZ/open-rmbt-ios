@@ -17,6 +17,7 @@
 
 #import "RMBTQoSNonTransparentProxyTest.h"
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
+#import "RMBT-Swift.h"
 
 @interface RMBTQoSNonTransparentProxyTest()<GCDAsyncSocketDelegate> {
     NSString *_request;
@@ -32,7 +33,6 @@
         _port = (NSUInteger)[params[@"port"] integerValue];
         _request = params[@"request"];
         _sem = dispatch_semaphore_create(0);
-        RMBTAssertValidPort(_port);
     }
     return self;
 }
@@ -102,7 +102,7 @@
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
     NSString *line = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    _result = RMBTChomp(line);
+    _result = [RMBTHelpers RMBTChomp:line];
     dispatch_semaphore_signal(_sem);
 }
 

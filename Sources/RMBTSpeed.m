@@ -17,6 +17,7 @@
 
 #import "RMBTSpeed.h"
 #include <math.h>
+#import "RMBT-Swift.h"
 
 NSString* RMBTSpeedMbpsSuffix(void) {
     static NSString *localizedMps = nil;
@@ -28,7 +29,7 @@ NSString* RMBTSpeedMbpsSuffix(void) {
 }
 
 NSString* RMBTSpeedMbpsStringWithSuffix(uint32_t kbps, BOOL suffix) {
-    NSString *speed = RMBTFormatNumber([NSNumber numberWithDouble:(double)kbps/1000.0]);
+    NSString *speed = [RMBTHelpers RMBTFormatNumber:[NSNumber numberWithDouble:(double)kbps/1000.0]];
     if (suffix) {
         return [NSString stringWithFormat:@"%@ %@", speed, RMBTSpeedMbpsSuffix()];
     } else {

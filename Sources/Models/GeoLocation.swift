@@ -46,7 +46,7 @@ import CoreLocation
     var relativeTimeNs: Int?
 
     /// NKOM uses  Date, the old solution NSNumber
-    var time:  NSNumber? // Date? //
+    var time: Int? // Date? //
 
     ///
     override init() { }
@@ -70,7 +70,7 @@ import CoreLocation
 //        time            = location.timestamp
         
         // TODO: Maybe need remove it
-        time = RMBTTimestampWithNSDate(location.timestamp as Date)
+        time = RMBTHelpers.RMBTTimestamp(with: location.timestamp)
     }
 
     ///

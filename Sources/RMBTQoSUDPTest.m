@@ -17,6 +17,7 @@
 
 #import "RMBTQoSUDPTest.h"
 #import <GCDAsyncUdpSocket.h>
+#import <RMBT-Swift.h>
 
 typedef NS_ENUM(long, RMBTQoSUDPPacketTag) {
     RMBTQoSUDPPacketTagOutgoing = 0,
@@ -81,7 +82,7 @@ static const uint64_t kDefaultDelayNanos = 300 * NSEC_PER_MSEC;
         NSUInteger receivedClientCount = _receivedPacketSeqs ? _receivedPacketSeqs.count : 0;
         NSInteger lostPackets = packetCount - receivedClientCount;
 
-        NSString *plr = [NSString stringWithFormat:@"%lu", (unsigned long)RMBTPercent(lostPackets, packetCount)];
+        NSString *plr = [NSString stringWithFormat:@"%lu", (unsigned long)[RMBTHelpers RMBTPercent:lostPackets total:packetCount]];
 
         if (outgoing) {
             [result addEntriesFromDictionary:@{
@@ -108,7 +109,6 @@ static const uint64_t kDefaultDelayNanos = 300 * NSEC_PER_MSEC;
 
 - (void)ipMain:(BOOL)outgoing {
     NSUInteger port = outgoing ? self.outPort : self.inPort;
-    RMBTAssertValidPort(port);
 
     NSUInteger packetCount = outgoing ? _outPacketCount : _inPacketCount;
 
@@ -158,7 +158,7 @@ static const uint64_t kDefaultDelayNanos = 300 * NSEC_PER_MSEC;
         _delayElapsedSem = dispatch_semaphore_create(0);
 
         for (uint8_t i=0;i<packetCount;i++) {
-            _delayLastPacketSentAt = RMBTCurrentNanos();
+            _delayLastPacketSentAt = [RMBTHelpers RMBTCurrentNanos];
             [udpSocket sendData:[self dataForOutgoingPacketWithFlag:RMBTQoSUDPTestPacketFlagAwaitResponse seq:i] withTimeout:self.timeoutSeconds tag:RMBTQoSUDPPacketTagOutgoing];
             if (dispatch_semaphore_wait(_delayElapsedSem, dispatch_time(DISPATCH_TIME_NOW, self.timeoutNanos)) != 0) {
                 RMBTLog(@"%@ timed out waiting for send delay!", self);
@@ -232,7 +232,7 @@ withFilterContext:(id)filterContext {
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag {
     if (tag == RMBTQoSUDPPacketTagOutgoing) {
-        uint64_t elapsed = RMBTCurrentNanos() - _delayLastPacketSentAt;
+        uint64_t elapsed = [RMBTHelpers RMBTCurrentNanos] - _delayLastPacketSentAt;
         uint64_t delay = elapsed > _delayNanos ? 0 : _delayNanos - elapsed;
         //RMBTLog(@"%@ waiting %ld ns for delay", self, delay);
         RMBTBlock signal = ^{
@@ -262,7 +262,8 @@ withFilterContext:(id)filterContext {
     [data appendData:uuidData];
 
     // Timestamp
-    NSData *timestampData = [[RMBTTimestampWithNSDate([NSDate date]) stringValue] dataUsingEncoding:NSASCIIStringEncoding];
+    
+    NSData *timestampData = [[@([RMBTHelpers RMBTTimestampWith:[NSDate date]]) stringValue] dataUsingEncoding:NSASCIIStringEncoding];
     [data appendData:timestampData];
 
     return data;
@@ -273,7 +274,7 @@ withFilterContext:(id)filterContext {
             self.uid,
             (unsigned long)self.concurrencyGroup,
             self.controlConnectionParams,
-            RMBTSecondsStringWithNanos(_delayNanos),
+            [RMBTHelpers RMBTSecondsStringWith:_delayNanos],
             self.outPort > 0 ? [NSString stringWithFormat:@"%ld/%ld", (unsigned long)self.outPort, (unsigned long)_outPacketCount] : @"-",
             self.inPort > 0 ? [NSString stringWithFormat:@"%ld/%ld", (unsigned long)self.inPort, (unsigned long)_inPacketCount] : @"-"
     ];

@@ -68,7 +68,7 @@ class Signal: Mappable {
     init(connectivity: RMBTConnectivity) {
         // TODO: additional fields?
 
-        relativeTimeNs = RMBTTimestampWithNSDate(connectivity.timestamp).intValue
+        relativeTimeNs = Int(RMBTHelpers.RMBTTimestamp(with: connectivity.timestamp))
         time = Int(connectivity.timestamp.timeIntervalSince1970)// as Date
 
         if connectivity.networkType == .cellular {

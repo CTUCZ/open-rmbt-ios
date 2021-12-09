@@ -167,7 +167,7 @@ typedef NS_ENUM(long, RMBTTestTag) {
     _pingSeq = 0;
     [self writeLine:@"PING" withTag:RMBTTestTagTxPing];
 
-    _pingStartNanos = RMBTCurrentNanos();
+    _pingStartNanos = [RMBTHelpers RMBTCurrentNanos];
 }
 
 - (void)startDownlinkTest {
@@ -354,7 +354,7 @@ typedef NS_ENUM(long, RMBTTestTag) {
         }
     } else if (tag == RMBTTestTagTxGetChunks) {
         // -> GETCHUNKS X
-        if (_pretestChunksCount == 1) _pretestStartNanos = RMBTCurrentNanos();
+        if (_pretestChunksCount == 1) _pretestStartNanos = [RMBTHelpers RMBTCurrentNanos];
         _pretestLengthReceived = 0;
         [_socket readDataWithTimeout:RMBT_TEST_SOCKET_TIMEOUT_S tag:RMBTTestTagRxPretestPart];
     } else if (tag == RMBTTestTagRxPretestPart) {
@@ -376,7 +376,7 @@ typedef NS_ENUM(long, RMBTTestTag) {
         // <- ACCEPT ...
 
         // Did we run out of time?
-        if (RMBTCurrentNanos() - _pretestStartNanos >= (_params.pretestDuration * NSEC_PER_SEC)) {
+        if ([RMBTHelpers RMBTCurrentNanos] - _pretestStartNanos >= (_params.pretestDuration * NSEC_PER_SEC)) {
             _state = RMBTTestWorkerStateDownlinkPretestFinished;
             [_delegate testWorker:self didFinishDownlinkPretestWithChunkCount:_pretestChunksCount];
         } else {
@@ -391,10 +391,10 @@ typedef NS_ENUM(long, RMBTTestTag) {
     else if (tag == RMBTTestTagTxPing) {
         // -> PING
         _pingSeq++;
-        RMBTLog(@"Ping packet sent (delta = %" PRIu64 ")", RMBTCurrentNanos() - _pingStartNanos);
+        RMBTLog(@"Ping packet sent (delta = %" PRIu64 ")", [RMBTHelpers RMBTCurrentNanos] - _pingStartNanos);
         [self readLineWithTag:RMBTTestTagRxPong];
     } else if (tag == RMBTTestTagRxPong) {
-        _pingPongNanos = RMBTCurrentNanos();
+        _pingPongNanos = [RMBTHelpers RMBTCurrentNanos];
         // <- PONG
         [self writeLine:@"OK" withTag:RMBTTestTagTxPongOK];
     } else if (tag == RMBTTestTagTxPongOK) {
@@ -427,7 +427,7 @@ typedef NS_ENUM(long, RMBTTestTag) {
         } else {
             // Send PING again
             [self writeLine:@"PING" withTag:RMBTTestTagTxPing];
-            _pingStartNanos = RMBTCurrentNanos();
+            _pingStartNanos = [RMBTHelpers RMBTCurrentNanos];
         }
     }
 
@@ -439,9 +439,9 @@ typedef NS_ENUM(long, RMBTTestTag) {
 
         // We want to align starting times of all threads, so allow delegate to supply us a start timestamp
         // (usually from the first thread that reached this point)
-        _testStartNanos = [_delegate testWorker:self didStartDownlinkTestAtNanos:RMBTCurrentNanos()];
+        _testStartNanos = [_delegate testWorker:self didStartDownlinkTestAtNanos:[RMBTHelpers RMBTCurrentNanos]];
     } else if (tag == RMBTTestTagRxDownlinkPart) {
-        uint64_t elapsedNanos = RMBTCurrentNanos() - _testStartNanos;
+        uint64_t elapsedNanos = [RMBTHelpers RMBTCurrentNanos] - _testStartNanos;
         BOOL finished = (elapsedNanos >= _params.testDuration * NSEC_PER_SEC);
         
         if (!_chunkData) {
@@ -479,7 +479,7 @@ typedef NS_ENUM(long, RMBTTestTag) {
     else if (tag == RMBTTestTagTxPutNoResult) {
         [self readLineWithTag:RMBTTestTagRxPutNoResultOK];
     } else if (tag == RMBTTestTagRxPutNoResultOK) {
-        if (_pretestChunksCount == 1) _pretestStartNanos = RMBTCurrentNanos();
+        if (_pretestChunksCount == 1) _pretestStartNanos = [RMBTHelpers RMBTCurrentNanos];
         _pretestChunksSent = 0;
 
         [self updateLastChunkFlagToValue:(_pretestChunksCount==1)];
@@ -497,7 +497,7 @@ typedef NS_ENUM(long, RMBTTestTag) {
     } else if (tag == RMBTTestTagRxPutNoResultStatistic) {
         [self readLineWithTag:RMBTTestTagRxPutNoResultAccept];
     } else if (tag == RMBTTestTagRxPutNoResultAccept) {
-        if (RMBTCurrentNanos() - _pretestStartNanos >= (_params.pretestDuration * NSEC_PER_SEC)) {
+        if ([RMBTHelpers RMBTCurrentNanos] - _pretestStartNanos >= (_params.pretestDuration * NSEC_PER_SEC)) {
             _state = RMBTTestWorkerStateUplinkPretestFinished;
             [_delegate testWorker:self didFinishUplinkPretestWithChunkCount:_pretestChunksCount];
         } else {
@@ -513,7 +513,7 @@ typedef NS_ENUM(long, RMBTTestTag) {
     } else if (tag == RMBTTestTagRxPutOK) {
         _testUploadLastUploadLength = 0;
         _testUploadLastChunkSent = NO;
-        _testStartNanos = RMBTCurrentNanos();
+        _testStartNanos = [RMBTHelpers RMBTCurrentNanos];
         _testUploadOffsetNanos = [_delegate testWorker:self didStartUplinkTestAtNanos:_testStartNanos];
 
         NSTimeInterval enoughInterval = (_params.testDuration - RMBT_TEST_UPLOAD_MAX_DISCARD_S);
@@ -528,11 +528,11 @@ typedef NS_ENUM(long, RMBTTestTag) {
         if (_testUploadLastChunkSent) {
             // This was the last chunk
         } else {
-            uint64_t nanos = RMBTCurrentNanos() + _testUploadOffsetNanos;
+            uint64_t nanos = [RMBTHelpers RMBTCurrentNanos] + _testUploadOffsetNanos;
             if (nanos - _testStartNanos >= (_params.testDuration * NSEC_PER_SEC)) {
                 RMBTLog(@"Sending last chunk in thread %u", _index);
                 _testUploadLastChunkSent = YES;
-                _testUploadMaxWaitReachedClientNanos = RMBTCurrentNanos() + RMBT_TEST_UPLOAD_MAX_WAIT_S * NSEC_PER_SEC;
+                _testUploadMaxWaitReachedClientNanos = [RMBTHelpers RMBTCurrentNanos] + RMBT_TEST_UPLOAD_MAX_WAIT_S * NSEC_PER_SEC;
                 // We're done, send last chunk
                 [self updateLastChunkFlagToValue:YES];
             }
@@ -568,7 +568,7 @@ typedef NS_ENUM(long, RMBTTestTag) {
                 _testUploadLastUploadLength = bytes;
             }
 
-            uint64_t now = RMBTCurrentNanos();
+            uint64_t now = [RMBTHelpers RMBTCurrentNanos];
 
             if (_testUploadLastChunkSent && now >= _testUploadMaxWaitReachedClientNanos) {
                 RMBTLog(@"Max wait reached in thread %u. Finalizing.", _index);

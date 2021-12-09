@@ -545,7 +545,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
     self.phase = phase;
 
     _finishedWorkers = 0;
-    _progressStartedAtNanos = RMBTCurrentNanos();
+    _progressStartedAtNanos = [RMBTHelpers RMBTCurrentNanos];
     _progressDurationNanos = duration * NSEC_PER_SEC;
 
     [self killTimer];
@@ -557,7 +557,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
         _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
         dispatch_source_set_timer(_timer, DISPATCH_TIME_NOW, RMBTTestRunnerProgressUpdateInterval * NSEC_PER_SEC, 50 * NSEC_PER_MSEC);
         dispatch_source_set_event_handler(_timer, ^{
-            uint64_t elapsedNanos = (RMBTCurrentNanos() - _progressStartedAtNanos);
+            uint64_t elapsedNanos = ([RMBTHelpers RMBTCurrentNanos] - _progressStartedAtNanos);
             if (elapsedNanos > _progressDurationNanos) {
                 // We've reached end of interval...
                 // ..send 1.0 progress one last time..
@@ -760,7 +760,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
 
 - (void)qosRunnerDidStartWithTestGroups:(NSArray<RMBTQoSTestGroup *> *)groups {
     RMBTLog(@"Started QoS with groups: %@", groups);
-    _qosTestStartedAtNanos = RMBTCurrentNanos();
+    _qosTestStartedAtNanos = [RMBTHelpers RMBTCurrentNanos];
     dispatch_async(dispatch_get_main_queue(), ^{
         [_delegate testRunnerQoSDidStartWithGroups: groups];
     });
@@ -777,7 +777,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
 - (void)qosRunnerDidCompleteWithResults:(NSArray<NSDictionary *> *)results {
     RMBTLog(@"QoS finished.");
     _qosResults = results;
-    _qosTestFinishedAtNanos = RMBTCurrentNanos();
+    _qosTestFinishedAtNanos = [RMBTHelpers RMBTCurrentNanos];
     [self submitResult];
 }
 

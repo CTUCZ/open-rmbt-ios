@@ -22,7 +22,7 @@ public class BasicRequest: NSObject, Mappable {
     @objc var uuid:String?
     var loopUuid:String?
 
-    var language: String? = RMBTPreferredLanguage()
+    var language: String? = RMBTHelpers.RMBTPreferredLanguage()
     
     var device: String?
     var model: String?
