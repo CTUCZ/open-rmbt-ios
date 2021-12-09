@@ -69,7 +69,7 @@
                      self.uid];
     NSString *response1 = [self sendCommand:cmd readReply:outgoing ? YES : NO error:&error];
     if (error || (outgoing && ![response1 hasPrefix:@"OK"])) {
-        RMBTLog(@"%@ failed: %@/%@", self, error, response1);
+        [Log log:[NSString stringWithFormat:@"%@ failed: %@/%@", self, error, response1]];
         self.status = RMBTQoSTestStatusError;
         return;
     }
@@ -84,7 +84,7 @@
     }
 
     if (error) {
-        RMBTLog(@"%@ error connecting/binding: %@", self, error);
+        [Log log:[NSString stringWithFormat:@"%@ error connecting/binding: %@", self, error]];
         self.status = RMBTQoSTestStatusError;
         return;
     }

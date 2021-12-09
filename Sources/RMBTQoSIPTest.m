@@ -16,6 +16,7 @@
  */
 
 #import "RMBTQoSIPTest.h"
+#import "RMBT-Swift.h"
 
 @implementation RMBTQoSIPTest
 

@@ -11,6 +11,8 @@
 #define __STDC_FORMAT_MACROS
 #include <inttypes.h>
 
+#define RMBTLog(_message, ...)    [Log log:[NSString stringWithFormat:_message, ##__VA_ARGS__]]
+
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
@@ -34,6 +36,6 @@
 
     #import <libextobjc/EXTKeyPathCoding.h> // @keypath macro
 
-    #import "RMBTLogger.h"
     #import "RMBTBlockTypes.h"
+
 #endif
