@@ -17,7 +17,5 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RMBTQoSTest.h"
-
 @interface RMBTQoSHTTPTest : RMBTQoSTest
 @end

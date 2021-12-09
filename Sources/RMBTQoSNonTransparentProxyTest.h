@@ -15,8 +15,6 @@
  *
  */
 
-#import "RMBTQoSCCTest.h"
-
 @interface RMBTQoSNonTransparentProxyTest : RMBTQoSCCTest
 
 @end

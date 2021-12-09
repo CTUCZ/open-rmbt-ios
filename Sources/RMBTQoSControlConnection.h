@@ -16,7 +16,9 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "RMBTQoSControlConnectionParams.h"
+#import "RMBTBlockTypes.h"
+
+@class RMBTQoSControlConnectionParams;
 
 @interface RMBTQoSControlConnection : NSObject
 @property (nonatomic, readonly) NSString *token;

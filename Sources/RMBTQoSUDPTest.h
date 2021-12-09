@@ -15,7 +15,6 @@
  *
  */
 
-#import "RMBTQoSTest.h"
 #import "RMBTQoSIPTest.h"
 
 @interface RMBTQoSUDPTest : RMBTQoSIPTest

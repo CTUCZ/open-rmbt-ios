@@ -15,8 +15,6 @@
  *
  */
 
-#import "RMBTQoSCCTest.h"
-
 typedef NS_ENUM(NSInteger, RMBTQoIPTestDirection) {
     RMBTQoSIPTestDirectionOut,
     RMBTQoSIPTestDirectionIn,
