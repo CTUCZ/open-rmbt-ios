@@ -113,10 +113,10 @@
 }
 
 - (void)log {
-    RMBTLog(@"Throughputs:");
+    [Log log:[NSString stringWithFormat:@"Throughputs:"]];
     for (RMBTThroughput* t in _periods) {
-        RMBTLog(@"- %@",[t description]);
+        [Log log:[NSString stringWithFormat:@"- %@",[t description]]];
     }
-    RMBTLog(@"Total: %@", [_totalThroughput description]);
+    [Log log:[NSString stringWithFormat:@"Total: %@", [_totalThroughput description]]];
 }
 @end

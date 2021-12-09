@@ -23,7 +23,7 @@ public typealias HistoryFilterType = [String: [String]]
     
     public var baseUrl = "https://netcouch.specure.com/api/v1"
     
-    public var statsURL: URL? = URL(string: RMBTLocalizeURLString(RMBT_STATS_URL))
+    public var statsURL: URL? = URL(string: RMBTHelpers.RMBTLocalize(urlString: RMBT_STATS_URL))
     public var mapServerURL: URL?
     
     public var ipv4: URL?
@@ -169,7 +169,7 @@ extension RMBTControlServer {
                 self.baseUrl = baseUrl.absoluteString
                 self.mapServerURL = baseUrl.appendingPathComponent("RMBTMapServer")
             }
-            self.statsURL = URL(string: RMBTLocalizeURLString(RMBT_STATS_URL))
+            self.statsURL = URL(string: RMBTHelpers.RMBTLocalize(urlString: RMBT_STATS_URL))
             self.lastNewsUid = UserDefaults.lastNewsUidPreference()
 
             successCallback()
@@ -242,7 +242,7 @@ extension RMBTControlServer {
         ensureClientUuid(success: { uuid in
             speedMeasurementRequest.uuid = uuid
             speedMeasurementRequest.ndt = false
-            speedMeasurementRequest.time = RMBTTimestampWithNSDate(NSDate() as Date) as? UInt64
+            speedMeasurementRequest.time = UInt64(RMBTHelpers.RMBTTimestamp(with: Date()))
             
             let success: (_ response: SpeedMeasurementResponse_Old) -> Void = { response in
                 guard let tp = RMBTTestParams(with: response.toJSON()) else {

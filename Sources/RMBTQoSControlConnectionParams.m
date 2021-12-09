@@ -21,7 +21,6 @@
 - (instancetype)initWithServerAddress:(NSString*)address port:(NSUInteger)port {
     if (self = [super init]) {
         NSParameterAssert(address);
-        RMBTAssertValidPort(port);
         _serverAddress = address;
         _port = port;
     }

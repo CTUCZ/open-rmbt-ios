@@ -16,6 +16,7 @@
  */
 
 #import "RMBTQoSTest.h"
+#import "RMBT-Swift.h"
 
 static const uint64_t kDefaultTimeoutNanos = 10 * NSEC_PER_SEC;
 
@@ -67,9 +68,9 @@ static const uint64_t kDefaultTimeoutNanos = 10 * NSEC_PER_SEC;
     }
     NSParameterAssert(!self.finished);
     if (!self.cancelled) { RMBTLog(@"Test %@ started.", self); }
-    _startedAtNanos = RMBTCurrentNanos();
+    _startedAtNanos = [RMBTHelpers RMBTCurrentNanos];
     [super start];
-    _durationNanos = @(RMBTCurrentNanos() - _startedAtNanos);
+    _durationNanos = @([RMBTHelpers RMBTCurrentNanos] - _startedAtNanos);
     if (!self.cancelled) { RMBTLog(@"Test %@ finished.", self); }
 }
 

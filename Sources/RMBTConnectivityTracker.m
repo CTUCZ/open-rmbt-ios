@@ -116,12 +116,12 @@ static CTTelephonyNetworkInfo *sharedNetworkInfo;
             break;
         default:
             // No assert here because simulator often returns unknown connectivity status
-            NSLog(@"Unknown reachability status %d", status);
+            [Log log:[NSString stringWithFormat:@"Unknown reachability status %d", status]];
             return;
     }
 
     if (networkType == RMBTNetworkTypeNone) {
-        RMBTLog(@"No connectivity detected.");
+        [Log log:@"No connectivity detected."];
         _lastConnectivity = nil;
         [_delegate connectivityTrackerDidDetectNoConnectivity:self];
         return;
@@ -131,18 +131,18 @@ static CTTelephonyNetworkInfo *sharedNetworkInfo;
 
     if ([connectivity isEqualToConnectivity:_lastConnectivity]) return;
 
-    RMBTLog(@"New connectivity = %@", connectivity.testResultDictionary);
-
+    [Log log:[NSString stringWithFormat:@"New connectivity = %@", connectivity.testResultDictionary]];
+    
     if (_stopOnMixed) {
         // Detect compatilibity
         BOOL compatible = YES;
 
         if (_lastConnectivity) {
             if (connectivity.networkType != _lastConnectivity.networkType) {
-                RMBTLog(@"Connectivity network mismatched %@ -> %@", _lastConnectivity.networkTypeDescription, connectivity.networkTypeDescription);
+                [Log log:[NSString stringWithFormat:@"Connectivity network mismatched %@ -> %@", _lastConnectivity.networkTypeDescription, connectivity.networkTypeDescription]];
                 compatible = NO;
             } else if ((![connectivity.networkName isEqualToString:_lastConnectivity.networkName]) && ((connectivity.networkName != nil) || (_lastConnectivity.networkName != nil))) {
-                RMBTLog(@"Connectivity network name mismatched %@ -> %@", _lastConnectivity.networkName, connectivity.networkName);
+                [Log log:[NSString stringWithFormat:@"Connectivity network name mismatched %@ -> %@", _lastConnectivity.networkName, connectivity.networkName]];
                 compatible = NO;
             }
         }

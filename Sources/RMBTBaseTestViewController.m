@@ -16,7 +16,6 @@
  */
 
 #import "RMBTBaseTestViewController.h"
-#import "CLLocation+RMBTFormat.h"
 #import "RMBTTestRunner.h"
 #import "RMBT-Swift.h"
 

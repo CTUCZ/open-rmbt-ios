@@ -100,8 +100,8 @@ import Foundation
     ///
     open override var description: String {
         return String(format: "(%@-%@, %lld bytes, %@)",
-                        RMBTSecondsStringWithNanos(_startNanos),
-                        RMBTSecondsStringWithNanos(_endNanos),
+                      RMBTHelpers.RMBTSecondsString(with: Int64(_startNanos)),
+                      RMBTHelpers.RMBTSecondsString(with: Int64(_endNanos)),
                         length,
                         RMBTSpeedMbpsString(kilobitsPerSecond()))
     }

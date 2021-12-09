@@ -39,7 +39,7 @@
 
 - (NSString*)description {
     return [[_throughputs bk_map:^id(RMBTThroughput *t) {
-        return [NSString stringWithFormat:@"[%@ %@]", RMBTSecondsStringWithNanos(t.endNanos), RMBTSpeedMbpsString(t.kilobitsPerSecond)];
+        return [NSString stringWithFormat:@"[%@ %@]", [RMBTHelpers RMBTSecondsStringWith:t.endNanos], RMBTSpeedMbpsString(t.kilobitsPerSecond)];
     }] componentsJoinedByString:@"-"];
 }
 

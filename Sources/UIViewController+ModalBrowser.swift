@@ -15,7 +15,7 @@ extension UIViewController {
     
     @objc(presentModalBrowserWithURLString:)
     func presentModalBrowser(with url: String) {
-        guard let webViewController = RMBTModalWebViewController(address: RMBTLocalizeURLString(url)) else { return }
+        guard let webViewController = RMBTModalWebViewController(address: RMBTHelpers.RMBTLocalize(urlString: url)) else { return }
         webViewController.barsTintColor = .tintColor
         self.present(webViewController, animated: true, completion: nil)
     }

@@ -163,9 +163,9 @@ class RMBTIntroViewController: UIViewController {
     }
     
     @objc func forceUpdateNetwork(_ sender: Any) {
-        RMBTLocationTracker.shared().start {
+        RMBTLocationTracker.shared.startAfterDeterminingAuthorizationStatus({
             self.connectivityTracker.forceUpdate()
-        }
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -177,9 +177,9 @@ class RMBTIntroViewController: UIViewController {
         super.viewWillAppear(animated)
         currentView.updateLoopModeUI()
         self.connectivityTracker.start()
-        RMBTLocationTracker.shared().start {
+        RMBTLocationTracker.shared.startAfterDeterminingAuthorizationStatus({
             self.connectivityTracker.forceUpdate()
-        }
+        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -245,7 +245,7 @@ class RMBTIntroViewController: UIViewController {
     }
     
     private func locationTapHandler(_ tintColor: UIColor) {
-        guard let location = RMBTLocationTracker.shared().location else { return }
+        guard let location = RMBTLocationTracker.shared.location else { return }
         
         let popupInfo = self.locationPopupInfo(with: location, tintColor: tintColor)
         RMBTLocationPopupViewController.presentLocation(with: popupInfo, in: self) { [weak self] vc in
@@ -287,7 +287,7 @@ class RMBTIntroViewController: UIViewController {
     
     private func startTest(with loopModeInfo: RMBTLoopInfo?) {
         // Before transitioning to test view controller, we want to wait for user to allow/deny location services first
-        RMBTLocationTracker.shared().start {
+        RMBTLocationTracker.shared.startAfterDeterminingAuthorizationStatus({
             guard
                 let navController = UIStoryboard(name: "TestStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RMBTTestNavigationControllerID") as? UINavigationController,
                 let testVC = navController.topViewController as? RMBTTestViewController else {
@@ -300,7 +300,7 @@ class RMBTIntroViewController: UIViewController {
             testVC.roaming = self.isRoaming
             
             self.present(navController, animated: true, completion: nil)
-        }
+        })
     }
     
     private func updateRoamingStatus() {
@@ -308,7 +308,7 @@ class RMBTIntroViewController: UIViewController {
               connectivity.networkType == .cellular
         else { return }
         
-        guard let location = RMBTLocationTracker.shared()?.location else { return }
+        guard let location = RMBTLocationTracker.shared.location else { return }
         
         var params = connectivity.testResultDictionary() ?? [:]
         let locationParams = location.paramsDictionary() ?? [:]

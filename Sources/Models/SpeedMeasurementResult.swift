@@ -459,7 +459,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
     ///
     func markTestStart() {
-        testStartNanos = RMBTCurrentNanos()
+        testStartNanos = RMBTHelpers.RMBTCurrentNanos()
         testStartDate = Date()
     }
 
@@ -470,7 +470,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         let ping = Ping(
             serverNanos: serverNanos,
             clientNanos: clientNanos,
-            relativeTimestampNanos: RMBTCurrentNanos() - testStartNanos)
+            relativeTimestampNanos: RMBTHelpers.RMBTCurrentNanos() - testStartNanos)
 
         pings.append(ping)
 

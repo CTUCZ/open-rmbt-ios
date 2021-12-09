@@ -21,6 +21,7 @@
 #include <resolv.h>
 #include <dns.h>
 #include <netdb.h>
+#import "RMBT-Swift.h"
 
 @interface RMBTQoSDNSTest() {
     NSString *_resolver;
@@ -48,7 +49,7 @@
 - (void)main {
     NSParameterAssert(!self.cancelled);
 
-    uint64_t startTime = RMBTCurrentNanos();
+    uint64_t startTime = [RMBTHelpers RMBTCurrentNanos];
     
     ns_type t = [self queryType];
     if (t == ns_t_invalid) {
@@ -89,7 +90,7 @@
         if (h_errno == HOST_NOT_FOUND) {
             _rcode = @"NXDOMAIN";
         } else if (h_errno == TRY_AGAIN) {
-            uint64_t nanoSecondsAfterStart = RMBTCurrentNanos() - startTime;
+            uint64_t nanoSecondsAfterStart = [RMBTHelpers RMBTCurrentNanos] - startTime;
             if (nanoSecondsAfterStart < [self timeoutSeconds] * NSEC_PER_SEC) {
                 _rcode = @"TRY_AGAIN";
             } else {

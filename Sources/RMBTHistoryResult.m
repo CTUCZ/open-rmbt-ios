@@ -166,7 +166,7 @@
             }
             dispatch_group_leave(allDone);
         } error:^(NSError *error) {
-            RMBTLog(@"Error fetching QoS test results: %@.", error);
+            [Log log:[NSString stringWithFormat:@"Error fetching QoS test results: %@.", error]];
             dispatch_group_leave(allDone);
         }];
 

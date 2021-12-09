@@ -21,6 +21,7 @@
 #import "RMBTNetworkType.h"
 #import "RMBTHistoryQoSGroupResult.h"
 #import "RMBTHistorySpeedGraph.h"
+#import "RMBTBlockTypes.h"
 
 @class RMBTHistoryPingGraph;
 

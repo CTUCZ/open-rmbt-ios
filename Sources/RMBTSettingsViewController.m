@@ -69,8 +69,8 @@ typedef NS_ENUM(NSInteger, RMBTSettingsSection) {
                                     [@"CFBundleShortVersionString"],
                                    [[NSBundle mainBundle] infoDictionary]
                                     [@"CFBundleVersion"],
-                                   RMBTBuildInfoString(),
-                                   RMBTBuildDateString()];
+                                   [RMBTHelpers RMBTBuildInfoString],
+                                   [RMBTHelpers RMBTBuildDateString]];
 
     self.uuidLabel.lineBreakMode = NSLineBreakByCharWrapping;
     self.uuidLabel.numberOfLines = 0;

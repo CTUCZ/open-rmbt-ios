@@ -23,6 +23,7 @@
 #import "RMBTQoSUDPTest.h"
 #import "RMBTQoSTCPTest.h"
 #import "RMBTQoSNonTransparentProxyTest.h"
+#import "RMBT-Swift.h"
 
 typedef RMBTQoSTest* (^RMBTTestQoSInitializerBlock)(NSDictionary*);
 
@@ -86,7 +87,7 @@ typedef RMBTQoSTest* (^RMBTTestQoSInitializerBlock)(NSDictionary*);
             return [[RMBTQoSNonTransparentProxyTest alloc] initWithParams:p];
         };
     } else {
-        RMBTLog(@"Unknown QoS group: %@", key);
+        [Log log:[NSString stringWithFormat:@"Unknown QoS group: %@", key]];
         return nil;
     }
 

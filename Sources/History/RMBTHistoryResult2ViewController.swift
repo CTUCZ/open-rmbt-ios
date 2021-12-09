@@ -180,7 +180,7 @@ final class RMBTHistoryResult2ViewController: UIViewController {
         }
         
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: activities)
-        activityViewController.setValue(RMBTAppTitle(), forKey: "subject")
+        activityViewController.setValue(RMBTHelpers.RMBTAppTitle(), forKey: "subject")
         self.present(activityViewController, animated: true, completion: nil)
     }
     

@@ -17,6 +17,7 @@
 
 #import "RMBTQoSTCPTest.h"
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
+#import "RMBT-Swift.h"
 
 @interface RMBTQoSTCPTest()<GCDAsyncSocketDelegate> {
     dispatch_semaphore_t _doneSem;
@@ -60,7 +61,6 @@
 
 - (void)ipMain:(BOOL)outgoing {
     NSUInteger port = outgoing ? self.outPort : self.inPort;
-    RMBTAssertValidPort(port);
 
     NSError *error = nil;
 
@@ -69,7 +69,7 @@
                      self.uid];
     NSString *response1 = [self sendCommand:cmd readReply:outgoing ? YES : NO error:&error];
     if (error || (outgoing && ![response1 hasPrefix:@"OK"])) {
-        RMBTLog(@"%@ failed: %@/%@", self, error, response1);
+        [Log log:[NSString stringWithFormat:@"%@ failed: %@/%@", self, error, response1]];
         self.status = RMBTQoSTestStatusError;
         return;
     }
@@ -84,7 +84,7 @@
     }
 
     if (error) {
-        RMBTLog(@"%@ error connecting/binding: %@", self, error);
+        [Log log:[NSString stringWithFormat:@"%@ error connecting/binding: %@", self, error]];
         self.status = RMBTQoSTestStatusError;
         return;
     }
@@ -121,7 +121,7 @@
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
     NSString *line = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
     NSParameterAssert(tag == 0);
-    _response = RMBTChomp(line);
+    _response = [RMBTHelpers RMBTChomp:line];
     [sock disconnect];
 }
 

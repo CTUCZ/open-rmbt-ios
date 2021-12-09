@@ -20,6 +20,7 @@
 #import <WebKit/WebKit.h>
 #import "RMBTQoSWebTest.h"
 #import "RMBTQosWebTestURLProtocol.h"
+#import "RMBT-Swift.h"
 
 @interface RMBTQoSWebTest()<WKNavigationDelegate> {
     NSString *_url;
@@ -73,7 +74,7 @@
         self.status = RMBTQoSTestStatusTimeout;
     } else {
         self.status = RMBTQoSTestStatusOk;
-        _duration = RMBTCurrentNanos() - _startedAt;
+        _duration = [RMBTHelpers RMBTCurrentNanos] - _startedAt;
     };
 
     _protocolResult = @{
@@ -100,7 +101,7 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     NSParameterAssert(self.status == RMBTQoSTestStatusUnknown);
     if (_startedAt == 0) {
-        _startedAt = RMBTCurrentNanos();
+        _startedAt = [RMBTHelpers RMBTCurrentNanos];
     }
     decisionHandler(WKNavigationActionPolicyAllow);
 }

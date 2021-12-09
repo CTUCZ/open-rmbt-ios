@@ -18,6 +18,7 @@
 #import "RMBTHistoryQoSGroupResult.h"
 #import "RMBTHistoryResult.h"
 #import <BlocksKit/NSArray+BlocksKit.h>
+#import "RMBT-Swift.h"
 
 @interface RMBTHistoryQoSGroupResult() {
     RMBTHistoryResultItem* _item;
@@ -125,7 +126,7 @@
     }
     NSString *result = [NSString stringWithFormat:@"%lu/%lu",(unsigned long)success, (unsigned long)total];
     if (percentage) {
-        result = [NSString stringWithFormat:@"%lu%% (%@)", (unsigned long)RMBTPercent(success, total), result];
+        result = [NSString stringWithFormat:@"%lu%% (%@)", (unsigned long)[RMBTHelpers RMBTPercent:success total:total], result];
     }
     return result;
 }

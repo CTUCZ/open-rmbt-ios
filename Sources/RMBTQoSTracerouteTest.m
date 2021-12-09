@@ -30,6 +30,8 @@
 
 #import <pthread.h>
 
+#import "RMBT-Swift.h"
+
 static const NSUInteger kDefaultMaxHops = 30;
 static const NSUInteger kStartPort = 32768 + 666;
 static const NSUInteger kTimeout = 2; // timeout for each try (-w)
@@ -61,7 +63,7 @@ static const NSUInteger kTimeout = 2; // timeout for each try (-w)
 - (void)main {
     NSParameterAssert(!self.cancelled);
     
-    uint64_t startedAt = RMBTCurrentNanos();
+    uint64_t startedAt = [RMBTHelpers RMBTCurrentNanos];
 
     struct sockaddr_in addr;
     addr.sin_family = AF_INET;
@@ -130,8 +132,8 @@ static const NSUInteger kTimeout = 2; // timeout for each try (-w)
             _maxHopsExceeded = YES;
             break;
         }
-        if (RMBTCurrentNanos() - startedAt > self.timeoutNanos) {
-            RMBTLog(@"Traceroute timed out after %@", RMBTSecondsStringWithNanos(self.timeoutNanos));
+        if ([RMBTHelpers RMBTCurrentNanos] - startedAt > self.timeoutNanos) {
+            RMBTLog(@"Traceroute timed out after %@", [RMBTHelpers RMBTSecondsStringWith:self.timeoutNanos]);
             _timedOut = YES;
             break;
         }
@@ -165,7 +167,7 @@ static const NSUInteger kTimeout = 2; // timeout for each try (-w)
 
     char payload[] = {ttl & 0xFF};
 
-    uint64_t startTime = RMBTCurrentNanos();
+    uint64_t startTime = [RMBTHelpers RMBTCurrentNanos];
 
     ssize_t sent = sendto(sendSock, payload, sizeof(payload), 0, (struct sockaddr*)addr, sizeof(struct sockaddr));
     if (sent != sizeof(payload)) {
@@ -173,7 +175,7 @@ static const NSUInteger kTimeout = 2; // timeout for each try (-w)
         return nil;
     }
 
-    while((RMBTCurrentNanos() - startTime) < kTimeout * NSEC_PER_SEC) {
+    while(([RMBTHelpers RMBTCurrentNanos] - startTime) < kTimeout * NSEC_PER_SEC) {
         struct timeval tv;
         tv.tv_sec = kTimeout;
         tv.tv_usec = 0;
@@ -183,7 +185,7 @@ static const NSUInteger kTimeout = 2; // timeout for each try (-w)
         FD_SET(icmpSock, &readfds);
         int ret = select(icmpSock+1, &readfds, NULL, NULL, &tv);
 
-        uint64_t durationNanos = RMBTCurrentNanos() - startTime;
+        uint64_t durationNanos = [RMBTHelpers RMBTCurrentNanos] - startTime;
 
         if (ret < 0) {
             RMBTLog(@"Traceroute error in select() %s", strerror(errno));
@@ -245,7 +247,7 @@ static const NSUInteger kTimeout = 2; // timeout for each try (-w)
     } // receive loop
 
     // Timed out/unreachable
-    return @{@"host": @"*", @"time": @(RMBTCurrentNanos() - startTime)};
+    return @{@"host": @"*", @"time": @([RMBTHelpers RMBTCurrentNanos] - startTime)};
 }
 
 - (NSString*)maskIP:(NSString*)address {

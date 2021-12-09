@@ -17,6 +17,7 @@
 
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
 #import "RMBTQoSControlConnection.h"
+#import "RMBT-Swift.h"
 
 NSString *const RMBTQoSControlConnectionErrorDomain = @"RMBTQoSControlConnectionErrorDomain";
 
@@ -100,7 +101,7 @@ typedef NS_ENUM(long, RMBTQoSControlConnectionTag) {
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
-    RMBTLog(@"QoS control server disconnected: %@", err);
+    [Log log:[NSString stringWithFormat:@"QoS control server disconnected: %@", err]];
     _state = RMBTQoSControlConnectionStateDisconnected;
     if (_currentCommandError) {
         [self doneWithResult:nil error:err];

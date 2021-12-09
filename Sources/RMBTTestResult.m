@@ -59,14 +59,14 @@ const int32_t RMBTTestResultSpeedMeasurementFinished = -2;
 }
 
 -(void)markTestStart {
-    _testStartNanos = RMBTCurrentNanos();
+    _testStartNanos = [RMBTHelpers RMBTCurrentNanos];
     _testStartDate = [NSDate date];
 }
 
 - (void)addPingWithServerNanos:(uint64_t)serverNanos clientNanos:(uint64_t)clientNanos {
     NSParameterAssert(_testStartNanos > 0);
 
-    RMBTPing *p = [[RMBTPing alloc] initWithServerNanos:serverNanos clientNanos:clientNanos relativeTimestampNanos:RMBTCurrentNanos()-_testStartNanos];
+    RMBTPing *p = [[RMBTPing alloc] initWithServerNanos:serverNanos clientNanos:clientNanos relativeTimestampNanos:[RMBTHelpers RMBTCurrentNanos]-_testStartNanos];
     [_pings addObject:p];
 
     if (_bestPingNanos == 0 || _bestPingNanos > serverNanos) _bestPingNanos = serverNanos;
@@ -353,7 +353,8 @@ const int32_t RMBTTestResultSpeedMeasurementFinished = -2;
     for (RMBTConnectivity* c in _connectivities) {
         NSDictionary *cResult = c.testResultDictionary;
 
-        [signals addObject:@{@"time":RMBTTimestampWithNSDate(c.timestamp), @"network_type_id": cResult[@"network_type"]}];
+        
+        [signals addObject:@{@"time":@([RMBTHelpers RMBTTimestampWith:c.timestamp]), @"network_type_id": cResult[@"network_type"]}];
 
         if (!result) {
             result = [NSMutableDictionary dictionaryWithDictionary:cResult];

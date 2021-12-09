@@ -26,6 +26,7 @@
 #include <net/if_var.h>
 
 #import "RMBTConnectivity.h"
+#import "RMBT-Swift.h"
 
 @interface RMBTConnectivity()
 @property (nonatomic, readonly) NSString *cellularCodeDescription;
@@ -84,7 +85,7 @@
                 NSDictionary *info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);
                 if (info) {
                     if (info[(NSString*)kCNNetworkInfoKeySSID]) _networkName = info[(NSString*)kCNNetworkInfoKeySSID];
-                    if (info[(NSString*)kCNNetworkInfoKeyBSSID]) _bssid = RMBTReformatHexIdentifier(info[(NSString*)kCNNetworkInfoKeyBSSID]);
+                    if (info[(NSString*)kCNNetworkInfoKeyBSSID]) _bssid = [RMBTHelpers RMBTReformatHexIdentifier:info[(NSString*)kCNNetworkInfoKeyBSSID]];
                     break;
                 }
             }
