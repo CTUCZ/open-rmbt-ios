@@ -16,7 +16,7 @@ final class RMBTHistoryQoSSingleResultCell: UITableViewCell {
 
     public func set(result: RMBTHistoryQoSSingleResult, sequenceNumber: UInt) {
         summaryLabel.text = "#\(sequenceNumber) \(result.summary ?? "")"
-        successIcon.isHidden = !result.successful
-        failureIcon.isHidden = result.successful
+        successIcon.isHidden = !result.isSuccessful
+        failureIcon.isHidden = result.isSuccessful
     }
 }

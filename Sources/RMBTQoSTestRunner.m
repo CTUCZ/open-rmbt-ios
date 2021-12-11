@@ -16,7 +16,6 @@
  */
 
 #import "RMBTQoSTestRunner.h"
-#import "RMBTProgress.h"
 #import "RMBTQosWebTestURLProtocol.h"
 #import "RMBT-Swift.h"
 

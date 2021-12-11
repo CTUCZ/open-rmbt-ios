@@ -589,14 +589,14 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     }
     
     func onTestStartedQoS(withGroups groups: [Any]!) {
-        self.qosProgressViewController.testGroups = groups as? [RMBTQoSTestGroup]
+        self.qosProgressViewController.testGroups = (groups as? [RMBTQoSTestGroup]) ?? []
         self.qosCounterText = self.qosProgressViewController.progressString()
         self.state = .qos
         self.currentView.showQoSUI(true)
     }
     
     func onTestUpdatedProgress(_ progress: Float, inQoSGroup group: RMBTQoSTestGroup!) {
-        self.qosProgressViewController.updateProgress(progress, for: group)
+        self.qosProgressViewController.update(progress, for: group)
         self.qosCounterText = self.qosProgressViewController.progressString()
     }
     

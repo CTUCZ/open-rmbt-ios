@@ -19,11 +19,9 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "RMBTNetworkType.h"
-#import "RMBTHistoryQoSGroupResult.h"
-#import "RMBTHistorySpeedGraph.h"
 #import "RMBTBlockTypes.h"
 
-@class RMBTHistoryPingGraph;
+@class RMBTHistoryPingGraph, RMBTHistorySpeedGraph, RMBTHistoryQoSGroupResult;
 
 @interface RMBTHistoryResultItem : NSObject
 @property (nonatomic, readonly) NSString *title;
