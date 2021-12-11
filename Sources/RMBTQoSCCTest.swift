@@ -16,22 +16,27 @@ enum Errors: Error {
 // Superclass for all tests requiring a connection to the QoS control server (UDP, VoIP etc.)
 @objc class RMBTQoSCCTest: RMBTQoSTest {
 
-    private(set) var controlConnectionParams: RMBTQoSControlConnectionParams?
-    private var controlConnection: RMBTQoSControlConnection?
+    @objc private(set) var controlConnectionParams: RMBTQoSControlConnectionParams?
+    @objc var controlConnection: RMBTQoSControlConnection?
     
     override init?(with params: [String : Any]) {
         super.init(with: params)
         
-        guard let server = params["server_addr"] as? String,
-              let port  = params["server_port"] as? UInt
+        guard let server = params["server_addr"] as? String
         else { return nil }
-        controlConnectionParams = RMBTQoSControlConnectionParams(with: server, port: port)
+        
+        var resultPort: UInt = 0
+        if let port = params["server_port"] as? String,
+           let intPort = UInt(port) {
+            resultPort = intPort
+        } else {
+            return nil
+        }
+        
+        
+        controlConnectionParams = RMBTQoSControlConnectionParams(with: server, port: resultPort)
     }
-    
-    func setControlConnection(_ connection: RMBTQoSControlConnection) {
-        controlConnection = connection;
-    }
-    
+   
     func send(command line: String, readReply: Bool) throws -> String {
         assert(controlConnection != nil)
 

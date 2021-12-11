@@ -15,7 +15,7 @@
  *
  */
 
-#import "RMBTQoSDNSTest.h"
+#import "RMBTQoSDNSTestExecutor.h"
 #include <arpa/inet.h>
 #include <ifaddrs.h>
 #include <resolv.h>
@@ -23,7 +23,7 @@
 #include <netdb.h>
 #import "RMBT-Swift.h"
 
-@interface RMBTQoSDNSTest() {
+@interface RMBTQOSDNSTestExecutor() {
     NSString *_resolver;
     NSString *_host;
     NSString *_record;
@@ -35,10 +35,10 @@
 }
 @end
 
-@implementation RMBTQoSDNSTest
+@implementation RMBTQOSDNSTestExecutor
 
 -(instancetype)initWithParams:(NSDictionary *)params {
-    if (self = [super initWithParams:params]) {
+    if (self = [super init]) {
         _host = [params valueForKey:@"host"];
         _resolver = [params valueForKey:@"resolver"];
         _record = [params valueForKey:@"record"];
@@ -46,9 +46,11 @@
     return self;
 }
 
-- (void)main {
-    NSParameterAssert(!self.cancelled);
+- (NSInteger)timeoutSeconds {
+    return MAX(1, (NSInteger)(self.timeoutNanos / NSEC_PER_SEC));
+}
 
+- (void)main {
     uint64_t startTime = [RMBTHelpers RMBTCurrentNanos];
     
     ns_type t = [self queryType];

@@ -5,6 +5,9 @@
 #import "RMBTConfig.h"
 #import "RMBTHelpers.h"
 
+
+#import "RMBTQoSTracerouteTestExecutor.h"
+#import "RMBTQoSDNSTestExecutor.h"
 #import "RMBTQoSControlConnection.h"
 #import "RMBTProgress.h"
 #import "RMBTMapOptions.h"

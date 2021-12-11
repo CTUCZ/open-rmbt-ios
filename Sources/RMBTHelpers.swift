@@ -9,8 +9,8 @@
 import UIKit
 import Darwin
 
-@inline(__always) func RMBTValueOrNull(_ value: Any?) -> Any? { return value != nil ? value : NSNull() }
-@inline(__always) func RMBTValueOrString(_ value: Any?, _ result: String) -> Any? { return value != nil ? value : result }
+@inline(__always) func RMBTValueOrNull(_ value: Any?) -> Any { return value != nil ? value! : NSNull() }
+@inline(__always) func RMBTValueOrString(_ value: Any?, _ result: String) -> Any { return value != nil ? value! : result }
 
 class RMBTHelpers: NSObject {
     static let mechTimebaseInfo: mach_timebase_info_data_t = {

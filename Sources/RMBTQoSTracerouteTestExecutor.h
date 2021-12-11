@@ -15,15 +15,18 @@
  *
  */
 
-typedef NS_ENUM(NSInteger, RMBTQoIPTestDirection) {
-    RMBTQoSIPTestDirectionOut,
-    RMBTQoSIPTestDirectionIn,
-    RMBTQoSIPTestDirectionError
-};
+#import <Foundation/Foundation.h>
 
-@interface RMBTQoSIPTest : RMBTQoSCCTest
-@property (nonatomic, assign) RMBTQoIPTestDirection direction;
-@property (nonatomic, readonly) NSUInteger outPort, inPort;
+@interface RMBTQoSTracerouteTestExecutor : NSObject
 
-- (void)ipMain:(BOOL)outgoing;
+@property (nonatomic, assign) NSUInteger concurrencyGroup;
+@property (nonatomic, strong) NSString *uid;
+@property (nonatomic, assign) unsigned long long timeoutNanos;
+@property (nonatomic, assign) BOOL cancelled;
+
+- (instancetype)initWithParams:(NSDictionary *)params masked:(BOOL)masked;
+- (void)main;
+
+- (NSDictionary *)result;
+
 @end

@@ -27,18 +27,18 @@ enum RMBTQoSTestStatus: Int {
 @objc class RMBTQoSTest: Operation {
     static let kDefaultTimeoutNanos: UInt64 = 10 * NSEC_PER_SEC
     
-    private(set) var progress: RMBTProgress = RMBTProgress(totalUnitCount: 100)
+    @objc private(set) var progress: RMBTProgress = RMBTProgress(totalUnitCount: 100)
     
-    var group: RMBTQoSTestGroup?
+    @objc var group: RMBTQoSTestGroup?
     
     var status: RMBTQoSTestStatus = .unknown
 
-    private(set) var concurrencyGroup: UInt = 0
-    private(set) var uid: String?
+    @objc private(set) var concurrencyGroup: UInt = 0
+    @objc private(set) var uid: String?
     private(set) var timeoutNanos: UInt64 = 0
     
-    private(set) var result: [String: Any] = [:]
-    private(set) var durationNanos: Int64 = 0
+    @objc private(set) var result: [String: Any] = [:]
+    @objc private(set) var durationNanos: Int64 = 0
     private var startedAtNanos: UInt64 = 0
 
     init?(with params: [String: Any]) {
