@@ -17,13 +17,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class RMBTQoSTest;
+@interface RMBTQoSTracerouteTestExecutor : NSObject
 
-@interface RMBTQoSTestGroup : NSObject
+@property (nonatomic, assign) NSUInteger concurrencyGroup;
+@property (nonatomic, strong) NSString *uid;
+@property (nonatomic, assign) unsigned long long timeoutNanos;
+@property (nonatomic, assign) BOOL cancelled;
 
-@property (nonatomic, readonly) NSString *key, *localizedDescription;
+- (instancetype)initWithParams:(NSDictionary *)params masked:(BOOL)masked;
+- (void)main;
 
-+(instancetype)groupForKey:(NSString*)key localizedDescription:(NSString*)description;
--(RMBTQoSTest*)testWithParams:(NSDictionary*)params;
+- (NSDictionary *)result;
 
 @end

@@ -16,9 +16,6 @@
  */
 
 #import "RMBTQoSTestRunner.h"
-#import "RMBTQoSTestGroup.h"
-#import "RMBTQoSTest.h"
-#import "RMBTQoSCCTest.h"
 #import "RMBTProgress.h"
 #import "RMBTQosWebTestURLProtocol.h"
 #import "RMBT-Swift.h"
@@ -210,8 +207,8 @@
                     if (result) {
                         result[@"test_type"] = weakTest.group.key;
                         result[@"qos_test_uid"] = weakTest.uid;
-                        if (weakTest.durationNanos) {
-                            result[@"duration_ns"] = weakTest.durationNanos;
+                        if (weakTest.durationNanos > 0) {
+                            result[@"duration_ns"] = @(weakTest.durationNanos);
                         }
                         [strongSelf->_results setObject:result forKey:weakTest.uid];
                     }

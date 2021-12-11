@@ -15,7 +15,7 @@
  *
  */
 
-#import "RMBTQoSTracerouteTest.h"
+#import "RMBTQoSTracerouteTestExecutor.h"
 
 #import <arpa/inet.h>
 #import <netdb.h>
@@ -36,7 +36,7 @@ static const NSUInteger kDefaultMaxHops = 30;
 static const NSUInteger kStartPort = 32768 + 666;
 static const NSUInteger kTimeout = 2; // timeout for each try (-w)
 
-@interface RMBTQoSTracerouteTest() {
+@interface RMBTQoSTracerouteTestExecutor() {
     NSUInteger _maxHops;
     NSString *_host;
     NSArray *_result;
@@ -46,12 +46,13 @@ static const NSUInteger kTimeout = 2; // timeout for each try (-w)
     BOOL _maxHopsExceeded;
 }
 
+@property (nonatomic, strong) RMBTProgress *progress;
 @end
 
-@implementation RMBTQoSTracerouteTest
+@implementation RMBTQoSTracerouteTestExecutor
 
 - (instancetype)initWithParams:(NSDictionary *)params masked:(BOOL)masked {
-    if (self = [super initWithParams:params]) {
+    if (self = [super init]) {
         _host = params[@"host"];
         _maxHops = params[@"max_hops"] ? (NSUInteger)[params[@"max_hops"] integerValue] : kDefaultMaxHops;
         _masked = masked;
@@ -140,7 +141,7 @@ static const NSUInteger kTimeout = 2; // timeout for each try (-w)
         self.progress.completedUnitCount += 1;
     } while (
         hopResult && // otherwise error
-        !self.isCancelled &&
+        !self.cancelled &&
         ip != addr.sin_addr.s_addr
     );
 

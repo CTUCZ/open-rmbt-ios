@@ -16,8 +16,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "RMBTQoSTestGroup.h"
-#import "RMBTQoSTest.h"
+
+@class RMBTQoSTestGroup;
 
 @protocol RMBTQoSTestRunnerDelegate <NSObject>
 - (void)qosRunnerDidFail;

@@ -16,7 +16,17 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "RMBTQoSTest.h"
 
-@interface RMBTQoSDNSTest : RMBTQoSTest
+@interface RMBTQOSDNSTestExecutor : NSObject
+
+@property (nonatomic, assign) NSUInteger concurrencyGroup;
+@property (nonatomic, strong) NSString *uid;
+@property (nonatomic, assign) unsigned long long timeoutNanos;
+@property (nonatomic, assign) BOOL cancelled;
+
+- (instancetype)initWithParams:(NSDictionary *)params;
+
+- (void)main;
+- (NSDictionary*)result;
+
 @end

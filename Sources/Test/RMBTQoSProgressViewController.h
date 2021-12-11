@@ -17,9 +17,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "RMBTQoSTestGroup.h"
-
-@class RMBTHistoryResultPercentView;
+@class RMBTHistoryResultPercentView, RMBTQoSTestGroup;
 
 @interface RMBTQoSProgressCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
