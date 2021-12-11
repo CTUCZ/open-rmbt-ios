@@ -297,7 +297,7 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
         case .qos:
             let qosCell = tableView.dequeueReusableCell(withIdentifier: RMBTQOSListCell.ID, for: indexPath) as! RMBTQOSListCell
             qosCell.title = NSLocalizedString("QoS", comment: "")
-            qosCell.items = historyResult.qosResults ?? []
+            qosCell.items = historyResult.qosResults as? [RMBTHistoryQoSGroupResult] ?? []
             qosCell.selectionStyle = .none
             qosCell.onQosSelectHandler = { [weak self] item in
                 self?.showQosGroup(item)

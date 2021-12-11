@@ -17,7 +17,7 @@ import UIKit
     @objc private (set) var details: String?
     @objc private (set) var isSuccessful: Bool = false
     
-    @objc private (set) var uid: NSNumber?
+    @objc private (set) var uid: NSNumber = NSNumber()
     @objc var statusDetails: String?
     
     @objc(initWithResponse:)
@@ -28,7 +28,7 @@ import UIKit
         isSuccessful = (failed == 0 && succeeded > 0)
         summary = response["test_summary"] as? String
         details = response["test_desc"] as? String
-        uid = response["uid"] as? NSNumber
+        uid = response["uid"] as? NSNumber ?? NSNumber()
     }
     
     func statusIcon() -> UIImage? {
