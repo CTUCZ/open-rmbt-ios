@@ -20,7 +20,6 @@
     #import "RMBTConfig.h"
 
     #import "RMBTHelpers.h"
-    #import "UIColor+RMBTHex.h"
 
     // Needed by AFNetworking
     #import <MobileCoreServices/MobileCoreServices.h>

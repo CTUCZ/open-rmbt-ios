@@ -12,7 +12,6 @@
 #import "RMBTMapOptions.h"
 #import "RMBTSpeed.h"
 #import "RMBTConnectivityTracker.h"
-#import "UIColor+RMBTHex.h"
 #import <SVWebViewController/SVWebViewController.h>
 #import <SVWebViewController/SVModalWebViewController.h>
 

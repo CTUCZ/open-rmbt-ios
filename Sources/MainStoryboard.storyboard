@@ -160,35 +160,6 @@
             </objects>
             <point key="canvasLocation" x="-1391.304347826087" y="-210.26785714285714"/>
         </scene>
-        <!--Info Text View Controller-->
-        <scene sceneID="FRq-Zn-BoD">
-            <objects>
-                <viewController id="wJS-zw-FnW" customClass="RMBTInfoTextViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9D9-ow-4Lr">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3O-Ye-lEV">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="AER-fs-Rfi"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="gJU-SD-cAE"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="textView" destination="p3O-Ye-lEV" id="orb-qe-x8P"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KqY-Lv-ohX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1615" y="2005"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1MQ-LZ-c8S">
             <objects>
