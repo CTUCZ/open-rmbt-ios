@@ -22,10 +22,10 @@ final class RMBTHistoryQoSGroupResultCell: UITableViewCell {
             guard let result = result else {
                 return
             }
-            statusLabel.text = NSLocalizedString(result.successful ? "Succeeded" : "Failed", comment: "").uppercased()
-            statusLabel.textColor = result.successful ? UIColor(named: "greenButtonBackground") : .red
+            statusLabel.text = NSLocalizedString(result.isSuccessful ? "Succeeded" : "Failed", comment: "").uppercased()
+            statusLabel.textColor = result.isSuccessful ? UIColor(named: "greenButtonBackground") : .red
             statusDescriptionLabel.text = result.statusDetails
-            statusDescriptionLabel.textColor = result.successful ? UIColor(named: "greenButtonBackground") : .red
+            statusDescriptionLabel.textColor = result.isSuccessful ? UIColor(named: "greenButtonBackground") : .red
         }
     }
 }

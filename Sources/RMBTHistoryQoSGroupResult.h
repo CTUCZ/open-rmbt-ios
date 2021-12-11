@@ -16,9 +16,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "RMBTHistoryQoSSingleResult.h"
 
-@class RMBTHistoryResultItem;
+@class RMBTHistoryResultItem, RMBTHistoryQoSSingleResult;
 
 @interface RMBTHistoryQoSGroupResult : NSObject
 @property (nonatomic, readonly) NSString *name, *about;

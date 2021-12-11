@@ -54,7 +54,7 @@ final class RMBTHistoryQoSSingleResultViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if (section == 0) {
-            if(self.result?.successful == true) {
+            if(self.result?.isSuccessful == true) {
                 return NSLocalizedString("Test Succeeded", tableName: "Section header for successful test", comment: "")
             } else {
                 return NSLocalizedString("Test Failed", comment: "Section header for successful test")

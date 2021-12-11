@@ -263,7 +263,7 @@
         for (RMBTHistoryQoSGroupResult* resGroup in self->_qosResults) {
             for (RMBTHistoryQoSSingleResult* res in resGroup.tests) {
                 totalQos += 1;
-                if (res.successful) {
+                if (res.isSuccessful) {
                     okQos += 1;
                 }
             }

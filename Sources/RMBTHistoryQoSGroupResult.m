@@ -70,9 +70,9 @@
         if (tests.count > 0) {
             // Sort tests so that failed ones come first:
             tests = [tests sortedArrayUsingComparator:^NSComparisonResult(RMBTHistoryQoSSingleResult * _Nonnull t1, RMBTHistoryQoSSingleResult * _Nonnull t2) {
-                if (!t1.successful && t2.successful) {
+                if (!t1.isSuccessful && t2.isSuccessful) {
                     return NSOrderedAscending;
-                } else if (t1.successful && !t2.successful) {
+                } else if (t1.isSuccessful && !t2.isSuccessful) {
                     return NSOrderedDescending;
                 } else {
                     return [t1.uid compare:t2.uid];
@@ -94,7 +94,7 @@
         _about = about;
         _tests = tests;
         _succeededCount = [tests bk_select:^BOOL(RMBTHistoryQoSSingleResult *r) {
-            return r.successful;
+            return r.isSuccessful;
         }].count;
     }
     return self;
