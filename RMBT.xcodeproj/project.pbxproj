@@ -38,7 +38,6 @@
 		C708280D1CB6795F00F482EB /* RMBTSpeedTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F3FB26179CA64D00E336CF /* RMBTSpeedTest.m */; };
 		C708280E1CB6796200F482EB /* RMBTHelpersTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C706B19117E24BAB006C6143 /* RMBTHelpersTest.m */; };
 		C70C178C17D7BFC400F55964 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70C178B17D7BFC400F55964 /* Images.xcassets */; };
-		C71161651E3CFA4800D8CC0C /* RMBTProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C71161641E3CFA4800D8CC0C /* RMBTProgress.m */; };
 		C71161681E3CFF3800D8CC0C /* RMBTProgressTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C71161661E3CFF1B00D8CC0C /* RMBTProgressTest.m */; };
 		C72A27A417E1ECD400EC98B3 /* RMBTSSLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C72A27A317E1ECD400EC98B3 /* RMBTSSLHelper.m */; };
 		C733B6D91DDE1EB2005B9105 /* RMBTHistoryQoSGroupResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C733B6D81DDE1EB2005B9105 /* RMBTHistoryQoSGroupResult.m */; };
@@ -216,6 +215,7 @@
 		E9A23BE62764DCA600717814 /* RMBTQoSProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A23BE52764DCA600717814 /* RMBTQoSProgressViewController.swift */; };
 		E9A23BE82764DCD600717814 /* RMBTQoSProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A23BE72764DCD600717814 /* RMBTQoSProgressCell.swift */; };
 		E9A23BEA2764DE4700717814 /* UIView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A23BE92764DE4700717814 /* UIView+Position.swift */; };
+		E9A23BEC2764E55000717814 /* RMBTProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A23BEB2764E54F00717814 /* RMBTProgress.swift */; };
 		E9AA0DE127634EF1003C71D7 /* RMBTQoSDNSTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AA0DE027634EF1003C71D7 /* RMBTQoSDNSTest.swift */; };
 		E9AA0DE327635552003C71D7 /* RMBTQoSTracerouteTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AA0DE227635552003C71D7 /* RMBTQoSTracerouteTest.swift */; };
 		E9AA0DE5276358EC003C71D7 /* RMBTQoSHTTPTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AA0DE4276358EC003C71D7 /* RMBTQoSHTTPTest.swift */; };
@@ -336,8 +336,6 @@
 		C70828021CB6792F00F482EB /* RMBTTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMBTTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70828061CB6792F00F482EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../RMBTTest/Info.plist; sourceTree = "<group>"; };
 		C70C178B17D7BFC400F55964 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C71161631E3CFA4800D8CC0C /* RMBTProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTProgress.h; sourceTree = "<group>"; };
-		C71161641E3CFA4800D8CC0C /* RMBTProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTProgress.m; sourceTree = "<group>"; };
 		C71161661E3CFF1B00D8CC0C /* RMBTProgressTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTProgressTest.m; sourceTree = "<group>"; };
 		C72A27A217E1ECD400EC98B3 /* RMBTSSLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTSSLHelper.h; sourceTree = "<group>"; };
 		C72A27A317E1ECD400EC98B3 /* RMBTSSLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTSSLHelper.m; sourceTree = "<group>"; };
@@ -548,6 +546,7 @@
 		E9A23BE52764DCA600717814 /* RMBTQoSProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTQoSProgressViewController.swift; sourceTree = "<group>"; };
 		E9A23BE72764DCD600717814 /* RMBTQoSProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTQoSProgressCell.swift; sourceTree = "<group>"; };
 		E9A23BE92764DE4700717814 /* UIView+Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Position.swift"; sourceTree = "<group>"; };
+		E9A23BEB2764E54F00717814 /* RMBTProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTProgress.swift; sourceTree = "<group>"; };
 		E9AA0DE027634EF1003C71D7 /* RMBTQoSDNSTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTQoSDNSTest.swift; sourceTree = "<group>"; };
 		E9AA0DE227635552003C71D7 /* RMBTQoSTracerouteTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTQoSTracerouteTest.swift; sourceTree = "<group>"; };
 		E9AA0DE4276358EC003C71D7 /* RMBTQoSHTTPTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTQoSHTTPTest.swift; sourceTree = "<group>"; };
@@ -764,8 +763,7 @@
 				E97CF78C276226B40092352C /* RMBTLocationTracker.swift */,
 				E9400EEA26BA6B600067273A /* RMBTControlServer.swift */,
 				E9400F0126BACF340067273A /* ServerHelper.swift */,
-				C71161631E3CFA4800D8CC0C /* RMBTProgress.h */,
-				C71161641E3CFA4800D8CC0C /* RMBTProgress.m */,
+				E9A23BEB2764E54F00717814 /* RMBTProgress.swift */,
 				E97CF7882761F8930092352C /* CLLocation+RMBTFormat.swift */,
 			);
 			name = _Shared;
@@ -1762,13 +1760,13 @@
 				E9400F3B26BEA1C40067273A /* QosMeasurementRequest.swift in Sources */,
 				C73E792A176761630009855E /* RMBTSettingsViewController.m in Sources */,
 				E939AAA526DA837D00D73F0B /* MKMapView+Additions.swift in Sources */,
+				E9A23BEC2764E55000717814 /* RMBTProgress.swift in Sources */,
 				C76B8C87177709C800925BE1 /* RMBTThroughputHistory.m in Sources */,
 				E9E9E8FB273CDECB005EB393 /* RMBTGraphLabel.swift in Sources */,
 				E95B4974275396CA0093068F /* UDPDestination.swift in Sources */,
 				E9AA0DE327635552003C71D7 /* RMBTQoSTracerouteTest.swift in Sources */,
 				36B75A29273EA73C006F4CB3 /* RMBTHistoryLoopCell.swift in Sources */,
 				E97CF78F27624E5D0092352C /* RMBTQoSTest.swift in Sources */,
-				C71161651E3CFA4800D8CC0C /* RMBTProgress.m in Sources */,
 				E9E993E126EB24AE00E7EED6 /* RMBTNetInfoItemtCell.swift in Sources */,
 				C7912CB6177D581F004AD2A4 /* RMBTSpeed.m in Sources */,
 				E91316BD26ADD4DE00368DCD /* RMBTGradientView.swift in Sources */,
