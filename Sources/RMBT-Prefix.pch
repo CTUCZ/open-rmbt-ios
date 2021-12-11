@@ -21,7 +21,6 @@
 
     #import "RMBTHelpers.h"
     #import "UIColor+RMBTHex.h"
-    #import "UIView+Position.h"
 
     // Needed by AFNetworking
     #import <MobileCoreServices/MobileCoreServices.h>
