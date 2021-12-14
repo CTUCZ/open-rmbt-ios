@@ -39,7 +39,7 @@ class RMBTMapMeasurementCell: UICollectionViewCell {
             if let _ = self.networkDetailList.first(where: { item in
                 return item.value == "WLAN" // We can check title, but could be localizated
             }) {
-                self.networkType = .wiFi
+                self.networkType = .wifi
             } else {
                 self.networkType = .cellular
             }
@@ -64,7 +64,7 @@ class RMBTMapMeasurementCell: UICollectionViewCell {
     }
     
     private func updateNetworkType() {
-        if networkType == .wiFi {
+        if networkType == .wifi {
             self.networkTypeImageView.image = UIImage(named:"wifi_icon")?.withRenderingMode(.alwaysTemplate)
         } else {
             self.networkTypeImageView.image = UIImage(named:"mobile_icon")?.withRenderingMode(.alwaysTemplate)

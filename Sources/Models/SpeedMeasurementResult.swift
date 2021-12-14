@@ -583,7 +583,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         if let lastConnectivity = lastConnectivity() {
             if lastConnectivity.networkType == .cellular {
                 telephonyInfo = TelephonyInfo(connectivity: lastConnectivity)
-            } else if lastConnectivity.networkType == .wiFi {
+            } else if lastConnectivity.networkType == .wifi {
                 wifiInfo = WifiInfo(connectivity: lastConnectivity)
             }
         }

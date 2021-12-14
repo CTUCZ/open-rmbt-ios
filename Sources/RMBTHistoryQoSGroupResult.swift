@@ -9,7 +9,7 @@
 import UIKit
 
 class RMBTHistoryQoSGroupResult: NSObject {
-    private(set) var name: String?
+    private(set) var name: String = ""
     private(set) var about: String?
     @objc private(set) var tests: [RMBTHistoryQoSSingleResult] = []
     private(set) var succeededCount: UInt = 0

@@ -16,7 +16,16 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "RMBTNetworkType.h"
+
+typedef NS_ENUM(NSInteger, RMBTNetworkType) {
+    RMBTNetworkTypeUnknown = -1,
+    RMBTNetworkTypeNone = 0,
+    RMBTNetworkTypeBrowser = 98,
+    RMBTNetworkTypeWifi = 99,
+    RMBTNetworkTypeCellular = 105
+};
+
+
 
 typedef NS_ENUM(NSUInteger, RMBTConnectivityInterfaceInfoTraffic) {
     RMBTConnectivityInterfaceInfoTrafficSent,

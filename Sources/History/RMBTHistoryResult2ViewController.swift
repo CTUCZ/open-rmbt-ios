@@ -76,7 +76,7 @@ final class RMBTHistoryResult2ViewController: UIViewController {
             sections.append(.map)
         }
         
-        if historyResult.netItems?.count ?? 0 > 0 {
+        if historyResult.netItems.count > 0 {
             sections.append(.network)
         }
         
@@ -86,16 +86,16 @@ final class RMBTHistoryResult2ViewController: UIViewController {
             sections.append(.speedGraphs)
         }
         
-        if historyResult.qoeClassificationItems?.count ?? 0 > 0 ||
-            historyResult.netItems?.count ?? 0 > 0 ||
+        if historyResult.qoeClassificationItems.count > 0 ||
+            historyResult.netItems.count > 0 ||
             historyResult.qosResults?.count ?? 0 > 0 {
             sections.append(.title(NSLocalizedString("Weitere Details", comment: "")))
             
-            if historyResult.netItems?.count ?? 0 > 0 {
+            if historyResult.netItems.count > 0 {
                 sections.append(.netInfo)
             }
 
-            if historyResult.qoeClassificationItems?.count ?? 0 > 0 {
+            if historyResult.qoeClassificationItems.count > 0 {
                 sections.append(.qoe)
             }
             
@@ -113,7 +113,7 @@ final class RMBTHistoryResult2ViewController: UIViewController {
     }
     
     private func fetchHistoryResultInformation() {
-        self.historyResult?.ensureBasicDetails({ [weak self] in
+        self.historyResult?.ensureBasicDetails(success: { [weak self] in
             guard let self = self else { return }
             guard let historyResult = self.historyResult else { return }
             guard historyResult.dataState != .index else {
@@ -129,7 +129,7 @@ final class RMBTHistoryResult2ViewController: UIViewController {
                 items.append(item)
             }
 
-            historyResult.ensureSpeedGraph({ [weak self] in
+            historyResult.ensureSpeedGraph(success: { [weak self] in
                 self?.prepareSections()
             })
             
@@ -225,7 +225,7 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
         case .qoe:
             return CGFloat(60 + (historyResult?.qoeClassificationItems.count ?? 0) * 48)
         case .qos:
-            return CGFloat(60 + (historyResult?.qosResults.count ?? 0) * 48)
+            return CGFloat(60 + (historyResult?.qosResults?.count ?? 0) * 48)
         case .testDetails:
             return 48
         }
@@ -285,13 +285,13 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
         case .netInfo:
             let netInfoCell = tableView.dequeueReusableCell(withIdentifier: RMBTNetInfoListCell.ID, for: indexPath) as! RMBTNetInfoListCell
             netInfoCell.title = NSLocalizedString("Network", comment: "")
-            netInfoCell.items = historyResult.netItems as? [RMBTHistoryResultItem] ?? []
+            netInfoCell.items = historyResult.netItems
             netInfoCell.selectionStyle = .none
             return netInfoCell
         case .qoe:
             let qoeCell = tableView.dequeueReusableCell(withIdentifier: RMBTQOEListCell.ID, for: indexPath) as! RMBTQOEListCell
             qoeCell.title = NSLocalizedString("Qualität", comment: "")
-            qoeCell.items = historyResult.qoeClassificationItems as? [RMBTHistoryQOEResultItem] ?? []
+            qoeCell.items = historyResult.qoeClassificationItems
             qoeCell.selectionStyle = .none
             return qoeCell
         case .qos:

@@ -239,16 +239,15 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
             var results: [String:[RMBTHistoryResult]] = [:]
             
             for r in records {
-                if let result = RMBTHistoryResult(response: r.json()) {
-                    if let loopUuid = r.loopUuid {
-                        if var _ = results[loopUuid] {
-                            results[loopUuid]!.append(result)
-                        } else {
-                            results[loopUuid] = [result]
-                        }
-                    } else if let testUuid = r.testUuid {
-                        results[testUuid] = [result]
+                let result = RMBTHistoryResult(response: r.json())
+                if let loopUuid = r.loopUuid {
+                    if var _ = results[loopUuid] {
+                        results[loopUuid]!.append(result)
+                    } else {
+                        results[loopUuid] = [result]
                     }
+                } else if let testUuid = r.testUuid {
+                    results[testUuid] = [result]
                 }
             }
             
@@ -348,7 +347,7 @@ extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDel
         let networkTypeIcon = RMBTNetworkTypeConstants.networkTypeDictionary[testResults[section].networkTypeServerDescription]?.icon
         header.typeImageView.image = networkTypeIcon
         header.onExpand = { [unowned self] in
-            self.expandLoopSection(self.testResults[section].loopUuid)
+            self.expandLoopSection(self.testResults[section].loopUuid ?? "")
         }
         // header.bottomBorder is hidden by default to avoid border overlapping
         if section < testResults.count - 1 {

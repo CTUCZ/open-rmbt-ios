@@ -523,7 +523,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         
         if (connectivity.networkType == .cellular) {
             self.networkTypeImage = UIImage(named: "mobile_icon_full")?.withRenderingMode(.alwaysTemplate)
-        } else if (connectivity.networkType == .wiFi) {
+        } else if (connectivity.networkType == .wifi) {
             self.networkTypeImage = UIImage(named: "wifi_icon")?.withRenderingMode(.alwaysTemplate)
         } else {
             self.networkTypeImage = nil
