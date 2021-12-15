@@ -129,7 +129,7 @@ class RMBTTestPortraitView: UIView, XibLoadable {
     
     var speed: UInt32 = 0 {
         didSet {
-            self.speedLabel.text = RMBTSpeedMbpsStringWithSuffix(speed, false)
+            self.speedLabel.text = RMBTSpeedMbpsString(Double(speed), withMbps: false)
         }
     }
     

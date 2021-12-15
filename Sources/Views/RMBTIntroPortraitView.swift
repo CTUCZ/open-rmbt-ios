@@ -146,7 +146,7 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
         self.networkNameLabel.text = networkName
         self.networkTypeLabel.text = networkDescription
         self.networkWifiTypeImageView.image = .wifiAvailable
-        if (networkType == .wiFi) {
+        if (networkType == .wifi) {
             self.networkWifiView.isHidden = false
             self.networkMobileView.isHidden = true
         } else if (networkType == .cellular) {
@@ -154,7 +154,7 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
             self.networkWifiView.isHidden = true
         }
         
-        if (networkType == .wiFi) || (networkType == .cellular) {
+        if (networkType == .wifi) || (networkType == .cellular) {
             UIView.animate(withDuration: 0.3) {
                 self.backgroundColor = .networkAvailable
                 self.gradientView.fromColor = .networkAvailable

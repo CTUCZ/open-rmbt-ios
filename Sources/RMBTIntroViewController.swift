@@ -75,7 +75,7 @@ class RMBTIntroViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         guard let connectivity = connectivity else { return .default }
-        if connectivity.networkType == .cellular || connectivity.networkType == .wiFi {
+        if connectivity.networkType == .cellular || connectivity.networkType == .wifi {
             return .lightContent
         } else {
             if #available(iOS 13.0, *) {
@@ -398,7 +398,7 @@ class RMBTIntroViewController: UIViewController {
         
         currentView.networkAvailable(connectivity.networkType, networkName: self.networkName, networkDescription: connectivity.networkTypeDescription)
 
-        if (connectivity.networkType == .wiFi) || (connectivity.networkType == .cellular) {
+        if (connectivity.networkType == .wifi) || (connectivity.networkType == .cellular) {
             self.setNeedsStatusBarAppearanceUpdate()
             self.navigationController?.setNeedsStatusBarAppearanceUpdate()
         }

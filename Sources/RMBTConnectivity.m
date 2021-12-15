@@ -49,7 +49,7 @@
     switch (_networkType) {
         case RMBTNetworkTypeNone:
             return @"Not connected";
-        case RMBTNetworkTypeWiFi:
+        case RMBTNetworkTypeWifi:
             return @"WLAN";
         case RMBTNetworkTypeCellular:
             if (_cellularCodeDescription) {
@@ -78,7 +78,7 @@
             break;
         }
             
-        case RMBTNetworkTypeWiFi: {
+        case RMBTNetworkTypeWifi: {
             // If WLAN, then show SSID as network name. Fetching SSID does not work on the simulator.
             NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();
             for (NSString *ifnam in ifs) {
@@ -239,7 +239,7 @@
     NSInteger code = self.networkType;
     if (code > 0) result[@"network_type"] = [NSNumber numberWithInteger:code];
 
-    if (self.networkType == RMBTNetworkTypeWiFi) {
+    if (self.networkType == RMBTNetworkTypeWifi) {
         if (_networkName) result[@"wifi_ssid"] = _networkName;
         if (_bssid) result[@"wifi_bssid"] = _bssid;
     } else if (self.networkType == RMBTNetworkTypeCellular) {
@@ -282,7 +282,7 @@
             NSString *name=[NSString stringWithCString:cursor->ifa_name encoding:NSASCIIStringEncoding];
             // en0 is WiFi, pdp_ip0 is WWAN
             if (cursor->ifa_addr->sa_family == AF_LINK && (
-                ([name hasPrefix:@"en"] && self.networkType == RMBTNetworkTypeWiFi) ||
+                ([name hasPrefix:@"en"] && self.networkType == RMBTNetworkTypeWifi) ||
                 ([name hasPrefix:@"pdp_ip"] && self.networkType == RMBTNetworkTypeCellular)
             )) {
                 stats = (const struct if_data *) cursor->ifa_data;

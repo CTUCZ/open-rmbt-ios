@@ -18,34 +18,34 @@
 import Foundation
 
 ///
-open class RMBTThroughputHistory: CustomStringConvertible {
+@objc open class RMBTThroughputHistory: NSObject {
 
     /// Total bytes/time transferred so far. Equal to sum of all reported lengths / largest reported timestamp.
-    open var totalThroughput = RMBTThroughput(length: 0, startNanos: 0, endNanos: 0)
+    @objc open var totalThroughput = RMBTThroughput(length: 0, startNanos: 0, endNanos: 0)
 
     /// Time axis is split into periods of this duration. Each period has a throughput object associated with it.
     /// Reported transfers are then proportionally divided accross the throughputs it spans over.
     open var resolutionNanos: UInt64
 
     /// Array of throughput objects for each period
-    open var periods: [RMBTThroughput] = []
+    @objc open var periods: [RMBTThroughput] = []
 
     /// Returns the index of the last period which is complete, meaning that no reports can change its value.
     /// -1 if not even the first period is complete yet
-    open var lastFrozenPeriodIndex: Int = -1
+    @objc open var lastFrozenPeriodIndex: Int = -1
 
     /// See freeze
-    open var isFrozen: Bool = false
+    @objc open var isFrozen: Bool = false
 
     //
 
     ///
-    public init(resolutionNanos: UInt64) {
+    @objc public init(resolutionNanos: UInt64) {
         self.resolutionNanos = resolutionNanos
     }
 
     ///
-    func addLength(_ length: UInt64, atNanos timestampNanos: UInt64) {
+    @objc func addLength(_ length: UInt64, atNanos timestampNanos: UInt64) {
         assert(!isFrozen, "Tried adding to frozen history")
 
         totalThroughput.length += length
@@ -108,13 +108,13 @@ open class RMBTThroughputHistory: CustomStringConvertible {
     }
 
     /// Marks history as frozen, also marking all periods as passed, not allowing futher reports.
-    func freeze() {
+    @objc func freeze() {
         isFrozen = true
         lastFrozenPeriodIndex = periods.count - 1
     }
 
     /// Concatenetes last count periods into one, or nop if there are less than two periods in the history.
-    func squashLastPeriods(_ count: Int) {
+    @objc func squashLastPeriods(_ count: Int) {
         assert(count >= 1, "Count must be >= 1")
         assert(isFrozen, "History should be frozen before squashing")
 
@@ -139,7 +139,7 @@ open class RMBTThroughputHistory: CustomStringConvertible {
     }
 
     ///
-    func log() {
+    @objc func log() {
         Log.logger.debug("Throughputs:")
 
         for t in periods {
@@ -150,7 +150,7 @@ open class RMBTThroughputHistory: CustomStringConvertible {
     }
 
     ///
-    open var description: String {
+    open override var description: String {
         return "total = \(totalThroughput), entries = \(periods.description)"
     }
 }

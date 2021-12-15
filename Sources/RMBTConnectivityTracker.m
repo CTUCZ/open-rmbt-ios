@@ -109,7 +109,7 @@ static CTTelephonyNetworkInfo *sharedNetworkInfo;
             networkType = RMBTNetworkTypeNone;
             break;
         case NetworkReachabilityStatusWifi:
-            networkType = RMBTNetworkTypeWiFi;
+            networkType = RMBTNetworkTypeWifi;
             break;
         case NetworkReachabilityStatusMobile:
             networkType = RMBTNetworkTypeCellular;

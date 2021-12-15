@@ -348,9 +348,9 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     func updateSpeedLabel(for phase: RMBTTestRunnerPhase, withSpeed kbps: UInt32, isFinal: Bool) {
         self.isShowSpeedSuffix = false
         if phase == .down {
-            self.down = RMBTSpeedMbpsStringWithSuffix(kbps, false)
+            self.down = RMBTSpeedMbpsString(Double(kbps), withMbps: false)
         } else {
-            self.up = RMBTSpeedMbpsStringWithSuffix(kbps, false)
+            self.up = RMBTSpeedMbpsString(Double(kbps), withMbps: false)
         }
         self.speed = kbps
     }
@@ -523,7 +523,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         
         if (connectivity.networkType == .cellular) {
             self.networkTypeImage = UIImage(named: "mobile_icon_full")?.withRenderingMode(.alwaysTemplate)
-        } else if (connectivity.networkType == .wiFi) {
+        } else if (connectivity.networkType == .wifi) {
             self.networkTypeImage = UIImage(named: "wifi_icon")?.withRenderingMode(.alwaysTemplate)
         } else {
             self.networkTypeImage = nil
