@@ -318,9 +318,9 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         self.currentView.totalTests = self.loopModeInfo?.total ?? 0
         
         if let info = self.loopModeInfo {
-            super.startTest(withExtraParams: info.params)
+            super.startTest(with: info.params)
         } else {
-            super.startTest(withExtraParams: nil)
+            super.startTest(with: nil)
         }
     }
     
@@ -532,11 +532,11 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         self.technology = connectivity.networkTypeDescription
     }
     
-    func onTestUpdatedLocation(_ location: CLLocation!) { }
+    func onTestUpdatedLocation(_ location: CLLocation) { }
     
-    func onTestUpdatedServerName(_ name: String!) { }
+    func onTestUpdatedServerName(_ name: String) { }
     
-    func onTestUpdatedStatus(_ status: String!) {
+    func onTestUpdatedStatus(_ status: String) {
         self.status = status
     }
     
@@ -560,7 +560,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         self.currentView.ping = RMBTHelpers.RMBTMillisecondsString(with: Int64(nanos), withMS: false)
     }
     
-    func onTestMeasuredTroughputs(_ throughputs: [Any]!, in phase: RMBTTestRunnerPhase) {
+    func onTestMeasuredTroughputs(_ throughputs: [Any], in phase: RMBTTestRunnerPhase) {
         var kbps = 0
         var l: Double = 0.0
 
@@ -588,14 +588,14 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         self.updateSpeedLabel(for: .up, withSpeed: kbps, isFinal: true)
     }
     
-    func onTestStartedQoS(withGroups groups: [Any]!) {
+    func onTestStartedQoS(with groups: [RMBTQoSTestGroup]) {
         self.qosProgressViewController.testGroups = (groups as? [RMBTQoSTestGroup]) ?? []
         self.qosCounterText = self.qosProgressViewController.progressString()
         self.state = .qos
         self.currentView.showQoSUI(true)
     }
     
-    func onTestUpdatedProgress(_ progress: Float, inQoSGroup group: RMBTQoSTestGroup!) {
+    func onTestUpdatedProgress(_ progress: Float, in group: RMBTQoSTestGroup) {
         self.qosProgressViewController.update(progress, for: group)
         self.qosCounterText = self.qosProgressViewController.progressString()
     }
