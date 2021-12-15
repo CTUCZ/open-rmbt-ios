@@ -7,6 +7,7 @@
 #import "RMBTHelpers.h"
 
 
+#import "RMBTQosWebTestURLProtocol.h"
 #import "RMBTTestRunner.h"
 #import "RMBTQoSTracerouteTestExecutor.h"
 #import "RMBTQoSDNSTestExecutor.h"

@@ -244,7 +244,7 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
             return mapCell
         case .network:
             let networkCell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryNetworkCell.ID, for: indexPath) as! RMBTHistoryNetworkCell
-            networkCell.networkName = (historyResult.netItems as? [RMBTHistoryResultItem])?.first(where: { item in
+            networkCell.networkName = historyResult.netItems.first(where: { item in
                 item.title == "WLAN SSID" || item.title == NSLocalizedString("history.result.operator", comment: "");
             })?.value
             networkCell.networkType = historyResult.networkTypeServerDescription
@@ -297,7 +297,7 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
         case .qos:
             let qosCell = tableView.dequeueReusableCell(withIdentifier: RMBTQOSListCell.ID, for: indexPath) as! RMBTQOSListCell
             qosCell.title = NSLocalizedString("QoS", comment: "")
-            qosCell.items = historyResult.qosResults as? [RMBTHistoryQoSGroupResult] ?? []
+            qosCell.items = historyResult.qosResults ?? []
             qosCell.selectionStyle = .none
             qosCell.onQosSelectHandler = { [weak self] item in
                 self?.showQosGroup(item)

@@ -78,16 +78,13 @@ final class RMBTSettings2ViewController: UIViewController {
     }
     
     private func cell(with item: Item, indexPath: IndexPath) -> UITableViewCell! {
-        var cell: UITableViewCell!
         switch item.type {
         case .switcher:
             let cell = tableView.dequeueReusableCell(withIdentifier: RMBTSwitcherCell.ID, for: indexPath)
             return cell
-        default:
+        @unknown default:
             return UITableViewCell()
         }
-        
-        return cell
     }
     
     private func updateCell(_ cell: UITableViewCell, item: Item) {

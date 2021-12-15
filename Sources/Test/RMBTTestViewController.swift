@@ -367,7 +367,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     func tapped() {
-        self.displayAlert(with: RMBTHelpers.RMBTAppTitle() ?? "",
+        self.displayAlert(with: RMBTHelpers.RMBTAppTitle(),
                           message: NSLocalizedString("Do you really want to abort the running test?", comment: "Abort test alert title"),
                           cancelButtonTitle: NSLocalizedString("Abort Test", comment: "Abort test alert button"),
                           otherButtonTitle: NSLocalizedString("Continue", comment: "Abort test alert button")) { [weak self] in
@@ -451,7 +451,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         // Start monitoring location changes
         NotificationCenter.default.addObserver(self, selector: #selector(locationsDidChange(_:)), name: NSNotification.Name.RMBTLocationTracker, object: nil)
         locationTracker = RMBTLocationTracker()
-        locationTracker?.startIfAuthorized()
+        _ = locationTracker?.startIfAuthorized()
         
         self.startDate = Date()
         timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
@@ -589,7 +589,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     }
     
     func onTestStartedQoS(with groups: [RMBTQoSTestGroup]) {
-        self.qosProgressViewController.testGroups = (groups as? [RMBTQoSTestGroup]) ?? []
+        self.qosProgressViewController.testGroups = groups
         self.qosCounterText = self.qosProgressViewController.progressString()
         self.state = .qos
         self.currentView.showQoSUI(true)

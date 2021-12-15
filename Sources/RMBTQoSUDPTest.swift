@@ -72,7 +72,7 @@ class RMBTQoSUDPTest: RMBTQoSIPTest {
         let cmd = String(format:"UDPTEST %@ %lu %lu +ID%@", isOutgoing ? "OUT" : "IN",
                          port,
                          packetCount,
-                         self.uid ?? "")
+                         self.uid )
                          
         let response1: String
         
@@ -147,7 +147,7 @@ class RMBTQoSUDPTest: RMBTQoSIPTest {
 
         let response2: String
         do {
-            let cmd = String(format:"GET UDPRESULT %@ %lu +ID%@", isOutgoing ? "OUT" : "IN", port, self.uid ?? "")
+            let cmd = String(format:"GET UDPRESULT %@ %lu +ID%@", isOutgoing ? "OUT" : "IN", port, self.uid)
             response2 = try self.send(command: cmd, readReply: true)
         }
         catch let error {

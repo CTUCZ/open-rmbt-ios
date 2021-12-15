@@ -338,7 +338,7 @@ extension RMBTControlServer {
             self.request(.post, path: key, requestObject: r, success: success, error: errorCallback)
             
         }, error: { error in
-            Log.logger.debug("\(error)")
+            Log.logger.debug("\(String(describing: error))")
             
             errorCallback(error)
         })

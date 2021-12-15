@@ -52,7 +52,7 @@ final class RMBTAppDelegate: UIResponder, UIApplicationDelegate {
 
         // If user has authorized location services, we should start tracking location now, so that when test starts,
         // we already have a more accurate location
-        RMBTLocationTracker.shared.startIfAuthorized()
+        _ = RMBTLocationTracker.shared.startIfAuthorized()
         
         let tos = RMBTTOS.shared
         

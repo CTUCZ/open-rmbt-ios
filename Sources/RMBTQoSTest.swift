@@ -34,7 +34,7 @@ enum RMBTQoSTestStatus: Int {
     var status: RMBTQoSTestStatus = .unknown
 
     @objc private(set) var concurrencyGroup: UInt = 0
-    @objc private(set) var uid: String?
+    @objc private(set) var uid: String = ""
     private(set) var timeoutNanos: UInt64 = 0
     
     @objc private(set) var result: [String: Any] = [:]
