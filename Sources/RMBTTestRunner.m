@@ -17,7 +17,6 @@
 
 #import "RMBTTestRunner.h"
 #import "RMBTTestWorker.h"
-#import "RMBTQoSTestRunner.h"
 
 #import "RMBTConnectivityTracker.h"
 #import "RMBT-Swift.h"
@@ -735,7 +734,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
         [RMBTSettings sharedSettings].previousLaunchQoSDate = [NSDate date];
         self.phase = RMBTTestRunnerPhaseQoS;
         _qosRunner = [[RMBTQoSTestRunner alloc] initWithDelegate:self];
-        [_qosRunner startWithToken:_testParams.testToken];
+        [_qosRunner startWith:_testParams.testToken];
     }
 }
 
@@ -757,7 +756,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
     return YES;
 }
 
-- (void)qosRunnerDidStartWithTestGroups:(NSArray<RMBTQoSTestGroup *> *)groups {
+- (void)qosRunnerDidStartWith:(NSArray<RMBTQoSTestGroup *> *)groups {
     RMBTLog(@"Started QoS with groups: %@", groups);
     _qosTestStartedAtNanos = [RMBTHelpers RMBTCurrentNanos];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -765,7 +764,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
     });
 }
 
-- (void)qosRunnerDidUpdateProgress:(float)p inGroup:(RMBTQoSTestGroup *)group totalProgress:(float)tp {
+- (void)qosRunnerDidUpdateProgress:(float)p in:(RMBTQoSTestGroup *)group totalProgress:(float)tp {
     RMBTLog(@"Group: %@: Progress %f: Total %f", group, p, tp);
     dispatch_async(dispatch_get_main_queue(), ^{
         [_delegate testRunnerDidUpdateProgress:tp inPhase:RMBTTestRunnerPhaseQoS];
@@ -773,7 +772,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
     });
 }
 
-- (void)qosRunnerDidCompleteWithResults:(NSArray<NSDictionary *> *)results {
+- (void)qosRunnerDidCompleteWith:(NSArray<NSDictionary<NSString *,id> *> * _Nonnull)results {
     RMBTLog(@"QoS finished.");
     _qosResults = results;
     _qosTestFinishedAtNanos = [RMBTHelpers RMBTCurrentNanos];
@@ -781,7 +780,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
 }
 
 - (void)qosRunnerDidFail {
-    [self qosRunnerDidCompleteWithResults:@[]];
+    [self qosRunnerDidCompleteWith:@[]];
 }
 
 @end

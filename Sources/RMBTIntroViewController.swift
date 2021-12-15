@@ -311,7 +311,7 @@ class RMBTIntroViewController: UIViewController {
         guard let location = RMBTLocationTracker.shared.location else { return }
         
         var params = connectivity.testResultDictionary() ?? [:]
-        let locationParams = location.paramsDictionary() ?? [:]
+        let locationParams = location.paramsDictionary()
         for param in locationParams {
             params[param.key] = param.value
         }
