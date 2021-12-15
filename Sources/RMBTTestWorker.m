@@ -18,7 +18,6 @@
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
 
 #import "RMBTTestWorker.h"
-#import "RMBTSSLHelper.h"
 #import "RMBT-Swift.h"
 
 typedef enum {
