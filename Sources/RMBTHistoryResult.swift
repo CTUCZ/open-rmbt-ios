@@ -82,16 +82,18 @@ class RMBTHistoryResult: NSObject {
             let t = Double(time) / 1000.0
             timestamp = Date(timeIntervalSince1970: t)
         } else {
-            assert(false, "can't parse time")
+            if response["time"] != nil {
+                assert(false, "can't parse time")
+            }
         }
         
         downloadSpeedClass = response["speed_download_classification"] as? Int ?? -1
         uploadSpeedClass = response["speed_upload_classification"] as? Int ?? -1
         pingClass = response["ping_classification"] as? Int ?? -1
         super.init()
-        assert(self.pingClass > -1)
-        assert(self.uploadSpeedClass > -1)
-        assert(self.downloadSpeedClass > -1)
+        assert(response["ping_classification"] == nil ? true : self.pingClass > -1 )
+        assert(response["speed_upload_classification"] == nil ? true : self.uploadSpeedClass > -1)
+        assert(response["speed_download_classification"] == nil ? true : self.downloadSpeedClass > -1)
         assert(!self.uuid.isEmpty)
     }
 

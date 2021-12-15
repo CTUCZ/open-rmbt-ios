@@ -18,9 +18,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-#import "RMBTThroughputHistory.h"
 #import "RMBTConnectivity.h"
 
+@class RMBTThroughputHistory;
 @interface RMBTTestResult : NSObject
 
 @property (nonatomic, readonly) NSUInteger threadCount;

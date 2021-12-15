@@ -348,9 +348,9 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     func updateSpeedLabel(for phase: RMBTTestRunnerPhase, withSpeed kbps: UInt32, isFinal: Bool) {
         self.isShowSpeedSuffix = false
         if phase == .down {
-            self.down = RMBTSpeedMbpsStringWithSuffix(kbps, false)
+            self.down = RMBTSpeedMbpsString(Double(kbps), withMbps: false)
         } else {
-            self.up = RMBTSpeedMbpsStringWithSuffix(kbps, false)
+            self.up = RMBTSpeedMbpsString(Double(kbps), withMbps: false)
         }
         self.speed = kbps
     }

@@ -11,7 +11,6 @@
 #import "RMBTQoSDNSTestExecutor.h"
 #import "RMBTQoSControlConnection.h"
 #import "RMBTMapOptions.h"
-#import "RMBTSpeed.h"
 #import "RMBTConnectivityTracker.h"
 #import <SVWebViewController/SVWebViewController.h>
 #import <SVWebViewController/SVModalWebViewController.h>

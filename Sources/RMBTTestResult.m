@@ -16,7 +16,6 @@
  */
 
 #import "RMBTTestResult.h"
-#import "RMBTThroughputHistory.h"
 #import "RMBT-Swift.h"
 
 const int32_t RMBTTestResultSpeedNotAvailable = -1;

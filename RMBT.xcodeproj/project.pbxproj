@@ -41,7 +41,6 @@
 		C73E792A176761630009855E /* RMBTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73E7929176761630009855E /* RMBTSettingsViewController.m */; };
 		C741B62C1DD99D7A0097D84D /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C741B62B1DD99D7A0097D84D /* libresolv.tbd */; };
 		C75FF5D517B1970600A58056 /* RMBTMapOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C75FF5D417B1970600A58056 /* RMBTMapOptions.m */; };
-		C76B8C87177709C800925BE1 /* RMBTThroughputHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = C76B8C86177709C800925BE1 /* RMBTThroughputHistory.m */; };
 		C77071071E96BCC100043884 /* UIView+RMBTSubviews.m in Sources */ = {isa = PBXBuildFile; fileRef = C77071061E96BCC100043884 /* UIView+RMBTSubviews.m */; };
 		C774EE7717920C9C00D623A3 /* RMBTConnectivity.m in Sources */ = {isa = PBXBuildFile; fileRef = C774EE7617920C9C00D623A3 /* RMBTConnectivity.m */; };
 		C777D97D1DD8AA8700D1C824 /* RMBTQoSTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D97C1DD8AA8700D1C824 /* RMBTQoSTestRunner.m */; };
@@ -52,7 +51,6 @@
 		C780CE4F1EA287C800332423 /* RMBTQosWebTestURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C780CE4E1EA287C800332423 /* RMBTQosWebTestURLProtocol.m */; };
 		C783F6911EDC7EB4001CB2F9 /* loop_mode_info.html in Resources */ = {isa = PBXBuildFile; fileRef = C783F68D1EDC7EB4001CB2F9 /* loop_mode_info.html */; };
 		C783F6921EDC7EB4001CB2F9 /* loop_mode_info2.html in Resources */ = {isa = PBXBuildFile; fileRef = C783F68F1EDC7EB4001CB2F9 /* loop_mode_info2.html */; };
-		C7912CB6177D581F004AD2A4 /* RMBTSpeed.m in Sources */ = {isa = PBXBuildFile; fileRef = C7912CB5177D581F004AD2A4 /* RMBTSpeed.m */; };
 		C7916EB7173EB65F00B40152 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7916EB6173EB65F00B40152 /* SystemConfiguration.framework */; };
 		C7978FD717F1D07100BF986C /* RMBTConnectivityTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = C7978FD617F1D07100BF986C /* RMBTConnectivityTracker.m */; };
 		C7BC5C731F747A9E00A91F0F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7BC5C721F747A9E00A91F0F /* Launch Screen.storyboard */; };
@@ -341,8 +339,6 @@
 		C741B62B1DD99D7A0097D84D /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		C75FF5D317B1970600A58056 /* RMBTMapOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTMapOptions.h; sourceTree = "<group>"; };
 		C75FF5D417B1970600A58056 /* RMBTMapOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTMapOptions.m; sourceTree = "<group>"; };
-		C76B8C85177709C800925BE1 /* RMBTThroughputHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTThroughputHistory.h; sourceTree = "<group>"; };
-		C76B8C86177709C800925BE1 /* RMBTThroughputHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTThroughputHistory.m; sourceTree = "<group>"; };
 		C77071051E96BCC100043884 /* UIView+RMBTSubviews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RMBTSubviews.h"; sourceTree = "<group>"; };
 		C77071061E96BCC100043884 /* UIView+RMBTSubviews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RMBTSubviews.m"; sourceTree = "<group>"; };
 		C774EE7517920C9C00D623A3 /* RMBTConnectivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTConnectivity.h; sourceTree = "<group>"; };
@@ -356,8 +352,6 @@
 		C779E9E817403364003874AB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C780CE4D1EA287C800332423 /* RMBTQosWebTestURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTQosWebTestURLProtocol.h; sourceTree = "<group>"; };
 		C780CE4E1EA287C800332423 /* RMBTQosWebTestURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQosWebTestURLProtocol.m; sourceTree = "<group>"; };
-		C7912CB4177D581F004AD2A4 /* RMBTSpeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTSpeed.h; sourceTree = "<group>"; };
-		C7912CB5177D581F004AD2A4 /* RMBTSpeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTSpeed.m; sourceTree = "<group>"; };
 		C7916EB6173EB65F00B40152 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C7916EB8173EB68200B40152 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C7978FD517F1D07100BF986C /* RMBTConnectivityTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTConnectivityTracker.h; sourceTree = "<group>"; };
@@ -1016,10 +1010,6 @@
 				C7978FD617F1D07100BF986C /* RMBTConnectivityTracker.m */,
 				C7ECD917174E93E1000DF966 /* RMBTTestResult.h */,
 				C7ECD918174E93E1000DF966 /* RMBTTestResult.m */,
-				C76B8C85177709C800925BE1 /* RMBTThroughputHistory.h */,
-				C76B8C86177709C800925BE1 /* RMBTThroughputHistory.m */,
-				C7912CB4177D581F004AD2A4 /* RMBTSpeed.h */,
-				C7912CB5177D581F004AD2A4 /* RMBTSpeed.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1731,14 +1721,12 @@
 				C73E792A176761630009855E /* RMBTSettingsViewController.m in Sources */,
 				E939AAA526DA837D00D73F0B /* MKMapView+Additions.swift in Sources */,
 				E9A23BEC2764E55000717814 /* RMBTProgress.swift in Sources */,
-				C76B8C87177709C800925BE1 /* RMBTThroughputHistory.m in Sources */,
 				E9E9E8FB273CDECB005EB393 /* RMBTGraphLabel.swift in Sources */,
 				E95B4974275396CA0093068F /* UDPDestination.swift in Sources */,
 				E9AA0DE327635552003C71D7 /* RMBTQoSTracerouteTest.swift in Sources */,
 				36B75A29273EA73C006F4CB3 /* RMBTHistoryLoopCell.swift in Sources */,
 				E97CF78F27624E5D0092352C /* RMBTQoSTest.swift in Sources */,
 				E9E993E126EB24AE00E7EED6 /* RMBTNetInfoItemtCell.swift in Sources */,
-				C7912CB6177D581F004AD2A4 /* RMBTSpeed.m in Sources */,
 				E9A9A9B32768B01F002671C0 /* RMBTNetworkType.swift in Sources */,
 				E91316BD26ADD4DE00368DCD /* RMBTGradientView.swift in Sources */,
 				E9E993CA26EA538700E7EED6 /* RMBTHistoryGraphCell.swift in Sources */,
