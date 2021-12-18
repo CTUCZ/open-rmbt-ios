@@ -111,7 +111,7 @@ class RMBTQoSTestRunner: NSObject {
                     if let conn = self.controlConnections[ccParams] {
                         test.controlConnection = conn
                     } else {
-                        let conn = RMBTQoSControlConnection(connectionParams: ccParams, token: token)
+                        let conn = RMBTQoSControlConnection(with: ccParams, token: token)
                         self.controlConnections[ccParams] = conn
                         test.controlConnection = conn
                     }
