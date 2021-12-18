@@ -111,21 +111,21 @@ class RMBTQoSControlConnection: NSObject {
     func transmit() {
         assert(currentCommand != nil)
         guard let command = currentCommand else { return }
-        self.writeLine(command, with: RMBTQoSControlConnectionTag.command.rawValue)
+        self.writeLine(command, with: RMBTQoSControlConnectionTag.command)
         if (currentReadReply) {
-            self.readLine(with: RMBTQoSControlConnectionTag.command.rawValue)
+            self.readLine(with: RMBTQoSControlConnectionTag.command)
         }
     }
     
     // MARK: - Socket helpers
 
-    func readLine(with tag: Int) {
-        socket.readData(to: "\n".data(using: .ascii), withTimeout: RMBT_QOS_CC_TIMEOUT_S, tag: tag)
+    func readLine(with tag: RMBTQoSControlConnectionTag) {
+        socket.readData(to: "\n".data(using: .ascii), withTimeout: RMBT_QOS_CC_TIMEOUT_S, tag: tag.rawValue)
     }
     
-    func writeLine(_ line: String, with tag: Int) {
+    func writeLine(_ line: String, with tag: RMBTQoSControlConnectionTag) {
         //    RMBTLog(@"TX %@", line);
-        socket.write(line.appending("\n").data(using: .ascii), withTimeout: RMBT_QOS_CC_TIMEOUT_S, tag: tag)
+        socket.write(line.appending("\n").data(using: .ascii), withTimeout: RMBT_QOS_CC_TIMEOUT_S, tag: tag.rawValue)
     }
 }
 
@@ -158,7 +158,7 @@ extension RMBTQoSControlConnection: GCDAsyncSocketDelegate {
     }
     
     func socketDidSecure(_ sock: GCDAsyncSocket) {
-        self.readLine(with: RMBTQoSControlConnectionTag.greeting.rawValue)
+        self.readLine(with: RMBTQoSControlConnectionTag.greeting)
     }
 
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
@@ -171,12 +171,12 @@ extension RMBTQoSControlConnection: GCDAsyncSocketDelegate {
         let line = String(data: data, encoding: .ascii)
         //    RMBTLog(@"RX %@", line);
         if tag == .greeting {
-            self.readLine(with: RMBTQoSControlConnectionTag.accept.rawValue)
+            self.readLine(with: RMBTQoSControlConnectionTag.accept)
         } else if (tag == RMBTQoSControlConnectionTag.accept) {
-            self.writeLine("TOKEN \(token)", with: RMBTQoSControlConnectionTag.token.rawValue)
-            self.readLine(with: RMBTQoSControlConnectionTag.token.rawValue)
+            self.writeLine("TOKEN \(token)", with: RMBTQoSControlConnectionTag.token)
+            self.readLine(with: RMBTQoSControlConnectionTag.token)
         } else if (tag == RMBTQoSControlConnectionTag.token) {
-            self.readLine(with: RMBTQoSControlConnectionTag.accept2.rawValue)
+            self.readLine(with: RMBTQoSControlConnectionTag.accept2)
         } else if (tag == RMBTQoSControlConnectionTag.accept2) {
             state = RMBTQoSControlConnectionState.authenticated
             self.transmit()
