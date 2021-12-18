@@ -193,7 +193,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     var totalCurrentHistory: RMBTThroughputHistory?
 
     ///
-    var currentHistories: NSMutableArray!//[RMBTThroughputHistory]!
+    var currentHistories: [RMBTThroughputHistory] = []
 
     ///
     var perThreadDownloadHistories: NSMutableArray!//[RMBTThroughputHistory]()
@@ -304,7 +304,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     func addLength(_ length: UInt64, atNanos ns: UInt64, forThreadIndex threadIndex: Int) -> [RMBTThroughput]! {
         assert(threadIndex >= 0 && threadIndex < numThreads, "Invalid thread index")
 
-        let h = currentHistories.object(at: threadIndex) as! RMBTThroughputHistory//currentHistories[threadIndex]
+        let h = currentHistories[threadIndex]
         h.addLength(length, atNanos: ns)
 
         // TODO: optimize calling updateTotalHistory only when certain preconditions are met
@@ -317,7 +317,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         var commonFrozenPeriodIndex = Int.max
 
         for h in currentHistories {
-            commonFrozenPeriodIndex = min(commonFrozenPeriodIndex, (h as! RMBTThroughputHistory).lastFrozenPeriodIndex)
+            commonFrozenPeriodIndex = min(commonFrozenPeriodIndex, h.lastFrozenPeriodIndex)
         }
 
         // TODO: assert ==
@@ -327,14 +327,14 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
         for i in maxFrozenPeriodIndex + 1...commonFrozenPeriodIndex {
             //for var i = maxFrozenPeriodIndex + 1; i <= commonFrozenPeriodIndex; i += 1 {
-            if i == commonFrozenPeriodIndex && (currentHistories.object(at: 0) as! RMBTThroughputHistory).isFrozen { //currentHistories[0].isFrozen) {
+            if i == commonFrozenPeriodIndex && currentHistories[0].isFrozen { //currentHistories[0].isFrozen) {
                 // We're adding up the last throughput, clip totals according to spec
                 // 1) find t*
                 var minEndNanos: UInt64 = 0
                 var minPeriodIndex: UInt64 = 0
 
                 for threadIndex in 0 ..< numThreads {
-                    let threadHistory = currentHistories.object(at: threadIndex) as! RMBTThroughputHistory //currentHistories[threadIndex]
+                    let threadHistory = currentHistories[threadIndex]
                     assert(threadHistory.isFrozen)
 
                     let threadLastFrozenPeriodIndex = threadHistory.lastFrozenPeriodIndex
@@ -350,7 +350,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
                 var length: UInt64 = 0
 
                 for threadIndex in 0 ..< numThreads {
-                    let threadLastPut = (currentHistories[threadIndex] as! RMBTThroughputHistory).periods[Int(minPeriodIndex)]
+                    let threadLastPut = currentHistories[threadIndex].periods[Int(minPeriodIndex)]
                     // Factor = (t*-t(k,m-1)/t(k,m)-t(k,m-1))
                     let factor = Double(minEndNanos - threadLastPut.startNanos) / Double(threadLastPut.durationNanos)
 
@@ -364,7 +364,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
                 var length: UInt64 = 0
 
                 for threadIndex in 0 ..< numThreads {
-                    let tt = (currentHistories[threadIndex] as! RMBTThroughputHistory).periods[i]
+                    let tt = currentHistories[threadIndex].periods[i]
                     length += tt.length
 
                     assert(totalCurrentHistory?.totalThroughput.endNanos == tt.startNanos, "Period start time mismatch")
@@ -401,7 +401,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         }
 
         totalCurrentHistory = totalDownloadHistory // TODO: check pass by value on array
-        currentHistories = perThreadDownloadHistories // TODO: check pass by value on array
+        currentHistories = perThreadDownloadHistories as! [RMBTThroughputHistory] // TODO: check pass by value on array
         maxFrozenPeriodIndex = -1
     }
 
@@ -410,7 +410,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         numThreadsUl = numThreads // TODO: can upload threads be different from download threads?
 
         totalCurrentHistory = totalUploadHistory // TODO: check pass by value on array
-        currentHistories = perThreadUploadHistories // TODO: check pass by value on array
+        currentHistories = perThreadUploadHistories as! [RMBTThroughputHistory] // TODO: check pass by value on array
         maxFrozenPeriodIndex = -1
     }
 
@@ -419,7 +419,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         var result: [AnyObject]!// = [AnyObject]()
 
         for h in currentHistories {
-            (h as! RMBTThroughputHistory).freeze()
+            h.freeze()
         }
 
         result = updateTotalHistory()
@@ -432,7 +432,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
         // Squash last two periods in all histories
         for h in currentHistories {
-            (h as! RMBTThroughputHistory).squashLastPeriods(1 + ((h as! RMBTThroughputHistory).periods.count - totalPeriodCount))
+            h.squashLastPeriods(1 + (h .periods.count - totalPeriodCount))
         }
 
         // Remove last measurement from result, as we don't want to plot that one as it's usually too short
