@@ -74,44 +74,11 @@ public let RMBTMapOptionsOverlayWhitespots = RMBTMapOptionsOverlay(
     localizedSummary: NSLocalizedString("Map shows tests as whitespots", comment: "Map overlay summary")
 )
 
-public let RMBTMapOptionCountryAll = RMBTMapOptionCountry(code: "all", name: NSLocalizedString("map.options.filter.all_countries", comment: "All Countries"))
-
 public let RMBTMapOptionsToastInfoTitle = "title"
-
 public let RMBTMapOptionsToastInfoKeys = "keys"
-
 public let RMBTMapOptionsToastInfoValues = "values"
 
 final class RMBTMapOptions {
-    public var mapViewType: RMBTMapOptionsMapViewType = .standard
-
-    public var overlays: [MapOptionResponse.MapOverlays] = []
-    public var periodFilters: [MapOptionResponse.MapPeriodFilters] = []
-    public var mapCellularTypes: [MapOptionResponse.MapCellularTypes] = []
-    
-    public var types: [MapOptionResponse.MapType] = []
-    public var subTypes: [MapOptionResponse.MapSubType] = []
-
-    public var activeOverlay: MapOptionResponse.MapOverlays = MapOptionResponseOverlayAuto
-    public var activePeriodFilter: MapOptionResponse.MapPeriodFilters?
-    public var activeCellularTypes: [MapOptionResponse.MapCellularTypes] = []
-    public var activeType: MapOptionResponse.MapType?
-    public var activeSubtype: MapOptionResponse.MapSubType?
-    
-    public var operatorsForCountry: [OperatorsResponse.Operator] = []
-    public var activeOperator: OperatorsResponse.Operator?
-    public var defaultOperator: OperatorsResponse.Operator? {
-        get {
-            for op in operatorsForCountry {
-                if op.isDefault {
-                    return op
-                }
-            }
-            
-            return nil
-        }
-    }
-    
     public var oldOverlays: [RMBTMapOptionsOverlay] = []
     public var oldActiveSubtype: RMBTMapOptionsSubtype?
     public var oldActiveOverlay: RMBTMapOptionsOverlay?
@@ -126,11 +93,6 @@ final class RMBTMapOptions {
         let mapTypes = response.mapTypesOld
         
         oldTypes = []
-
-//        response = response[@"mapfilter"]; // Root element, always the same
-//        NSParameterAssert(response);
-        
-//        NSDictionary* filters = response[@"mapFilters"];
 
         for typeResponse in mapTypes {
             let type = RMBTMapOptionsType(response: typeResponse.toJSON())
@@ -149,93 +111,9 @@ final class RMBTMapOptions {
         oldActiveOverlay = RMBTMapOptionsOverlayAuto
 
         oldMapViewType = .standard
-
-        // ..then try to actually select options from app state, if we have one
-//        [self restoreSelection];
-        
-        
-        
-        
-        
-//        self.mapViewType = defaultMapViewType
-//        // TODO: Check response
-//        //Set overlays
-//        self.activeOverlay = response.mapOverlays.first(where: { (overlay) -> Bool in
-//            return overlay.isDefault == true
-//        }) ?? MapOptionResponseOverlayAuto
-////        overlays.append(MapOptionResponseOverlayAuto)
-//        overlays.append(contentsOf: response.mapOverlays)
-//
-//        //Set period
-//        periodFilters = response.mapPeriodFilters
-//
-//        self.activePeriodFilter = periodFilters.first(where: { (period) -> Bool in
-//            return period.isDefault == true
-//        })
-//
-//        if activePeriodFilter == nil {
-//            activePeriodFilter = periodFilters.first
-//        }
-//
-//        //Set technologies
-//        self.mapCellularTypes = response.mapCellularTypes
-//        for type in self.mapCellularTypes {
-//            if type.isDefault == true {
-//                self.activeCellularTypes.append(type)
-//            }
-//        }
-//
-//        self.types = response.mapTypes
-//        self.subTypes = response.mapSubTypes
-//
-//        self.activeType = types.first(where: { (type) -> Bool in
-//            return type.isDefault == true
-//        })
-//
-//        if activeType == nil {
-//            activeType = types.first
-//        }
-//
-//        self.activeSubtype = subTypes.first(where: { (type) -> Bool in
-//            return type.isDefault == true
-//        })
-//
-//        if activeSubtype == nil {
-//            activeSubtype = subTypes.first
-//        }
-//
-//        if self.countries.count > 0 {
-//            self.activeCountry = self.countries.first(where: { (country) -> Bool in
-//                return country.isDefault == true
-//            })
-//            if self.activeCountry == nil {
-//                self.activeCountry = self.countries.first
-//            }
-//        }
-//
-//        if let mapViewIndex = response.mapLayouts.firstIndex(where: { (layout) -> Bool in
-//            return layout.isDefault == true
-//        }),
-//            let mapViewType = RMBTMapOptionsMapViewType(rawValue: mapViewIndex) {
-//            self.mapViewType = mapViewType
-//        } else {
-//            self.mapViewType = .standard
-//        }
-        
         self.restoreSelection()
     }
     
-    public func merge(with previousMapOptions: RMBTMapOptions) {
-        self.activeOverlay = previousMapOptions.activeOverlay
-        self.activeSubtype = previousMapOptions.activeSubtype
-        self.activeOperator = previousMapOptions.activeOperator
-        self.operatorsForCountry = previousMapOptions.operatorsForCountry
-        self.mapViewType = previousMapOptions.mapViewType
-        
-        // ..then try to actually select options from app state, if we have one
-        restoreSelection()
-    }
-
     ///
     public func saveSelection() {
         let selection = RMBTMapOptionsSelection()
@@ -248,17 +126,7 @@ final class RMBTMapOptions {
             activeFilters[f.title] = f.activeValue?.title
         }
         selection.activeFilters = activeFilters
-        
-//        selection.subtypeIdentifier = activeSubtype?.id.rawValue ?? ""
-//        selection.typeIdentifier = activeType?.id.rawValue ?? ""
-//        selection.overlayIdentifier = activeOverlay.identifier
-//        selection.countryIdentifier = activeCountry?.code ?? ""
-//        selection.periodIdentifier = activePeriodFilter?.period ?? 180
-//        selection.cellularTypes = activeCellularTypes.map({ (type) -> Int in
-//            return type.id ?? 0
-//        })
-//
-        
+
         RMBTSettings.shared.mapOptionsSelection = selection
     }
 
@@ -300,132 +168,6 @@ final class RMBTMapOptions {
                 }
             }
         }
-        
-//        let selection: RMBTMapOptionsSelection = RMBTSettings.shared.mapOptionsSelection
-//
-//        if let id = selection.subtypeIdentifier {
-//            activeSubtype = self.subTypes.first(where: { (type) -> Bool in
-//                return type.id.rawValue == id
-//            })
-//        }
-//        if let id = selection.typeIdentifier {
-//            activeType = self.types.first(where: { (type) -> Bool in
-//                return type.id.rawValue == id
-//            })
-//        }
-//        if let id = selection.overlayIdentifier {
-//            activeOverlay = self.overlays.first(where: { (overlay) -> Bool in
-//                return overlay.identifier == id
-//            }) ?? MapOptionResponseOverlayAuto
-//        }
-//        if let countryIdentifier = selection.countryIdentifier {
-//            activeCountry = self.countries.first(where: { (country) -> Bool in
-//                return country.code?.lowercased() == countryIdentifier.lowercased()
-//            })
-//        }
-//        if let id = selection.periodIdentifier {
-//            activePeriodFilter = self.periodFilters.first(where: { (period) -> Bool in
-//                return period.period == id
-//            })
-//        }
-//        if selection.cellularTypes.count > 0 {
-//            activeCellularTypes = mapCellularTypes.filter({ (type) -> Bool in
-//                return selection.cellularTypes.contains(type.id ?? 0)
-//            })
-//        }
-    }
-    
-    public func subTypes(for type: MapOptionResponse.MapType) -> [MapOptionResponse.MapSubType] {
-        var subtypes: [MapOptionResponse.MapSubType] = []
-        
-        for index in type.mapSubTypeOptions {
-            if let subtype = self.subTypes.first(where: { (type) -> Bool in
-                return type.index == index
-            }) {
-                subtypes.append(subtype)
-            }
-        }
-        
-        return subtypes
-    }
-    
-    ///
-    public func paramsDictionary() -> [String: Any] {
-        var params: [String: Any] = [:]
-        if let activeType = self.activeType,
-            let activeSubType = self.activeSubtype {
-            params["map_options"] = activeType.id.rawValue + "/" + activeSubType.id.rawValue
-        }
-        if let activePeriod = self.activePeriodFilter {
-            params["period"] = activePeriod.period
-        } else {
-            params["period"] = 180
-        }
-        if self.activeType?.id == .cell {
-            if self.activeCellularTypes.count > 0 {
-                params["technology"] = self.activeCellularTypes.map({ (type) -> String in
-                    return String(type.id ?? 0)
-                }).joined(separator: "")
-            }
-        }
-        
-        if let activeOperator = self.activeOperator {
-            params["provider"] = activeOperator.providerForRequest
-        } else {
-            params["provider"] = ""
-        }
-        
-        return params
-    }
-    
-    ///
-    public func markerParamsDictionary() -> [String: Any] {
-        var params: [String: Any] = [:]
-        var optionsParams: [String: Any] = [:]
-        var filterParams: [String: Any] = [:]
-        if let activeType = self.activeType,
-            let activeSubType = self.activeSubtype {
-            optionsParams["map_options"] = activeType.id.rawValue + "/" + activeSubType.id.rawValue
-        }
-        optionsParams["overlay_type"] = activeOverlay.identifier
-        if let activePeriod = self.activePeriodFilter {
-            filterParams["period"] = activePeriod.period
-        } else {
-            filterParams["period"] = 6
-        }
-        if self.activeCellularTypes.count > 0 {
-            filterParams["technology"] = self.activeCellularTypes.map({ (type) -> String in
-                return String(type.id ?? 0)
-            }).joined(separator: "")
-        }
-        if let activeOperator = self.activeOperator {
-            filterParams["mobile_provider_name"] = activeOperator.title
-        }
-        
-        params["options"] = optionsParams
-        params["filter"] = filterParams
-        return params
-    }
-
-}
-
-open class RMBTMapOptionCountry: Equatable {
-    open var code: String?
-    open var name: String?
-    open var isDefault: Bool = false
-    
-    init(code: String, name: String) {
-        self.code = code
-        self.name = name
-    }
-    
-    init(response: [String: Any]) {
-        self.code = response["country_code"] as? String
-        self.name = response["country_name"] as? String
-    }
-    
-    public static func == (lhs: RMBTMapOptionCountry, rhs: RMBTMapOptionCountry) -> Bool {
-        return lhs.code == rhs.code
     }
 }
 
