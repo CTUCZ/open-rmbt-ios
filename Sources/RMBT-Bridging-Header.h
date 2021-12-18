@@ -6,13 +6,10 @@
 #import "RMBTConfig.h"
 #import "RMBTHelpers.h"
 
-
-#import "RMBTQosWebTestURLProtocol.h"
+#import "RMBTBlockTypes.h"
 #import "RMBTTestRunner.h"
 #import "RMBTQoSTracerouteTestExecutor.h"
 #import "RMBTQoSDNSTestExecutor.h"
-#import "RMBTQoSControlConnection.h"
-#import "RMBTMapOptions.h"
 #import "RMBTConnectivityTracker.h"
 #import <SVWebViewController/SVWebViewController.h>
 #import <SVWebViewController/SVModalWebViewController.h>

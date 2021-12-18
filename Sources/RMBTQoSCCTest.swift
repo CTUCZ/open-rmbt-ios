@@ -67,7 +67,7 @@ enum Errors: Error {
 
     func uuidFromToken() -> String? {
         assert(controlConnection?.token != nil)
-        return controlConnection?.token?.components(separatedBy: "_")[0]
+        return controlConnection?.token.components(separatedBy: "_")[0]
     }
     
 }

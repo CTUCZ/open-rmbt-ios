@@ -204,9 +204,9 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
             for (int i=1;i<_testParams.threadCount;i++) {
                 [[_workers objectAtIndex:i] stop];
             }
-            [_testResult startDownloadWithThreadCount:1];
+            [_testResult startDownloadWith:1];
         } else {
-            [_testResult startDownloadWithThreadCount:_testParams.threadCount];
+            [_testResult startDownloadWith:_testParams.threadCount];
             [self startPhase:RMBTTestRunnerPhaseLatency withAllWorkers:NO performingSelector:@selector(startLatencyTest) expectedDuration:0 completion:nil];
         }
     }
@@ -270,7 +270,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
     NSAssert(_phase == RMBTTestRunnerPhaseDown, @"Invalid state");
     NSAssert(!_dead, @"Invalid state");
 
-    NSArray* measuredThroughputs = [_testResult addLength:length atNanos:nanos forThreadIndex:worker.index];
+    NSArray* measuredThroughputs = [_testResult addLength:length atNanos:nanos for:worker.index];
     if (measuredThroughputs) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [_delegate testRunnerDidMeasureThroughputs:measuredThroughputs inPhase:RMBTTestRunnerPhaseDown];
@@ -340,7 +340,7 @@ static void *const kWorkerQueueIdentityKey = (void *)&kWorkerQueueIdentityKey;
     NSAssert(_phase == RMBTTestRunnerPhaseUp, @"Invalid state");
     NSAssert(!_dead, @"Invalid state");
 
-    NSArray* measuredThroughputs = [_testResult addLength:length atNanos:nanos forThreadIndex:worker.index];
+    NSArray* measuredThroughputs = [_testResult addLength:length atNanos:nanos for:worker.index];
     if (measuredThroughputs) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [_delegate testRunnerDidMeasureThroughputs:measuredThroughputs inPhase:RMBTTestRunnerPhaseUp];
