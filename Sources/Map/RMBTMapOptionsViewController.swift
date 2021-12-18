@@ -73,7 +73,7 @@ final class RMBTMapOptionsViewController: UIViewController {
     private func update(_ cell: RMBTMapOptionsCell, at indexPath: IndexPath) {
         if indexPath.row == 0 {
             cell.titleLabel?.text = NSLocalizedString("Map type", comment: "Section title in the map options view")
-            let text = String(format: "%@, %@", self.mapOptions?.oldActiveSubtype?.type.title ?? "", self.mapOptions?.oldActiveSubtype?.title ?? "")
+            let text = String(format: "%@, %@", self.mapOptions?.oldActiveSubtype?.type?.title ?? "", self.mapOptions?.oldActiveSubtype?.title ?? "")
             cell.valueLabel?.text = text
             cell.iconImageView?.image = UIImage(named: "map_options_layout")
         } else {
@@ -85,11 +85,11 @@ final class RMBTMapOptionsViewController: UIViewController {
     }
     
     private func filter(at index: Int) -> RMBTMapOptionsFilter? {
-        return self.mapOptions?.oldActiveSubtype?.type.filters[index - 1]
+        return self.mapOptions?.oldActiveSubtype?.type?.filters[index - 1]
     }
     
     private func activeFilters() -> [RMBTMapOptionsFilterValue]? {
-        return self.mapOptions?.oldActiveSubtype?.type.filters.compactMap({ $0.activeValue })
+        return self.mapOptions?.oldActiveSubtype?.type?.filters.compactMap({ $0.activeValue })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -110,7 +110,7 @@ final class RMBTMapOptionsViewController: UIViewController {
 
 extension RMBTMapOptionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = (self.mapOptions?.oldActiveSubtype?.type.filters.count ?? 0)
+        let count = (self.mapOptions?.oldActiveSubtype?.type?.filters.count ?? 0)
         return count + 1 // type
     }
    

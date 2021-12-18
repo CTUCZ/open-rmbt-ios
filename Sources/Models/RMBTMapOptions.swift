@@ -18,10 +18,10 @@
 import Foundation
 
 // TODO: rewrite to seperate files
-public enum RMBTMapOptionsMapViewType: Int {
+enum RMBTMapOptionsMapViewType: UInt {
     case standard = 0
-    case satellite = 1
-    case hybrid = 2
+    case satellite
+    case hybrid
 }
 
 public let MapOptionResponseOverlayAuto = MapOptionResponse.MapOverlays(identifier: "auto", title: NSLocalizedString("map.options.overlay.auto", value: "Auto", comment: "Map overlay description"), isDefault: true)
@@ -92,41 +92,6 @@ final class RMBTMapOptions {
     public var types: [MapOptionResponse.MapType] = []
     public var subTypes: [MapOptionResponse.MapSubType] = []
 
-    private var _countries: [RMBTMapOptionCountry] = []
-    public var countries: [RMBTMapOptionCountry] {
-        if _countries.count == 0 {
-            let locale = Locale.current
-            let countryArray = Locale.isoRegionCodes
-            var unsortedCountryArray: [RMBTMapOptionCountry] = []
-            for countryCode in countryArray {
-                if let displayNameString = locale.localizedString(forRegionCode: countryCode) {
-                    let country = RMBTMapOptionCountry(response: [:])
-                    country.code = countryCode.lowercased()
-                    country.name = displayNameString
-                    unsortedCountryArray.append(country)
-                    if RMBTConfig.shared.RMBT_DEFAULT_IS_CURRENT_COUNTRY {
-                        country.isDefault = (locale.regionCode?.lowercased() == countryCode.lowercased())
-                    } else {
-                        country.isDefault = false
-                    }
-                }
-            }
-            unsortedCountryArray.sort { (country1, country2) -> Bool in
-                return country1.name?.compare(country2.name ?? "") == ComparisonResult.orderedAscending
-            }
-            
-            let allCountries = RMBTMapOptionCountryAll
-            if RMBTConfig.shared.RMBT_DEFAULT_IS_CURRENT_COUNTRY {
-                allCountries.isDefault = true
-            }
-            var sortedCountryArray = [allCountries]
-            sortedCountryArray.append(contentsOf: unsortedCountryArray)
-            self._countries = sortedCountryArray
-        }
-        
-        return self._countries
-    }
-    public var activeCountry: RMBTMapOptionCountry?
     public var activeOverlay: MapOptionResponse.MapOverlays = MapOptionResponseOverlayAuto
     public var activePeriodFilter: MapOptionResponse.MapPeriodFilters?
     public var activeCellularTypes: [MapOptionResponse.MapCellularTypes] = []
@@ -168,13 +133,13 @@ final class RMBTMapOptions {
 //        NSDictionary* filters = response[@"mapFilters"];
 
         for typeResponse in mapTypes {
-            guard let type = RMBTMapOptionsType(response: typeResponse.toJSON()) else { continue }
+            let type = RMBTMapOptionsType(response: typeResponse.toJSON())
             oldTypes.append(type)
             
             // Process filters for this type
             for filterResponse in filters[type.identifier] as? [[String: Any]] ?? [] {
                 let filter = RMBTMapOptionsFilter(with: filterResponse)
-                type.addFilter(filter)
+                type.add(filter)
             }
         }
         
@@ -261,7 +226,6 @@ final class RMBTMapOptions {
     }
     
     public func merge(with previousMapOptions: RMBTMapOptions) {
-        self.activeCountry = previousMapOptions.activeCountry
         self.activeOverlay = previousMapOptions.activeOverlay
         self.activeSubtype = previousMapOptions.activeSubtype
         self.activeOperator = previousMapOptions.activeOperator
@@ -280,7 +244,7 @@ final class RMBTMapOptions {
         selection.overlayIdentifier = oldActiveOverlay?.identifier
         
         var activeFilters: [String: Any] = [:]
-        for f in oldActiveSubtype?.type.filters ?? [] {
+        for f in oldActiveSubtype?.type?.filters ?? [] {
             activeFilters[f.title] = f.activeValue?.title
         }
         selection.activeFilters = activeFilters
@@ -326,7 +290,7 @@ final class RMBTMapOptions {
         }
 
         if let activeFilters = selection.activeFilters {
-            for f in oldActiveSubtype?.type.filters ?? [] {
+            for f in oldActiveSubtype?.type?.filters ?? [] {
                 if let activeFilterValueTitle = activeFilters[f.title] as? String {
                     if let v = f.possibleValues.first(where: { fv in
                         return fv.title == activeFilterValueTitle
@@ -391,11 +355,6 @@ final class RMBTMapOptions {
         if let activeType = self.activeType,
             let activeSubType = self.activeSubtype {
             params["map_options"] = activeType.id.rawValue + "/" + activeSubType.id.rawValue
-        }
-        if let countryCode = self.activeCountry?.code {
-            params["country"] = countryCode
-        } else {
-            params["country"] = "all"
         }
         if let activePeriod = self.activePeriodFilter {
             params["period"] = activePeriod.period
@@ -482,18 +441,6 @@ final public class RMBTMapOptionsSelection: NSObject {
     public var cellularTypes: [Int] = []
 }
 
-@objc final public class RMBTMapOptionsOverlay: NSObject {
-    @objc public var identifier: String
-    @objc public var localizedDescription: String
-    @objc public var localizedSummary: String
-    
-    @objc public init(identifier: String, localizedDescription: String, localizedSummary: String) {
-        self.identifier = identifier
-        self.localizedDescription = localizedDescription
-        self.localizedSummary = localizedSummary
-    }
-}
-
 @objc final class RMBTMapOptionsFilterValue: NSObject {
     @objc public var title: String
     @objc public var summary: String
@@ -516,40 +463,6 @@ final public class RMBTMapOptionsSelection: NSObject {
             if value.isEmpty {
                 info[key] = nil
             }
-        }
-    }
-}
-
-@objc final class RMBTMapOptionsFilter: NSObject {
-    @objc public var icon: UIImage? {
-        // TODO: Remake it, because if we will use another language then we should put localization for each word from response
-        switch title {
-        case "Zeitraum", "Period":
-            return UIImage(named: "map_options_period")
-        case "Betreiber", "Operator":
-            return UIImage(named: "map_options_provider")
-        case "Statistik", "Statistics":
-            return UIImage(named: "map_options_statistic")
-        case "Technologie", "Technology":
-            return UIImage(named: "map_options_technologies")
-        default:
-            return nil
-        }
-    }
-    @objc public var title: String = ""
-    @objc public var possibleValues: [RMBTMapOptionsFilterValue] = []
-    @objc public var activeValue: RMBTMapOptionsFilterValue?
-    
-    @objc(initWithResponse:) public init(with response: [String: Any]) {
-        super.init()
-        title = response["title"] as? String ?? ""
-        let options = response["options"] as? [[String: Any]] ?? []
-        possibleValues = options.map { subresponse in
-            let filterValue = RMBTMapOptionsFilterValue(with: subresponse)
-            if filterValue.isDefault {
-                activeValue = filterValue
-            }
-            return filterValue
         }
     }
 }
