@@ -12,6 +12,26 @@ import Darwin
 @inline(__always) func RMBTValueOrNull(_ value: Any?) -> Any { return value != nil ? value! : NSNull() }
 @inline(__always) func RMBTValueOrString(_ value: Any?, _ result: String) -> Any { return value != nil ? value! : result }
 
+public func RMBTReformatHexIdentifier(_ identifier: String!) -> String! { // !
+    if identifier == nil {
+        return nil
+    }
+
+    var tmp = [String]()
+
+    for c in identifier.components(separatedBy: ":") {
+        if c.count == 0 {
+            tmp.append("00")
+        } else if c.count == 1 {
+            tmp.append("0\(c)")
+        } else {
+            tmp.append(c)
+        }
+    }
+
+    return tmp.joined(separator: ":")
+}
+
 class RMBTHelpers: NSObject {
     static let mechTimebaseInfo: mach_timebase_info_data_t = {
         var info: mach_timebase_info_data_t = mach_timebase_info(numer: 0, denom: 0)

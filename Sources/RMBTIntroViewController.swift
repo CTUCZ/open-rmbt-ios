@@ -8,6 +8,7 @@
 
 import UIKit
 import BlocksKit
+import CoreLocation
 
 class RMBTIntroViewController: UIViewController {
     private let showTosSegue = "show_tos"

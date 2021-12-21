@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 extension CLLocation {
     static var timestampFormatter: DateFormatter = {

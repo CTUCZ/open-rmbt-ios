@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 extension BinaryFloatingPoint {
     var dms: (degrees: Int, minutes: Int, seconds: Int) {
