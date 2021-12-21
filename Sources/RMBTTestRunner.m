@@ -18,7 +18,6 @@
 #import "RMBTTestRunner.h"
 #import "RMBTTestWorker.h"
 
-#import "RMBTConnectivityTracker.h"
 #import "RMBT-Swift.h"
 
 static const float RMBTQosSkipTimeInterval = 60 * 60 * 2; //2 hours

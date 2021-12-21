@@ -8,10 +8,4 @@
 
 import UIKit
 
-//enum RMBTNetworkType: Int {
-//    case unknown  = -1
-//    case none     = 0 // Used internally to denote no connection
-//    case browser  = 98
-//    case wifi     = 99
-//    case cellular = 105
-//}
+

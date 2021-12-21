@@ -18,8 +18,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-#import "RMBTConnectivity.h"
-
 typedef NS_ENUM(NSInteger, RMBTTestRunnerPhase) {
     RMBTTestRunnerPhaseNone = 0,
     RMBTTestRunnerPhaseFetchingTestParams,
@@ -42,7 +40,7 @@ typedef NS_ENUM(NSInteger, RMBTTestRunnerCancelReason) {
     RMBTTestRunnerCancelReasonAppBackgrounded
 };
 
-@class RMBTTestParams, RMBTQoSTestGroup, RMBTHistoryResult, RMBTTestResult;
+@class RMBTTestParams, RMBTQoSTestGroup, RMBTHistoryResult, RMBTTestResult, RMBTConnectivity;
 
 @protocol RMBTTestRunnerDelegate <NSObject>
 - (void)testRunnerDidStartPhase:(RMBTTestRunnerPhase)phase;

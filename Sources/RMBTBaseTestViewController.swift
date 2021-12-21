@@ -208,6 +208,7 @@ class RMBTBaseTestViewController: UIViewController {
 }
 
 extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {
+    
     func testRunnerDidStart(_ phase: RMBTTestRunnerPhase) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         
