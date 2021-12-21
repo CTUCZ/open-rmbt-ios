@@ -616,14 +616,14 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
 
         Log.logger.debug("Thread \(worker.index): finished download pretest (chunks = \(chunks)")
         
-//        if (!singleThreaded && chunks <= testParams?.pretestMinChunkCountForMultithreading ?? 0) {
-//            singleThreaded = true
-//        }
+        if (!singleThreaded && chunks <= testParams?.pretestMinChunkCountForMultithreading ?? 0) {
+            singleThreaded = true
+        }
         if (self.markWorkerAsFinished()) {
             if (singleThreaded) {
                 Log.logger.debug("Downloaded <= \(String(describing: testParams?.pretestMinChunkCountForMultithreading)) chunks in the pretest, continuing with single thread.")
                 
-                activeWorkers = testParams?.threadCount ?? 1 - 1
+                activeWorkers = (testParams?.threadCount ?? 1) - 1
                 finishedWorkers = 0
                 
                 let threadCount = testParams?.threadCount ?? 1
