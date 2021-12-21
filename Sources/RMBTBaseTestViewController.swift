@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 protocol RMBTBaseTestViewControllerSubclass: AnyObject {
 
@@ -74,7 +75,7 @@ class RMBTBaseTestViewController: UIViewController {
         case .down, .initUp:  // no visualization for init up
             return 70
         case .up: return 100
-        case .qoS: return 100
+        case .qos: return 100
         case .submittingTestResult:
             return 100 // also no visualization for submission
         @unknown default:
@@ -91,7 +92,7 @@ class RMBTBaseTestViewController: UIViewController {
         case .down, .initUp:  // no visualization for init up
             return 50
         case .up: return 75
-        case .qoS: return 100
+        case .qos: return 100
         case .submittingTestResult:
             return 100 // also no visualization for submission
         @unknown default:
@@ -108,7 +109,7 @@ class RMBTBaseTestViewController: UIViewController {
         case .down, .initUp:  // no visualization for init up
             return 49
         case .up: return 74
-        case .qoS: return 100
+        case .qos: return 100
         case .submittingTestResult:
             return 100 // also no visualization for submission
         @unknown default:
@@ -123,7 +124,7 @@ class RMBTBaseTestViewController: UIViewController {
         case .latency: return 20
         case .down:    return 30
         case .up:      return 30
-        case .qoS:     return 30
+        case .qos:     return 30
         default: return 0;
         }
     }
@@ -146,7 +147,7 @@ class RMBTBaseTestViewController: UIViewController {
         case .latency: return 15
         case .down:    return 20
         case .up:      return 25
-        case .qoS:     return 25
+        case .qos:     return 25
         default: return 0;
         }
     }
@@ -158,7 +159,7 @@ class RMBTBaseTestViewController: UIViewController {
         case .latency: return 13
         case .down:    return 26
         case .up:      return 25
-        case .qoS:      return 26
+        case .qos:      return 26
         default: return 0;
         }
     }
@@ -179,7 +180,7 @@ class RMBTBaseTestViewController: UIViewController {
                 return NSLocalizedString("Initializing Upload", comment: "Phase status label")
         case .up:
             return NSLocalizedString("Upload", comment: "Phase status label")
-        case .qoS:
+        case .qos:
             return NSLocalizedString("measurement_qos", comment: "Phase status label");
         case .submittingTestResult:
             return NSLocalizedString("Finalizing", comment: "Phase status label")
@@ -198,7 +199,7 @@ class RMBTBaseTestViewController: UIViewController {
             subself.onTestUpdatedStatus("-")
         }
         testRunner = RMBTTestRunner(delegate: self)
-        testRunner?.start(withExtraParams: extraParams)
+        testRunner?.start(with: extraParams)
     }
     
     func cancelTest() {
@@ -207,13 +208,12 @@ class RMBTBaseTestViewController: UIViewController {
     }
 }
 
-extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {
-    
+extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {    
     func testRunnerDidStart(_ phase: RMBTTestRunnerPhase) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         
         if (phase == .`init` || phase == .wait) {
-            subself.onTestUpdatedServerName(testRunner?.testParams.serverName ?? "")
+            subself.onTestUpdatedServerName(testRunner?.testParams?.serverName ?? "")
         }
         subself.onTestUpdatedStatus(self.statusString(for: phase))
         subself.onTestStartedPhase(phase)
@@ -234,12 +234,12 @@ extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {
         subself.onTestUpdatedTotalProgress(finishedPercentage, gaugeProgress: finishedGaugePercentage)
 
         if (phase == .latency) {
-            subself.onTestMeasuredLatency(testRunner.testResult.medianPingNanos)
+            subself.onTestMeasuredLatency(testRunner.testResult?.medianPingNanos ?? 0)
         } else if (phase == .down) {
-            subself.onTestMeasuredDownloadSpeed(UInt32(testRunner.testResult.totalDownloadHistory.totalThroughput.kilobitsPerSecond()))
+            subself.onTestMeasuredDownloadSpeed(UInt32(testRunner.testResult?.totalDownloadHistory.totalThroughput.kilobitsPerSecond() ?? 0))
         } else if (phase == .up) {
-            subself.onTestMeasuredUploadSpeed(UInt32(testRunner.testResult.totalUploadHistory.totalThroughput.kilobitsPerSecond()))
-        } else if (phase == .qoS) {
+            subself.onTestMeasuredUploadSpeed(UInt32(testRunner.testResult?.totalUploadHistory.totalThroughput.kilobitsPerSecond() ?? 0))
+        } else if (phase == .qos) {
             qosPerformed = true
         }
 
@@ -262,38 +262,38 @@ extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {
         subself.onTestUpdatedTotalProgress(UInt(totalPercentage), gaugeProgress: UInt( totalGaugePercentage))
     }
     
-    func testRunnerDidMeasureThroughputs(_ throughputs: [Any]!, in phase: RMBTTestRunnerPhase) {
+    func testRunnerDidMeasureThroughputs(_ throughputs: [RMBTThroughput], in phase: RMBTTestRunnerPhase) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         subself.onTestMeasuredTroughputs(throughputs, in: phase)
     }
     
-    func testRunnerDidDetect(_ connectivity: RMBTConnectivity!) {
+    func testRunnerDidDetectConnectivity(_ connectivity: RMBTConnectivity) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         subself.onTestUpdatedConnectivity(connectivity)
     }
     
-    func testRunnerDidDetect(_ location: CLLocation!) {
+    func testRunnerDidDetectLocation(_ location: CLLocation) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         subself.onTestUpdatedLocation(location)
     }
     
-    func testRunnerDidComplete(with result: RMBTHistoryResult!) {
+    func testRunnerDidCompleteWithResult(_ result: RMBTHistoryResult) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         subself.onTestCompleted(with: result, qos: qosPerformed)
     }
     
-    func testRunnerDidCancelTest(with cancelReason: RMBTTestRunnerCancelReason) {
+    func testRunnerDidCancelTestWithReason(_ cancelReason: RMBTTestRunnerCancelReason) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         subself.onTestUpdatedStatus(NSLocalizedString("Aborted", comment: "Test status"))
         subself.onTestCancelled(with: cancelReason)
     }
     
-    func testRunnerQoSDidStart(withGroups groups: [Any]!) {
+    func testRunnerQoSDidStartWithGroups(_ groups: [RMBTQoSTestGroup]) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         subself.onTestStartedQoS(with: (groups as? [RMBTQoSTestGroup]) ?? [])
     }
     
-    func testRunnerQoSGroup(_ group: RMBTQoSTestGroup!, didUpdateProgress progress: Float) {
+    func testRunnerQoSGroup(_ group: RMBTQoSTestGroup, didUpdateProgress progress: Float) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         subself.onTestUpdatedProgress(progress, in: group)
     }

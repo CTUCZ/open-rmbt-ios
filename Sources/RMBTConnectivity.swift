@@ -127,7 +127,7 @@ class RMBTConnectivity: NSObject {
         return result
     }
 
-    private func WRAPPED_DIFF(_ x: UInt32, _ y: UInt32) -> UInt64 {
+    static private func WRAPPED_DIFF(_ x: UInt32, _ y: UInt32) -> UInt64 {
         if y > x {
             return UInt64(y - x)
         } else {
@@ -138,7 +138,7 @@ class RMBTConnectivity: NSObject {
     }
     
     // Total (up+down) difference in bytes transferred between two readouts. If counter has wrapped returns 0.
-    func countTraffic(_ traffic: RMBTConnectivityInterfaceInfoTraffic, between info1: RMBTConnectivityInterfaceInfo, and info2: RMBTConnectivityInterfaceInfo) -> UInt64 {
+    static func countTraffic(_ traffic: RMBTConnectivityInterfaceInfoTraffic, between info1: RMBTConnectivityInterfaceInfo, and info2: RMBTConnectivityInterfaceInfo) -> UInt64 {
         var result: UInt64 = 0
         if (traffic == .sent || traffic == .total) {
             result += WRAPPED_DIFF(info1.bytesSent, info2.bytesSent)

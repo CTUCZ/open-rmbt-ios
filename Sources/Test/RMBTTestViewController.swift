@@ -548,7 +548,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     func onTestStartedPhase(_ phase: RMBTTestRunnerPhase) {
         self.phase = phase
         self.speedValues = []
-        if (phase == .qoS) {
+        if (phase == .qos) {
             self.isQOSState = true
             self.isInfoCollapsed = true
         }

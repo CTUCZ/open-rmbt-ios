@@ -122,7 +122,7 @@ import CoreTelephony
 
         if connectivity == lastConnectivity { return }
 
-        Log.logger.debug("New connectivity = \(String(describing: connectivity.testResultDictionary))")
+        Log.logger.debug("New connectivity = \(String(describing: connectivity.testResultDictionary()))")
         
         if (stopOnMixed) {
             // Detect compatilibity

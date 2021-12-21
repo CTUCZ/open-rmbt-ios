@@ -8,6 +8,7 @@
 
 import UIKit
 import TUSafariActivity
+import CoreLocation
 
 final class RMBTHistoryResult2ViewController: UIViewController {
 
