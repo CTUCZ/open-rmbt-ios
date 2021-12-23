@@ -609,7 +609,7 @@ extension RMBTTestRunner: RMBTConnectivityTrackerDelegate {
 }
 
 extension RMBTTestRunner: RMBTTestWorkerDelegate {
-    func testWorker(_ worker: RMBTTestWorker!, didFinishDownlinkPretestWithChunkCount chunks: UInt) {
+    func testWorker(_ worker: RMBTTestWorker, didFinishDownlinkPretestWithChunksCount chunks: UInt) {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .`init`, "Invalid state");
         assert(!dead, "Invalid state");
@@ -639,7 +639,7 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         }
     }
     
-    func testWorker(_ worker: RMBTTestWorker!, didMeasureLatencyWithServerNanos serverNanos: UInt64, clientNanos: UInt64) {
+    func testWorker(_ worker: RMBTTestWorker, didMeasureLatencyWithServerNanos serverNanos: UInt64, clientNanos: UInt64) {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .latency, "Invalid state")
         assert(!dead, "Invalid state")
@@ -654,7 +654,7 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         }
     }
     
-    func testWorkerDidFinishLatencyTest(_ worker: RMBTTestWorker!) {
+    func testWorkerDidFinishLatencyTest(_ worker: RMBTTestWorker) {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .latency, "Invalid state")
         assert(!dead, "Invalid state")
@@ -664,7 +664,7 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         }
     }
     
-    func testWorker(_ worker: RMBTTestWorker!, didStartDownlinkTestAtNanos nanos: UInt64) -> UInt64 {
+    func testWorker(_ worker: RMBTTestWorker, didStartDownlinkTestAtNanos nanos: UInt64) -> UInt64 {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .down, "Invalid state");
         assert(!dead, "Invalid state");
@@ -679,7 +679,7 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         return downlinkTestStartedAtNanos
     }
     
-    func testWorker(_ worker: RMBTTestWorker!, didDownloadLength length: UInt64, atNanos nanos: UInt64) {
+    func testWorker(_ worker: RMBTTestWorker, didDownloadLength length: UInt64, atNanos nanos: UInt64) {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .down, "Invalid state");
         assert(!dead, "Invalid state");
@@ -692,7 +692,7 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         }
     }
     
-    func testWorkerDidFinishDownlinkTest(_ worker: RMBTTestWorker!) {
+    func testWorkerDidFinishDownlinkTest(_ worker: RMBTTestWorker) {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .down, "Invalid state");
         assert(!dead, "Invalid state");
@@ -716,7 +716,7 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         }
     }
     
-    func testWorker(_ worker: RMBTTestWorker!, didFinishUplinkPretestWithChunkCount chunks: UInt) {
+    func testWorker(_ worker: RMBTTestWorker, didFinishUplinkPretestWithChunkCount chunks: UInt) {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .initUp, "Invalid state");
         assert(!dead, "Invalid state");
@@ -729,7 +729,7 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         }
     }
     
-    func testWorker(_ worker: RMBTTestWorker!, didStartUplinkTestAtNanos nanos: UInt64) -> UInt64 {
+    func testWorker(_ worker: RMBTTestWorker, didStartUplinkTestAtNanos nanos: UInt64) -> UInt64 {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .up, "Invalid state");
         assert(!dead, "Invalid state");
@@ -748,7 +748,7 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         return delay
     }
     
-    func testWorker(_ worker: RMBTTestWorker!, didUploadLength length: UInt64, atNanos nanos: UInt64) {
+    func testWorker(_ worker: RMBTTestWorker, didUploadLength length: UInt64, atNanos nanos: UInt64) {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .up, "Invalid state");
         assert(!dead, "Invalid state");
@@ -762,7 +762,7 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         }
     }
     
-    func testWorkerDidFinishUplinkTest(_ worker: RMBTTestWorker!) {
+    func testWorkerDidFinishUplinkTest(_ worker: RMBTTestWorker) {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .up, "Invalid state");
         assert(!dead, "Invalid state");
@@ -787,7 +787,7 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         }
     }
     
-    func testWorkerDidStop(_ worker: RMBTTestWorker!) {
+    func testWorkerDidStop(_ worker: RMBTTestWorker) {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .`init`, "Invalid state")
         assert(!dead, "Invalid state")
@@ -804,7 +804,7 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         }
     }
     
-    func testWorkerDidFail(_ worker: RMBTTestWorker!) {
+    func testWorkerDidFail(_ worker: RMBTTestWorker) {
         ASSERT_ON_WORKER_QUEUE()
         assert(!dead, "Invalid state");
         self.cancel(with: .noConnection)
