@@ -25,7 +25,7 @@ class RMBTTitleSectionLabel: UILabel {
         self.textColor = UIColor.rmbt_color(withRGBHex: 0x5F6368, alpha: 0.58)
     }
     
-    @objc init(text: String) {
+    @objc init(text: String?) {
         self.init()
         self.text = text
     }

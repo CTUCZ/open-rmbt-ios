@@ -428,19 +428,19 @@ class RMBTIntroViewController: UIViewController {
 }
 
 extension RMBTIntroViewController: RMBTSettingsViewControllerDelegate {
-    func settingsDidChanged(in viewController: RMBTSettingsViewController!) {
+    func settingsDidChanged(in viewController: RMBTSettingsViewController) {
         currentView.updateLoopModeUI()
     }
 }
 
 extension RMBTIntroViewController: RMBTConnectivityTrackerDelegate {
-    func connectivityTracker(_ tracker: RMBTConnectivityTracker!, didDetect connectivity: RMBTConnectivity!) {
+    func connectivityTracker(_ tracker: RMBTConnectivityTracker, didDetect connectivity: RMBTConnectivity) {
         DispatchQueue.main.async {
             self.connectivity = connectivity
         }
     }
     
-    func connectivityTrackerDidDetectNoConnectivity(_ tracker: RMBTConnectivityTracker!) {
+    func connectivityTrackerDidDetectNoConnectivity(_ tracker: RMBTConnectivityTracker) {
         DispatchQueue.main.async {
             self.connectivity = nil
             self.noConnectionState()

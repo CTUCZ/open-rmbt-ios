@@ -15,6 +15,6 @@
  *
  */
 
-typedef void (^RMBTBlock)(void);
-typedef void (^RMBTSuccessBlock)(id response);
-typedef void (^RMBTErrorBlock)(NSError *error, NSDictionary* info);
+typealias RMBTBlock = () -> Void
+typealias RMBTSuccessBlock = (_ response: Any?) -> Void
+typealias RMBTErrorBlock = (_ error: Error?, _ info: [String: Any]?) -> Void
