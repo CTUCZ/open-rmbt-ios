@@ -15,8 +15,6 @@ enum RMBTHistoryResultDataState: UInt {
     case full
 }
 
-typealias RMBTBlock = () -> Void
-
 class RMBTHistoryLoopResult: RMBTHistoryResult {
     private(set) var loopResults: [RMBTHistoryResult] = []
     

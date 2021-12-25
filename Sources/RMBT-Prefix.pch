@@ -19,8 +19,6 @@
 
     #import "RMBTConfig.h"
 
-    #import "RMBTHelpers.h"
-
     // Needed by AFNetworking
     #import <MobileCoreServices/MobileCoreServices.h>
     #import <SystemConfiguration/SystemConfiguration.h>
@@ -33,7 +31,5 @@
     #import <BlocksKit/NSObject+BKBlockObservation.h>
 
     #import <libextobjc/EXTKeyPathCoding.h> // @keypath macro
-
-    #import "RMBTBlockTypes.h"
 
 #endif
