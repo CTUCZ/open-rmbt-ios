@@ -136,9 +136,9 @@ class RMBTMap2ViewController: UIViewController {
     private func setupMapLayer() {
         if let overlay = self.mapOptions?.oldActiveOverlay {
             if overlay == RMBTMapOptionsOverlayAuto {
-                    if self.currentOverlay == RMBTMapOptionsOverlayHeatmap && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+                if self.currentOverlay == RMBTMapOptionsOverlayHeatmap && Int32(mapView.getZoom()) > RMBTConfig.RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                         self.currentOverlay = RMBTMapOptionsOverlayPoints
-                    } else if self.currentOverlay == RMBTMapOptionsOverlayPoints && Int32(mapView.getZoom()) < RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+                } else if self.currentOverlay == RMBTMapOptionsOverlayPoints && Int32(mapView.getZoom()) < RMBTConfig.RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                         self.currentOverlay = RMBTMapOptionsOverlayHeatmap
                     } else if self.currentOverlay != RMBTMapOptionsOverlayHeatmap {
                         self.currentOverlay = RMBTMapOptionsOverlayHeatmap
@@ -179,7 +179,7 @@ class RMBTMap2ViewController: UIViewController {
     }
     
     private func refresh() {
-        tileParamsDictionary = mapOptions?.oldActiveSubtype?.paramsDictionary() as? [String: Any] ?? [:]
+        tileParamsDictionary = mapOptions?.oldActiveSubtype?.paramsDictionary() ?? [:]
         tileParamsDictionary["size"] = "\(tileSize.width)"
         tileParamsDictionary["point_diameter"] = "\(pointDiameterSize)"
         setupMapLayer()
@@ -265,7 +265,7 @@ class RMBTMap2ViewController: UIViewController {
         let touchLocation = sender.location(in: mapView)
         let coordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
         let zoom = mapView.getZoom()
-        let params = self.mapOptions?.oldActiveSubtype?.markerParamsDictionary() as? [String: Any] ?? [:]
+        let params = self.mapOptions?.oldActiveSubtype?.markerParamsDictionary() ?? [:]
         RMBTMapServer.shared.getMeasurementsAtCoordinate(coordinate, zoom: Int(zoom), params: params) { [weak self] response in
             guard let self = self else { return }
             
@@ -303,9 +303,9 @@ extension RMBTMap2ViewController: MKMapViewDelegate {
     
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         if self.mapOptions?.oldActiveOverlay == RMBTMapOptionsOverlayAuto {
-            if self.currentOverlay == RMBTMapOptionsOverlayHeatmap && Int32(mapView.getZoom()) > RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+            if self.currentOverlay == RMBTMapOptionsOverlayHeatmap && Int32(mapView.getZoom()) > RMBTConfig.RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                 self.setupMapLayer()
-            } else if self.currentOverlay == RMBTMapOptionsOverlayPoints && Int32(mapView.getZoom()) < RMBT_MAP_AUTO_TRESHOLD_ZOOM {
+            } else if self.currentOverlay == RMBTMapOptionsOverlayPoints && Int32(mapView.getZoom()) < RMBTConfig.RMBT_MAP_AUTO_TRESHOLD_ZOOM {
                 self.setupMapLayer()
             }
         }

@@ -22,7 +22,7 @@ final class RMBTTOS: NSObject {
     @objc public static let shared = RMBTTOS()
     
     @objc public dynamic var lastAcceptedVersion: Int
-    @objc public let currentVersion: Int = Int(RMBT_TOS_VERSION)
+    @objc public let currentVersion: Int = Int(RMBTConfig.RMBT_TOS_VERSION)
 
     override public init() {
         lastAcceptedVersion = UserDefaults.getTOSVersion()

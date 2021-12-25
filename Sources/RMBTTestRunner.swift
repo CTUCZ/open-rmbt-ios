@@ -225,7 +225,7 @@ class RMBTTestRunner: NSObject {
         assert(phase == .fetchingTestParams || phase == .none, "Invalid state")
 
         self.testParams = testParams
-        self.testResult = RMBTTestResult(resolutionNanos: UInt64(RMBT_TEST_SAMPLING_RESOLUTION_MS) * NSEC_PER_MSEC)
+        self.testResult = RMBTTestResult(resolutionNanos: UInt64(RMBTConfig.RMBT_TEST_SAMPLING_RESOLUTION_MS) * NSEC_PER_MSEC)
         self.testResult?.markTestStart()
 
         self.workers = []
@@ -365,7 +365,7 @@ class RMBTTestRunner: NSObject {
                     let historyResult = RMBTHistoryResult(response: ["test_uuid": self.testParams?.testUUID ?? ""])
 
                     if (hasQos) {
-                        if qosSem.wait(timeout: .now() + RMBT_QOS_CC_TIMEOUT_S) == .timedOut {
+                        if qosSem.wait(timeout: .now() + RMBTConfig.RMBT_QOS_CC_TIMEOUT_S) == .timedOut {
                             Log.logger.debug("Timed out waiting for QoS result submission")
                         }
                     }

@@ -237,7 +237,7 @@ class RMBTTestWorker: NSObject {
             let port = params.serverPort 
             
             Log.logger.debug("Connecting to host \(sAddr):\(port)")
-            try socket.connect(toHost: sAddr, onPort: UInt16(port) /*TODO*/, withTimeout: RMBT_TEST_SOCKET_TIMEOUT_S)
+            try socket.connect(toHost: sAddr, onPort: UInt16(port) /*TODO*/, withTimeout: RMBTConfig.RMBT_TEST_SOCKET_TIMEOUT_S)
         } catch {
             fail()
         }
@@ -290,13 +290,13 @@ class RMBTTestWorker: NSObject {
     
     private func readLineWithTag(_ tag: RMBTTestTag) {
         if let data = "\n".data(using: String.Encoding.ascii) {
-            socket.readData(to: data, withTimeout: RMBT_TEST_SOCKET_TIMEOUT_S, tag: tag.rawValue)
+            socket.readData(to: data, withTimeout: RMBTConfig.RMBT_TEST_SOCKET_TIMEOUT_S, tag: tag.rawValue)
         }
     }
 
     private func readLine(_ line: String, tag: RMBTTestTag) {
         if let data = line.data(using: String.Encoding.ascii) {
-            socket.readData(to: data, withTimeout: RMBT_TEST_SOCKET_TIMEOUT_S, tag: tag.rawValue)
+            socket.readData(to: data, withTimeout: RMBTConfig.RMBT_TEST_SOCKET_TIMEOUT_S, tag: tag.rawValue)
         }
     }
 
@@ -307,7 +307,7 @@ class RMBTTestWorker: NSObject {
 
     private func writeData(_ data: Data, withTag tag: RMBTTestTag) {
         totalBytesUploaded += UInt64(data.count)
-        socket.write(data, withTimeout: RMBT_TEST_SOCKET_TIMEOUT_S, tag: tag.rawValue)
+        socket.write(data, withTimeout: RMBTConfig.RMBT_TEST_SOCKET_TIMEOUT_S, tag: tag.rawValue)
     }
 
     private func logData(_ data: Data) {
@@ -370,10 +370,10 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
         if let error = err as NSError? {
             Log.logger.debug("Socket disconnected with error \(String(describing: err))")
             // See https://github.com/robbiehanson/CocoaAsyncSocket/issues/382
-            if (error.domain == "kCFStreamErrorDomainNetDB" && hostLookupRetries < RMBT_TEST_HOST_LOOKUP_RETRIES) {
+            if (error.domain == "kCFStreamErrorDomainNetDB" && hostLookupRetries < RMBTConfig.RMBT_TEST_HOST_LOOKUP_RETRIES) {
                 hostLookupRetries += 1
-                Log.logger.debug("Thread \(index) retrying lookup (\(hostLookupRetries)/\(RMBT_TEST_HOST_LOOKUP_RETRIES)")
-                usleep(useconds_t(UInt64(RMBT_TEST_HOST_LOOKUP_WAIT_S) * USEC_PER_SEC))
+                Log.logger.debug("Thread \(index) retrying lookup (\(hostLookupRetries)/\(RMBTConfig.RMBT_TEST_HOST_LOOKUP_RETRIES)")
+                usleep(useconds_t(UInt64(RMBTConfig.RMBT_TEST_HOST_LOOKUP_WAIT_S) * USEC_PER_SEC))
                 self.connect()
             } else {
                 fail()
@@ -478,7 +478,7 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
 
             pretestLengthReceived = 0
 
-            socket.readData(withTimeout: RMBT_TEST_SOCKET_TIMEOUT_S, tag: RMBTTestTag.rxPretestPart.rawValue)
+            socket.readData(withTimeout: RMBTConfig.RMBT_TEST_SOCKET_TIMEOUT_S, tag: RMBTTestTag.rxPretestPart.rawValue)
         } else if tag == .rxPretestPart {
             pretestLengthReceived += UInt64(data.count)
 
@@ -488,7 +488,7 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
                 writeLine("OK", withTag: .txChunkOK)
             } else {
                 // Read more
-                socket.readData(withTimeout: RMBT_TEST_SOCKET_TIMEOUT_S, tag: RMBTTestTag.rxPretestPart.rawValue)
+                socket.readData(withTimeout: RMBTConfig.RMBT_TEST_SOCKET_TIMEOUT_S, tag: RMBTTestTag.rxPretestPart.rawValue)
             }
         } else if tag == .txChunkOK {
             // -> OK
@@ -565,7 +565,7 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
             // -> GETTIME (duration)
             testDownloadedData = Data() //NSMutableData(capacity: Int(chunksize))!
 
-            socket.readData(withTimeout: RMBT_TEST_SOCKET_TIMEOUT_S, tag: RMBTTestTag.rxDownlinkPart.rawValue)
+            socket.readData(withTimeout: RMBTConfig.RMBT_TEST_SOCKET_TIMEOUT_S, tag: RMBTTestTag.rxDownlinkPart.rawValue)
 
             // We want to align starting times of all threads, so allow delegate to supply us a start timestamp
             // (usually from the first thread that reached this point)
@@ -588,7 +588,7 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
                 socket.disconnect()
             } else {
                 // Request more
-                socket.readData(withTimeout: RMBT_TEST_SOCKET_TIMEOUT_S, tag: RMBTTestTag.rxDownlinkPart.rawValue)
+                socket.readData(withTimeout: RMBTConfig.RMBT_TEST_SOCKET_TIMEOUT_S, tag: RMBTTestTag.rxDownlinkPart.rawValue)
             }
         }
 
@@ -650,13 +650,13 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
             testStartNanos = RMBTHelpers.RMBTCurrentNanos()
             testUploadOffsetNanos = delegate?.testWorker(self, didStartUplinkTestAtNanos: testStartNanos) ?? UInt64(0.0)
 
-            var enoughInterval = (params.testDuration - RMBT_TEST_UPLOAD_MAX_DISCARD_S)
+            var enoughInterval = (params.testDuration - RMBTConfig.RMBT_TEST_UPLOAD_MAX_DISCARD_S)
             if enoughInterval < 0 {
                 enoughInterval = 0
             }
 
             testUploadEnoughServerNanos = UInt64(enoughInterval * Double(NSEC_PER_SEC))
-            testUploadEnoughClientNanos = testStartNanos + UInt64((params.testDuration + RMBT_TEST_UPLOAD_MIN_WAIT_S) * Double(NSEC_PER_SEC))
+            testUploadEnoughClientNanos = testStartNanos + UInt64((params.testDuration + RMBTConfig.RMBT_TEST_UPLOAD_MIN_WAIT_S) * Double(NSEC_PER_SEC))
 
             updateLastChunkFlagToValue(false)
             writeData(chunkData as Data, withTag: .txPutChunk)
@@ -671,7 +671,7 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
                     Log.logger.debug("Sending last chunk in thread \(self.index)")
 
                     testUploadLastChunkSent = true
-                    testUploadMaxWaitReachedClientNanos = RMBTHelpers.RMBTCurrentNanos() + UInt64(RMBT_TEST_UPLOAD_MAX_WAIT_S) * NSEC_PER_SEC
+                    testUploadMaxWaitReachedClientNanos = RMBTHelpers.RMBTCurrentNanos() + UInt64(RMBTConfig.RMBT_TEST_UPLOAD_MAX_WAIT_S) * NSEC_PER_SEC
 
                     // We're done, send last chunk
                     updateLastChunkFlagToValue(true)

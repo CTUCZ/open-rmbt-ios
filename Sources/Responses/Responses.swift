@@ -266,10 +266,10 @@ public class SpeedMeasurementResponse_Old: BasicResponse {
     var duration: Double = 7 // TODO: int instead of double?
     
     ///
-    var pretestDuration: Double = RMBT_TEST_PRETEST_DURATION_S // TODO: int instead of double?
+    var pretestDuration: Double = RMBTConfig.RMBT_TEST_PRETEST_DURATION_S // TODO: int instead of double?
     
     ///
-    var pretestMinChunkCountForMultithreading: Int = Int(RMBT_TEST_PRETEST_MIN_CHUNKS_FOR_MULTITHREADED_TEST)
+    var pretestMinChunkCountForMultithreading: Int = Int(RMBTConfig.RMBT_TEST_PRETEST_MIN_CHUNKS_FOR_MULTITHREADED_TEST)
     
     ///
     var numThreads = "3"

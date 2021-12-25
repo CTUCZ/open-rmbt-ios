@@ -38,9 +38,9 @@ import UIKit
         }
         
         clientRemoteIp = response["client_remote_ip"] as? String
-        pingCount = UInt(RMBT_TEST_PING_COUNT)
-        pretestDuration = RMBT_TEST_PRETEST_DURATION_S
-        pretestMinChunkCountForMultithreading = UInt(RMBT_TEST_PRETEST_MIN_CHUNKS_FOR_MULTITHREADED_TEST)
+        pingCount = UInt(RMBTConfig.RMBT_TEST_PING_COUNT)
+        pretestDuration = RMBTConfig.RMBT_TEST_PRETEST_DURATION_S
+        pretestMinChunkCountForMultithreading = UInt(RMBTConfig.RMBT_TEST_PRETEST_MIN_CHUNKS_FOR_MULTITHREADED_TEST)
         serverAddress = response["test_server_address"] as? String
         serverEncryption = response["test_server_encryption"] as? Bool ?? false
         serverName = response["test_server_name"] as? String

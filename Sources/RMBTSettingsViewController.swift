@@ -73,7 +73,7 @@ class RMBTSettingsViewController: UITableViewController {
         self.title = NSLocalizedString("preferences_general_settings", comment: "")
         self.navigationItem.leftBarButtonItem = self.closeBarButtonItem
         
-        self.developerNameLabel.text = RMBTConfig.shared.RMBT_DEVELOPER_NAME
+        self.developerNameLabel.text = RMBTConfig.RMBT_DEVELOPER_NAME
         self.buildDetailsLabel.lineBreakMode = NSLineBreakMode.byCharWrapping
         
         let shortVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
@@ -143,15 +143,15 @@ class RMBTSettingsViewController: UITableViewController {
         self.bindTextField(self.loopModeWaitTextField,
                            to: #keyPath(RMBTSettings.loopModeEveryMinutes),
                            isNumeric: true,
-                           min: Int(settings.debugUnlocked ? 1 : RMBTConfig.shared.RMBT_TEST_LOOPMODE_MIN_DELAY_MINS),
-                           max: Int(settings.debugUnlocked ? Int.max : RMBTConfig.shared.RMBT_TEST_LOOPMODE_MAX_DELAY_MINS))
+                           min: Int(settings.debugUnlocked ? 1 : RMBTConfig.RMBT_TEST_LOOPMODE_MIN_DELAY_MINS),
+                           max: Int(settings.debugUnlocked ? Int.max : RMBTConfig.RMBT_TEST_LOOPMODE_MAX_DELAY_MINS))
         
         
         self.bindTextField(self.loopModeDistanceTextField,
                            to: #keyPath(RMBTSettings.loopModeEveryMeters),
                            isNumeric: true,
-                           min: Int(settings.debugUnlocked ? 1 : RMBTConfig.shared.RMBT_TEST_LOOPMODE_MIN_MOVEMENT_M),
-                           max: Int(settings.debugUnlocked ? Int.max : RMBTConfig.shared.RMBT_TEST_LOOPMODE_MAX_MOVEMENT_M))
+                           min: Int(settings.debugUnlocked ? 1 : RMBTConfig.RMBT_TEST_LOOPMODE_MIN_MOVEMENT_M),
+                           max: Int(settings.debugUnlocked ? Int.max : RMBTConfig.RMBT_TEST_LOOPMODE_MAX_MOVEMENT_M))
         
         self.bindSwitch(self.debugForceIPv6Switch, to: #keyPath(RMBTSettings.debugForceIPv6)) { value in
             if (value && self.forceIPv4Switch.isOn) {
@@ -414,21 +414,21 @@ class RMBTSettingsViewController: UITableViewController {
             }
         } else if (indexPath.section == RMBTSettingsSection.contacts.rawValue) {
             switch (indexPath.row) {
-            case 0: self.presentModalBrowser(with: RMBTConfig.shared.RMBT_PROJECT_URL)
+            case 0: self.presentModalBrowser(with: RMBTConfig.RMBT_PROJECT_URL)
                 case 1:
                 if MFMailComposeViewController.canSendMail() {
                     let mailVC = MFMailComposeViewController()
-                    mailVC.setToRecipients([RMBTConfig.shared.RMBT_PROJECT_EMAIL])
+                    mailVC.setToRecipients([RMBTConfig.RMBT_PROJECT_EMAIL])
                     mailVC.mailComposeDelegate = self
                     self.present(mailVC, animated: true, completion: nil)
                 }
-            case 2: self.presentModalBrowser(with: RMBTConfig.shared.RMBT_PRIVACY_TOS_URL)
+            case 2: self.presentModalBrowser(with: RMBTConfig.RMBT_PRIVACY_TOS_URL)
                 default: assert(false, "Invalid row")
             }
         } else if (indexPath.section == RMBTSettingsSection.support.rawValue) {
             switch (indexPath.row) {
-            case 0: self.presentModalBrowser(with: RMBTConfig.shared.RMBT_DEVELOPER_URL)
-            case 1: self.presentModalBrowser(with: RMBTConfig.shared.RMBT_REPO_URL)
+            case 0: self.presentModalBrowser(with: RMBTConfig.RMBT_DEVELOPER_URL)
+            case 1: self.presentModalBrowser(with: RMBTConfig.RMBT_REPO_URL)
             default: break
             }
         }
@@ -472,7 +472,7 @@ class RMBTSettingsViewController: UITableViewController {
 extension RMBTSettingsViewController {
     @objc func tapHandler(_ sender: UIGestureRecognizer) {
         _ = UIAlertController.presentAlertDevCode(nil, codeAction: { (textField) in
-            if textField.text == RMBTConfig.shared.DEV_CODE {
+            if textField.text == RMBTConfig.DEV_CODE {
                 RMBTSettings.shared.isDevModeEnabled = !RMBTSettings.shared.isDevModeEnabled
                 RMBTSettings.shared.debugUnlocked = RMBTSettings.shared.isDevModeEnabled
                 RMBTSettings.shared.debugForceIPv6 = false
