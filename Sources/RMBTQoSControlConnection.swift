@@ -56,7 +56,7 @@ class RMBTQoSControlConnection: NSObject {
         state = .connecting
         
         do {
-            try socket.connect(toHost: params.serverAddress, onPort: UInt16(params.port), withTimeout: RMBT_QOS_CC_TIMEOUT_S)
+            try socket.connect(toHost: params.serverAddress, onPort: UInt16(params.port), withTimeout: RMBTConfig.RMBT_QOS_CC_TIMEOUT_S)
         }
         catch let error {
             state = .disconnected
@@ -120,12 +120,12 @@ class RMBTQoSControlConnection: NSObject {
     // MARK: - Socket helpers
 
     func readLine(with tag: RMBTQoSControlConnectionTag) {
-        socket.readData(to: "\n".data(using: .ascii), withTimeout: RMBT_QOS_CC_TIMEOUT_S, tag: tag.rawValue)
+        socket.readData(to: "\n".data(using: .ascii), withTimeout: RMBTConfig.RMBT_QOS_CC_TIMEOUT_S, tag: tag.rawValue)
     }
     
     func writeLine(_ line: String, with tag: RMBTQoSControlConnectionTag) {
         //    RMBTLog(@"TX %@", line);
-        socket.write(line.appending("\n").data(using: .ascii), withTimeout: RMBT_QOS_CC_TIMEOUT_S, tag: tag.rawValue)
+        socket.write(line.appending("\n").data(using: .ascii), withTimeout: RMBTConfig.RMBT_QOS_CC_TIMEOUT_S, tag: tag.rawValue)
     }
 }
 

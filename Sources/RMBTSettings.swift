@@ -147,9 +147,9 @@ import Foundation
 
         UserDefaults.standard.register(defaults:
         [
-            "loopModeEveryMeters": RMBT_TEST_LOOPMODE_DEFAULT_MOVEMENT_M,
-            "loopModeEveryMinutes": RMBT_TEST_LOOPMODE_DEFAULT_DELAY_MINS,
-            "loopModeLastCount": RMBT_TEST_LOOPMODE_DEFAULT_COUNT
+            "loopModeEveryMeters": RMBTConfig.RMBT_TEST_LOOPMODE_DEFAULT_MOVEMENT_M,
+            "loopModeEveryMinutes": RMBTConfig.RMBT_TEST_LOOPMODE_DEFAULT_DELAY_MINS,
+            "loopModeLastCount": RMBTConfig.RMBT_TEST_LOOPMODE_DEFAULT_COUNT
         ])
         
         bindKeyPaths([

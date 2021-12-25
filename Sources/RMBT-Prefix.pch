@@ -17,7 +17,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
-    #import "RMBTConfig.h"
+//    #import "RMBTConfig.h"
 
     // Needed by AFNetworking
     #import <MobileCoreServices/MobileCoreServices.h>

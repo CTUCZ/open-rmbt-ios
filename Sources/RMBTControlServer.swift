@@ -23,7 +23,7 @@ public typealias HistoryFilterType = [String: [String]]
     
     public var baseUrl = "https://netcouch.specure.com/api/v1"
     
-    public var statsURL: URL? = URL(string: RMBTHelpers.RMBTLocalize(urlString: RMBT_STATS_URL))
+    public var statsURL: URL? = URL(string: RMBTHelpers.RMBTLocalize(urlString: RMBTConfig.RMBT_STATS_URL))
     public var mapServerURL: URL?
     
     public var ipv4: URL?
@@ -169,7 +169,7 @@ extension RMBTControlServer {
                 self.baseUrl = baseUrl.absoluteString
                 self.mapServerURL = baseUrl.appendingPathComponent("RMBTMapServer")
             }
-            self.statsURL = URL(string: RMBTHelpers.RMBTLocalize(urlString: RMBT_STATS_URL))
+            self.statsURL = URL(string: RMBTHelpers.RMBTLocalize(urlString: RMBTConfig.RMBT_STATS_URL))
             self.lastNewsUid = UserDefaults.lastNewsUidPreference()
 
             successCallback()

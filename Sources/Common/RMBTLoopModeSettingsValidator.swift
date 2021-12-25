@@ -13,8 +13,8 @@ import UIKit
         if RMBTSettings.shared.debugUnlocked,
            loopModeInfo.total > 0 {
             return true
-        } else if loopModeInfo.total > RMBTConfig.shared.RMBT_TEST_LOOPMODE_MAX_COUNT ||
-            loopModeInfo.total < RMBTConfig.shared.RMBT_TEST_LOOPMODE_MIN_COUNT {
+        } else if loopModeInfo.total > RMBTConfig.RMBT_TEST_LOOPMODE_MAX_COUNT ||
+            loopModeInfo.total < RMBTConfig.RMBT_TEST_LOOPMODE_MIN_COUNT {
             return false
         }
         
@@ -25,9 +25,9 @@ import UIKit
         if RMBTSettings.shared.debugUnlocked,
            loopModeInfo.waitMinutes > 0 {
             return true
-        } else if loopModeInfo.waitMinutes < RMBTConfig.shared.RMBT_TEST_LOOPMODE_MIN_DELAY_MINS ||
+        } else if loopModeInfo.waitMinutes < RMBTConfig.RMBT_TEST_LOOPMODE_MIN_DELAY_MINS ||
             loopModeInfo.waitMinutes >
-                    RMBTConfig.shared.RMBT_TEST_LOOPMODE_MAX_DELAY_MINS {
+                    RMBTConfig.RMBT_TEST_LOOPMODE_MAX_DELAY_MINS {
             return false
         }
         
@@ -38,8 +38,8 @@ import UIKit
         if RMBTSettings.shared.debugUnlocked,
            loopModeInfo.waitMeters > 0 {
             return true
-        } else if loopModeInfo.waitMeters < RMBTConfig.shared.RMBT_TEST_LOOPMODE_MIN_MOVEMENT_M ||
-            loopModeInfo.waitMeters > RMBTConfig.shared.RMBT_TEST_LOOPMODE_MAX_MOVEMENT_M {
+        } else if loopModeInfo.waitMeters < RMBTConfig.RMBT_TEST_LOOPMODE_MIN_MOVEMENT_M ||
+            loopModeInfo.waitMeters > RMBTConfig.RMBT_TEST_LOOPMODE_MAX_MOVEMENT_M {
             return false
         }
         

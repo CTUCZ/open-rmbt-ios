@@ -6,7 +6,7 @@
 //  Copyright © 2021 appscape gmbh. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 typealias AlertAction = ((UIAlertAction) -> Void)?
 typealias AlertGetTextAction = ((UITextField) -> Void)?

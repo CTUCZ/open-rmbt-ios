@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 final class RMBTLoopModeConfirmationViewController: UIViewController {
     private let acceptSegue = "accept"
