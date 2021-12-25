@@ -6,7 +6,7 @@
 //  Copyright © 2021 appscape gmbh. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UIViewController {
     // Presents a modal web browser with supplied URL. If there are occurences of

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVWebViewController
 
 class RMBTStatsWebViewController: SVWebViewController {
     override func viewDidLoad() {

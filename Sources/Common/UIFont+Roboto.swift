@@ -6,10 +6,10 @@
 //  Copyright © 2021 appscape gmbh. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-@objc extension UIFont {
-    @objc static func roboto(size: CGFloat, weight: Weight) -> UIFont {
+extension UIFont {
+    static func roboto(size: CGFloat, weight: Weight) -> UIFont {
         if weight == .bold {
             return UIFont(name: "Roboto-Bold", size: size) ?? UIFont.systemFont(ofSize: size, weight: weight)
         } else if weight == .medium {
