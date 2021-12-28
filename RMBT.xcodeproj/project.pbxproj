@@ -336,7 +336,6 @@
 		C7DE147B173E8F610079477A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C7DE147D173E8F610079477A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C7DE147F173E8F610079477A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C7DE1489173E8F610079477A /* RMBT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMBT-Prefix.pch"; sourceTree = "<group>"; };
 		C7E4672C177CDDB600AAF7F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C7E46739177CDDB600AAF7F0 /* RMBTTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMBTTests-Prefix.pch"; sourceTree = "<group>"; };
 		C7F08F691769F37600741844 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -354,7 +353,6 @@
 		E926C2ED276A11E7009FCF12 /* RMBTSSLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTSSLHelper.swift; sourceTree = "<group>"; };
 		E926C2F1276A1EDC009FCF12 /* RMBTBaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTBaseTestViewController.swift; sourceTree = "<group>"; };
 		E926C2F3276A3345009FCF12 /* RMBTQoSTestRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTQoSTestRunner.swift; sourceTree = "<group>"; };
-		E92E07B4277B4A80008143FE /* RMBTTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMBTTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		E92E07B5277B4A80008143FE /* RMBTSpeedTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTSpeedTest.swift; sourceTree = "<group>"; };
 		E92E07B7277B4B4F008143FE /* RMBTProgressTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTProgressTest.swift; sourceTree = "<group>"; };
 		E92E07B9277B4DF6008143FE /* RMBTHelpersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHelpersTest.swift; sourceTree = "<group>"; };
@@ -905,7 +903,6 @@
 			isa = PBXGroup;
 			children = (
 				E91316AC26AD72F200368DCD /* RMBT-Bridging-Header.h */,
-				C7DE1489173E8F610079477A /* RMBT-Prefix.pch */,
 				C7BC5C721F747A9E00A91F0F /* Launch Screen.storyboard */,
 			);
 			name = "Supporting Files";
@@ -919,7 +916,6 @@
 				E92E07B9277B4DF6008143FE /* RMBTHelpersTest.swift */,
 				E92E07B7277B4B4F008143FE /* RMBTProgressTest.swift */,
 				C7E46731177CDDB600AAF7F0 /* Supporting Files */,
-				E92E07B4277B4A80008143FE /* RMBTTest-Bridging-Header.h */,
 			);
 			name = "Unit Tests";
 			path = RMBTTests;
@@ -2047,7 +2043,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Sources/RMBT-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"DEBUG=1",
@@ -2088,7 +2084,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Sources/RMBT-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/RMBT-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
