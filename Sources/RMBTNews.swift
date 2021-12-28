@@ -6,6 +6,8 @@
 //  Copyright © 2021 appscape gmbh. All rights reserved.
 //
 
+import Foundation
+
 class RMBTNews: NSObject {
     private enum Keys: String {
         case title

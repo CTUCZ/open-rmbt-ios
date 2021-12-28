@@ -27,7 +27,7 @@ enum RMBTQoSTestStatus: Int {
 @objc class RMBTQoSTest: Operation {
     static let kDefaultTimeoutNanos: UInt64 = 10 * NSEC_PER_SEC
     
-    @objc private(set) var progress: RMBTProgress = RMBTProgress(totalUnitCount: 100)
+    @objc var progress: RMBTProgress = RMBTProgress(totalUnitCount: 100)
     
     @objc var group: RMBTQoSTestGroup?
     
