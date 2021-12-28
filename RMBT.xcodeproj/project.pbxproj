@@ -37,7 +37,6 @@
 		C70C178C17D7BFC400F55964 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70C178B17D7BFC400F55964 /* Images.xcassets */; };
 		C71161681E3CFF3800D8CC0C /* RMBTProgressTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C71161661E3CFF1B00D8CC0C /* RMBTProgressTest.m */; };
 		C741B62C1DD99D7A0097D84D /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C741B62B1DD99D7A0097D84D /* libresolv.tbd */; };
-		C777D9831DD8AED000D1C824 /* RMBTQoSDNSTestExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = C777D9821DD8AED000D1C824 /* RMBTQoSDNSTestExecutor.m */; };
 		C77952DC1E23DF5200B95FFF /* RMBTQoSTracerouteTestExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = C77952DB1E23DF5200B95FFF /* RMBTQoSTracerouteTestExecutor.m */; };
 		C77952DD1E23DF5200B95FFF /* RMBTQoSTracerouteTestExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = C77952DB1E23DF5200B95FFF /* RMBTQoSTracerouteTestExecutor.m */; };
 		C779E9E917403364003874AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C779E9E817403364003874AB /* QuartzCore.framework */; };
@@ -332,8 +331,6 @@
 		C70C178B17D7BFC400F55964 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C71161661E3CFF1B00D8CC0C /* RMBTProgressTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTProgressTest.m; sourceTree = "<group>"; };
 		C741B62B1DD99D7A0097D84D /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
-		C777D9811DD8AED000D1C824 /* RMBTQoSDNSTestExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTQoSDNSTestExecutor.h; sourceTree = "<group>"; };
-		C777D9821DD8AED000D1C824 /* RMBTQoSDNSTestExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQoSDNSTestExecutor.m; sourceTree = "<group>"; };
 		C77952DA1E23DF5200B95FFF /* RMBTQoSTracerouteTestExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBTQoSTracerouteTestExecutor.h; sourceTree = "<group>"; };
 		C77952DB1E23DF5200B95FFF /* RMBTQoSTracerouteTestExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBTQoSTracerouteTestExecutor.m; sourceTree = "<group>"; };
 		C779E9E817403364003874AB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -761,8 +758,6 @@
 				E9A23BE32764AC3100717814 /* RMBTQoSTestGroup.swift */,
 				E97CF78E27624E5D0092352C /* RMBTQoSTest.swift */,
 				E9AA0DE027634EF1003C71D7 /* RMBTQoSDNSTest.swift */,
-				C777D9811DD8AED000D1C824 /* RMBTQoSDNSTestExecutor.h */,
-				C777D9821DD8AED000D1C824 /* RMBTQoSDNSTestExecutor.m */,
 				E9AA0DE4276358EC003C71D7 /* RMBTQoSHTTPTest.swift */,
 				E9AA0DEA276361B6003C71D7 /* RMBTQoSWebTest.swift */,
 				E94EC06E276E193000DB0B21 /* RMBTQosWebTestURLProtocol.swift */,
@@ -1734,7 +1729,6 @@
 				E9400F1026BAE3460067273A /* OperatorsRequest.swift in Sources */,
 				E9E993E626EB27BD00E7EED6 /* RMBTQOSListCell.swift in Sources */,
 				E94EC071276E298A00DB0B21 /* RMBTTestResult.swift in Sources */,
-				C777D9831DD8AED000D1C824 /* RMBTQoSDNSTestExecutor.m in Sources */,
 				E9400EFE26BA79100067273A /* BasicRequest.swift in Sources */,
 				E9400EEB26BA6B600067273A /* RMBTControlServer.swift in Sources */,
 				E99F23322771B0BC00BFDA09 /* RMBTConnectivityTracker.swift in Sources */,
