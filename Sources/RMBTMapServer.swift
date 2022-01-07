@@ -53,7 +53,7 @@ import ObjectMapper
     @objc public func getMapOptions(success successCallback: @escaping (_ response: MapOptionResponse) -> (), error failure: @escaping ErrorCallback) {
         let request = BasicRequest()
         BasicRequestBuilder.addBasicRequestValues(request)
-        self.request(HTTPMethod.post, path: "/tiles/info", requestObject: request, success: { (response: MapOptionResponse) in
+        self.request(HTTPMethod.post, path: "/v2/tiles/info", requestObject: request, success: { (response: MapOptionResponse) in
             successCallback(response)
         } , error: failure)
     }
@@ -81,11 +81,6 @@ import ObjectMapper
         guard let base = baseUrl else { return nil }
         // baseUrl and layer
         var urlString = base + "/tiles/\(overlayType)?path={z}/{x}/{y}"
-        
-        // add uuid for highlight
-        if let uuid = RMBTControlServer.shared.uuid {
-            urlString += "&highlight=\(uuid)"
-        }
         
         // add params
         if let p = params, p.count > 0 {
@@ -116,11 +111,6 @@ import ObjectMapper
         if let base = baseUrl {
             // baseUrl and layer
             var urlString = base + "/tiles/\(overlayType)?path=\(zoom)/\(x)/\(y)"
-
-            // add uuid for highlight
-            if let uuid = RMBTControlServer.shared.uuid {
-                urlString += "&highlight=\(uuid)"
-            }
 
             // add params
             if let p = params, p.count > 0 {

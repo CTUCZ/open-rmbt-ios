@@ -80,12 +80,43 @@ public let RMBTMapOptionsToastInfoValues = "values"
 
 final class RMBTMapOptions {
     public var oldOverlays: [RMBTMapOptionsOverlay] = []
-    public var oldActiveSubtype: RMBTMapOptionsSubtype?
     public var oldActiveOverlay: RMBTMapOptionsOverlay?
     public var oldMapViewType: RMBTMapOptionsMapViewType?
     public var oldTypes: [RMBTMapOptionsType] = []
+    
+    public var mapFilters: [RMBTMapOptionsFilter] = []
+    
+    public var mapFiltersDictionary: [String: Any] {
+        var infos: [[String: Any]] = []
+        var result: [String: Any] = [:]
+        
+        //get params from all active values and active sub options
+        for mapFilter in mapFilters {
+            if let option = mapFilter.activeValue?.activeOption {
+                infos.append(option.params)
+            }
+            if let value = mapFilter.activeValue {
+                infos.append(value.params)
+            }
+        }
+        
+        //merge all params to dictionary
+        for info in infos {
+            info.forEach { item in
+                result[item.key] = item.value
+            }
+        }
+        
+        return result
+    }
+    
     ///
     public init(response: MapOptionResponse, isSkipOperators: Bool = false, defaultMapViewType: RMBTMapOptionsMapViewType = .standard) {
+        
+        mapFilters = response.mapFilters.map({ RMBTMapOptionsFilter(with: $0.toJSON()) }).sorted(by: { $0.iconValue > $1.iconValue })
+        mapFilters = mapFilters.filter({ filter in
+            return filter.iconValue != "MAP_APPEARANCE" && filter.iconValue != "OVERLAY_TYPE"
+        })
         
         oldOverlays = [RMBTMapOptionsOverlayAuto, RMBTMapOptionsOverlayHeatmap, RMBTMapOptionsOverlayPoints, RMBTMapOptionsOverlayShapes]
 
@@ -107,7 +138,7 @@ final class RMBTMapOptions {
         
 
         // Select first subtype of first type as active per default
-        oldActiveSubtype = oldTypes[0].subtypes[0]
+//        oldActiveSubtype = oldTypes[0].subtypes[0]
         oldActiveOverlay = RMBTMapOptionsOverlayAuto
 
         oldMapViewType = .standard
@@ -118,11 +149,10 @@ final class RMBTMapOptions {
     public func saveSelection() {
         let selection = RMBTMapOptionsSelection()
 
-        selection.subtypeIdentifier = oldActiveSubtype?.identifier
         selection.overlayIdentifier = oldActiveOverlay?.identifier
         
         var activeFilters: [String: Any] = [:]
-        for f in oldActiveSubtype?.type?.filters ?? [] {
+        for f in mapFilters {
             activeFilters[f.title] = f.activeValue?.title
         }
         selection.activeFilters = activeFilters
@@ -134,20 +164,6 @@ final class RMBTMapOptions {
     fileprivate func restoreSelection() {
         let selection: RMBTMapOptionsSelection = RMBTSettings.shared.mapOptionsSelection
 
-        if let id = selection.subtypeIdentifier {
-            for t in oldTypes {
-                let st = t.subtypes.first(where: { (type) -> Bool in
-                    return type.identifier == id
-                })
-                if st != nil {
-                    oldActiveSubtype = st
-                    break
-                } else if t.identifier == selection.subtypeIdentifier {
-                    oldActiveSubtype = t.subtypes[0]
-                }
-            }
-        }
-        
         if let id = selection.overlayIdentifier {
             for o in oldOverlays {
                 if o.identifier == id {
@@ -158,7 +174,7 @@ final class RMBTMapOptions {
         }
 
         if let activeFilters = selection.activeFilters {
-            for f in oldActiveSubtype?.type?.filters ?? [] {
+            for f in mapFilters {
                 if let activeFilterValueTitle = activeFilters[f.title] as? String {
                     if let v = f.possibleValues.first(where: { fv in
                         return fv.title == activeFilterValueTitle
@@ -187,12 +203,22 @@ final public class RMBTMapOptionsSelection: NSObject {
     @objc public var title: String
     @objc public var summary: String
     public var isDefault: Bool
+    public var params: [String: Any] = [:]
+    
+    public var options: [RMBTMapOptionsFilterValue]?
+    public var activeOption: RMBTMapOptionsFilterValue?
+    
     @objc public var info: [String: Any]
     
     public init(with response: [String: Any]) {
         title = response["title"] as? String ?? ""
         summary = response["summary"] as? String ?? ""
         isDefault = response["default"] as? Bool ?? false
+        params = response["params"] as? [String: Any] ?? [:]
+        options = (response["options"] as? [[String: Any]])?.map({ RMBTMapOptionsFilterValue(with: $0) })
+        if let options = options {
+            activeOption = options.first(where: { $0.isDefault })
+        }
         
         var r = response
         r["title"] = nil

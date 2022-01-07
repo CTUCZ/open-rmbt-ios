@@ -20,7 +20,6 @@ final class RMBTMapOptionsViewController: UIViewController {
     
     private var lastSelection: IndexPath?
     
-    private var activeSubtypeAtStart: RMBTMapOptionsSubtype?
     private var activeFiltersAtStart: [RMBTMapOptionsFilterValue]?
     private var activeOverlayAtStart: RMBTMapOptionsOverlay?
     
@@ -37,13 +36,8 @@ final class RMBTMapOptionsViewController: UIViewController {
         
         self.navigationController?.delegate = self
         
-        self.activeSubtypeAtStart = self.mapOptions?.oldActiveSubtype
         self.activeFiltersAtStart = self.activeFilters()
         self.activeOverlayAtStart = self.mapOptions?.oldActiveOverlay
-        
-        // TODO: Select overlay
-        
-//        [self.mapViewTypeSegmentedControl setSelectedSegmentIndex:self.mapOptions.mapViewType];
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +50,6 @@ final class RMBTMapOptionsViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         let change = (activeOverlayAtStart != self.mapOptions?.oldActiveOverlay) ||
-            (activeSubtypeAtStart != self.mapOptions?.oldActiveSubtype) ||
             (self.activeFilters() != activeFiltersAtStart)
 
         self.delegate?.mapOptionsViewController(self, willDisappearWithChange: change)
@@ -71,25 +64,18 @@ final class RMBTMapOptionsViewController: UIViewController {
     }
  
     private func update(_ cell: RMBTMapOptionsCell, at indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            cell.titleLabel?.text = NSLocalizedString("Map type", comment: "Section title in the map options view")
-            let text = String(format: "%@, %@", self.mapOptions?.oldActiveSubtype?.type?.title ?? "", self.mapOptions?.oldActiveSubtype?.title ?? "")
-            cell.valueLabel?.text = text
-            cell.iconImageView?.image = UIImage(named: "map_options_layout")
-        } else {
             let f = self.filter(at: indexPath.row)
             cell.titleLabel?.text = f?.title
-            cell.valueLabel?.text = f?.activeValue?.title
+            cell.valueLabel?.text = f?.activeValueTitle
             cell.iconImageView.image = f?.icon
-        }
     }
     
     private func filter(at index: Int) -> RMBTMapOptionsFilter? {
-        return self.mapOptions?.oldActiveSubtype?.type?.filters[index - 1]
+        return self.mapOptions?.mapFilters[index]
     }
     
     private func activeFilters() -> [RMBTMapOptionsFilterValue]? {
-        return self.mapOptions?.oldActiveSubtype?.type?.filters.compactMap({ $0.activeValue })
+        return self.mapOptions?.mapFilters.compactMap({ $0.activeValue?.activeOption ?? $0.activeValue })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,15 +89,15 @@ final class RMBTMapOptionsViewController: UIViewController {
             vc.filter = filter
         } else if segue.identifier == "show_types",
            let vc = segue.destination as? RMBTMapOptionsTypesViewController {
-            vc.mapOptions = self.mapOptions
+            let filter = self.filter(at: indexPath?.row ?? 0)
+            vc.filter = filter
         }
     }
 }
 
 extension RMBTMapOptionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = (self.mapOptions?.oldActiveSubtype?.type?.filters.count ?? 0)
-        return count + 1 // type
+        return self.mapOptions?.mapFilters.count ?? 0
     }
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -125,7 +111,8 @@ extension RMBTMapOptionsViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.row == 0) {
+        let filter = self.filter(at: indexPath.row)
+        if (filter?.iconValue == "MAP_TYPE") {
             self.performSegue(withIdentifier: "show_types", sender: indexPath)
         } else {
             lastSelection = indexPath

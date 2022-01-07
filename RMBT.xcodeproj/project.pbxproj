@@ -60,7 +60,7 @@
 		E92E07B8277B4B4F008143FE /* RMBTProgressTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E07B7277B4B4F008143FE /* RMBTProgressTest.swift */; };
 		E92E07BA277B4DF6008143FE /* RMBTHelpersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E07B9277B4DF6008143FE /* RMBTHelpersTest.swift */; };
 		E92E07BC277B4E92008143FE /* RMBTThroughputHistoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E07BB277B4E92008143FE /* RMBTThroughputHistoryTest.swift */; };
-		E930769926CE247F0046A17B /* RMBTMap2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930769826CE247F0046A17B /* RMBTMap2ViewController.swift */; };
+		E930769926CE247F0046A17B /* RMBTMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930769826CE247F0046A17B /* RMBTMapViewController.swift */; };
 		E930769B26CE3AA80046A17B /* RMBTMapOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930769A26CE3AA80046A17B /* RMBTMapOptionsViewController.swift */; };
 		E930769F26CE83200046A17B /* RMBTMapOptionsLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930769E26CE83200046A17B /* RMBTMapOptionsLayoutViewController.swift */; };
 		E939AAA526DA837D00D73F0B /* MKMapView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939AAA426DA837D00D73F0B /* MKMapView+Additions.swift */; };
@@ -357,7 +357,7 @@
 		E92E07B7277B4B4F008143FE /* RMBTProgressTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTProgressTest.swift; sourceTree = "<group>"; };
 		E92E07B9277B4DF6008143FE /* RMBTHelpersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHelpersTest.swift; sourceTree = "<group>"; };
 		E92E07BB277B4E92008143FE /* RMBTThroughputHistoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTThroughputHistoryTest.swift; sourceTree = "<group>"; };
-		E930769826CE247F0046A17B /* RMBTMap2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMap2ViewController.swift; sourceTree = "<group>"; };
+		E930769826CE247F0046A17B /* RMBTMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapViewController.swift; sourceTree = "<group>"; };
 		E930769A26CE3AA80046A17B /* RMBTMapOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptionsViewController.swift; sourceTree = "<group>"; };
 		E930769E26CE83200046A17B /* RMBTMapOptionsLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTMapOptionsLayoutViewController.swift; sourceTree = "<group>"; };
 		E939AAA426DA837D00D73F0B /* MKMapView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Additions.swift"; sourceTree = "<group>"; };
@@ -1127,7 +1127,7 @@
 				E939AAA726DB8AE700D73F0B /* Models */,
 				E946B94826D62E680006E1F1 /* Segues */,
 				E946B93C26D28B880006E1F1 /* Cells */,
-				E930769826CE247F0046A17B /* RMBTMap2ViewController.swift */,
+				E930769826CE247F0046A17B /* RMBTMapViewController.swift */,
 				E930769A26CE3AA80046A17B /* RMBTMapOptionsViewController.swift */,
 				E930769E26CE83200046A17B /* RMBTMapOptionsLayoutViewController.swift */,
 				E946B94D26D65F0D0006E1F1 /* RMBTMapOptionsFilterViewController.swift */,
@@ -1783,7 +1783,7 @@
 				E9824442272FC31600081732 /* RMBTLoopModeSettingsViewController.swift in Sources */,
 				E94ED1CF26C3C22F00B17B25 /* NetworkReachability.swift in Sources */,
 				E9B51CC627240B84006ED0C7 /* UIApplication+Additions.swift in Sources */,
-				E930769926CE247F0046A17B /* RMBTMap2ViewController.swift in Sources */,
+				E930769926CE247F0046A17B /* RMBTMapViewController.swift in Sources */,
 				36933A75274FBF00009A52BE /* RMBTTestDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2036,7 +2036,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = T7Y947AEPK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2054,9 +2054,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.3;
+				MARKETING_VERSION = 2.6.5;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = at.rtr.openrmbt;
+				PRODUCT_BUNDLE_IDENTIFIER = at.netztest.app.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sources/RMBT-Bridging-Header.h";
@@ -2077,7 +2077,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = T7Y947AEPK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2091,8 +2091,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.3;
-				PRODUCT_BUNDLE_IDENTIFIER = at.rtr.openrmbt;
+				MARKETING_VERSION = 2.6.5;
+				PRODUCT_BUNDLE_IDENTIFIER = at.netztest.app.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sources/RMBT-Bridging-Header.h";
