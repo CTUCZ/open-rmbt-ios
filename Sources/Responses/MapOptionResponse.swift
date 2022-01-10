@@ -52,12 +52,16 @@ import ObjectMapper
     final class MapTypeOld: Mappable {
         var title: String?
         var options: [[String: Any]] = []
+        var isDefault: Bool = false
+        var icon: String?
         
         init?(map: Map) { }
         
         func mapping(map: Map) {
             title <- map["title"]
             options <- map["options"]
+            icon <- map["icon"]
+            isDefault <- map["default"]
         }
     }
     
@@ -73,9 +77,12 @@ import ObjectMapper
 //        }
 //    }
     
+    var mapFilters: [MapTypeOld] = []
+    
     override public func mapping(map: Map) {
         super.mapping(map: map)
 
+        mapFilters <- map["map_filters"]
         mapTypesOld <- map["mapfilter.mapTypes"]
         mapFiltersOld <- map["mapfilter.mapFilters"]
         

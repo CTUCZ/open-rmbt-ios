@@ -1,5 +1,5 @@
 //
-//  RMBTMap2ViewController.swift
+//  RMBTMapViewController.swift
 //  RMBT
 //
 //  Created by Sergey Glushchenko on 19.08.2021.
@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class RMBTMap2ViewController: UIViewController {
+class RMBTMapViewController: UIViewController {
 
     private let showMapOptionsSegue = "show_map_options"
     private let showMapTypeSegue = "show_map_type"
@@ -179,7 +179,7 @@ class RMBTMap2ViewController: UIViewController {
     }
     
     private func refresh() {
-        tileParamsDictionary = mapOptions?.oldActiveSubtype?.paramsDictionary() ?? [:]
+        tileParamsDictionary = mapOptions?.mapFiltersDictionary ?? [:]
         tileParamsDictionary["size"] = "\(tileSize.width)"
         tileParamsDictionary["point_diameter"] = "\(pointDiameterSize)"
         setupMapLayer()
@@ -265,7 +265,7 @@ class RMBTMap2ViewController: UIViewController {
         let touchLocation = sender.location(in: mapView)
         let coordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
         let zoom = mapView.getZoom()
-        let params = self.mapOptions?.oldActiveSubtype?.markerParamsDictionary() ?? [:]
+        let params = self.mapOptions?.mapFiltersDictionary ?? [:]
         RMBTMapServer.shared.getMeasurementsAtCoordinate(coordinate, zoom: Int(zoom), params: params) { [weak self] response in
             guard let self = self else { return }
             
@@ -296,7 +296,7 @@ class RMBTMap2ViewController: UIViewController {
 
 }
 
-extension RMBTMap2ViewController: MKMapViewDelegate {
+extension RMBTMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         return tileRenderer!
     }
@@ -326,7 +326,7 @@ extension RMBTMap2ViewController: MKMapViewDelegate {
     }
 }
 
-extension RMBTMap2ViewController: RMBTMapOptionsViewControllerDelegate {
+extension RMBTMapViewController: RMBTMapOptionsViewControllerDelegate {
     func mapOptionsViewController(_ vc: RMBTMapOptionsViewController, willDisappearWithChange isChange: Bool) {
         guard isChange else { return }
         
@@ -343,7 +343,7 @@ extension RMBTMap2ViewController: RMBTMapOptionsViewControllerDelegate {
     }
 }
 
-extension RMBTMap2ViewController: RMBTMapOverlaysViewControllerDelegate {
+extension RMBTMapViewController: RMBTMapOverlaysViewControllerDelegate {
     func mapOverlaysViewControllerMapTypeDidChange(_ vc: RMBTMapOverlaysViewController) {
         Log.logger.debug("Map options changed, refreshing...")
         mapOptions?.saveSelection()

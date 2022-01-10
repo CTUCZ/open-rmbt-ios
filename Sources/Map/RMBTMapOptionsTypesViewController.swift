@@ -14,7 +14,7 @@ class RMBTMapOptionsTypesViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var mapOptions: RMBTMapOptions?
+    var filter: RMBTMapOptionsFilter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +26,6 @@ class RMBTMapOptionsTypesViewController: UIViewController {
         self.tableView.register(UINib(nibName: RMBTMapOptionsTypeCell.ID, bundle: nil), forCellReuseIdentifier: RMBTMapOptionsTypeCell.ID)
         
         self.tableView.tintColor = UIColor(red: 89.0/255.0, green: 178.0/255.0, blue: 0.0, alpha: 1.0)
-        
-        
-    }
-    
-    func subType(at indexPath: IndexPath) -> RMBTMapOptionsSubtype? {
-        return self.mapOptions?.oldTypes[indexPath.section].subtypes[indexPath.row]
     }
     
     @IBAction func confirmButtonClick(_ sender: Any) {
@@ -41,11 +35,11 @@ class RMBTMapOptionsTypesViewController: UIViewController {
 
 extension RMBTMapOptionsTypesViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.mapOptions?.oldTypes.count ?? 0
+        return filter?.possibleValues.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.mapOptions?.oldTypes[section].subtypes.count ?? 0
+        return filter?.possibleValues[section].options?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -53,23 +47,25 @@ extension RMBTMapOptionsTypesViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let subtype = self.subType(at: indexPath)
+        let subtype = filter?.possibleValues[indexPath.section].options?[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: RMBTMapOptionsTypeCell.ID, for: indexPath) as! RMBTMapOptionsTypeCell
         
         cell.titleLabel.text = subtype?.title
         cell.subtitleLabel.text = subtype?.summary
      
-        cell.accessoryType = self.mapOptions?.oldActiveSubtype?.identifier == subtype?.identifier ? .checkmark : .none
+        cell.accessoryType = self.filter?.activeValue?.activeOption == subtype ? .checkmark : .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.mapOptions?.oldTypes[section].title
+        return self.filter?.possibleValues[section].title
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.mapOptions?.oldActiveSubtype = self.subType(at:indexPath)
+        let type = filter?.possibleValues[indexPath.section]
+        type?.activeOption = filter?.possibleValues[indexPath.section].options?[indexPath.row]
+        self.filter?.activeValue = type
         self.tableView.reloadData()
     }
 }
