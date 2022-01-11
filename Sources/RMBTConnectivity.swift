@@ -104,26 +104,42 @@ class RMBTConnectivity: NSObject {
 
         var bytesSent: UInt32 = 0
         var bytesReceived: UInt32 = 0
-        if getifaddrs(&ifaddr) == 0 {
-            var ptr = ifaddr
-            while (ptr != nil) {
-                if let addr = ptr?.pointee.ifa_addr.pointee,
-                    let value = ptr?.pointee.ifa_name {
-                    if let name = String(cString: value, encoding: .ascii),
-                        addr.sa_family == AF_LINK && (
-                        (name.hasPrefix("en") && self.networkType == .wifi) ||
-                        (name.hasPrefix("pdp_ip") && self.networkType == .cellular)
-                    ) {
-                        stats = unsafeBitCast(ptr?.pointee.ifa_data, to: UnsafeMutablePointer<if_data>.self)
-                        bytesSent += stats?.pointee.ifi_obytes ?? 0
-                        bytesReceived += stats?.pointee.ifi_ibytes ?? 0
-                    }
-                }
-                ptr = ptr?.pointee.ifa_next
+        
+        var result = RMBTConnectivityInterfaceInfo(bytesReceived: bytesReceived, bytesSent: bytesSent)
+        
+        guard getifaddrs(&ifaddr) == 0 else { return result }
+        
+        while let ptr = ifaddr {
+            let addr = ptr.pointee.ifa_addr.pointee
+            
+            guard let value = ptr.pointee.ifa_name else {
+                ifaddr = ptr.pointee.ifa_next
+                continue
             }
-            freeifaddrs(ifaddr)
+            
+            guard let name = String(cString: value, encoding: .ascii),
+                  addr.sa_family == UInt8(AF_LINK),
+                  (name.hasPrefix("en") && self.networkType == .wifi) ||
+                  (name.hasPrefix("pdp_ip") && self.networkType == .cellular)
+            else {
+                ifaddr = ptr.pointee.ifa_next
+                continue
+            }
+            
+            stats = unsafeBitCast(ptr.pointee.ifa_data, to: UnsafeMutablePointer<if_data>.self)
+            if let stats = stats {
+                bytesSent += stats.pointee.ifi_obytes
+                bytesReceived += stats.pointee.ifi_ibytes
+            }
+            
+            ifaddr = ptr.pointee.ifa_next
         }
-        let result = RMBTConnectivityInterfaceInfo(bytesReceived: bytesReceived, bytesSent: bytesSent)
+        
+        freeifaddrs(ifaddr)
+        
+        result.bytesSent = bytesSent
+        result.bytesReceived = bytesReceived
+        
         return result
     }
 
