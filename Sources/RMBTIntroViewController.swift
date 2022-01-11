@@ -228,8 +228,13 @@ class RMBTIntroViewController: UIViewController {
     
     private func locationPopupInfo(with location: CLLocation, tintColor: UIColor) -> RMBTPopupInfo {
         let altitude = "\(Int(location.altitude)) m"
-        let ageSeconds = Int(Date().timeIntervalSince1970 - location.timestamp.timeIntervalSince1970)
-        let age = "< \(ageSeconds) s"
+        let timestamp = abs(Date().timeIntervalSince(location.timestamp))
+        let age: String
+        if timestamp < 1 {
+            age = "< 1 s"
+        } else {
+            age = "\(Int(timestamp)) s"
+        }
         let speedKilometers = abs(Int(location.speed * 3.6))
         let speed = "\(speedKilometers) km/h"
         let horizontalAccuracy = "+/-\(Int(location.horizontalAccuracy)) m"
