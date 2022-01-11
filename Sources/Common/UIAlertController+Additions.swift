@@ -13,9 +13,23 @@ typealias AlertGetTextAction = ((UITextField) -> Void)?
 typealias GenericCompletition = (() -> Void)?
 
 extension UIAlertController {
-    @discardableResult class func presentAlert(title: String?, text: String?, _ dismissAction: AlertAction) -> UIAlertController? {
+    @discardableResult class func presentAlert(title: String?, text: String?, cancelTitle: String? = nil, otherTitle: String? = nil, cancelAction: AlertAction?, otherAction: AlertAction?) -> UIAlertController? {
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
-        alert.addAction(UIAlertAction.genericCancelAction(dismissAction))
+        if let cancelTitle = cancelTitle,
+            let cancelAction = cancelAction {
+            alert.addAction(UIAlertAction.genericCancelAction(cancelTitle, performAction: cancelAction))
+        }
+        if let otherTitle = otherTitle,
+            let otherAction = otherAction {
+            alert.addAction(UIAlertAction.genericAction(otherTitle, performAction: otherAction))
+        }
+        alert.show()
+        return alert
+    }
+    
+    @discardableResult class func presentCancelAlert(title: String?, text: String?, _ dismissAction: AlertAction) -> UIAlertController? {
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction.genericCancelAction(performAction: dismissAction))
         alert.show()
         return alert
     }
@@ -23,7 +37,7 @@ extension UIAlertController {
     class func presentAlertDevCode(_ dismissAction: AlertAction, codeAction: AlertGetTextAction, textFieldConfiguration: AlertGetTextAction) -> UIAlertController? {
         
         let alert = UIAlertController(title: .devCodeTitle, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction.genericCancelAction(dismissAction))
+        alert.addAction(UIAlertAction.genericCancelAction(performAction: dismissAction))
         alert.addAction(UIAlertAction.synchEnterCodeAction({ [weak alert] (action) in
             if alert?.textFields?.count ?? 0 > 0,
                 let textField = alert?.textFields?[0] {
@@ -65,8 +79,12 @@ extension UIAlertController {
 }
 
 extension UIAlertAction {
-    class func genericCancelAction(_ performAction: AlertAction) -> UIAlertAction {
-        return UIAlertAction(title: .cancel, style: .cancel, handler: performAction)
+    class func genericCancelAction(_ title: String = .cancel, performAction: AlertAction) -> UIAlertAction {
+        return UIAlertAction(title: title, style: .cancel, handler: performAction)
+    }
+    
+    class func genericAction(_ title: String = .ok, performAction: AlertAction) -> UIAlertAction {
+        return UIAlertAction(title: title, style: .default, handler: performAction)
     }
     
     class func synchEnterCodeAction(_ performAction: AlertAction) -> UIAlertAction {
@@ -77,5 +95,6 @@ extension UIAlertAction {
 private extension String {
     static let devCodeTitle = NSLocalizedString("preferences_enter_code", comment: "")
     static let cancel = NSLocalizedString("input_setting_dialog_cancel", comment: "")
+    static let ok = NSLocalizedString("input_setting_dialog_ok", comment: "")
     static let enterCode = NSLocalizedString("button_sync_enter_code", comment: "")
 }

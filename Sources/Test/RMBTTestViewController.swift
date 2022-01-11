@@ -136,7 +136,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         }
     }
     
-    var alertView: UIAlertView?
+    var alertView: UIAlertController?
 
     private lazy var qosProgressViewController: RMBTQoSProgressViewController = {
         let vc = UIStoryboard(name: "TestStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RMBTQoSProgressViewController")
@@ -306,7 +306,6 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     @objc func startTest() {
-        UIApplication.shared.isIdleTimerDisabled = true
         self.loopModeInfo?.increment()
         
         self.state = .test
@@ -336,13 +335,21 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
                       otherButtonTitle: String? = nil,
                       cancelHandler: @escaping RMBTBlock,
                       otherHandler: @escaping RMBTBlock) {
-        if ((alertView) != nil) { alertView?.dismiss(withClickedButtonIndex: -1, animated: false) }
+        let block = { [weak self] in
+            self?.alertView = UIAlertController.presentAlert(title: title, text: message, cancelTitle: cancelButtonTitle, otherTitle: otherButtonTitle, cancelAction: { _ in
+                cancelHandler()
+            }, otherAction: { _ in
+                otherHandler()
+            })
+        }
         
-        alertView = UIAlertView.bk_alertView(withTitle: title, message: message)
-        
-        if ((cancelButtonTitle) != nil) { alertView?.bk_setCancelButton(withTitle: cancelButtonTitle, handler: cancelHandler) }
-        if ((otherButtonTitle) != nil) { alertView?.bk_addButton(withTitle: otherButtonTitle, handler: otherHandler) }
-        alertView?.show()
+        if (alertView != nil) {
+            alertView?.dismiss(animated: true, completion: {
+                block()
+            })
+        } else {
+            block()
+        }
     }
     
     func updateSpeedLabel(for phase: RMBTTestRunnerPhase, withSpeed kbps: UInt32, isFinal: Bool) {
@@ -357,7 +364,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     
     func hideAlert() {
         if ((alertView) != nil) {
-            alertView?.dismiss(withClickedButtonIndex: -1, animated: true)
+            alertView?.dismiss(animated: true, completion: nil)
             alertView = nil
         }
     }
@@ -497,7 +504,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
             self.status = .nextTest
             startWaitingNextTest()
         } else {
-            UIApplication.shared.isIdleTimerDisabled = false
+            self.finishTest()
             self.performSegue(withIdentifier: actionsSegue, sender: self)
         }
     }
@@ -606,7 +613,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         if self.loopModeInfo != nil {
             self.goToWaitingState()
         } else {
-            UIApplication.shared.isIdleTimerDisabled = false
+            self.finishTest()
             self.delegate?.testViewController(self, didFinishWithTest: result)
         }
     }
@@ -616,6 +623,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
             self.goToWaitingState()
             return
         }
+        self.finishTest()
         switch(reason) {
         case .userRequested:
             self.dismiss(animated: true, completion: nil)
@@ -659,7 +667,6 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
             } otherHandler: { [weak self] in
                 self?.startTest()
             }
-        @unknown default: break
         }
     }
 }

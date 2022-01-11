@@ -86,13 +86,13 @@ class RMBTSearchMapViewController: UIViewController {
                 self.onFindItem(self.places?.first)
                 self.dismiss(animated: true, completion: nil)
             } else {
-                UIAlertController.presentAlert(title: "Not found anything", text: nil) { _ in }
+                UIAlertController.presentCancelAlert(title: "Not found anything", text: nil) { _ in }
             }
         }
     }
     
     func displaySearchError(_ error: Error?) {
-        UIAlertController.presentAlert(title: error?.localizedDescription, text: nil) { _ in }
+        UIAlertController.presentCancelAlert(title: error?.localizedDescription, text: nil) { _ in }
     }
     
     @objc func keyboardDidChange(_ notification: Notification) {
