@@ -10,24 +10,24 @@ import Foundation
 import CoreLocation
 
 extension BinaryFloatingPoint {
-    var dms: (degrees: Int, minutes: Int, seconds: Int) {
-        var seconds = Int(self * 3600)
-        let degrees = seconds / 3600
-        seconds = abs(seconds % 3600)
-        return (degrees, seconds / 60, seconds % 60)
+    var dms: (degrees: Int, minutes: Double) {
+        let seconds: Double = Double(self * 3600)
+        let degrees = Int(seconds / 3600)
+        let minutes = (seconds - Double(degrees * 3600)) / 60
+        return (degrees, minutes)
     }
 }
 
 extension CLLocation {
     var dms: String { latitude + " " + longitude }
     var latitude: String {
-        let (degrees, minutes, seconds) = coordinate.latitude.dms
+        let (degrees, minutes) = coordinate.latitude.dms
         
-        return String(format: "%@ %d°%d,%d'", degrees >= 0 ? String.n : String.s, abs(degrees), minutes, seconds)
+        return String(format: "%@ %d°%.3f'", degrees >= 0 ? String.n : String.s, abs(degrees), minutes)
     }
     var longitude: String {
-        let (degrees, minutes, seconds) = coordinate.longitude.dms
-        return String(format: "%@ %d°%d,%d'", degrees >= 0 ? String.e : String.w, abs(degrees), minutes, seconds)
+        let (degrees, minutes) = coordinate.longitude.dms
+        return String(format: "%@ %d°%.3f'", degrees >= 0 ? String.e : String.w, abs(degrees), minutes)
     }
 }
 
