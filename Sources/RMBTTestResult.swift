@@ -298,7 +298,7 @@ import CoreLocation
         var networkType: Int = -1
         
         for c in connectivities {
-            guard let cResult = c.testResultDictionary() as? [String: Any] else { continue }
+            let cResult = c.testResultDictionary()
             signals.append([
                 "time": RMBTHelpers.RMBTTimestamp(with: c.timestamp),
                 "network_type_id": cResult["network_type"] as? Int ?? 0

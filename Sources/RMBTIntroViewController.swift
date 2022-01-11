@@ -311,7 +311,7 @@ class RMBTIntroViewController: UIViewController {
         
         guard let location = RMBTLocationTracker.shared.location else { return }
         
-        var params = connectivity.testResultDictionary() ?? [:]
+        var params = connectivity.testResultDictionary()
         let locationParams = location.paramsDictionary()
         for param in locationParams {
             params[param.key] = param.value
@@ -332,24 +332,25 @@ class RMBTIntroViewController: UIViewController {
             return
         }
         
-        if (connectivity.ipv4.internalIp != nil) {
+        
+        if (connectivity.ipv4.internalIp == nil) || (connectivity.ipv4.externalIp == nil) {
+            currentView.ipV4TintColor = .ipNotAvailable
+        } else {
             if (connectivity.ipv4.externalIp != nil) && (connectivity.ipv4.externalIp == connectivity.ipv4.internalIp) {
                 currentView.ipV4TintColor = .ipAvailable
             } else {
                 currentView.ipV4TintColor = .ipSemiAvailable
             }
-        } else {
-            currentView.ipV4TintColor = .ipNotAvailable
         }
         
-        if (connectivity.ipv6.internalIp != nil) {
+        if (connectivity.ipv6.internalIp == nil) || (connectivity.ipv6.externalIp == nil) {
+            currentView.ipV6TintColor = .ipNotAvailable
+        } else {
             if (connectivity.ipv6.externalIp != nil) && (connectivity.ipv6.externalIp == connectivity.ipv6.internalIp) {
                 currentView.ipV6TintColor = .ipAvailable
             } else {
                 currentView.ipV6TintColor = .ipSemiAvailable
             }
-        } else {
-            currentView.ipV6TintColor = .ipNotAvailable
         }
         
         currentView.locationTintColor = CLLocationManager.authorizationStatus() != .denied ? .ipAvailable : .ipNotAvailable
