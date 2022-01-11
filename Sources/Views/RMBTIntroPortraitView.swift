@@ -82,6 +82,7 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
     @IBAction func startButtonClick(_ sender: Any) {
         startButtonHandler()
     }
+    
     @IBAction func settingsButtonClick(_ sender: Any) {
         settingsButtonHandler()
     }
@@ -117,8 +118,9 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
         self.locationImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationTapHandler(_:))))
         
         waveView.startAnimation()
+        waveView.direction = .backwards
         wave2View.alpha = 0.2
-        wave2View.direction = .backwards
+        wave2View.direction = .forwards
         wave2View.startAnimation()
     }
     
