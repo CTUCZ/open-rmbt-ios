@@ -50,22 +50,6 @@ class RMBTBaseTestViewController: UIViewController {
         qosWillPerformed = RMBTTestRunner.willQoSPerformed()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        UIApplication.shared.isIdleTimerDisabled = true // Disallow turning off the screen
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Allow turning off the screen again.
-        // Note that enabling the idle timer won't reset it, so if the device has alredy been idle the screen will dim
-        // immediately. To prevent this, we delay enabling by 5s.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            UIApplication.shared.isIdleTimerDisabled = false
-        }
-    }
-    
     func percentage(after phase: RMBTTestRunnerPhase) -> UInt {
         switch(phase) {
         case .none: return 0
@@ -78,8 +62,6 @@ class RMBTBaseTestViewController: UIViewController {
         case .qos: return 100
         case .submittingTestResult:
             return 100 // also no visualization for submission
-        @unknown default:
-            return 0
         }
     }
     
@@ -95,8 +77,6 @@ class RMBTBaseTestViewController: UIViewController {
         case .qos: return 100
         case .submittingTestResult:
             return 100 // also no visualization for submission
-        @unknown default:
-            return 0
         }
     }
     
@@ -112,8 +92,6 @@ class RMBTBaseTestViewController: UIViewController {
         case .qos: return 100
         case .submittingTestResult:
             return 100 // also no visualization for submission
-        @unknown default:
-            return 0
         }
     }
 
@@ -184,12 +162,11 @@ class RMBTBaseTestViewController: UIViewController {
             return NSLocalizedString("measurement_qos", comment: "Phase status label");
         case .submittingTestResult:
             return NSLocalizedString("Finalizing", comment: "Phase status label")
-        @unknown default:
-            return ""
         }
     }
     
     func startTest(with extraParams: [String: Any]?) {
+        UIApplication.shared.isIdleTimerDisabled = true // Disallow turning off the screen
         finishedPercentage = 0
         finishedGaugePercentage = 0
         qosPerformed = false
@@ -205,6 +182,11 @@ class RMBTBaseTestViewController: UIViewController {
     func cancelTest() {
         RMBTControlServer.shared.cancelAllRequests()
         testRunner?.cancel() // TODO: move control server to runner
+        finishTest()
+    }
+    
+    func finishTest() {
+        UIApplication.shared.isIdleTimerDisabled = false
     }
 }
 
@@ -290,7 +272,7 @@ extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {
     
     func testRunnerQoSDidStartWithGroups(_ groups: [RMBTQoSTestGroup]) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
-        subself.onTestStartedQoS(with: (groups as? [RMBTQoSTestGroup]) ?? [])
+        subself.onTestStartedQoS(with: groups)
     }
     
     func testRunnerQoSGroup(_ group: RMBTQoSTestGroup, didUpdateProgress progress: Float) {

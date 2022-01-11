@@ -276,7 +276,8 @@ import CoreLocation
         var result: [[String: Any]] = []
         
         for l in locations {
-            let t = l.timestamp.timeIntervalSince(testStartDate ?? Date())
+            let t = max(0, l.timestamp.timeIntervalSince(testStartDate ?? Date()))
+            
             let ts_nanos: UInt64 = UInt64(t) * NSEC_PER_SEC
             result.append([
                "geo_long": l.coordinate.longitude,

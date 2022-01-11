@@ -390,9 +390,7 @@ class RMBTSettingsViewController: UITableViewController {
                 return NSLocalizedString("preferences_developer_control_server", comment: "")
         case .logging:
                 return NSLocalizedString("preferences_developer_logging", comment: "")
-        @unknown default: break
         }
-        return super.tableView(tableView, titleForHeaderInSection: section)
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {

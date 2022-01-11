@@ -77,25 +77,25 @@ final class RMBTLoopModeSettingsViewController: UIViewController {
     private func validate() -> Bool {
         if !RMBTLoopModeSettingsValidator.validateCountTest(for: loopModeInfo) {
             let text = String(format: .pleaseEnterValueBetween, RMBTConfig.RMBT_TEST_LOOPMODE_MIN_COUNT, RMBTConfig.RMBT_TEST_LOOPMODE_MAX_COUNT)
-            UIAlertController.presentAlert(title: .invalideCount,
-                                           text: text, {_ in
-                self.countTestsTextField.becomeFirstResponder()
+            UIAlertController.presentCancelAlert(title: .invalideCount,
+                                           text: text, { [weak self] _ in
+                self?.countTestsTextField.becomeFirstResponder()
             })
             return false
         }
         
         if !RMBTLoopModeSettingsValidator.validateDuration(for: loopModeInfo) {
             let text = String(format: .pleaseEnterValueBetween, RMBTConfig.RMBT_TEST_LOOPMODE_MIN_DELAY_MINS, RMBTConfig.RMBT_TEST_LOOPMODE_MAX_DELAY_MINS)
-            UIAlertController.presentAlert(title: .invalideMinutes, text: text, { _ in
-                self.minutesTextField.becomeFirstResponder()
+            UIAlertController.presentCancelAlert(title: .invalideMinutes, text: text, { [weak self] _ in
+                self?.minutesTextField.becomeFirstResponder()
             })
             return false
         }
         
         if !RMBTLoopModeSettingsValidator.validateDistance(for: loopModeInfo) {
             let text = String(format: .pleaseEnterValueBetween, RMBTConfig.RMBT_TEST_LOOPMODE_MIN_MOVEMENT_M, RMBTConfig.RMBT_TEST_LOOPMODE_MAX_MOVEMENT_M)
-            UIAlertController.presentAlert(title: .invalideDistance, text: text, { _ in
-                self.minutesTextField.becomeFirstResponder()
+            UIAlertController.presentCancelAlert(title: .invalideDistance, text: text, { [weak self] _ in
+                self?.minutesTextField.becomeFirstResponder()
             })
             return false
         }
