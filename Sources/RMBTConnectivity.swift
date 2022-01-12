@@ -32,7 +32,20 @@ struct RMBTConnectivityInterfaceInfo {
 class RMBTConnectivity: NSObject {
     private(set) var networkType: RMBTNetworkType = .none
     // Human readable description of the network type: Wi-Fi, Celullar
-    private(set) var networkTypeDescription: String = ""
+    var networkTypeDescription: String {
+        switch networkType {
+        case .none:
+            return ""
+        case .browser:
+            return "Browser"
+        case .wifi:
+            return "WLAN"
+        case .cellular:
+            return self.cellularCodeDescription ?? "Cellular"
+        case .unknown:
+            return ""
+        }
+    }
     
     // Carrier name for cellular, SSID for Wi-Fi
     private(set) var networkName: String?
@@ -50,6 +63,18 @@ class RMBTConnectivity: NSObject {
 //    private var cellularCodeGenerationString: String?
     
     private var dualSim: Bool = false
+    
+    var networkTypeTechnology: RMBTNetworkTypeConstants.NetworkType? {
+        if networkType == .cellular {
+            guard let code = cellularCodeDescription else { return nil }
+            return RMBTNetworkTypeConstants.cellularCodeDescriptionDictionary[code]
+        } else if networkType == .wifi {
+            return RMBTNetworkTypeConstants.NetworkType.wlan
+        }else if networkType == .browser {
+            return RMBTNetworkTypeConstants.NetworkType.browser
+        }
+        return nil
+    }
     
     init(networkType: RMBTNetworkType) {
         self.networkType = networkType
