@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -260,7 +260,18 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cML-it-eDX">
                             <rect key="frame" x="0.0" y="47.999999999999986" width="340" height="63"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0NP-Sa-HQI">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3g_icon" translatesAutoresizingMaskIntoConstraints="NO" id="apV-CG-0ul">
+                                    <rect key="frame" x="16" y="20.666666666666686" width="10" height="10"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="10" id="T7m-xh-Uff"/>
+                                        <constraint firstAttribute="width" constant="10" id="zgV-33-jfD"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobile_icon_full" translatesAutoresizingMaskIntoConstraints="NO" id="aI8-eO-atQ">
+                                    <rect key="frame" x="16" y="27.666666666666686" width="20" height="14"/>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0NP-Sa-HQI">
                                     <rect key="frame" x="16" y="21.666666666666686" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="DSV-Q0-p4y"/>
@@ -412,14 +423,20 @@
                             <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="4a2-iG-4hr" firstAttribute="centerY" secondItem="cML-it-eDX" secondAttribute="centerY" id="60K-dz-TOO"/>
+                                <constraint firstItem="apV-CG-0ul" firstAttribute="top" secondItem="0NP-Sa-HQI" secondAttribute="top" constant="-1" id="67n-As-Qau"/>
                                 <constraint firstItem="fcG-Vu-tzD" firstAttribute="leading" secondItem="LiM-b3-nPs" secondAttribute="trailing" constant="16" id="93P-KO-YLC"/>
+                                <constraint firstItem="aI8-eO-atQ" firstAttribute="top" secondItem="0NP-Sa-HQI" secondAttribute="top" constant="6" id="C2C-Dl-FOX"/>
                                 <constraint firstItem="fcG-Vu-tzD" firstAttribute="centerY" secondItem="cML-it-eDX" secondAttribute="centerY" id="C9G-mL-PQz"/>
+                                <constraint firstItem="aI8-eO-atQ" firstAttribute="trailing" secondItem="0NP-Sa-HQI" secondAttribute="trailing" id="FWI-Mr-rNl"/>
                                 <constraint firstItem="0NP-Sa-HQI" firstAttribute="leading" secondItem="cML-it-eDX" secondAttribute="leading" constant="16" id="LEq-35-qXd"/>
                                 <constraint firstItem="fcG-Vu-tzD" firstAttribute="width" secondItem="LiM-b3-nPs" secondAttribute="width" id="O1L-vh-hFY"/>
+                                <constraint firstItem="aI8-eO-atQ" firstAttribute="bottom" secondItem="0NP-Sa-HQI" secondAttribute="bottom" id="OhU-N2-sOn"/>
+                                <constraint firstItem="aI8-eO-atQ" firstAttribute="leading" secondItem="0NP-Sa-HQI" secondAttribute="leading" id="UnG-bn-9lU"/>
                                 <constraint firstItem="0NP-Sa-HQI" firstAttribute="centerY" secondItem="cML-it-eDX" secondAttribute="centerY" id="W8c-27-Yfm"/>
                                 <constraint firstItem="LiM-b3-nPs" firstAttribute="centerY" secondItem="cML-it-eDX" secondAttribute="centerY" id="WJx-EO-L2q"/>
                                 <constraint firstAttribute="trailing" secondItem="4a2-iG-4hr" secondAttribute="trailing" constant="16" id="byJ-5a-qNf"/>
                                 <constraint firstItem="LiM-b3-nPs" firstAttribute="leading" secondItem="0NP-Sa-HQI" secondAttribute="trailing" constant="16" id="d5s-U4-YUV"/>
+                                <constraint firstItem="apV-CG-0ul" firstAttribute="leading" secondItem="0NP-Sa-HQI" secondAttribute="leading" id="hbL-pD-g1v"/>
                                 <constraint firstItem="4a2-iG-4hr" firstAttribute="width" secondItem="fcG-Vu-tzD" secondAttribute="width" id="ivC-OU-YWM"/>
                                 <constraint firstItem="4a2-iG-4hr" firstAttribute="leading" secondItem="fcG-Vu-tzD" secondAttribute="trailing" constant="16" id="xyG-A5-vlV"/>
                             </constraints>
@@ -516,7 +533,9 @@
                 <outlet property="loopModeTitleLabel" destination="m0c-f6-nTh" id="EZx-wy-dR7"/>
                 <outlet property="loopModeTitleView" destination="xEE-of-pqk" id="dM9-OY-jZO"/>
                 <outlet property="loopModeWaitingView" destination="2WG-qA-mjh" id="CHB-9E-v5N"/>
+                <outlet property="networkMobileImageView" destination="aI8-eO-atQ" id="dd0-lZ-utB"/>
                 <outlet property="networkNameLabel" destination="aNh-rH-2Mj" id="kUV-gX-7kw"/>
+                <outlet property="networkTechnologyImageView" destination="apV-CG-0ul" id="Uan-9H-hk6"/>
                 <outlet property="networkTypeImageView" destination="0NP-Sa-HQI" id="3SQ-OI-V1a"/>
                 <outlet property="pingResultLabel" destination="oh4-SD-lOB" id="nz4-E3-Ho8"/>
                 <outlet property="progressGaugePlaceholderView" destination="OVe-gJ-LZa" id="aHx-1i-3b9"/>
@@ -537,11 +556,13 @@
         </view>
     </objects>
     <resources>
+        <image name="3g_icon" width="24" height="24"/>
         <image name="close_btn" width="28" height="28"/>
         <image name="download_icon" width="22" height="22"/>
         <image name="download_icon_colored" width="16" height="16"/>
         <image name="gauge_progress_bg-1" width="149" height="168"/>
         <image name="gauge_speed_bg-1" width="154" height="168"/>
+        <image name="mobile_icon_full" width="84" height="52"/>
         <image name="ping_icon" width="16" height="16"/>
         <image name="upload_icon_colored" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">

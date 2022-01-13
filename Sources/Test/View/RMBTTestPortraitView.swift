@@ -32,6 +32,10 @@ class RMBTTestPortraitView: UIView, XibLoadable {
     @IBOutlet weak var networkTypeLabel: UILabel?
     @IBOutlet weak var networkNameLabel: UILabel!
     @IBOutlet weak var networkTypeImageView: UIImageView!
+    
+    @IBOutlet weak var networkMobileImageView: UIImageView!
+    @IBOutlet weak var networkTechnologyImageView: UIImageView!
+    
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var bottomSpeedConstraint: NSLayoutConstraint!
     
@@ -100,6 +104,31 @@ class RMBTTestPortraitView: UIView, XibLoadable {
     var networkTypeImage: UIImage? {
         didSet {
             self.networkTypeImageView.image = networkTypeImage
+        }
+    }
+    
+    var networkTypeEnum: RMBTNetworkType? {
+        didSet {
+            self.networkTypeImageView.isHidden = true
+            self.networkMobileImageView.isHidden = true
+            self.networkTechnologyImageView.isHidden = true
+            
+            if let networkType = networkTypeEnum {
+                if networkType == .cellular {
+                    self.networkMobileImageView.isHidden = false
+                    self.networkTechnologyImageView.isHidden = false
+                } else {
+                    self.networkTypeImageView.isHidden = false
+                }
+            }
+        }
+    }
+    
+    var networkTypeTechnology: RMBTNetworkTypeConstants.NetworkType? {
+        didSet {
+            if self.networkTypeTechnology != .wlan {
+                self.networkTechnologyImageView.image = self.networkTypeTechnology?.technologyIcon?.withRenderingMode(.alwaysTemplate)
+            }
         }
     }
     
@@ -343,6 +372,8 @@ class RMBTTestPortraitView: UIView, XibLoadable {
         self.infoView.layer.shadowColor = UIColor.black.cgColor
         self.infoView.layer.shadowOpacity = 0.2
         self.infoView.layer.shadowRadius = 3
+        
+        self.networkMobileImageView.image = self.networkMobileImageView.image?.withRenderingMode(.alwaysTemplate)
     }
     
     func updateGaugesPosition() {

@@ -47,6 +47,18 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         }
     }
     
+    var networkTypeEnum: RMBTNetworkType? {
+        didSet {
+            self.currentView.networkTypeEnum = networkTypeEnum
+        }
+    }
+    
+    var networkTypeTechnology: RMBTNetworkTypeConstants.NetworkType? {
+        didSet {
+            self.currentView.networkTypeTechnology = networkTypeTechnology
+        }
+    }
+    
     var networkTypeImage: UIImage? {
         didSet {
             self.currentView.networkTypeImage = networkTypeImage
@@ -233,6 +245,8 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         self.currentView.isLoopMode = self.loopModeInfo != nil
         self.currentView.networkName = self.networkName
         self.currentView.networkType = self.networkType
+        self.currentView.networkTypeEnum = self.networkTypeEnum
+        self.currentView.networkTypeTechnology = self.networkTypeTechnology
         self.currentView.networkTypeImage = self.networkTypeImage
         self.currentView.technology = self.technology
         self.currentView.status = self.status
@@ -535,6 +549,9 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         } else {
             self.networkTypeImage = nil
         }
+        
+        self.networkTypeEnum = connectivity.networkType
+        self.networkTypeTechnology = connectivity.networkTypeTechnology
 
         self.technology = connectivity.networkTypeDescription
     }
