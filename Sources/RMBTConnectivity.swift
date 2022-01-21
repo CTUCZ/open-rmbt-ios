@@ -297,22 +297,22 @@ class RMBTConnectivity: NSObject {
 
     fileprivate var cellularCodeDescriptionTable: [String: String] {
         var table = [
-            CTRadioAccessTechnologyGPRS:            "2G (GSM)",
-            CTRadioAccessTechnologyEdge:            "2G (EDGE)",
-            CTRadioAccessTechnologyWCDMA:           "3G (UMTS)",
-            CTRadioAccessTechnologyCDMA1x:          "2G (CDMA)",
-            CTRadioAccessTechnologyCDMAEVDORev0:    "2G (EVDO_0)",
-            CTRadioAccessTechnologyCDMAEVDORevA:    "2G (EVDO_A)",
-            CTRadioAccessTechnologyHSDPA:           "3G (HSDPA)",
-            CTRadioAccessTechnologyHSUPA:           "3G (HSUPA)",
-            CTRadioAccessTechnologyCDMAEVDORevB:    "2G (EVDO_B)",
-            CTRadioAccessTechnologyLTE:             "4G (LTE)",
-            CTRadioAccessTechnologyeHRPD:           "2G (HRPD)",
+            CTRadioAccessTechnologyGPRS:            "2G/GSM",
+            CTRadioAccessTechnologyEdge:            "2G/EDGE",
+            CTRadioAccessTechnologyWCDMA:           "3G/UMTS",
+            CTRadioAccessTechnologyCDMA1x:          "2G/CDMA",
+            CTRadioAccessTechnologyCDMAEVDORev0:    "2G/EVDO_0",
+            CTRadioAccessTechnologyCDMAEVDORevA:    "2G/EVDO_A",
+            CTRadioAccessTechnologyHSDPA:           "3G/HSDPA",
+            CTRadioAccessTechnologyHSUPA:           "3G/HSUPA",
+            CTRadioAccessTechnologyCDMAEVDORevB:    "2G/EVDO_B",
+            CTRadioAccessTechnologyLTE:             "4G/LTE",
+            CTRadioAccessTechnologyeHRPD:           "2G/HRPD",
         ]
         
         if #available(iOS 14.1, *) {
-            table[CTRadioAccessTechnologyNRNSA] = "5G (NRNSA)"
-            table[CTRadioAccessTechnologyNR] = "5G (NR)"
+            table[CTRadioAccessTechnologyNRNSA] = "5G/NRNSA"
+            table[CTRadioAccessTechnologyNR] = "5G/NR"
         }
         
         return table

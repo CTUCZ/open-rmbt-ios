@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Roboto-Medium.ttf">
-            <string>Roboto-Medium</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,26 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="161"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hpr-gg-QUG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qualität" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4T-j8-exT">
-                                <rect key="frame" x="20" y="14.5" width="280" height="19"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
-                                <color key="textColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="v4T-j8-exT" firstAttribute="centerY" secondItem="Hpr-gg-QUG" secondAttribute="centerY" id="ThT-cE-v6d"/>
-                            <constraint firstAttribute="trailing" secondItem="v4T-j8-exT" secondAttribute="trailing" constant="20" id="ob0-0p-gjn"/>
-                            <constraint firstAttribute="height" constant="48" id="zPy-7R-dMq"/>
-                            <constraint firstItem="v4T-j8-exT" firstAttribute="leading" secondItem="Hpr-gg-QUG" secondAttribute="leading" constant="20" id="zfh-fq-hXc"/>
-                        </constraints>
-                    </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MmO-GP-sh1">
-                        <rect key="frame" x="0.0" y="48" width="320" height="113"/>
+                        <rect key="frame" x="0.0" y="-11" width="320" height="172"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <connections>
                             <outlet property="dataSource" destination="KGk-i7-Jjw" id="7f7-fb-1l9"/>
@@ -51,21 +28,17 @@
                     </tableView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="MmO-GP-sh1" firstAttribute="top" secondItem="Hpr-gg-QUG" secondAttribute="bottom" id="nqv-sS-48C"/>
+                    <constraint firstItem="MmO-GP-sh1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-22" id="qo1-q9-gAN"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <constraints>
                 <constraint firstItem="MmO-GP-sh1" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" id="1d4-Op-03Q"/>
-                <constraint firstItem="Hpr-gg-QUG" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" id="5Kh-Vj-Sgi"/>
-                <constraint firstItem="Hpr-gg-QUG" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" id="fan-QB-tIc"/>
                 <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="MmO-GP-sh1" secondAttribute="bottom" id="gR6-FU-LRz"/>
-                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="Hpr-gg-QUG" secondAttribute="trailing" id="gdR-jg-vH3"/>
                 <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="MmO-GP-sh1" secondAttribute="trailing" id="yxe-qd-zjM"/>
             </constraints>
             <connections>
                 <outlet property="tableView" destination="MmO-GP-sh1" id="JYn-bJ-fXV"/>
-                <outlet property="titleLabel" destination="v4T-j8-exT" id="Z2U-bn-TE1"/>
             </connections>
             <point key="canvasLocation" x="-75.362318840579718" y="142.96875"/>
         </tableViewCell>

@@ -13,19 +13,12 @@ final class RMBTQOSListCell: UITableViewCell {
     static let ID = "RMBTQOSListCell"
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet private weak var titleLabel: UILabel!
         
     var onQosSelectHandler: (_ item: RMBTHistoryQoSGroupResult) -> Void = { _ in }
     
     var items: [RMBTHistoryQoSGroupResult] = [] {
         didSet {
             tableView.reloadData()
-        }
-    }
-    
-    var title: String? {
-        didSet {
-            self.titleLabel.text = title
         }
     }
     

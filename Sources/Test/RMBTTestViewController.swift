@@ -369,9 +369,9 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     func updateSpeedLabel(for phase: RMBTTestRunnerPhase, withSpeed kbps: UInt32, isFinal: Bool) {
         self.isShowSpeedSuffix = false
         if phase == .down {
-            self.down = RMBTSpeedMbpsString(Double(kbps), withMbps: false)
+            self.down = RMBTSpeedMbpsString(Double(kbps), withMbps: true)
         } else {
-            self.up = RMBTSpeedMbpsString(Double(kbps), withMbps: false)
+            self.up = RMBTSpeedMbpsString(Double(kbps), withMbps: true)
         }
         self.speed = kbps
     }
@@ -581,7 +581,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     func onTestFinishedPhase(_ phase: RMBTTestRunnerPhase) { }
     
     func onTestMeasuredLatency(_ nanos: UInt64) {
-        self.currentView.ping = RMBTHelpers.RMBTMillisecondsString(with: Int64(nanos), withMS: false)
+        self.currentView.ping = RMBTHelpers.RMBTMillisecondsString(with: Int64(nanos), withMS: true)
     }
     
     func onTestMeasuredTroughputs(_ throughputs: [Any], in phase: RMBTTestRunnerPhase) {
