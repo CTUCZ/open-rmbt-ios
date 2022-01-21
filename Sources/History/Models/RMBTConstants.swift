@@ -27,13 +27,13 @@ final class RMBTNetworkTypeConstants {
             switch self {
             case .unknown: return UIImage(named: "ic_marker_empty")
             case .browser: return UIImage(named: "ic_marker_browser")
-            case .type2G: return UIImage(named: "ic_marker_2g")
-            case .type3G: return UIImage(named: "ic_marker_3g")
-            case .type4G: return UIImage(named: "ic_marker_4g")
-            case .type5G: return UIImage(named: "ic_marker_5g")
-            case .type5GNSA: return UIImage(named: "ic_marker_5g")
-            case .type5GAvailable: return UIImage(named: "ic_marker_5g")
-            case .wlan: return UIImage(named: "ic_marker_wifi")
+            case .type2G: return UIImage(named: "2g_neutral")
+            case .type3G: return UIImage(named: "3g_neutral")
+            case .type4G: return UIImage(named: "4g_neutral")
+            case .type5G: return UIImage(named: "5g_neutral")
+            case .type5GNSA: return UIImage(named: "5g_neutral")
+            case .type5GAvailable: return UIImage(named: "5g_neutral")
+            case .wlan: return UIImage(named: "wifi_neutral")
             default: return nil
             }
         }
