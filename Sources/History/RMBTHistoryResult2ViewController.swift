@@ -226,7 +226,7 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
         case .qoe:
             return CGFloat(60 + (historyResult?.qoeClassificationItems.count ?? 0) * 48)
         case .qos:
-            return CGFloat(60 + (historyResult?.qosResults?.count ?? 0) * 48)
+            return CGFloat((historyResult?.qosResults?.count ?? 0) * 48)
         case .testDetails:
             return 48
         }
@@ -297,7 +297,6 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
             return qoeCell
         case .qos:
             let qosCell = tableView.dequeueReusableCell(withIdentifier: RMBTQOSListCell.ID, for: indexPath) as! RMBTQOSListCell
-            qosCell.title = NSLocalizedString("QoS", comment: "")
             qosCell.items = historyResult.qosResults ?? []
             qosCell.selectionStyle = .none
             qosCell.onQosSelectHandler = { [weak self] item in
