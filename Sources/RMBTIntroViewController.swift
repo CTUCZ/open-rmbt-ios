@@ -235,7 +235,12 @@ class RMBTIntroViewController: UIViewController {
         } else {
             age = "\(Int(timestamp)) s"
         }
-        let speedKilometers = abs(Int(location.speed * 3.6))
+        
+        var speedKilometers: Int = 0
+        if location.speed >= 0 {
+            speedKilometers = Int(location.speed * 3.6)
+        }
+            
         let speed = "\(speedKilometers) km/h"
         let horizontalAccuracy = "+/-\(Int(location.horizontalAccuracy)) m"
         
