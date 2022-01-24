@@ -584,12 +584,12 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         self.currentView.ping = RMBTHelpers.RMBTMillisecondsString(with: Int64(nanos), withMS: false)
     }
     
-    func onTestMeasuredTroughputs(_ throughputs: [Any], in phase: RMBTTestRunnerPhase) {
+    func onTestMeasuredTroughputs(_ throughputs: [RMBTThroughput], in phase: RMBTTestRunnerPhase) {
         var kbps = 0
         var l: Double = 0.0
 
-        self.speedValues += throughputs as? [RMBTThroughput] ?? []
-        for t in throughputs as? [RMBTThroughput] ?? [] {
+        self.speedValues += throughputs
+        for t in throughputs {
             kbps = Int(t.kilobitsPerSecond())
             l = RMBTSpeedLogValue(Double(kbps))
         }

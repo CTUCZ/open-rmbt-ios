@@ -28,6 +28,13 @@ class RMBTHistoryLoopCell: UITableViewHeaderFooterView {
         onExpand?()
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(expand(_:)))
+        self.stackView.addGestureRecognizer(tapGesture)
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         addSubview(topBorder)

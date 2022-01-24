@@ -22,7 +22,7 @@ protocol RMBTBaseTestViewControllerSubclass: AnyObject {
     func onTestFinishedPhase(_ phase: RMBTTestRunnerPhase)
 
     func onTestMeasuredLatency(_ nanos: UInt64)
-    func onTestMeasuredTroughputs(_ throughputs: [Any], in phase: RMBTTestRunnerPhase)
+    func onTestMeasuredTroughputs(_ throughputs: [RMBTThroughput], in phase: RMBTTestRunnerPhase)
 
     func onTestMeasuredDownloadSpeed(_ kbps: UInt32)
     func onTestMeasuredUploadSpeed(_ kbps: UInt32)
