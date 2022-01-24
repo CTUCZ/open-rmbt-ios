@@ -10,6 +10,9 @@ import UIKit
 
 final class RMBTLoopModeSettingsViewController: UIViewController {
 
+    @IBOutlet weak var distanceView: UIView!
+    @IBOutlet weak var minutesView: UIView!
+    
     @IBOutlet weak var startTestButton: UIButton!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var distanceTextField: UITextField!
@@ -32,7 +35,21 @@ final class RMBTLoopModeSettingsViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        
+        distanceView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distanceTap(_:))))
+        minutesView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(minutesTap(_:))))
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    @objc func distanceTap(_ sender: Any) {
+        distanceTextField.becomeFirstResponder()
+        distanceTextField.goToEndPosition()
+    }
+    
+    @objc func minutesTap(_ sender: Any) {
+        minutesTextField.becomeFirstResponder()
+        minutesTextField.goToEndPosition()
     }
     
     func setupUI() {
@@ -100,6 +117,14 @@ final class RMBTLoopModeSettingsViewController: UIViewController {
             return false
         }
         return true
+    }
+}
+
+extension RMBTLoopModeSettingsViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        DispatchQueue.main.async {
+            textField.goToEndPosition()
+        }
     }
 }
 

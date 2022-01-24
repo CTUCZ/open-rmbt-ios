@@ -508,6 +508,12 @@ extension RMBTSettingsViewController {
 }
 
 extension RMBTSettingsViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        DispatchQueue.main.async {
+            textField.goToEndPosition()
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
