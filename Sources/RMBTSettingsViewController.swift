@@ -313,6 +313,21 @@ class RMBTSettingsViewController: UITableViewController {
         self.refreshSection(.advanced)
     }
     
+    func searchTextField(in view: UIView) -> UITextField? {
+        if let textField = view as? UITextField {
+            return textField
+        }
+        else {
+            for v in view.subviews {
+                if let textField = searchTextField(in: v) {
+                    return textField
+                }
+            }
+        }
+        
+        return nil
+    }
+    
     // MARK: - Table View
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -431,14 +446,13 @@ class RMBTSettingsViewController: UITableViewController {
             }
         }
         
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.subviews.forEach({ view in
-            guard let textField = view as? UITextField else { return }
+        if let cell = tableView.cellForRow(at: indexPath),
+           let textField = self.searchTextField(in: cell) {
             if !textField.isFirstResponder {
                 textField.becomeFirstResponder()
             }
-        })
-        
+        }
+
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
