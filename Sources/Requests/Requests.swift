@@ -51,7 +51,7 @@ public class HistoryWithFiltersRequest: BasicRequest {
         
         resultOffset <- map["result_offset"]
         resultLimit <- map["result_limit"]
-        networks <- map["network_types"]
+        networks <- map["networks"]
         devices <- map["devices"]
     }
 }
