@@ -207,6 +207,7 @@
 		E9A23BF22764F14000717814 /* RMBTHistorySpeedGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A23BF12764F14000717814 /* RMBTHistorySpeedGraph.swift */; };
 		E9A23BF42764F62200717814 /* RMBTHistoryQoSSingleResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A23BF32764F62200717814 /* RMBTHistoryQoSSingleResult.swift */; };
 		E9A23BF62764F90E00717814 /* RMBTHistoryQoSGroupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A23BF52764F90E00717814 /* RMBTHistoryQoSGroupResult.swift */; };
+		E9A7BC05279EC4EA006F1C2D /* UITextField+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7BC04279EC4EA006F1C2D /* UITextField+Additions.swift */; };
 		E9A9A9AD27687A03002671C0 /* RMBTHistoryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A9A9AC27687A03002671C0 /* RMBTHistoryResult.swift */; };
 		E9A9A9AF27687ABB002671C0 /* RMBTHistoryResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A9A9AE27687ABB002671C0 /* RMBTHistoryResultItem.swift */; };
 		E9A9A9B127687C85002671C0 /* RMBTHistoryQOEResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A9A9B027687C85002671C0 /* RMBTHistoryQOEResultItem.swift */; };
@@ -505,6 +506,7 @@
 		E9A23BF12764F14000717814 /* RMBTHistorySpeedGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistorySpeedGraph.swift; sourceTree = "<group>"; };
 		E9A23BF32764F62200717814 /* RMBTHistoryQoSSingleResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQoSSingleResult.swift; sourceTree = "<group>"; };
 		E9A23BF52764F90E00717814 /* RMBTHistoryQoSGroupResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQoSGroupResult.swift; sourceTree = "<group>"; };
+		E9A7BC04279EC4EA006F1C2D /* UITextField+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Additions.swift"; sourceTree = "<group>"; };
 		E9A9A9AC27687A03002671C0 /* RMBTHistoryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryResult.swift; sourceTree = "<group>"; };
 		E9A9A9AE27687ABB002671C0 /* RMBTHistoryResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryResultItem.swift; sourceTree = "<group>"; };
 		E9A9A9B027687C85002671C0 /* RMBTHistoryQOEResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQOEResultItem.swift; sourceTree = "<group>"; };
@@ -1017,6 +1019,7 @@
 				E96792B4274BC6E00091C4A7 /* RMBTLoopModeSettingsValidator.swift */,
 				36933A72274E68B4009A52BE /* UIColor.swift */,
 				E9AA0DE627635CF9003C71D7 /* Data+MD5.swift */,
+				E9A7BC04279EC4EA006F1C2D /* UITextField+Additions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1732,6 +1735,7 @@
 				E9BF00ED27610BDA0092371F /* WKWebView+RMBTConfiguration.swift in Sources */,
 				E98244442730F54700081732 /* RMBTLoopModeWaitingViewController.swift in Sources */,
 				E946B95A26D684260006E1F1 /* RMBTMapOverlaysViewController.swift in Sources */,
+				E9A7BC05279EC4EA006F1C2D /* UITextField+Additions.swift in Sources */,
 				E99F23342771CCF900BFDA09 /* RMBTConnectivity.swift in Sources */,
 				E9400F3326BE8D000067273A /* RMBTThroughput.swift in Sources */,
 				E9A9A9B127687C85002671C0 /* RMBTHistoryQOEResultItem.swift in Sources */,
@@ -2058,7 +2062,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Sources/RMBT-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2093,7 +2097,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sources/RMBT-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
