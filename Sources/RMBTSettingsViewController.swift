@@ -109,6 +109,9 @@ class RMBTSettingsViewController: UITableViewController {
             if (value == false) {
                 settings.only2Hours = false
                 self.only2HoursSwitcher.setOn(false, animated: true)
+            } else {
+                settings.only2Hours = true
+                self.only2HoursSwitcher.setOn(true, animated: true)
             }
             self.prepareGeneralSettings()
             self.refreshSection(.general)
