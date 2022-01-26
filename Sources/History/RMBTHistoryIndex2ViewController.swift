@@ -140,8 +140,8 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
                 // test result object. See -displayTestResult.
                 showingLastTestResult = false
             }
-            loading = true // to avoid duplicate calls to getNextBatch()
             refreshFilters()
+            refresh()
         }
     }
     
@@ -190,6 +190,9 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
     }
     
     private func changedFilters() {
+        guard !filtersAreEqual(activeFilters, filterView.activeFilters) else {
+            return
+        }
         var activeFilters: [String: [String]] = [:]
         for filter in self.activeFilters {
             if filter.value.count != self.allFilters[filter.key]?.count {
@@ -203,7 +206,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
     
     private func updateFilterViewPosition() {
         var isShow = false
-        if (filterView.activeFilters != allFilters) {
+        if ( !filtersAreEqual(filterView.activeFilters, allFilters) ) {
             for filters in filterView.activeFilters {
                 if filters.value.count > 0 {
                     isShow = true
@@ -281,7 +284,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         RMBTControlServer.shared.ensureClientUuid { uuid in
             RMBTControlServer.shared.getSettings {
                 self.allFilters = RMBTControlServer.shared.historyFilters ?? [:]
-                self.activeFilters = self.activeFilters.count > 0 ? self.activeFilters : self.allFilters
+                self.activeFilters = self.activeFilters.count > 0 ? self.activeFilters : [:]
             } error: { error in
                 Log.logger.error(error)
             }
@@ -290,16 +293,27 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
         }
     }
     
+    private func filtersAreEqual(_ newFilters: [String: [String]], _ oldFilters: [String: [String]]) -> Bool {
+        guard newFilters.count == oldFilters.count else { return false }
+        var optionsCountEqual = true
+        for filter in newFilters {
+            if filter.value.count != oldFilters[filter.key]?.count {
+                optionsCountEqual = false
+                break
+            }
+        }
+        return optionsCountEqual
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "show_filter",
            let navController = segue.destination as? UINavigationController,
            let filterVC = navController.topViewController as? RMBTHistoryFilter2ViewController {
             filterVC.allFilters = allFilters
-            filterVC.activeFilters = activeFilters
+            filterVC.activeFilters = activeFilters.count > 0 ? activeFilters : allFilters
             filterVC.onFilterChanged = { [weak self] filters in
-                guard let self = self else { return }
-                
-                self.activeFilters = filters
+                guard let self = self, !self.filtersAreEqual(filters, self.activeFilters) else { return }
+                self.activeFilters = self.filtersAreEqual(filters, self.allFilters) ? [:] : filters
             }
         } else if segue.identifier == "show_result",
             let rvc = segue.destination as? RMBTHistoryResult2ViewController {
