@@ -472,6 +472,10 @@ extension RMBTIntroViewController: UIViewControllerTransitioningDelegate {
 }
 
 extension RMBTIntroViewController: RMBTTestViewControllerDelegate {
+    func runTestInLoopMode() {
+        self.performSegue(withIdentifier: showLoopModeSettingsSegue, sender: self)
+    }
+    
     func testViewController(_ controller: RMBTTestViewController, didFinishLoopWithTest result: RMBTHistoryResult?) {
         defer {
             controller.dismiss(animated: true, completion: nil)
