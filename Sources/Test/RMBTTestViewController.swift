@@ -13,6 +13,7 @@ import CoreLocation
 @objc protocol RMBTTestViewControllerDelegate: AnyObject {
     func testViewController(_ controller: RMBTTestViewController, didFinishWithTest result: RMBTHistoryResult?)
     func testViewController(_ controller: RMBTTestViewController, didFinishLoopWithTest result: RMBTHistoryResult?)
+    func runTestInLoopMode()
 }
 
 final class RMBTTestViewController: RMBTBaseTestViewController {
@@ -392,7 +393,11 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
                           message: NSLocalizedString("Do you really want to abort the running test?", comment: "Abort test alert title"),
                           cancelButtonTitle: NSLocalizedString("Abort Test", comment: "Abort test alert button"),
                           otherButtonTitle: NSLocalizedString("Continue", comment: "Abort test alert button")) { [weak self] in
-            self?.cancelTest()
+            guard let self = self else { return }
+            self.cancelTest()
+            guard let _ = self.loopModeInfo else { return }
+            self.performSegue(withIdentifier: self.actionsSegue, sender: self)
+            
         } otherHandler: { }
     }
     
@@ -412,6 +417,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
             }
             vc.onRunAgainHandler = { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
+                self?.delegate?.runTestInLoopMode()
             }
         }
     }
@@ -643,7 +649,9 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         self.finishTest()
         switch(reason) {
         case .userRequested:
-            self.dismiss(animated: true, completion: nil)
+            if loopModeInfo == nil {
+                self.dismiss(animated: true, completion: nil)
+            }
         case .mixedConnectivity:
             Log.logger.debug("Test cancelled because of mixed connectivity")
             self.startTest()
