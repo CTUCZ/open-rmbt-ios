@@ -132,7 +132,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
             for t in speedValues {
                 let kbps = Int(t.kilobitsPerSecond())
                 let l = RMBTSpeedLogValue(Double(kbps))
-                self.currentView.addSpeed(CGFloat(l), at: TimeInterval(t.endNanos / NSEC_PER_SEC))
+                self.currentView.addSpeed(CGFloat(l), at: TimeInterval(t.endNanos) / TimeInterval(NSEC_PER_SEC))
             }
         }
     }
