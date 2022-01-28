@@ -62,6 +62,7 @@ public class BasicRequest: NSObject, Mappable {
         loopUuid            <- map["loop_uuid"]
         
         plattform            <- map["plattform"]
+        plattform            <- map["platform"]
         osVersion           <- map["os_version"]
         model               <- map["model"]
         device              <- map["device"]
