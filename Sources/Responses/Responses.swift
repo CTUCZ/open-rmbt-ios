@@ -376,6 +376,7 @@ public class SettingsReponse: BasicResponse {
     
     ///
     open class Settings: Mappable {
+        var termsAndConditionsUrl: String?
         var uuid: String?
         var history: HistoryFilterType?
         var urls: UrlSettings?
@@ -413,6 +414,7 @@ public class SettingsReponse: BasicResponse {
         
         ///
         public func mapping(map: Map) {
+            termsAndConditionsUrl <- map["terms_and_conditions.url"]
             uuid <- map["uuid"]
             history <- map["history"]
             qosMeasurementTypes <- map["qostesttype_desc"]

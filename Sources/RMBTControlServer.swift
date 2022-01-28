@@ -26,6 +26,8 @@ public typealias HistoryFilterType = [String: [String]]
     public var statsURL: URL? = URL(string: RMBTHelpers.RMBTLocalize(urlString: RMBTConfig.RMBT_STATS_URL))
     public var mapServerURL: URL?
     
+    public var termsAndConditionsURL: URL? = URL(string: RMBTHelpers.RMBTLocalize(urlString: RMBTConfig.RMBT_PRIVACY_TOS_URL))
+    
     public var ipv4: URL?
     public var ipv6: URL?
     public var checkIpv4: URL?
@@ -120,6 +122,11 @@ extension RMBTControlServer {
                     if let checkip6 = set.urls?.ipv6IpCheck,
                        let url = URL(string: checkip6) {
                         self.checkIpv6 = url
+                    }
+                    
+                    if let tos = set.termsAndConditionsUrl,
+                       let url = URL(string: tos) {
+                        self.termsAndConditionsURL = url
                     }
                 }
                 
