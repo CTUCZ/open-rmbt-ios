@@ -36,14 +36,15 @@ class RMBTHistoryMapCell: UITableViewCell {
 extension RMBTHistoryMapCell: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is RMBTMeasurementPin {
-            let identifier = "Pin"
             guard let image = UIImage(named: "map_pin_small_icon") else { return nil }
+            let identifier = "Pin"
+            let scaleFactor = 0.8
             let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             
             annotationView.image = image
             annotationView.canShowCallout = false
-            annotationView.centerOffset = CGPoint(x: 0, y: -image.size.height / 2)
-            annotationView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            annotationView.centerOffset = CGPoint(x: 0, y: -image.size.height / 5 )
+            annotationView.transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
             return annotationView
         }
         return nil
