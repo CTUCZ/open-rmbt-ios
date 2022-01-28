@@ -12,4 +12,21 @@ import SVWebViewController
 class RMBTModalWebViewController: SVModalWebViewController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle { return .default}
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if #available(iOS 13.0, *) {
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithTransparentBackground()
+            navigationBarAppearance.backgroundColor = .white
+            navigationBarAppearance.titleTextAttributes = [
+                .foregroundColor: UIColor(red: 66.0/255.0, green: 66.0/255.0, blue: 66.0/255.0, alpha: 1.0),
+                .font: UIFont.roboto(size: 20, weight: .medium)
+            ]
+            
+            self.navigationBar.standardAppearance = navigationBarAppearance
+            self.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        }
+    }
 }

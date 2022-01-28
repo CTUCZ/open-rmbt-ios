@@ -445,6 +445,7 @@ class RMBTSettingsViewController: UITableViewController {
             switch (indexPath.row) {
             case 0: self.presentModalBrowser(with: RMBTConfig.RMBT_DEVELOPER_URL)
             case 1: self.presentModalBrowser(with: RMBTConfig.RMBT_REPO_URL)
+            case 2: self.presentModalBrowser(with: RMBTConfig.RMBT_PRIVACY_TOS_URL)
             default: break
             }
         }
