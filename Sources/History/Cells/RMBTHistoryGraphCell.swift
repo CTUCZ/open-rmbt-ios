@@ -12,7 +12,7 @@ final class RMBTHistoryGraphCell: UICollectionViewCell {
 
     static let ID = "RMBTHistoryGraphCell"
     
-    @IBOutlet weak var speedGraphView: RMBTSpeedGraphView! {
+    @IBOutlet weak var speedGraphView: RMBTHistorySpeedGraphView! {
         didSet {
             speedGraphView.labelsColor = UIColor.rmbt_color(withRGBHex: 0x424242, alpha: 0.56)
             speedGraphView.graphLinesColor = UIColor.rmbt_color(withRGBHex: 0xEEEEEE, alpha: 1.0)
@@ -23,8 +23,8 @@ final class RMBTHistoryGraphCell: UICollectionViewCell {
         didSet {
             if let graph = graph {
                 speedGraphView.clear()
-                for t in graph.throughputs {
-                    speedGraphView.add(value: CGFloat(RMBTSpeedLogValue(t.kilobitsPerSecond())), at: Double(t.endNanos)/Double(NSEC_PER_SEC))
+                for p in graph.points {
+                    speedGraphView.add(point: p)
                 }
                 
                 self.speedGraphView.isHidden = false
