@@ -9,19 +9,19 @@
 import Foundation
 import UIKit
 
-@objc final class RMBTSpeedGraphView: UIView {
+@objc class RMBTSpeedGraphView: UIView {
     private static let RMBTSpeedGraphViewContentFrame: CGRect = CGRect(x: 34.5, y: 32.5, width: 243.0,  height: 92.0)
     private static let RMBTSpeedGraphViewSeconds: TimeInterval = 8.0
     
     private var backgroundImage: UIImage?
     
-    private var widthPerSecond: CGFloat = 0.0
+    internal private(set) var widthPerSecond: CGFloat = 0.0
 
     private var backgroundLayer: CALayer = CALayer()
     private var linesLayer: CAShapeLayer = CAShapeLayer()
     private var fillLayer: CAShapeLayer = CAShapeLayer()
     
-    private var graphRect: CGRect {
+    internal var graphRect: CGRect {
         var rect = self.bounds
         rect.size.width -= 40
         rect.size.height -= 18
@@ -248,18 +248,17 @@ import UIKit
 }
 
 extension RMBTSpeedGraphView {
-    private func getChartWidth() -> CGFloat {
+    @objc internal func getChartWidth() -> CGFloat {
         return 1
     }
     
-    private func getChartHeight() -> CGFloat {
+    internal func getChartHeight() -> CGFloat {
         return self.graphRect.height
     }
     
-    private func calculatePath() {
+    internal func calculatePath() {
         guard chartPoints.count > 1 else { return }
         let pathStroke = UIBezierPath()
-        let circlePoint = chartPoints[chartPoints.count - 1]
         var lX: CGFloat = 0
         var lY: CGFloat = 0
         
@@ -304,5 +303,20 @@ extension RMBTSpeedGraphView {
         fillPath.addLine(to: CGPoint(x: getChartWidth() * chartPoints[chartPoints.count - 1].x * widthPerSecond, y: getChartHeight()))
         fillPath.addLine(to: CGPoint(x: getChartWidth() * chartPoints[0].x * widthPerSecond, y: getChartHeight()))
         fillLayer.path = fillPath.cgPath
+    }
+}
+
+class RMBTHistorySpeedGraphView: RMBTSpeedGraphView {
+    internal override var widthPerSecond: CGFloat {
+        return 1.0
+    }
+    
+    internal override func getChartWidth() -> CGFloat {
+        return self.graphRect.width
+    }
+    
+    public func add(point: CGPoint) {
+        chartPoints.append(point)
+        self.calculatePath()
     }
 }
