@@ -82,8 +82,8 @@ import Foundation
     ///
     @objc public dynamic var debugLoopModeMinDelay: UInt = 0
     
-    @objc public dynamic var skipQoS: Bool = false
-    @objc public dynamic var only2Hours: Bool = false
+    @objc public dynamic var qosEnabled: Bool = true
+    @objc public dynamic var only2Hours: Bool = true
     @objc public dynamic var previousLaunchQoSDate: Date?
     
     
@@ -219,7 +219,7 @@ import Foundation
             "loopModeEveryMeters",
             "loopModeEveryMinutes",
             "debugLoopModeMinDelay",
-            "skipQoS",
+            "qosEnabled",
             "only2Hours",
             "previousLaunchQoSDate",
             "debugLoopModeDistance",

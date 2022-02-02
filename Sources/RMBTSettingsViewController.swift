@@ -105,7 +105,7 @@ class RMBTSettingsViewController: UITableViewController {
             }
         })
         
-        self.bindSwitch(self.skipQoSSwitch, to: #keyPath(RMBTSettings.skipQoS), onToggle: { value in
+        self.bindSwitch(self.skipQoSSwitch, to: #keyPath(RMBTSettings.qosEnabled), onToggle: { value in
             if (value == false) {
                 settings.only2Hours = false
                 self.only2HoursSwitcher.setOn(false, animated: true)
@@ -216,7 +216,7 @@ class RMBTSettingsViewController: UITableViewController {
         self.generalSettings = []
         self.generalSettings.append(IndexPath(row: 0, section: RMBTSettingsSection.general.rawValue))
         
-        if (RMBTSettings.shared.skipQoS) {
+        if (RMBTSettings.shared.qosEnabled) {
             self.generalSettings.append(IndexPath(row: 1, section: RMBTSettingsSection.general.rawValue))
         }
         self.generalSettings.append(IndexPath(row: 2, section: RMBTSettingsSection.general.rawValue))

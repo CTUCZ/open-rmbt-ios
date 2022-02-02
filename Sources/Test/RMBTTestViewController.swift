@@ -402,7 +402,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if (identifier == "embed_qos_progress" && RMBTSettings.shared.skipQoS) {
+        if (identifier == "embed_qos_progress" && !RMBTSettings.shared.qosEnabled) {
             return false
         }
         return true
