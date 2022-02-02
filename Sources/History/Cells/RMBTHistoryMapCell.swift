@@ -13,8 +13,11 @@ class RMBTHistoryMapCell: UITableViewCell {
 
     static let ID = "RMBTHistoryMapCell"
     
+    @IBOutlet weak var fullScreenButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var rootView: UIView!
+    
+    var onFullScreenHandler: (_ zoom: Double) -> Void = { _ in }
     
     var coordinate: CLLocationCoordinate2D = kCLLocationCoordinate2DInvalid {
         didSet {
@@ -26,10 +29,15 @@ class RMBTHistoryMapCell: UITableViewCell {
         }
     }
     
+    @IBAction func fullScreenButtonClick(_ sender: Any) {
+        onFullScreenHandler(mapView.getZoom())
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.rootView.layer.cornerRadius = 8
         self.mapView.delegate = self
+        self.mapView.isUserInteractionEnabled = false
     }
 }
 

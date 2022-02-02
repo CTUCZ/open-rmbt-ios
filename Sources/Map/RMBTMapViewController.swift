@@ -64,6 +64,7 @@ class RMBTMapViewController: UIViewController {
     // If set, blue pin will be shown at this location and map initially zoomed here. Used to
     // display a test on the map.
     public var initialLocation: CLLocation?
+    public var initialZoom: Double = 12
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -90,6 +91,13 @@ class RMBTMapViewController: UIViewController {
         self.reloadMapOptions()
         self.prepareResultListView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupInitLocation()
+    }
+
     
     private func prepareResultListView() {
         let vc = self.mapResultsListViewController
@@ -119,18 +127,24 @@ class RMBTMapViewController: UIViewController {
     }
     
     private func setupMapView() {
-        if let initialLocation = initialLocation {
-            // If test coordinates were provided, center map at the coordinates:
-           self.mapView.setCenter(initialLocation.coordinate, animated: false)
-        } else if let location = RMBTLocationTracker.shared.location {
-            // Otherwise, see if we have user's location available...
-            self.mapView.setCenter(location.coordinate, animated: false)
-        }
-        
         self.mapView.showsBuildings = false
         self.mapView.showsUserLocation = true
         self.mapView.isRotateEnabled = false
         self.mapView.delegate = self
+    }
+    
+    private func setupInitLocation() {
+        if let initialLocation = initialLocation {
+            // If test coordinates were provided, center map at the coordinates:
+            self.mapView.setCenter(initialLocation.coordinate, zoom: initialZoom, animated: false)
+            let pin = RMBTMeasurementPin(id: "", title: "Pin", coordinate: initialLocation.coordinate)
+            self.currentPin = pin
+            self.mapView.addAnnotation(pin)
+            self.mapView.selectAnnotation(pin, animated: true)
+        } else if let location = RMBTLocationTracker.shared.location {
+            // Otherwise, see if we have user's location available...
+            self.mapView.setCenter(location.coordinate, animated: false)
+        }
     }
     
     private func setupMapLayer() {
@@ -204,6 +218,7 @@ class RMBTMapViewController: UIViewController {
     }
     
     @IBAction func closeButtonClick(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Navigation
