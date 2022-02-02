@@ -197,9 +197,9 @@ class RMBTTestRunner: NSObject {
         let willPerformed = RMBTTestRunner.willQoSPerformed()
         if (!willPerformed) {
             // Just for logs
-            if ((RMBTSettings.shared.skipQoS) && (!RMBTSettings.shared.only2Hours)) {
+            if (!RMBTSettings.shared.qosEnabled) {
                 Log.logger.debug("Skipping QoS per user setting")
-            } else if ((RMBTSettings.shared.skipQoS) && (RMBTSettings.shared.only2Hours) && (fabs(RMBTSettings.shared.previousLaunchQoSDate?.timeIntervalSinceNow ?? 0) > RMBTTestRunner.RMBTQosSkipTimeInterval)) {
+            } else if ((RMBTSettings.shared.qosEnabled) && (RMBTSettings.shared.only2Hours) && (fabs(RMBTSettings.shared.previousLaunchQoSDate?.timeIntervalSinceNow ?? 0) > RMBTTestRunner.RMBTQosSkipTimeInterval)) {
                 Log.logger.debug("Skipping QoS per user setting. Previous qos was launched less 2 hours")
             }
             
@@ -295,9 +295,9 @@ class RMBTTestRunner: NSObject {
     
     static func willQoSPerformed() -> Bool {
         // Skip qos
-        if ((RMBTSettings.shared.skipQoS) && (!RMBTSettings.shared.only2Hours)) {
+        if !RMBTSettings.shared.qosEnabled {
             return false
-        } else if ((RMBTSettings.shared.skipQoS) && (RMBTSettings.shared.only2Hours)) {
+        } else if ((RMBTSettings.shared.qosEnabled) && (RMBTSettings.shared.only2Hours)) {
             // Never haven't launched before
             if (RMBTSettings.shared.previousLaunchQoSDate == nil) {
                 return true
