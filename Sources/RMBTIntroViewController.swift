@@ -212,6 +212,11 @@ class RMBTIntroViewController: UIViewController {
     }
     
     private func ipV6PopupInfo(with connectivityInfo: ConnectivityInfo, tintColor: UIColor) -> RMBTPopupInfo {
+        if connectivityInfo.ipv6.internalIp == nil,
+           connectivityInfo.ipv6.externalIp == nil {
+            let popupInfo = RMBTPopupInfo(with: .ipv6Icon, tintColor: tintColor, style: .list, values: [ ])
+            return popupInfo
+        }
         let popupInfo = RMBTPopupInfo(with: .ipv6Icon, tintColor: tintColor, style: .list, values: [
             RMBTPopupInfo.Value(title: .localIP, value: connectivityInfo.ipv6.internalIp ?? ""),
             RMBTPopupInfo.Value(title: .externalIP, value: connectivityInfo.ipv6.externalIp ?? ""),
