@@ -1,5 +1,5 @@
 //
-//  RMBTHistoryResult2ViewController.swift
+//  RMBTHistoryResultViewController.swift
 //  RMBT
 //
 //  Created by Sergey Glushchenko on 09.09.2021.
@@ -10,7 +10,7 @@ import UIKit
 import TUSafariActivity
 import CoreLocation
 
-final class RMBTHistoryResult2ViewController: UIViewController {
+final class RMBTHistoryResultViewController: UIViewController {
 
     enum Section {
         case map
@@ -185,6 +185,16 @@ final class RMBTHistoryResult2ViewController: UIViewController {
         self.present(activityViewController, animated: true, completion: nil)
     }
     
+    private func presentFullScreenMap(with zoom: Double = 12) {
+        guard let result = self.historyResult,
+              let navController = UIStoryboard(name: "MainStoryboard", bundle: nil).instantiateViewController(withIdentifier: "kMapNavigationControllerID") as? UINavigationController
+        else { return }
+        let mapController = navController.topViewController as? RMBTMapViewController
+        mapController?.initialLocation = CLLocation(latitude: result.coordinate.latitude, longitude: result.coordinate.longitude)
+//        mapController?.initialZoom = zoom
+        self.present(navController, animated: true, completion: nil)
+    }
+    
     private func showQosGroup(_ item: RMBTHistoryQoSGroupResult) {
         self.performSegue(withIdentifier: "show_qos_group", sender: item)
     }
@@ -202,7 +212,7 @@ final class RMBTHistoryResult2ViewController: UIViewController {
     }
 }
 
-extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewDataSource {
+extension RMBTHistoryResultViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections.count
@@ -242,6 +252,9 @@ extension RMBTHistoryResult2ViewController: UITableViewDelegate, UITableViewData
             let mapCell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryMapCell.ID, for: indexPath) as! RMBTHistoryMapCell
             mapCell.coordinate = historyResult.coordinate
             mapCell.selectionStyle = .none
+            mapCell.onFullScreenHandler = { [weak self] zoom in
+                self?.presentFullScreenMap(with: zoom)
+            }
             return mapCell
         case .network:
             let networkCell = tableView.dequeueReusableCell(withIdentifier: RMBTHistoryNetworkCell.ID, for: indexPath) as! RMBTHistoryNetworkCell

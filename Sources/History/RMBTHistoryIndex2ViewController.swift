@@ -167,7 +167,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
 
         showingLastTestResult = true
         
-        let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "result2_vc") as! RMBTHistoryResult2ViewController
+        let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "result2_vc") as! RMBTHistoryResultViewController
         resultVC.historyResult = result
         resultVC.isShowingLastResult = showingLastTestResult
         
@@ -316,7 +316,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
                 self.activeFilters = self.filtersAreEqual(filters, self.allFilters) ? [:] : filters
             }
         } else if segue.identifier == "show_result",
-            let rvc = segue.destination as? RMBTHistoryResult2ViewController {
+            let rvc = segue.destination as? RMBTHistoryResultViewController {
             rvc.historyResult = sender as? RMBTHistoryResult
             navigationItem.backBarButtonItem = UIBarButtonItem()
         } else if segue.identifier == "show_sync_modal", let vc = segue.destination as? RMBTHistorySyncModalViewController {

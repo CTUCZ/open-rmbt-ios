@@ -236,7 +236,7 @@
 		E9C4BA2727140B8F00D6FAE8 /* CLLocation+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4BA2627140B8E00D6FAE8 /* CLLocation+Additions.swift */; };
 		E9C4BA2C2714112600D6FAE8 /* RMBTPopupCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4BA2A2714112600D6FAE8 /* RMBTPopupCollectionView.swift */; };
 		E9C4BA2D2714112600D6FAE8 /* RMBTPopupCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C4BA2B2714112600D6FAE8 /* RMBTPopupCollectionView.xib */; };
-		E9E993B726E9FE0C00E7EED6 /* RMBTHistoryResult2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993B626E9FE0B00E7EED6 /* RMBTHistoryResult2ViewController.swift */; };
+		E9E993B726E9FE0C00E7EED6 /* RMBTHistoryResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993B626E9FE0B00E7EED6 /* RMBTHistoryResultViewController.swift */; };
 		E9E993BA26EA398500E7EED6 /* RMBTHistoryMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993B826EA398500E7EED6 /* RMBTHistoryMapCell.swift */; };
 		E9E993BB26EA398500E7EED6 /* RMBTHistoryMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E993B926EA398500E7EED6 /* RMBTHistoryMapCell.xib */; };
 		E9E993BE26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E993BC26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.swift */; };
@@ -544,7 +544,7 @@
 		E9C4BA2627140B8E00D6FAE8 /* CLLocation+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Additions.swift"; sourceTree = "<group>"; };
 		E9C4BA2A2714112600D6FAE8 /* RMBTPopupCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTPopupCollectionView.swift; sourceTree = "<group>"; };
 		E9C4BA2B2714112600D6FAE8 /* RMBTPopupCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTPopupCollectionView.xib; sourceTree = "<group>"; };
-		E9E993B626E9FE0B00E7EED6 /* RMBTHistoryResult2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryResult2ViewController.swift; sourceTree = "<group>"; };
+		E9E993B626E9FE0B00E7EED6 /* RMBTHistoryResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryResultViewController.swift; sourceTree = "<group>"; };
 		E9E993B826EA398500E7EED6 /* RMBTHistoryMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryMapCell.swift; sourceTree = "<group>"; };
 		E9E993B926EA398500E7EED6 /* RMBTHistoryMapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryMapCell.xib; sourceTree = "<group>"; };
 		E9E993BC26EA3DD600E7EED6 /* RMBTHistoryNetworkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryNetworkCell.swift; sourceTree = "<group>"; };
@@ -1171,7 +1171,7 @@
 				E959547726E38AF6004EA6D9 /* RMBTHistoryIndex2ViewController.swift */,
 				E95954AE26E602EC004EA6D9 /* RMBTHistoryFilter2ViewController.swift */,
 				E95954B026E614F6004EA6D9 /* RMBTHistoryFiltersOptionsViewController.swift */,
-				E9E993B626E9FE0B00E7EED6 /* RMBTHistoryResult2ViewController.swift */,
+				E9E993B626E9FE0B00E7EED6 /* RMBTHistoryResultViewController.swift */,
 				E9E993F926EC8F8F00E7EED6 /* RMBTHistoryQoSGroupViewController.swift */,
 				E9E993FF26EC9CB100E7EED6 /* RMBTHistoryQoSSingleViewController.swift */,
 				E93FB0F626F39E0200DD24CD /* RMBTHistoryQoSSingleResultViewController.swift */,
@@ -1763,7 +1763,7 @@
 				E9E993F426EC814900E7EED6 /* QosMeasurementResultRequest.swift in Sources */,
 				E9E993F626EC816800E7EED6 /* QOSTypeDefinition.swift in Sources */,
 				E9A23BE82764DCD600717814 /* RMBTQoSProgressCell.swift in Sources */,
-				E9E993B726E9FE0C00E7EED6 /* RMBTHistoryResult2ViewController.swift in Sources */,
+				E9E993B726E9FE0C00E7EED6 /* RMBTHistoryResultViewController.swift in Sources */,
 				E9400F2B26BE8CB70067273A /* Signal.swift in Sources */,
 				E95954AB26E60287004EA6D9 /* RMBTHistoryFilterTitleCell.swift in Sources */,
 				E946B93F26D28BA20006E1F1 /* RMBTMapOptionsCell.swift in Sources */,

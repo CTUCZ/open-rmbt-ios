@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,9 +23,23 @@
                             <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="euR-2V-AYJ">
                                 <rect key="frame" x="0.0" y="0.0" width="280" height="172"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Na-CY-hW3">
+                                <rect key="frame" x="228" y="8" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="daj-zD-F64"/>
+                                    <constraint firstAttribute="height" constant="44" id="iOS-eN-iJb"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="fullscreen_icon"/>
+                                <connections>
+                                    <action selector="fullScreenButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="QqA-Cw-zSr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6Na-CY-hW3" secondAttribute="trailing" constant="8" id="JCT-1e-HHy"/>
+                            <constraint firstItem="6Na-CY-hW3" firstAttribute="top" secondItem="85o-if-mbQ" secondAttribute="top" constant="8" id="Q1e-CI-Tdp"/>
                             <constraint firstAttribute="bottom" secondItem="euR-2V-AYJ" secondAttribute="bottom" id="bQn-i8-KsC"/>
                             <constraint firstAttribute="trailing" secondItem="euR-2V-AYJ" secondAttribute="trailing" id="beR-Y7-SVj"/>
                             <constraint firstItem="euR-2V-AYJ" firstAttribute="leading" secondItem="85o-if-mbQ" secondAttribute="leading" id="jxi-Dy-Mc1"/>
@@ -44,10 +58,14 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="fullScreenButton" destination="6Na-CY-hW3" id="YVU-9S-ID1"/>
                 <outlet property="mapView" destination="euR-2V-AYJ" id="Zdk-Sy-9gn"/>
                 <outlet property="rootView" destination="85o-if-mbQ" id="vQ5-5C-SQo"/>
             </connections>
             <point key="canvasLocation" x="-52.173913043478265" y="86.383928571428569"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="fullscreen_icon" width="56" height="56"/>
+    </resources>
 </document>
