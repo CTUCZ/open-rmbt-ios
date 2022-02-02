@@ -129,8 +129,8 @@ extension RMBTTOSViewController: WKNavigationDelegate {
             // TODO: Open compose dialog
             action = .cancel
         } else {
-            guard let urlString = navigationAction.request.url?.absoluteString else { return }
-            self.presentModalBrowser(with: urlString)
+            guard let url = navigationAction.request.url else { return }
+            self.openURL(url)
         }
     }
     
