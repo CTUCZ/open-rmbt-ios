@@ -37,7 +37,7 @@ class RMBTTOSViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .center
-        titleLabel.text = self.navigationItem.title
+        titleLabel.text = .title
         titleLabel.font = UIFont.roboto(size: 20, weight: .regular)
         titleLabel.textColor = UIColor(named: "titleNavigationBar")
         titleLabel.adjustsFontSizeToFitWidth = true
@@ -129,8 +129,8 @@ extension RMBTTOSViewController: WKNavigationDelegate {
             // TODO: Open compose dialog
             action = .cancel
         } else {
-            guard let urlString = navigationAction.request.url?.absoluteString else { return }
-            self.presentModalBrowser(with: urlString)
+            guard let url = navigationAction.request.url else { return }
+            self.openURL(url)
         }
     }
     
@@ -172,4 +172,5 @@ private extension String {
     static let agree = NSLocalizedString("tos.agree", comment: "")
     static let decline = NSLocalizedString("tos.decline", comment: "")
     static let titleForSwitcher = NSLocalizedString("tos.agreements.title", comment: "")
+    static let title = NSLocalizedString("preferences_data_protection", comment: "")
 }

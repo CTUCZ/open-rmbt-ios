@@ -430,7 +430,7 @@ class RMBTSettingsViewController: UITableViewController {
             }
         } else if (indexPath.section == RMBTSettingsSection.contacts.rawValue) {
             switch (indexPath.row) {
-            case 0: self.presentModalBrowser(with: RMBTConfig.RMBT_PROJECT_URL)
+            case 0: self.openURL(URL(string: RMBTConfig.RMBT_PROJECT_URL))
                 case 1:
                 if MFMailComposeViewController.canSendMail() {
                     let mailVC = MFMailComposeViewController()
@@ -438,14 +438,14 @@ class RMBTSettingsViewController: UITableViewController {
                     mailVC.mailComposeDelegate = self
                     self.present(mailVC, animated: true, completion: nil)
                 }
-            case 2: self.presentModalBrowser(with: RMBTConfig.RMBT_PRIVACY_TOS_URL)
+                case 2: self.openURL(RMBTControlServer.shared.termsAndConditionsURL)
                 default: assert(false, "Invalid row")
             }
         } else if (indexPath.section == RMBTSettingsSection.support.rawValue) {
             switch (indexPath.row) {
-            case 0: self.presentModalBrowser(with: RMBTConfig.RMBT_DEVELOPER_URL)
-            case 1: self.presentModalBrowser(with: RMBTConfig.RMBT_REPO_URL)
-            case 2: self.presentModalBrowser(with: RMBTControlServer.shared.termsAndConditionsURL?.absoluteString ?? "")
+            case 0: self.openURL(URL(string: RMBTConfig.RMBT_DEVELOPER_URL))
+            case 1: self.openURL(URL(string: RMBTConfig.RMBT_REPO_URL))
+            case 2: self.openURL(RMBTControlServer.shared.termsAndConditionsURL)
             default: break
             }
         }

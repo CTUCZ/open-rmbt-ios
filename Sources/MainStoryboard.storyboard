@@ -211,10 +211,19 @@
                                                     <outlet property="delegate" destination="ODR-wN-Hde" id="3GO-0g-y94"/>
                                                 </connections>
                                             </collectionView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP not available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wze-sg-CZf">
+                                                <rect key="frame" x="0.0" y="41" width="301" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="wze-sg-CZf" firstAttribute="leading" secondItem="eKn-fE-Nc9" secondAttribute="leading" id="6Ia-Uz-RwV"/>
                                             <constraint firstItem="WU1-Dd-27F" firstAttribute="leading" secondItem="eKn-fE-Nc9" secondAttribute="leading" id="9kg-as-USl"/>
+                                            <constraint firstAttribute="trailing" secondItem="wze-sg-CZf" secondAttribute="trailing" id="WoT-Ga-mXg"/>
+                                            <constraint firstItem="wze-sg-CZf" firstAttribute="centerY" secondItem="eKn-fE-Nc9" secondAttribute="centerY" id="djo-rp-8Xt"/>
                                             <constraint firstAttribute="bottom" secondItem="WU1-Dd-27F" secondAttribute="bottom" id="hjW-9g-hHe"/>
                                             <constraint firstAttribute="trailing" secondItem="WU1-Dd-27F" secondAttribute="trailing" id="t1s-Mf-arO"/>
                                             <constraint firstItem="WU1-Dd-27F" firstAttribute="top" secondItem="eKn-fE-Nc9" secondAttribute="top" id="xX2-YR-jud"/>
@@ -252,6 +261,7 @@
                         <outlet property="contentView" destination="Ngi-bc-tKd" id="Ldb-Sa-e2e"/>
                         <outlet property="heightConstraint" destination="QZM-UW-xeS" id="3uT-B1-cE7"/>
                         <outlet property="infoTypeImageView" destination="b8r-xX-Ifx" id="T9L-Nr-rpz"/>
+                        <outlet property="ipNotAvailableLabel" destination="wze-sg-CZf" id="7oU-eg-1Xy"/>
                         <outlet property="topConstraint" destination="drc-wh-YRO" id="HUP-Eb-LCM"/>
                     </connections>
                 </viewController>
@@ -469,7 +479,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PNR-82-ZkF">
                                                     <rect key="frame" x="20" y="2.5" width="305" height="51.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enabled" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6K8-L1-UIm">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Enabled" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6K8-L1-UIm">
                                                             <rect key="frame" x="0.0" y="0.0" width="305" height="19"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                             <color key="textColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -478,7 +488,7 @@
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="localizableText" value="preferences_loop_mode"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neuer Test nach Wartezeit oder Zurücklegen der Distanz. Max. 2 Tage" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgU-BO-VOx">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Neuer Test nach Wartezeit oder Zurücklegen der Distanz. Max. 2 Tage" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgU-BO-VOx">
                                                             <rect key="frame" x="0.0" y="23" width="305" height="28.5"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                             <color key="textColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

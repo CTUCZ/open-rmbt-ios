@@ -40,6 +40,7 @@ enum PopupType {
 
 class RMBTPopupViewController: UIViewController {
 
+    @IBOutlet weak var ipNotAvailableLabel: UILabel!
     @IBOutlet private weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var topConstraint: NSLayoutConstraint!
     
@@ -74,6 +75,8 @@ class RMBTPopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.ipNotAvailableLabel.text = NSLocalizedString("text_ip_address_not_available", comment: "")
         
         self.collectionView.register(UINib(nibName: RMBTPopupCollectionView.ID, bundle: nil), forCellWithReuseIdentifier: RMBTPopupCollectionView.ID)
         
@@ -112,6 +115,7 @@ class RMBTPopupViewController: UIViewController {
     }
     
     private func updateUI() {
+        self.ipNotAvailableLabel.isHidden = !(self.info?.values.count == 0)
         self.heightConstraint.constant = self.contentHeight()
         self.infoTypeImageView?.image = info?.icon
         self.infoTypeImageView?.image = self.infoTypeImageView?.image?.withRenderingMode(.alwaysTemplate)
