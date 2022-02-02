@@ -265,9 +265,9 @@
 "title_loop_instruction_1" = "Aktivierung";
 "title_loop_instruction_2" = "Nutzung";
 
-"tos.agree" = "Agree";
-"tos.decline" = "Decline";
-"tos.agreements.title" = "I agree with RTR’s privacy policy and terms of use for RTR-NetTest.";
+"tos.agree" = "Akzeptieren";
+"tos.decline" = "Abbrechen";
+"tos.agreements.title" = "Ich stimme der Datenschutzerklärung und den Nutzungsbedingungen zu.";
 
 "public_ip_address" = "Öffentliche Adresse";
 "private_ip_address" = "Lokale Adresse";
