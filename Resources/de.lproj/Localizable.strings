@@ -418,4 +418,6 @@
 "map_layer_points" = "Punkte";
 "map_layer_automatic" = "Automatisch";
 
+"menu_button_statistics" = "Statistik";
+
 "text_ip_address_not_available" = "Die Adresse nicht verfügbar";
