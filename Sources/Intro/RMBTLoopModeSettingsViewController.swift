@@ -86,9 +86,16 @@ final class RMBTLoopModeSettingsViewController: UIViewController {
         loopModeInfo.waitMeters = UInt(Int(distanceTextField.text ?? "") ?? 0)
         loopModeInfo.waitMinutes = UInt(Int(minutesTextField.text ?? "") ?? 0)
         guard validate() else { return }
+        store()
         dismiss(animated: true) {
             self.loopModeHandler(self.loopModeInfo)
         }
+    }
+    
+    private func store() {
+        RMBTSettings.shared.loopModeEveryMeters = loopModeInfo.waitMeters
+        RMBTSettings.shared.loopModeEveryMinutes = loopModeInfo.waitMinutes
+        RMBTSettings.shared.loopModeLastCount = loopModeInfo.total
     }
     
     private func validate() -> Bool {
