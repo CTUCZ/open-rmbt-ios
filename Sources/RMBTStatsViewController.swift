@@ -9,12 +9,30 @@
 import UIKit
 import SVWebViewController
 
-class RMBTStatsWebViewController: SVWebViewController {
+class RMBTStatsWebViewController: UIViewController {
+    
+    private lazy var webView: WKWebView = {
+        let webView = WKWebView()
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        return webView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.isOpaque = false
-        self.view.backgroundColor = UIColor.white
+        self.navigationItem.title = NSLocalizedString("menu_button_statistics", comment: "")
+        
+        self.view.addSubview(webView)
+        
+        NSLayoutConstraint.activate([
+            webView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            webView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            webView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            webView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
+        
+        guard let url = RMBTControlServer.shared.statsURL else { return }
+        webView.load(URLRequest(url: url))
     }
 }
     
@@ -35,36 +53,12 @@ final class RMBTStatsViewController: UINavigationController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.setNavigationBarHidden(true, animated: animated)
-        
-        if timer?.isValid == true {
-            timer?.invalidate()
-            timer = nil
-        }
-        
-        if self.viewControllers.count == 0 {
-            self.loadWebView()
-        }
+
+        self.loadWebView()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.timer = Timer.scheduledTimer(withTimeInterval: unloadViewTimeout, repeats: false, block: { [weak self] _ in
-            self?.unloadWebView()
-        })
-    }
-    
-    private func unloadWebView() {
-        self.setViewControllers([], animated: false)
-    }
-    
+   
     private func loadWebView() {
-        guard let url = RMBTControlServer.shared.statsURL,
-              let webView = RMBTStatsWebViewController(url: url)
-        else { return }
-        
+        let webView = RMBTStatsWebViewController()
         self.setViewControllers([webView], animated: false)
     }
 }
