@@ -418,3 +418,4 @@
 "map_layer_points" = "Points";
 "map_layer_automatic" = "Automatic";
 
+"text_ip_address_not_available" = "Address is not available";
