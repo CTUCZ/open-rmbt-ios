@@ -19,6 +19,14 @@ extension UIViewController {
         webViewController.barsTintColor = .tintColor
         self.present(webViewController, animated: true, completion: nil)
     }
+    
+    func openURL(_ url: URL?) {
+        guard let url = url else {
+            return
+        }
+
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
 }
 
 private extension UIColor {
