@@ -49,7 +49,6 @@
 		E91316B226AD966300368DCD /* UserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316B126AD966300368DCD /* UserDefaults+Additions.swift */; };
 		E91316B426ADB1E000368DCD /* RMBTStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316B326ADB1E000368DCD /* RMBTStatsViewController.swift */; };
 		E91316B626ADC2C100368DCD /* UIViewController+ModalBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316B526ADC2C100368DCD /* UIViewController+ModalBrowser.swift */; };
-		E91316B826ADCA6000368DCD /* RMBTModalWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316B726ADCA6000368DCD /* RMBTModalWebViewController.swift */; };
 		E91316BA26ADCB7300368DCD /* RMBTIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316B926ADCB7300368DCD /* RMBTIntroViewController.swift */; };
 		E91316BD26ADD4DE00368DCD /* RMBTGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316BC26ADD4DE00368DCD /* RMBTGradientView.swift */; };
 		E91316D626B3E98900368DCD /* RMBTWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91316D526B3E98800368DCD /* RMBTWaveView.swift */; };
@@ -346,7 +345,6 @@
 		E91316B126AD966300368DCD /* UserDefaults+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Additions.swift"; sourceTree = "<group>"; };
 		E91316B326ADB1E000368DCD /* RMBTStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTStatsViewController.swift; sourceTree = "<group>"; };
 		E91316B526ADC2C100368DCD /* UIViewController+ModalBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ModalBrowser.swift"; sourceTree = "<group>"; };
-		E91316B726ADCA6000368DCD /* RMBTModalWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTModalWebViewController.swift; sourceTree = "<group>"; };
 		E91316B926ADCB7300368DCD /* RMBTIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTIntroViewController.swift; sourceTree = "<group>"; };
 		E91316BC26ADD4DE00368DCD /* RMBTGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTGradientView.swift; sourceTree = "<group>"; };
 		E91316D526B3E98800368DCD /* RMBTWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTWaveView.swift; sourceTree = "<group>"; };
@@ -819,7 +817,6 @@
 			isa = PBXGroup;
 			children = (
 				E91316B526ADC2C100368DCD /* UIViewController+ModalBrowser.swift */,
-				E91316B726ADCA6000368DCD /* RMBTModalWebViewController.swift */,
 			);
 			name = "Modal Web View";
 			sourceTree = "<group>";
@@ -1629,7 +1626,6 @@
 				361443482732793E00D0FC26 /* RMBTHistorySyncModalViewController.swift in Sources */,
 				E9400F2726BE8C880067273A /* Ping.swift in Sources */,
 				E91316B626ADC2C100368DCD /* UIViewController+ModalBrowser.swift in Sources */,
-				E91316B826ADCA6000368DCD /* RMBTModalWebViewController.swift in Sources */,
 				E9A23BE42764AC3100717814 /* RMBTQoSTestGroup.swift in Sources */,
 				E9400EF826BA752D0067273A /* MapOptionResponse.swift in Sources */,
 				E9400F3926BE8D850067273A /* Speed.swift in Sources */,
@@ -2036,7 +2032,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T7Y947AEPK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2077,7 +2073,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T7Y947AEPK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

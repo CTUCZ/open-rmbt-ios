@@ -443,8 +443,8 @@ class RMBTSettingsViewController: UITableViewController {
             }
         } else if (indexPath.section == RMBTSettingsSection.support.rawValue) {
             switch (indexPath.row) {
-            case 0: self.openURL(URL(string: RMBTConfig.RMBT_DEVELOPER_URL))
-            case 1: self.openURL(URL(string: RMBTConfig.RMBT_REPO_URL))
+            case 0: self.openURL(URL(string: RMBTConfig.RMBT_REPO_URL))
+            case 1: self.openURL(URL(string: RMBTConfig.RMBT_DEVELOPER_URL))
             case 2: self.openURL(RMBTControlServer.shared.termsAndConditionsURL)
             default: break
             }

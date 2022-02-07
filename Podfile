@@ -17,8 +17,6 @@ target 'RMBT' do
   pod 'BlocksKit/MessageUI', :git => 'https://github.com/sglushchenko/BlocksKit', :branch => 'without_UIWebView'
   
   pod 'libextobjc/EXTKeyPathCoding'
-#  pod 'SVWebViewController', '1.0'
-  pod 'SVWebViewController', :git => 'https://github.com/bazingatechnologies/SVWebViewController', :branch => 'master', :commit => 'e5e85d2df62c3baed76a2dec343cdb1c239aa719'
   pod 'TUSafariActivity'
 
   
