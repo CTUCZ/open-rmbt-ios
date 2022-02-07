@@ -16,13 +16,12 @@ extension Data {
     }
 
     func MD5() -> Data {
-        var result = Data(count: Int(CC_MD5_DIGEST_LENGTH))
-        _ = result.withUnsafeMutableBytes {resultPtr in
-            self.withUnsafeBytes {(bytes: UnsafePointer<UInt8>) in
-                CC_MD5(bytes, CC_LONG(count), resultPtr)
-            }
+        let hash = self.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) -> [UInt8] in
+            var hash = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
+            CC_MD5(bytes.baseAddress, CC_LONG(self.count), &hash)
+            return hash
         }
-        return result
+        return Data(hash)
     }
 }
 

@@ -77,7 +77,7 @@ class RMBTQoSHTTPTest: RMBTQoSTest {
     
     override var description: String {
         return String(format:"RMBTQoSHTTPTest (uid=%@, cg=%ld, %@/%@)",
-                self.uid ?? "",
+                self.uid,
                 self.concurrencyGroup,
                 url ?? "",
                 range ?? "")

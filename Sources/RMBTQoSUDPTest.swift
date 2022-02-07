@@ -213,7 +213,7 @@ class RMBTQoSUDPTest: RMBTQoSIPTest {
     
     override var description: String {
         return String(format:"RMBTQoSUDPTest (uid=%@, cg=%ld, server=%@, delay=%@, out=%@, in=%@)",
-                self.uid ?? "",
+                self.uid,
                 self.concurrencyGroup,
                 self.controlConnectionParams ?? "",
                 RMBTHelpers.RMBTSecondsString(with: Int64(delayNanos)),

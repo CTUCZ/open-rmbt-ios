@@ -91,7 +91,7 @@ class RMBTQoSNonTransparentProxyTest: RMBTQoSCCTest {
     
     override var description: String {
         return String(format: "RMBTQoSNonTransparentProxyTest (uid=%@, cg=%lu, server=%@, request=%@, port=%lu)",
-        self.uid ?? "",
+        self.uid,
         self.concurrencyGroup,
         self.controlConnectionParams ?? "",
         request ?? "",
