@@ -98,7 +98,7 @@ class RMBTQoSWebTest: RMBTQoSTest {
     
     override var description: String {
         return String(format: "RMBTQoSWebTest (uid=%@, cg=%ld, url=%@)",
-                      self.uid ?? "",
+                      self.uid,
                       self.concurrencyGroup,
                       self.url ?? "")
     }

@@ -49,7 +49,7 @@ class RMBTQosWebTestURLProtocol: URLProtocol {
         let tag = URLProtocol.property(forKey: RMBTQosWebTestURLProtocolKey.tag.rawValue, in: request) as? String ?? ""
         let handled = URLProtocol.property(forKey: RMBTQosWebTestURLProtocolKey.handled.rawValue, in: request) as? Bool ?? false
 
-        let url = request.mainDocumentURL?.absoluteString as? String ?? ""
+        let url = request.mainDocumentURL?.absoluteString ?? ""
 
         if handled {
             return false

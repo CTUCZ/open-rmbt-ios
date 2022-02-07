@@ -7,17 +7,26 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class RMBTNews: NSObject {
+class RMBTNews: Mappable {
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        title <- map[Keys.title.rawValue]
+        text <- map[Keys.text.rawValue]
+        uid <- map[Keys.uid.rawValue]
+    }
+    
     private enum Keys: String {
         case title
         case text
         case uid
     }
     
-    let title: String
-    let text: String
-    let uid: Int64
+    var title: String = ""
+    var text: String = ""
+    var uid: Int64 = 0
 
     init(with response: [String: Any]) {
         title = response[Keys.title.rawValue] as? String ?? ""

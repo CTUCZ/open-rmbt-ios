@@ -46,7 +46,7 @@ class RMBTQoSTCPTest: RMBTQoSIPTest {
 
         let cmd = String(format: "TCPTEST %@ %lu +ID%@", isOutgoing ? "OUT" : "IN",
                          port,
-                         self.uid ?? "")
+                         self.uid)
         
         let response1: String
         do {
@@ -95,7 +95,7 @@ class RMBTQoSTCPTest: RMBTQoSIPTest {
     
     override var description: String {
         return String(format: "RMBTQoSTCPTest (uid=%@, cg=%ld, server=%@, out_port=%ld, in_port=%ld)",
-                      self.uid ?? "",
+                      self.uid,
                       self.concurrencyGroup,
                       self.controlConnectionParams ?? "",
                       self.outPort,

@@ -48,7 +48,7 @@ public typealias HistoryFilterType = [String: [String]]
         return ServerHelper.configureAlamofireManager()
     }()
     
-    private var lastNewsUid: Int = 0
+    private var lastNewsUid: Int = UserDefaults.lastNewsUidPreference()
 }
 
 extension RMBTControlServer {
@@ -205,32 +205,20 @@ extension RMBTControlServer {
         } error: { error in
             Log.logger.error(error)
         }
-
     }
     
-    @objc func getNews(_ success: @escaping RMBTSuccessBlock) {
-        success([])
-//        RMBTLog(@"Getting news (lastNewsUid=%ld)...", _lastNewsUid);
-//
-//        [self requestWithMethod:@"POST" path:@"news" params:@{
-//            @"lastNewsUid": @(_lastNewsUid)
-//        } success:^(id response) {
-//            if (response[@"news"]) {
-//                long maxNewsUid = 0;
-//                NSMutableArray *result = [NSMutableArray array];
-//                for (NSDictionary *subresponse in response[@"news"]) {
-//                    RMBTNews* n = [[RMBTNews alloc] initWithResponse:subresponse];
-//                    [result addObject:n];
-//                    if (n.uid > maxNewsUid) maxNewsUid = n.uid;
-//                }
-//                if (maxNewsUid > 0) self.lastNewsUid = maxNewsUid;
-//                success(result);
-//            } else {
-//                // error
-//            }
-//        } error:^(NSError *error, NSDictionary *info) {
-//            // error
-//        }];
+    @objc func getNews(_ success: @escaping (_ response: RMBTNewsResponse) -> Void, error: @escaping ErrorCallback) {
+        Log.logger.verbose("Getting news (lastNewsUid=\(lastNewsUid)...")
+        let successBlock: (_ response: RMBTNewsResponse) -> Void = { response in
+            let maxNews = response.news.max(by: { $0.uid >= $1.uid })
+            self.lastNewsUid = Int(maxNews?.uid ?? 0)
+            UserDefaults.storeLastNewsUidPreference(lastNewsUidPreference: self.lastNewsUid)
+            success(response)
+        }
+        ensureClientUuid { uuid in
+            let newsRequest = NewsRequest(with: Int64(self.lastNewsUid))
+            self.request(.post, path: "/news", requestObject: newsRequest, success: successBlock, error: error)
+        } error: { error in }
     }
     
     @objc func getQoSParams(_ success: @escaping (_ response: QosMeasurmentResponse) -> Void, error: @escaping ErrorCallback) {

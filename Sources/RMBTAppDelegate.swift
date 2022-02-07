@@ -23,12 +23,11 @@ final class RMBTAppDelegate: UIResponder, UIApplicationDelegate {
             let unlock = url.host == "debug"
             RMBTSettings.shared.debugUnlocked = unlock
             let stateString = unlock ? "Unlocked" : "Locked"
-            UIAlertView.bk_show(withTitle: "Debug Mode \(stateString)",
-                                message: "The app will now quit to apply the new settings.",
-                                cancelButtonTitle: "OK",
-                                otherButtonTitles: nil) { _, _ in
+            UIAlertController.presentAlert(title: "Debug Mode \(stateString)",
+                                           text: "The app will now quit to apply the new settings.",
+                                           cancelTitle: "OK", otherTitle: nil) { _ in
                 exit(0)
-            }
+            } otherAction: { _ in }
             return true
         } else {
             return false
@@ -69,16 +68,20 @@ final class RMBTAppDelegate: UIResponder, UIApplicationDelegate {
     
     private func checkNews() {
         RMBTControlServer.shared.getSettings { } error: { _ in }
-        RMBTControlServer.shared.getNews { news in
-            guard let news = news as? [RMBTNews] else { return }
-            
-            news.forEach { n in
-                UIAlertView.bk_show(withTitle: n.title,
-                                    message: n.text,
-                                    cancelButtonTitle: NSLocalizedString("Dismiss", comment: "News alert view button"),
-                                    otherButtonTitles: nil) { _, _ in }
-            }
-        }
+        RMBTControlServer.shared.getNews { [weak self] response in
+            self?.showNews(response.news)
+        } error: { _ in }
+    }
+    
+    private func showNews(_ news: [RMBTNews]) {
+        guard news.count > 0 else { return }
+        
+        var currentNews = news
+        let n = currentNews.removeLast()
+        UIAlertController.presentAlert(title: n.title,
+                                                   text: n.text, cancelTitle: NSLocalizedString("Dismiss", comment: "News alert view button"), otherTitle: nil) { [weak self] _ in
+            self?.showNews(currentNews)
+        } otherAction: { _ in }
     }
 
     private func applyAppearance() {

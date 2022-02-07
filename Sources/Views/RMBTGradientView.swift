@@ -67,7 +67,7 @@ class RMBTGradientView: UIView {
         case .rightLeft:
             layer.startPoint = CGPoint(x: 1.0, y: 0.5)
             layer.endPoint = CGPoint(x: 0, y: 0.5)
-        case .angle(let angle): break
+        case .angle(_): break
             // TODO: Implement it
         }
     }

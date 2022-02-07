@@ -214,7 +214,7 @@ import UIKit
                 let icmpCode = icmpHeader.icmp_code
 
                 if (icmpType == ICMP_TIMXCEED && icmpCode == ICMP_TIMXCEED_INTRANS) || icmpType == ICMP_UNREACH {
-                    var icmpIpHeader = icmpHeader.icmp_dun.id_ip.idi_ip
+                    let icmpIpHeader = icmpHeader.icmp_dun.id_ip.idi_ip
                     let innerHlen = Int32(icmpIpHeader.ip_hl << 2)
 
                     if icmpIpHeader.ip_p == IPPROTO_UDP {
