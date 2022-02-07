@@ -37,7 +37,6 @@ PODS:
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
   - ObjectMapper (3.5.3)
   - ReachabilitySwift (5.0.0)
-  - SVWebViewController (1.0)
   - TUSafariActivity (1.0.4)
   - XCGLogger (7.0.1):
     - XCGLogger/Core (= 7.0.1)
@@ -54,7 +53,6 @@ DEPENDENCIES:
   - libextobjc/EXTKeyPathCoding
   - "MaterialComponents/Tabs+TabBarView"
   - ReachabilitySwift
-  - SVWebViewController (from `https://github.com/bazingatechnologies/SVWebViewController`, commit `e5e85d2df62c3baed76a2dec343cdb1c239aa719`, branch `master`)
   - TUSafariActivity
   - XCGLogger
 
@@ -77,18 +75,11 @@ EXTERNAL SOURCES:
   BlocksKit:
     :branch: without_UIWebView
     :git: https://github.com/sglushchenko/BlocksKit
-  SVWebViewController:
-    :branch: master
-    :commit: e5e85d2df62c3baed76a2dec343cdb1c239aa719
-    :git: https://github.com/bazingatechnologies/SVWebViewController
 
 CHECKOUT OPTIONS:
   BlocksKit:
     :commit: c128238cb623fe0e0b6ccabe768afff6222db15a
     :git: https://github.com/sglushchenko/BlocksKit
-  SVWebViewController:
-    :commit: e5e85d2df62c3baed76a2dec343cdb1c239aa719
-    :git: https://github.com/bazingatechnologies/SVWebViewController
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
@@ -102,10 +93,9 @@ SPEC CHECKSUMS:
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SVWebViewController: aa2e18a41ff5f45be7aeec8e92ca5bcc50b5ebb1
   TUSafariActivity: afc55a00965377939107ce4fdc7f951f62454546
   XCGLogger: 1943831ef907df55108b0b18657953f868de973b
 
-PODFILE CHECKSUM: be5d24b1b28627eaf1ceafc4b8a535aa26c8249c
+PODFILE CHECKSUM: a3850f3f5244f0108f2fe26cd1c506d807ab50dd
 
 COCOAPODS: 1.11.2

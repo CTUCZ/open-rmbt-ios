@@ -9,17 +9,6 @@
 import UIKit
 
 extension UIViewController {
-    // Presents a modal web browser with supplied URL. If there are occurences of
-    // $lang in the URL, those are replaced with either "de" or "en", depending on
-    // preferrred language
-    
-    @objc(presentModalBrowserWithURLString:)
-    func presentModalBrowser(with url: String) {
-        guard let webViewController = RMBTModalWebViewController(address: RMBTHelpers.RMBTLocalize(urlString: url)) else { return }
-        webViewController.barsTintColor = .tintColor
-        self.present(webViewController, animated: true, completion: nil)
-    }
-    
     func openURL(_ url: URL?) {
         guard let url = url else {
             return

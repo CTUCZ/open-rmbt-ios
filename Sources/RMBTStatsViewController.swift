@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVWebViewController
+import WebKit
 
 class RMBTStatsWebViewController: UIViewController {
     
