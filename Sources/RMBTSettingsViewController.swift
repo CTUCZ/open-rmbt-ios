@@ -442,14 +442,21 @@ class RMBTSettingsViewController: UITableViewController {
                     mailVC.mailComposeDelegate = self
                     self.present(mailVC, animated: true, completion: nil)
                 }
-                case 2: self.openURL(RMBTControlServer.shared.termsAndConditionsURL)
+                case 2:
+                if let tosUrl = RMBTControlServer.shared.termsAndConditions.url,
+                    let url = URL(string: tosUrl) {
+                    self.openURL(url)
+                }
                 default: assert(false, "Invalid row")
             }
         } else if (indexPath.section == RMBTSettingsSection.support.rawValue) {
             switch (indexPath.row) {
             case 0: self.openURL(URL(string: RMBTConfig.RMBT_REPO_URL))
             case 1: self.openURL(URL(string: RMBTConfig.RMBT_DEVELOPER_URL))
-            case 2: self.openURL(RMBTControlServer.shared.termsAndConditionsURL)
+            case 2: if let tosUrl = RMBTControlServer.shared.termsAndConditions.url,
+                       let url = URL(string: tosUrl) {
+                       self.openURL(url)
+                   }
             default: break
             }
         }

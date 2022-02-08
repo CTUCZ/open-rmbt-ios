@@ -28,12 +28,12 @@ final class RMBTTOS: NSObject {
         lastAcceptedVersion = UserDefaults.getTOSVersion()
     }
 
-    @objc var isCurrentVersionAccepted: Bool {
-        return lastAcceptedVersion >= currentVersion // is this correct?
+    func isCurrentVersionAccepted(with settings: SettingsResponse.Settings.TermsAndConditions) -> Bool {
+        return lastAcceptedVersion >= settings.version
     }
 
-    public func acceptCurrentVersion() {
-        lastAcceptedVersion = currentVersion
+    public func acceptCurrentVersion(with settings: SettingsResponse.Settings.TermsAndConditions) {
+        lastAcceptedVersion = settings.version
         UserDefaults.storeTOSVersion(lastAcceptedVersion:lastAcceptedVersion)
     }
 }

@@ -66,8 +66,10 @@ class RMBTTOSViewController: UIViewController {
         
         self.navigationItem.titleView = titleLabel
         
-        guard let path = String.termsUrl else { return }
-        let url = URL(fileURLWithPath: path)
+        guard let path = RMBTControlServer.shared.termsAndConditions.url,
+            let url = URL(string: path)
+        else { return }
+        
         webView.load(URLRequest(url: url))
         webView.scrollView.delegate = self
         bottomConstraint.constant = -300
@@ -76,7 +78,7 @@ class RMBTTOSViewController: UIViewController {
     }
     
     @IBAction private func agree(_ sender: Any) {
-        RMBTTOS.shared.acceptCurrentVersion()
+        RMBTTOS.shared.acceptCurrentVersion(with: RMBTControlServer.shared.termsAndConditions)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -112,27 +114,28 @@ class RMBTTOSViewController: UIViewController {
 }
 
 extension RMBTTOSViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        var action: WKNavigationActionPolicy?
-        defer {
-            decisionHandler(action ?? .cancel)
-        }
-
-        guard let url = navigationAction.request.url else { return }
-        
-        guard let scheme: String = url.scheme else {
-            return
-        }
-        if scheme == "file" {
-            action = .allow
-        } else if scheme == "mailto" {
-            // TODO: Open compose dialog
-            action = .cancel
-        } else {
-            guard let url = navigationAction.request.url else { return }
-            self.openURL(url)
-        }
-    }
+//    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+//        var action: WKNavigationActionPolicy?
+//        defer {
+//            decisionHandler(action ?? .cancel)
+//        }
+//
+//        guard let url = navigationAction.request.url else { return }
+//        
+//        guard let scheme: String = url.scheme else {
+//            return
+//        }
+//        if scheme == "file" {
+//            action = .allow
+//        } else if scheme == "mailto" {
+//            // TODO: Open compose dialog
+//            action = .cancel
+//        } else {
+//            guard let url = navigationAction.request.url else { return }
+//            self.openURL(url)
+//        }
+//        
+//    }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         print(error)
