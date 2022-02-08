@@ -421,8 +421,12 @@ class RMBTSettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == RMBTSettingsSection.general.rawValue) {
+            var index = 1
+            if (RMBTSettings.shared.qosEnabled) {
+                index += 1
+            }
             switch (indexPath.row) {
-                case 1:
+                case index:
                 if let url = URL(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
