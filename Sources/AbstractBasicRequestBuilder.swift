@@ -44,7 +44,7 @@ class AbstractBasicRequestBuilder {
         basicRequest.previousTestStatus = RMBTSettings.shared.previousTestStatus ?? RMBTTestStatus.None.rawValue
         basicRequest.softwareRevision = RMBTHelpers.RMBTBuildInfoString()
         basicRequest.softwareVersion = infoDictionary["CFBundleShortVersionString"] as? String
-        basicRequest.softwareVersionCode = infoDictionary["CFBundleVersion"] as? Int
+        basicRequest.softwareVersionCode = Int(infoDictionary["CFBundleVersion"] as? String ?? "0")
 
         basicRequest.timezone = TimeZone.current.identifier
     }

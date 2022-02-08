@@ -32,6 +32,8 @@ class BasicRequestBuilder: AbstractBasicRequestBuilder {
         basicRequest.plattform = "iOS"
         basicRequest.clientType = "MOBILE"
         
+//        guard let infoDictionary = Bundle.main.infoDictionary else { return }
+        
 //        basicRequest.previousTestStatus = RMBTSettings.shared.previousTestStatus ?? RMBTTestStatus.None.rawValue
 //        basicRequest.softwareRevision = RMBTBuildInfoString()
 //        basicRequest.softwareVersion = infoDictionary["CFBundleShortVersionString"] as? String

@@ -150,17 +150,21 @@ class RMBTIntroViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
         
-        let tos = RMBTTOS.shared
-        // If user hasn't agreed to new TOS version, show TOS modally
-        if (!tos.isCurrentVersionAccepted) {
-            Log.logger.debug("Current TOS version \(tos.currentVersion) > last accepted version \(tos.lastAcceptedVersion), showing dialog")
-            self.performSegue(withIdentifier: showTosSegue, sender: self)
-        }
-        
         currentView.updateLoopModeUI()
         self.updateOrientation(to: UIApplication.shared.windowSize)
         
         NotificationCenter.default.addObserver(self, selector: #selector(forceUpdateNetwork(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        RMBTControlServer.shared.updateWithCurrentSettings { [weak self] in
+            guard let self = self else { return }
+            
+            let tos = RMBTTOS.shared
+            // If user hasn't agreed to new TOS version, show TOS modally
+            if (!tos.isCurrentVersionAccepted(with: RMBTControlServer.shared.termsAndConditions)) {
+                Log.logger.debug("Current TOS version \(RMBTControlServer.shared.termsAndConditions.version) > last accepted version \(tos.lastAcceptedVersion), showing dialog")
+                self.performSegue(withIdentifier: self.showTosSegue, sender: self)
+            }
+        } error: {_ in }
     }
     
     @objc func forceUpdateNetwork(_ sender: Any) {
@@ -197,6 +201,10 @@ class RMBTIntroViewController: UIViewController {
     }
     
     private func ipV4PopupInfo(with connectivityInfo: ConnectivityInfo, tintColor: UIColor) -> RMBTPopupInfo {
+        if connectivityInfo.ipv4.externalIp == nil {
+            let popupInfo = RMBTPopupInfo(with: .ipv4Icon, tintColor: tintColor, style: .list, values: [ ])
+            return popupInfo
+        }
         let popupInfo = RMBTPopupInfo(with: .ipv4Icon, tintColor: tintColor, style: .line, values: [
             RMBTPopupInfo.Value(title: .localIP, value: connectivityInfo.ipv4.internalIp ?? ""),
             RMBTPopupInfo.Value(title: .externalIP, value: connectivityInfo.ipv4.externalIp ?? ""),
@@ -212,8 +220,7 @@ class RMBTIntroViewController: UIViewController {
     }
     
     private func ipV6PopupInfo(with connectivityInfo: ConnectivityInfo, tintColor: UIColor) -> RMBTPopupInfo {
-        if connectivityInfo.ipv6.internalIp == nil,
-           connectivityInfo.ipv6.externalIp == nil {
+        if connectivityInfo.ipv6.externalIp == nil {
             let popupInfo = RMBTPopupInfo(with: .ipv6Icon, tintColor: tintColor, style: .list, values: [ ])
             return popupInfo
         }

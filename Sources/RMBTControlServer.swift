@@ -26,7 +26,12 @@ public typealias HistoryFilterType = [String: [String]]
     public var statsURL: URL? = URL(string: RMBTHelpers.RMBTLocalize(urlString: RMBTConfig.RMBT_STATS_URL))
     public var mapServerURL: URL?
     
-    public var termsAndConditionsURL: URL? = URL(string: RMBTHelpers.RMBTLocalize(urlString: RMBTConfig.RMBT_PRIVACY_TOS_URL))
+    public lazy var termsAndConditions: SettingsResponse.Settings.TermsAndConditions = {
+        let settings = SettingsResponse.Settings.TermsAndConditions()
+        settings.url = RMBTHelpers.RMBTLocalize(urlString: RMBTConfig.RMBT_PRIVACY_TOS_URL)
+        settings.version = RMBTTOS.shared.lastAcceptedVersion
+        return settings
+    }()
     
     public var ipv4: URL?
     public var ipv6: URL?
@@ -39,7 +44,7 @@ public typealias HistoryFilterType = [String: [String]]
     @objc public var historyFilters: HistoryFilterType?
     public var openTestBaseURL: String?
     
-    private var settings: SettingsReponse.Settings?
+    private var settings: SettingsResponse.Settings?
     
     @objc public var qosTestNames: [AnyHashable: String] {
         return QosMeasurementType.localizedNameDict //settings?.qosMeasurementTypes?.map { $0.testDesc ?? "Unknown" } ?? []
@@ -62,7 +67,7 @@ extension RMBTControlServer {
             settingsRequest.termsAndConditionsAccepted_Version = RMBTTOS.shared.lastAcceptedVersion
             settingsRequest.uuid = uuid
 
-            let success: (_ response: SettingsReponse) -> () = { response in
+            let success: (_ response: SettingsResponse) -> () = { response in
                 Log.logger.debug("settings: \(response)")
                 
                 if let set = response.settings?.first {
@@ -124,9 +129,8 @@ extension RMBTControlServer {
                         self.checkIpv6 = url
                     }
                     
-                    if let tos = set.termsAndConditionsUrl,
-                       let url = URL(string: tos) {
-                        self.termsAndConditionsURL = url
+                    if let tos = set.termsAndConditions {
+                        self.termsAndConditions = tos
                     }
                 }
                 
@@ -217,6 +221,8 @@ extension RMBTControlServer {
         }
         ensureClientUuid { uuid in
             let newsRequest = NewsRequest(with: Int64(self.lastNewsUid))
+            newsRequest.uuid = uuid
+            BasicRequestBuilder.addBasicRequestValues(newsRequest)
             self.request(.post, path: "/news", requestObject: newsRequest, success: successBlock, error: error)
         } error: { error in }
     }

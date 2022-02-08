@@ -361,7 +361,7 @@ public class SpeedMeasurementResponse_Old: BasicResponse {
 //}
 
 ///
-public class SettingsReponse: BasicResponse {
+public class SettingsResponse: BasicResponse {
     
     ///
     var settings: [Settings]?
@@ -376,7 +376,7 @@ public class SettingsReponse: BasicResponse {
     
     ///
     open class Settings: Mappable {
-        var termsAndConditionsUrl: String?
+        var termsAndConditions: TermsAndConditions?
         var uuid: String?
         var history: HistoryFilterType?
         var urls: UrlSettings?
@@ -414,7 +414,7 @@ public class SettingsReponse: BasicResponse {
         
         ///
         public func mapping(map: Map) {
-            termsAndConditionsUrl <- map["terms_and_conditions.url"]
+            termsAndConditions <- map["terms_and_conditions"]
             uuid <- map["uuid"]
             history <- map["history"]
             qosMeasurementTypes <- map["qostesttype_desc"]
@@ -528,7 +528,7 @@ public class SettingsReponse: BasicResponse {
             }
         }
         
-        class QOSTestTypes:Mappable {
+        class QOSTestTypes: Mappable {
             var testDesc: String?
             var testType: String?
 
@@ -543,6 +543,20 @@ public class SettingsReponse: BasicResponse {
             
             var description: String {
                 return "Test Type: \(String(describing: testType)), with Description: \(String(describing: testDesc))"
+            }
+        }
+        
+        open class TermsAndConditions: Mappable {
+            var url: String?
+            var version: Int = RMBTConfig.RMBT_TOS_VERSION
+
+            init() { }
+
+            required public init?(map: Map) { }
+
+            public func mapping(map: Map) {
+                url <- map["url"]
+                version <- map["version"]
             }
         }
     }

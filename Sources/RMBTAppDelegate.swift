@@ -47,23 +47,25 @@ final class RMBTAppDelegate: UIResponder, UIApplicationDelegate {
     private func onStart(_ isLaunched: Bool) {
         Log.logger.debug("App started")
         NetworkReachability.shared.startMonitoring()
-        RMBTControlServer.shared.updateWithCurrentSettings {} error: { _ in }
+        RMBTControlServer.shared.updateWithCurrentSettings { [weak self] in
+            let tos = RMBTTOS.shared
+            
+            if tos.isCurrentVersionAccepted(with: RMBTControlServer.shared.termsAndConditions) {
+                self?.checkNews()
+            } else {
+                // TODO: Remake it
+                tos.bk_addObserver(forKeyPath: "lastAcceptedVersion") { [weak self] sender in
+                    Log.logger.debug("TOS accepted, checking news...")
+                    self?.checkNews()
+                }
+            }
+        } error: {  _ in
+            
+        }
 
         // If user has authorized location services, we should start tracking location now, so that when test starts,
         // we already have a more accurate location
         _ = RMBTLocationTracker.shared.startIfAuthorized()
-        
-        let tos = RMBTTOS.shared
-        
-        if tos.isCurrentVersionAccepted {
-            checkNews()
-        } else {
-            // TODO: Remake it
-            tos.bk_addObserver(forKeyPath: "lastAcceptedVersion") { [weak self] sender in
-                Log.logger.debug("TOS accepted, checking news...")
-                self?.checkNews()
-            }
-        }
     }
     
     private func checkNews() {
