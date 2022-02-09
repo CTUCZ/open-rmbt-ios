@@ -90,15 +90,33 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         }
     }
     
+    var pingColor: UIColor = UIColor.white {
+        didSet {
+            self.currentView.pingColor = pingColor
+        }
+    }
+    
     var ping: String? {
         didSet {
             self.currentView.ping = ping
         }
     }
     
+    var downColor: UIColor = UIColor.white {
+        didSet {
+            self.currentView.downColor = downColor
+        }
+    }
+    
     var down: String? {
         didSet {
             self.currentView.down = down
+        }
+    }
+    
+    var upColor: UIColor = UIColor.white {
+        didSet {
+            self.currentView.upColor = upColor
         }
     }
     
@@ -256,6 +274,9 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         self.currentView.ping = self.ping
         self.currentView.down = self.down
         self.currentView.up = self.up
+        self.currentView.pingColor = self.pingColor
+        self.currentView.downColor = self.downColor
+        self.currentView.upColor = self.upColor
         self.currentView.isInfoCollapsed = self.isInfoCollapsed
         self.currentView.isQOSState = self.isQOSState
         self.currentView.currentTest = self.loopModeInfo?.current ?? 0
@@ -370,8 +391,10 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     func updateSpeedLabel(for phase: RMBTTestRunnerPhase, withSpeed kbps: UInt32, isFinal: Bool) {
         self.isShowSpeedSuffix = false
         if phase == .down {
+            self.downColor = .byResultClass(RMBTHelpers.RMBTDownClassification(with: Double(kbps)))
             self.down = RMBTSpeedMbpsString(Double(kbps), withMbps: true)
         } else {
+            self.upColor = .byResultClass(RMBTHelpers.RMBTUpClassification(with: Double(kbps)))
             self.up = RMBTSpeedMbpsString(Double(kbps), withMbps: true)
         }
         self.speed = kbps
@@ -587,6 +610,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     func onTestFinishedPhase(_ phase: RMBTTestRunnerPhase) { }
     
     func onTestMeasuredLatency(_ nanos: UInt64) {
+        self.pingColor = .byResultClass(RMBTHelpers.RMBTPingClassification(with: Int64(nanos)))
         self.currentView.ping = RMBTHelpers.RMBTMillisecondsString(with: Int64(nanos), withMS: true)
     }
     

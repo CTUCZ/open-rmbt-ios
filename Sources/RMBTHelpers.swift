@@ -135,13 +135,50 @@ class RMBTHelpers: NSObject {
         return appName;
     }
 
-    @objc static func RMBTMillisecondsString(with nanos: Int64, withMS: Bool) -> String {
+    static func RMBTMillisecondsString(with nanos: Int64, withMS: Bool) -> String {
         let ms = NSNumber(value: Double(nanos) * 1.0e-6)
         guard let string = RMBTFormatNumber(ms) else { return ""}
         if (withMS) {
             return "\(string) ms"
         }
         return string
+    }
+    
+    static func RMBTPingClassification(with nanos: Int64) -> Int {
+        let ms = Double(nanos) * 1.0e-6
+        if ms <= 10.0 {
+            return 4
+        } else if ms <= 25.0 {
+            return 3
+        } else if ms <= 75 {
+            return 2
+        } else {
+            return 1
+        }
+    }
+    
+    static func RMBTUpClassification(with speed: Double) -> Int {
+        if speed >= 10000 {
+            return 4
+        } else if speed >= 1000 {
+            return 3
+        } else if speed >= 500 {
+            return 2
+        } else {
+            return 1
+        }
+    }
+    
+    static func RMBTDownClassification(with speed: Double) -> Int {
+        if speed >= 30000 {
+            return 4
+        } else if speed >= 2000 {
+            return 3
+        } else if speed >= 1000 {
+            return 2
+        } else {
+            return 1
+        }
     }
 
     @objc static func RMBTSecondsString(with nanos: Int64) -> String {

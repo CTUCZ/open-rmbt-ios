@@ -47,8 +47,11 @@ class RMBTTestPortraitView: UIView, XibLoadable {
     @IBOutlet weak var progressGaugePlaceholderView: UIImageView!
 
     // Results
+    @IBOutlet weak var pingIconImageView: UIImageView!
     @IBOutlet weak var pingResultLabel: UILabel!
+    @IBOutlet weak var downIconImageView: UIImageView!
     @IBOutlet weak var downResultLabel: UILabel!
+    @IBOutlet weak var upIconImageView: UIImageView!
     @IBOutlet weak var upResultLabel: UILabel!
 
     // Speed chart
@@ -168,15 +171,33 @@ class RMBTTestPortraitView: UIView, XibLoadable {
         }
     }
     
+    var pingColor: UIColor = UIColor.white {
+        didSet {
+            self.pingIconImageView.tintColor = pingColor
+        }
+    }
+    
     var ping: String? {
         didSet {
             self.pingResultLabel.text = ping
         }
     }
     
+    var downColor: UIColor = UIColor.white {
+        didSet {
+            self.downIconImageView.tintColor = downColor
+        }
+    }
+    
     var down: String? {
         didSet {
             self.downResultLabel.text = down
+        }
+    }
+    
+    var upColor: UIColor = UIColor.white {
+        didSet {
+            self.upIconImageView.tintColor = upColor
         }
     }
     
@@ -296,6 +317,9 @@ class RMBTTestPortraitView: UIView, XibLoadable {
         self.ping = "-"
         self.down = "-"
         self.up = "-"
+        self.upColor = UIColor.white
+        self.downColor = UIColor.white
+        self.pingColor = UIColor.white
 
         self.arrowImageView.image = nil
 

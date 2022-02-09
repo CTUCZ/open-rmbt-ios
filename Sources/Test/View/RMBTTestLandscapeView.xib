@@ -495,6 +495,7 @@
                 <outlet property="counterLabel" destination="5Uc-B3-NBb" id="aIG-5C-owJ"/>
                 <outlet property="counterView" destination="Rm4-3Y-Uxe" id="Y7z-PS-s1S"/>
                 <outlet property="detailTestView" destination="cqL-FH-5V7" id="6UW-cL-3Tf"/>
+                <outlet property="downIconImageView" destination="nKY-Lg-8Jk" id="muQ-Op-esn"/>
                 <outlet property="downResultLabel" destination="4kc-C1-V2g" id="Y7m-lu-2C0"/>
                 <outlet property="infoTitleHeightConstraint" destination="5gp-9y-crP" id="osG-b3-YnH"/>
                 <outlet property="infoTitleView" destination="XLw-Xr-akL" id="f1w-Iw-e26"/>
@@ -510,6 +511,7 @@
                 <outlet property="networkNameLabel" destination="aNh-rH-2Mj" id="kUV-gX-7kw"/>
                 <outlet property="networkTechnologyImageView" destination="apV-CG-0ul" id="Uan-9H-hk6"/>
                 <outlet property="networkTypeImageView" destination="0NP-Sa-HQI" id="3SQ-OI-V1a"/>
+                <outlet property="pingIconImageView" destination="f3W-QH-SKD" id="xsv-n1-789"/>
                 <outlet property="pingResultLabel" destination="oh4-SD-lOB" id="nz4-E3-Ho8"/>
                 <outlet property="progressGaugePlaceholderView" destination="OVe-gJ-LZa" id="aHx-1i-3b9"/>
                 <outlet property="progressLabel" destination="oWL-Xy-LvL" id="h3P-w0-iB7"/>
@@ -523,6 +525,7 @@
                 <outlet property="statusLabel" destination="Q3Z-vK-5Wh" id="mL6-WH-hQE"/>
                 <outlet property="technologyTitleLabel" destination="Keq-Rl-3So" id="VTe-Ki-cG0"/>
                 <outlet property="technologyValueLabel" destination="LcP-0S-akf" id="CjQ-Ac-Xg1"/>
+                <outlet property="upIconImageView" destination="PyO-5e-oCP" id="69O-4c-HqP"/>
                 <outlet property="upResultLabel" destination="vcY-Sx-cwb" id="tBt-od-V8S"/>
             </connections>
             <point key="canvasLocation" x="139" y="-532"/>
