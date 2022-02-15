@@ -50,8 +50,6 @@ class RMBTSettingsViewController: UITableViewController {
     @IBOutlet weak var testCounterLabel: UILabel!
     @IBOutlet weak var buildDetailsLabel: UILabel!
     @IBOutlet weak var developerNameLabel: UILabel!
-    
-    @IBOutlet weak var locationSwitcher: UISwitch!
 
     weak var delegate: RMBTSettingsViewControllerDelegate?
 
@@ -216,10 +214,12 @@ class RMBTSettingsViewController: UITableViewController {
         self.generalSettings = []
         self.generalSettings.append(IndexPath(row: 0, section: RMBTSettingsSection.general.rawValue))
         
-        if (RMBTSettings.shared.qosEnabled) {
+        if RMBTSettings.shared.qosEnabled {
             self.generalSettings.append(IndexPath(row: 1, section: RMBTSettingsSection.general.rawValue))
         }
-        self.generalSettings.append(IndexPath(row: 2, section: RMBTSettingsSection.general.rawValue))
+        if !RMBTLocationTracker.isAuthorized() {
+            self.generalSettings.append(IndexPath(row: 2, section: RMBTSettingsSection.general.rawValue))
+        }
     }
    
     func prepareAdvancedSettings() {
@@ -302,7 +302,8 @@ class RMBTSettingsViewController: UITableViewController {
     }
     
     @objc func updateLocationState(_ sender: Any) {
-        self.locationSwitcher.setOn(RMBTLocationTracker.isAuthorized(), animated: false)
+        self.prepareGeneralSettings()
+        self.tableView.reloadData()
     }
     
     @IBAction func declineLoopModeConfirmation(_ segue: UIStoryboardSegue) {

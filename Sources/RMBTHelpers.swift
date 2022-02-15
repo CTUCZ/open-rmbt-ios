@@ -199,7 +199,7 @@ class RMBTHelpers: NSObject {
     }
 
     @objc static func RMBTBuildDateString() -> String {
-        return buildDate;
+        return buildDate
     }
 }
 

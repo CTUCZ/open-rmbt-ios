@@ -368,7 +368,8 @@
 
 "preferences_general_settings" = "General settings";
 "preferences_advanced_settings" = "Advanced settings";
-"preferences_location" = "Location";
+"preferences_location" = "Enable Location";
+"preferences_location_summary" = "Location is currently disabled, you can enable it by this link in the system settings";
 "preferences_ipv4_only" = "IPv4 only";
 "preferences_skip_qos" = "QoS measurement";
 "preferences_expert_mode" = "Expert mode";
