@@ -27,8 +27,9 @@ protocol RMBTBaseTestViewControllerSubclass: AnyObject {
     func onTestMeasuredDownloadSpeed(_ kbps: UInt32)
     func onTestMeasuredUploadSpeed(_ kbps: UInt32)
 
-    func onTestStartedQoS(with groups: [RMBTQoSTestGroup])
+    func onTestStartedQoS(with groups: [RMBTQoSTestGroup], and tests: [RMBTQoSTest])
     func onTestUpdatedProgress(_ progress: Float, in group: RMBTQoSTestGroup)
+    func onTestUpdatedProgress(_ testProgress: Float, for test: RMBTQoSTest, in group: RMBTQoSTestGroup)
     
     func onTestCompleted(with result: RMBTHistoryResult!, qos qosPerformed: Bool)
     func onTestCancelled(with reason: RMBTTestRunnerCancelReason)
@@ -190,7 +191,7 @@ class RMBTBaseTestViewController: UIViewController {
     }
 }
 
-extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {    
+extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {
     func testRunnerDidStart(_ phase: RMBTTestRunnerPhase) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         
@@ -244,6 +245,11 @@ extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {
         subself.onTestUpdatedTotalProgress(UInt(totalPercentage), gaugeProgress: UInt( totalGaugePercentage))
     }
     
+    func testRunnerQoSGroup(_ group: RMBTQoSTestGroup, didUpdateProgress progress: Float, in test: RMBTQoSTest) {
+        guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
+        subself.onTestUpdatedProgress(progress, for: test, in: group)
+    }
+    
     func testRunnerDidMeasureThroughputs(_ throughputs: [RMBTThroughput], in phase: RMBTTestRunnerPhase) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         subself.onTestMeasuredTroughputs(throughputs, in: phase)
@@ -270,9 +276,9 @@ extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {
         subself.onTestCancelled(with: cancelReason)
     }
     
-    func testRunnerQoSDidStartWithGroups(_ groups: [RMBTQoSTestGroup]) {
+    func testRunnerQoSDidStartWithGroups(_ groups: [RMBTQoSTestGroup], _ tests: [RMBTQoSTest]) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
-        subself.onTestStartedQoS(with: groups)
+        subself.onTestStartedQoS(with: groups, and: tests)
     }
     
     func testRunnerQoSGroup(_ group: RMBTQoSTestGroup, didUpdateProgress progress: Float) {

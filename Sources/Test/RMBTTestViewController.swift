@@ -313,8 +313,6 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
         
-        self.isQOSState = false
-
         // Only clear connectivity and location labels once at start to avoid blinking during test restart
         self.networkName = ""
         self.networkType = "-"
@@ -351,6 +349,8 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         self.currentView.clearValues()
         self.currentView.currentTest = self.loopModeInfo?.current ?? 0
         self.currentView.totalTests = self.loopModeInfo?.total ?? 0
+        
+        self.isQOSState = false
         
         if let info = self.loopModeInfo {
             super.startTest(with: info.params)
@@ -642,7 +642,8 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         self.updateSpeedLabel(for: .up, withSpeed: kbps, isFinal: true)
     }
     
-    func onTestStartedQoS(with groups: [RMBTQoSTestGroup]) {
+    func onTestStartedQoS(with groups: [RMBTQoSTestGroup], and tests: [RMBTQoSTest]) {
+        self.qosProgressViewController.tests = tests
         self.qosProgressViewController.testGroups = groups
         self.qosCounterText = self.qosProgressViewController.progressString()
         self.state = .qos
@@ -651,6 +652,10 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     
     func onTestUpdatedProgress(_ progress: Float, in group: RMBTQoSTestGroup) {
         self.qosProgressViewController.update(progress, for: group)
+        self.qosCounterText = self.qosProgressViewController.progressString()
+    }
+    
+    func onTestUpdatedProgress(_ testProgress: Float, for test: RMBTQoSTest, in group: RMBTQoSTestGroup) {
         self.qosCounterText = self.qosProgressViewController.progressString()
     }
     

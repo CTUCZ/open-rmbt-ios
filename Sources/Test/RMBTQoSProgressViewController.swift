@@ -22,6 +22,8 @@ class RMBTQoSProgressViewController: UITableViewController {
         }
     }
     
+    var tests: [RMBTQoSTest] = []
+    
     func update(_ progress: Float, for group: RMBTQoSTestGroup) {
         if let index = self.testGroups.firstIndex(of: group) {
             progressForGroupKey[group.key] = progress
@@ -36,10 +38,10 @@ class RMBTQoSProgressViewController: UITableViewController {
     }
     
     func progressString() -> String {
-        let total = self.testGroups.count
+        let total = self.tests.count
         var finished = 0
-        for g in self.testGroups {
-            if (progressForGroupKey[g.key] == 1.0) {
+        for t in self.tests {
+            if (t.progress.fractionCompleted == 1.0) {
                 finished += 1
             }
         }
