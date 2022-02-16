@@ -99,6 +99,7 @@ final class RMBTLoopModeSettingsViewController: UIViewController {
     }
     
     private func validate() -> Bool {
+        guard !RMBTSettings.shared.isDevModeEnabled else { return true }
         if !RMBTLoopModeSettingsValidator.validateCountTest(for: loopModeInfo) {
             let text = String(format: .pleaseEnterValueBetween, RMBTConfig.RMBT_TEST_LOOPMODE_MIN_COUNT, RMBTConfig.RMBT_TEST_LOOPMODE_MAX_COUNT)
             UIAlertController.presentCancelAlert(title: .invalideCount,
