@@ -53,6 +53,8 @@ class RMBTSettingsViewController: UITableViewController {
 
     weak var delegate: RMBTSettingsViewControllerDelegate?
 
+    private let settings = RMBTSettings.shared
+    
     private var uuid: String?
     
     private var generalSettings: [IndexPath] = []
@@ -93,22 +95,20 @@ class RMBTSettingsViewController: UITableViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
         tapGestureRecognizer.numberOfTapsRequired = 10
         self.buildDetailsLabel.addGestureRecognizer(tapGestureRecognizer)
-        
-        let settings = RMBTSettings.shared
 
         self.bindSwitch(self.forceIPv4Switch, to: #keyPath(RMBTSettings.forceIPv4), onToggle: { value in
-            if (value && settings.debugUnlocked && self.debugForceIPv6Switch.isOn) {
-                settings.debugForceIPv6 = false
+            if (value && self.settings.debugUnlocked && self.debugForceIPv6Switch.isOn) {
+                self.settings.debugForceIPv6 = false
                 self.debugForceIPv6Switch.setOn(false, animated: true)
             }
         })
         
         self.bindSwitch(self.skipQoSSwitch, to: #keyPath(RMBTSettings.qosEnabled), onToggle: { value in
             if (value == false) {
-                settings.only2Hours = false
+                self.settings.only2Hours = false
                 self.only2HoursSwitcher.setOn(false, animated: true)
             } else {
-                settings.only2Hours = true
+                self.settings.only2Hours = true
                 self.only2HoursSwitcher.setOn(true, animated: true)
             }
             self.prepareGeneralSettings()
@@ -117,12 +117,12 @@ class RMBTSettingsViewController: UITableViewController {
         
         self.bindSwitch(self.only2HoursSwitcher, to: #keyPath(RMBTSettings.only2Hours)) { value in
             //Remove previousLaunchQoSDate. We can't set nil, because we will have crash
-            settings.previousLaunchQoSDate = Date(timeIntervalSince1970: 0)
+            self.settings.previousLaunchQoSDate = Date(timeIntervalSince1970: 0)
         }
         
         self.bindSwitch(self.expertModeSwitch, to: #keyPath(RMBTSettings.expertMode)) { value in
             if (value == false) {
-                settings.forceIPv4 = false
+                self.settings.forceIPv4 = false
                 self.forceIPv4Switch.setOn(false, animated: false)
             }
             self.prepareAdvancedSettings()
@@ -132,7 +132,7 @@ class RMBTSettingsViewController: UITableViewController {
         self.bindSwitch(self.loopModeSwitch, to: #keyPath(RMBTSettings.loopMode)) { value in
             if (value) {
                 // forget value in case user terminates the app while in the modal dialog
-                settings.loopMode = false
+                self.settings.loopMode = false
                 self.prepareAdvancedSettings()
                 self.performSegue(withIdentifier: "show_loop_mode_confirmation", sender:self)
             } else {
@@ -141,22 +141,11 @@ class RMBTSettingsViewController: UITableViewController {
             }
         }
 
-        self.bindTextField(self.loopModeWaitTextField,
-                           to: #keyPath(RMBTSettings.loopModeEveryMinutes),
-                           isNumeric: true,
-                           min: Int(settings.debugUnlocked ? 1 : RMBTConfig.RMBT_TEST_LOOPMODE_MIN_DELAY_MINS),
-                           max: Int(settings.debugUnlocked ? Int.max : RMBTConfig.RMBT_TEST_LOOPMODE_MAX_DELAY_MINS))
-        
-        
-        self.bindTextField(self.loopModeDistanceTextField,
-                           to: #keyPath(RMBTSettings.loopModeEveryMeters),
-                           isNumeric: true,
-                           min: Int(settings.debugUnlocked ? 1 : RMBTConfig.RMBT_TEST_LOOPMODE_MIN_MOVEMENT_M),
-                           max: Int(settings.debugUnlocked ? Int.max : RMBTConfig.RMBT_TEST_LOOPMODE_MAX_MOVEMENT_M))
+        rebindLoopModeSettings()
         
         self.bindSwitch(self.debugForceIPv6Switch, to: #keyPath(RMBTSettings.debugForceIPv6)) { value in
             if (value && self.forceIPv4Switch.isOn) {
-                settings.forceIPv4 = false
+                self.settings.forceIPv4 = false
                 self.forceIPv4Switch.setOn(false, animated: true)
             }
         }
@@ -189,11 +178,26 @@ class RMBTSettingsViewController: UITableViewController {
         }
     }
     
+    private func rebindLoopModeSettings() {
+        self.bindTextField(self.loopModeWaitTextField,
+                           to: #keyPath(RMBTSettings.loopModeEveryMinutes),
+                           isNumeric: true,
+                           min: Int(settings.debugUnlocked ? 0 : RMBTConfig.RMBT_TEST_LOOPMODE_MIN_DELAY_MINS),
+                           max: Int(settings.debugUnlocked ? Int.max : RMBTConfig.RMBT_TEST_LOOPMODE_MAX_DELAY_MINS))
+        
+        
+        self.bindTextField(self.loopModeDistanceTextField,
+                           to: #keyPath(RMBTSettings.loopModeEveryMeters),
+                           isNumeric: true,
+                           min: Int(settings.debugUnlocked ? 0 : RMBTConfig.RMBT_TEST_LOOPMODE_MIN_MOVEMENT_M),
+                           max: Int(settings.debugUnlocked ? Int.max : RMBTConfig.RMBT_TEST_LOOPMODE_MAX_MOVEMENT_M))
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Refresh test counter and uuid labels:
-        self.testCounterLabel.text = String(format: "%lu", RMBTSettings.shared.testCounter)
+        self.testCounterLabel.text = String(format: "%lu", settings.testCounter)
         uuid = RMBTControlServer.shared.uuid
         if let uuid = RMBTControlServer.shared.uuid {
             self.uuidLabel.text = "U\(uuid)"
@@ -214,7 +218,7 @@ class RMBTSettingsViewController: UITableViewController {
         self.generalSettings = []
         self.generalSettings.append(IndexPath(row: 0, section: RMBTSettingsSection.general.rawValue))
         
-        if RMBTSettings.shared.qosEnabled {
+        if settings.qosEnabled {
             self.generalSettings.append(IndexPath(row: 1, section: RMBTSettingsSection.general.rawValue))
         }
         if !RMBTLocationTracker.isAuthorized() {
@@ -227,14 +231,14 @@ class RMBTSettingsViewController: UITableViewController {
         
         self.advancedSettings.append(IndexPath(row: 0, section: RMBTSettingsSection.advanced.rawValue))
         
-        if RMBTSettings.shared.loopMode {
+        if settings.loopMode {
             self.advancedSettings.append(IndexPath(row: 1, section: RMBTSettingsSection.advanced.rawValue))
             self.advancedSettings.append(IndexPath(row: 2, section: RMBTSettingsSection.advanced.rawValue))
         }
         
         self.advancedSettings.append(IndexPath(row: 3, section: RMBTSettingsSection.advanced.rawValue))
         
-        if RMBTSettings.shared.expertMode {
+        if settings.expertMode {
             self.advancedSettings.append(IndexPath(row: 4, section: RMBTSettingsSection.advanced.rawValue))
         }
     }
@@ -250,10 +254,10 @@ class RMBTSettingsViewController: UITableViewController {
     // MARK: - Two-way binding helpers
     
     func bindSwitch(_ aSwitch: UISwitch, to settingsKeyPath: String, onToggle: ((_ value: Bool) -> Void)?) {
-        aSwitch.isOn = (RMBTSettings.shared.value(forKey: settingsKeyPath) as? Bool) ?? false
+        aSwitch.isOn = (settings.value(forKey: settingsKeyPath) as? Bool) ?? false
         aSwitch.bk_addEventHandler({ sender in
             guard let sender = sender as? UISwitch else { return }
-            RMBTSettings.shared.setValue(sender.isOn, forKey: settingsKeyPath)
+            self.settings.setValue(sender.isOn, forKey: settingsKeyPath)
             onToggle?(sender.isOn)
         }, for: .valueChanged)
     }
@@ -265,7 +269,29 @@ class RMBTSettingsViewController: UITableViewController {
     func bindTextField(_ aTextField: UITextField, to settingsKeyPath: String, isNumeric: Bool, min: Int, max: Int, onChanged: ((_ value: String?) -> Void)? = nil) {
         var stringValue = ""
         
-        if let val = RMBTSettings.shared.value(forKey: settingsKeyPath) {
+        let block: (_ textField: Any) -> Void = { textField in
+            guard let textField = textField as? UITextField else { return }
+            var value = Int(textField.text ?? "") ?? 0
+            if (isNumeric && (value < min)) {
+                textField.text = String(min)
+                value = min
+            } else if (isNumeric && value > max) {
+                textField.text = String(max)
+                value = max
+            }
+            
+            let newValue: AnyObject?
+            
+            if isNumeric {
+                newValue = value as AnyObject?
+            } else {
+                newValue = textField.text as AnyObject?
+            }
+            self.settings.setValue(newValue, forKey: settingsKeyPath)
+            onChanged?(newValue as? String)
+        }
+        
+        if let val = settings.value(forKey: settingsKeyPath) {
             if isNumeric {
                 stringValue = (val as? NSNumber)?.stringValue ?? ""
             } else {
@@ -273,32 +299,15 @@ class RMBTSettingsViewController: UITableViewController {
             }
         }
         
-        if isNumeric && stringValue == "0" {
+        if isNumeric && stringValue == "0" && min != 0 {
             stringValue = ""
         }
         
         aTextField.text = stringValue
 
         aTextField.bk_removeEventHandlers(for: .editingDidEnd)
-        aTextField.bk_addEventHandler({ textField in
-            guard let textField = textField as? UITextField else { return }
-            let value = Int(textField.text ?? "") ?? 0
-            if (isNumeric && (value < min)) {
-                textField.text = String(min)
-            } else if (isNumeric && value > max) {
-                textField.text = String(max)
-            }
-            
-            let newValue: AnyObject?
-            
-            if isNumeric {
-                newValue = Int(textField.text ?? "") as AnyObject?
-            } else {
-                newValue = textField.text as AnyObject?
-            }
-            RMBTSettings.shared.setValue(newValue, forKey: settingsKeyPath)
-            onChanged?(newValue as? String)
-        }, for: .editingDidEnd)
+        aTextField.bk_addEventHandler(block, for: .editingDidEnd)
+        block(aTextField)
     }
     
     @objc func updateLocationState(_ sender: Any) {
@@ -312,7 +321,7 @@ class RMBTSettingsViewController: UITableViewController {
     }
     
     @IBAction func acceptLoopModeConfirmation(_ segue: UIStoryboardSegue) {
-        RMBTSettings.shared.loopMode = true
+        settings.loopMode = true
         self.prepareAdvancedSettings()
         self.refreshSection(.advanced)
     }
@@ -335,7 +344,7 @@ class RMBTSettingsViewController: UITableViewController {
     // MARK: - Table View
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let lastSectionIndex = RMBTSettings.shared.debugUnlocked ? RMBTSettingsSection.logging : RMBTSettingsSection.support
+        let lastSectionIndex = settings.debugUnlocked ? RMBTSettingsSection.logging : RMBTSettingsSection.support
         return lastSectionIndex.rawValue + 1
     }
     
@@ -357,11 +366,11 @@ class RMBTSettingsViewController: UITableViewController {
         }
         if (section == RMBTSettingsSection.advanced.rawValue) {
             return self.advancedSettings.count
-        } else if (section == RMBTSettingsSection.advanced.rawValue && !RMBTSettings.shared.loopMode) {
+        } else if (section == RMBTSettingsSection.advanced.rawValue && !settings.loopMode) {
             return 1 // hide customization
-        } else if (section == RMBTSettingsSection.debugCustomControlServer.rawValue && !RMBTSettings.shared.debugControlServerCustomizationEnabled) {
+        } else if (section == RMBTSettingsSection.debugCustomControlServer.rawValue && !settings.debugControlServerCustomizationEnabled) {
             return 1 // hide customization
-        } else if (section == RMBTSettingsSection.logging.rawValue && !RMBTSettings.shared.debugLoggingEnabled) {
+        } else if (section == RMBTSettingsSection.logging.rawValue && !settings.debugLoggingEnabled) {
             return 1 // hide customization
         } else {
             return super.tableView(tableView, numberOfRowsInSection: section)
@@ -423,7 +432,7 @@ class RMBTSettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == RMBTSettingsSection.general.rawValue) {
             var index = 1
-            if (RMBTSettings.shared.qosEnabled) {
+            if (settings.qosEnabled) {
                 index += 1
             }
             switch (indexPath.row) {
@@ -499,13 +508,19 @@ class RMBTSettingsViewController: UITableViewController {
 
 extension RMBTSettingsViewController {
     @objc func tapHandler(_ sender: UIGestureRecognizer) {
-        _ = UIAlertController.presentAlertDevCode(nil, codeAction: { (textField) in
-            if textField.text == RMBTConfig.DEV_CODE {
-                RMBTSettings.shared.isDevModeEnabled = !RMBTSettings.shared.isDevModeEnabled
-                RMBTSettings.shared.debugUnlocked = RMBTSettings.shared.isDevModeEnabled
-                RMBTSettings.shared.debugForceIPv6 = false
-                self.tableView.reloadData()
+        _ = UIAlertController.presentAlertDevCode(nil, codeAction: { [weak self] (textField) in
+            guard let self = self else { return }
+            
+            guard textField.text == RMBTConfig.ACTIVATE_DEV_CODE || textField.text == RMBTConfig.DEACTIVATE_DEV_CODE else { return }
+            
+            let isEnable = textField.text == RMBTConfig.ACTIVATE_DEV_CODE
+            self.settings.isDevModeEnabled = isEnable
+            self.settings.debugUnlocked = isEnable
+            if !isEnable {
+                self.settings.debugForceIPv6 = false
             }
+            self.rebindLoopModeSettings()
+            self.tableView.reloadData()
         }, textFieldConfiguration: nil)
     }
     
@@ -519,7 +534,7 @@ extension RMBTSettingsViewController {
     }
     
     @objc func updateLogging() {
-        LogConfig.enableLogging = RMBTSettings.shared.debugLoggingEnabled
+        LogConfig.enableLogging = settings.debugLoggingEnabled
     }
 }
 
