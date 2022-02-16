@@ -10,10 +10,11 @@ import UIKit
 
 @objc protocol RMBTQoSTestRunnerDelegate: AnyObject {
     func qosRunnerDidFail()
-    func qosRunnerDidStart(with testGroups: [RMBTQoSTestGroup])
+    func qosRunnerDidStart(with testGroups: [RMBTQoSTestGroup], tests: [RMBTQoSTest])
 //    func qosRunnerDidFinishTestInGroup(_ group: RMBTQoSTestGroup, groupProgress: Float, totalProgress: Float)
     
     func qosRunnerDidUpdateProgress(_ progress: Float, in group: RMBTQoSTestGroup, totalProgress: Float)
+    func qosRunnerDidUpdateProgress(_ testProgress: Float, test: RMBTQoSTest, in group: RMBTQoSTestGroup)
     
     func qosRunnerDidComplete(with results: [[String: Any]])
 }
@@ -75,6 +76,10 @@ class RMBTQoSTestRunner: NSObject {
                     if let t = g.test(with: params) {
                         tests.append(t)
                         groupTestsProgress.append(t.progress)
+                        t.progress.onFractionCompleteChange = { [weak self] p in
+                            guard let self = self else { return }
+                            self.delegate?.qosRunnerDidUpdateProgress(p, test: t, in: g)
+                        }
                     }
                 }
                     
@@ -118,7 +123,7 @@ class RMBTQoSTestRunner: NSObject {
                 }
             }
             
-            self.delegate?.qosRunnerDidStart(with: groups)
+            self.delegate?.qosRunnerDidStart(with: groups, tests: tests)
 
             self.enqueue()
         } error: { error in

@@ -50,8 +50,9 @@ protocol RMBTTestRunnerDelegate: AnyObject {
     func testRunnerDidCancelTestWithReason(_ cancelReason: RMBTTestRunnerCancelReason)
     
     // QoS-related
-    func testRunnerQoSDidStartWithGroups(_ groups: [RMBTQoSTestGroup])
+    func testRunnerQoSDidStartWithGroups(_ groups: [RMBTQoSTestGroup], _ tests: [RMBTQoSTest])
     func testRunnerQoSGroup(_ group: RMBTQoSTestGroup, didUpdateProgress progress: Float)
+    func testRunnerQoSGroup(_ group: RMBTQoSTestGroup, didUpdateProgress progress: Float, in test: RMBTQoSTest)
 }
 
 class RMBTTestRunner: NSObject {
@@ -818,11 +819,11 @@ extension RMBTTestRunner: RMBTQoSTestRunnerDelegate {
         self.qosRunnerDidComplete(with: [])
     }
     
-    func qosRunnerDidStart(with testGroups: [RMBTQoSTestGroup]) {
+    func qosRunnerDidStart(with testGroups: [RMBTQoSTestGroup], tests: [RMBTQoSTest]) {
         Log.logger.debug("Started QoS with groups: \(testGroups)")
         qosTestStartedAtNanos = RMBTHelpers.RMBTCurrentNanos()
         DispatchQueue.main.async {
-            self.delegate?.testRunnerQoSDidStartWithGroups(testGroups)
+            self.delegate?.testRunnerQoSDidStartWithGroups(testGroups, tests)
         }
     }
     
@@ -831,6 +832,12 @@ extension RMBTTestRunner: RMBTQoSTestRunnerDelegate {
         DispatchQueue.main.async {
             self.delegate?.testRunnerDidUpdateProgress(totalProgress, in: .qos)
             self.delegate?.testRunnerQoSGroup(group, didUpdateProgress: progress)
+        }
+    }
+    
+    func qosRunnerDidUpdateProgress(_ testProgress: Float, test: RMBTQoSTest, in group: RMBTQoSTestGroup) {
+        DispatchQueue.main.async {
+            self.delegate?.testRunnerQoSGroup(group, didUpdateProgress: testProgress, in: test)
         }
     }
     

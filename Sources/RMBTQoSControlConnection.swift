@@ -88,7 +88,6 @@ class RMBTQoSControlConnection: NSObject {
     }
     
     func close() {
-        assert(currentCommand == nil)
         state = .disconnecting
         socket.disconnect()
     }

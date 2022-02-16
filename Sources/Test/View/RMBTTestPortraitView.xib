@@ -109,16 +109,16 @@
                     <rect key="frame" x="0.0" y="669" width="414" height="193"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rm4-3Y-Uxe">
-                            <rect key="frame" x="346.5" y="16" width="51.5" height="16"/>
+                            <rect key="frame" x="353" y="16" width="45" height="16"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Uc-B3-NBb">
-                                    <rect key="frame" x="0.0" y="0.5" width="18.5" height="15"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-/-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Uc-B3-NBb">
+                                    <rect key="frame" x="0.0" y="0.5" width="12" height="15"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                     <color key="textColor" red="0.94901960780000005" green="0.95294117649999999" blue="0.96078431369999995" alpha="0.57999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8f-ch-XdN" customClass="RMBTLoaderView" customModule="RMBT" customModuleProvider="target">
-                                    <rect key="frame" x="35.5" y="0.0" width="16" height="16"/>
+                                    <rect key="frame" x="29" y="0.0" width="16" height="16"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="16" id="XZA-T0-8s2"/>
