@@ -63,9 +63,8 @@ class RMBTQoSWebTest: RMBTQoSTest {
 
         DispatchQueue.main.sync {
             self.webView?.stopLoading()
+            self.webView = nil
         }
-        
-        self.webView = nil
     }
     
     func maybeDone() {
