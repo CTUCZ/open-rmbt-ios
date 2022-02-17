@@ -18,7 +18,7 @@ import CoreLocation
 
 final class RMBTTestViewController: RMBTBaseTestViewController {
     private let actionsSegue = "actions_segue"
-    private var locationTracker: RMBTLocationTracker?
+    private var locationTracker = RMBTLocationTracker()
     
     enum State {
         case test
@@ -340,6 +340,8 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     @objc func startTest() {
+        self.startDate = Date()
+        self.lastTestFirstGoodLocation = self.locationTracker.location
         self.loopModeInfo?.increment()
         
         self.state = .test
@@ -353,6 +355,9 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         self.isQOSState = false
         
         if let info = self.loopModeInfo {
+            _ = self.locationTracker.startIfAuthorized()
+            // Start monitoring location changes
+            NotificationCenter.default.addObserver(self, selector: #selector(locationsDidChange(_:)), name: NSNotification.Name.RMBTLocationTracker, object: nil)
             super.startTest(with: info.params)
         } else {
             super.startTest(with: nil)
@@ -447,8 +452,8 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     
     var movementReached: Bool = false
     var durationReached: Bool = false
-    var lastTestFirstGoodLocation: CLLocation?
     
+    var lastTestFirstGoodLocation: CLLocation?
     var startDate: Date?
     
     var timer: Timer?
@@ -460,8 +465,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
             timer?.invalidate()
             timer = nil
         }
-        locationTracker?.stop()
-        locationTracker = nil
+        locationTracker.stop()
         lastTestFirstGoodLocation = nil
         startDate = nil
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.RMBTLocationTracker, object: nil)
@@ -498,14 +502,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     private func startWaitingNextTest() {
-        // Start monitoring location changes
-        NotificationCenter.default.addObserver(self, selector: #selector(locationsDidChange(_:)), name: NSNotification.Name.RMBTLocationTracker, object: nil)
-        locationTracker = RMBTLocationTracker()
-        _ = locationTracker?.startIfAuthorized()
-        
-        self.startDate = Date()
         timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
-        
     }
     
     @objc private func locationsDidChange(_ notification: Notification) {
