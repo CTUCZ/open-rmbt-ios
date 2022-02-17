@@ -56,6 +56,7 @@ protocol RMBTTestRunnerDelegate: AnyObject {
 }
 
 class RMBTTestRunner: NSObject {
+    private let delayForPresentationGraphs: TimeInterval = 2
     private static let RMBTQosSkipTimeInterval: Double = 60 * 60 * 2 //2 hours
     private static let RMBTTestRunnerProgressUpdateInterval = 0.1 //seconds
     
@@ -76,8 +77,14 @@ class RMBTTestRunner: NSObject {
             }
 
             if (phase != .none) {
-                DispatchQueue.main.async {
-                    self.delegate?.testRunnerDidStart(self.phase)
+                if oldValue == .down || oldValue == .up {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + delayForPresentationGraphs, execute: {
+                        self.delegate?.testRunnerDidStart(self.phase)
+                    })
+                } else {
+                    DispatchQueue.main.async {
+                        self.delegate?.testRunnerDidStart(self.phase)
+                    }
                 }
             }
         }
