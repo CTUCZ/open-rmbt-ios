@@ -582,6 +582,7 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
                 }
             } // else discard the received data
 
+            Log.logger.debug("Download bytes count \(data.count) ns \(elapsedNanos) thread \(self.index).....")
             delegate?.testWorker(self, didDownloadLength: UInt64(data.count), atNanos: elapsedNanos)
 
             if finished {
@@ -712,6 +713,7 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
                 ns += Int64(testUploadOffsetNanos)
 
                 // Did upload
+                Log.logger.debug("Update bytes count \(bytes) ns \(ns) thread \(self.index).....")
                 if bytes > 0 {
                     delegate?.testWorker(self, didUploadLength: UInt64(bytes) - testUploadLastUploadLength, atNanos: UInt64(ns))
                     testUploadLastUploadLength = UInt64(bytes)
