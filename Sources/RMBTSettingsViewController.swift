@@ -278,6 +278,8 @@ class RMBTSettingsViewController: UITableViewController {
             } else if (isNumeric && value > max) {
                 textField.text = String(max)
                 value = max
+            } else if isNumeric {
+                textField.text = String(value)
             }
             
             let newValue: AnyObject?
