@@ -157,8 +157,13 @@ extension RMBTControlServer {
         } else {
             baseUrl = RMBTConfig.shared.RMBT_CONTROL_SERVER_URL
         }
-        uuidKey = "\(storeUUIDKey)\(URL(string: baseUrl)!.host!)"
         
+        
+        guard let url = URL(string: baseUrl),
+           let host = url.host else { failure(nil); return }
+        
+        uuidKey = "\(storeUUIDKey)\(host)"
+
         if self.uuid == nil,
             let key = uuidKey {
             uuid = UserDefaults.checkStoredUUID(uuidKey: key)
