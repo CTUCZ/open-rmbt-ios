@@ -476,7 +476,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     private func startNextTestIfNeeded() {
-        if movementReached || durationReached {
+        if (movementReached || durationReached) && self.state == .waiting {
             cleanup()
             startTest()
         }
