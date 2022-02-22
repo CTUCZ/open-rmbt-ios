@@ -158,7 +158,6 @@ extension RMBTControlServer {
             baseUrl = RMBTConfig.shared.RMBT_CONTROL_SERVER_URL
         }
         
-        
         guard let url = URL(string: baseUrl),
            let host = url.host else { failure(nil); return }
         
