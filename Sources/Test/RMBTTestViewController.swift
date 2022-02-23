@@ -144,9 +144,18 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         }
     }
     
+    var tickDelayForGraph: TimeInterval = TimeInterval(RMBTConfig.RMBT_TEST_SAMPLING_RESOLUTION_MS) / TimeInterval(NSEC_PER_SEC)
+    var delayForGraph: TimeInterval = 1.0
+    var startSpeedPhaseDate: Date = Date()
+    var graphTickTimer: Timer?
+    
     var speedValues: [RMBTThroughput] = [] {
         didSet {
             self.currentView.clearSpeedGraph()
+            let speedValues = speedValues.filter({
+                return TimeInterval($0.endNanos) / TimeInterval(NSEC_PER_SEC) + delayForGraph < Date().timeIntervalSince(startSpeedPhaseDate)
+            })
+            
             for t in speedValues {
                 let kbps = Int(t.kilobitsPerSecond())
                 let l = RMBTSpeedLogValue(Double(kbps))
@@ -595,9 +604,19 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         self.progressGauge = Double(gaugePercentage) / 100.0
     }
     
+    @objc func updateGraph(_ timer: Timer) {
+        let speedValues = self.speedValues
+        self.speedValues = []
+        self.speedValues = speedValues
+    }
+    
     func onTestStartedPhase(_ phase: RMBTTestRunnerPhase) {
         self.phase = phase
         self.speedValues = []
+        if graphTickTimer?.isValid == true {
+            graphTickTimer?.invalidate()
+            graphTickTimer = nil
+        }
         if (phase == .qos) {
             self.isQOSState = true
             self.isInfoCollapsed = true
@@ -615,6 +634,15 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         var kbps = 0
         var l: Double = 0.0
 
+        if (phase == .down || phase == .up) && self.speedValues.count == 0 {
+            if graphTickTimer?.isValid == true {
+                graphTickTimer?.invalidate()
+                graphTickTimer = nil
+            }
+            startSpeedPhaseDate = Date()
+            graphTickTimer = Timer.scheduledTimer(timeInterval: tickDelayForGraph, target: self, selector: #selector(updateGraph(_:)), userInfo: nil, repeats: true)
+        }
+        
         self.speedValues += throughputs
         for t in throughputs {
             kbps = Int(t.kilobitsPerSecond())
