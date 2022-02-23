@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -31,7 +30,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7oc-FM-PHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-474" y="-1217"/>
+            <point key="canvasLocation" x="-143" y="-1219"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="Wfu-HO-USZ">
@@ -53,7 +52,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQb-eZ-Skw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="IcY-Ka-2Sa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7.2463768115942031" y="-646.20535714285711"/>
+            <point key="canvasLocation" x="-143" y="-504"/>
         </scene>
         <!--Loop Mode Waiting View Controller-->
         <scene sceneID="fvt-gI-QDy">
@@ -286,7 +285,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0iv-8p-xGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="889" y="-513"/>
+            <point key="canvasLocation" x="925" y="-203"/>
         </scene>
         <!--Loop Mode Complete View Controller-->
         <scene sceneID="Yq8-YQ-3jq">
@@ -399,27 +398,9 @@
             </objects>
             <point key="canvasLocation" x="1895.625" y="-710.91549295774644"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="cfb-2g-iKk">
-            <objects>
-                <viewController id="coq-HL-jaZ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3FM-u6-LwH">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="UXn-1U-n97"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CQ2-Wp-ohn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-911" y="-646"/>
-        </scene>
     </scenes>
     <resources>
         <image name="loop_mode_completed_icon" width="84" height="90"/>
         <image name="warning_icon" width="16" height="16"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
