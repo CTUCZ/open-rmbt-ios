@@ -152,6 +152,8 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     var speedValues: [RMBTThroughput] = [] {
         didSet {
             self.currentView.clearSpeedGraph()
+            
+            // Make draw with delay. Filter periods that not include to duration minus delay
             let speedValues = speedValues.filter({
                 return TimeInterval($0.endNanos) / TimeInterval(NSEC_PER_SEC) + delayForGraph < Date().timeIntervalSince(startSpeedPhaseDate)
             })
