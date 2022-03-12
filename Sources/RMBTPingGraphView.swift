@@ -119,8 +119,30 @@ final private class RMBTPingContentGraphView: UIView {
         context?.translateBy(x: 0, y: self.bounds.size.height)
         context?.scaleBy(x: 1.0, y: -1.0)
 
+        let count = 10
+        var values: [CGFloat] = []
+        if self.values.count > count {
+            let step = CGFloat(self.values.count) / CGFloat(count)
+            for index in 0..<count {
+                let startIndex = Int(CGFloat(index) * step)
+                let endIndex = Int(CGFloat(index + 1) * step)
+                var value = 0.0
+                var countItems = 0
+                for i in startIndex..<endIndex {
+                    if self.values.count > i {
+                        value += self.values[i]
+                        countItems += 1
+                    }
+                }
+                if countItems > 0 {
+                    values.append(CGFloat(value) / CGFloat(countItems))
+                }
+            }
+        } else {
+            values = self.values
+        }
         for (index, value) in values.enumerated() {
-            let bezier = self.column(with: value, at: index)
+            let bezier = self.column(with: value, at: index, totalCount: values.count)
             context?.addPath(bezier.cgPath)
         }
 
@@ -129,9 +151,12 @@ final private class RMBTPingContentGraphView: UIView {
     }
     
     // Create path for drawing value
-    func column(with value: CGFloat, at index: Int) -> UIBezierPath {
+    func column(with value: CGFloat, at index: Int, totalCount: Int) -> UIBezierPath {
         let offset = 15.0
-        let width = (Double(self.frame.width) - (offset * Double(values.count))) / Double(values.count)
+        var width = (Double(self.frame.width) - (offset * Double(totalCount))) / Double(totalCount)
+        if width > 20 {
+            width = 20
+        }
         let maxHeight = self.frame.height
         let height = maxHeight * Double(value) / Double(maxValue)
         

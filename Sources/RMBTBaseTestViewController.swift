@@ -22,6 +22,7 @@ protocol RMBTBaseTestViewControllerSubclass: AnyObject {
     func onTestFinishedPhase(_ phase: RMBTTestRunnerPhase)
 
     func onTestMeasuredLatency(_ nanos: UInt64)
+    func onTestMeasuredPings(_ pings: [Ping], in phase: RMBTTestRunnerPhase)
     func onTestMeasuredTroughputs(_ throughputs: [RMBTThroughput], in phase: RMBTTestRunnerPhase)
 
     func onTestMeasuredDownloadSpeed(_ kbps: UInt32)
@@ -248,6 +249,11 @@ extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {
     func testRunnerQoSGroup(_ group: RMBTQoSTestGroup, didUpdateProgress progress: Float, in test: RMBTQoSTest) {
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         subself.onTestUpdatedProgress(progress, for: test, in: group)
+    }
+    
+    func testRunnerDidMeasurePings(_ pings: [Ping], in phase: RMBTTestRunnerPhase) {
+        guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
+        subself.onTestMeasuredPings(pings, in: phase)
     }
     
     func testRunnerDidMeasureThroughputs(_ throughputs: [RMBTThroughput], in phase: RMBTTestRunnerPhase) {

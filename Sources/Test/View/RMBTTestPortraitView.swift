@@ -56,6 +56,7 @@ class RMBTTestPortraitView: UIView, XibLoadable {
 
     // Speed chart
     @IBOutlet weak var speedGaugePlaceholderView: UIImageView!
+    @IBOutlet weak var pingGraphView: RMBTPingGraphView!
     @IBOutlet weak var speedGraphView: RMBTSpeedGraphView!
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var speedLabel: UILabel!
@@ -268,6 +269,7 @@ class RMBTTestPortraitView: UIView, XibLoadable {
     
     @objc func showQoSUI(_ state: Bool) {
         self.speedGraphView.isHidden = state
+        self.pingGraphView.isHidden = state
     //    _speedGaugeView.hidden = state
         self.speedLabel.isHidden = state
         self.speedSuffixLabel.isHidden = state
@@ -275,10 +277,12 @@ class RMBTTestPortraitView: UIView, XibLoadable {
         self.speedSuffixLabel.isHidden = state
         self.arrowImageView.isHidden = state
         self.qosProgressView.isHidden = !state
+        self.updatePhase()
     }
     
     @objc func showWaitingUI() {
         self.loopModeWaitingView.isHidden = false
+        self.pingGraphView.isHidden = true
         self.speedGraphView.isHidden = true
         self.qosProgressView.isHidden = true
         self.speedGaugeView.value = 0.0
@@ -327,6 +331,7 @@ class RMBTTestPortraitView: UIView, XibLoadable {
         self.speedLabel.text = ""
         self.speedSuffixLabel.isHidden = true
         self.speedGraphView.clear()
+        self.pingGraphView.clear()
         
         self.updateInfoTitleView()
     }
@@ -364,19 +369,34 @@ class RMBTTestPortraitView: UIView, XibLoadable {
         self.speedGraphView.clear()
     }
     
+    func clearPingGraph() {
+        self.pingGraphView.clear()
+    }
+    
     func addSpeed(_ value: CGFloat, at timeinterval: TimeInterval) {
         self.speedGraphView.add(value: value, at: timeinterval)
     }
     
+    func addPing(_ value: CGFloat, at timeinterval: TimeInterval) {
+        self.pingGraphView.add(value: value, at: timeinterval)
+    }
+    
     func updatePhase() {
+        
         if (phase == .down) {
+            self.speedGraphView.isHidden = false
             self.arrowImageView.image = UIImage(named: "download_icon")
         } else if (phase == .up) {
+            self.speedGraphView.isHidden = false
             self.speedGraphView.clear()
             self.speedLabel.text = ""
             self.speedSuffixLabel.isHidden = true
             self.arrowImageView.image = UIImage(named: "upload_icon")
+        } else {
+            self.speedGraphView.isHidden = true
         }
+        self.pingGraphView.isHidden = phase != .latency
+        self.updateDetailInfoView()
     }
     
     override func awakeFromNib() {

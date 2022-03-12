@@ -150,6 +150,10 @@
                             <rect key="frame" x="0.0" y="48.000000000000021" width="340" height="113.33333333333331"/>
                             <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSZ-4Y-LuH" customClass="RMBTPingGraphView" customModule="RMBT" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="48.000000000000021" width="340" height="113.33333333333331"/>
+                            <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5P-9h-OrJ">
                             <rect key="frame" x="0.0" y="48.000000000000028" width="340" height="133.33333333333334"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -184,6 +188,8 @@
                         <constraint firstAttribute="trailing" secondItem="43g-kd-9kE" secondAttribute="trailing" id="FM5-cz-1r6"/>
                         <constraint firstItem="3rA-nb-qjW" firstAttribute="leading" secondItem="cqL-FH-5V7" secondAttribute="leading" id="Fle-4J-Ycp"/>
                         <constraint firstAttribute="bottom" secondItem="Y5P-9h-OrJ" secondAttribute="bottom" id="H0T-9s-XNE"/>
+                        <constraint firstItem="uSZ-4Y-LuH" firstAttribute="leading" secondItem="3rA-nb-qjW" secondAttribute="leading" id="Ja0-f9-gbb"/>
+                        <constraint firstItem="uSZ-4Y-LuH" firstAttribute="top" secondItem="3rA-nb-qjW" secondAttribute="top" id="Q2R-QH-6M2"/>
                         <constraint firstItem="Y5P-9h-OrJ" firstAttribute="leading" secondItem="cqL-FH-5V7" secondAttribute="leading" id="Qim-dD-uN4"/>
                         <constraint firstAttribute="bottom" secondItem="43g-kd-9kE" secondAttribute="bottom" id="Swa-Hi-VEF"/>
                         <constraint firstItem="Rm4-3Y-Uxe" firstAttribute="centerY" secondItem="Q3Z-vK-5Wh" secondAttribute="centerY" id="Swv-jV-Pp7"/>
@@ -192,7 +198,9 @@
                         <constraint firstAttribute="trailing" secondItem="Rm4-3Y-Uxe" secondAttribute="trailing" constant="16" id="ZYT-OI-NfX"/>
                         <constraint firstAttribute="trailing" secondItem="3rA-nb-qjW" secondAttribute="trailing" id="iB6-xH-6Mr"/>
                         <constraint firstAttribute="bottom" secondItem="3rA-nb-qjW" secondAttribute="bottom" constant="20" id="jX1-vd-ril"/>
+                        <constraint firstItem="uSZ-4Y-LuH" firstAttribute="trailing" secondItem="3rA-nb-qjW" secondAttribute="trailing" id="pmm-lP-Ws0"/>
                         <constraint firstItem="Q3Z-vK-5Wh" firstAttribute="top" secondItem="cqL-FH-5V7" secondAttribute="top" id="tQH-OE-Rq4"/>
+                        <constraint firstItem="uSZ-4Y-LuH" firstAttribute="bottom" secondItem="3rA-nb-qjW" secondAttribute="bottom" id="vDt-hM-7f2"/>
                         <constraint firstItem="3rA-nb-qjW" firstAttribute="top" secondItem="Q3Z-vK-5Wh" secondAttribute="bottom" id="w85-D5-FYI"/>
                     </constraints>
                 </view>
@@ -511,6 +519,7 @@
                 <outlet property="networkNameLabel" destination="aNh-rH-2Mj" id="kUV-gX-7kw"/>
                 <outlet property="networkTechnologyImageView" destination="apV-CG-0ul" id="Uan-9H-hk6"/>
                 <outlet property="networkTypeImageView" destination="0NP-Sa-HQI" id="3SQ-OI-V1a"/>
+                <outlet property="pingGraphView" destination="uSZ-4Y-LuH" id="ZtH-WZ-Vyo"/>
                 <outlet property="pingIconImageView" destination="f3W-QH-SKD" id="xsv-n1-789"/>
                 <outlet property="pingResultLabel" destination="oh4-SD-lOB" id="nz4-E3-Ho8"/>
                 <outlet property="progressGaugePlaceholderView" destination="OVe-gJ-LZa" id="aHx-1i-3b9"/>
