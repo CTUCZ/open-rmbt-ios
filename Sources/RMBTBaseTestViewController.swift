@@ -240,7 +240,6 @@ extension RMBTBaseTestViewController: RMBTTestRunnerDelegate {
             totalPercentage += Float(self.percentage(for: phase)) * progress
             totalGaugePercentage += Float(self.gaugePercentage(for: phase)) * progress
         }
-        assert(totalPercentage <= 100, "Invalid percentage")
         
         guard let subself = self as? RMBTBaseTestViewControllerSubclass else { return }
         subself.onTestUpdatedTotalProgress(UInt(totalPercentage), gaugeProgress: UInt( totalGaugePercentage))

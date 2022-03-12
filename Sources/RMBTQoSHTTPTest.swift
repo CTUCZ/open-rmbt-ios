@@ -18,6 +18,11 @@ class RMBTQoSHTTPTest: RMBTQoSTest {
     private var responseStatusCode: Int?
     private var responseExpectedContentLength: Int64?
     
+    private var task: URLSessionDataTask?
+    private lazy var session: URLSession? = {
+        return URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: self, delegateQueue: nil)
+    }()
+    
     override init?(with params: [String : Any]) {
         super.init(with: params)
         url = params["url"] as? String
@@ -29,14 +34,13 @@ class RMBTQoSHTTPTest: RMBTQoSTest {
         
         guard let url = URL(string: self.url ?? "") else { return }
         var request = URLRequest(url: url)
+        request.timeoutInterval = TimeInterval(self.timeoutSeconds())
         
         if let range = self.range {
             request.addValue(range, forHTTPHeaderField: "Range")
         }
-        
-        let session = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: self, delegateQueue: nil)
-        
-        let task: URLSessionDataTask = session.dataTask(with: request) { [weak self] data, response, error in
+
+        task = session?.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
             if error == nil,
                 let httpResponse = response as? HTTPURLResponse {
@@ -57,11 +61,13 @@ class RMBTQoSHTTPTest: RMBTQoSTest {
                 self.responseAllHeaders = ""
             }
             
+            self.session?.finishTasksAndInvalidate()
+            self.session = nil
             doneSem.signal()
         }
-        task.resume()
+        task?.resume()
         
-        doneSem.wait()
+        _ = doneSem.wait(timeout: .now() + TimeInterval(self.timeoutSeconds()))
     }
     
     override var result: [String: Any] {

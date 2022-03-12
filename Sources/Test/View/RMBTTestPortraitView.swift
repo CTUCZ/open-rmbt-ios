@@ -277,7 +277,9 @@ class RMBTTestPortraitView: UIView, XibLoadable {
         self.speedSuffixLabel.isHidden = state
         self.arrowImageView.isHidden = state
         self.qosProgressView.isHidden = !state
-        self.updatePhase()
+        if state == false {
+            self.updatePhase()
+        }
     }
     
     @objc func showWaitingUI() {
@@ -382,11 +384,10 @@ class RMBTTestPortraitView: UIView, XibLoadable {
     }
     
     func updatePhase() {
-        
         if (phase == .down) {
             self.speedGraphView.isHidden = false
             self.arrowImageView.image = UIImage(named: "download_icon")
-        } else if (phase == .up) {
+        } else if (phase == .up) || (phase == .initUp) {
             self.speedGraphView.isHidden = false
             self.speedGraphView.clear()
             self.speedLabel.text = ""
@@ -395,6 +396,7 @@ class RMBTTestPortraitView: UIView, XibLoadable {
         } else {
             self.speedGraphView.isHidden = true
         }
+        
         self.pingGraphView.isHidden = phase != .latency
         self.updateDetailInfoView()
     }
