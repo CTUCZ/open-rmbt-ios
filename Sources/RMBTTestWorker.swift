@@ -132,6 +132,9 @@ class RMBTTestWorker: NSObject {
 
     /// Nanoseconds at which we sent the PING
     private var pingStartNanos: UInt64 = 0
+    /// Nanoseconds at which we start the PING test
+    public var pingStartTestNanos: UInt64 = 0
+    public let pingTestDuration: TimeInterval = 1.0 //1 second
 
     /// Nanoseconds at which we received PONG
     private var pingPongNanos: UInt64 = 0
@@ -207,6 +210,7 @@ class RMBTTestWorker: NSObject {
         pingSeq = 0
         writeLine("PING", withTag: .txPing)
 
+        pingStartTestNanos = RMBTHelpers.RMBTCurrentNanos()
         pingStartNanos = RMBTHelpers.RMBTCurrentNanos()
     }
     
@@ -548,9 +552,10 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
             readLineWithTag(.rxPongAccept)
         } else if tag == .rxPongAccept {
             // <- ACCEPT
-            assert(pingSeq <= UInt(params.pingCount), "Invalid ping count") // TODO
-
-            if pingSeq == UInt(params.pingCount) { // TODO
+            
+            //if passed pingCount and test duration more then 1000ms. dynamic ping count
+            let duration = Double(RMBTHelpers.RMBTCurrentNanos() - pingStartTestNanos) / Double(NSEC_PER_SEC)
+            if pingSeq >= UInt(params.pingCount) && duration >= pingTestDuration { // TODO
                 state = .latencyTestFinished
                 delegate?.testWorkerDidFinishLatencyTest(self)
             } else {

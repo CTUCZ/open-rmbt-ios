@@ -40,6 +40,7 @@ protocol RMBTTestRunnerDelegate: AnyObject {
 
     /// progress from 0.0 to 1.0
     func testRunnerDidUpdateProgress(_ progress: Float, in phase: RMBTTestRunnerPhase)
+    func testRunnerDidMeasurePings(_ pings: [Ping], in phase: RMBTTestRunnerPhase)
     func testRunnerDidMeasureThroughputs(_ throughputs: [RMBTThroughput], in phase: RMBTTestRunnerPhase)
 
     /// These delegate methods will be called even before the test starts
@@ -656,8 +657,12 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         
         testResult?.addPingWithServerNanos(serverNanos, clientNanos: clientNanos)
 
-        let p = Float(testResult?.pings.count ?? 0) / Float(testParams?.pingCount ?? 1)
+        let duration = Double(RMBTHelpers.RMBTCurrentNanos() - worker.pingStartTestNanos) / Double(NSEC_PER_SEC)
+        let durationP: Float = Float(duration / worker.pingTestDuration)
+        let pingP = Float(testResult?.pings.count ?? 0) / Float(testParams?.pingCount ?? 1)
+        let p = min(durationP, pingP)
         DispatchQueue.main.async {
+            self.delegate?.testRunnerDidMeasurePings(self.testResult?.pings ?? [], in: self.phase)
             self.delegate?.testRunnerDidUpdateProgress(p, in: self.phase)
         }
     }

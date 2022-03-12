@@ -13,6 +13,10 @@ class RMBTHistoryPing: NSObject, Mappable {
     var timeElapsed: Int = 0
     
     required init?(map: Map) { }
+    required init(pingMs: Double, timeElapsed: Int) {
+        self.pingMs = pingMs
+        self.timeElapsed = timeElapsed
+    }
     
     func mapping(map: Map) {
         pingMs <- map["ping_ms"]

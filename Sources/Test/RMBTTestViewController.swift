@@ -147,7 +147,13 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     var tickDelayForGraph: TimeInterval = TimeInterval(RMBTConfig.RMBT_TEST_SAMPLING_RESOLUTION_MS) / TimeInterval(NSEC_PER_SEC)
     var delayForGraph: TimeInterval = 1.0
     var startSpeedPhaseDate: Date = Date()
-    var graphTickTimer: Timer?
+    var graphTickTimer: Timer? {
+        didSet {
+            if oldValue?.isValid == true {
+                oldValue?.invalidate()
+            }
+        }
+    }
     
     var speedValues: [RMBTThroughput] = [] {
         didSet {
@@ -162,6 +168,16 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
                 let kbps = Int(t.kilobitsPerSecond())
                 let l = RMBTSpeedLogValue(Double(kbps))
                 self.currentView.addSpeed(CGFloat(l), at: TimeInterval(t.endNanos) / TimeInterval(NSEC_PER_SEC))
+            }
+        }
+    }
+    
+    var pingValues: [RMBTHistoryPing] = [] {
+        didSet {
+            self.currentView.clearPingGraph()
+            
+            for ping in pingValues {
+                self.currentView.addPing(ping.pingMs, at: TimeInterval(ping.timeElapsed))
             }
         }
     }
@@ -305,6 +321,11 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         self.speedValues = []
         self.speedValues = speedValues
         
+        // Update ping graph
+        let pingValues = self.pingValues
+        self.pingValues = []
+        self.pingValues = pingValues
+        
         switch state {
         case .test:
             self.currentView.showQoSUI(false)
@@ -358,6 +379,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         self.state = .test
         self.speedValues = []
         self.speedGauge = 0.0
+        self.pingValues = []
         
         self.currentView.clearValues()
         self.currentView.currentTest = self.loopModeInfo?.current ?? 0
@@ -615,6 +637,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     func onTestStartedPhase(_ phase: RMBTTestRunnerPhase) {
         self.phase = phase
         self.speedValues = []
+        self.pingValues = []
         if graphTickTimer?.isValid == true {
             graphTickTimer?.invalidate()
             graphTickTimer = nil
@@ -630,6 +653,10 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     func onTestMeasuredLatency(_ nanos: UInt64) {
         self.pingColor = .byResultClass(RMBTHelpers.RMBTPingClassification(with: Int64(nanos)))
         self.currentView.ping = RMBTHelpers.RMBTMillisecondsString(with: Int64(nanos), withMS: true)
+    }
+    
+    func onTestMeasuredPings(_ pings: [Ping], in phase: RMBTTestRunnerPhase) {
+        self.pingValues = pings.map({ RMBTHistoryPing(pingMs: Double($0.clientNanos) * 1.0e-6, timeElapsed: Int($0.relativeTimestampNanos))})
     }
     
     func onTestMeasuredTroughputs(_ throughputs: [RMBTThroughput], in phase: RMBTTestRunnerPhase) {

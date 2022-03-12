@@ -149,6 +149,10 @@
                             <rect key="frame" x="0.0" y="48" width="414" height="125"/>
                             <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaO-d6-Jfa" customClass="RMBTPingGraphView" customModule="RMBT" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="48" width="414" height="125"/>
+                            <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5P-9h-OrJ">
                             <rect key="frame" x="0.0" y="48" width="414" height="145"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -182,9 +186,13 @@
                         <constraint firstItem="Bh8-42-53V" firstAttribute="leading" secondItem="cqL-FH-5V7" secondAttribute="leading" id="gam-0K-6J0"/>
                         <constraint firstAttribute="trailing" secondItem="3rA-nb-qjW" secondAttribute="trailing" id="iB6-xH-6Mr"/>
                         <constraint firstAttribute="bottom" secondItem="3rA-nb-qjW" secondAttribute="bottom" constant="20" id="jX1-vd-ril"/>
+                        <constraint firstItem="AaO-d6-Jfa" firstAttribute="top" secondItem="3rA-nb-qjW" secondAttribute="top" id="kcy-Qs-YEj"/>
+                        <constraint firstItem="AaO-d6-Jfa" firstAttribute="leading" secondItem="3rA-nb-qjW" secondAttribute="leading" id="nGH-pU-PMD"/>
+                        <constraint firstItem="AaO-d6-Jfa" firstAttribute="trailing" secondItem="3rA-nb-qjW" secondAttribute="trailing" id="p1C-Cv-g20"/>
                         <constraint firstItem="Q3Z-vK-5Wh" firstAttribute="top" secondItem="cqL-FH-5V7" secondAttribute="top" id="tQH-OE-Rq4"/>
                         <constraint firstItem="3rA-nb-qjW" firstAttribute="top" secondItem="Q3Z-vK-5Wh" secondAttribute="bottom" id="w85-D5-FYI"/>
                         <constraint firstItem="2WG-qA-mjh" firstAttribute="leading" secondItem="cqL-FH-5V7" secondAttribute="leading" id="yki-nV-apf"/>
+                        <constraint firstItem="AaO-d6-Jfa" firstAttribute="bottom" secondItem="3rA-nb-qjW" secondAttribute="bottom" id="ziL-d1-wjK"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLw-Xr-akL">
@@ -503,6 +511,7 @@
                 <outlet property="networkTechnologyImageView" destination="pjb-pX-akO" id="FlS-6w-EL0"/>
                 <outlet property="networkTypeImageView" destination="0NP-Sa-HQI" id="3SQ-OI-V1a"/>
                 <outlet property="offsetGaugesConstraint" destination="JME-Ib-bNk" id="s8m-hD-bVx"/>
+                <outlet property="pingGraphView" destination="AaO-d6-Jfa" id="yfX-xJ-6kf"/>
                 <outlet property="pingIconImageView" destination="f3W-QH-SKD" id="Kex-IE-66f"/>
                 <outlet property="pingResultLabel" destination="oh4-SD-lOB" id="nz4-E3-Ho8"/>
                 <outlet property="progressGaugePlaceholderView" destination="OVe-gJ-LZa" id="aHx-1i-3b9"/>
