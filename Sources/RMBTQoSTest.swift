@@ -29,7 +29,7 @@ enum RMBTQoSTestStatus: Int {
     
     @objc var progress: RMBTProgress = RMBTProgress(totalUnitCount: 100)
     
-    @objc var group: RMBTQoSTestGroup?
+    @objc weak var group: RMBTQoSTestGroup?
     
     var status: RMBTQoSTestStatus = .unknown
 

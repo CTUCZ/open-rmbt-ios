@@ -147,7 +147,7 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     var tickDelayForGraph: TimeInterval = TimeInterval(RMBTConfig.RMBT_TEST_SAMPLING_RESOLUTION_MS) / TimeInterval(NSEC_PER_SEC)
     var delayForGraph: TimeInterval = 1.0
     var startSpeedPhaseDate: Date = Date()
-    var graphTickTimer: Timer? {
+    weak var graphTickTimer: Timer? {
         didSet {
             if oldValue?.isValid == true {
                 oldValue?.invalidate()
@@ -336,6 +336,10 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         case .waiting:
             self.currentView.showWaitingUI()
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidLoad() {
@@ -581,6 +585,12 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
             self.performSegue(withIdentifier: actionsSegue, sender: self)
         }
     }
+    
+    func clearDataAfterTest() {
+        self.graphTickTimer = nil
+        self.qosProgressViewController.tests = []
+        self.qosProgressViewController.testGroups = []
+    }
 }
 
 extension RMBTTestViewController: UIViewControllerTransitioningDelegate {
@@ -638,10 +648,8 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         self.phase = phase
         self.speedValues = []
         self.pingValues = []
-        if graphTickTimer?.isValid == true {
-            graphTickTimer?.invalidate()
-            graphTickTimer = nil
-        }
+        self.graphTickTimer = nil
+        
         if (phase == .qos) {
             self.isQOSState = true
             self.isInfoCollapsed = true
@@ -664,10 +672,6 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         var l: Double = 0.0
 
         if (phase == .down || phase == .up) && self.speedValues.count == 0 {
-            if graphTickTimer?.isValid == true {
-                graphTickTimer?.invalidate()
-                graphTickTimer = nil
-            }
             startSpeedPhaseDate = Date()
             graphTickTimer = Timer.scheduledTimer(timeInterval: tickDelayForGraph, target: self, selector: #selector(updateGraph(_:)), userInfo: nil, repeats: true)
         }
@@ -716,6 +720,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     func onTestCompleted(with result: RMBTHistoryResult!, qos qosPerformed: Bool) {
         self.qosCounterText = self.qosProgressViewController.progressString()
         self.hideAlert()
+        self.clearDataAfterTest()
         if self.loopModeInfo != nil {
             self.goToWaitingState()
         } else {
@@ -725,6 +730,7 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     }
     
     func onTestCancelled(with reason: RMBTTestRunnerCancelReason) {
+        self.clearDataAfterTest()
         guard loopModeInfo == nil || reason == .userRequested else {
             self.goToWaitingState()
             return

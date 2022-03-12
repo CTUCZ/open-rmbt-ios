@@ -76,8 +76,11 @@ class RMBTQoSTestRunner: NSObject {
                     if let t = g.test(with: params) {
                         tests.append(t)
                         groupTestsProgress.append(t.progress)
-                        t.progress.onFractionCompleteChange = { [weak self] p in
-                            guard let self = self else { return }
+                        t.progress.onFractionCompleteChange = { [weak self, weak t, weak g] p in
+                            guard let self = self,
+                                  let t = t,
+                                  let g = g
+                            else { return }
                             self.delegate?.qosRunnerDidUpdateProgress(p, test: t, in: g)
                         }
                     }
