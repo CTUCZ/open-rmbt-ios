@@ -506,7 +506,7 @@ extension RMBTIntroViewController: RMBTTestViewControllerDelegate {
         self.tabBarController?.selectedIndex = 1 // TODO: avoid hardcoding tab index
         
         guard let navController = self.tabBarController?.selectedViewController as? UINavigationController,
-              let historyVC = navController.viewControllers.first as? RMBTHistoryIndex2ViewController else { return }
+              let historyVC = navController.viewControllers.first as? RMBTHistoryIndexViewController else { return }
               
         historyVC.displayTestResult(result)
     }

@@ -145,7 +145,7 @@
 		E9555EAC2727D49C003547B0 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9555EAA2727D49C003547B0 /* Metal.framework */; };
 		E9555EAD2727D49C003547B0 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9555EAB2727D49C003547B0 /* MetalKit.framework */; };
 		E9555EAF2727D4B1003547B0 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9555EAE2727D4B0003547B0 /* CoreServices.framework */; };
-		E959547826E38AF7004EA6D9 /* RMBTHistoryIndex2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959547726E38AF6004EA6D9 /* RMBTHistoryIndex2ViewController.swift */; };
+		E959547826E38AF7004EA6D9 /* RMBTHistoryIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959547726E38AF6004EA6D9 /* RMBTHistoryIndexViewController.swift */; };
 		E959547C26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959547A26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift */; };
 		E959547D26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E959547B26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib */; };
 		E959547F26E3B74B004EA6D9 /* RMBTHistoryIndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E959547E26E3B74B004EA6D9 /* RMBTHistoryIndexCell.swift */; };
@@ -443,7 +443,7 @@
 		E9555EAA2727D49C003547B0 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		E9555EAB2727D49C003547B0 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		E9555EAE2727D4B0003547B0 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
-		E959547726E38AF6004EA6D9 /* RMBTHistoryIndex2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTHistoryIndex2ViewController.swift; sourceTree = "<group>"; };
+		E959547726E38AF6004EA6D9 /* RMBTHistoryIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMBTHistoryIndexViewController.swift; sourceTree = "<group>"; };
 		E959547A26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryLoadingCell.swift; sourceTree = "<group>"; };
 		E959547B26E3B5DF004EA6D9 /* RMBTHistoryLoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryLoadingCell.xib; sourceTree = "<group>"; };
 		E959547E26E3B74B004EA6D9 /* RMBTHistoryIndexCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryIndexCell.swift; sourceTree = "<group>"; };
@@ -1164,7 +1164,7 @@
 				E95954A326E50071004EA6D9 /* Models */,
 				E959549E26E4F204004EA6D9 /* Views */,
 				E959547926E3B53E004EA6D9 /* Cells */,
-				E959547726E38AF6004EA6D9 /* RMBTHistoryIndex2ViewController.swift */,
+				E959547726E38AF6004EA6D9 /* RMBTHistoryIndexViewController.swift */,
 				E95954AE26E602EC004EA6D9 /* RMBTHistoryFilter2ViewController.swift */,
 				E95954B026E614F6004EA6D9 /* RMBTHistoryFiltersOptionsViewController.swift */,
 				E9E993B626E9FE0B00E7EED6 /* RMBTHistoryResultViewController.swift */,
@@ -1577,7 +1577,7 @@
 				E94ED1D326C63C7400B17B25 /* RMBTGaugeView.swift in Sources */,
 				E930769B26CE3AA80046A17B /* RMBTMapOptionsViewController.swift in Sources */,
 				E9AA0DE727635CF9003C71D7 /* Data+MD5.swift in Sources */,
-				E959547826E38AF7004EA6D9 /* RMBTHistoryIndex2ViewController.swift in Sources */,
+				E959547826E38AF7004EA6D9 /* RMBTHistoryIndexViewController.swift in Sources */,
 				E97CF7912762534B0092352C /* RMBTQoSCCTest.swift in Sources */,
 				E9E9E8FF274238B6005EB393 /* RMBTTestPortraitView.swift in Sources */,
 				E9400EE726BA6A9D0067273A /* SocketUtils.swift in Sources */,

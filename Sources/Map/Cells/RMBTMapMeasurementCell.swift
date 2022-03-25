@@ -17,8 +17,11 @@ class RMBTMapMeasurementCell: UICollectionViewCell {
     
     @IBOutlet weak var networkTypeImageView: UIImageView!
     @IBOutlet weak var uploadValueLabel: UILabel!
+    @IBOutlet weak var uploadImageView: UIImageView!
     @IBOutlet weak var pingValueLabel: UILabel!
+    @IBOutlet weak var pingImageView: UIImageView!
     @IBOutlet weak var downloadValueLabel: UILabel!
+    @IBOutlet weak var downloadImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var uploadLabel: UILabel!
     @IBOutlet weak var downloadLabel: UILabel!

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -323,14 +323,17 @@
             <size key="customSize" width="294" height="280"/>
             <connections>
                 <outlet property="detailsButton" destination="DqM-oh-VU2" id="01f-0j-9fv"/>
+                <outlet property="downloadImageView" destination="yy1-YM-Dag" id="e1D-1f-EMM"/>
                 <outlet property="downloadLabel" destination="w6c-vg-3Mg" id="4bb-fz-5hH"/>
                 <outlet property="downloadValueLabel" destination="6ht-Jb-ld2" id="T8a-yI-yc8"/>
                 <outlet property="networkDetailsStackView" destination="q70-ej-4td" id="5sp-x0-8G2"/>
                 <outlet property="networkTypeImageView" destination="E5x-T2-prP" id="LNT-uF-s1A"/>
+                <outlet property="pingImageView" destination="72R-va-1j9" id="Qea-VL-sGf"/>
                 <outlet property="pingLabel" destination="pYN-eh-C4P" id="1Sj-BE-RTH"/>
                 <outlet property="pingValueLabel" destination="48F-cX-poR" id="u9F-NF-Rui"/>
                 <outlet property="rootView" destination="Jd4-h5-byI" id="IJ6-rO-pvM"/>
                 <outlet property="titleLabel" destination="2Db-Xq-B91" id="hf0-vb-9fA"/>
+                <outlet property="uploadImageView" destination="ySU-c7-J6B" id="jgf-hn-pxN"/>
                 <outlet property="uploadLabel" destination="6PI-30-HYM" id="gbp-lu-LIe"/>
                 <outlet property="uploadValueLabel" destination="Cft-Nn-NbQ" id="WwJ-JO-C78"/>
             </connections>
