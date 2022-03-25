@@ -354,6 +354,7 @@ class RMBTTestRunner: NSObject {
             
             if (hasQos) {
                 let qosResultRequest = self.qosResultWithDictionary(qosResult ?? [:])
+                AbstractBasicRequestBuilder.addBasicRequestValues(qosResultRequest)
                 RMBTControlServer.shared.submitQOSResult(qosResultRequest, endpoint: self.testParams?.resultQoSURLString) { response in
                     qosSem.signal()
                 } error: { error in
@@ -362,6 +363,7 @@ class RMBTTestRunner: NSObject {
             }
 
             let result = self.resultWithDictionary(self.resultDictionary())
+            AbstractBasicRequestBuilder.addBasicRequestValues(result)
             
             RMBTControlServer.shared.submitResult(result, endpoint: nil) { [weak self] response in
                 self?.workerQueue.async {

@@ -168,7 +168,7 @@ class ServerHelper {
         if method == .get || method == .delete { // GET and DELETE request don't support JSON bodies...
             encoding = URLEncoding.default
         }
-        let url = (baseUrl != nil ? baseUrl! : "") + path
+        let url = path.hasPrefix("http") ? path : (baseUrl != nil ? baseUrl! : "") + path
         
         manager
             .request(url, method: method, parameters: parameters, encoding: encoding, headers: nil)

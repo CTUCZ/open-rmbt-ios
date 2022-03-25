@@ -52,6 +52,14 @@ class RMBTHelpers: NSObject {
         return (Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String) ?? ""
     }()
     
+    static let buildNumber: String = {
+        return (Bundle.main.infoDictionary?["CFBundleVersion"] as? String) ?? ""
+    }()
+    
+    static let version: String = {
+        return (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
+    }()
+    
     static let buildInfo: String = {
         guard let info = Bundle.main.infoDictionary else { return "--" }
         let gitBranch = info["GitBranch"] as? String ?? ""
