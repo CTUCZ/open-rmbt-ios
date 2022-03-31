@@ -50,7 +50,7 @@ public class BasicRequest: NSObject, Mappable {
     ]
     
     var version: String = "0.3"
-    var clientVersion: String = RMBTHelpers.version
+    var clientVersion: String?
     
     override init() { }
 

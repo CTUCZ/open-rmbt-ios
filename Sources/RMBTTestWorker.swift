@@ -78,6 +78,7 @@ public enum RMBTTestTag: Int {
 
 /// All delegate methods are dispatched on the supplied delegate queue
 protocol RMBTTestWorkerDelegate: AnyObject {
+    func testWorker(_ worker: RMBTTestWorker, fetchClientVersion clientVersion: String?)
     func testWorker(_ worker: RMBTTestWorker, didFinishDownlinkPretestWithChunksCount chunks: UInt)
     
     func testWorker(_ worker: RMBTTestWorker, didMeasureLatencyWithServerNanos serverNanos: UInt64, clientNanos: UInt64)
@@ -111,6 +112,9 @@ class RMBTTestWorker: NSObject {
         return GCDAsyncSocket(delegate: self, delegateQueue: delegateQueue)
     }()
 
+    /// version of server that we send in request with result later
+    public var clientVersion: String?
+    private let RMBT_SERVER_PATTERN = #"\d+(\.\d+){1,3}"#
     /// CHUNKSIZE received from server
     private var chunksize: UInt = 0
 
@@ -427,6 +431,14 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
             self.readLineWithTag(.rxBanner)
         } else if tag == .rxBanner {
             // <- RMBTv0.3
+            if let data = data,
+                let response = String(data: data, encoding: .utf8),
+                let range = response.range(of: RMBT_SERVER_PATTERN,
+                                           options: .regularExpression) {
+                let clientVersion = String(response[range])
+                self.clientVersion = clientVersion
+                self.delegate?.testWorker(self, fetchClientVersion: clientVersion)
+            }
             readLineWithTag(.rxBannerAccept)
         } else if tag == .rxBannerAccept {
             // <- ACCEPT
