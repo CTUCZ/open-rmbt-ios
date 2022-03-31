@@ -69,6 +69,8 @@ class RMBTTestRunner: NSObject {
     
     private(set) var qosResults: [[String : Any]] = []
     
+    private var workersClientVersion: String?
+    
     private var phase: RMBTTestRunnerPhase = .none {
         didSet {
             if (oldValue != .none) {
@@ -354,6 +356,8 @@ class RMBTTestRunner: NSObject {
             
             if (hasQos) {
                 let qosResultRequest = self.qosResultWithDictionary(qosResult ?? [:])
+                AbstractBasicRequestBuilder.addBasicRequestValues(qosResultRequest)
+                qosResultRequest.clientVersion = self.workersClientVersion
                 RMBTControlServer.shared.submitQOSResult(qosResultRequest, endpoint: self.testParams?.resultQoSURLString) { response in
                     qosSem.signal()
                 } error: { error in
@@ -362,6 +366,8 @@ class RMBTTestRunner: NSObject {
             }
 
             let result = self.resultWithDictionary(self.resultDictionary())
+            AbstractBasicRequestBuilder.addBasicRequestValues(result)
+            result.clientVersion = self.workersClientVersion
             
             RMBTControlServer.shared.submitResult(result, endpoint: nil) { [weak self] response in
                 self?.workerQueue.async {
@@ -618,6 +624,10 @@ extension RMBTTestRunner: RMBTConnectivityTrackerDelegate {
 }
 
 extension RMBTTestRunner: RMBTTestWorkerDelegate {
+    func testWorker(_ worker: RMBTTestWorker, fetchClientVersion clientVersion: String?) {
+        self.workersClientVersion = clientVersion
+    }
+    
     func testWorker(_ worker: RMBTTestWorker, didFinishDownlinkPretestWithChunksCount chunks: UInt) {
         ASSERT_ON_WORKER_QUEUE()
         assert(phase == .`init`, "Invalid state");

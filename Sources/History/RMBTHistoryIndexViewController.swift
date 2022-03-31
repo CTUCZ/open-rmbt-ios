@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class RMBTHistoryIndex2ViewController: UIViewController {
+final class RMBTHistoryIndexViewController: UIViewController {
     enum State {
         case loading
         case empty
@@ -331,7 +331,7 @@ final class RMBTHistoryIndex2ViewController: UIViewController {
 
 // MARK: UITableViewDataSource
 
-extension RMBTHistoryIndex2ViewController: UITableViewDataSource, UITableViewDelegate {
+extension RMBTHistoryIndexViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         var result = testResults.count
         if (nextBatchIndex != NSNotFound) { result += 1 }

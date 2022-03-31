@@ -153,6 +153,11 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     ///
     //var cellLocations = [CellLocation]()
 
+    var networkName: String?
+    var bssid: String?
+    var telephonyNetworkSimCountry: String?
+    var telephonyNetworkSimOperator: String?
+    
     #endif
 
     ///
@@ -645,6 +650,15 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
             telephonyInfo <- map["telephony_info"]
             wifiInfo      <- map["wifi_info"]
             //cellLocations   <- map["cell_locations"]
+        
+        if networkType == RMBTNetworkType.wifi.rawValue {
+            networkName   <- map["wifi_ssid"]
+            bssid   <- map["wifi_bssid"]
+        } else {
+            networkName   <- map["telephony_network_sim_operator_name"]
+            telephonyNetworkSimCountry   <- map["telephony_network_sim_country"]
+            telephonyNetworkSimOperator   <- map["telephony_network_sim_operator"]
+        }
         #endif
     }
 }

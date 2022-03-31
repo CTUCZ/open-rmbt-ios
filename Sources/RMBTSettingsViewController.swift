@@ -76,8 +76,8 @@ class RMBTSettingsViewController: UITableViewController {
         self.developerNameLabel.text = RMBTConfig.RMBT_DEVELOPER_NAME
         self.buildDetailsLabel.lineBreakMode = NSLineBreakMode.byCharWrapping
         
-        let shortVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
-        let version = (Bundle.main.infoDictionary?["CFBundleVersion"] as? String) ?? ""
+        let shortVersion = RMBTHelpers.version
+        let version = RMBTHelpers.buildNumber
         
         self.buildDetailsLabel.text = String(format:"%@(%@) %@\n(%@)",
                                              shortVersion,
