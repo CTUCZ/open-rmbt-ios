@@ -683,7 +683,9 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
         assert(!dead, "Invalid state")
 
         if (self.markWorkerAsFinished()) {
-            self.startPhase(.down, withAllWorkers: true, performingSelector: #selector(RMBTTestWorker.startDownlinkTest), expectedDuration: testParams?.testDuration ?? 0, completion: nil)
+            workerQueue.asyncAfter(deadline: .now() + 0.3) {
+                self.startPhase(.down, withAllWorkers: true, performingSelector: #selector(RMBTTestWorker.startDownlinkTest), expectedDuration: self.testParams?.testDuration ?? 0, completion: nil)
+            }
         }
     }
     

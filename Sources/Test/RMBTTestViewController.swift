@@ -146,7 +146,10 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     
     var tickDelayForGraph: TimeInterval = TimeInterval(RMBTConfig.RMBT_TEST_SAMPLING_RESOLUTION_MS) / TimeInterval(NSEC_PER_SEC)
     var delayForGraph: TimeInterval = 1.0
+    var delayForPingGraph: TimeInterval = 0.3
     var startSpeedPhaseDate: Date = Date()
+    var startPingPhaseDate: Date = Date()
+    
     weak var graphTickTimer: Timer? {
         didSet {
             if oldValue?.isValid == true {
@@ -176,10 +179,43 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
         didSet {
             self.currentView.clearPingGraph()
             
+            let currentTime = RMBTHelpers.RMBTCurrentNanos()
+            
+            // Make draw with delay. Filter periods that not include to duration minus delay
+            var pingValues = pingValues.filter({
+                let absoluteTime = testStartTime() + UInt64($0.timeElapsed)
+                return (absoluteTime + UInt64((TimeInterval(NSEC_PER_SEC) * delayForPingGraph)) < currentTime)
+            })
+            if let lastPing = pingValues.last {
+                let absoluteTime = testStartTime() + UInt64(lastPing.timeElapsed)
+                if currentTime - absoluteTime > UInt64(tickDelayForGraph * TimeInterval(NSEC_PER_SEC)) {
+                    let timeElapsed = currentTime - UInt64(delayForPingGraph * TimeInterval(NSEC_PER_SEC)) - testStartTime()
+                    print("last \(lastPing.timeElapsed) newLat \(timeElapsed) elapsed \(Int(timeElapsed) - lastPing.timeElapsed)")
+                    pingValues.append(RMBTHistoryPing(pingMs: lastPing.pingMs, timeElapsed: Int(timeElapsed)))
+                }
+            }
+            
             for ping in pingValues {
                 self.currentView.addPing(ping.pingMs, at: TimeInterval(ping.timeElapsed))
             }
         }
+    }
+    
+    func addPingValue(_ ping: RMBTHistoryPing) {
+        let currentTime = RMBTHelpers.RMBTCurrentNanos()
+        
+        if let lastPing = pingValues.last {
+            let absoluteTime = testStartTime() + UInt64(lastPing.timeElapsed)
+            if currentTime - absoluteTime > UInt64(tickDelayForGraph * TimeInterval(NSEC_PER_SEC)) {
+                var timeElapsed = currentTime - UInt64(delayForPingGraph * TimeInterval(NSEC_PER_SEC)) - testStartTime()
+                if ping.timeElapsed < timeElapsed {
+                    timeElapsed = UInt64(ping.timeElapsed - 1)
+                }
+                pingValues.append(RMBTHistoryPing(pingMs: lastPing.pingMs, timeElapsed: Int(timeElapsed)))
+            }
+        }
+        
+        pingValues.append(ping)
     }
 
     var speedGauge: Double = 0 {
@@ -644,6 +680,12 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
         self.speedValues = speedValues
     }
     
+    @objc func updatePingGraph(_ timer: Timer) {
+        let pingValues = self.pingValues
+        self.pingValues = []
+        self.pingValues = pingValues
+    }
+    
     func onTestStartedPhase(_ phase: RMBTTestRunnerPhase) {
         self.phase = phase
         self.speedValues = []
@@ -664,7 +706,21 @@ extension RMBTTestViewController: RMBTBaseTestViewControllerSubclass {
     }
     
     func onTestMeasuredPings(_ pings: [Ping], in phase: RMBTTestRunnerPhase) {
-        self.pingValues = pings.map({ RMBTHistoryPing(pingMs: Double($0.clientNanos) * 1.0e-6, timeElapsed: Int($0.relativeTimestampNanos))})
+        if phase == .latency && self.pingValues.count == 0 {
+            startPingPhaseDate = Date()
+            graphTickTimer = Timer.scheduledTimer(timeInterval: tickDelayForGraph, target: self, selector: #selector(updatePingGraph(_:)), userInfo: nil, repeats: true)
+        }
+        
+        if let lastPing = self.pingValues.last {
+            let filteredPings = pings.filter({ $0.relativeTimestampNanos > lastPing.timeElapsed })
+            
+            filteredPings.forEach { ping in
+                let historyPing = RMBTHistoryPing(pingMs: Double(ping.clientNanos) * 1.0e-6, timeElapsed: Int(ping.relativeTimestampNanos))
+                self.addPingValue(historyPing)
+            }
+        } else {
+            self.pingValues = pings.map({ RMBTHistoryPing(pingMs: Double($0.clientNanos) * 1.0e-6, timeElapsed: Int($0.relativeTimestampNanos))})
+        }
     }
     
     func onTestMeasuredTroughputs(_ throughputs: [RMBTThroughput], in phase: RMBTTestRunnerPhase) {
