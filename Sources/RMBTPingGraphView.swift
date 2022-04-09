@@ -312,7 +312,7 @@ final private class RMBTPingContentGraphView: UIView {
             let minXValue = chartPoints.min(by: { $0.x < $1.x })?.x ?? 0.0
             let maxXValue = chartPoints.max(by: { $0.x < $1.x })?.x ?? 0.0
             let duration = TimeInterval(maxXValue - minXValue) / TimeInterval(NSEC_PER_SEC)
-            secondsLabel.text = String(format: "%0.0fs", ceil(duration))
+            secondsLabel.text = String(format: "%0.0fs", ceil(duration) == 0 ? 1.0 : ceil(duration))
         }
     }
     
