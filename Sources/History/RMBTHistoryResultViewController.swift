@@ -114,8 +114,23 @@ final class RMBTHistoryResultViewController: UIViewController {
     }
     
     private func fetchHistoryResultInformation() {
-        self.historyResult?.ensureBasicDetails(success: { [weak self] in
+        self.historyResult?.ensureBasicDetails(complete: { [weak self] _, error in
             guard let self = self else { return }
+            guard error == nil else {
+                let text = "\(NSLocalizedString("Couldn't connect to test server.", comment: "")). (\(String(describing: error?.localizedDescription)))"
+                UIAlertController.presentAlert(title: NSLocalizedString("Error", comment: "Alert view title"),
+                                               text: text,
+                                               cancelTitle: NSLocalizedString("input_setting_dialog_cancel", comment: ""),
+                                               otherTitle: NSLocalizedString("Try Again", comment: "Alert view title"),
+                                               cancelAction: { _ in
+                                                    self.navigationController?.popViewController(animated: true)
+                                               },
+                                               otherAction: { _ in
+                                                self.fetchHistoryResultInformation()
+                })
+                return
+            }
+            
             guard let historyResult = self.historyResult else { return }
             guard historyResult.dataState != .index else {
                 Log.logger.error("Result not filled with basic data")

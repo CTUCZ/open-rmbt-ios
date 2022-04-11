@@ -17,4 +17,5 @@
 
 typealias RMBTBlock = () -> Void
 typealias RMBTSuccessBlock = (_ response: Any?) -> Void
+typealias RMBTCompleteBlock = (_ response: Any?, _ error: Error?) -> Void
 typealias RMBTErrorBlock = (_ error: Error?, _ info: [String: Any]?) -> Void
