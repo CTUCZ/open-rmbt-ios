@@ -34,7 +34,7 @@ public class BasicRequest: NSObject, Mappable {
 
     var timezone: String?
     
-    var softwareVersion: String?
+    var softwareVersion: String? // Application version
     var softwareRevision: String?
     var softwareVersionCode: Int?
 
@@ -50,7 +50,7 @@ public class BasicRequest: NSObject, Mappable {
     ]
     
     var version: String = "0.3"
-    var clientVersion: String?
+    var clientVersion: String? // Server side version
     
     override init() { }
 
@@ -75,6 +75,7 @@ public class BasicRequest: NSObject, Mappable {
         language            <- map["client_language"]
         clientType          <- map["type"]
         version             <- map["version"]
+        softwareVersion     <- map["client_software_version"]
         softwareVersion     <- map["softwareVersion"]
         softwareVersionCode <- map["softwareVersionCode"]
         softwareRevision    <- map["softwareRevision"]
