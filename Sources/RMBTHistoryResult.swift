@@ -129,9 +129,12 @@ class RMBTHistoryResult: NSObject {
     private(set) var qoeClassificationItems: [RMBTHistoryQOEResultItem] = []
     private(set) var qosResults: [RMBTHistoryQoSGroupResult]?
     
-    func ensureBasicDetails(success: @escaping RMBTBlock) {
+    /// response always nil. error will be not nil if we have error
+    ///
+    func ensureBasicDetails(complete: @escaping RMBTCompleteBlock) {
+        var finalError: Error?
         if (self.dataState != .index) {
-            success()
+            complete(nil, nil)
         } else {
             let allDone = DispatchGroup()
             
@@ -143,6 +146,7 @@ class RMBTHistoryResult: NSObject {
                 }
                 allDone.leave()
             } error: { error in
+                finalError = error
                 Log.logger.error("Error fetching QoS test results: \(String(describing: error)).")
                 allDone.leave()
             }
@@ -242,6 +246,7 @@ class RMBTHistoryResult: NSObject {
                 self.dataState = .basic
                 allDone.leave()
             }, error: { error in
+                finalError = error
                 Log.logger.error("Error fetching test results: \(String(describing: error)).")
                 allDone.leave()
             })
@@ -250,7 +255,7 @@ class RMBTHistoryResult: NSObject {
                 guard let self = self else { return }
                 if self.dataState == .basic {
                     self.addQosToQoeClassifications()
-                    success()
+                    complete(nil, finalError)
                 }
             }
         }
