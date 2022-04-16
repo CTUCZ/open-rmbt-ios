@@ -197,7 +197,8 @@ final private class RMBTPingContentGraphView: UIView {
       
         let heightSegment: CGFloat = self.frameHeight / self.maxValue
         
-        pathStroke.move(to: CGPoint(x: 0, y: self.frameHeight - (self.frameHeight * values[0].y)))
+        pathStroke.move(to: CGPoint(x: 0, y: 0))
+        pathStroke.addLine(to: CGPoint(x: 0, y: heightSegment * values[0].y))
         
         for index in 1..<values.count {
             let value = values[index]
@@ -233,6 +234,10 @@ final private class RMBTPingContentGraphView: UIView {
                                 controlPoint1: CGPoint(x: firstX, y: firstY),
                                 controlPoint2: CGPoint(x: secondX, y: secondY))
         }
+        
+        var lastPoint = pathStroke.currentPoint
+        lastPoint.y = 0
+        pathStroke.addLine(to: lastPoint)
         
         return pathStroke
     }
