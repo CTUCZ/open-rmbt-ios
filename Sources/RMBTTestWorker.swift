@@ -565,15 +565,16 @@ extension RMBTTestWorker: GCDAsyncSocketDelegate {
         } else if tag == .rxPongAccept {
             // <- ACCEPT
             
+            
             //if passed pingCount and test duration more then 1000ms. dynamic ping count
-            let duration = Double(RMBTHelpers.RMBTCurrentNanos() - pingStartTestNanos) / Double(NSEC_PER_SEC)
-            if pingSeq >= UInt(params.pingCount) && duration >= pingTestDuration { // TODO
-                state = .latencyTestFinished
-                delegate?.testWorkerDidFinishLatencyTest(self)
+            let duration = Double(RMBTHelpers.RMBTCurrentNanos() - self.pingStartTestNanos) / Double(NSEC_PER_SEC)
+            if self.pingSeq >= UInt(self.params.pingCount) && duration >= self.pingTestDuration { // TODO
+                self.state = .latencyTestFinished
+                self.delegate?.testWorkerDidFinishLatencyTest(self)
             } else {
                 // Send PING again
-                writeLine("PING", withTag: .txPing)
-                pingStartNanos = RMBTHelpers.RMBTCurrentNanos()
+                self.writeLine("PING", withTag: .txPing)
+                self.pingStartNanos = RMBTHelpers.RMBTCurrentNanos()
             }
         }
 

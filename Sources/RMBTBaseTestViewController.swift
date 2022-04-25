@@ -52,6 +52,10 @@ class RMBTBaseTestViewController: UIViewController {
         qosWillPerformed = RMBTTestRunner.willQoSPerformed()
     }
     
+    func testStartTime() -> UInt64 {
+        return testRunner?.testResult?.testStartNanos ?? 0
+    }
+    
     func percentage(after phase: RMBTTestRunnerPhase) -> UInt {
         switch(phase) {
         case .none: return 0

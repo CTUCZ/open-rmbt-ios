@@ -24,7 +24,7 @@ final class RMBTHistoryPingGraphCell: UICollectionViewCell {
             if let graph = graph {
                 pingGraphView.clear()
                 for p in graph.pings {
-                    pingGraphView.add(value: p.pingMs, at: Double(p.timeElapsed))
+                    pingGraphView.add(value: p.pingMs, at: Double(p.timeElapsed) * 1.0e+6)
                 }
                 
                 self.pingGraphView.isHidden = false
