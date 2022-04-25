@@ -197,6 +197,11 @@ final class RMBTHistoryResultViewController: UIViewController {
         
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: activities)
         activityViewController.setValue(RMBTHelpers.RMBTAppTitle(), forKey: "subject")
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            activityViewController.popoverPresentationController?.barButtonItem  = self.navigationItem.rightBarButtonItem
+        }
+        
         self.present(activityViewController, animated: true, completion: nil)
     }
     
