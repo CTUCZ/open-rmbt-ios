@@ -256,7 +256,14 @@ class RMBTMapViewController: UIViewController {
     }
     
     private func showInfo(for measurement: SpeedMeasurementResultResponse) {
-        // TODO: Show measurement info
+        guard let uuid = measurement.openTestUuid else { return }
+        
+        RMBTMapServer.shared.getOpenTestUrl(uuid) { response in
+            if let openURL = response,
+               let url = URL(string: openURL) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
     
     private func scroll(to measurement: SpeedMeasurementResultResponse) {
@@ -299,7 +306,7 @@ class RMBTMapViewController: UIViewController {
             self.mapResultsListViewController.measurements = response
             self.mapView.addAnnotation(pin)
             self.mapView.selectAnnotation(pin, animated: true)
-            self.showInfo(for: measurement)
+//            self.showInfo(for: measurement)
             self.showResults()
         } error: { [weak self] error in
             Log.logger.error(error)
