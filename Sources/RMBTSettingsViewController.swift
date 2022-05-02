@@ -558,6 +558,7 @@ extension RMBTSettingsViewController: MFMailComposeViewControllerDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 }
+
 private extension UIImage {
     static let closeImage = UIImage(named: "black_close_button")
 }
