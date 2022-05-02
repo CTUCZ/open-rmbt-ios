@@ -9,19 +9,18 @@
 import UIKit
 import WebKit
 
-class RMBTStatsWebViewController: UIViewController {
-    
-    private lazy var webView: WKWebView = {
+class RMBTWebViewController: UIViewController {
+    fileprivate lazy var webView: WKWebView = {
         let webView = WKWebView()
         webView.translatesAutoresizingMaskIntoConstraints = false
         return webView
     }()
     
+    var url: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.title = NSLocalizedString("menu_button_statistics", comment: "")
-        
+
         self.view.addSubview(webView)
         
         NSLayoutConstraint.activate([
@@ -31,10 +30,30 @@ class RMBTStatsWebViewController: UIViewController {
             webView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
-        guard let url = RMBTControlServer.shared.statsURL else { return }
-        webView.load(URLRequest(url: url))
+        loadUrl(url: url)
+    }
+    
+    func loadUrl(url: URL?) {
+        guard let url = url else { return }
+        
+        if isViewLoaded {
+            webView.load(URLRequest(url: url))
+        } else {
+            self.url = url
+        }
     }
 }
+
+class RMBTStatsWebViewController: RMBTWebViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.title = NSLocalizedString("menu_button_statistics", comment: "")
+        
+        loadUrl(url: RMBTControlServer.shared.statsURL)
+    }
+}
+
     
 final class RMBTStatsViewController: UINavigationController {
 

@@ -255,13 +255,28 @@ class RMBTMapViewController: UIViewController {
         self.mapView.removeAnnotation(pin)
     }
     
+    @objc var closeBarButtonItem: UIBarButtonItem {
+        let closeBarButtonItem = UIBarButtonItem(image: .closeImage, style: .done, target: self, action: #selector(closeDetailsViewController(_:)))
+        return closeBarButtonItem
+    }
+    
+    @objc private func closeDetailsViewController(_ sender: Any) {
+        self.presentedViewController?.dismiss(animated: true)
+    }
+    
     private func showInfo(for measurement: SpeedMeasurementResultResponse) {
         guard let uuid = measurement.openTestUuid else { return }
         
         RMBTMapServer.shared.getOpenTestUrl(uuid) { response in
             if let openURL = response,
                let url = URL(string: openURL) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                let controller = RMBTWebViewController()
+                controller.loadUrl(url: url)
+                let navController = UINavigationController(rootViewController: controller)
+                self.present(navController, animated: true)
+                navController.navigationBar.topItem?.title = measurement.timeString
+                navController.navigationBar.topItem?.leftBarButtonItem = self.closeBarButtonItem
+                navController.navigationBar.tintColor = UIColor.black
             }
         }
     }
@@ -383,4 +398,8 @@ extension RMBTMapViewController: RMBTMapOverlaysViewControllerDelegate {
         mapOptions?.saveSelection()
         self.refresh()
     }
+}
+
+private extension UIImage {
+    static let closeImage = UIImage(named: "black_close_button")
 }
