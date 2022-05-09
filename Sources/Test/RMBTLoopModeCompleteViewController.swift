@@ -10,7 +10,6 @@ import UIKit
 
 final class RMBTLoopModeCompleteViewController: UIViewController {
 
-    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var resultsButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -28,7 +27,6 @@ final class RMBTLoopModeCompleteViewController: UIViewController {
     
     private func initUI() {
         self.titleLabel.text = .title
-        self.subtitleLabel.text = .titleDescription
         self.resultsButton.setTitle(.results, for: .normal)
         self.homeButton.setTitle(.runAgain, for: .normal)
     }

@@ -59,8 +59,13 @@ import UIKit
         isOpaque = false
         backgroundColor = UIColor.clear
         
-        backgroundImage = UIImage(named: "gauge_\(name)_bg-1")
-        foregroundImage = UIImage(named: "gauge_\(name)_fg-1")
+        if name == "progress" {
+            backgroundImage = UIImage(named: "gauge_\(name)_bg-1")
+            foregroundImage = UIImage(named: "gauge_\(name)_fg-1")
+        } else {
+            backgroundImage = UIImage(named: "gauge_\(name)_bg-1")
+            foregroundImage = UIImage(named: "gauge_\(name)_fg-1")
+        }
 
         assert(foregroundImage != nil, "Couldn't load image")
         assert(backgroundImage != nil, "Couldn't load image")
