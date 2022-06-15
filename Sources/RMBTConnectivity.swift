@@ -25,8 +25,8 @@ enum RMBTConnectivityInterfaceInfoTraffic: UInt {
 }
 
 struct RMBTConnectivityInterfaceInfo {
-    var bytesReceived: UInt32
-    var bytesSent: UInt32
+    var bytesReceived: UInt64
+    var bytesSent: UInt64
 }
 
 class RMBTConnectivity: NSObject {
@@ -127,8 +127,8 @@ class RMBTConnectivity: NSObject {
         var ifaddr: UnsafeMutablePointer<ifaddrs>? = nil
         var stats: UnsafeMutablePointer<if_data>? = nil
 
-        var bytesSent: UInt32 = 0
-        var bytesReceived: UInt32 = 0
+        var bytesSent: UInt64 = 0
+        var bytesReceived: UInt64 = 0
         
         var result = RMBTConnectivityInterfaceInfo(bytesReceived: bytesReceived, bytesSent: bytesSent)
         
@@ -153,8 +153,8 @@ class RMBTConnectivity: NSObject {
             
             stats = unsafeBitCast(ptr.pointee.ifa_data, to: UnsafeMutablePointer<if_data>.self)
             if let stats = stats {
-                bytesSent += stats.pointee.ifi_obytes
-                bytesReceived += stats.pointee.ifi_ibytes
+                bytesSent += UInt64(stats.pointee.ifi_obytes)
+                bytesReceived += UInt64(stats.pointee.ifi_ibytes)
             }
             
             ifaddr = ptr.pointee.ifa_next
@@ -168,7 +168,7 @@ class RMBTConnectivity: NSObject {
         return result
     }
 
-    static private func WRAPPED_DIFF(_ x: UInt32, _ y: UInt32) -> UInt64 {
+    static private func WRAPPED_DIFF(_ x: UInt64, _ y: UInt64) -> UInt64 {
         if y > x {
             return UInt64(y - x)
         } else {
