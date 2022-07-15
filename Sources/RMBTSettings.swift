@@ -73,6 +73,7 @@ import Foundation
     ///
     @objc public dynamic var loopMode = false
     @objc public dynamic var loopModeLastCount: UInt = 0
+    @objc public dynamic var loopUuid: String? = nil
 
     ///
     @objc public dynamic var debugLoopModeMaxTests: UInt = 0
