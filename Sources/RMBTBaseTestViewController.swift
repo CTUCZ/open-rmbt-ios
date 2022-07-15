@@ -193,6 +193,7 @@ class RMBTBaseTestViewController: UIViewController {
     
     func finishTest() {
         UIApplication.shared.isIdleTimerDisabled = false
+        RMBTSettings.shared.loopUuid = nil
     }
 }
 
