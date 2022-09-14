@@ -726,6 +726,18 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
             Log.logger.debug("Downlink test finished")
 
             downlinkEndInterfaceInfo = testResult?.lastConnectivity()?.getInterfaceInfo()
+            
+            // making sure that the end value of bytes is bigger than the start value
+            // by adding the value from previous connectivity
+            if let dlEnd = downlinkEndInterfaceInfo, let dlStart = downlinkStartInterfaceInfo, dlEnd.bytesReceived < dlStart.bytesReceived, testResult!.connectivities.count > 1 {
+                var count = testResult!.connectivities.count
+                while(downlinkEndInterfaceInfo!.bytesReceived < downlinkStartInterfaceInfo!.bytesReceived && count > 1) {
+                    let prevBytesReceived = downlinkEndInterfaceInfo!.bytesReceived
+                    downlinkEndInterfaceInfo = testResult!.connectivities[count - 2].getInterfaceInfo()
+                    downlinkEndInterfaceInfo!.bytesReceived += prevBytesReceived
+                    count-=1
+                }
+            }
 
             let measuredThroughputs = testResult?.flush()
 
@@ -796,6 +808,18 @@ extension RMBTTestRunner: RMBTTestWorkerDelegate {
             self.killTimer()
             
             uplinkEndInterfaceInfo = testResult?.lastConnectivity()?.getInterfaceInfo()
+            
+            // making sure that the end value of bytes is bigger than the start value,
+            // by adding the value from previous connectivity
+            if let ulEnd = uplinkEndInterfaceInfo, let ulStart = uplinkStartInterfaceInfo, ulEnd.bytesSent < ulStart.bytesSent, testResult!.connectivities.count > 1{
+                var count = testResult!.connectivities.count
+                while(uplinkEndInterfaceInfo!.bytesSent < uplinkStartInterfaceInfo!.bytesSent && count > 1) {
+                    let prevBytesSent = uplinkEndInterfaceInfo!.bytesSent
+                    uplinkEndInterfaceInfo = testResult!.connectivities[count - 2].getInterfaceInfo()
+                    uplinkEndInterfaceInfo!.bytesSent += prevBytesSent
+                    count-=1
+                }
+            }
 
             let measuredThroughputs = testResult?.flush()
             Log.logger.debug("Uplink test finished.")
