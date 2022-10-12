@@ -169,13 +169,13 @@ class RMBTConnectivity: NSObject {
     }
 
     static private func WRAPPED_DIFF(_ x: UInt64, _ y: UInt64) -> UInt64 {
-        if y > x {
-            return UInt64(y - x)
-        } else {
-            let size = MemoryLayout.size(ofValue: x)
-            let total: UInt64 = UInt64(1) << (size * 8)
-            return total - UInt64(x) + UInt64(y)
+        let maxInterfaceValue: UInt64 = 4294967295
+        if y >= x {
+            return y - x
+        } else if (x <= maxInterfaceValue) {
+            return (maxInterfaceValue - x) + y
         }
+        return y
     }
     
     // Total (up+down) difference in bytes transferred between two readouts. If counter has wrapped returns 0.
