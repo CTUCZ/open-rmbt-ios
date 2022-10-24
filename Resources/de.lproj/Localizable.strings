@@ -394,11 +394,13 @@
 "preferences_ipv6_only" = "Nur IPv6";
 
 "preferences_developer_control_server" = "Control-Server";
+"preferences_override_control_enabled" = "Control-Server überschreiben";
 "preferences_override_control_server_host" = "Control Host";
 "preferences_override_control_server_port" = "Control Port";
 "preferences_override_control_server_ssl" = "Control SSL";
 
 "preferences_developer_logging" = "Protokollierung";
+"preferences_developer_logging_enabled" = "Protokollierung aktivieren";
 "preferences_developer_logging_summary" = "Protokollnachrichten werden per UDP an das ausgewählte Ziel gesendet.";
 "preferences_developer_loggind_host" = "Protokollierung Host";
 "preferences_developer_loggind_port" = "Protokollierung Port";

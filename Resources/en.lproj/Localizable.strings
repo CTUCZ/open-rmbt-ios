@@ -394,11 +394,13 @@
 "preferences_ipv6_only" = "IPv6 Only";
 
 "preferences_developer_control_server" = "Control server";
+"preferences_override_control_enabled" = "Override control server";
 "preferences_override_control_server_host" = "Control host";
 "preferences_override_control_server_port" = "Control port";
 "preferences_override_control_server_ssl" = "Control SSL";
 
 "preferences_developer_logging" = "Logging";
+"preferences_developer_logging_enabled" = "Enable logging";
 "preferences_developer_logging_summary" = "Log messages will be sent to the selected destination via UDP.";
 "preferences_developer_loggind_host" = "Logging host";
 "preferences_developer_loggind_port" = "Logging port";
