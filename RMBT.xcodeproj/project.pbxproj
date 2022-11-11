@@ -10,6 +10,7 @@
 		361443482732793E00D0FC26 /* RMBTHistorySyncModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361443472732793D00D0FC26 /* RMBTHistorySyncModalViewController.swift */; };
 		3628C539275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3628C538275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib */; };
 		3628C53B27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3628C53A27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift */; };
+		3678AA7D291E35D70059D6CB /* RMBT-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3678AA7F291E35D70059D6CB /* RMBT-InfoPlist.strings */; };
 		36933A73274E68B4009A52BE /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36933A72274E68B4009A52BE /* UIColor.swift */; };
 		36933A75274FBF00009A52BE /* RMBTTestDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36933A74274FBF00009A52BE /* RMBTTestDetailCell.swift */; };
 		36933A77274FCA96009A52BE /* RMBTHistoryTestDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36933A76274FCA96009A52BE /* RMBTHistoryTestDetailsViewController.swift */; };
@@ -297,6 +298,8 @@
 		361443472732793D00D0FC26 /* RMBTHistorySyncModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistorySyncModalViewController.swift; sourceTree = "<group>"; };
 		3628C538275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryQoSTitledResultCell.xib; sourceTree = "<group>"; };
 		3628C53A27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQoSTitledResultCell.swift; sourceTree = "<group>"; };
+		3678AA7E291E35D70059D6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/RMBT-InfoPlist.strings"; sourceTree = "<group>"; };
+		3678AA80291E35DC0059D6CB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "de.lproj/RMBT-InfoPlist.strings"; sourceTree = "<group>"; };
 		36933A72274E68B4009A52BE /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		36933A74274FBF00009A52BE /* RMBTTestDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTTestDetailCell.swift; sourceTree = "<group>"; };
 		36933A76274FCA96009A52BE /* RMBTHistoryTestDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryTestDetailsViewController.swift; sourceTree = "<group>"; };
@@ -767,6 +770,7 @@
 				C7F3FB35179CC86900E336CF /* terms_conditions_long.html */,
 				C783F68D1EDC7EB4001CB2F9 /* loop_mode_info.html */,
 				C783F68F1EDC7EB4001CB2F9 /* loop_mode_info2.html */,
+				3678AA7F291E35D70059D6CB /* RMBT-InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1439,6 +1443,7 @@
 				E9E993D526EB0E4700E7EED6 /* RMBTQOEListCell.xib in Resources */,
 				E959549B26E4F17E004EA6D9 /* Roboto-Bold.ttf in Resources */,
 				E959549D26E4F17E004EA6D9 /* Roboto-Black.ttf in Resources */,
+				3678AA7D291E35D70059D6CB /* RMBT-InfoPlist.strings in Resources */,
 				C7F3FB33179CC86900E336CF /* terms_conditions_long.html in Resources */,
 				E9E993CB26EA538700E7EED6 /* RMBTHistoryGraphCell.xib in Resources */,
 				E95954B526E62E34004EA6D9 /* RMBTHistoryViewCell.xib in Resources */,
@@ -1775,6 +1780,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3678AA7F291E35D70059D6CB /* RMBT-InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3678AA7E291E35D70059D6CB /* en */,
+				3678AA80291E35DC0059D6CB /* de */,
+			);
+			name = "RMBT-InfoPlist.strings";
+			sourceTree = "<group>";
+		};
 		C783F68D1EDC7EB4001CB2F9 /* loop_mode_info.html */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2012,8 +2026,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4032;
+				CURRENT_PROJECT_VERSION = 4033;
 				DEVELOPMENT_TEAM = T7Y947AEPK;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2030,7 +2045,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.32;
+				MARKETING_VERSION = 4.0.33;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = at.netztest.app.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2053,8 +2068,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4032;
+				CURRENT_PROJECT_VERSION = 4033;
 				DEVELOPMENT_TEAM = T7Y947AEPK;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2067,7 +2083,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.32;
+				MARKETING_VERSION = 4.0.33;
 				PRODUCT_BUNDLE_IDENTIFIER = at.netztest.app.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
