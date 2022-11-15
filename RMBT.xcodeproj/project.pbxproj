@@ -2030,7 +2030,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4033;
+				CURRENT_PROJECT_VERSION = 4034;
 				DEVELOPMENT_TEAM = T7Y947AEPK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2049,7 +2049,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.33;
+				MARKETING_VERSION = 4.0.34;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = at.netztest.app.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2072,7 +2072,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4033;
+				CURRENT_PROJECT_VERSION = 4034;
 				DEVELOPMENT_TEAM = T7Y947AEPK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2087,7 +2087,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.33;
+				MARKETING_VERSION = 4.0.34;
 				PRODUCT_BUNDLE_IDENTIFIER = at.netztest.app.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
