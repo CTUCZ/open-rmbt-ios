@@ -73,7 +73,6 @@ import Foundation
     ///
     @objc public dynamic var loopMode = false
     @objc public dynamic var loopModeLastCount: UInt = 0
-    @objc public dynamic var loopUuid: String? = nil
 
     ///
     @objc public dynamic var debugLoopModeMaxTests: UInt = 0
@@ -139,6 +138,7 @@ import Foundation
     @objc public dynamic var isDevModeEnabled: Bool = false
     @objc public dynamic var serverIdentifier: String?
     @objc public dynamic var isOverrideServer: Bool = false
+    @objc public dynamic var activeMeasurementId: String?
 
     ///
     private override init() {

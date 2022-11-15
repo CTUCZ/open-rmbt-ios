@@ -418,11 +418,11 @@ final class RMBTTestViewController: RMBTBaseTestViewController {
     }
     
     @objc func startTest() {
-        if let loopModeInfo = loopModeInfo, let currentLoopUuid = RMBTSettings.shared.loopUuid, loopModeInfo.loopUuid != currentLoopUuid {
+        let activeMeasurementId = RMBTSettings.shared.activeMeasurementId
+        guard activeMeasurementId == nil || (loopModeInfo?.loopUuid != nil && activeMeasurementId == loopModeInfo?.loopUuid) else {
             return
-        } // to avoid running 2 loops at once
-        RMBTSettings.shared.loopUuid = loopModeInfo?.loopUuid
-        
+        }
+        RMBTSettings.shared.activeMeasurementId = loopModeInfo != nil ? loopModeInfo!.loopUuid : ""
         self.startDate = Date()
         self.lastTestFirstGoodLocation = self.locationTracker.location
         self.loopModeInfo?.increment()

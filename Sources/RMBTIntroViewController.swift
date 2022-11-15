@@ -316,6 +316,10 @@ class RMBTIntroViewController: UIViewController {
                 let testVC = navController.topViewController as? RMBTTestViewController else {
                 fatalError()
             }
+            let activeMeasurementId = RMBTSettings.shared.activeMeasurementId
+            guard activeMeasurementId == nil || (loopModeInfo?.loopUuid != nil && activeMeasurementId == loopModeInfo?.loopUuid) else {
+                return
+            }
             testVC.loopModeInfo = loopModeInfo
             navController.modalPresentationStyle = .fullScreen
             navController.transitioningDelegate = self
