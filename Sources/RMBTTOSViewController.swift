@@ -52,6 +52,7 @@ class RMBTTOSViewController: UIViewController {
         self.agreeButton.setTitle(.agree, for: .normal)
         self.declineButton.setTitle(.decline, for: .normal)
         self.checkboxLabel.text = .titleForSwitcher
+        self.switcher.accessibilityLabel = .titleForSwitcher
         
         self.view.addSubview(webView)
         self.view.bringSubviewToFront(scrollDownButton)

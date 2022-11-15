@@ -243,6 +243,21 @@
 /* Loop mode details title */
 "Location" = "Location";
 
+/* Tab bar items a11 */
+"Start" = "Start";
+"History" = "History";
+"Statistics" = "Statistics";
+"Map" = "Map";
+
+/* Intro screen a11 */
+"Start measurement now" = "Start measurement now";
+"Disable loop mode" = "Disable loop mode";
+"Enable loop mode" = "Enable loop mode";
+"Settings" = "Settings";
+"Show IPv4 address" = "Show IPv4 address";
+"Show IPv6 address" = "Show IPv6 address";
+"Show location" = "Show location";
+
 "video_telephony" = "Video telephony";
 "video_conferencing" = "Video conferencing";
 "cloud" = "Cloud";
