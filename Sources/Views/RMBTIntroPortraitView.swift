@@ -99,11 +99,15 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
     }
     
     func initUI() {
+        self.startTestButton.accessibilityLabel = .startButtonA11Label
+        self.loopModeSwitchButton.accessibilityLabel = RMBTSettings.shared.loopMode ? .loopModeSwitchOnA11Label : .loopModeSwitchOffA11Label
+        
         self.loopModeLabel.text = String.loopModeLabel
         
         let image = self.settingsButton.image(for: .normal)?.withRenderingMode(.alwaysTemplate)
         self.settingsButton.setImage(image, for: .normal)
         self.settingsButton.tintColor = .networkLogoAvailable
+        self.settingsButton.accessibilityLabel = .settingsButtonA11Label
         
         self.locationImageView.image = self.locationImageView.image?.withRenderingMode(.alwaysTemplate)
         self.ipV6ImageView.image = self.ipV6ImageView.image?.withRenderingMode(.alwaysTemplate)
@@ -116,6 +120,18 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
         self.ipV4ImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ipv4TapHandler(_:))))
         self.ipV6ImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ipv6TapHandler(_:))))
         self.locationImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(locationTapHandler(_:))))
+        
+        self.ipV4ImageView.isAccessibilityElement = true
+        self.ipV4ImageView.accessibilityTraits = .button
+        self.ipV4ImageView.accessibilityLabel = .ipv4ImageViewA11Label
+        
+        self.ipV6ImageView.isAccessibilityElement = true
+        self.ipV6ImageView.accessibilityTraits = .button
+        self.ipV6ImageView.accessibilityLabel = .ipv6ImageViewA11Label
+        
+        self.locationImageView.isAccessibilityElement = true
+        self.locationImageView.accessibilityTraits = .button
+        self.locationImageView.accessibilityLabel = .locationImageViewA11Label
         
         waveView.startAnimation()
         waveView.direction = .backwards
@@ -140,6 +156,7 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
         self.loopModeLabel.isHidden = !RMBTSettings.shared.loopMode
         self.loopIconImageView.isHidden = !RMBTSettings.shared.loopMode
         self.loopModeSwitchButton.isSelected = RMBTSettings.shared.loopMode
+        self.loopModeSwitchButton.accessibilityLabel = RMBTSettings.shared.loopMode ? .loopModeSwitchOnA11Label : .loopModeSwitchOffA11Label
     }
     
     func networkAvailable(_ networkType: RMBTNetworkType, networkName: String?, networkDescription: String?) {
@@ -208,6 +225,13 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
 private extension String {
     static let noNetworkAvailable = NSLocalizedString("No network connection available", comment: "");
     static let loopModeLabel = NSLocalizedString("title_loop_mode", comment: "")
+    static let startButtonA11Label = NSLocalizedString("Start measurement now", comment: "")
+    static let loopModeSwitchOnA11Label = NSLocalizedString("Disable loop mode", comment: "")
+    static let loopModeSwitchOffA11Label = NSLocalizedString("Enable loop mode", comment: "")
+    static let settingsButtonA11Label = NSLocalizedString("Settings", comment: "")
+    static let ipv4ImageViewA11Label = NSLocalizedString("Show IPv4 address", comment: "")
+    static let ipv6ImageViewA11Label = NSLocalizedString("Show IPv6 address", comment: "")
+    static let locationImageViewA11Label = NSLocalizedString("Show location", comment: "")
 }
 
 private extension UIImage {
