@@ -243,6 +243,12 @@
 /* Loop mode details title */
 "Location" = "Standort";
 
+/* Tab bar items */
+"Start" = "Start";
+"History" = "Verlauf";
+"Statistics" = "Statistiks";
+"Map" = "Karte";
+
 "video_telephony" = "Videotelefonie";
 "video_conferencing" = "Videokonferenzen";
 "cloud" = "Cloud";

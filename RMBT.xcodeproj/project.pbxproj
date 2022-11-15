@@ -11,6 +11,7 @@
 		3628C539275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3628C538275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib */; };
 		3628C53B27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3628C53A27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift */; };
 		3678AA7D291E35D70059D6CB /* RMBT-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3678AA7F291E35D70059D6CB /* RMBT-InfoPlist.strings */; };
+		367B46832923857400D84E87 /* UITabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367B46822923857400D84E87 /* UITabBarItem.swift */; };
 		36933A73274E68B4009A52BE /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36933A72274E68B4009A52BE /* UIColor.swift */; };
 		36933A75274FBF00009A52BE /* RMBTTestDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36933A74274FBF00009A52BE /* RMBTTestDetailCell.swift */; };
 		36933A77274FCA96009A52BE /* RMBTHistoryTestDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36933A76274FCA96009A52BE /* RMBTHistoryTestDetailsViewController.swift */; };
@@ -300,6 +301,7 @@
 		3628C53A27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQoSTitledResultCell.swift; sourceTree = "<group>"; };
 		3678AA7E291E35D70059D6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/RMBT-InfoPlist.strings"; sourceTree = "<group>"; };
 		3678AA80291E35DC0059D6CB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "de.lproj/RMBT-InfoPlist.strings"; sourceTree = "<group>"; };
+		367B46822923857400D84E87 /* UITabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarItem.swift; sourceTree = "<group>"; };
 		36933A72274E68B4009A52BE /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		36933A74274FBF00009A52BE /* RMBTTestDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTTestDetailCell.swift; sourceTree = "<group>"; };
 		36933A76274FCA96009A52BE /* RMBTHistoryTestDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryTestDetailsViewController.swift; sourceTree = "<group>"; };
@@ -1018,6 +1020,7 @@
 				36933A72274E68B4009A52BE /* UIColor.swift */,
 				E9AA0DE627635CF9003C71D7 /* Data+MD5.swift */,
 				E9A7BC04279EC4EA006F1C2D /* UITextField+Additions.swift */,
+				367B46822923857400D84E87 /* UITabBarItem.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1743,6 +1746,7 @@
 				E9400F2F26BE8CCD0067273A /* WifiInfo.swift in Sources */,
 				E9E993F426EC814900E7EED6 /* QosMeasurementResultRequest.swift in Sources */,
 				E9E993F626EC816800E7EED6 /* QOSTypeDefinition.swift in Sources */,
+				367B46832923857400D84E87 /* UITabBarItem.swift in Sources */,
 				E9A23BE82764DCD600717814 /* RMBTQoSProgressCell.swift in Sources */,
 				E9E993B726E9FE0C00E7EED6 /* RMBTHistoryResultViewController.swift in Sources */,
 				E9400F2B26BE8CB70067273A /* Signal.swift in Sources */,
