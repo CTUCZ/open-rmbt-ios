@@ -20,9 +20,17 @@ class RMBTHistoryLoopCell: UITableViewHeaderFooterView {
     @IBOutlet weak var topBorder: UIView!
     @IBOutlet weak var bottomBorder: UIView!
     
+    private var expanded = false
+    
     @IBAction func expand(_ sender: UIButton) {
         UIView.animate(withDuration: 0.2) {
             self.expandButton.imageView!.transform = self.expandButton.imageView!.transform.rotated(by: .pi)
+            self.expanded = !self.expanded
+            if self.expanded {
+                self.expandButton.accessibilityLabel = .expandButtonExpanded
+            } else {
+                self.expandButton.accessibilityLabel = .expandButtonCollapsed
+            }
             self.layoutIfNeeded()
         }
         onExpand?()
@@ -33,6 +41,7 @@ class RMBTHistoryLoopCell: UITableViewHeaderFooterView {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(expand(_:)))
         self.stackView.addGestureRecognizer(tapGesture)
+        self.expandButton.accessibilityLabel = .expandButtonCollapsed
     }
     
     override func layoutSubviews() {
@@ -40,4 +49,9 @@ class RMBTHistoryLoopCell: UITableViewHeaderFooterView {
         addSubview(topBorder)
         addSubview(bottomBorder)
     }
+}
+
+private extension String {
+    static let expandButtonExpanded = NSLocalizedString("Collapse results", comment: "")
+    static let expandButtonCollapsed = NSLocalizedString("Expand results", comment: "")
 }
