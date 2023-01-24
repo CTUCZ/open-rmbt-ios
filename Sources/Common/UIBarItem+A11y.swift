@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UITabBarItem {
+extension UIBarItem {
     @IBInspectable var localizableAccessibilityLabel: String? {
         get { return accessibilityLabel }
         set {

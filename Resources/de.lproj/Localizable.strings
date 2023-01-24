@@ -243,13 +243,14 @@
 /* Loop mode details title */
 "Location" = "Standort";
 
-/* Tab bar items a11 */
+/* A11 */
 "Start" = "Start";
 "History" = "Verlauf";
 "Statistics" = "Statistiks";
 "Map" = "Karte";
-
-/* Intro screen a11 */
+"Collapse results" = "Ergebnisse einklappen";
+"Expand results" = "Ergebnisse erweitern";
+"Share result" = "Ergebnis teilen";
 "Start measurement now" = "Test starten";
 "Disable loop mode" = "Wiederholungsmodus deaktivieren";
 "Enable loop mode" = "Wiederholungsmodus aktivieren";

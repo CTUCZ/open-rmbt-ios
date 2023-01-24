@@ -243,13 +243,14 @@
 /* Loop mode details title */
 "Location" = "Location";
 
-/* Tab bar items a11 */
+/* A11 */
 "Start" = "Start";
 "History" = "History";
 "Statistics" = "Statistics";
 "Map" = "Map";
-
-/* Intro screen a11 */
+"Collapse results" = "Collapse results";
+"Expand results" = "Expand results";
+"Share result" = "Share result";
 "Start measurement now" = "Start measurement now";
 "Disable loop mode" = "Disable loop mode";
 "Enable loop mode" = "Enable loop mode";
