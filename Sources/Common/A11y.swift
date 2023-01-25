@@ -16,3 +16,12 @@ extension UIBarItem {
         }
     }
 }
+
+extension UIButton {
+    @IBInspectable var localizableAccessibilityLabel: String? {
+        get { return accessibilityLabel }
+        set {
+            accessibilityLabel = NSLocalizedString(newValue!, comment: "")
+        }
+    }
+}

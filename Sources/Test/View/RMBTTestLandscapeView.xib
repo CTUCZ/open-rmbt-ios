@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -442,6 +442,9 @@
                         <constraint firstAttribute="width" constant="44" id="rdF-qL-m8L"/>
                     </constraints>
                     <state key="normal" image="close_btn"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizableAccessibilityLabel" value="Abort Test"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="closeButtonClick:" destination="aRi-va-Z9i" eventType="touchUpInside" id="IDU-gu-uz6"/>
                     </connections>
@@ -545,8 +548,8 @@
         <image name="close_btn" width="28" height="28"/>
         <image name="download_icon" width="22" height="22"/>
         <image name="download_icon_colored" width="16" height="16"/>
-        <image name="gauge_progress_bg-1" width="149" height="168"/>
-        <image name="gauge_speed_bg-1" width="154" height="168"/>
+        <image name="gauge_progress_bg-1" width="198.53199768066406" height="222.99800109863281"/>
+        <image name="gauge_speed_bg-1" width="204.45799255371094" height="222.99899291992188"/>
         <image name="mobile_icon_full" width="84" height="52"/>
         <image name="ping_icon" width="16" height="16"/>
         <image name="upload_icon_colored" width="16" height="16"/>
