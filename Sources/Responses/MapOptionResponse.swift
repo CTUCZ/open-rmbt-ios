@@ -54,6 +54,7 @@ import ObjectMapper
         var options: [[String: Any]] = []
         var isDefault: Bool = false
         var icon: String?
+        var dependsOn: MapFilterDependsOnV2?
         
         init?(map: Map) { }
         
@@ -62,6 +63,17 @@ import ObjectMapper
             options <- map["options"]
             icon <- map["icon"]
             isDefault <- map["default"]
+            dependsOn <- map["depends_on"]
+        }
+        
+        final internal class MapFilterDependsOnV2: Mappable {
+            var mapTypeIsMobile = false
+            
+            init?(map: Map) { }
+            
+            func mapping(map: Map) {
+                mapTypeIsMobile <-  map["map_type_is_mobile"]
+            }
         }
     }
     

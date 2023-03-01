@@ -15,6 +15,7 @@ class RMBTMapOptionsTypesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var filter: RMBTMapOptionsFilter?
+    var onMapTypeChange: ((RMBTMapOptionsFilter?) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class RMBTMapOptionsTypesViewController: UIViewController {
     }
     
     @IBAction func confirmButtonClick(_ sender: Any) {
+        self.onMapTypeChange?(self.filter)
         self.navigationController?.popViewController(animated: true)
     }
 }

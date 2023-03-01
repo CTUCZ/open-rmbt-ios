@@ -20,12 +20,16 @@ import ObjectMapper
 final class MapMeasurementRequest: BasicRequest {
     var size = "40"
     var coords: CoordObject?
+    var filter: Filter?
+    var options: MapOptions?
 
     override func mapping(map: Map) {
         super.mapping(map: map)
 
         size            <- map["size"]
         coords          <- map["coords"]
+        filter          <- map["filter"]
+        options         <- map["options"]
     }
 
     internal class CoordObject: Mappable {
@@ -41,6 +45,38 @@ final class MapMeasurementRequest: BasicRequest {
             latitude    <- map["lat"]
             longitude   <- map["lon"]
             zoom        <- map["z"]
+        }
+    }
+    
+    internal class Filter: Mappable {
+        var mobileOperator: String?
+        var period: String?
+        var provider: String?
+        var statisticalMethod: String?
+        var technology: String?
+        
+        init() { }
+
+        required internal init?(map: Map) { }
+
+        internal func mapping(map: Map) {
+            mobileOperator    <- map["operator"]
+            period            <- map["period"]
+            provider          <- map["provider"]
+            statisticalMethod <- map["statistical_method"]
+            technology        <- map["technology"]
+        }
+    }
+    
+    internal class MapOptions: Mappable {
+        var mapOptions: String?
+        
+        init() { }
+
+        required internal init?(map: Map) { }
+        
+        internal func mapping(map: Map) {
+            mapOptions    <- map["map_options"]
         }
     }
 }
