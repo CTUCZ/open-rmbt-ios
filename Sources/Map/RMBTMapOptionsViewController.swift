@@ -27,7 +27,31 @@ final class RMBTMapOptionsViewController: UIViewController {
     
     weak var delegate: RMBTMapOptionsViewControllerDelegate?
     
-    var mapOptions: RMBTMapOptions?
+    var mapOptions: RMBTMapOptions? {
+        didSet {
+            let mapTypeFilter = self.mapOptions?.mapFilters.first(where: { filter in
+                filter.iconValue == "MAP_TYPE"
+            })
+            self.mapTypeIsMobile = mapTypeFilter?.activeValue?.title.contains("Mobile") ?? false
+        }
+    }
+    var mapTypeIsMobile = false
+    var mapFilters: [RMBTMapOptionsFilter]? {
+        get {
+            return self.mapOptions?.mapFilters.filter({ filter in
+                if filter.iconValue == "MAP_FILTER_TECHNOLOGY" {
+                    return self.mapTypeIsMobile
+                } else if filter.iconValue == "MAP_FILTER_CARRIER" {
+                    if filter.dependsOnMapTypeIsMobile {
+                        return self.mapTypeIsMobile
+                    } else {
+                        return !self.mapTypeIsMobile
+                    }
+                }
+                return true
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,11 +95,11 @@ final class RMBTMapOptionsViewController: UIViewController {
     }
     
     private func filter(at index: Int) -> RMBTMapOptionsFilter? {
-        return self.mapOptions?.mapFilters[index]
+        return self.mapFilters?[index]
     }
     
     private func activeFilters() -> [RMBTMapOptionsFilterValue]? {
-        return self.mapOptions?.mapFilters.compactMap({ $0.activeValue?.activeOption ?? $0.activeValue })
+        return self.mapFilters?.compactMap({ $0.activeValue?.activeOption ?? $0.activeValue })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,13 +115,21 @@ final class RMBTMapOptionsViewController: UIViewController {
            let vc = segue.destination as? RMBTMapOptionsTypesViewController {
             let filter = self.filter(at: indexPath?.row ?? 0)
             vc.filter = filter
+            vc.onMapTypeChange = { filter in
+                self.mapOptions?.mapFilters.forEach({ filter in
+                    if filter.iconValue == "MAP_FILTER_CARRIER" || filter.iconValue == "MAP_FILTER_TECHNOLOGY" {
+                        filter.activeValue = filter.possibleValues.first(where: { $0.isDefault })
+                    }
+                })
+                self.mapTypeIsMobile = filter?.activeValue?.title.contains("Mobile") ?? false
+            }
         }
     }
 }
 
 extension RMBTMapOptionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.mapOptions?.mapFilters.count ?? 0
+        return self.mapFilters?.count ?? 0
     }
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

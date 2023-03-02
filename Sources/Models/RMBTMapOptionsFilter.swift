@@ -56,6 +56,7 @@ import UIKit
     @objc public var title: String = ""
     @objc public var iconValue: String = ""
     @objc public var isDefault = false
+    @objc public var dependsOnMapTypeIsMobile = false
     @objc public var possibleValues: [RMBTMapOptionsFilterValue] = []
     @objc public var activeValue: RMBTMapOptionsFilterValue?
     
@@ -64,6 +65,9 @@ import UIKit
         title = response["title"] as? String ?? ""
         iconValue = response["icon"] as? String ?? ""
         isDefault = response["default"] as? Bool ?? false
+        if let dependsOn = response["depends_on"] as? [String:Any], let mapTypeIsMobile = dependsOn["map_type_is_mobile"] as? Bool {
+            dependsOnMapTypeIsMobile = mapTypeIsMobile
+        }
         let options = response["options"] as? [[String: Any]] ?? []
         possibleValues = options.map { subresponse in
             let filterValue = RMBTMapOptionsFilterValue(with: subresponse)

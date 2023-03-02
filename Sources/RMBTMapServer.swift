@@ -66,6 +66,22 @@ import ObjectMapper
         mapMeasurementRequest.coords?.latitude = coordinate.latitude
         mapMeasurementRequest.coords?.longitude = coordinate.longitude
         mapMeasurementRequest.coords?.zoom = zoom
+        
+        mapMeasurementRequest.options = MapMeasurementRequest.MapOptions()
+        mapMeasurementRequest.options?.mapOptions = params["map_options"] as? String
+        
+        mapMeasurementRequest.filter = MapMeasurementRequest.Filter()
+        mapMeasurementRequest.filter?.period = (params["period"] as? Int)?.description
+        
+        if let technology = params["technology"] as? String, !technology.isEmpty, technology != "some" {
+            mapMeasurementRequest.filter?.technology = technology
+        }
+
+        if let provider = params["provider"] as? String, !provider.isEmpty {
+            mapMeasurementRequest.filter?.provider = provider
+        } else if let mobileOperator = params["operator"] as? String, !mobileOperator.isEmpty {
+            mapMeasurementRequest.filter?.mobileOperator = mobileOperator
+        }
 
         // TODO: Check request and response
         request(.post, path: "/tiles/markers", requestObject: mapMeasurementRequest, success: { (response: MapMeasurementResponse) in
