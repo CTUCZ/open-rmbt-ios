@@ -116,17 +116,12 @@ final class RMBTMapOptionsViewController: UIViewController {
             let filter = self.filter(at: indexPath?.row ?? 0)
             vc.filter = filter
             vc.onMapTypeChange = { filter in
-                let mapTypeIsMobile = filter?.activeValue?.title.contains("Mobile") ?? false
-//                TODO: reset options, when switching between map types
-//                self.mapOptions?.mapFilters.forEach({ filter in
-//                    if filter.iconValue == "MAP_FILTER_CARRIER" || (!mapTypeIsMobile && filter.dependsOnMapTypeIsMobile) {
-//                        let defaultValue = self.activeFiltersAtStart?.first(where: { defaultFilter in
-//                            defaultFilter.title == filter.title
-//                        })
-//                        filter.activeValue = defaultValue?.activeOption
-//                    }
-//                })
-                self.mapTypeIsMobile = mapTypeIsMobile
+                self.mapOptions?.mapFilters.forEach({ filter in
+                    if filter.iconValue == "MAP_FILTER_CARRIER" || filter.iconValue == "MAP_FILTER_TECHNOLOGY" {
+                        filter.activeValue = filter.possibleValues.first(where: { $0.isDefault })
+                    }
+                })
+                self.mapTypeIsMobile = filter?.activeValue?.title.contains("Mobile") ?? false
             }
         }
     }
