@@ -379,7 +379,7 @@ class RMBTIntroViewController: UIViewController {
             }
         }
         
-        currentView.locationTintColor = CLLocationManager.authorizationStatus() != .denied ? .ipAvailable : .ipNotAvailable
+        currentView.locationTintColor = CLLocationManager.authorizationStatus() != .denied ? .primaryTint : .ipNotAvailable
         
         if let type = self.connectivity?.networkTypeDescription,
            let technology = RMBTNetworkTypeConstants.cellularCodeDescriptionDictionary[type] {
@@ -554,4 +554,8 @@ private extension UIColor {
     static let ipNotAvailable = UIColor(red: 245.0 / 255.0, green: 0.0 / 255.0, blue: 28.0/255.0, alpha: 1.0)
     static let ipSemiAvailable = UIColor(red: 255.0 / 255.0, green: 186.0 / 255.0, blue: 0, alpha: 1.0)
     static let ipAvailable = UIColor(red: 89.0 / 255.0, green: 178.0 / 255.0, blue: 0, alpha: 1.0)
+}
+
+extension UIColor {
+    static let primaryTint = UIColor(hex: "#2362a2")
 }
