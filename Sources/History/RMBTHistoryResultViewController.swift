@@ -32,12 +32,14 @@ final class RMBTHistoryResultViewController: UIViewController {
     public var isShowingLastResult = false
     
     private var sections: [Section] = []
+
+    private let canShowMaps = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = self.historyResult?.timeStringIn24hFormat
-        
+
         self.tableView.register(UINib(nibName: RMBTHistoryMapCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryMapCell.ID)
         self.tableView.register(UINib(nibName: RMBTHistoryNetworkCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryNetworkCell.ID)
         self.tableView.register(UINib(nibName: RMBTHistoryBasicInfoCell.ID, bundle: nil), forCellReuseIdentifier: RMBTHistoryBasicInfoCell.ID)
@@ -73,7 +75,7 @@ final class RMBTHistoryResultViewController: UIViewController {
             return
         }
         
-        if CLLocationCoordinate2DIsValid(historyResult.coordinate) {
+        if CLLocationCoordinate2DIsValid(historyResult.coordinate) && canShowMaps {
             sections.append(.map)
         }
         
@@ -149,7 +151,7 @@ final class RMBTHistoryResultViewController: UIViewController {
                 self?.prepareSections()
             })
             
-            if CLLocationCoordinate2DIsValid(historyResult.coordinate) {
+            if CLLocationCoordinate2DIsValid(historyResult.coordinate) && self.canShowMaps {
                 self.sections.append(.map)
             }
             
