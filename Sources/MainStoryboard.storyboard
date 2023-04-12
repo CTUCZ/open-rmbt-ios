@@ -33,7 +33,6 @@
                         <segue destination="Vug-MK-vw0" kind="relationship" relationship="viewControllers" id="6KR-pa-9TK"/>
                         <segue destination="rpx-4g-zab" kind="relationship" relationship="viewControllers" id="iCI-MI-qyt"/>
                         <segue destination="NrU-qU-p5u" kind="relationship" relationship="viewControllers" id="zcb-wB-Mzh"/>
-                        <segue destination="tkX-Jf-9ub" kind="relationship" relationship="viewControllers" id="YUi-fR-V2B"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qHz-WW-ufN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2308,14 +2307,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDI-ee-euM">
-                                <rect key="frame" x="317" y="688" width="66" height="66"/>
+                                <rect key="frame" x="317" y="737" width="66" height="66"/>
                                 <state key="normal" image="my_location_btn"/>
                                 <connections>
                                     <action selector="myLocationButtonClick:" destination="YIU-3Z-B4q" eventType="touchUpInside" id="HNC-Gt-HZp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAQ-7K-MhP">
-                                <rect key="frame" x="317" y="622" width="66" height="66"/>
+                                <rect key="frame" x="317" y="671" width="66" height="66"/>
                                 <state key="normal" image="map_settings_btn"/>
                                 <connections>
                                     <action selector="mapOptionsButtonClick:" destination="YIU-3Z-B4q" eventType="touchUpInside" id="NAi-ko-gVO"/>
@@ -2348,7 +2347,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yS4-6s-RCM">
-                                <rect key="frame" x="0.0" y="798" width="390" height="313"/>
+                                <rect key="frame" x="0.0" y="847" width="390" height="313"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="313" id="f2Z-4H-ZKr"/>
