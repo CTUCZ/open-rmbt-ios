@@ -87,7 +87,7 @@ import UIKit
             updateUI()
         }
     }
-    public var lineColor: UIColor = UIColor.rmbt_color(withRGBHex:0x78ED03) {
+    public var lineColor: UIColor = UIColor.primaryTint {
         didSet {
             linesLayer.strokeColor = lineColor.cgColor
             fillLayer.fillColor = lineColor.withAlphaComponent(0.3).cgColor
