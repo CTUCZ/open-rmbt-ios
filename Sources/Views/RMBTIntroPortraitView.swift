@@ -28,6 +28,7 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
     @IBOutlet private weak var loopModeLabel: UILabel!
     @IBOutlet private weak var logoLabel: UILabel!
     @IBOutlet private weak var settingsButton: UIButton!
+    @IBOutlet private weak var testModeButton: UIButton!
     
     @IBOutlet private weak var startTestButton: UIButton!
     @IBOutlet weak var loopModeSwitchButton: UIButton!
@@ -103,7 +104,25 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
         self.loopModeSwitchButton.accessibilityLabel = RMBTSettings.shared.loopMode ? .loopModeSwitchOnA11Label : .loopModeSwitchOffA11Label
         
         self.loopModeLabel.text = String.loopModeLabel
-        
+        self.testModeButton.setTitle(RMBTSettings.shared.loopMode ? String.loopModeLabel : String.normalModeLabel, for: .normal)
+        self.testModeButton.layer.cornerRadius = 5
+        self.testModeButton.layer.borderWidth = 1
+        self.testModeButton.layer.borderColor = UIColor.white.cgColor
+        self.testModeButton.tintColor = UIColor.white
+        self.testModeButton.configuration?.contentInsets = .init(top: 0, leading: 32, bottom: 0, trailing: 32)
+
+        let selectNormalModeItem = UIAction(title: String.normalModeLabel, image: nil) { _ in
+            self.loopModeHandler(false)
+            self.updateLoopModeUI()
+        }
+        let selectLoopModeItem = UIAction(title: String.loopModeLabel, image: nil) { _ in
+            self.loopModeHandler(true)
+            self.updateLoopModeUI()
+        }
+        let menu = UIMenu(title: "", options: .displayInline, children: [selectNormalModeItem , selectLoopModeItem])
+        testModeButton.menu = menu
+        testModeButton.showsMenuAsPrimaryAction = true
+
         let image = self.settingsButton.image(for: .normal)?.withRenderingMode(.alwaysTemplate)
         self.settingsButton.setImage(image, for: .normal)
         self.settingsButton.tintColor = .networkLogoAvailable
@@ -157,6 +176,7 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
         self.loopIconImageView.isHidden = !RMBTSettings.shared.loopMode
         self.loopModeSwitchButton.isSelected = RMBTSettings.shared.loopMode
         self.loopModeSwitchButton.accessibilityLabel = RMBTSettings.shared.loopMode ? .loopModeSwitchOnA11Label : .loopModeSwitchOffA11Label
+        self.testModeButton.setTitle(RMBTSettings.shared.loopMode ? String.loopModeLabel : String.normalModeLabel, for: .normal)
     }
     
     func networkAvailable(_ networkType: RMBTNetworkType, networkName: String?, networkDescription: String?) {
@@ -224,6 +244,7 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
 
 private extension String {
     static let noNetworkAvailable = NSLocalizedString("No network connection available", comment: "");
+    static let normalModeLabel = NSLocalizedString("title_normal_mode", comment: "")
     static let loopModeLabel = NSLocalizedString("title_loop_mode", comment: "")
     static let startButtonA11Label = NSLocalizedString("Start measurement now", comment: "")
     static let loopModeSwitchOnA11Label = NSLocalizedString("Disable loop mode", comment: "")

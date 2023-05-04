@@ -428,3 +428,5 @@
 "menu_button_statistics" = "Statistika";
 
 "text_ip_address_not_available" = "Adresa není k dispozici";
+
+"title_normal_mode" = "Běžné měření";

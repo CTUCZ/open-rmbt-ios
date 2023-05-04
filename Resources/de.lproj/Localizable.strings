@@ -440,3 +440,5 @@
 "menu_button_statistics" = "Statistik";
 
 "text_ip_address_not_available" = "Die Adresse nicht verfügbar";
+
+"title_normal_mode" = "Normal mode";
