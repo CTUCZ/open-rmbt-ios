@@ -276,8 +276,8 @@
                         <constraint firstItem="J96-Iv-7Fo" firstAttribute="top" secondItem="e0b-d7-pEu" secondAttribute="top" id="oim-ZI-oTd"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RTR-Netztest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fs-mU-pVp">
-                    <rect key="frame" x="147.5" y="73" width="119.5" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ČTÚ-NetTest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fs-mU-pVp">
+                    <rect key="frame" x="149.5" y="73" width="115.5" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Z8U-UC-IUt"/>
                     </constraints>
