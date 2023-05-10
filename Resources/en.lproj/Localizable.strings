@@ -439,3 +439,5 @@
 
 "menu_button_statistics" = "Statistics";
 "text_ip_address_not_available" = "Address is not available";
+
+"title_normal_mode" = "Normal mode";
