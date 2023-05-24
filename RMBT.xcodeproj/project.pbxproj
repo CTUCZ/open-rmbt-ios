@@ -295,12 +295,12 @@
 
 /* Begin PBXFileReference section */
 		1F9C078F216F751C00F1FC10 /* RMBT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RMBT.entitlements; sourceTree = "<group>"; };
+		2E9857102A1E354C00EDE58E /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = "cs.lproj/RMBT-InfoPlist.strings"; sourceTree = "<group>"; };
 		32DE166B881B73366FE005F9 /* Pods_RMBT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMBT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		361443472732793D00D0FC26 /* RMBTHistorySyncModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistorySyncModalViewController.swift; sourceTree = "<group>"; };
 		3628C538275639E40001E885 /* RMBTHistoryQoSTitledResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTHistoryQoSTitledResultCell.xib; sourceTree = "<group>"; };
 		3628C53A27563AA40001E885 /* RMBTHistoryQoSTitledResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTHistoryQoSTitledResultCell.swift; sourceTree = "<group>"; };
 		3678AA7E291E35D70059D6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/RMBT-InfoPlist.strings"; sourceTree = "<group>"; };
-		3678AA80291E35DC0059D6CB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "de.lproj/RMBT-InfoPlist.strings"; sourceTree = "<group>"; };
 		367B46822923857400D84E87 /* A11y.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A11y.swift; sourceTree = "<group>"; };
 		36933A72274E68B4009A52BE /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		36933A74274FBF00009A52BE /* RMBTTestDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTTestDetailCell.swift; sourceTree = "<group>"; };
@@ -543,10 +543,6 @@
 		E9C13F8F272C286E00DA60D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/loop_mode_info.html; sourceTree = "<group>"; };
 		E9C13F90272C287100DA60D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/loop_mode_info2.html; sourceTree = "<group>"; };
 		E9C13F91272C289D00DA60D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E9C13F92272C28CD00DA60D4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E9C13F93272C28CD00DA60D4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/terms_conditions_long.html; sourceTree = "<group>"; };
-		E9C13F94272C28CD00DA60D4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/loop_mode_info.html; sourceTree = "<group>"; };
-		E9C13F95272C28CD00DA60D4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/loop_mode_info2.html; sourceTree = "<group>"; };
 		E9C4BA2627140B8E00D6FAE8 /* CLLocation+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Additions.swift"; sourceTree = "<group>"; };
 		E9C4BA2A2714112600D6FAE8 /* RMBTPopupCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBTPopupCollectionView.swift; sourceTree = "<group>"; };
 		E9C4BA2B2714112600D6FAE8 /* RMBTPopupCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMBTPopupCollectionView.xib; sourceTree = "<group>"; };
@@ -1391,7 +1387,6 @@
 						TestTargetID = C7DE1477173E8F610079477A;
 					};
 					C7DE1477173E8F610079477A = {
-						DevelopmentTeam = T7Y947AEPK;
 						LastSwiftMigration = 1250;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1793,7 +1788,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3678AA7E291E35D70059D6CB /* en */,
-				3678AA80291E35DC0059D6CB /* de */,
+				2E9857102A1E354C00EDE58E /* cs */,
 			);
 			name = "RMBT-InfoPlist.strings";
 			sourceTree = "<group>";
@@ -1803,7 +1798,6 @@
 			children = (
 				E9555E9B2727D318003547B0 /* en */,
 				E9C13F8F272C286E00DA60D4 /* Base */,
-				E9C13F94272C28CD00DA60D4 /* de */,
 				4907AB4129E6DF5F0059211A /* cs */,
 			);
 			name = loop_mode_info.html;
@@ -1814,7 +1808,6 @@
 			children = (
 				E9555E9C2727D31B003547B0 /* en */,
 				E9C13F90272C287100DA60D4 /* Base */,
-				E9C13F95272C28CD00DA60D4 /* de */,
 				4907AB4229E6DF5F0059211A /* cs */,
 			);
 			name = loop_mode_info2.html;
@@ -1825,7 +1818,6 @@
 			children = (
 				E9555E9A2727D309003547B0 /* en */,
 				E9C13F8E272C286C00DA60D4 /* Base */,
-				E9C13F93272C28CD00DA60D4 /* de */,
 				4907AB4029E6DF5F0059211A /* cs */,
 			);
 			name = terms_conditions_long.html;
@@ -1836,7 +1828,6 @@
 			children = (
 				E9555EA72727D478003547B0 /* en */,
 				E9C13F91272C289D00DA60D4 /* Base */,
-				E9C13F92272C28CD00DA60D4 /* de */,
 				4907AB3F29E6DF5E0059211A /* cs */,
 			);
 			name = Localizable.strings;
@@ -1954,7 +1945,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = T7Y947AEPK;
+				DEVELOPMENT_TEAM = HN8G649886;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -2006,7 +1997,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = T7Y947AEPK;
+				DEVELOPMENT_TEAM = HN8G649886;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2021,7 +2012,7 @@
 				New_Setting = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "RTRNetztest App Store Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "CTUNetTest App Store Distribution";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2040,7 +2031,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4039;
-				DEVELOPMENT_TEAM = T7Y947AEPK;
+				DEVELOPMENT_TEAM = HN8G649886;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2059,7 +2050,7 @@
 				);
 				MARKETING_VERSION = 4.0.39;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = at.netztest.app.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.ctu.nettest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sources/RMBT-Bridging-Header.h";
@@ -2081,7 +2072,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4039;
-				DEVELOPMENT_TEAM = T7Y947AEPK;
+				DEVELOPMENT_TEAM = HN8G649886;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2095,7 +2086,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.0.39;
-				PRODUCT_BUNDLE_IDENTIFIER = at.netztest.app.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.ctu.nettest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sources/RMBT-Bridging-Header.h";
