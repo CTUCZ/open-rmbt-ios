@@ -4,9 +4,9 @@
 
 "Description" = "Popis";
 
-"Succeeded" = "Succeeded";
+"Succeeded" = "Úspěšné";
 
-"Failed" = "Failed";
+"Failed" = "Selhalo";
 
 "Cancel" = "Zrušit";
 
@@ -41,13 +41,13 @@
 "Test details" = "Podrobnosti testu";
 
 /* Sync success button */
-"Reload" = "Reload";
+"Reload" = "Obnovit";
 
 /* Sync dialog button */
 "Request code" = "Získat synchronizační kód";
 
 /* Sync success alert title */
-"Success" = "Success";
+"Success" = "Synchronizace byla úspěšná";
 
 /* Sync alert button */
 "Sync" = "Synchronizace";
@@ -164,7 +164,7 @@
 "No network connection available" = "Připojení k síti není k dispozici";
 
 /* Map overlay description */
-"Shapes" = "Shapes";
+"Shapes" = "Tvary";
 
 /* Measurement item title */
 "Quality tests" = "QoS test";
@@ -229,7 +229,7 @@
 "Test Connection" = "Test připojení";
 
 /* Confirmation dialog title 1/2 */
-"Activation and privacy" = "Activace";
+"Activation and privacy" = "Aktivace";
 
 /* Confirmation dialog title 1/2 */
 "Usage" = "Použití";
@@ -372,6 +372,16 @@
 "measurement_down" = "Download";
 "measurement_up" = "Upload";
 
+"measurement_qos" = "Kvalita služeb (QoS)";
+"measurement_qos_website" = "Webová stránka";
+"measurement_qos_http_proxy" = "Modifikace obsahu";
+"measurement_qos_non_transparent_proxy" = "Transparentní proxy";
+"measurement_qos_dns" = "DNS";
+"measurement_qos_tcp" = "TCP porty";
+"measurement_qos_udp" = "UDP porty";
+"measurement_qos_traceroute_masked" = "Traceroute";
+"measurement_qos_voip" = "Internetová telefonie";
+
 "preferences_general_settings" = "Hlavní nastavení";
 "preferences_advanced_settings" = "Rozšířená nastavení";
 "preferences_location" = "Povolit přístup k poloze";
@@ -404,8 +414,8 @@
 "preferences_override_control_server_port" = "Control port";
 "preferences_override_control_server_ssl" = "Control SSL";
 
-"preferences_developer_logging" = "Logging";
-"preferences_developer_logging_summary" = "Log messages will be sent to the selected destination via UDP.";
+"preferences_developer_logging" = "Logování";
+"preferences_developer_logging_summary" = "Logy budou odeslány do cílového umístění prostřednictvím UDP.";
 "preferences_developer_loggind_host" = "Logging host";
 "preferences_developer_loggind_port" = "Logging port";
 
@@ -426,7 +436,6 @@
 "map_layer_automatic" = "Automatic";
 
 "menu_button_statistics" = "Statistika";
-
 "text_ip_address_not_available" = "Adresa není k dispozici";
 
 "title_normal_mode" = "Běžné měření";
