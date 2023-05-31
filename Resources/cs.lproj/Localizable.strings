@@ -422,7 +422,7 @@
 "preferences_qos_measurement_only_after_some_time" = "Pouze po 2 hodinách";
 "preferences_qos_measurement_only_after_some_time_summary" = "Neprovádět nové QoS měření, pokud bylo provedeno v posledních 2 hodinách.";
 
-"button_accept.title" = "Přijmout";
+"button_accept.title" = "Potvrdit";
 
 "map.map_view" = "Map appearance";
 "map.cart_details" = "Overlay type";
