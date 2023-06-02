@@ -108,7 +108,7 @@ class RMBTHelpers: NSObject {
     static func RMBTLocalize(urlString: String) -> String {
         if urlString.range(of: "$lang") != nil {
             var lang = RMBTHelpers.RMBTPreferredLanguage()
-            if (!(lang == "de" || lang == "en")) {
+            if (!(lang == "cs" || lang == "en")) {
                 lang = "en"
             }
             return urlString.replacingOccurrences(of: "$lang", with: lang)
