@@ -36,7 +36,7 @@
                     <rect key="frame" x="0.0" y="590" width="414" height="119"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tm1-V9-Jdu">
-                            <rect key="frame" x="0.0" y="39.5" width="414" height="40"/>
+                            <rect key="frame" x="0.0" y="83" width="414" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WiFi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBf-ww-zlJ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="16.5"/>
@@ -66,7 +66,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Tm1-V9-Jdu" firstAttribute="leading" secondItem="7Le-k9-M28" secondAttribute="leading" id="jWu-eb-Uve"/>
-                        <constraint firstItem="Tm1-V9-Jdu" firstAttribute="centerY" secondItem="7Le-k9-M28" secondAttribute="centerY" id="oHK-jS-ojJ"/>
+                        <constraint firstItem="Tm1-V9-Jdu" firstAttribute="centerY" secondItem="7Le-k9-M28" secondAttribute="bottom" constant="-16" id="oHK-jS-ojJ"/>
                         <constraint firstAttribute="trailing" secondItem="Tm1-V9-Jdu" secondAttribute="trailing" id="sNh-f4-dlc"/>
                     </constraints>
                 </view>
@@ -295,7 +295,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofG-cX-B4M">
-                    <rect key="frame" x="169.5" y="574" width="75" height="44"/>
+                    <rect key="frame" x="169.5" y="606" width="75" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="bQO-bQ-q4U"/>
                     </constraints>
@@ -312,7 +312,7 @@
                 <constraint firstItem="F4B-AF-dub" firstAttribute="leading" secondItem="Ka0-X9-eaE" secondAttribute="leading" id="HVW-j8-J2C"/>
                 <constraint firstItem="Ka0-X9-eaE" firstAttribute="trailing" secondItem="F4B-AF-dub" secondAttribute="trailing" id="Ip5-nl-Abe"/>
                 <constraint firstItem="7Le-k9-M28" firstAttribute="top" secondItem="sA0-B7-9PA" secondAttribute="bottom" constant="-40" id="MY7-Ez-l4I"/>
-                <constraint firstItem="ofG-cX-B4M" firstAttribute="top" secondItem="7Le-k9-M28" secondAttribute="top" constant="-16" id="Mih-ii-u7P"/>
+                <constraint firstItem="ofG-cX-B4M" firstAttribute="top" secondItem="7Le-k9-M28" secondAttribute="top" constant="16" id="Mih-ii-u7P"/>
                 <constraint firstItem="Ka0-X9-eaE" firstAttribute="trailing" secondItem="XIp-jw-uPg" secondAttribute="trailing" id="SBa-ul-554"/>
                 <constraint firstItem="XIp-jw-uPg" firstAttribute="leading" secondItem="Ka0-X9-eaE" secondAttribute="leading" id="SiD-lk-Vak"/>
                 <constraint firstItem="Ka0-X9-eaE" firstAttribute="trailing" secondItem="sg2-WZ-vVY" secondAttribute="trailing" id="UHB-EJ-raT"/>
