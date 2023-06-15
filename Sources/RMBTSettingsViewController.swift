@@ -400,6 +400,16 @@ class RMBTSettingsViewController: UITableViewController {
         return view
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if settings.qosEnabled, indexPath.section == RMBTSettingsSection.general.rawValue, indexPath.row == 1 {
+            return 80
+        }
+        if indexPath.section == RMBTSettingsSection.advanced.rawValue && indexPath.row == 0 {
+            return 80
+        }
+        return 56
+    }
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 48
     }
