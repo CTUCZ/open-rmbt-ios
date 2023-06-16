@@ -119,8 +119,7 @@ class RMBTIntroPortraitView: UIView, XibLoadable {
             self.loopModeHandler(true)
             self.updateLoopModeUI()
         }
-        let menu = UIMenu(title: "", options: .displayInline, children: [selectNormalModeItem , selectLoopModeItem])
-        testModeButton.menu = menu
+        testModeButton.menu = .init(title: "", options: .displayInline, children: [selectLoopModeItem, selectNormalModeItem])
         testModeButton.showsMenuAsPrimaryAction = true
 
         let image = self.settingsButton.image(for: .normal)?.withRenderingMode(.alwaysTemplate)
