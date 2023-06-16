@@ -318,6 +318,11 @@
 		4907AB4029E6DF5F0059211A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = cs; path = cs.lproj/terms_conditions_long.html; sourceTree = "<group>"; };
 		4907AB4129E6DF5F0059211A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = cs; path = cs.lproj/loop_mode_info.html; sourceTree = "<group>"; };
 		4907AB4229E6DF5F0059211A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = cs; path = cs.lproj/loop_mode_info2.html; sourceTree = "<group>"; };
+		4991AAD32A3C816B003EC420 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4991AAD42A3C816B003EC420 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = sk; path = sk.lproj/terms_conditions_long.html; sourceTree = "<group>"; };
+		4991AAD52A3C816B003EC420 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = sk; path = sk.lproj/loop_mode_info.html; sourceTree = "<group>"; };
+		4991AAD62A3C816B003EC420 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = sk; path = sk.lproj/loop_mode_info2.html; sourceTree = "<group>"; };
+		4991AAD72A3C8262003EC420 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = "sk.lproj/RMBT-InfoPlist.strings"; sourceTree = "<group>"; };
 		89CA21386C488DD817CA1DC2 /* Pods-RMBT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMBT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMBT/Pods-RMBT.debug.xcconfig"; sourceTree = "<group>"; };
 		C573F2A4175281D300C728FC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C573F2B0175294A500C728FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -1404,8 +1409,8 @@
 			knownRegions = (
 				en,
 				Base,
-				de,
 				cs,
+				sk,
 			);
 			mainGroup = C7DE146F173E8F610079477A;
 			productRefGroup = C7DE1479173E8F610079477A /* Products */;
@@ -1789,6 +1794,7 @@
 			children = (
 				3678AA7E291E35D70059D6CB /* en */,
 				2E9857102A1E354C00EDE58E /* cs */,
+				4991AAD72A3C8262003EC420 /* sk */,
 			);
 			name = "RMBT-InfoPlist.strings";
 			sourceTree = "<group>";
@@ -1799,6 +1805,7 @@
 				E9555E9B2727D318003547B0 /* en */,
 				E9C13F8F272C286E00DA60D4 /* Base */,
 				4907AB4129E6DF5F0059211A /* cs */,
+				4991AAD52A3C816B003EC420 /* sk */,
 			);
 			name = loop_mode_info.html;
 			sourceTree = "<group>";
@@ -1809,6 +1816,7 @@
 				E9555E9C2727D31B003547B0 /* en */,
 				E9C13F90272C287100DA60D4 /* Base */,
 				4907AB4229E6DF5F0059211A /* cs */,
+				4991AAD62A3C816B003EC420 /* sk */,
 			);
 			name = loop_mode_info2.html;
 			sourceTree = "<group>";
@@ -1819,6 +1827,7 @@
 				E9555E9A2727D309003547B0 /* en */,
 				E9C13F8E272C286C00DA60D4 /* Base */,
 				4907AB4029E6DF5F0059211A /* cs */,
+				4991AAD42A3C816B003EC420 /* sk */,
 			);
 			name = terms_conditions_long.html;
 			sourceTree = "<group>";
@@ -1829,6 +1838,7 @@
 				E9555EA72727D478003547B0 /* en */,
 				E9C13F91272C289D00DA60D4 /* Base */,
 				4907AB3F29E6DF5E0059211A /* cs */,
+				4991AAD32A3C816B003EC420 /* sk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
