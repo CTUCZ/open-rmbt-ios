@@ -24,6 +24,7 @@
 		36B75A212739692C006F4CB3 /* RMBTMaterialTextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B75A202739692C006F4CB3 /* RMBTMaterialTextFieldState.swift */; };
 		36B75A27273EA096006F4CB3 /* RMBTHistoryLoopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B75A26273EA096006F4CB3 /* RMBTHistoryLoopCell.xib */; };
 		36B75A29273EA73C006F4CB3 /* RMBTHistoryLoopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B75A28273EA73C006F4CB3 /* RMBTHistoryLoopCell.swift */; };
+		49A07DFC2A5EE229000D17E2 /* UIButton+ExtendedTapArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A07DFB2A5EE229000D17E2 /* UIButton+ExtendedTapArea.swift */; };
 		C573F2A5175281D300C728FC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C573F2A4175281D300C728FC /* MapKit.framework */; };
 		C573F2B1175294A500C728FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C573F2B0175294A500C728FC /* CoreLocation.framework */; };
 		C5DEB476176364B100187C94 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DEB475176364B100187C94 /* AVFoundation.framework */; };
@@ -323,6 +324,7 @@
 		4991AAD52A3C816B003EC420 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = sk; path = sk.lproj/loop_mode_info.html; sourceTree = "<group>"; };
 		4991AAD62A3C816B003EC420 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = sk; path = sk.lproj/loop_mode_info2.html; sourceTree = "<group>"; };
 		4991AAD72A3C8262003EC420 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = "sk.lproj/RMBT-InfoPlist.strings"; sourceTree = "<group>"; };
+		49A07DFB2A5EE229000D17E2 /* UIButton+ExtendedTapArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ExtendedTapArea.swift"; sourceTree = "<group>"; };
 		89CA21386C488DD817CA1DC2 /* Pods-RMBT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMBT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMBT/Pods-RMBT.debug.xcconfig"; sourceTree = "<group>"; };
 		C573F2A4175281D300C728FC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C573F2B0175294A500C728FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -988,6 +990,7 @@
 				E9B51CC927243208006ED0C7 /* RMBTIntroPortraitView.xib */,
 				E9B51CCC27243229006ED0C7 /* RMBTIntroLandscapeView.swift */,
 				E9B51CCB27243229006ED0C7 /* RMBTIntroLandscapeView.xib */,
+				49A07DFB2A5EE229000D17E2 /* UIButton+ExtendedTapArea.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1727,6 +1730,7 @@
 				E9A7BC05279EC4EA006F1C2D /* UITextField+Additions.swift in Sources */,
 				E99F23342771CCF900BFDA09 /* RMBTConnectivity.swift in Sources */,
 				E9400F3326BE8D000067273A /* RMBTThroughput.swift in Sources */,
+				49A07DFC2A5EE229000D17E2 /* UIButton+ExtendedTapArea.swift in Sources */,
 				E9A9A9B127687C85002671C0 /* RMBTHistoryQOEResultItem.swift in Sources */,
 				E94EC06D276E0F2400DB0B21 /* RMBTQoSControlConnection.swift in Sources */,
 				E946B95726D6736F0006E1F1 /* RMBTMapOptionsTypeCell.swift in Sources */,
