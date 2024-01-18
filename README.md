@@ -1,15 +1,18 @@
 Open-RMBT iOS App
 =================
 
-OpenRMBT is an open source, multi-threaded bandwidth test used in [RTR-Netztest]. This repository contains the sources for the iOS App. For server and Android App sources, see [https://github.com/rtr-nettest].
+OpenRMBT is an open source, multi-threaded bandwidth test used in [CTU-NetTest] & [RTR-Netztest]. This repository contains the sources for the iOS App. For server and Android App sources, see [https://github.com/CTUCZ] or [https://github.com/rtr-nettest].
 
-OpenRMBT is released under the [Apache License, Version 2.0]. The iOS App was developed by [appscape] and financed by the [Austrian Regulatory Authority for Broadcasting and Telecommunications (RTR)](https://www.rtr.at).
+OpenRMBT is released under the [Apache License, Version 2.0]. The iOS App was developed by [appscape], financed by the [Austrian Regulatory Authority for Broadcasting and Telecommunications (RTR)](https://www.rtr.at) 
+and modified by the [Czech Telecommunication Office (CTU)](https://ctu.gov.cz/).
 
   [appscape]: http://appscape.at/
+  [CTU]: https://ctu.gov.cz/
+  [CTU-NetTest]: https://nettest.cz/
   [RTR-Netztest]: https://netztest.at/
   [RTR]: https://www.rtr.at/
   [Apache License, Version 2.0]: https://www.apache.org/licenses/LICENSE-2.0
-  [https://github.com/rtr-nettest]: https://github.com/rtr-nettest
+  [https://github.com/CTUCZ]: https://github.com/CTUCZ
 
 Building
 --------
