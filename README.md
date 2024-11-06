@@ -8,11 +8,12 @@ and modified by the [Czech Telecommunication Office (CTU)](https://ctu.gov.cz/).
 
   [appscape]: http://appscape.at/
   [CTU]: https://ctu.gov.cz/
-  [CTU-NetTest]: https://nettest.cz/
+  [CTU-NetTest]: https://nettest.ctu.gov.cz/
   [RTR-Netztest]: https://netztest.at/
   [RTR]: https://www.rtr.at/
   [Apache License, Version 2.0]: https://www.apache.org/licenses/LICENSE-2.0
   [https://github.com/CTUCZ]: https://github.com/CTUCZ
+  [https://github.com/rtr-nettest]: https://github.com/rtr-nettest
 
 Building
 --------
